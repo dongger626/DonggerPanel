@@ -6,7 +6,6 @@ function source(relativePath: string): string {
 }
 
 const jobs = source('../../views/JobsView.vue')
-const ai = source('../../views/AiView.vue')
 const terminal = source('../terminal/HostTerminal.vue')
 const taskTerminal = source('../apps/AppInteractiveTerminal.vue')
 const controller = source('../../composables/useTerminalController.ts')
@@ -17,12 +16,6 @@ describe('desktop background lifecycle contract', () => {
     expect(jobs).toContain('desktopWindowActiveKey')
     expect(jobs).toContain('!current.signal.aborted && desktopWindowActive.value')
     expect(jobs).toMatch(/watch\(desktopWindowActive,[\s\S]*?else\s*\{\s*controller\?\.abort\(\)\s*if \(timer\) window\.clearTimeout\(timer\)/)
-  })
-
-  it('buffers AI stream deltas without scheduling background animation frames', () => {
-    expect(ai).toContain('desktopWindowActiveKey')
-    expect(ai).toContain('desktopWindowActive.value&&!streamFrame')
-    expect(ai).toContain("if(!active){if(streamFrame)cancelAnimationFrame(streamFrame)")
   })
 
   it('streams terminals in visible windows and pauses hidden ones without closing the session', () => {

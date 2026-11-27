@@ -16,8 +16,8 @@ import { canonicalDesktopAppPath } from '@/lib/desktopApps'
  *
  * Each desktop window gets its own router over an in-memory history. Views that
  * call `useRoute()` / `useRouter()` / `RouterLink` resolve against this window
- * router, so `AiView` can `push('/ai/s/123')` without leaving the desktop and
- * multiple windows of the same app never share navigation state.
+ * router, so a view can navigate within a window without leaving the desktop
+ * and multiple windows of the same app never share navigation state.
  */
 
 const ROUTE_KEYS: readonly (keyof RouteLocationNormalizedLoaded)[] = [
@@ -105,11 +105,6 @@ export async function synchronizeWindowRoute(
   }
 }
 
-/** AiView is not part of the shared lazy route registry; load it directly. */
-function aiComponentLoader() {
-  return () => import('@/views/AiView.vue').then((module) => module.default)
-}
-
 function appScriptComponentLoader() {
   return () => import('@/views/AppScriptView.vue').then((module) => module.default)
 }
@@ -122,7 +117,6 @@ const WINDOW_ROUTE_PLACEHOLDER: Component = {}
 
 /** Resolve the page component for a window route path. */
 export function resolveWindowComponent(path: string): Promise<Component> {
-  if (path === '/ai' || path.startsWith('/ai/s/')) return aiComponentLoader()()
   if (/^\/app-script\/[A-Za-z0-9_-]{1,128}$/.test(path)) return appScriptComponentLoader()()
   if (/^\/command-shortcut\/[a-f0-9]{32}$/.test(path)) return import('@/components/terminal/ShortcutCommandWorkspace.vue').then(module => module.default)
   return loadNavigationRoute(path as NavigationPath).then((module) => module.default)
@@ -170,16 +164,6 @@ export function windowRouteRecords(): RouteRecordRaw[] {
       component: WINDOW_ROUTE_PLACEHOLDER,
     },
     {
-      path: '/ai',
-      name: 'ai',
-      component: WINDOW_ROUTE_PLACEHOLDER,
-    },
-    {
-      path: '/ai/s/:sessionId',
-      name: 'ai-session',
-      component: WINDOW_ROUTE_PLACEHOLDER,
-    },
-    {
       path: '/sites',
       name: 'sites',
       component: WINDOW_ROUTE_PLACEHOLDER,
@@ -222,11 +206,6 @@ export function windowRouteRecords(): RouteRecordRaw[] {
     {
       path: '/cinema',
       name: 'cinema',
-      component: WINDOW_ROUTE_PLACEHOLDER,
-    },
-    {
-      path: '/offers',
-      name: 'offers',
       component: WINDOW_ROUTE_PLACEHOLDER,
     },
     {

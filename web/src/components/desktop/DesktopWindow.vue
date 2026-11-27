@@ -43,8 +43,8 @@ import type { DesktopBrowserHistoryPoint } from '@/lib/desktopBrowserHistory'
  * One desktop window. The window renders the page component for its route
  * directly (no nested RouterView) and provides a window-scoped router + route,
  * so views that call `useRoute()` / `useRouter()` / `RouterLink` resolve against
- * the window. `AiView` can navigate `/ai/s/:id` inside the window without
- * leaving the desktop, and multiple windows of the same app stay independent.
+ * the window. Views can navigate within the window without leaving the
+ * desktop, and multiple windows of the same app stay independent.
  */
 
 const props = defineProps<{
@@ -126,10 +126,6 @@ watch(
   () => props.iconUrl,
   () => { iconFailed.value = false },
 )
-
-function componentPath(path: string): string {
-  return path.startsWith('/ai/s/') ? '/ai' : path
-}
 
 function titleKeyForPath(path: string): string {
   path = desktopRoutePath(path)
@@ -304,7 +300,7 @@ function onWindowKeyDown(event: KeyboardEvent): void {
 // Load the active in-window route lazily. A sequence guard prevents a slower
 // earlier import from replacing the component after quick internal navigation.
 async function loadComponent(path: string): Promise<void> {
-  const nextComponentPath = componentPath(path)
+  const nextComponentPath = path
   if (component.value && loadedComponentPath === nextComponentPath) return
   const sequence = ++loadSequence
   contentTitle.value = undefined

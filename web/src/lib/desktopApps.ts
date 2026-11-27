@@ -4,7 +4,6 @@ import {
   Globe2,
   BookOpen,
   Boxes,
-  Bot,
   ClipboardList,
   Clapperboard,
   Container,
@@ -14,7 +13,6 @@ import {
   Music2,
   LayoutDashboard,
   ListTree,
-  Megaphone,
   Network,
   Monitor,
   Settings,
@@ -67,14 +65,6 @@ export const desktopApps: DesktopApp[] = [
     desktopIconURL: '/desktop-icons/processes-kpanel-flat-v3.webp',
     allowMultiple: false,
     gradient: ['#fb923c', '#c2410c'],
-  },
-  {
-    path: '/ai',
-    labelKey: 'route.ai',
-    icon: Bot,
-    desktopIconURL: '/desktop-icons/ai-kpanel-flat-v1.webp',
-    allowMultiple: true,
-    gradient: ['#a78bfa', '#6d28d9'],
   },
   {
     path: '/sites',
@@ -191,16 +181,6 @@ export const desktopApps: DesktopApp[] = [
     gradient: ['#60a5fa', '#2563eb'],
   },
   {
-    path: '/offers',
-    labelKey: 'route.offers',
-    icon: Megaphone,
-    desktopIconURL: '/desktop-icons/offers-kpanel-flat-v1.webp',
-    allowMultiple: false,
-    gradient: ['#fdba74', '#c2410c'],
-    // Wide enough for the three-column banner wall on common desktop screens.
-    windowSize: { width: 1200, height: 820 },
-  },
-  {
     path: '/virtual-machines',
     labelKey: 'route.virtualMachines',
     icon: Monitor,
@@ -251,7 +231,6 @@ export function canonicalDesktopAppPath(path: string): string {
   path = desktopRoutePath(path)
   if (path === '/settings/guides') return '/guides'
   if (path === '/sites/environment' || path === '/sites/monitor') return '/sites'
-  if (path.startsWith('/ai/s/')) return '/ai'
   if (path === '/jobs' || path === '/audit') return '/activity'
   return path
 }

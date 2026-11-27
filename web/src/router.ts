@@ -85,18 +85,6 @@ export const router = createRouter({
           meta: { titleKey: 'route.cluster' },
         },
         {
-          path: 'ai',
-          name: 'ai',
-          component: () => import('@/views/AiView.vue'),
-          meta: { titleKey: 'route.ai' },
-        },
-        {
-          path: 'ai/s/:sessionId',
-          name: 'ai-session',
-          component: () => import('@/views/AiView.vue'),
-          meta: { titleKey: 'route.ai' },
-        },
-        {
           path: 'sites',
           name: 'sites',
           component: () => loadNavigationRoute('/sites'),
@@ -147,12 +135,6 @@ export const router = createRouter({
           name: 'cinema',
           component: () => loadNavigationRoute('/cinema'),
           meta: { titleKey: 'route.cinema' },
-        },
-        {
-          path: 'offers',
-          name: 'offers',
-          component: () => loadNavigationRoute('/offers'),
-          meta: { titleKey: 'route.offers' },
         },
         {
           path: 'terminal',

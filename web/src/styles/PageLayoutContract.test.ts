@@ -24,13 +24,12 @@ function collectPages(node: ts.Node): void {
   ts.forEachChild(node, collectPages)
 }
 collectPages(syntax)
-pages.push({ path: '/ai', file: 'AiView.vue' })
 
 // These are intentional workspaces with centrally adapted sizing/scrolling,
 // not an exemption for arbitrary new page classes.
 const workspaces: Record<string, string> = {
   '/files': 'files-page', '/gallery': 'gallery-page', '/terminal': 'terminal-page',
-  '/diagnostics': 'diagnostics-page', '/monitoring': 'monitoring-page', '/ai': 'ai-workspace',
+  '/diagnostics': 'diagnostics-page', '/monitoring': 'monitoring-page',
   '/browser': 'web-browser',
 }
 

@@ -118,9 +118,6 @@ func runPanelInstance(config panel.Config) error {
 		return err
 	}
 	defer handler.Close()
-	if err := handler.EnableAI(); err != nil {
-		slog.Error("AI module disabled", "error", err)
-	}
 	server := &http.Server{
 		Addr:              config.Listen,
 		Handler:           handler,

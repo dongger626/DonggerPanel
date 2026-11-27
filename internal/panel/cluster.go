@@ -99,9 +99,6 @@ func (s *Server) Close() error {
 	if s.scenePacks != nil {
 		s.scenePacks.Close()
 	}
-	if s.offers != nil {
-		s.offers.Close()
-	}
 	if s.mcp != nil {
 		s.mcp.close()
 	}
@@ -132,10 +129,6 @@ func (s *Server) Close() error {
 	if s.btCache != nil {
 		_ = s.btCache.Close()
 	}
-	var aiErr error
-	if s.ai != nil {
-		aiErr = s.ai.Close()
-	}
 	var notificationErr error
 	if s.serviceCheckAlerts != nil {
 		s.serviceCheckAlerts.Close()
@@ -143,7 +136,7 @@ func (s *Server) Close() error {
 	if s.notifications != nil {
 		notificationErr = s.notifications.Close()
 	}
-	return errors.Join(aiErr, notificationErr, clusterErr)
+	return errors.Join(notificationErr, clusterErr)
 }
 
 func (s *Server) handleCluster(w http.ResponseWriter, r *http.Request) {

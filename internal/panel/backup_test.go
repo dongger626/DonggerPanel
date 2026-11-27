@@ -51,9 +51,6 @@ func TestBackupPanelIdentityAndStagingValidation(t *testing.T) {
 	}
 	// Match configured key paths as a real LoadConfig instance does.
 	s.config.TOTPKeyPath = filepath.Join(s.config.DataDir, "totp.key")
-	if err := s.EnableAI(); err != nil {
-		t.Fatal(err)
-	}
 	if _, err := s.terminalCommands.Replace(terminalcommands.ReplaceInput{
 		ExpectedResourceVersion: s.terminalCommands.Snapshot().ResourceVersion,
 		Items: []terminalcommands.Command{{

@@ -25,8 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kejilion/kejilion-panel/internal/ai"
-	"github.com/kejilion/kejilion-panel/internal/auth"
+github.com/kejilion/kejilion-panel/internal/auth
 	"github.com/kejilion/kejilion-panel/internal/backup"
 	"github.com/kejilion/kejilion-panel/internal/backupremote"
 	"github.com/kejilion/kejilion-panel/internal/bittorrent"
@@ -39,7 +38,6 @@ import (
 	"github.com/kejilion/kejilion-panel/internal/musiccache"
 	"github.com/kejilion/kejilion-panel/internal/musicmetadata"
 	"github.com/kejilion/kejilion-panel/internal/notification"
-	"github.com/kejilion/kejilion-panel/internal/offers"
 	"github.com/kejilion/kejilion-panel/internal/remotedownload"
 	"github.com/kejilion/kejilion-panel/internal/scenepacks"
 	trafficHistory "github.com/kejilion/kejilion-panel/internal/sitetraffic/history"
@@ -143,14 +141,11 @@ type Server struct {
 	fileTransferPrefetch    bool
 	remoteDownloadGate      chan struct{}
 	remoteDownloadJobs      *remotedownload.JobStore
-	offers                  *offers.Service
 	remoteDownloadMu        sync.Mutex
 	remoteDownloadCancels   map[string]context.CancelCauseFunc
 	remoteDownloadPending   int
 	remoteDownloadClosing   bool
 	remoteDownloadWG        sync.WaitGroup
-	ai                      *ai.Service
-	aiError                 string
 	desktopWorkspace        *desktopworkspace.Store
 	desktopWallpapers       *desktopwallpapers.Store
 	desktopWallpaperUploads chan struct{}
@@ -326,7 +321,6 @@ func NewServer(config Config, authService *auth.Service, storage *store.Store, a
 		remoteDownloadCancels:   make(map[string]context.CancelCauseFunc),
 		musicMetadata:           musicmetadata.New(),
 		cinemaMetadata:          cinemametadata.New(),
-		offers:                  offers.Open(filepath.Join(config.DataDir, "offers"), nil),
 	}
 	server.terminalBatches, err = terminalbatch.Open(filepath.Join(config.DataDir, "terminal-batches"), batchTerminalDriver{server}, terminalbatch.Options{})
 	if err != nil {
@@ -456,7 +450,7 @@ func (s *Server) updateFrozen() bool {
 }
 
 func (s *Server) serveAPI(w http.ResponseWriter, r *http.Request) {
-	if s.backups != nil && s.backups.Busy() && r.Method != http.MethodGet && (strings.HasPrefix(r.URL.Path, "/api/v1/settings/") || strings.HasPrefix(r.URL.Path, "/api/v1/desktop/") || strings.HasPrefix(r.URL.Path, "/api/v1/cluster/") || r.URL.Path == terminalCommandsPath || r.URL.Path == "/api/v1/monitoring/checks" || r.URL.Path == checksDistributionPath || strings.HasPrefix(r.URL.Path, "/api/v1/ai/providers") || strings.HasPrefix(r.URL.Path, "/api/v1/ai/models")) {
+	if s.backups != nil && s.backups.Busy() && r.Method != http.MethodGet && (strings.HasPrefix(r.URL.Path, "/api/v1/settings/") || strings.HasPrefix(r.URL.Path, "/api/v1/desktop/") || strings.HasPrefix(r.URL.Path, "/api/v1/cluster/") || r.URL.Path == terminalCommandsPath || r.URL.Path == "/api/v1/monitoring/checks" || r.URL.Path == checksDistributionPath) {
 		s.writeProblem(w, r, http.StatusConflict, "backup_busy", "备份恢复正在执行，请稍后重试", "")
 		return
 	}
@@ -485,8 +479,6 @@ func (s *Server) serveAPI(w http.ResponseWriter, r *http.Request) {
 		s.handleFederationSummary(w, r)
 	case r.Method == http.MethodDelete && r.URL.Path == "/api/v1/federation/revoke":
 		s.handleFederationRevoke(w, r)
-	case strings.HasPrefix(r.URL.Path, "/api/v1/ai/") || r.URL.Path == "/api/v1/ai":
-		s.handleAI(w, r)
 	case r.Method == http.MethodGet && r.URL.Path == "/api/v1/health":
 		s.writeJSON(w, http.StatusOK, map[string]any{
 			"status":          "ok",
@@ -590,8 +582,6 @@ func (s *Server) serveAPI(w http.ResponseWriter, r *http.Request) {
 		s.handleJobs(w, r)
 	case r.Method == http.MethodGet && strings.HasPrefix(r.URL.Path, "/api/v1/jobs/"):
 		s.handleJobDetail(w, r)
-	case isOffersRequest(r.URL.Path):
-		s.handleOffers(w, r)
 	case r.URL.Path == "/api/v1/desktop/workspace":
 		s.handleDesktopWorkspace(w, r)
 	case r.URL.Path == desktopWallpapersPath || strings.HasPrefix(r.URL.Path, desktopWallpapersPath+"/"):

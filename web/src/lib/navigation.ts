@@ -24,7 +24,6 @@ const routeViewLoaders = {
   '/music': () => import('@/views/MusicView.vue'),
   '/cinema': () => import('@/views/CinemaView.vue'),
   '/gallery': () => import('@/views/GalleryView.vue'),
-  '/offers': () => import('@/views/OffersView.vue'),
   '/terminal': () => import('@/views/TerminalView.vue'),
   '/diagnostics': () => import('@/views/DiagnosticsView.vue'),
   '/docker': () => import('@/views/DockerView.vue'),

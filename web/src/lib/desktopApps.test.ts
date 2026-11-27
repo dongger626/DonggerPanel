@@ -45,7 +45,6 @@ describe('desktop app catalogue', () => {
         '/monitoring',
         '/processes',
         '/system',
-        '/ai',
         '/sites',
         '/apps',
         '/docker',
@@ -59,10 +58,9 @@ describe('desktop app catalogue', () => {
         '/activity',
         '/settings',
         '/guides',
-        '/offers',
       ]),
     )
-    expect(desktopApps).toHaveLength(21)
+    expect(desktopApps).toHaveLength(19)
   })
 
   it('lets every fixed system entry be hidden from the desktop', () => {

@@ -487,7 +487,9 @@ func (s *Server) FinalizePanelRestore() error {
 	if backup.Decode(data, &j) != nil || j.Phase != "applied" || !backup.ValidID(j.ID) {
 		return backup.ErrInvalid
 	}
-	if j.AI != nil && s.ai == nil {
+	// Dongger Panel has no AI module, so a backup carrying AI access data
+	// cannot be restored here.
+	if j.AI != nil {
 		return errors.New("restored AI access could not be opened")
 	}
 	if !s.auth.IsInitialized() {

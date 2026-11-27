@@ -61,8 +61,6 @@ describe('desktop window route', () => {
       '/monitoring',
       '/processes',
       '/cluster',
-      '/ai',
-      '/ai/s/:sessionId',
       '/sites',
       '/sites/environment',
       '/apps',
@@ -83,8 +81,6 @@ describe('desktop window route', () => {
       'system',
       'monitoring',
       'processes',
-      'ai',
-      'ai-session',
       'sites-environment',
       'files',
       'app-script',
@@ -92,10 +88,6 @@ describe('desktop window route', () => {
       'settings',
       'guides',
     ]))
-  })
-
-  it('resolves dynamic ai session paths to the ai workspace component', async () => {
-    expect(await resolveWindowComponent('/ai/s/42')).toBe(await resolveWindowComponent('/ai'))
   })
 
   it('resolves dynamic app script paths to the dedicated terminal workspace', async () => {
@@ -112,17 +104,15 @@ describe('desktop window route', () => {
   })
 
   it('navigates within the window router without touching the app router', async () => {
-    const router = createWindowRouter('/ai')
-    await router.push('/ai')
-    expect(router.currentRoute.value.path).toBe('/ai')
+    const router = createWindowRouter('/overview')
+    await router.push('/overview')
+    expect(router.currentRoute.value.path).toBe('/overview')
 
-    await router.push('/ai/s/42')
-    expect(router.currentRoute.value.path).toBe('/ai/s/42')
-    expect(router.currentRoute.value.params.sessionId).toBe('42')
+    await router.push('/monitoring')
+    expect(router.currentRoute.value.path).toBe('/monitoring')
 
-    await router.replace('/ai')
-    expect(router.currentRoute.value.path).toBe('/ai')
-    expect(router.currentRoute.value.params.sessionId).toBeUndefined()
+    await router.replace('/overview')
+    expect(router.currentRoute.value.path).toBe('/overview')
   })
 
   it('starts without a synthetic back entry and records only real page navigation', async () => {
@@ -176,19 +166,19 @@ describe('desktop window route', () => {
   })
 
   it('keeps independent navigation state across window routers', async () => {
-    const first = createWindowRouter('/ai')
-    const second = createWindowRouter('/ai')
-    await first.push('/ai/s/7')
-    await second.push('/ai/s/9')
-    expect(first.currentRoute.value.params.sessionId).toBe('7')
-    expect(second.currentRoute.value.params.sessionId).toBe('9')
+    const first = createWindowRouter('/app-script/one')
+    const second = createWindowRouter('/app-script/two')
+    await first.push('/app-script/alpha')
+    await second.push('/app-script/beta')
+    expect(first.currentRoute.value.params.appId).toBe('alpha')
+    expect(second.currentRoute.value.params.appId).toBe('beta')
   })
 
   it('resolves window-relative links against the window router', () => {
-    const router = createWindowRouter('/ai')
-    const resolved = router.resolve('/ai/s/3')
-    expect(resolved.path).toBe('/ai/s/3')
-    expect(resolved.params.sessionId).toBe('3')
+    const router = createWindowRouter('/overview')
+    const resolved = router.resolve('/app-script/abc')
+    expect(resolved.path).toBe('/app-script/abc')
+    expect(resolved.params.appId).toBe('abc')
   })
 
   it('resolves canonical named routes used by window page components', () => {

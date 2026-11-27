@@ -281,15 +281,9 @@ func (s *Server) exportPanelBackup(ctx context.Context) ([]byte, error) {
 		} else if !errors.Is(err, os.ErrNotExist) {
 			return nil, err
 		}
-		if s.ai != nil {
-			access, err := s.ai.Providers.ExportAccess(ctx)
-			if err != nil {
-				return nil, err
-			}
-			value.AI = &access
-		} else if _, err := os.Stat(filepath.Join(s.config.DataDir, "ai.db")); err == nil {
-			return nil, errors.New("AI access storage is unavailable")
-		}
+		// Dongger Panel ships without the AI module, so there is no AI
+		// access to back up. (Upstream KPanel exported s.ai provider
+		// access here; that branch is removed with the module.)
 		after, err := readPanelBackupFiles(s.config.DataDir)
 		if err != nil {
 			return nil, err

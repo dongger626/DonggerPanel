@@ -14,7 +14,6 @@ import {
 import { useRoute, useRouter } from 'vue-router'
 import {
   Boxes,
-  Bot,
   HeartPulse,
   ClipboardList,
   CircleArrowUp,
@@ -23,7 +22,6 @@ import {
   LayoutDashboard,
   LogOut,
   LoaderCircle,
-  Megaphone,
   Menu,
   Monitor,
   Moon,
@@ -40,7 +38,6 @@ import AgentBanner from '@/components/layout/AgentBanner.vue'
 import LanguageSelector from '@/components/common/LanguageSelector.vue'
 import LogoMark from '@/components/common/LogoMark.vue'
 import StatusBadge from '@/components/feedback/StatusBadge.vue'
-import { hasNewOffers, refreshOffersNotice } from '@/lib/offersNotice'
 import { useSession } from '@/stores/session'
 import { usePanelState } from '@/stores/panel'
 import { useTheme } from '@/stores/theme'
@@ -78,7 +75,6 @@ interface NavigationItem {
 
 const navigation: NavigationItem[] = [
   { labelKey: 'route.overview', to: '/overview', icon: LayoutDashboard },
-  { labelKey: 'route.ai', to: '/ai', icon: Bot },
   { labelKey: 'route.sites', to: '/sites', icon: Boxes },
   { labelKey: 'route.apps', to: '/apps', icon: Store },
   { labelKey: 'route.docker', to: '/docker', icon: Container },
@@ -176,7 +172,6 @@ const kpanelUpdateDescription = computed(() => kpanelUpdateAvailable.value
   : i18n.t('nav.versionUpdates'))
 
 const pageTitle = computed(() => route.meta.titleKey ? i18n.t(route.meta.titleKey) : 'Dongger Panel')
-const isAIWorkspace = computed(() => route.path.startsWith('/ai'))
 const agentStatus = computed(() => {
   const agent = panel.state.agent
   if (!agent?.connected) return { status: 'offline', label: i18n.t('agent.offline') }
@@ -293,7 +288,6 @@ watch([appearanceReady, wallpaperChoice.id], ([ready, id]) => {
   if (ready && customWallpaperFromID(id)) void wallpaperChoice.loadCustomWallpapers().catch(() => undefined)
 })
 onMounted(() => {
-  void refreshOffersNotice()
   void startAppearanceSync(session.takeAppearanceSnapshot(), session.state.user?.id)
   void refreshAgent()
   agentTimer = window.setInterval(refreshAgent, 30_000)
@@ -453,18 +447,6 @@ watch(
         <div class="topbar__actions">
           <StatusBadge :status="agentStatus.status" :label="agentStatus.label" subtle />
           <LanguageSelector compact />
-          <RouterLink
-            class="icon-button offers-entry-button"
-            to="/offers"
-            :aria-label="hasNewOffers ? i18n.t('route.offersNew') : i18n.t('route.offers')"
-            :title="i18n.t('route.offers')"
-            :aria-current="route.path === '/offers' ? 'page' : undefined"
-          >
-            <span class="offers-entry-button__glyph">
-              <Megaphone :size="18" aria-hidden="true" />
-              <i v-if="hasNewOffers" class="offers-entry-button__dot" aria-hidden="true" />
-            </span>
-          </RouterLink>
           <button
             class="icon-button desktop-entry-button"
             :class="{ 'desktop-entry-button--unseen': !desktopEntrySeen }"
@@ -486,9 +468,9 @@ watch(
         </div>
       </header>
 
-      <AgentBanner v-if="!isAIWorkspace" />
+      <AgentBanner />
 
-      <main class="page-content" :class="{ 'page-content--ai': isAIWorkspace }">
+      <main class="page-content">
         <RouterView v-if="!desktopActive" />
       </main>
     </div>

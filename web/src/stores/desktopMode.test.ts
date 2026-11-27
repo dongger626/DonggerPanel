@@ -236,17 +236,17 @@ describe('desktop mode', () => {
     expect(useDesktopMode().windows.value[0]).toMatchObject({ path: '/sites/monitor?site=example.com', titleKey: 'route.siteMonitoring' })
   })
 
-  it('opens the sponsored page wide enough for its banner wall until resized', () => {
+  it('opens a wide page at its configured size until resized', () => {
     setupViewport(1920, 1080)
     initializeDesktopMode(window.localStorage, { width: 1920, height: 1080 })
     const desktop = useDesktopMode()
-    const first = desktop.openWindow('/offers', 'route.offers', false)
-    expect(desktop.windows.value.find((item) => item.id === first)?.geometry).toMatchObject({ width: 1200, height: 820 })
+    const first = desktop.openWindow('/browser', 'route.browser', false)
+    expect(desktop.windows.value.find((item) => item.id === first)?.geometry).toMatchObject({ width: 1100, height: 760 })
 
     desktop.updateGeometry(first, { left: 40, top: 40, width: 960, height: 700 }, false)
     desktop.commitGeometry(first)
     desktop.closeWindow(first)
-    const reopened = desktop.openWindow('/offers', 'route.offers', false)
+    const reopened = desktop.openWindow('/browser', 'route.browser', false)
     expect(desktop.windows.value.find((item) => item.id === reopened)?.geometry).toMatchObject({ width: 960, height: 700 })
   })
 
@@ -337,9 +337,9 @@ describe('desktop mode', () => {
     setupViewport(1280, 800)
     const desktop = useDesktopMode()
     for (let index = 0; index < 8; index += 1) {
-      expect(desktop.openWindow('/ai', 'route.ai', true)).toBeGreaterThan(0)
+      expect(desktop.openWindow('/overview', 'route.overview', true)).toBeGreaterThan(0)
     }
-    expect(desktop.openWindow('/ai', 'route.ai', true)).toBe(0)
+    expect(desktop.openWindow('/overview', 'route.overview', true)).toBe(0)
     expect(desktop.windows.value).toHaveLength(8)
   })
 

@@ -8,7 +8,6 @@ const windowsIconNames: Readonly<Record<string, string>> = {
   '/overview': 'overview',
   '/monitoring': 'monitoring',
   '/processes': 'processes',
-  '/ai': 'ai',
   '/sites': 'sites',
   '/apps': 'apps',
   '/docker': 'docker',
@@ -23,7 +22,6 @@ const windowsIconNames: Readonly<Record<string, string>> = {
   '/activity': 'activity',
   '/settings': 'settings',
   '/guides': 'guides',
-  '/offers': 'offers',
 }
 
 export function desktopAppIconURL(app: DesktopApp | undefined, style: DesktopShellStyle): string | undefined {
