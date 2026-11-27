@@ -225,7 +225,7 @@ const remainingHostCapacity = computed(() => Math.max(
 ))
 const addModalDescription = computed(() => addMode.value === 'batch'
   ? phrase('为多台 Linux / Windows 轻量节点生成一条可重复使用的接入命令。')
-  : phrase('在目标 KPanel 的“集群 → 接入授权”复制接入凭据，然后在此整段粘贴。'))
+  : phrase('在目标 Dongger Panel 的“集群 → 接入授权”复制接入凭据，然后在此整段粘贴。'))
 const lightEnrollmentPrimaryLabel = computed(() => {
   if (addForm.accessCredential.trim() || !lightEnrollment.value) {
     return adding.value ? '正在安全配对…' : '添加主机'
@@ -359,16 +359,16 @@ function friendlyError(reason: unknown, fallback: string): string {
     cluster_origin_invalid: '请输入 HTTPS 根地址，或 http://IP:端口。不能包含路径、参数或账号信息。',
     cluster_light_https_required: '轻量节点需要可从节点访问的 HTTPS 根地址。可使用受信任证书的域名，或为直连 IP + 端口启用面板自签 HTTPS 后重新生成命令；HTTP 不支持。',
     cluster_origin_blocked: '该地址被网络安全策略拒绝；私网地址需由部署管理员加入 CIDR 白名单。',
-    cluster_pairing_failed: '授权码无效、已过期或已被使用，请在目标 KPanel 重新生成。',
-    cluster_duplicate: '该 KPanel 已经添加到主机列表。',
+    cluster_pairing_failed: '授权码无效、已过期或已被使用，请在目标 Dongger Panel 重新生成。',
+    cluster_duplicate: '该 Dongger Panel 已经添加到主机列表。',
     cluster_host_limit: '已达到 100 台主机上限。',
     cluster_light_batch_invalid: '批量接入参数无效；数量为 1–100 台，有效期为 5 分钟至 7 天。',
-    cluster_remote_tls_error: '目标 KPanel 的 HTTPS 证书校验失败。',
+    cluster_remote_tls_error: '目标 Dongger Panel 的 HTTPS 证书校验失败。',
     cluster_remote_authentication_failed: '加密响应校验失败，连接已拒绝。',
-    cluster_mutual_files_unsupported: '目标 KPanel 版本不支持双向文件互传，请先升级目标面板后重试。',
-    federation_incompatible: '目标 KPanel 不支持当前加密直连协议，请更新目标面板后重试。',
+    cluster_mutual_files_unsupported: '目标 Dongger Panel 版本不支持双向文件互传，请先升级目标面板后重试。',
+    federation_incompatible: '目标 Dongger Panel 不支持当前加密直连协议，请更新目标面板后重试。',
     federation_identity_changed: '目标主机加密身份发生变化，已停止连接；确认服务器未被替换后请重新配对。',
-    cluster_remote_unreachable: '暂时无法连接目标 KPanel，请检查域名、证书和网络。',
+    cluster_remote_unreachable: '暂时无法连接目标 Dongger Panel，请检查域名、证书和网络。',
     cluster_resource_changed: '主机信息已变化，请刷新后重试。',
     cluster_host_order_changed: '主机顺序已在其他页面变化，请刷新后重试。',
     cluster_share_changed: '分享设置已在其他页面变化，请重新打开后再保存。',
@@ -381,7 +381,7 @@ function assessOriginSecurity(raw: string): OriginSecurityAssessment {
   if (!value) {
     return {
       mode: 'empty',
-      message: '支持证书 HTTPS；无域名时可使用 http://IP:端口，集群数据由 KPanel 端到端加密。',
+      message: '支持证书 HTTPS；无域名时可使用 http://IP:端口，集群数据由 Dongger Panel 端到端加密。',
     }
   }
   if (value.length > 512 || /[\r\n\t\u0000]/.test(value)) {
@@ -651,7 +651,7 @@ async function createLightBatchEnrollment(): Promise<void> {
       ...lightBatchEnrollments.value.filter((item) => item.id !== enrollment.id),
     ]
   } catch (reason) {
-    toast.danger('批量接入命令生成失败', friendlyError(reason, '请检查接入数量、有效期和当前 KPanel 的 HTTPS 地址。'))
+    toast.danger('批量接入命令生成失败', friendlyError(reason, '请检查接入数量、有效期和当前 Dongger Panel 的 HTTPS 地址。'))
   } finally {
     generatingLightBatchEnrollment.value = false
   }
@@ -698,7 +698,7 @@ async function createLightEnrollment(): Promise<void> {
   } catch (reason) {
     lightEnrollment.value = undefined
     resetLightEnrollmentTracking()
-    toast.danger('轻量节点命令生成失败', friendlyError(reason, '请确认当前 KPanel 已通过 HTTPS 域名访问；轻量节点不使用 HTTP 直连地址。'))
+    toast.danger('轻量节点命令生成失败', friendlyError(reason, '请确认当前 Dongger Panel 已通过 HTTPS 域名访问；轻量节点不使用 HTTP 直连地址。'))
   } finally {
     generatingLightEnrollment.value = false
   }
@@ -722,7 +722,7 @@ async function addHost(): Promise<void> {
       toast.success('轻量节点已添加', '节点已出现在当前主机列表。')
       return
     }
-    originError.value = '接入凭据格式无效，请完整粘贴目标 KPanel 生成的三行内容。'
+    originError.value = '接入凭据格式无效，请完整粘贴目标 Dongger Panel 生成的三行内容。'
     void nextTick(() => focusTextInput(addAccessInput.value))
     return
   }
@@ -747,11 +747,11 @@ async function addHost(): Promise<void> {
         ? `${host.name} 的安全配对正在后台继续。`
         : host.mutualFileTransferAvailable
           ? `${host.name} 已完成配对，双向文件互传已自动启用。`
-          : `${host.name} 已完成配对，当前保持单向文件读取；可在主机管理中启用，旧版 KPanel 需先升级。`,
+          : `${host.name} 已完成配对，当前保持单向文件读取；可在主机管理中启用，旧版 Dongger Panel 需先升级。`,
     )
     await load(true)
   } catch (reason) {
-    const message = friendlyError(reason, '请检查目标 KPanel 和授权码后重试。')
+    const message = friendlyError(reason, '请检查目标 Dongger Panel 和授权码后重试。')
     if (
       reason instanceof ApiError &&
       ['cluster_origin_invalid', 'cluster_origin_blocked'].includes(reason.code)
@@ -1182,13 +1182,13 @@ async function enableMutualFiles(): Promise<void> {
     toast.success(
       refreshing ? '双向文件互传连接已刷新' : '双向文件互传已启用',
       refreshing
-        ? `${updated.name} 已使用当前 KPanel 地址刷新互传连接。`
-        : `${updated.name} 现在可以与当前 KPanel 互相复制文件。`,
+        ? `${updated.name} 已使用当前 Dongger Panel 地址刷新互传连接。`
+        : `${updated.name} 现在可以与当前 Dongger Panel 互相复制文件。`,
     )
   } catch (reason) {
     toast.danger(
       refreshing ? '刷新双向文件互传连接失败' : '启用双向文件互传失败',
-      friendlyError(reason, '请确认双方 KPanel 在线后重试。'),
+      friendlyError(reason, '请确认双方 Dongger Panel 在线后重试。'),
     )
   } finally {
     enablingMutualFiles.value = false
@@ -1306,11 +1306,11 @@ async function removeHost(target?: ClusterHost): Promise<void> {
     deleting.value = false
     if (selected.value?.id === host.id) closeManage()
     if (result.credentialRemoved === false) {
-      toast.danger('主机已移除，但凭据清理失败', '请检查 KPanel 数据目录权限；服务重启时会再次清理孤立凭据。')
+      toast.danger('主机已移除，但凭据清理失败', '请检查 Dongger Panel 数据目录权限；服务重启时会再次清理孤立凭据。')
     } else {
       toast.success(
         '主机已移除',
-        result.remoteRevoked ? '远端授权也已撤销。' : '远端不可达；可稍后在目标 KPanel 撤销残留授权。',
+        result.remoteRevoked ? '远端授权也已撤销。' : '远端不可达；可稍后在目标 Dongger Panel 撤销残留授权。',
       )
     }
   } catch (reason) {
@@ -1511,7 +1511,7 @@ onBeforeUnmount(() => {
   <div class="page cluster-page">
     <PageHeader
       title="集群监控"
-      description="在一个视图中查看本机与已接入节点；管理接入关系，或打开对应 KPanel 继续操作。"
+      description="在一个视图中查看本机与已接入节点；管理接入关系，或打开对应 Dongger Panel 继续操作。"
     />
 
     <section class="cluster-hero" aria-label="集群概况与操作">
@@ -1619,7 +1619,7 @@ onBeforeUnmount(() => {
     <EmptyState
       v-else-if="!inventory?.items.length"
       title="尚未添加主机"
-      description="先在目标 KPanel 生成一次性授权码，再将它添加到当前面板。"
+      description="先在目标 Dongger Panel 生成一次性授权码，再将它添加到当前面板。"
     >
       <button class="button button--primary" type="button" @click="openAdd">
         <Plus :size="16" /> 添加第一台主机
@@ -1873,7 +1873,7 @@ onBeforeUnmount(() => {
 
     <ModalDialog
       :open="addOpen"
-      :title="phrase('添加 KPanel 主机')"
+      :title="phrase('添加 Dongger Panel 主机')"
       :description="addModalDescription"
       :size="addMode === 'batch' ? 'medium' : 'small'"
       @close="closeAdd"
@@ -1930,7 +1930,7 @@ onBeforeUnmount(() => {
             rows="4"
             :required="!lightEnrollmentConnected"
             maxlength="1600"
-            :placeholder="phrase('在目标 KPanel 一键复制，然后完整粘贴到这里')"
+            :placeholder="phrase('在目标 Dongger Panel 一键复制，然后完整粘贴到这里')"
             autocomplete="one-time-code"
             autocapitalize="off"
             spellcheck="false"
@@ -2165,7 +2165,7 @@ onBeforeUnmount(() => {
     <ModalDialog
       :open="accessOpen"
       :title="phrase('本机接入授权')"
-      :description="phrase('其他 KPanel 可按授权范围读取摘要、打开远程终端和管理文件（含写入与删除）；授权可随时撤销。')"
+      :description="phrase('其他 Dongger Panel 可按授权范围读取摘要、打开远程终端和管理文件（含写入与删除）；授权可随时撤销。')"
       size="medium"
       @close="closeAccess"
     >
@@ -2206,7 +2206,7 @@ onBeforeUnmount(() => {
           <header>
             <div>
                 <strong>{{ phrase('已授权控制端') }}</strong>
-                <small>{{ phrase('这里列出可访问本机的 KPanel，并按每个控制端的实际授权显示权限；授权可随时撤销。') }}</small>
+                <small>{{ phrase('这里列出可访问本机的 Dongger Panel，并按每个控制端的实际授权显示权限；授权可随时撤销。') }}</small>
             </div>
             <button
               class="icon-button icon-button--small"
@@ -2223,7 +2223,7 @@ onBeforeUnmount(() => {
           <template v-else>
             <article v-for="controller in controllers" :key="controller.id">
               <span>
-                <strong>{{ controller.name || phrase('未命名 KPanel') }}</strong>
+                <strong>{{ controller.name || phrase('未命名 Dongger Panel') }}</strong>
                 <code>{{ controller.fingerprint }}</code>
                 <small>{{ phrase(controllerCapabilitySummary(controller.scope)) }}</small>
                 <small>
@@ -2415,7 +2415,7 @@ onBeforeUnmount(() => {
 
         <label class="field">
           {{ phrase('展示标题') }}
-          <input v-model="shareForm.title" maxlength="80" :placeholder="phrase('我的 KPanel 集群')" />
+          <input v-model="shareForm.title" maxlength="80" :placeholder="phrase('我的 Dongger Panel 集群')" />
         </label>
         <label class="field">
           {{ phrase('一句话介绍（可选）') }}

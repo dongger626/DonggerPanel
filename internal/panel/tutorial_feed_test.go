@@ -21,13 +21,13 @@ func TestTutorialFeedBilibiliSortsAndValidates(t *testing.T) {
 		}
 		return tutorialJSONResponse(`{"code":0,"data":{"result":[
 		{"bvid":"BV13xpb6tEq7","title":"Older","pic":"//i0.hdslb.com/bfs/archive/old.jpg","pubdate":10},
-		{"bvid":"BV1rvpe6dE9k","title":"<em class=keyword>KPanel</em> &amp; new","pic":"//i1.hdslb.com/bfs/archive/new.jpg","pubdate":20},
+		{"bvid":"BV1rvpe6dE9k","title":"<em class=keyword>Dongger Panel</em> &amp; new","pic":"//i1.hdslb.com/bfs/archive/new.jpg","pubdate":20},
 		{"bvid":"BV1rvpe6dE9k","title":"Duplicate","pic":"//i1.hdslb.com/bfs/archive/new.jpg","pubdate":20},
 		{"bvid":"BV1J2HX6ME7p","title":"Unsafe image","pic":"http://127.0.0.1/internal","pubdate":30},
 		{"bvid":"../../bad","title":"Invalid ID","pic":"//i0.hdslb.com/bfs/archive/new.jpg","pubdate":40}]}}`), nil
 	})}
 	videos, err := fetchTutorialFeed(context.Background(), tutorialPlatformBilibili, client)
-	if err != nil || len(videos) != 2 || videos[0].Title != "KPanel & new" || videos[1].Title != "Older" {
+	if err != nil || len(videos) != 2 || videos[0].Title != "Dongger Panel & new" || videos[1].Title != "Older" {
 		t.Fatalf("videos=%+v err=%v", videos, err)
 	}
 	if !strings.HasPrefix(videos[0].ThumbnailURL, tutorialThumbnailPath+"?") || videos[0].thumbnail != "https://i1.hdslb.com/bfs/archive/new.jpg" {
@@ -105,7 +105,7 @@ func TestTutorialFeedCacheRefreshBackoffAndExpiry(t *testing.T) {
 		if fail {
 			return nil, errors.New("offline")
 		}
-		return tutorialJSONResponse(`{"code":0,"data":{"result":[{"bvid":"BV13xpb6tEq7","title":"KPanel","pic":"//i0.hdslb.com/bfs/archive/test.jpg","pubdate":10}]}}`), nil
+		return tutorialJSONResponse(`{"code":0,"data":{"result":[{"bvid":"BV13xpb6tEq7","title":"Dongger Panel","pic":"//i0.hdslb.com/bfs/archive/test.jpg","pubdate":10}]}}`), nil
 	})}
 	for i := 0; i < 2; i++ {
 		result, err := s.tutorialFeed(context.Background(), tutorialPlatformBilibili, client)

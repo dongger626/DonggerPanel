@@ -19,7 +19,7 @@ function phrase(value: string): string {
 
 /**
  * 广告专栏: sponsored server and domain banners published with the app catalogue.
- * The page shows vendor artwork only; KPanel draws the frame, the "广告" label,
+ * The page shows vendor artwork only; Dongger Panel draws the frame, the "广告" label,
  * the target host and the carousel controls so mixed artwork still reads as one page.
  */
 const MORE_OFFERS_URL = 'https://kejilion.pro/topvps/'
@@ -366,7 +366,7 @@ onBeforeUnmount(() => {
 
     <footer class="offers-footnote">
       <Info :size="14" aria-hidden="true" />
-      <p>科技lion 推荐的厂商，链接含推广返利（AFF），你支付的价格不变。价格和配置以厂商页面为准；KPanel 不经手订单和付款，也不记录你点了哪些横幅。</p>
+      <p>科技lion 推荐的厂商，链接含推广返利（AFF），你支付的价格不变。价格和配置以厂商页面为准；Dongger Panel 不经手订单和付款，也不记录你点了哪些横幅。</p>
     </footer>
   </div>
 </template>

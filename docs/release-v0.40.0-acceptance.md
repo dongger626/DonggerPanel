@@ -1,4 +1,4 @@
-# KPanel v0.40.0 发布验收
+# Dongger Panel v0.40.0 发布验收
 
 发布日期：2026-08-03
 
@@ -17,7 +17,7 @@
 - Web 35 个测试文件、229 项测试、类型检查、1458 条多语言资源检查和生产构建通过。
 - `npm audit`、Trivy 源码与最终镜像扫描通过，未发现阻断发布的已调用漏洞、高危依赖或镜像问题。
 - 应用生命周期测试输出 `app_conf_lifecycle=pass`；候选镜像与公开版本镜像均输出 `image_e2e=pass`。
-- Docker Hub 官方源、`docker.1ms.run` 与 `gh.kejilion.pro` 在 154 上对 KPanel、Redis 和 Cloudreve 镜像返回一致摘要；单元测试覆盖官方成功不回源、加速源顺序回退、海外节点、私有 Registry 与摘要镜像不使用代理。
+- Docker Hub 官方源、`docker.1ms.run` 与 `gh.kejilion.pro` 在 154 上对 Dongger Panel、Redis 和 Cloudreve 镜像返回一致摘要；单元测试覆盖官方成功不回源、加速源顺序回退、海外节点、私有 Registry 与摘要镜像不使用代理。
 
 ## 发布产物
 

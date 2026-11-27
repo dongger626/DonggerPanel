@@ -1,4 +1,4 @@
-# KPanel v1.22.0-rc.10 发布验收记录
+# Dongger Panel v1.22.0-rc.10 发布验收记录
 
 日期：2026-09-26。发布级别：L3。releaseChannel：preview；releaseTrain：1.22.0。
 
@@ -40,7 +40,7 @@
 
 - `scriptLinkageState`：not-required（无需发布脚本（不适用））。
 - 变更集编号 / 脚本候选：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：2b90b2d2ca56bc954c9328a51bb5571e896f713d / 806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99；L3 `managed_script_contract=pass`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：2b90b2d2ca56bc954c9328a51bb5571e896f713d / 806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99；L3 `managed_script_contract=pass`。
 - 判定依据：`v1.22.0-rc.9..081c983b` 不包含受管脚本、`packaging/kejilion-app/kpanel.conf` 或安装/更新契约变更。本版不创建 `kejilion/sh` 或 `kejilion/apps` 提交。
 
 ## 多维质量结论
@@ -91,7 +91,7 @@
 ## 自更新与生产适用性
 
 - 自更新通道、加入/退出预览、自动安装与一次性安装代码均未变化，沿用 RC9 回归结论；本版只提升 `preview`，不触动稳定来源。
-- 生产目标与部署授权范围：不适用（预览版禁止生产部署）。本次未连接、未备份、未部署、未升级或核对 `prod-108`；该环境禁用全部 KPanel 操作。
+- 生产目标与部署授权范围：不适用（预览版禁止生产部署）。本次未连接、未备份、未部署、未升级或核对 `prod-108`；该环境禁用全部 Dongger Panel 操作。
 - 正式部署环境、生产写操作及部署前后安全核对：不适用。`arena-154` 本轮未建立 SSH 连接。
 - 本版产物发布不等于用户面板已经升级；预览通道需用户显式选择并确认精确版本与 digest。
 

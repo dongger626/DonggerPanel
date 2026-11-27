@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.9 发布验收记录
+# Dongger Panel v1.30.0-rc.9 发布验收记录
 
 日期：2026-11-08
 
@@ -59,7 +59,7 @@ releaseTrain：1.30.0
 
 - scriptLinkageState：coupled
 - 变更集编号：不适用（沿用 RC8 已发布的配套脚本）。
-- KPanel 实际内置脚本基线 commit / SHA-256：1faee13f3faef164efbfa899e244fc19ad58aaff / 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：1faee13f3faef164efbfa899e244fc19ad58aaff / 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
 - 脚本候选 commit / SHA-256：同上；RC9 amd64 与 arm64 镜像标签及公开快照一致。
 - 状态判定依据与兼容性证据：L3 与公开产物身份均校验脚本 revision 和摘要；访问密码功能依赖此配套脚本。
 - 本版发布决定：不发布新脚本；RC9 沿用 RC8 已发布版本。

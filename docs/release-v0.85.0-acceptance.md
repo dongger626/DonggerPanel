@@ -1,4 +1,4 @@
-# KPanel v0.85.0 上线验收记录
+# Dongger Panel v0.85.0 上线验收记录
 
 日期：2026-08-18（Asia/Shanghai）
 
@@ -15,7 +15,7 @@
 ## 发布范围
 
 - 从 `v0.84.0` 主线纳入且完成复核的三项 Docker 管理改动：管理页布局紧凑化（`b00309b`）、窄屏操作列可见性（`2f352a2`）、按真实 Docker 创建时间排序（`e9fe0eb`）。
-- 版本提交 `f73b96a` 将 KPanel、Web 包和 CHANGELOG 统一为 `0.85.0`，并记录升级/回滚边界。
+- 版本提交 `f73b96a` 将 Dongger Panel、Web 包和 CHANGELOG 统一为 `0.85.0`，并记录升级/回滚边界。
 - 集群公开分享、一次配对双向文件互传、RHEL/WSL 调优脚本固定等内容已在既有主线/`v0.84.0`，本次不重复夹带；治理预览、未提交草稿和临时夹具均未纳入。
 - 本版未修改 `kejilion.sh`、Agent 协议、端口、数据 schema 或 `packaging/kejilion-app/kpanel.conf`；应用市场无需新提交。
 

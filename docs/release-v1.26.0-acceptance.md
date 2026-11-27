@@ -1,4 +1,4 @@
-# KPanel v1.26.0 发布验收记录
+# Dongger Panel v1.26.0 发布验收记录
 
 日期：2026-10-15。发布级别：L3 流程的**降级执行**（见“未执行的门禁”），releaseChannel=stable，releaseTrain=1.26.0。
 
@@ -93,7 +93,7 @@ Playwright 1.62.1，镜像 pin=`mcr.microsoft.com/playwright@sha256:dcc5531e9784
 
 ### 独立 WSL 的真实 systemd 更新、重启与回滚
 
-用户明确授权新建 WSL 测试并在结束后删除。临时发行版 `KPanel-V126-Acceptance-20261015` 使用官方 Ubuntu 24.04.5 amd64 镜像，SHA-256=`bb415d824822c4b878125729af451a5d18fb13d1cf5cbed9a7393ad64ac6039e`；WSL 2.6.3.0，kernel 6.6.87.2，systemd 为 PID 1，Docker 29.1.3，Compose 2.40.3。仅临时登记为 `local-wsl-v126-acceptance` 的 validation 环境；Windows 自动挂载和 interop 关闭，使用独立 Docker 数据、专有网段、回环端口 18126、资源限制，禁用 Docker 防火墙/sysctl 修改及 Agent 一般系统写操作。
+用户明确授权新建 WSL 测试并在结束后删除。临时发行版 `Dongger Panel-V126-Acceptance-20261015` 使用官方 Ubuntu 24.04.5 amd64 镜像，SHA-256=`bb415d824822c4b878125729af451a5d18fb13d1cf5cbed9a7393ad64ac6039e`；WSL 2.6.3.0，kernel 6.6.87.2，systemd 为 PID 1，Docker 29.1.3，Compose 2.40.3。仅临时登记为 `local-wsl-v126-acceptance` 的 validation 环境；Windows 自动挂载和 interop 关闭，使用独立 Docker 数据、专有网段、回环端口 18126、资源限制，禁用 Docker 防火墙/sysctl 修改及 Agent 一般系统写操作。
 
 旧版夹具使用 `v1.25.1` 的公开不可变镜像和未经修改的生命周期 helper 构建已经安装的实例；脚本许可/统计偏好作为已有实例状态预置，输入先校验公开元数据及 SHA-256。**没有把夹具初始化称为官方交互式首次安装通过。** 实际更新和回滚由原版 systemd unit、Agent executor 和生命周期代码执行，没有替换 Docker/systemctl 或 Mock 更新结果。
 
@@ -109,11 +109,11 @@ Playwright 1.62.1，镜像 pin=`mcr.microsoft.com/playwright@sha256:dcc5531e9784
 
 初始化异常同样保留：首次官方 WSL 安装命令退出 1 且没有输出；Windows 直连镜像下载缓慢，改为从登记 arena 下载官方输入并校验；首轮 Docker 自定义 bridge/bip 互斥，改为显式创建专有 bridge；daemon 未继承本地代理导致拉取超时，配置独立 daemon 代理后恢复；旧版夹具最初缺少已接受许可的可信脚本，被 helper 拒绝，补齐已有实例偏好后初始化成功。均为验收环境/夹具准备记录，不冒充产品更新失败或无异常首次通过。
 
-收尾：69 份 WSL 验收文件已取回并逐项 SHA-256 回读通过；测试容器及专有网络先清理，2026-10-15T14:31:43Z 已注销新发行版，清单仅剩原有 Ubuntu，临时环境政策逐字节还原。自动审批拒绝一次递归删除命令（仅返回 `blocked by policy`，未执行）；检查后仅剩三份已确认下载文件，改为精确路径非递归删除文件与空目录，测试目录现已不存在。没有调用 `wsl --shutdown`；KPanel 安装/更新实机操作只发生于新发行版，既有 Ubuntu 仅运行可信审计验证器，未修改其既有业务服务或数据。
+收尾：69 份 WSL 验收文件已取回并逐项 SHA-256 回读通过；测试容器及专有网络先清理，2026-10-15T14:31:43Z 已注销新发行版，清单仅剩原有 Ubuntu，临时环境政策逐字节还原。自动审批拒绝一次递归删除命令（仅返回 `blocked by policy`，未执行）；检查后仅剩三份已确认下载文件，改为精确路径非递归删除文件与空目录，测试目录现已不存在。没有调用 `wsl --shutdown`；Dongger Panel 安装/更新实机操作只发生于新发行版，既有 Ubuntu 仅运行可信审计验证器，未修改其既有业务服务或数据。
 
 ### 独立 WSL 的 systemd 服务管理写操作
 
-为补齐服务管理实机缺口，另建 `KPanel-V126-Services-20261015` / 临时环境 `local-wsl-v126-systemd-services`，使用同一官方 Ubuntu 输入与公开 1.26.0 不可变镜像 e0fc，Agent/helper 先校验冻结产品身份与摘要；本轮直接构造已安装的公开版夹具，不代表交互式首次安装。独立桥接网络、回环端口 18128、资源限制、Windows automount/interop 关闭以及禁用 Docker 防火墙/sysctl 修改的限制继续保持；只操作专有 `acceptance-v126-dummy.service`，不操作业务服务。
+为补齐服务管理实机缺口，另建 `Dongger Panel-V126-Services-20261015` / 临时环境 `local-wsl-v126-systemd-services`，使用同一官方 Ubuntu 输入与公开 1.26.0 不可变镜像 e0fc，Agent/helper 先校验冻结产品身份与摘要；本轮直接构造已安装的公开版夹具，不代表交互式首次安装。独立桥接网络、回环端口 18128、资源限制、Windows automount/interop 关闭以及禁用 Docker 防火墙/sysctl 修改的限制继续保持；只操作专有 `acceptance-v126-dummy.service`，不操作业务服务。
 
 2026-10-15T15:52:00Z–15:52:02Z，真实 Panel → Agent → systemd API 的 18 项检查通过：管理员登录、Agent/镜像身份、服务列表与详情、禁用一般系统写时拒绝操作、过期 resourceVersion 409、缺失 CSRF 403、非法单元名及不支持动作 422；随后启用临时 Agent 一般系统写开关，仅对 dummy service 完成 start/stop/restart/reload/enable/disable。lifecycle 的 202 只表示提交，另外核对实际 active/inactive、MainPID 与重启后新 PID；enable/disable 验证只改变开机设置且不改变运行 PID；reload 的 ExecReload 命中标记及真实 journal 经 Panel 读取均确认。最终服务停止、开机设置 disabled。没有 Mock systemctl 或将接收请求等同于执行成功。
 

@@ -43,7 +43,7 @@ docker cp "$extract:/etc/ssl/certs/ca-certificates.crt" "$fixture/system-ca.crt"
 docker rm "$extract" >/dev/null
 chmod 755 "$data/agent-binary";chmod 700 "$data/app-home/kpanel/bin/kejilion.sh"
 printf '%s  %s\n' "$script_sha256" "$data/app-home/kpanel/bin/kejilion.sh" | sha256sum -c -
-openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout "$fixture/ca.key" -out "$fixture/ca.crt" -days 2 -subj /CN=KPanel-RC2-Isolated-Test-CA -addext basicConstraints=critical,CA:TRUE >/dev/null 2>&1
+openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout "$fixture/ca.key" -out "$fixture/ca.crt" -days 2 -subj /CN=Dongger Panel-RC2-Isolated-Test-CA -addext basicConstraints=critical,CA:TRUE >/dev/null 2>&1
 openssl req -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout "$fixture/server.key" -out "$fixture/server.csr" -subj /CN=rc2-panel.test >/dev/null 2>&1
 printf 'subjectAltName=DNS:rc2-panel.test,DNS:rc2-other.test,DNS:rc2-wrong.test,DNS:rc2-redirect.test\nextendedKeyUsage=serverAuth\n' > "$fixture/server.ext"
 openssl x509 -req -in "$fixture/server.csr" -CA "$fixture/ca.crt" -CAkey "$fixture/ca.key" -CAcreateserial -out "$fixture/server.crt" -days 2 -extfile "$fixture/server.ext" >/dev/null 2>&1

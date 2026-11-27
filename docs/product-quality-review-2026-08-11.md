@@ -1,4 +1,4 @@
-# KPanel 产品性质与质量规范审计（2026-08-11）
+# Dongger Panel 产品性质与质量规范审计（2026-08-11）
 
 > 历史证据：最新业务规模、代码映射和流程效率复核见
 > [`product-quality-review-2026-08-13.md`](product-quality-review-2026-08-13.md)。本文件保留为制定六维
@@ -17,7 +17,7 @@
 
 ## 项目性质
 
-KPanel 是与 `kejilion.sh` 双向互通的 Linux 服务器管理控制面，而不是普通 Web 内容后台：
+Dongger Panel 是与 `kejilion.sh` 双向互通的 Linux 服务器管理控制面，而不是普通 Web 内容后台：
 
 1. 浏览器连接非 root `paneld`，宿主机写操作只能经 Unix Socket 上的结构化 Agent 执行；
 2. Docker Engine、Nginx、systemd、系统文件和 `kejilion.sh` 产物是真实业务状态，Panel 存储只保存
@@ -43,7 +43,7 @@ KPanel 是与 `kejilion.sh` 双向互通的 Linux 服务器管理控制面，而
 | 应用市场与体检 | `kejilion.sh`、Docker、后台任务 | 第三方脚本、长任务、资源消耗 | 固定 selector、真实进度、断线恢复、失败清理 |
 | Docker 与文件 | Docker Engine、`/home` | 高权限删除、路径/归档、数据量 | 外部资源可管理、路径边界、资源版本、恢复副本 |
 | 集群与终端 | HTTPS/Noise、PTY、Agent | 远程权限、明文、会话泄漏 | 配对/撤销、scope、输入输出上限、断线恢复 |
-| AI 运维 | Provider API、固定 KPanel 工具 | 模型兼容、工具越权、错误恢复 | Schema 可移植、写入确认、固定工具、恢复语义 |
+| AI 运维 | Provider API、固定 Dongger Panel 工具 | 模型兼容、工具越权、错误恢复 | Schema 可移植、写入确认、固定工具、恢复语义 |
 | 桌面与移动交互 | 浏览器实时状态 | 输入被遮挡、焦点丢失、布局回归 | 双视口、键盘/焦点、浅深色、多语言、错误态 |
 
 ## 更新节奏事实

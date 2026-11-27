@@ -1,4 +1,4 @@
-# KPanel AI 工作台
+# Dongger Panel AI 工作台
 
 ## 范围与架构
 
@@ -10,10 +10,10 @@ AI 工作台位于 `/ai` 与 `/ai/s/{sessionId}`，由 `paneld` 内的原生 Go 
 Vue 三栏工作台 ── REST/SSE ── paneld AgentRuntime
                                   ├─ OpenAI-compatible / Anthropic / Gemini
                                   ├─ /var/lib/kejilion-panel/ai.db
-                                  └─ 固定 KPanel Tool Registry ── Unix Socket ── kejilion-agent
+                                  └─ 固定 Dongger Panel Tool Registry ── Unix Socket ── kejilion-agent
 ```
 
-身份、Origin、CSRF 与现有 KPanel API 完全一致。AI 数据独立保存到 `ai.db`；宿主机资源仍由 Agent 实时读取，不写入 AI 数据库。
+身份、Origin、CSRF 与现有 Dongger Panel API 完全一致。AI 数据独立保存到 `ai.db`；宿主机资源仍由 Agent 实时读取，不写入 AI 数据库。
 
 ## Provider 与网络
 
@@ -21,7 +21,7 @@ Vue 三栏工作台 ── REST/SSE ── paneld AgentRuntime
 - Provider 将收到的 API Key 复制到重定向 URL 后触发的网络错误，也在共享请求出口按当前 Key 及 URL 编码形式脱敏，保留网络错误类型、超时与取消语义。
 - 固定协议：`openai_compatible`、`anthropic`、`gemini`。
 - `openai_compatible` 必须明确选择 `apiMode`：`responses` 使用 `POST /v1/responses` 语义事件，`chat_completions` 使用 `POST /v1/chat/completions` 数据分片。历史 Provider 自动迁移为 `chat_completions`，避免升级后改变行为；OpenAI 官方预设默认使用 `responses`，其他兼容预设默认保守使用 `chat_completions`。
-- Responses 模式使用 KPanel 持久化的完整会话上下文，并设置 `store=false`。工具调用使用 `function_call` / `function_call_output`；带工具调用的响应会将 Provider 返回的完整 output item 序列按原顺序保存在内部上下文，并仅向生成它的同一 Provider/模型原样回放。升级前只保存了加密 reasoning item 的旧会话，会先回放 reasoning，再重建同一批 assistant 可见内容和函数调用。原生 output item 不通过 REST、SSE、日志或审计暴露。
+- Responses 模式使用 Dongger Panel 持久化的完整会话上下文，并设置 `store=false`。工具调用使用 `function_call` / `function_call_output`；带工具调用的响应会将 Provider 返回的完整 output item 序列按原顺序保存在内部上下文，并仅向生成它的同一 Provider/模型原样回放。升级前只保存了加密 reasoning item 的旧会话，会先回放 reasoning，再重建同一批 assistant 可见内容和函数调用。原生 output item 不通过 REST、SSE、日志或审计暴露。
 - Responses 首次请求保持标准 OpenAI 载荷；若兼容 Provider 在尚未输出任何内容时明确返回 `messages[n]: missing field id`，Runtime 只重试一次带稳定消息 ID 的兼容载荷，并在当前进程内记住该端点能力。已产生文字或工具调用后禁止回放，其他 4xx 不触发方言猜测。
 - Chat Completions 会捕获 Provider 实际返回的 `reasoning_content`、`reasoning_text` 或 `reasoning`，仅随对应工具调用保存在内部上下文；同一模型响应产生的可见内容、多个工具调用和 reasoning 会重建为一条完整 assistant 批次，不跨模型响应复用 reasoning。标准后续请求不主动猜测方言；只有端点在未输出内容时明确要求补充某一 reasoning 字段，Runtime 才以已保存的原文和指定字段重试并记住当前端点/模型方言。若旧工具历史没有保存原始推理内容，Runtime 不伪造空 reasoning 字段，而将已有工具结果降级为标注为不可信的历史数据后重试。该兼容链路由实际响应和端点错误驱动，不依赖 DeepSeek 型号名称；型号推断只控制原生思考强度参数。隐藏推理不进入 REST、SSE、日志或审计。
 - Anthropic 工具调用会将完整 assistant content block 序列及其中的 `thinking` / `redacted_thinking` 签名绑定到原 Provider/模型，包含新版 Claude 在多个工具之间产生的交错 thinking，并在续轮按原顺序回放；同一响应的多个 `tool_result` 合并到下一条 user 消息。Gemini 会保存每个 `functionCall` 实际返回的 ID 和 `thoughtSignature`，仅向生成它的原 Provider/模型对应调用回放，并将带原始 ID 的并行 `functionResponse` 合并到同一 user 内容。两类原生上下文均不通过 REST、SSE、日志或审计暴露；切换模型时不携带旧模型的签名上下文。
@@ -31,13 +31,13 @@ Vue 三栏工作台 ── REST/SSE ── paneld AgentRuntime
 - 内网/本地 Provider 必须显式选择 `private`；只有此模式允许 HTTP。
 - 重定向最多三次；跨源重定向移除 `Authorization`、`X-Api-Key` 与 `X-Goog-Api-Key`。
 - Compose 同时连接固定 `panel-internal` 与普通 `panel-egress`。容器仍为 UID 65532、只读根文件系统、`cap_drop: ALL`、`no-new-privileges`、256 MiB。
-- Provider 只能访问模型 API；模型自身只能调用固定 KPanel 工具，没有通用联网工具。
+- Provider 只能访问模型 API；模型自身只能调用固定 Dongger Panel 工具，没有通用联网工具。
 - Ollama/LM Studio 预设通过 `host.docker.internal` 访问宿主机；本地服务需监听 Docker 网关可达地址，且保存前仍需显式确认内网模式。
 
 ## 用户交互
 
 - 首次进入先展示三步引导：选择 API、验证连接、启用模型。新增 API 默认执行“保存 → 测试 → 同步模型”；后两步失败时保留已加密保存的连接，允许修正后单独重试。
-- 再次同步模型时，已有的显式 reasoning 能力不会被降级；代码已识别的新思考模型会从旧的 false 能力向上升级，因此升级 KPanel 后无需删除并重新添加 API。
+- 再次同步模型时，已有的显式 reasoning 能力不会被降级；代码已识别的新思考模型会从旧的 false 能力向上升级，因此升级 Dongger Panel 后无需删除并重新添加 API。
 - 点击“新建会话”会直接使用管理员设置的默认模型；没有显式默认值时使用第一个可用模型。会话标题由第一条用户消息自动生成，仍可手工重命名。
 - 模型选择器位于输入框右下角，实时包含所有已启用 Provider 的已启用模型。运行中允许切换，但当前 Run 使用启动时快照，新选择明确标记为“下一轮”并只影响后续 Run。
 - 思考强度位于模型选择器旁，提供 `low`、`medium`、`high`。Run 固定启动时快照；模型声明原生 reasoning 能力时映射为 OpenAI `reasoning.effort`/`reasoning_effort`、Anthropic `output_config.effort`、Gemini 2.5 `thinkingConfig.thinkingBudget` 或 Gemini 3 `thinkingConfig.thinkingLevel`，否则只使用通用规划强度提示。界面不暴露隐藏思维链，只展示可审计工具过程。
@@ -52,7 +52,7 @@ Vue 三栏工作台 ── REST/SSE ── paneld AgentRuntime
 
 - SQLite 使用 WAL、外键、5 秒 `busy_timeout` 和事务迁移。
 - API Key 由 XChaCha20-Poly1305 加密，主密钥为 `/var/lib/kejilion-panel/ai-secrets.key`，Linux 权限 `0600`。
-- 数据库存在密文但主密钥丢失时，AI 模块失败关闭；KPanel 其他功能继续提供服务。不得自动生成新密钥覆盖。
+- 数据库存在密文但主密钥丢失时，AI 模块失败关闭；Dongger Panel 其他功能继续提供服务。不得自动生成新密钥覆盖。
 - Runtime 与后台学习在共享模型输出入口识别当前 Provider 已知的认证 Key：可见助手文字跨任意分片隐藏完整 Key，普通文字使用线性匹配并即时输出；JSON 字符串在闭合验证前有界缓冲，按标准 JSON 转义和嵌套编码逐层检查后才可输出，避免可逆编码绕过。单次投影共享 64 MiB 工作量、262144 个语义节点和 32 层处理栈上限；命中凭据后编码的结果仍受原回复上限约束；若短 Key 与默认 `[REDACTED]` 标记重合，改用字符集不相交的 `(hidden)`，避免重复投影及重启迁移膨胀。工具参数（含 JSON 转义值）或学习结果包含该 Key 时明确失败，不改写后执行。工具调用 ID、名称、参数及公开预览使用同一请求投影预算识别编码后的已知 Key，命中即拒绝，不改写执行标识。旧工具公开预览在既有私有态事务及擦除流程中修正；若可归属当前 Provider 的旧 ID／名称含已知 Key，启动明确失败并保留原身份、私有态与审批，须恢复配套的无泄露数据库及密钥备份，不自动修改 ID、删除工具或执行旧调用。已轮换或无法归属的未知历史凭据不在此已知 Key 保证内。普通回复中其他密码与用户原始聊天不作泛化过滤。启动以相同已知凭据投影逐行修正可归属该 Provider 且含字面 Key 或转义符的旧助手副本和派生摘要，SQL 复制前先核算每行 2 MiB 上限，失败保留原数据并拒绝启动 AI；复用 Schema 11 的事务及 WAL/VACUUM 擦除；旧工具参数仍保留加密原文，命中时隐藏全部参数预览并拒绝执行。
 - API 只返回 `apiKeySet` 和末四位；不超过四个字符的 Key 使用固定 `[REDACTED]` 提示，空 Key 无提示。启动先验证现有密文，再修正旧提示副本，并复用 Schema 11 的 WAL/VACUUM 擦除；再次降级写入旧提示时仍重新修正与擦除，缺失或错误密钥时拒绝启动且不改提示。普通用户聊天保持原文。工具参数与原生 Provider 上下文作为同一私有状态由 SecretBox 加密，附加认证数据绑定会话、Run、调用 ID 和工具名；REST/SSE 只返回有界安全预览，不序列化原始 arguments 或 Provider 数据。正文、Compose 和命令参数不进入持久化参数预览；仅待审批状态的认证响应临时生成经过结构化/文本脱敏的 `approvalPreview`，供管理员审阅具体写入或命令，超长内容明确标记截断。调用离开待审批状态后不再序列化这份详情。
 - Schema 11 在启动事务中迁移旧明文工具记录，并对旧工具结果预览及 role=tool 消息应用相同结构化脱敏，保留原始参数、原生上下文、待审批/已完成状态、身份和时间；不会执行待审批调用或重放已完成操作。事务提交后执行 WAL 截断检查点、VACUUM 和再次截断，完成后才写迁移完成标记；迁移/擦除失败拒绝启动 AI，重启继续清理，不能静默丢弃历史。缺失或错误的密钥、损坏或身份不匹配的私有状态均失败关闭。
@@ -114,7 +114,7 @@ AI 和 MCP 的文件尾读取先检查完整文件上下文，再返回有界尾
 
 大文件按记录流式检查，普通访问日志可以保留，敏感记录和可识别的 YAML 数据或私钥块会遮盖；无法安全判定的格式、超长行或超过处理时限会拒绝，可改用较小的稳定纯文本副本。源文件正在读取时若有新写入请求会中断本次投影并释放租约；进程暂停或存储读取阻塞时，无法保证写入方在固定时间内恢复。
 
-所有工具 JSON 响应先解码再递归投影；转义字段名、JSON 字符串中的 JSON、`auth`/`auths` 和环境变量 name/value 都参与脱敏，文本文件内容在解码后处理再序列化。此投影是数据授权之后的补充，任意自定义正文中无标记的秘密不能可靠推断；管理员应只分享本次任务需要的文件。AI 文件内容读取继续禁止 `.env`、SSH 凭据、私钥、证书私钥、Token、进程环境、Docker Swarm 与 KPanel 数据；文件改写/回收额外禁止 KPanel、Docker 内部目录、systemd、SSH、PAM、sudo、cron、系统账号和系统程序目录。Agent 仍会再次执行 File Manager 的路径规范化、符号链接和保护目录检查。
+所有工具 JSON 响应先解码再递归投影；转义字段名、JSON 字符串中的 JSON、`auth`/`auths` 和环境变量 name/value 都参与脱敏，文本文件内容在解码后处理再序列化。此投影是数据授权之后的补充，任意自定义正文中无标记的秘密不能可靠推断；管理员应只分享本次任务需要的文件。AI 文件内容读取继续禁止 `.env`、SSH 凭据、私钥、证书私钥、Token、进程环境、Docker Swarm 与 Dongger Panel 数据；文件改写/回收额外禁止 Dongger Panel、Docker 内部目录、systemd、SSH、PAM、sudo、cron、系统账号和系统程序目录。Agent 仍会再次执行 File Manager 的路径规范化、符号链接和保护目录检查。
 
 ## 后台学习规则
 

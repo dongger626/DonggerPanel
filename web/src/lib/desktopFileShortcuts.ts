@@ -5,7 +5,7 @@ import type { DesktopShortcut, DesktopWorkspaceUpdate, FileEntry } from '@/types
 export const DESKTOP_FILE_DRAG_TYPE = 'application/x-kpanel-desktop-file-shortcut'
 export const CROSS_PANEL_FILE_DRAG_TYPE = 'application/x-kpanel-cross-panel-file-v1'
 export const CROSS_PANEL_FILES_DRAG_TYPE = 'application/x-kpanel-cross-panel-files-v2'
-export const CROSS_PANEL_FILES_TEXT_PREFIX = 'KPanel cross-panel files v2\n'
+export const CROSS_PANEL_FILES_TEXT_PREFIX = 'Dongger Panel cross-panel files v2\n'
 export const NATIVE_FILE_DOWNLOAD_DRAG_TYPE = 'DownloadURL'
 export const MAX_DESKTOP_SHORTCUTS = 64
 export const MAX_CROSS_PANEL_DRAG_ENTRIES = 64
@@ -150,7 +150,7 @@ function addNativeDownloadDrag(
   try {
     // Chromium turns this private drag type into a promised file for Windows
     // Explorer and macOS Finder. Other browsers ignore the extra type while
-    // KPanel's existing same-page and cross-panel payloads remain available.
+    // Dongger Panel's existing same-page and cross-panel payloads remain available.
     dataTransfer.setData(NATIVE_FILE_DOWNLOAD_DRAG_TYPE, descriptor)
   } catch {
     // A browser rejecting the private type must not disable internal dragging.

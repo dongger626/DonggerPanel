@@ -1,4 +1,4 @@
-# KPanel v1.14.0 发布验收
+# Dongger Panel v1.14.0 发布验收
 
 ## 发布范围
 
@@ -34,7 +34,7 @@ Docker Hub `1.14.0` 与 `latest` 同指 OCI index `sha256:238a1f9d85532554973603
 
 ## 生产部署安全核对
 
-用户明确授权本次完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁止全部 KPanel 操作，本轮没有连接或修改。
+用户明确授权本次完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁止全部 Dongger Panel 操作，本轮没有连接或修改。
 
 生产 preflight run `v1.14.0-production-20260911` 于 14:42:24Z 至 14:42:26Z 确认原生产 v1.13.0、revision `2718726`、旧 OCI `sha256:9dc2ce1cf57bd3f56e001cdcdbca39f40fd3a7a2f6f401258e495d7a440c4043` 健康。Panel running/healthy、restart 0、OOM false；Agent active/running/enabled、NeedDaemonReload=no；SQLite quick check 通过，63 个数据文件，磁盘可用约 23 GiB。
 

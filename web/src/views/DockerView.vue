@@ -774,7 +774,7 @@ async function executeBatchItem(item: DockerBatchRunItem, signal: AbortSignal): 
   } catch (reason) {
     // Stopping or restarting the panel's own container drops this very request.
     if (item.self && reason instanceof ApiError && reason.status === 0) {
-      throw new DockerBatchUnconfirmedError('与面板的连接已中断：KPanel 自身容器可能正在停止或重启，请稍后刷新确认结果')
+      throw new DockerBatchUnconfirmedError('与面板的连接已中断：Dongger Panel 自身容器可能正在停止或重启，请稍后刷新确认结果')
     }
     throw reason
   }
@@ -1931,7 +1931,7 @@ onBeforeUnmount(() => {
                 </button>
               </article>
               <article class="action-card">
-                <div><strong>卸载 Docker</strong><small>卸载会终止 KPanel；当前 Agent 尚缺少离线完成与结果回写适配器</small></div>
+                <div><strong>卸载 Docker</strong><small>卸载会终止 Dongger Panel；当前 Agent 尚缺少离线完成与结果回写适配器</small></div>
                 <button class="button button--danger button--small" type="button" @click="uninstallNoticeOpen = true">
                   <Trash2 :size="15" /> 查看实现状态
                 </button>
@@ -2459,7 +2459,7 @@ onBeforeUnmount(() => {
       </div>
     </Teleport>
 
-    <ModalDialog :open="createOpen" :title="phrase('部署 Docker 应用')" :description="phrase('粘贴现成内容即可，KPanel 会自动识别 Docker Run 或 Docker Compose。')" size="large" @close="createOpen = false">
+    <ModalDialog :open="createOpen" :title="phrase('部署 Docker 应用')" :description="phrase('粘贴现成内容即可，Dongger Panel 会自动识别 Docker Run 或 Docker Compose。')" size="large" @close="createOpen = false">
       <section v-if="!createManualMode" class="deployment-input-card">
         <label class="field">
           <span>{{ phrase('粘贴部署内容') }}</span>
@@ -2543,7 +2543,7 @@ onBeforeUnmount(() => {
         <datalist id="docker-host-ip-presets"><option value="0.0.0.0" /><option value="127.0.0.1" /><option value="::" /><option value="::1" /></datalist>
         <datalist id="docker-volume-presets"><option v-for="volume in data?.volumes || []" :key="volume.name" :value="volume.name" /></datalist>
         <div class="form-section">
-           <header><div><strong>{{ phrase('环境变量') }}</strong><small>{{ phrase('任务完成后不保留在 KPanel 任务记录中') }}</small></div><button class="button button--ghost button--small" type="button" @click="addCreateEnvironment"><Plus :size="14" /> {{ phrase('添加') }}</button></header>
+           <header><div><strong>{{ phrase('环境变量') }}</strong><small>{{ phrase('任务完成后不保留在 Dongger Panel 任务记录中') }}</small></div><button class="button button--ghost button--small" type="button" @click="addCreateEnvironment"><Plus :size="14" /> {{ phrase('添加') }}</button></header>
            <div v-for="(variable, index) in createEnvironment" :key="index" class="repeat-row repeat-row--environment"><input v-model="variable.name" class="text-input" type="text" maxlength="128" :placeholder="phrase('变量名，例如 TZ')" autocomplete="off" /><input v-model="variable.value" class="text-input" type="text" maxlength="2048" :placeholder="phrase('变量值')" autocomplete="off" /><button class="icon-button icon-button--danger" type="button" :title="phrase('移除')" @click="createEnvironment.splice(index, 1)"><Trash2 :size="15" /></button></div>
         </div>
          <label class="field"><span>{{ phrase('启动参数（可选，每行一个参数）') }}</span><textarea v-model="createCommand" class="text-area" rows="3" placeholder="--config&#10;/data/config.yml" /></label>
@@ -2706,13 +2706,13 @@ onBeforeUnmount(() => {
     </ModalDialog>
 
     <ModalDialog :open="systemUpdatePending" :title="phrase('确认更新 Docker 环境')" :description="phrase('将调用系统管理的发行版原生后台更新任务，Docker 软件包随系统软件包一起更新。')" size="small" @close="systemUpdatePending = false">
-      <div class="inline-alert inline-alert--warning">{{ phrase('Docker Engine 可能短暂重启，KPanel 页面会暂时断开并在容器恢复后重新可用。') }}</div>
+      <div class="inline-alert inline-alert--warning">{{ phrase('Docker Engine 可能短暂重启，Dongger Panel 页面会暂时断开并在容器恢复后重新可用。') }}</div>
       <template #footer><button class="button button--secondary" type="button" @click="systemUpdatePending = false">{{ phrase('取消') }}</button><button class="button button--primary" type="button" :disabled="systemUpdating" @click="submitSystemUpdate"><LoaderCircle v-if="systemUpdating" class="spin" :size="16" />{{ phrase('提交后台更新') }}</button></template>
     </ModalDialog>
 
-    <ModalDialog :open="uninstallNoticeOpen" :title="phrase('Docker 卸载尚未支持')" :description="phrase('卸载 Docker 会同时终止 KPanel。当前版本还不能在面板离线后继续执行并回传结果。')" size="small" @close="uninstallNoticeOpen = false">
+    <ModalDialog :open="uninstallNoticeOpen" :title="phrase('Docker 卸载尚未支持')" :description="phrase('卸载 Docker 会同时终止 Dongger Panel。当前版本还不能在面板离线后继续执行并回传结果。')" size="small" @close="uninstallNoticeOpen = false">
       <div class="inline-alert inline-alert--warning">{{ phrase('如需卸载，请通过 SSH 运行 `k docker`。这是尚未完成的离线任务能力，不是权限限制。') }}</div>
-      <p class="modal-copy">{{ phrase('后续版本将直接复用 kejilion.sh 的卸载流程，并在 KPanel 停止后继续记录执行结果。') }}</p>
+      <p class="modal-copy">{{ phrase('后续版本将直接复用 kejilion.sh 的卸载流程，并在 Dongger Panel 停止后继续记录执行结果。') }}</p>
       <template #footer><button class="button button--secondary" type="button" @click="uninstallNoticeOpen = false">{{ phrase('我知道了') }}</button></template>
     </ModalDialog>
 

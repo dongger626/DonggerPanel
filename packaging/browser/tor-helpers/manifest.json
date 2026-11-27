@@ -30,5 +30,5 @@
       "sumSha256": "3820dbfd1ed260785089adc7b338c86d51e25ae887f410da82d611e524f0379b"
     }
   },
-  "origin": "KPanel rebuild of pinned Tor helper sources with security dependency updates; these two helper binaries are not the original Tor-signed bytes"
+  "origin": "Dongger Panel rebuild of pinned Tor helper sources with security dependency updates; these two helper binaries are not the original Tor-signed bytes"
 }

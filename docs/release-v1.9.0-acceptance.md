@@ -1,4 +1,4 @@
-# KPanel v1.9.0 发布验收
+# Dongger Panel v1.9.0 发布验收
 
 日期：2026-09-09。发布级别：L3。候选提交9028fab55d950cedc6e59325a7a28ba6ce21bd1c，标签v1.9.0。基线main 942ede6a24d6d0f97bbea01d21d84188b7e5abf8；上一稳定v1.8.1/c2d47e7c76e26332c9bbd31cb0e28986f50b3f2e，OCI sha256:a2c48db4c63d7bbb0fecc5c9e212f21b678288b37030b26929f8039d1cccbd34。
 
@@ -14,7 +14,7 @@
 
 scriptLinkageState=coupled。变更集redirect-script-inputs、certificate-replacement-compat-20260909。原脚本298f6f23751e36726660d73b5c0c83aef1b404f4/SHA256 80365884b126b7a0cfb1bf0976ffbce7dfcc946ac05274f8da99594086d09581；脚本源提交740724c/a5bd96a组合为aac8bc8710bb559ec7ae1d6988770f64564954ca，SHA256 583aff02c2f75510edc5135addad31163a7dfeeb9ac99fcf190b064fcbadedee。先SSH快进发布脚本主线并下载公开原始字节确认摘要，再固定Dockerfile与节点source.json；节点更新模板字节不变。
 
-根/CN同步、重定向合法/非法参数、旧单域名交互兼容、原生重试/导入、证书缺失停止、事务恢复、官方续签器迁移与未知修改保护四项smoke通过。新Panel与旧脚本的新增参数协议不匹配时明确拒绝；原有脚本调用保持兼容。apps契约diff为空，无apps提交。脚本配对回滚为298f6f2；KPanel回滚v1.8.1。
+根/CN同步、重定向合法/非法参数、旧单域名交互兼容、原生重试/导入、证书缺失停止、事务恢复、官方续签器迁移与未知修改保护四项smoke通过。新Panel与旧脚本的新增参数协议不匹配时明确拒绝；原有脚本调用保持兼容。apps契约diff为空，无apps提交。脚本配对回滚为298f6f2；Dongger Panel回滚v1.8.1。
 
 ## 多维质量
 
@@ -139,7 +139,7 @@ preflight、backup、postdeploy证据分别在C:/GitHub/_release-artifacts/v190-
     "position": "before-production-write",
     "count": 1,
     "impact": "脚本仓库SSH初次未指定既有发布身份而被拒绝，未执行推送。",
-    "recoveryEvidence": "复用KPanel已配置core.sshCommand，一次性-c参数成功验证main后快进脚本。",
+    "recoveryEvidence": "复用Dongger Panel已配置core.sshCommand，一次性-c参数成功验证main后快进脚本。",
     "permanentAction": "后续本轮脚本SSH沿用已验证发布身份，不更改全局凭据或读取私钥。",
     "historicalReleases": []
   },

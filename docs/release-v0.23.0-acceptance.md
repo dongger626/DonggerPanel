@@ -1,4 +1,4 @@
-# KPanel v0.23.0 验收记录
+# Dongger Panel v0.23.0 验收记录
 
 ## 交付范围
 
@@ -11,7 +11,7 @@
 
 ## 发布前验收
 
-- `kejilion.sh`：Shell 语法及 6 组 KPanel 协议 smoke。
+- `kejilion.sh`：Shell 语法及 6 组 Dongger Panel 协议 smoke。
 - Go：Linux `go test ./...`、`go vet ./...`。
 - Agent：Linux amd64、arm64 静态编译。
 - Web：TypeScript 检查、40 项 Vitest、生产构建。
@@ -37,6 +37,6 @@
 
 ## 回滚
 
-- KPanel 回滚到 `v0.22.0` / `ac34272`。
+- Dongger Panel 回滚到 `v0.22.0` / `ac34272`。
 - `kejilion.sh` 回滚到 `ded5af1`。
-- 回滚 KPanel/Agent 不删除 `/home/web`、`/home/web_*.tar.gz` 或 Fail2Ban 配置。
+- 回滚 Dongger Panel/Agent 不删除 `/home/web`、`/home/web_*.tar.gz` 或 Fail2Ban 配置。

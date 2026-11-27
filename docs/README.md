@@ -1,4 +1,4 @@
-# KPanel 文档索引
+# Dongger Panel 文档索引
 
 本索引只提供导航，不定义规则。任何规则冲突以 `PROJECT_RULES.md` →
 `docs/project-management.md` → `docs/multi-agent-collaboration.md` → `.codex-workflows/`
@@ -52,7 +52,7 @@
 | [文件共享](file-sharing.md) | 共享链接与权限 |
 | [图库设计](media-gallery-design.md) | 照片与视频的相册呈现 |
 | [广告专栏设计](offers-column-design.md) | 服务器与域名 AFF 横幅墙、素材规格与远程清单 |
-| [跨 KPanel 文件传输](cross-kpanel-file-transfer.md) | 实例间传输 |
+| [跨 Dongger Panel 文件传输](cross-kpanel-file-transfer.md) | 实例间传输 |
 | [Windows 文件下载兼容](windows-file-download-compatibility.md) | 下载路径兼容处理 |
 | [磁盘分区管理](disk-partition-management.md) | 分区与挂载 |
 | [进程管理器设计](process-manager-design.md) | 进程视图与操作 |

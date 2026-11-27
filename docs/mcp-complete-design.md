@@ -12,8 +12,8 @@
 | --- | --- | --- |
 | [1Panel dev-v2](https://github.com/1Panel-dev/mcp-1panel) | 文档列出 11 工具，系统、网站、证书、应用、数据库；stdio / Streamable HTTP；readonly/readwrite/full。开发分支不等同已发布版 | 明确访问等级、工具发现与执行同时过滤 |
 | [宝塔](https://docs.bt.cn/ai-ops/mcp/tools-reference) | 文档列出 98 工具，文件、主机、网站、数据库、Docker、后台任务等；包含需单独授权的 Shell | 学习业务闭环、任务结果、接入教程；不引入任意宿主机 Shell |
-| [宝塔客户端接入](https://docs.bt.cn/ai-ops/mcp/installation) | HTTP/Bearer；Codex、Claude Code、WorkBuddy、TRAE、DeepSeek Harness、Hermes/OpenClaw 教程；独立 Python 服务/8765 端口 | 客户端专用配置、连接诊断；KPanel 保持同端口内置 |
-| [Portainer 2.45.1](https://github.com/portainer/portainer-mcp/tree/2.45.1) | OpenAPI 转换；Docker、Kubernetes、GitOps 与可选 Edge/Admin 分组；HTTP/stdio/mcpb；每用户实际权限；OAuth 可经外部代理 | 分组降低工具噪声、客户端身份隔离、桌面接入；不照搬通用 API 代理或引入 KPanel 没有的 Kubernetes 业务 |
+| [宝塔客户端接入](https://docs.bt.cn/ai-ops/mcp/installation) | HTTP/Bearer；Codex、Claude Code、WorkBuddy、TRAE、DeepSeek Harness、Hermes/OpenClaw 教程；独立 Python 服务/8765 端口 | 客户端专用配置、连接诊断；Dongger Panel 保持同端口内置 |
+| [Portainer 2.45.1](https://github.com/portainer/portainer-mcp/tree/2.45.1) | OpenAPI 转换；Docker、Kubernetes、GitOps 与可选 Edge/Admin 分组；HTTP/stdio/mcpb；每用户实际权限；OAuth 可经外部代理 | 分组降低工具噪声、客户端身份隔离、桌面接入；不照搬通用 API 代理或引入 Dongger Panel 没有的 Kubernetes 业务 |
 
 ## 客户端与传输
 
@@ -31,7 +31,7 @@
 
 ## 业务完整性
 
-范围是 KPanel 已有真实能力的 MCP 闭环；不为工具数量另造数据库、Kubernetes、Shell 或业务真源。
+范围是 Dongger Panel 已有真实能力的 MCP 闭环；不为工具数量另造数据库、Kubernetes、Shell 或业务真源。
 
 | 领域 | 本次必须覆盖的闭环 |
 | --- | --- |
@@ -87,4 +87,4 @@ MCP 定位为可选 AI 接口，既有 Panel/Agent 继续负责管理；不宣�
 | 总体门禁 | 仓库 L2、独立审查、OCR、构建与资源测量 | 只对最终精确提交计入，结果由候选交付记录报告。Cloudflare 专项审计未完成 |
 
 文件文本修改有界；二进制备份包和文件上传下载、完整编辑器及任意宿主机交互 Shell 留在已有 UI/SSH，
-不通过 MCP 模型上下文复刻。这是接口边界，不声称 KPanel 所有按钮都已转换为工具。
+不通过 MCP 模型上下文复刻。这是接口边界，不声称 Dongger Panel 所有按钮都已转换为工具。

@@ -49,7 +49,7 @@ onBeforeUnmount(() => { disposed = true })
 
 <template>
   <details class="cluster-grants">
-    <summary>允许其他 KPanel 管理本机</summary>
+    <summary>允许其他 Dongger Panel 管理本机</summary>
     <p>仅配对不会授予远程操作权限。在被控节点明确授权后，控制端才能通过 MCP 管理本机。</p>
     <p>写入授权表示信任该控制端在所选范围内发起操作；客户端权限和人工审批由控制端负责。关闭本机 MCP 会停止接收新的远程操作。</p>
     <p v-if="loading" role="status">正在加载集群管理授权…</p>

@@ -4,8 +4,8 @@ import { summarizeNotification } from './notificationSummary'
 
 const when = '2026-09-28 20:00:00 (UTC+08:00)'
 function event(rule: string, kind: NotificationEvent['kind'], body: string, locale = 'zh-CN'): NotificationEvent {
-  const title = locale === 'en-US' ? `KPanel Cluster ${kind === 'alert' ? 'Alert' : 'Notice'}`
-    : locale === 'zh-TW' ? `KPanel 叢集${kind === 'alert' ? '警報' : '通知'}` : `KPanel 集群${kind === 'alert' ? '告警' : '通知'}`
+  const title = locale === 'en-US' ? `Dongger Panel Cluster ${kind === 'alert' ? 'Alert' : 'Notice'}`
+    : locale === 'zh-TW' ? `Dongger Panel 叢集${kind === 'alert' ? '警報' : '通知'}` : `Dongger Panel 集群${kind === 'alert' ? '告警' : '通知'}`
   const host = locale === 'en-US' ? 'Host: node' : locale === 'zh-TW' ? '主機：node' : '主机：node'
   const time = locale === 'en-US' ? 'Time: ' : locale === 'zh-TW' ? '時間：' : '时间：'
   return { id: '1', hostId: 'local', hostName: 'node', isLocal: true, rule, kind,

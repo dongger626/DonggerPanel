@@ -1,4 +1,4 @@
-# KPanel v1.29.0-rc.6 发布验收记录
+# Dongger Panel v1.29.0-rc.6 发布验收记录
 
 日期：2026-11-02；发布级别：L3；releaseChannel=preview；releaseTrain=1.29.0。
 
@@ -135,7 +135,7 @@
     "count": 1,
     "impact": "首轮候选 CI 41411982833 发现 firstPartySourceSha256 与 internal/version/version.go 变更后的真实源码摘要不同，verify 未通过。",
     "recoveryEvidence": "C:/GitHub/_release-evidence/v129-rc6-public/process/41411982833.log 保存首轮失败；派生摘要由 1f1a8b4a581b70e655d6778f35750b8d589b34700272df69dd0778554f39f542 重算为 6065b69cc80aca77603aae0da53e1ea79d51751f0d705803dd75d103a7e40b16，ef94ad07 更新绑定，冻结候选 41412645419 和 41413375831 均通过。",
-    "permanentAction": "此精确指纹也出现在 v1.28.0。责任人：KPanel release maintainer；期限：2026-11-09 且早于 v1.29.0 稳定版 L3 生产写入。退出条件：source-scope SHA 从精确源码自动派生或由提交前 fail-closed 预检验证，并有回归及同 SHA candidate CI；未满足则稳定版 L3 不得开始。",
+    "permanentAction": "此精确指纹也出现在 v1.28.0。责任人：Dongger Panel release maintainer；期限：2026-11-09 且早于 v1.29.0 稳定版 L3 生产写入。退出条件：source-scope SHA 从精确源码自动派生或由提交前 fail-closed 预检验证，并有回归及同 SHA candidate CI；未满足则稳定版 L3 不得开始。",
     "historicalReleases": ["v1.28.0"]
   },
   {

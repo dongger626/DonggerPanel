@@ -1,4 +1,4 @@
-# KPanel v1.24.0-rc.6 发布验收记录
+# Dongger Panel v1.24.0-rc.6 发布验收记录
 
 日期：2026-10-02
 
@@ -71,8 +71,8 @@
 - Go 1.26.7 → 1.27.1；Docker/Runner/CI/现有真机工作流一致固定。先前来源 1.26.8 是局部兼容检查点，不冒充完整 L2；失败原件保留。
 - `golang:1.27.1-alpine@sha256:8a5910f31396cd4d89662f56c68b3ae31d374308270a1c3bd96672ee5ed43414`；Bookworm 工作流固定 `sha256:69a7b9788769bec032d238959b61854e9ae87f57be9029ec04e9885fabf99195`。Runner Dockerfile 与来源 SHA-256 `3685e83dd07595ea5d5d560d24fd5bd03d0047516ae3948533cc2e3c9a280839` 相同。
 - 来源新鲜度报告 `2026-10-01T16:43:02.713Z`，10/10 检测源、152 候选（3 行动项、149 传递信号）；来源和最终产品 SHA 的远端新鲜度 CI 成功，未虚构新的单次候选统计。
-- TypeScript/@types-node 两项现有有期限例外继续由 KPanel base maintenance 于 2026-10-15 复核。Node 26 与 TS7 本地实验不等于本版采用。
-- Trivy 0.75.0 是后续独立 qualification 行动项，首个完整检测 `2026-10-01T15:47:46.958Z`；负责人 KPanel base maintenance，最晚 2026-10-15 启动、2026-10-31 决策、2026-11-30 完成处置，不重置首次日期。尚未作采用/拒绝/暂缓决定，若后来暂缓须建立 policy 正式例外；本版保留 0.74.0 和原门槛。
+- TypeScript/@types-node 两项现有有期限例外继续由 Dongger Panel base maintenance 于 2026-10-15 复核。Node 26 与 TS7 本地实验不等于本版采用。
+- Trivy 0.75.0 是后续独立 qualification 行动项，首个完整检测 `2026-10-01T15:47:46.958Z`；负责人 Dongger Panel base maintenance，最晚 2026-10-15 启动、2026-10-31 决策、2026-11-30 完成处置，不重置首次日期。尚未作采用/拒绝/暂缓决定，若后来暂缓须建立 policy 正式例外；本版保留 0.74.0 和原门槛。
 - 来源完整性 `go mod verify` / `go mod tidy -diff` 通过，go.sum/模块版本不变。模块级 `GO-2026-5932` 涉及未导入的 `x/crypto/openpgp`，来源详报与默认可达扫描区分，未加忽略；本次 L3/CI 默认可达扫描零受影响代码漏洞。
 - 复用源码短基准，Go 及对应 Alpine 补丁同时变化；没有将局部耗时改善归因到生产性能。长期观察未执行；未建立自动监控。
 
@@ -96,12 +96,12 @@
 
 - 现有 stable/preview 选择、语义排序、非法版本 fail-closed、通道切换清旧候选、退出 preview 不自动降级、开关与立即安装互不越权的自动回归通过。
 - apps 默认入口仍 stable/latest；公开 Latest/latest 实际指向 1.23.0，本版只提升 preview。退出 preview 不承诺自动降级。
-- systemd 更新备份/失败恢复及版本隔离由隔离 app-conf 生命周期验证；未在现存宿主安装执行。OpenRC 完整 KPanel 自动更新仍不支持，轻量 Node 无人值守更新仍只跟踪 stable。
+- systemd 更新备份/失败恢复及版本隔离由隔离 app-conf 生命周期验证；未在现存宿主安装执行。OpenRC 完整 Dongger Panel 自动更新仍不支持，轻量 Node 无人值守更新仍只跟踪 stable。
 
 ## 生产部署安全核对
 
 - 不适用（预览版禁止生产部署）。本轮没有生产写入，生产数据/备份/部署后版本核对均不适用，隔离验证不替代生产证据。
-- 验证环境 arena-154；prod-108/108 禁用全部 KPanel 操作，本次未连接、备份、部署、升级或核对。
+- 验证环境 arena-154；prod-108/108 禁用全部 Dongger Panel 操作，本次未连接、备份、部署、升级或核对。
 
 ## 回滚
 

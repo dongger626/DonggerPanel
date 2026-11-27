@@ -3,7 +3,7 @@ import type { FileUploadProgress } from './fileReceiveUpload'
 import type { FileConflictBatch } from './fileConflicts'
 import { uploadDirectoryWithConflicts } from './fileConflictUpload'
 
-export const DESKTOP_UPLOAD_DIRECTORY = '/home/KPanel Desktop'
+export const DESKTOP_UPLOAD_DIRECTORY = '/home/Dongger Panel Desktop'
 export const MAX_EXTERNAL_DROP_FILES = 500
 export const MAX_EXTERNAL_DROP_DIRECTORIES = 256
 export const MAX_EXTERNAL_DROP_DEPTH = 32
@@ -376,7 +376,7 @@ async function ensureDestinationDirectory(
     return
   }
   if (destination !== DESKTOP_UPLOAD_DIRECTORY) throw new Error(`${destination} 不存在或无法访问。`)
-  await createDirectory(api, '/home', 'KPanel Desktop', signal, fileHostId)
+  await createDirectory(api, '/home', 'Dongger Panel Desktop', signal, fileHostId)
 }
 
 export async function uploadExternalDrop(

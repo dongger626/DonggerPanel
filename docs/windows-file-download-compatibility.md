@@ -12,9 +12,9 @@ ZIP 的选择和资源版本恢复使用 URL 参数，受既有请求行长度�
 
 本记录回答三个问题：
 
-1. KPanel 文件拖到 Windows Explorer 后出现 `FILE_BLOCKED` 的现场事实是什么；
+1. Dongger Panel 文件拖到 Windows Explorer 后出现 `FILE_BLOCKED` 的现场事实是什么；
 2. 同机可成功的 KodBox 使用了什么实现，哪些差异已确认、哪些仍不能推断；
-3. KPanel 如何把 `DownloadURL` 保留为渐进增强，同时为被客户端拦截的环境提供可靠显式下载兜底。
+3. Dongger Panel 如何把 `DownloadURL` 保留为渐进增强，同时为被客户端拦截的环境提供可靠显式下载兜底。
 
 核验基线：
 
@@ -22,16 +22,16 @@ ZIP 的选择和资源版本恢复使用 URL 参数，受既有请求行长度�
 | --- | --- |
 | Windows | Windows 11 专业版，10.0.26200，64 位 |
 | Chrome | 151.0.7922.169 |
-| KPanel 代码基线 | `91583a311da9e31346c5e9ca4f628c35ce98494e`，`v0.88.1-1-g91583a3`；候选分支已 fast-forward 到核验时的 `origin/main` |
-| KPanel 候选分支 | `fix/windows-drag-download`，未提交、未发布 |
-| KPanel 实服 | `https://kpanel.kejilion.eu.org/files?path=/home` |
+| Dongger Panel 代码基线 | `91583a311da9e31346c5e9ca4f628c35ce98494e`，`v0.88.1-1-g91583a3`；候选分支已 fast-forward 到核验时的 `origin/main` |
+| Dongger Panel 候选分支 | `fix/windows-drag-download`，未提交、未发布 |
+| Dongger Panel 实服 | `https://kpanel.kejilion.eu.org/files?path=/home` |
 | KodBox 官方源码 | `1.69.01`，`83ac1fd643b6440403681b0dd24d59005697108e` |
 
 本记录区分以下概念：
 
 - **显式下载**：用户点击“下载”或“下载 ZIP”，页面启动常规浏览器下载；
 - **操作系统拖出**：网页写入 Chromium 私有 `DownloadURL`，浏览器尝试向 Explorer 提供 promised file；
-- **KPanel 内部拖拽**：页面内移动、跨窗口和跨 KPanel 自定义载荷，不依赖 `DownloadURL`；
+- **Dongger Panel 内部拖拽**：页面内移动、跨窗口和跨 Dongger Panel 自定义载荷，不依赖 `DownloadURL`；
 - **最终落盘**：文件通过浏览器和 Windows 安全处理后真实存在，网页没有可靠回调可确认该结果。
 
 ## 2. Windows 实机 A/B 结果
@@ -54,12 +54,12 @@ Chrome History 中失败任务共同表现为：
 
 | 编号 | 发起页 / `DownloadURL` 目标 | 描述文件名 | 结果 | 能排除或证明的因素 |
 | --- | --- | --- | --- | --- |
-| K1 | KPanel 页面 → `/api/v1/files/content?...` | `nginx.conf` | `FILE_BLOCKED`，0 B | 复现原问题 |
-| K2 | KPanel 页面 → `/api/v1/files/archive?...` | `.zip` | `FILE_BLOCKED`，0 B | 问题不只发生于单文件 |
-| K3 | 本地受控页 → KPanel 短时 ticket URL | `.conf` | `FILE_BLOCKED`，0 B | 免 Cookie ticket 不能单独修复 |
+| K1 | Dongger Panel 页面 → `/api/v1/files/content?...` | `nginx.conf` | `FILE_BLOCKED`，0 B | 复现原问题 |
+| K2 | Dongger Panel 页面 → `/api/v1/files/archive?...` | `.zip` | `FILE_BLOCKED`，0 B | 问题不只发生于单文件 |
+| K3 | 本地受控页 → Dongger Panel 短时 ticket URL | `.conf` | `FILE_BLOCKED`，0 B | 免 Cookie ticket 不能单独修复 |
 | K4 | K3 的同一 ticket，仅更换描述名 | `.txt` / `.zip` | 均 `FILE_BLOCKED`，0 B | 扩展名不是共同根因 |
-| K5 | 本地受控页 → KPanel 公共 `/manifest.webmanifest` | `public-probe.txt` | `FILE_BLOCKED`，0 B | 不依赖 Session、Agent 文件 API、ticket 或 ZIP |
-| K6 | KPanel ticket，由用户正常点击 | `nginx.conf` | 成功，内容可用 | 服务端文件读取和普通下载链路可用 |
+| K5 | 本地受控页 → Dongger Panel 公共 `/manifest.webmanifest` | `public-probe.txt` | `FILE_BLOCKED`，0 B | 不依赖 Session、Agent 文件 API、ticket 或 ZIP |
+| K6 | Dongger Panel ticket，由用户正常点击 | `nginx.conf` | 成功，内容可用 | 服务端文件读取和普通下载链路可用 |
 | C1 | 同机本地无鉴权测试页 → 本地资源 | `.zip` / `.txt` | Explorer 拖出成功 | Chrome/Explorer 没有全局禁用 `DownloadURL` |
 | C2 | 同机 `https://demo.kodcloud.com` → 同源 KodBox ZIP | `.zip` | Explorer 拖出成功 | 同机同浏览器存在成功竞品对照 |
 
@@ -84,18 +84,18 @@ Chrome History 的 `mime_type` / `original_mime_type` 记录响应或嗅探结�
 | C～F，换发起源 | 同一回环服务改由 `localhost` 发起，使用首轮成功文件名 | 四项均成功 | 下游结果会随 initiator / 页面环境变化；目标载荷不是固定结论 |
 
 C～F 分别为：C=`copy` + `DownloadURL` first 的最小控制；D=`all` + `DownloadURL` first；
-E=`all` + `text/plain` first + `DownloadURL` last；F=`all` + KPanel 三种 custom type first +
+E=`all` + `text/plain` first + `DownloadURL` last；F=`all` + Dongger Panel 三种 custom type first +
 `DownloadURL` last。四项在 `127.0.0.1` 全部失败、换成 `localhost` 后又全部成功，因此
-`effectAllowed`、写入顺序、`text/plain` 或 KPanel custom type 都不能单独解释结果。`127.0.0.1` 与
+`effectAllowed`、写入顺序、`text/plain` 或 Dongger Panel custom type 都不能单独解释结果。`127.0.0.1` 与
 `localhost` 是两个不同 origin；这组时序只证明分类与 initiator、tab、referrer、navigation 等页面环境
 相关，不证明 hostname 是唯一因果变量。
 
 ### 2.2 已验证结论
 
-- KPanel 的共同失败不能由 Cookie、ticket、`.conf`、`.zip`、`Content-Disposition`、归档流或 KPanel
+- Dongger Panel 的共同失败不能由 Cookie、ticket、`.conf`、`.zip`、`Content-Disposition`、归档流或 Dongger Panel
   文件 API 中任意单项解释；公共静态资源对照已经绕开这些链路。严格 A/B 还确认 `text/plain` 与
   `application/octet-stream` 能在同一状态下同时成功，随后又能在另一页面状态下同时失败，所以 MIME、
-  文件名、`effectAllowed`、数据类型写入顺序及 KPanel custom type 都不是固定根因。
+  文件名、`effectAllowed`、数据类型写入顺序及 Dongger Panel custom type 都不是固定根因。
 - 同一机器的本地测试页和 KodBox 能成功，故不符合 `DownloadRestrictions=3` 一类“全部拖出下载禁用”的表现。
 - 最新时序更符合 Chromium/Windows 下游安全分类会结合 initiator、tab、referrer、navigation 或其派生
   状态，而不是只按目标 URL 或载荷静态分类。当前证据只能确认结果随页面环境翻转，不能唯一确定参与
@@ -113,7 +113,7 @@ E=`all` + `text/plain` first + `DownloadURL` last；F=`all` + KPanel 三种 cust
   不能把单次成功扩展成兼容承诺。显式单文件 ticket 下载与目录/批量 ZIP 是可观察启动错误、可由用户
   重试的可靠兜底；仍不能把浏览器或 Windows 最终落盘误报为成功。
 - 修改 MIME、伪装扩展名、删除 CSP/`nosniff` 或把长期鉴权放进 URL 都不是安全修复。`localhost` 变化的是
-  发起 origin，不是远端下载域；不能据此宣称更换 KPanel 下载域会修复，也不得用换域绕过客户端策略。
+  发起 origin，不是远端下载域；不能据此宣称更换 Dongger Panel 下载域会修复，也不得用换域绕过客户端策略。
 
 ## 3. KodBox 1.69.01 源码核验
 
@@ -140,7 +140,7 @@ E=`all` + `text/plain` first + `DownloadURL` last；F=`all` + KPanel 三种 cust
 partial clone（`blob:none`），所以历史标签不能只靠本地列表判断；最新版结论同时使用远端 HEAD 和
 GitHub Releases API 验证。
 
-KPanel 的站点安装代码没有内置 KodBox 源码。`internal/sites/recipe_jobs.go` 实际通过
+Dongger Panel 的站点安装代码没有内置 KodBox 源码。`internal/sites/recipe_jobs.go` 实际通过
 `/bin/bash <trusted-script> kodbox <domain>` 调用受信脚本；当前镜像固定的
 `kejilion/sh@6fa7bcc7c2d15fe09d829cb9664941ff40bf4aaf` 会查询 `kalcaddle/kodbox/releases/latest` 后下载
 该标签。宿主机 fallback 脚本只经过属主、权限、大小、许可标记和所需协议片段检查，不能仅凭这些检查保证
@@ -183,34 +183,34 @@ KPanel 的站点安装代码没有内置 KodBox 源码。`internal/sites/recipe_
 公共仓库没有包含最终 `IO` / `IOArchive` 实现，因此不能从该快照确认最终 Range、对象存储重定向和
 全部响应头。`app/kod/ZipMake.class.php` 的头部代码没有找到此下载路径的调用点，不能替代缺失证据。
 
-### 3.3 KPanel 与 KodBox 差异
+### 3.3 Dongger Panel 与 KodBox 差异
 
-| 维度 | KodBox 1.69.01 | KPanel 原实现 | KPanel 修正后候选方向 |
+| 维度 | KodBox 1.69.01 | Dongger Panel 原实现 | Dongger Panel 修正后候选方向 |
 | --- | --- | --- | --- |
 | OS 拖出协议 | 私有 `DownloadURL` | 私有 `DownloadURL` | 恢复为尽力而为的渐进增强，不承诺最终落盘 |
 | 描述 MIME | 固定 `application/octet-stream` | 文件 MIME / ZIP MIME | MIME 不作为安全修复假设；受控 A/B 中两类均曾成功并随后失败 |
-| URL fallback | `text/uri-list` + KodBox 自定义类型 | KPanel 自定义类型 + 文本描述符 | `DownloadURL` 与 KPanel 内部/跨 Panel 类型及文本描述符并存 |
+| URL fallback | `text/uri-list` + KodBox 自定义类型 | Dongger Panel 自定义类型 + 文本描述符 | `DownloadURL` 与 Dongger Panel 内部/跨 Panel 类型及文本描述符并存 |
 | OS 拖出单文件 URL | 直接 `fileDownload` URL | `/files/content` | 保留受控内容 URL；失败时引导使用显式 ticket 下载 |
 | 显式单文件下载 | 直接 `fileDownload` URL | Files 已经在点击后创建短时 ticket；Desktop 无该入口 | 复用同一 ticket，并新增 Desktop 入口 |
 | 目录/多选 | 临时 ZIP 后输出，URL 带选择和 access token | OS 拖出使用 Agent 流式 ZIP；显式批量会逐文件建 ticket 且跳过目录 | 用户点击后 POST 创建短时 archive ticket，再用不含路径的短 URL 下载一个流式 ZIP |
 | 拖出最终状态 | 用 `dropEffect` 推测并提示 | 页面同样无法观测 | 仅作为尽力增强，不把它当可靠成功路径 |
-| 内部/跨站拖拽 | `text/kod-copy` | KPanel v1/v2 + 内存 token | 原载荷保留，未与 OS 下载耦合 |
+| 内部/跨站拖拽 | `text/kod-copy` | Dongger Panel v1/v2 + 内存 token | 原载荷保留，未与 OS 下载耦合 |
 
 KodBox 成功只证明受测 ZIP URL 在该次 Chrome 环境中通过了安全判定，不证明该站点的所有下载或通用网页都能稳定依赖
 `DownloadURL`。新的严格 A/B 已排除固定 `application/octet-stream` 是充分修复：它与 `text/plain` 在
 同一状态下一起成功，又在后续页面状态下一起失败。`text/uri-list` 和 access token 也没有证据能覆盖
-KPanel 的公共资源失败，照搬 token URL 还会扩大 URL 泄露风险。某次拖出成功只能支持“渐进增强可用”，
+Dongger Panel 的公共资源失败，照搬 token URL 还会扩大 URL 泄露风险。某次拖出成功只能支持“渐进增强可用”，
 网页仍收不到后续 `FILE_BLOCKED` 的最终回调，不能据此承诺所有 Windows 或策略环境稳定可用。
 
-## 4. KPanel 候选方向
+## 4. Dongger Panel 候选方向
 
 最新证据要求候选采用“渐进增强 + 明确兜底”，而不是彻底删除 `DownloadURL`，也不是宣称已经修复
 `kpanel.kejilion.eu.org` 上观察到的客户端拦截。浏览器端方向如下：
 
 - 在 Chromium 支持的鼠标拖出场景继续写入 `DownloadURL`，单文件使用受控内容 URL，目录/多选使用
   受限流式 ZIP URL；它只是尽力而为的 Explorer 拖出增强，不能进入可靠完成状态或发布兼容承诺；
-- 内存 token、`application/x-kpanel-desktop-file-shortcut`、跨 KPanel v1/v2 载荷和文本回退与
-  `DownloadURL` 同时保留。操作系统下载失败不能取消、降级或改写 KPanel 内部/跨 Panel 复制语义；
+- 内存 token、`application/x-kpanel-desktop-file-shortcut`、跨 Dongger Panel v1/v2 载荷和文本回退与
+  `DownloadURL` 同时保留。操作系统下载失败不能取消、降级或改写 Dongger Panel 内部/跨 Panel 复制语义；
 - 文件管理和桌面快捷方式同时提供明确的可靠兜底入口：
   - 单个普通文件：复用 Files 已有的短时 ticket 链路，并为 Desktop 提供相同入口；
   - 单个目录或任意多选：由同源、Session、CSRF 保护的 POST 创建 5 分钟 archive ticket，封存精确来源、
@@ -219,7 +219,7 @@ KPanel 的公共资源失败，照搬 token URL 还会扩大 URL 泄露风险。
 - 页面只可提示“已提供给系统；若被阻止请点击下载”，不得根据 `dragend`、`dropEffect` 或是否发出请求
   宣称 Explorer 已落盘，也不在未知最终状态下自动重试；
 - 桌面混合选择包含应用、站点或缺失元数据时不显示显式下载入口，避免静默只下载部分选择；
-- 集群身份暂不可用时仍允许桌面内文件快捷方式移动；只是不写跨 KPanel 描述符；
+- 集群身份暂不可用时仍允许桌面内文件快捷方式移动；只是不写跨 Dongger Panel 描述符；
 - 不修改 CSP、`nosniff`、鉴权期限或其他安全响应边界，也不将独立下载域作为规避客户端分类的方案。
 
 后端完成以下收口：`walkArchive` 递归进入子项前过滤 protected descendant 和 `.kpanel-*` 内部临时组件；
@@ -228,8 +228,8 @@ KPanel 的公共资源失败，照搬 token URL 还会扩大 URL 泄露风险。
 SHA-256、5 分钟 TTL 和 128 张全局容量；Agent 归档路由保留旧 GET，并新增只接受 `name` query 与
 最多 256 KiB JSON body 的内部 POST。
 
-明确不受影响的路径：Windows → KPanel 上传、同一 KPanel 页面内移动/复制、桌面图标移动、跨窗口和
-跨 KPanel 文件复制。`DownloadURL` 只是与这些路径并列的私有附加载荷，成功与失败都不得改变它们。
+明确不受影响的路径：Windows → Dongger Panel 上传、同一 Dongger Panel 页面内移动/复制、桌面图标移动、跨窗口和
+跨 Dongger Panel 文件复制。`DownloadURL` 只是与这些路径并列的私有附加载荷，成功与失败都不得改变它们。
 
 ## 5. 自动化证据与剩余边界
 
@@ -250,7 +250,7 @@ SHA-256、5 分钟 TTL 和 128 张全局容量；Agent 归档路由保留旧 GET
 
 最终 Web 测试已确认：
 
-- 受支持 Chromium 拖动会同时保留 `DownloadURL`、内部 token、跨 KPanel v1/v2 和文本回退；
+- 受支持 Chromium 拖动会同时保留 `DownloadURL`、内部 token、跨 Dongger Panel v1/v2 和文本回退；
 - 单文件显式入口只创建一个 ticket；单目录、两项及文件/目录混选只创建一张 archive ticket 并启动一个 ZIP；
 - ZIP 名称处理 `.zip` 后缀、Windows 保留名、非法字符和 Unicode；
 - archive ticket 短 URL 不泄露来源路径，GET/HEAD 无 Cookie，过期、容量和非法输入边界均受测；
@@ -278,9 +278,9 @@ ticket 的严格校验均已通过。代码仍以 `maxCopyEntries`、`maxCopyByt
 | 实服 `kpanel.kejilion.eu.org` | 记录精确 initiator、tab/navigation、referrer、载荷顺序和 History 结果；不得把候选描述为已解除现有客户端拦截 |
 | 受控 `127.0.0.1` / `localhost` | 复跑 A～G 时序，确认页面只记录尽力增强，不把任一 origin 的单次成功固化为 MIME、hostname 或站点信誉结论 |
 | 页面内文件拖拽 | 原移动/复制行为和修饰键语义不变 |
-| 两个 KPanel | v1/v2 描述符、鉴权、复制、失败提示不变 |
-| Windows → KPanel | 单项、批量、文件夹上传不变 |
-| Chrome / Edge 受管 profile | 记录 policy 差异，不把客户端拦截报告为 KPanel 成功 |
+| 两个 Dongger Panel | v1/v2 描述符、鉴权、复制、失败提示不变 |
+| Windows → Dongger Panel | 单项、批量、文件夹上传不变 |
+| Chrome / Edge 受管 profile | 记录 policy 差异，不把客户端拦截报告为 Dongger Panel 成功 |
 
 网页不能自动验证最终 Explorer 落盘，`DownloadURL` 因而只能是渐进增强；明确点击的单文件 ticket 与
 目录/多选 ZIP 始终保留为兜底。如果产品以后必须提供真正稳定的任意文件/目录 Shell 拖出，需要

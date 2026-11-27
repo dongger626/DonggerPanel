@@ -1,4 +1,4 @@
-# KPanel v1.30.0 发布验收记录
+# Dongger Panel v1.30.0 发布验收记录
 
 日期：2026-11-12
 
@@ -46,7 +46,7 @@ releaseChannel：stable；releaseTrain：1.30.0。
 ## 跨仓库联动判定
 
 - scriptLinkageState：not-required；本版未修改或单独发布 kejilion/sh。
-- KPanel 内置脚本基线：kejilion/sh@1faee13f3faef164efbfa899e244fc19ad58aaff；SHA-256 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
+- Dongger Panel 内置脚本基线：kejilion/sh@1faee13f3faef164efbfa899e244fc19ad58aaff；SHA-256 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
 - 脚本候选和变更集编号：不适用。稳定镜像 amd64/arm64 标签均绑定上述脚本 revision 和摘要；发布生命周期检查通过。
 - 阻断或移除的跨仓依赖：不适用。
 

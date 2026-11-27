@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.3 预览版发布验收
+# Dongger Panel v1.26.0-rc.3 预览版发布验收
 
 日期：2026-10-10
 
@@ -91,7 +91,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.26.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.3)：draft=false、prerelease=true；GitHub Latest=v1.25.1。
+- [Dongger Panel v1.26.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.3)：draft=false、prerelease=true；GitHub Latest=v1.25.1。
 - 版本与 preview OCI index `sha256:5be7461cdbe50dc2a933f796441c02e20e37cdf11ee4b27226ff80f30113f5a3`；amd64 `sha256:411d36eb3f701492bb7b841dc4e12943bb4634b61007e2e17d0d202e578308c5`；arm64 `sha256:bcced194688840560ffb9afb95780c0ab20073f2e8b23fc0bfe12a6fc5ec94cb`。两平台 version/revision/script labels 与冻结源码一致。
 - stable latest 保持 `sha256:1894b5e3aa76edbd75efef2de1164f44d38734cb3a27dc11aa2f75c420c1b325`；本次只更新 preview。上一 preview 回滚点 v1.26.0-rc.2 / bcc80ec5 / `sha256:46ee78d7e322adf15f7a9664d225d6134311ecc4f2090191da3a25f8c02f1f84`。
 - 附件14项、SHA256SUMS11项与 API digest 一致；meta VERSION、四项 BT LICENSE、LICENSE/THIRD_PARTY_NOTICES 字节与 Git 对比。未下载所有二进制字节，不把 API digest 说成独立全量下载验证。
@@ -107,7 +107,7 @@
 ## 生产部署安全核对与回滚
 
 - 不适用（预览版禁止生产部署）；生产未部署，无生产写入、备份、升级、回滚或生产健康证据。
-- prod-108/108/108.165.140.213：禁用全部 KPanel 操作，本次未连接、未部署、未核对。
+- prod-108/108/108.165.140.213：禁用全部 Dongger Panel 操作，本次未连接、未部署、未核对。
 - 隔离自动门禁、公开 image E2E 与浏览器不替代生产管理员写入证明。
 - 回上一 RC2 前恢复被隐藏的优惠桌面项，再恢复对应 Panel/脚本配对和必要配置备份；向稳定 v1.25.1 回退须先处理 RC 数据与功能差异，不能以切换通道触发降级。未执行完整现场回滚。
 - 公共默认入口仍为 v1.25.1；没有改写旧 tag、Release 或不可变版本镜像。
@@ -137,7 +137,7 @@
     "position": "before-production-write",
     "count": 1,
     "impact": "Managed worktree creation failed with Not a git repository because the chat directory was C:/GitHub. No shared files were overwritten.",
-    "recoveryEvidence": "Original tool response retained in the task transcript; no separate raw file is invented. The owned integration-fix worktree was created through Git against the verified KPanel repository and passed writer qualification before edits.",
+    "recoveryEvidence": "Original tool response retained in the task transcript; no separate raw file is invented. The owned integration-fix worktree was created through Git against the verified Dongger Panel repository and passed writer qualification before edits.",
     "permanentAction": "Release tooling maintainer; review 2026-10-17 or before the next L3 production write. Qualify the repository path before choosing the worktree API. Current dedicated Git fallback is recovery, not a shared tool repair.",
     "historicalReleases": []
   },
@@ -248,7 +248,7 @@
     "count": 1,
     "impact": "Release run 38050435163 attempt 1 failed in TestViewHonoursPublishingWindow during testing.TempDir RemoveAll: objects directory was not empty. No business assertion failure is present; all artifact build/publication steps were skipped. Source reading identifies Close cancellation without joining in-flight refresh, while the fake origin ignores context and the test advances time enough to start a background refresh.",
     "recoveryEvidence": "Original full 312233-byte gh-run-tag-attempt1.log, its receipt, jobs-tag-r2.json and actions-tag-watch-r3.json retained. public-before-r2 proves no partial public Release/image and unchanged stable/previous-preview defaults. Same immutable tag received one full workflow retry, not a failed-step skip; final success must be separately qualified as Release attempt 2 in tag-ci-result.json before acceptance. No separate reproduction or permanent fixture repair is claimed.",
-    "permanentAction": "KPanel offers/test fixture maintainer; review 2026-10-15 or before stable promotion. Ensure the fixture joins bounded refresh shutdown before TempDir cleanup and make fake-origin cancellation explicit, with deterministic regression. Preserve this original failure; a repeated failure must be repaired before any additional retry. Current bounded rerun is recovery, not the shared fixture repair.",
+    "permanentAction": "Dongger Panel offers/test fixture maintainer; review 2026-10-15 or before stable promotion. Ensure the fixture joins bounded refresh shutdown before TempDir cleanup and make fake-origin cancellation explicit, with deterministic regression. Preserve this original failure; a repeated failure must be repaired before any additional retry. Current bounded rerun is recovery, not the shared fixture repair.",
     "historicalReleases": []
   }
 ]

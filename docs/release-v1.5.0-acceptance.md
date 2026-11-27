@@ -1,4 +1,4 @@
-# KPanel v1.5.0 发布验收记录
+# Dongger Panel v1.5.0 发布验收记录
 
 日期：2026-09-06
 
@@ -24,10 +24,10 @@
 
 - `scriptLinkageState`：`coupled`；变更集 `post-v141-certificate-and-node-health-20260906`。
 - sh 基线 `50289bfd17bae589e22267c397b5c2781bd41ead`；已先行发布 `298f6f23751e36726660d73b5c0c83aef1b404f4`，包含 b3d0d35、ae24516、298f6f2；脚本版本号不改。
-- KPanel 原内置3759e10692f61fe375c0424389842ddc70a73ed7；本版内置298f6f2，root SHA256 `80365884b126b7a0cfb1bf0976ffbce7dfcc946ac05274f8da99594086d09581`，CN `455759e4012e9a0727377088b71ec41cbeac786f2f45e3220a5468c467779a1b`。
+- Dongger Panel 原内置3759e10692f61fe375c0424389842ddc70a73ed7；本版内置298f6f2，root SHA256 `80365884b126b7a0cfb1bf0976ffbce7dfcc946ac05274f8da99594086d09581`，CN `455759e4012e9a0727377088b71ec41cbeac786f2f45e3220a5468c467779a1b`。
 - updater generation 3，SHA256 `858c9d168fb4e13b6c38062616a12d92f0526276d0b0213524ce564bbb6b2842`；续签脚本 `3a63b9e0c1557fae9e18983a8eee284476a946a811c11b3076535aab1432e0d0`。Dockerfile/source.json/来源文档与实际公开 raw 对齐。
 - 根/CN只保留区域参数差异；LF源语法、证书 OpenSSL/flock/Docker替身 smoke、23项 updater 测试、嵌入运行时检查通过；实际 Agent/TLS 与节点/systemd矩阵另列，不能把替身当真实公网证书签发。
-- 发布决定：脚本兼容变更先行，再固定其来源发布 KPanel；阻断或移除的依赖范围：不适用。
+- 发布决定：脚本兼容变更先行，再固定其来源发布 Dongger Panel；阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
 
@@ -77,7 +77,7 @@
 
 ## 生产部署安全核对
 
-- 唯一生产/验证arena-154；108/prod-108禁用全部KPanel操作，本次未连接、未备份、未部署、未核对。
+- 唯一生产/验证arena-154；108/prod-108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未核对。
 - 新preflight `v1.5.0-7ba-production-r1` passed，12:15:56Z→12:15:58Z，旧1.4.1 healthy，受保护文件、OCI、SQLite和资源baseline已保存。旧pre-v1.4.1含1.4.0，不当作此次备份。
 - 新备份 `/root/kpanel-backups/pre-v1.5.0-20260906T123605Z`，停写归档、压缩完整性、旧镜像实际load与SHA256SUMS全部通过；备份后旧1.4.1健康恢复。kpanel.tar.zst 0462e19df7cb4e1872ae442db102ac1938a779daef3377ba696a6b3938ebe2aa，old-image.tar.zst b9a005dd1d8d583f5c4fb39442543e947d9ed81cbd1235a112b7a9668671a442；服务/安装标记/旧inspect一并保留。
 - 标准应用市场update exit0，拉取20c3648正式digest，安装器完成并恢复访问策略。日志v150-production-standard-update.log SHA256 3a321069558eb3f1910d13cc7909c417344d42dd51dfa7dcc1cb47f2b53c3dc3。

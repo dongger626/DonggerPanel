@@ -60,7 +60,7 @@ const toolReasonMaxRunes = 500
 var toolReasonSchema = map[string]any{
 	"type":        "string",
 	"maxLength":   toolReasonMaxRunes,
-	"description": "Optional model explanation for this tool call. KPanel removes it before validation, approval, audit, and host execution.",
+	"description": "Optional model explanation for this tool call. Dongger Panel removes it before validation, approval, audit, and host execution.",
 }
 
 func (t *panelAITools) RequiresApproval(ctx context.Context, name string, arguments json.RawMessage) bool {
@@ -173,7 +173,7 @@ func (t *panelAITools) DryRun(name string, arguments json.RawMessage) error {
 			return err
 		}
 	}
-	return errors.New("unknown KPanel tool")
+	return errors.New("unknown Dongger Panel tool")
 }
 
 func (t *panelAITools) Definitions() []ai.ToolDefinition {
@@ -195,20 +195,20 @@ func (t *panelAITools) Definitions() []ai.ToolDefinition {
 		{Name: "host_docker_backups", Description: "读取可恢复或迁移的 Docker 备份及 backupId；backup_restore/backup_migrate 前必须先调用", Schema: readSchema, ReadOnly: true},
 		{Name: "host_docker_environment", Description: "读取当前 Docker daemon 镜像源和 IPv6 配置；daemon_mirror/daemon_ipv6 前必须先调用", Schema: readSchema, ReadOnly: true},
 		{Name: "host_docker_jobs", Description: "读取 Docker 后台任务", Schema: readSchema, ReadOnly: true},
-		{Name: "host_system_action", Description: "执行 KPanel 已注册的结构化系统操作；磁盘清理使用 action=cleanup，maintenancePolicy=cache 或 standard，先读取磁盘占用再执行", Schema: systemActionToolSchema},
+		{Name: "host_system_action", Description: "执行 Dongger Panel 已注册的结构化系统操作；磁盘清理使用 action=cleanup，maintenancePolicy=cache 或 standard，先读取磁盘占用再执行", Schema: systemActionToolSchema},
 		{Name: "host_app_action", Description: "安装、启停、更新或卸载已注册应用", Schema: json.RawMessage(`{"type":"object","required":["appId","action"],"properties":{"appId":{"type":"string"},"action":{"enum":["install","start","stop","restart","check_update","update","uninstall","direct_access"]},"hostPort":{"type":"integer"},"accessMode":{"type":"string"},"resourceVersion":{"type":"string"}},"additionalProperties":false}`)},
 		{Name: "host_docker_container_action", Description: "启停、重启或删除容器", Schema: json.RawMessage(`{"type":"object","required":["containerId","action","resourceVersion"],"properties":{"containerId":{"type":"string"},"action":{"enum":["start","stop","restart","remove"]},"resourceVersion":{"type":"string"}},"additionalProperties":false}`)},
 		{Name: "host_diagnostic_start", Description: "启动固定诊断检查并返回任务 ID", Schema: json.RawMessage(`{"type":"object","required":["checkId"],"properties":{"checkId":{"type":"string"}},"additionalProperties":false}`)},
-		{Name: "host_docker_task", Description: "仅在用户明确要求修改 Docker 配置、创建/删除资源、清理或备份时启动结构化维护任务；根据 action、真实状态和用户意图自主选择相关字段，KPanel 只保留鉴权、审批、固定动作路由和审计边界；涉及现有资源或 daemon 配置时先调用对应只读工具；状态和资源占用查询禁止使用此工具", Schema: dockerMaintenanceToolSchema},
-		{Name: "host_file_list", Description: "列出受 KPanel File Manager 保护规则约束的目录，返回文件 resourceVersion", Schema: json.RawMessage(`{"type":"object","required":["path"],"properties":{"path":{"type":"string","maxLength":4096},"limit":{"type":"integer","minimum":1,"maximum":200},"search":{"type":"string","maxLength":128}},"additionalProperties":false}`), ReadOnly: true},
-		{Name: "host_file_read", Description: "读取受 KPanel File Manager 保护规则约束的 UTF-8 文本文件，最大 64 KiB", Schema: json.RawMessage(`{"type":"object","required":["path"],"properties":{"path":{"type":"string","maxLength":4096}},"additionalProperties":false}`), ReadOnly: true},
+		{Name: "host_docker_task", Description: "仅在用户明确要求修改 Docker 配置、创建/删除资源、清理或备份时启动结构化维护任务；根据 action、真实状态和用户意图自主选择相关字段，Dongger Panel 只保留鉴权、审批、固定动作路由和审计边界；涉及现有资源或 daemon 配置时先调用对应只读工具；状态和资源占用查询禁止使用此工具", Schema: dockerMaintenanceToolSchema},
+		{Name: "host_file_list", Description: "列出受 Dongger Panel File Manager 保护规则约束的目录，返回文件 resourceVersion", Schema: json.RawMessage(`{"type":"object","required":["path"],"properties":{"path":{"type":"string","maxLength":4096},"limit":{"type":"integer","minimum":1,"maximum":200},"search":{"type":"string","maxLength":128}},"additionalProperties":false}`), ReadOnly: true},
+		{Name: "host_file_read", Description: "读取受 Dongger Panel File Manager 保护规则约束的 UTF-8 文本文件，最大 64 KiB", Schema: json.RawMessage(`{"type":"object","required":["path"],"properties":{"path":{"type":"string","maxLength":4096}},"additionalProperties":false}`), ReadOnly: true},
 		{Name: "host_file_tail", Description: "读取受保护规则约束的大型 UTF-8 日志文件尾部，适合查看 Nginx 与服务错误日志", Schema: json.RawMessage(`{"type":"object","required":["path"],"properties":{"path":{"type":"string","maxLength":4096},"maxBytes":{"type":"integer","minimum":1024,"maximum":65536}},"additionalProperties":false}`), ReadOnly: true},
 		{Name: "host_file_write", Description: "使用 resourceVersion 覆盖现有 UTF-8 文本文件，最大 64 KiB；受保护和只读目录永远不可写", Schema: json.RawMessage(`{"type":"object","required":["path","content","expectedResourceVersion"],"properties":{"path":{"type":"string","maxLength":4096},"content":{"type":"string","maxLength":65536},"expectedResourceVersion":{"type":"string"}},"additionalProperties":false}`)},
-		{Name: "host_file_trash", Description: "把最多 20 个已读取且版本未变化的文件或目录移入 KPanel 回收站；不执行永久删除，核心路径仍不可触碰", Schema: json.RawMessage(`{"type":"object","required":["sources","expectedResourceVersions"],"properties":{"sources":{"type":"array","items":{"type":"string","maxLength":4096},"minItems":1,"maxItems":20},"expectedResourceVersions":{"type":"object","additionalProperties":{"type":"string"}}},"additionalProperties":false}`)},
-		{Name: "host_nginx_test", Description: "对 KPanel 管理的 Nginx 容器执行固定 nginx -t，返回语法错误位置；修改配置后必须先调用", Schema: readSchema, ReadOnly: true},
-		{Name: "host_nginx_reload", Description: "先执行固定 nginx -t，通过后才安全 reload KPanel 管理的 Nginx；配置无效时拒绝重载", Schema: readSchema},
+		{Name: "host_file_trash", Description: "把最多 20 个已读取且版本未变化的文件或目录移入 Dongger Panel 回收站；不执行永久删除，核心路径仍不可触碰", Schema: json.RawMessage(`{"type":"object","required":["sources","expectedResourceVersions"],"properties":{"sources":{"type":"array","items":{"type":"string","maxLength":4096},"minItems":1,"maxItems":20},"expectedResourceVersions":{"type":"object","additionalProperties":{"type":"string"}}},"additionalProperties":false}`)},
+		{Name: "host_nginx_test", Description: "对 Dongger Panel 管理的 Nginx 容器执行固定 nginx -t，返回语法错误位置；修改配置后必须先调用", Schema: readSchema, ReadOnly: true},
+		{Name: "host_nginx_reload", Description: "先执行固定 nginx -t，通过后才安全 reload Dongger Panel 管理的 Nginx；配置无效时拒绝重载", Schema: readSchema},
 		{Name: "host_site_change", Description: "创建、更新或删除网站配置", Schema: json.RawMessage(`{"type":"object","required":["operation"],"properties":{"operation":{"enum":["create","update","delete"]},"siteId":{"type":"string"},"payload":{"type":"object"}},"additionalProperties":false}`)},
-		{Name: "host_job_input", Description: "向已存在的 KPanel 交互任务提交输入", Schema: json.RawMessage(`{"type":"object","required":["kind","jobId","data"],"properties":{"kind":{"enum":["site","app","diagnostic"]},"jobId":{"type":"string"},"data":{"type":"string","maxLength":16384}},"additionalProperties":false}`)},
+		{Name: "host_job_input", Description: "向已存在的 Dongger Panel 交互任务提交输入", Schema: json.RawMessage(`{"type":"object","required":["kind","jobId","data"],"properties":{"kind":{"enum":["site","app","diagnostic"]},"jobId":{"type":"string"},"data":{"type":"string","maxLength":16384}},"additionalProperties":false}`)},
 		{Name: "host_docker_exec", Description: "在指定 Docker 容器内执行受 Agent 校验的命令", Schema: json.RawMessage(`{"type":"object","required":["containerId","resourceVersion","command"],"properties":{"containerId":{"type":"string"},"resourceVersion":{"type":"string"},"command":{"type":"array","items":{"type":"string"},"maxItems":32}},"additionalProperties":false}`)},
 	}
 	for index := range definitions {
@@ -234,7 +234,7 @@ func (t *panelAITools) Execute(ctx context.Context, execution ai.ToolExecutionCo
 		}
 	}
 	if !known {
-		return "", errors.New("unknown KPanel tool")
+		return "", errors.New("unknown Dongger Panel tool")
 	}
 	if readOnly {
 		if err := validateReadToolArguments(name, arguments); err != nil {
@@ -515,7 +515,7 @@ func (t *panelAITools) prepareWrite(name string, raw json.RawMessage) (method, p
 		method, path, target = http.MethodPost, "/v1/docker/containers/"+input.ContainerID+"/exec", input.ContainerID
 		body, err = json.Marshal(map[string]any{"resourceVersion": input.ResourceVersion, "command": input.Command})
 	default:
-		err = errors.New("unknown KPanel tool")
+		err = errors.New("unknown Dongger Panel tool")
 	}
 	return
 }

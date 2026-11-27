@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.1 发布验收记录
+# Dongger Panel v1.26.0-rc.1 发布验收记录
 
 日期：2026-10-09；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.26.0`。
 
@@ -83,7 +83,7 @@ OCR 适用候选按本轮现有 delegate 原件记载，先自由臂后约束臂
 
 最近一次可观察每日安全通告作业为 [37912308544](https://github.com/kejilion/KPanel/actions/runs/37912308544)，基线 `29f7451816a69acad9aa999dd936b1e1021f0627`，结论 failure，结束 `2026-10-09T09:36:54Z`。未单独回收该失败日志，不推定其具体原因；本轮最终提交的当前依赖图审计由实际 L3 与候选/main CI 通过证明，不能改写旧每日作业为成功。
 
-策略登记 EOL 最近复核 `2026-07-28`，下次 `2026-10-28T23:59:59.999Z`，当前状态 current；证据 `docs/security-performance-hardening-2026-07-28.md`。登记例外 TypeScript 6.0.3 → 7.0.2 因 Vue 工具链 API 不兼容暂缓，@types/node 24.19.0 → 26.6.3 因当前 Node24 LTS 运行时暂缓；KPanel base maintenance 于 2026-10-15 复核，缓解/退出条件/原回滚点保留在 dependency-policy.json。传递依赖 latest 作为直接依赖归属信号，不逐项强升。
+策略登记 EOL 最近复核 `2026-07-28`，下次 `2026-10-28T23:59:59.999Z`，当前状态 current；证据 `docs/security-performance-hardening-2026-07-28.md`。登记例外 TypeScript 6.0.3 → 7.0.2 因 Vue 工具链 API 不兼容暂缓，@types/node 24.19.0 → 26.6.3 因当前 Node24 LTS 运行时暂缓；Dongger Panel base maintenance 于 2026-10-15 复核，缓解/退出条件/原回滚点保留在 dependency-policy.json。传递依赖 latest 作为直接依赖归属信号，不逐项强升。
 
 采用时限复用策略（启动/决策/处置上限）：紧急安全 1/3/3 天且服从第 11 节更严格时限；兼容补丁 7/14/30 天；minor 14/30/60 天；major/工具链/基座 30/90/90 天。逐项首次检测时点和完整行动列表未下载，不臆算各组件到期日。构建维护负责人于 2026-10-16 或稳定提升前补齐报告原件及到期行动处置，以先发生者为准。
 

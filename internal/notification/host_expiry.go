@@ -69,10 +69,10 @@ func hostExpiryMessage(host cluster.Host, date string, days int, now time.Time, 
 	name := safeMessageText(host.Name)
 	switch locale {
 	case "en-US":
-		return fmt.Sprintf("⏰ [KPanel Cluster Notice]\n\nHost: %s\nExpiry date: %s\nDays remaining: %d\n\nTime: %s", name, date, days, formatNotificationTime(now))
+		return fmt.Sprintf("⏰ [Dongger Panel Cluster Notice]\n\nHost: %s\nExpiry date: %s\nDays remaining: %d\n\nTime: %s", name, date, days, formatNotificationTime(now))
 	case "zh-TW":
-		return fmt.Sprintf("⏰ [KPanel 叢集通知]\n\n主機：%s\n到期日期：%s\n剩餘天數：%d\n\n時間：%s", name, date, days, formatNotificationTime(now))
+		return fmt.Sprintf("⏰ [Dongger Panel 叢集通知]\n\n主機：%s\n到期日期：%s\n剩餘天數：%d\n\n時間：%s", name, date, days, formatNotificationTime(now))
 	default:
-		return fmt.Sprintf("⏰ [KPanel 集群通知]\n\n主机：%s\n到期日期：%s\n剩余天数：%d\n\n时间：%s", name, date, days, formatNotificationTime(now))
+		return fmt.Sprintf("⏰ [Dongger Panel 集群通知]\n\n主机：%s\n到期日期：%s\n剩余天数：%d\n\n时间：%s", name, date, days, formatNotificationTime(now))
 	}
 }

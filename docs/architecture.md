@@ -47,10 +47,10 @@ Agent，由文件管理器在目标目录内暂存、`fsync` 并原子发布。A
 
 ## 集群监控边界
 
-每台 KPanel 都可以同时作为中心端和被控端。中心端通过 HTTPS，或在无域名时通过 Noise
+每台 Dongger Panel 都可以同时作为中心端和被控端。中心端通过 HTTPS，或在无域名时通过 Noise
 端到端加密的公网 `IP + 端口`，与远端 `paneld` 的固定联邦接口通信（目标声明 `panel-stream-v3` 时，终端与文件改用同一端口上经 Noise 认证的流式连接）；远端 `paneld`
 再通过本机 Unix Socket 读取 Agent 的窄化主机摘要，或在独立终端 scope 下创建有界 PTY。
-无 KPanel 的轻量节点则由低权限 telemetry 进程和独立 root `terminal-broker` 组成：broker
+无 Dongger Panel 的轻量节点则由低权限 telemetry 进程和独立 root `terminal-broker` 组成：broker
 只通过授权中心的出站 HTTPS v2 Noise 长轮询或其主动建立的 Noise 流式连接接收固定终端 payload，并在本机创建同样的固定登录 Shell PTY。
 它不监听入站 TCP、SSH、HTTP、WebSocket 或低权限 Unix Socket。Agent Token 和管理员 Session
 不会跨主机传递；终端能力只通过独立授权、认证加密通道开放。
@@ -66,7 +66,7 @@ Agent，由文件管理器在目标目录内暂存、`fsync` 并原子发布。A
 
 ## 与 kejilion.sh 的关系
 
-Agent 直接发现和管理 `kejilion.sh`、KPanel、Compose、Docker CLI 与人工维护生成的实际产物：
+Agent 直接发现和管理 `kejilion.sh`、Dongger Panel、Compose、Docker CLI 与人工维护生成的实际产物：
 
 - 网站：`/home/web/conf.d`、`/home/web/html`、`/home/web/certs`。
 - LDNMP：Docker 中的 Nginx、MySQL、PHP 等容器。
@@ -128,9 +128,9 @@ Agent 不 `source` Shell 函数。需要写入脚本已定义的外联配置时�
 ## Docker 策略
 
 所有容器均可查看和按 Docker 实时状态管理，不检查来源、label、Compose 工作目录、
-特权配置、宿主机挂载或是否为 KPanel 自身。删除使用 Docker 强制删除语义；镜像、网络、
+特权配置、宿主机挂载或是否为 Dongger Panel 自身。删除使用 Docker 强制删除语义；镜像、网络、
 卷和 Prune 直接使用固定 Docker API。
 
-运行中的任意容器都可使用有界单次无 TTY 控制台。本机及新 v2 配对 KPanel 已支持有界宿主机
+运行中的任意容器都可使用有界单次无 TTY 控制台。本机及新 v2 配对 Dongger Panel 已支持有界宿主机
 PTY；当前尚未实现交互式容器 TTY 和 Compose 通用编辑器。这些是待实现适配器，不是外部资源权限限制。资源归属字段只用于展示
 生态来源和排查问题，不参与后端授权。

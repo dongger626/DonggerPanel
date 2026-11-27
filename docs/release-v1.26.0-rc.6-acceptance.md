@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.6 发布验收记录
+# Dongger Panel v1.26.0-rc.6 发布验收记录
 
 日期：2026-10-11
 
@@ -23,7 +23,7 @@
 
 ## 发布画像
 
-- 业务域：Docker 持续终端与 KPanel 自有 Agent 生命周期。
+- 业务域：Docker 持续终端与 Dongger Panel 自有 Agent 生命周期。
 - 变更面：有界进程身份就绪等待；安装/更新生成的 systemd capability 配置；发布元数据。
 - 用户旅程：容器“进入控制台”启动、目录输入、尺寸调整、关闭与 Agent 重启；旧 RC5 服务配置迁移；实际发布信息与更新弹窗。
 - API、存储、端口、Compose 和 kejilion/sh 协议未改变。应用市场 Agent 模板两行补 CAP_KILL，和既有 canonical unit 对齐；权限迁移必须显式刷新服务配置。

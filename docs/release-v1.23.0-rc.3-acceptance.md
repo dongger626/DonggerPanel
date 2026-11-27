@@ -1,4 +1,4 @@
-# KPanel v1.23.0-rc.3 发布验收记录
+# Dongger Panel v1.23.0-rc.3 发布验收记录
 
 日期：2026-09-28。发布级别：L3。`releaseChannel=preview`；`releaseTrain=1.23.0`。
 
@@ -36,7 +36,7 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState=not-required`，内置 `kejilion.sh` 未改；跨仓库脚本变更集不适用。
-- 安装输出文案变化要求同步应用市场 `kpanel.conf`。KPanel 内置文件和 `kejilion/apps` 的新文件 Git blob 均为 `fa4b95374ed3b186d920207537f451a5b6d839f7`；`kejilion/apps` 的 `main` 已快进至 `33c7c1cc03fbc7eeee48c2846b3104f060c75416`，Bash 语法通过，KPanel L3 对相同文件执行了应用配置生命周期测试。默认安装镜像仍为稳定 `latest`，未改成 `preview`。
+- 安装输出文案变化要求同步应用市场 `kpanel.conf`。Dongger Panel 内置文件和 `kejilion/apps` 的新文件 Git blob 均为 `fa4b95374ed3b186d920207537f451a5b6d839f7`；`kejilion/apps` 的 `main` 已快进至 `33c7c1cc03fbc7eeee48c2846b3104f060c75416`，Bash 语法通过，Dongger Panel L3 对相同文件执行了应用配置生命周期测试。默认安装镜像仍为稳定 `latest`，未改成 `preview`。
 
 ## 多维质量结论
 

@@ -1203,12 +1203,12 @@ describe('DesktopView dynamic entries', () => {
     expect(mockedArchiveUrl).toHaveBeenCalledWith(expect.arrayContaining([
       expect.objectContaining({ path: '/home/one.txt' }),
       expect.objectContaining({ path: '/home/app' }),
-    ]), 'KPanel Desktop.zip')
+    ]), 'Dongger Panel Desktop.zip')
     expect(values.get(NATIVE_FILE_DOWNLOAD_DRAG_TYPE)).toMatch(
-      /^application\/zip:KPanel Desktop\.zip:https?:\/\//,
+      /^application\/zip:Dongger Panel Desktop\.zip:https?:\/\//,
     )
     expect(values.get(NATIVE_FILE_DOWNLOAD_DRAG_TYPE)).toContain(
-      '/api/v1/files/archive?name=KPanel%20Desktop.zip',
+      '/api/v1/files/archive?name=Dongger Panel%20Desktop.zip',
     )
 
     const protectedHoverDataTransfer = {
@@ -1238,7 +1238,7 @@ describe('DesktopView dynamic entries', () => {
 
   it('copies a remote Files drag to the local desktop before adding its shortcut', async () => {
     const copied = {
-      name: 'remote.txt', path: '/home/KPanel Desktop/remote.txt', kind: 'file' as const,
+      name: 'remote.txt', path: '/home/Dongger Panel Desktop/remote.txt', kind: 'file' as const,
       sizeBytes: 6, mode: '0644', owner: 'root', group: 'root',
       modifiedAt: '2026-08-15T00:00:00Z', resourceVersion: 'sha256:target-remote',
       editable: true, previewable: true,
@@ -1279,10 +1279,10 @@ describe('DesktopView dynamic entries', () => {
     expect(mockedPanelTransfer).toHaveBeenCalledWith({
       batchId: expect.stringMatching(/^[a-f0-9]{32}$/), conflictPolicies: {file:'ask',directory:'ask'},
       sourceNodeId: 'a'.repeat(32), path: '/home/remote.txt', resourceVersion: 'sha256:source-remote',
-      targetDirectory: '/home/KPanel Desktop',
+      targetDirectory: '/home/Dongger Panel Desktop',
     }, expect.any(Function), expect.any(AbortSignal))
     expect(mockedWorkspaceUpdate.mock.calls.at(-1)?.[0].shortcuts).toEqual(expect.arrayContaining([
-      expect.objectContaining({ name: 'remote.txt', targetType: 'file', path: '/home/KPanel Desktop/remote.txt' }),
+      expect.objectContaining({ name: 'remote.txt', targetType: 'file', path: '/home/Dongger Panel Desktop/remote.txt' }),
     ]))
     wrapper.unmount()
   })
@@ -1446,7 +1446,7 @@ describe('DesktopView dynamic entries', () => {
     const uploaded = mockedFileUpload.mock.calls[0]![1]
     expect(uploaded.name).toMatch(/^clipboard-\d+-1\.png$/)
     expect(mockedWorkspaceUpdate.mock.calls.at(-1)?.[0]?.shortcuts).toEqual(expect.arrayContaining([
-      expect.objectContaining({ path: `/home/KPanel Desktop/${uploaded.name}`, targetType: 'file' }),
+      expect.objectContaining({ path: `/home/Dongger Panel Desktop/${uploaded.name}`, targetType: 'file' }),
     ]))
     const saved = mockedWorkspaceUpdate.mock.calls.at(-1)![0]
     expect(saved.positions).toEqual({
@@ -1498,22 +1498,22 @@ describe('DesktopView dynamic entries', () => {
 
     wrapper.element.dispatchEvent(internalFileDragEvent('dragover', dataTransfer))
     await nextTick()
-    expect(wrapper.get('.desktop__file-drop').text()).toContain('上传到 KPanel 桌面')
+    expect(wrapper.get('.desktop__file-drop').text()).toContain('上传到 Dongger Panel 桌面')
 
     wrapper.element.dispatchEvent(internalFileDragEvent('drop', dataTransfer, 190, 160))
     await flushPromises()
 
     expect(mockedFileAction).toHaveBeenCalledWith(
-      expect.objectContaining({ action: 'mkdir', target: '/home', name: 'KPanel Desktop' }),
+      expect.objectContaining({ action: 'mkdir', target: '/home', name: 'Dongger Panel Desktop' }),
       expect.any(AbortSignal),
     )
     expect(mockedFileUpload).toHaveBeenCalledWith(
-      '/home/KPanel Desktop', file, false, expect.any(Function), expect.any(AbortSignal),
+      '/home/Dongger Panel Desktop', file, false, expect.any(Function), expect.any(AbortSignal),
     )
     const update = mockedWorkspaceUpdate.mock.calls.at(-1)?.[0]
     expect(update?.shortcuts).toEqual(expect.arrayContaining([
       expect.objectContaining({
-        name: 'notes.txt', targetType: 'file', path: '/home/KPanel Desktop/notes.txt',
+        name: 'notes.txt', targetType: 'file', path: '/home/Dongger Panel Desktop/notes.txt',
       }),
     ]))
     expect(wrapper.get('.desktop-transfer').text()).toContain('已传到桌面')
@@ -1567,7 +1567,7 @@ describe('DesktopView dynamic entries', () => {
 
   it('copies a cross-panel directory and creates its desktop entry after commit', async () => {
     const copied = {
-      name: 'app', path: '/home/KPanel Desktop/app', kind: 'directory' as const,
+      name: 'app', path: '/home/Dongger Panel Desktop/app', kind: 'directory' as const,
       sizeBytes: 0, mode: '0755', owner: 'root', group: 'root',
       modifiedAt: '2026-08-15T00:00:00Z', resourceVersion: 'sha256:target',
       editable: false, previewable: false,
@@ -1593,17 +1593,17 @@ describe('DesktopView dynamic entries', () => {
     wrapper.element.dispatchEvent(internalFileDragEvent('dragover', dataTransfer))
     await nextTick()
     expect(wrapper.get('.desktop__file-drop').text()).toContain('从另一台主机复制')
-    expect(wrapper.get('.desktop__file-drop').text()).toContain('/home/KPanel Desktop')
+    expect(wrapper.get('.desktop__file-drop').text()).toContain('/home/Dongger Panel Desktop')
 
     wrapper.element.dispatchEvent(internalFileDragEvent('drop', dataTransfer, 190, 160))
     await flushPromises()
     expect(mockedPanelTransfer).toHaveBeenCalledWith({
       batchId: expect.stringMatching(/^[a-f0-9]{32}$/), conflictPolicies: {file:'ask',directory:'ask'},
       sourceNodeId: 'a'.repeat(32), path: '/app', resourceVersion: 'sha256:source',
-      targetDirectory: '/home/KPanel Desktop',
+      targetDirectory: '/home/Dongger Panel Desktop',
     }, expect.any(Function), expect.any(AbortSignal))
     expect(mockedWorkspaceUpdate.mock.calls.at(-1)?.[0].shortcuts).toEqual(expect.arrayContaining([
-      expect.objectContaining({ name: 'app', targetType: 'directory', path: '/home/KPanel Desktop/app' }),
+      expect.objectContaining({ name: 'app', targetType: 'directory', path: '/home/Dongger Panel Desktop/app' }),
     ]))
     expect(wrapper.get('.desktop-transfer').text()).toContain('跨主机复制完成')
     wrapper.unmount()
@@ -1615,7 +1615,7 @@ describe('DesktopView dynamic entries', () => {
       onEvent({ state: 'complete' })
       const name = input.path.slice(input.path.lastIndexOf('/') + 1)
       return {
-        name, path: `/home/KPanel Desktop/${name}`, kind: 'file' as const,
+        name, path: `/home/Dongger Panel Desktop/${name}`, kind: 'file' as const,
         sizeBytes: 4, mode: '0644', owner: 'root', group: 'root',
         modifiedAt: '2026-08-15T00:00:00Z', resourceVersion: `sha256:target-${name}`,
         editable: true, previewable: true,
@@ -1641,8 +1641,8 @@ describe('DesktopView dynamic entries', () => {
 
     expect(mockedPanelTransfer).toHaveBeenCalledTimes(2)
     expect(mockedWorkspaceUpdate.mock.calls.at(-1)?.[0].shortcuts).toEqual(expect.arrayContaining([
-      expect.objectContaining({ name: 'one.txt', path: '/home/KPanel Desktop/one.txt' }),
-      expect.objectContaining({ name: 'two.txt', path: '/home/KPanel Desktop/two.txt' }),
+      expect.objectContaining({ name: 'one.txt', path: '/home/Dongger Panel Desktop/one.txt' }),
+      expect.objectContaining({ name: 'two.txt', path: '/home/Dongger Panel Desktop/two.txt' }),
     ]))
     expect(wrapper.get('.desktop-transfer').text()).toContain('跨主机复制完成')
     expect(wrapper.get('.desktop-transfer').text()).toContain('2 个项目')

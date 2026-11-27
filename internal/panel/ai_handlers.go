@@ -18,7 +18,7 @@ import (
 )
 
 // EnableAI initializes the optional AI module. An error disables only AI;
-// callers must keep serving the rest of KPanel.
+// callers must keep serving the rest of Dongger Panel.
 func (s *Server) EnableAI() error {
 	service, err := ai.Open(s.config.DataDir, &panelAITools{server: s})
 	if err != nil {

@@ -1,8 +1,8 @@
-# KPanel 执行兼容、视觉防漏与验证效率改进
+# Dongger Panel 执行兼容、视觉防漏与验证效率改进
 
 - 提案状态：试行
 - 提案日期：2026-08-24
-- 负责人：KPanel 协调中心
+- 负责人：Dongger Panel 协调中心
 - 适用业务域：多 AI 开发、变更感知验证、本地功能预览、发布执行
 - 基线提交 / 标签：`b7d7a00fb57fd5d9c18b314086772219a97d7931` / `v0.96.0`
 - 关联验收记录：`docs/release-v0.95.1-acceptance.md`、`docs/release-v0.95.2-acceptance.md`、`docs/release-v0.96.0-acceptance.md`

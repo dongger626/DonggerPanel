@@ -41,7 +41,7 @@ describe('system management presets', () => {
     expect(new Set(timezonePresets.map((preset) => preset.value)).size).toBe(timezonePresets.length)
   })
 
-  it('recognizes mirror products written by kejilion.sh and KPanel', () => {
+  it('recognizes mirror products written by kejilion.sh and Dongger Panel', () => {
     expect(detectMirrorPreset(['mirrors.aliyun.com'])).toBe('cn-default')
     expect(detectMirrorPreset(['mirrors.tuna.tsinghua.edu.cn'])).toBe('cn-edu')
     expect(detectMirrorPreset(['mirrors.xtom.hk'])).toBe('abroad')

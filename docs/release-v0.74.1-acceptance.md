@@ -1,4 +1,4 @@
-# KPanel v0.74.1 上线验收记录
+# Dongger Panel v0.74.1 上线验收记录
 
 日期：2026-08-15（Asia/Shanghai）
 
@@ -75,12 +75,12 @@
 ## 生产部署安全核对
 
 - 唯一目标与授权：`arena-154`；使用与正式 apps Git blob 相同的 `/root/apps/kpanel.conf` 标准更新入口，没有覆盖 `/root/apps` 本地内容。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未检查、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未检查、未备份、未部署、未升级、未核对。
 - 升级前：v0.74.0、OCI `sha256:7973094ea48a28191cb2a4360f2c7c67a8fc536e0486082d2ff3e2abb3b33b99`，Panel healthy、0 重启、无 OOM，Agent active。
 - 停写备份：`/root/kpanel-backups/v0.74.1-preupgrade-arena154-20260815T120419Z.tar.gz`，SHA-256 `284a8938defcf2ed6517b936d937dbc7b9eb815926042f09a635bc0e31fee041`。
 - v0.74.0 镜像归档：同名 `.image.tar`，SHA-256 `de6532eaf42347b7aaa99ebc614e6ab2cdc6c344fce459e44334c361a2a753fd`；已实际 `docker load` 并核对 version/revision。
 - 升级后：v0.74.1，运行镜像/revision 与公开 OCI 精确匹配；Panel healthy、restart 0、OOM false；Agent active 且版本 `0.74.1 v1alpha1`；Compose、Panel-Agent 健康、固定脚本、SQLite、错误日志和 5 次短采样通过。
-- 生产仅执行停写备份、标准 KPanel 更新及部署安全核对；动态图标真实缓存写入只在隔离实例验收，未主动改变生产业务数据。
+- 生产仅执行停写备份、标准 Dongger Panel 更新及部署安全核对；动态图标真实缓存写入只在隔离实例验收，未主动改变生产业务数据。
 
 ## 回滚
 

@@ -1,4 +1,4 @@
-# KPanel v0.86.1 发布验收记录
+# Dongger Panel v0.86.1 发布验收记录
 
 日期：2026-08-19
 
@@ -37,7 +37,7 @@
 
 ## 154 生产升级
 
-- 目标仅 `arena-154`；`prod-108` 永久不纳入 KPanel 测试、灰度、备份或部署，本轮未连接。
+- 目标仅 `arena-154`；`prod-108` 永久不纳入 Dongger Panel 测试、灰度、备份或部署，本轮未连接。
 - 升级前：Panel v0.86.0 healthy，Agent active，restart=0、OOM=false；旧镜像为 `sha256:d27e5fb6ec0d56cc6a862754bc2d21a4fbfd5608e79b2561304b670fb0f24ed8`。
 - 停写一致性备份：`/root/kpanel-backups/v0.86.1-preupgrade-arena154-20260819T082528Z`；包含旧镜像、Compose、`.env`、`agent.env`、Agent unit、脚本、面板数据及 apps 配置。归档恢复抽取校验通过，`SHA256SUMS` SHA-256 `64a4a8fa0bd8fb83f1689c612fa80cf84b1c9b23cf37ffaab36e1d21f5c56b9a`。
 - 标准更新入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，退出码 0；未执行业务数据、SSH、防火墙、账户或 Docker 项目写操作。
@@ -71,5 +71,5 @@
 ## 遗留风险
 
 - 本版不改变 AI 后端能力；字号与布局已由自动化和本地精确候选浏览器复核，生产只做健康与版本核对。
-- 108 永久不纳入 KPanel 任何线上测试或部署。
+- 108 永久不纳入 Dongger Panel 任何线上测试或部署。
 - 若后续发现产品行为问题，必须基于最新 main 制作新的最小补丁，不改写 v0.86.1 Tag/Release。

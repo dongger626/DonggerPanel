@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.4 发布验收记录
+# Dongger Panel v1.28.0-rc.4 发布验收记录
 
 日期：2026-10-25
 
@@ -24,7 +24,7 @@
 正文、接口和更新弹窗实际核验3条更新、3条升级提示。以下限制属于公开预览已知边界：
 
 1. 主动加入预览通道后方可更新，稳定默认仍1.27.2；监控只读取现有本机源站日志，地域需要自行提供兼容离线MMDB，不等同浏览器访客统计。暂停保留历史，清空不删除原始日志及WAF配置。
-2. **默认复制命令不能直接用于全新轻量节点的预览版安装。** 新命令使用v2 FD3/hash本地引用，稳定Node显式拒绝；固定安装脚本仍默认GitHub Latest稳定1.27.2。须匹配同版本Node资产，不能把完整带凭证命令嵌入bash-c/ssh参数。候选Node与原安装脚本的同版本受控夹具已验；默认公开稳定下载后的全新接入未通过，不声称可用。负责人KPanel发布/轻量节点维护者，2026-10-28复核，稳定1.28宣称默认安装可用前必须用真实默认脚本完成全新接入和受保护凭证/恢复验收；详见仓外preview-compatibility-followups.json。
+2. **默认复制命令不能直接用于全新轻量节点的预览版安装。** 新命令使用v2 FD3/hash本地引用，稳定Node显式拒绝；固定安装脚本仍默认GitHub Latest稳定1.27.2。须匹配同版本Node资产，不能把完整带凭证命令嵌入bash-c/ssh参数。候选Node与原安装脚本的同版本受控夹具已验；默认公开稳定下载后的全新接入未通过，不声称可用。负责人Dongger Panel发布/轻量节点维护者，2026-10-28复核，稳定1.28宣称默认安装可用前必须用真实默认脚本完成全新接入和受保护凭证/恢复验收；详见仓外preview-compatibility-followups.json。
 3. 升级前备份Panel/Agent，先完成或安全处置在途归档/恢复任务再回退RC3；新恢复身份、任务记录及监控数据库不能只换旧镜像自动回退。历史位于`<DataDir>/site-traffic/analytics.sqlite`，独立于配置备份，需停Panel并备份整个site-traffic及WAL/SHM。
 
 ## 跨仓库联动
@@ -68,7 +68,7 @@ OCR1.12.11先保存自由臂，再执行规则覆盖；最终区间8b9a0d58..6e0
 
 采用undici8.11.2→8.12.3开发传递依赖安全补丁及上述本地MMDB读取器，未改工具链、基础镜像、Action或脚本pin。undici官方GHSA-xjj6-f33q-929c拒绝服务通告及同包告警由实际npm扫描回归验证。最近已核对的旧主线定时安全任务40074702002/job120815467772（2026-10-24，e577e277）因undici高危告警退出2，原日志保留，不改记通过。最终push依赖工作流40160682509的security-advisories/job121071389650按仅定时条件skip；本版实际安全结论来自同SHA候选/主线CI、L3及发布任务的独立扫描，不将skip当作每日审计成功。
 
-6次自动依赖报告（逐项run/job见dependency-disposition.json）均failure，均完整9/9、emergency-security0，以exit3报告两项既有到期维护例外。最终产品330信号=33直接/基座+297传递归属；EOL current至2026-10-28T23:59:59.999Z。TypeScript6.0.3→7.0.2与@types/node24.19.0→26.6.5由KPanel base maintenance负责，reviewDate2026-10-23保持due；分别需Vue支持TS7全套检查及批准Node26LTS运行时，不为本版兼容性贸然升级、不续期、不把报告记为成功。其余未采纳信号按14.1原责任/期限独立处置。最终完整产品CI/L3安全门禁通过，与维护报表状态分别记录。
+6次自动依赖报告（逐项run/job见dependency-disposition.json）均failure，均完整9/9、emergency-security0，以exit3报告两项既有到期维护例外。最终产品330信号=33直接/基座+297传递归属；EOL current至2026-10-28T23:59:59.999Z。TypeScript6.0.3→7.0.2与@types/node24.19.0→26.6.5由Dongger Panel base maintenance负责，reviewDate2026-10-23保持due；分别需Vue支持TS7全套检查及批准Node26LTS运行时，不为本版兼容性贸然升级、不续期、不把报告记为成功。其余未采纳信号按14.1原责任/期限独立处置。最终完整产品CI/L3安全门禁通过，与维护报表状态分别记录。
 
 ## 多维质量与功能预览
 
@@ -209,13 +209,13 @@ GitHub Latest ID420434596仍v1.27.2，Docker latest `sha256:5369dc9a2b8151314181
     "count": 6,
     "impact": "Complete9/9 freshness report exits3 because two existing TypeScript/Node-type major-upgrade exceptions are due10/23. No missing detector or emergency-security signal; not represented as passed maintenance.",
     "recoveryEvidence": "All4 automatically triggered complete reports failed exit3 with9/9 sources, emergency-security0 and same2 due exceptions:40157107690/121060722086,40158857339/121065942242,40159781075/121068721536,40160682509/121071388650. Original logs retained; no manual rerun or deadline renewal. Fifth automatic report40164857128/job121083709629 also complete9/9/emergency0/same2 due/exit3; original log retained. Sixth automatic main report40165488349/job121085551536 also complete9/9/emergency0/same2 due/exit3; original log retained.",
-    "permanentAction": "KPanel base maintenance must review existing major-toolchain adoption evidence through14.1; ordinary release isolates unrelated maintenance debt and still requires actual product security/CI/L3. Do not reset deadlines or upgrade majors for green status.",
+    "permanentAction": "Dongger Panel base maintenance must review existing major-toolchain adoption evidence through14.1; ordinary release isolates unrelated maintenance debt and still requires actual product security/CI/L3. Do not reset deadlines or upgrade majors for green status.",
     "historicalReleases": []
   },
   {
     "impact": "Original public40161392425/job121080843837 completed public asset identity, but HTTPS-configured product correctly returned426 to legacy plaintext bootstrap. Browser initial checks0; no functional browser pass claimed.",
     "fingerprint": "public/real-feature-fixture/stale-transport-contract",
-    "permanentAction": "KPanel release-tools maintainer updates only fixed verifier resources to actual secure-transport/session-revocation contract; no product bypass, assertion removal or timeout extension. Independent5.3 review and exact helper candidate/main CI before readonly recovery.",
+    "permanentAction": "Dongger Panel release-tools maintainer updates only fixed verifier resources to actual secure-transport/session-revocation contract; no product bypass, assertion removal or timeout extension. Independent5.3 review and exact helper candidate/main CI before readonly recovery.",
     "recoveryEvidence": "Original public ZIP12587497913 sha256467a92e4 and failed log retained. Independent fixed6 matrix390 passed after actual-cookie replay correction, candidateCI40164856896/mainCI40165488375 complete359. Later058 response-only fix qualified; readonly40167684516 passed48/26/45/31 with samef673/850 digest and original40161392425 snapshot. No product republish.",
     "count": 1,
     "historicalReleases": [],

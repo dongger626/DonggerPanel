@@ -1,4 +1,4 @@
-# KPanel v1.27.0-rc.9 发布验收记录
+# Dongger Panel v1.27.0-rc.9 发布验收记录
 
 已验证：RC9 已公开发布，正式发布流程、精确候选 CI、L3 和公开镜像浏览器验收通过；生产未部署。
 
@@ -45,7 +45,7 @@
 
 - 安全盲审补漏：本候选没有触及 `.governance/security-audit/boundary-policy.json` 的 `securityReview.paths`，故本候选不触发 candidate 档盲审；本记录不据此宣称全面安全，也未执行 CF scoped/full 审计。
 - OCR 行审：工具版本 1.12.11；代码观察区间为候选代码提交范围 `421b8bf..47ad861`，5/5 文件覆盖，3 个代码路径 / 80 行，free-form=0、有效 H/M/L=0/0/0、constrained-only=0。最终候选相对已审代码仅变更 `scripts/torrent-backport-scan-scope.json` 的扫描身份元数据。
-- `node scripts/security-review-scope.mjs --base v1.26.0` 累计输出 35 个审查分组，其中 17 recorded、18 missing；输出含 `invalid_trailer=true`。本次未列出 stale 分组，故不单独判定 stale 数为零。该稳定基线遗留覆盖不由 RC9 的 UI 差异引入；下一稳定发布前由 KPanel release maintainer 按 5.4 review 档补漏并逐项处置，未核实线索不作为漏洞或安全通过结论。
+- `node scripts/security-review-scope.mjs --base v1.26.0` 累计输出 35 个审查分组，其中 17 recorded、18 missing；输出含 `invalid_trailer=true`。本次未列出 stale 分组，故不单独判定 stale 数为零。该稳定基线遗留覆盖不由 RC9 的 UI 差异引入；下一稳定发布前由 Dongger Panel release maintainer 按 5.4 review 档补漏并逐项处置，未核实线索不作为漏洞或安全通过结论。
 - 修复交付状态：路径复制和窄屏工具栏源码及 RC9 产物已交付；尚未进入稳定版，也未部署生产。
 - OCR 与安全范围的原始摘要保存在 `C:\GitHub\_release-evidence\v1.27.0-rc.9\ocr` 及证据根内；详细 L3 / CI 原件见后续证据索引。
 
@@ -54,7 +54,7 @@
 - `scriptLinkageState`：`not-required`。
 - 变更集、脚本候选：不适用；无脚本仓库提交，亦未改变应用市场依赖。
 - 镜像标签核对的内置脚本基线：commit `160924a498d9b8d071fed72f165d23c1b9e886de`，SHA-256 `39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1`。
-- 发布决定：仅发布 KPanel 预览候选；脚本与应用市场契约保持不变。
+- 发布决定：仅发布 Dongger Panel 预览候选；脚本与应用市场契约保持不变。
 
 ## 多维质量结论
 
@@ -113,7 +113,7 @@
 ## 生产部署安全核对
 
 - 本版本为 preview，生产部署不适用且禁止；本任务仅获预览发布授权，没有生产部署授权。
-- 不存在验证/灰度或正式部署目标。环境策略中 `prod-108` 禁止全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- 不存在验证/灰度或正式部署目标。环境策略中 `prod-108` 禁止全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 生产写操作：0。隔离 runner 和 mock preview 结果不冒充生产证据。
 
 ## 回滚

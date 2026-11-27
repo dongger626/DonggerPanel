@@ -1,4 +1,4 @@
-# KPanel v0.34.5 发布验收
+# Dongger Panel v0.34.5 发布验收
 
 发布日期：2026-08-01
 
@@ -32,7 +32,7 @@ Release 附件已确认包含：
 - Web：27 个测试文件、180 项测试通过；类型检查和生产构建通过。
 - Go：文件管理与 Panel 文件动作目标测试通过；Linux 候选 CI 和主线 CI 全绿。
 - 真实浏览器分别在桌面展开/收起布局及文件页验证，无横向溢出，普通文件区不再出现彻底删除入口。
-- 154 验收机从 Docker Hub 重新拉取公开镜像并执行隔离运行时 E2E，输出 `image_e2e=pass`；未替换其现有 KPanel。
+- 154 验收机从 Docker Hub 重新拉取公开镜像并执行隔离运行时 E2E，输出 `image_e2e=pass`；未替换其现有 Dongger Panel。
 
 ## Docker Hub
 

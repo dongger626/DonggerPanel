@@ -1,4 +1,4 @@
-# KPanel v1.27.0-rc.2 发布验收记录
+# Dongger Panel v1.27.0-rc.2 发布验收记录
 
 日期：2026-10-16。L3，`releaseChannel=preview`，`releaseTrain=1.27.0`。产物状态见下方回执；生产未部署。
 
@@ -29,7 +29,7 @@ CF `not-run`；本轮不声明 CF 完成、覆盖通过或线索关闭。按当�
 
 固定 Go1.27.2 原始 vendor 453 文件摘要、六目标 actual/original 共12闭包核验通过。生产依赖仍110模块，selected graph=`24c24be50e4477fc28044d24ae11c26ff0e6f75603d7f8ae91e798034fa81927`，closure=`98ac00a5cdff85d5e3369149a0e5fc5f3c7e3ec2f73e8cb8ea50ff0469896cae`，首方 Go（含测试）=`2ad9e8027546439552e793117a585e5ea974bfa82fb6301b47320e2b3cf442ce`。既有36条 finding及2026-10-25到期日未延长，未将 selected/standalone 图说成零漏洞。
 
-无第三方依赖、Action、扫描器或基础镜像升级。b1e中间候选 Dependency freshness [38893635786](https://github.com/kejilion/KPanel/actions/runs/38893635786) 实测失败，exit3；必需9类检测源均ok，CF为not-requested。TypeScript7、@types/node26 两项既有例外due仍待KPanel基座维护决策，不称所有工作流或新鲜度全绿；原始报告在`freshness-failed.log`。EOL复核原到期2026-10-28不改写。最终7c3441d8标签触发的Dependency freshness [38909301871](https://github.com/kejilion/KPanel/actions/runs/38909301871)仍以exit3报告相同两项due，9类必需源ok；当前检测到@types/node26.6.5，既有例外目标26.6.3未改写。原件freshness-final-r2.json和freshness-final-tag-failed.log保留；前轮77c主线38902748036及原件也保留；该结果未冒充发布CI成功或被静默忽略。
+无第三方依赖、Action、扫描器或基础镜像升级。b1e中间候选 Dependency freshness [38893635786](https://github.com/kejilion/KPanel/actions/runs/38893635786) 实测失败，exit3；必需9类检测源均ok，CF为not-requested。TypeScript7、@types/node26 两项既有例外due仍待Dongger Panel基座维护决策，不称所有工作流或新鲜度全绿；原始报告在`freshness-failed.log`。EOL复核原到期2026-10-28不改写。最终7c3441d8标签触发的Dependency freshness [38909301871](https://github.com/kejilion/KPanel/actions/runs/38909301871)仍以exit3报告相同两项due，9类必需源ok；当前检测到@types/node26.6.5，既有例外目标26.6.3未改写。原件freshness-final-r2.json和freshness-final-tag-failed.log保留；前轮77c主线38902748036及原件也保留；该结果未冒充发布CI成功或被静默忽略。
 
 ## 跨仓库联动及成对回滚
 

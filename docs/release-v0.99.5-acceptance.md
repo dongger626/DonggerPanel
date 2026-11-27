@@ -1,4 +1,4 @@
-# KPanel v0.99.5 发布验收记录
+# Dongger Panel v0.99.5 发布验收记录
 
 日期：2026-08-31
 
@@ -80,7 +80,7 @@
 - 生产目标和部署授权范围：本次明确授权仅更新 `arena-154`；没有连接 `108` 或 `prod-108`。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154`，用途为 candidate-validation、production-safety-check、production-deploy。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v0.99.5-production-20260831-01` phase=`preflight` pass，健康版本 `0.99.4`；backup phase pass；备份为 `/root/kpanel-backups/pre-v0.99.5-20260830T165259Z`，归档与 SHA256 校验通过。
 - 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy pass；health `status=ok/version=0.99.5`；Panel `running/healthy`、Agent `active/running`、restart `0`、OOM `false`；revision=`e0cc4c8`、image version=`0.99.5`、digest=`sha256:820d823c...`；fatal/panic/OOM 日志签名为 none；protected diff 为 0。

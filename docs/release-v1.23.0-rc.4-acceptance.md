@@ -1,4 +1,4 @@
-# KPanel v1.23.0-rc.4 发布验收记录
+# Dongger Panel v1.23.0-rc.4 发布验收记录
 
 日期：2026-09-28。发布级别：L3。`releaseChannel=preview`；`releaseTrain=1.23.0`。
 
@@ -31,7 +31,7 @@
 
 - 安全覆盖检查为 `decision=ok`，相对最近 full 审计有 11 个未审计提交但无新增信任边界包；本 RC 未另行运行 CF scoped/full 审计。L3 的 Trivy 源码及镜像扫描、govulncheck、npm audit 均通过，不能把扫描等同于 CF 审计。
 - OCR 覆盖 `0c8fcfa..a7fd940` 的 13/13 个可审文件，另有 4 个按格式/锁文件规则排除；自由臂无有效发现，`H0/M0/L0`，`constrained-only=0`。后续两个提交为版本说明修订和业务上下文文档，未增加可审代码。
-- `scriptLinkageState=not-required`：受管 `kejilion.sh` 基线 `2b90b2d2ca56bc954c9328a51bb5571e896f713d`，SHA-256 `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`，本版不发布脚本。KPanel 内置与 `kejilion/apps` 远端 `main` 的 `kpanel.conf` Git blob 均为 `fa4b95374ed3b186d920207537f451a5b6d839f7`；无需应用市场提交，默认安装仍指向稳定 `latest`。
+- `scriptLinkageState=not-required`：受管 `kejilion.sh` 基线 `2b90b2d2ca56bc954c9328a51bb5571e896f713d`，SHA-256 `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`，本版不发布脚本。Dongger Panel 内置与 `kejilion/apps` 远端 `main` 的 `kpanel.conf` Git blob 均为 `fa4b95374ed3b186d920207537f451a5b6d839f7`；无需应用市场提交，默认安装仍指向稳定 `latest`。
 
 ## 多维质量结论
 
@@ -57,7 +57,7 @@
 ## 自更新、生产与回滚
 
 - 本版未修改更新通道；稳定来源、预览来源、加入/退出预览和自动安装沿用既有契约，本轮未实机重测 systemd/OpenRC 更新。应用市场默认入口、GitHub Latest 与 Docker `latest` 均保持稳定版。
-- 生产部署安全核对：不适用（预览版禁止生产部署）。`prod-108` 禁用全部 KPanel 操作，本次未连接、未备份、未部署、未升级、未核对；没有生产前后版本或健康数据可报告。
+- 生产部署安全核对：不适用（预览版禁止生产部署）。`prod-108` 禁用全部 Dongger Panel 操作，本次未连接、未备份、未部署、未升级、未核对；没有生产前后版本或健康数据可报告。
 - 源码回滚点 `v1.22.0`；镜像回滚点为稳定 index `sha256:46b854bdf6233e81742986a3bee9e65c6b4a39123c393a51a4ada63783eed7ac`。预览用户如需回退，应选用旧版不可变 digest 并备份、复核数据；离开预览不会自动降级。
 
 ## 分支与资源处置

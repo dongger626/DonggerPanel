@@ -1,4 +1,4 @@
-# KPanel v1.2.0 发布验收记录
+# Dongger Panel v1.2.0 发布验收记录
 
 日期：2026-09-04
 
@@ -16,7 +16,7 @@
 
 - 业务域：集群文件管理互传、轻量节点配对恢复，以及桌面模式文件选择交互。
 - 用户可见更新：
-  - e310d6d04e5910e44331e0294c1a1c1c945e6e80：配对 KPanel 节点支持在现有文件管理页面内切换远端文件主机，沿用既有路径、权限、下载、预览和 Panel-Agent 中继边界；最终只 cherry-pick 该提交的有效补丁，候选本地提交为 ac73f1c。
+  - e310d6d04e5910e44331e0294c1a1c1c945e6e80：配对 Dongger Panel 节点支持在现有文件管理页面内切换远端文件主机，沿用既有路径、权限、下载、预览和 Panel-Agent 中继边界；最终只 cherry-pick 该提交的有效补丁，候选本地提交为 ac73f1c。
   - 387d57525050486fa78016b55a4fc943a0aec75f：轻量节点删除后支持重新配对，候选本地提交为 6d13d0c。
   - c41d557deb55c93ff01794a95df635f3e494e41e：稳定桌面模式文件选择布局，候选本地提交为 eb64ccb。
   - 88b198403e4939f0804e0cf1604c1f773277bcea：移除文件列表行的选中聚焦框，候选本地提交为 ea14114。
@@ -50,7 +50,7 @@
 
 ## Release 与 OCI
 
-- GitHub Release：KPanel 1.2.0，公开、非 draft、非 prerelease；https://github.com/kejilion/KPanel/releases/tag/v1.2.0
+- GitHub Release：Dongger Panel 1.2.0，公开、非 draft、非 prerelease；https://github.com/kejilion/KPanel/releases/tag/v1.2.0
 - 发布附件 8 个：Agent amd64/arm64、轻量节点 amd64/arm64、部署归档、SHA256SUMS、LICENSE、THIRD_PARTY_NOTICES.md。
 - OCI index：docker.io/kjlion/kejilion-panel:1.2.0 与 latest 的 digest 均为 sha256:ebadf5361a24b8d580da873190ae43f493ab2fefdf1ba9f41f4ffdab1f3e5f5e。
 - OCI 平台 manifest：linux/amd64=sha256:e393e5419d478b51ebb853b40a4506a66aa3736f261f5a3d67671586446c033f；linux/arm64=sha256:2cf6dd48994639da3918a334c7a626f88b8eecf0b248b66cbfd80216def70979。

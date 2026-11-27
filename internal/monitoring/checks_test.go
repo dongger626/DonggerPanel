@@ -133,7 +133,7 @@ func TestGenericTCPAndHTTPChecksMeasureReachability(t *testing.T) {
 	<-accepted
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Header.Get("User-Agent") != "KPanel-Monitor/1" {
+		if r.Header.Get("User-Agent") != "Dongger Panel-Monitor/1" {
 			t.Errorf("unexpected user agent: %q", r.Header.Get("User-Agent"))
 		}
 		w.WriteHeader(http.StatusNoContent)

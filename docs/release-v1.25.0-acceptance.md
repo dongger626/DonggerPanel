@@ -1,4 +1,4 @@
-# KPanel v1.25.0 发布验收记录
+# Dongger Panel v1.25.0 发布验收记录
 
 日期：2026-10-09
 
@@ -26,7 +26,7 @@
 - `7ee6ae74402d7f82af0592ed951a5322a7a3eb47 docs: preserve exact audit proof bytes across Git checkouts`
 - `77fd6471240831ae1e488da7674242fef5ee96b8 docs: close stable audit records and runtime admission`
 - `50d3d75bd15dc0e152694adcf7f62276d238871f docs: record stable receive budgets and terminal recheck timing`
-- `6ed8f0c69af11d498c1ecdf7dc2e38058baa3c6f chore: prepare KPanel 1.25.0 stable release`
+- `6ed8f0c69af11d498c1ecdf7dc2e38058baa3c6f chore: prepare Dongger Panel 1.25.0 stable release`
 
 ## 多维质量与证据层级
 
@@ -79,11 +79,11 @@
 ## 脚本联动与应用市场
 
 - `scriptLinkageState=coupled`，同一继承变更集 `rc4-light-node-integration-20261005`；兼容脚本已在 RC4 前公开，本轮没有新脚本提交或变更 pin。
-- 双方精确依据：KPanel 正式提交 `a1e8b4a67d964dc2d0b1e630e3de1aee67277f83`；kejilion/sh `c3a8bd895f8878d9e4ced7592c91a20c974472a5`。ROOT SHA-256 `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`；CN `d92c6643df6acfe15e1f4556855f42eb2ada1e831ddd9f055e85a5619102cf4f`。
+- 双方精确依据：Dongger Panel 正式提交 `a1e8b4a67d964dc2d0b1e630e3de1aee67277f83`；kejilion/sh `c3a8bd895f8878d9e4ced7592c91a20c974472a5`。ROOT SHA-256 `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`；CN `d92c6643df6acfe15e1f4556855f42eb2ada1e831ddd9f055e85a5619102cf4f`。
 - 本轮 fresh 公开 ROOT/CN 字节、Git blob 与 canonical 同步检查 passed；公开镜像实际 `/release/kejilion.sh` 由仓库唯一检查器提取并核对上述摘要。双架构 OCI pin 同样吻合。
 - 22 依赖/35 更新兼容 smoke 为 RC4 原始成对证据（`v1.25.0-rc.4/paired-script-r6-verified.json`），没有冒称本轮重跑；本轮 L3、应用生命周期与公开镜像 E2E 为新证据。
 - `kejilion/apps` 基线 `4fc985e964dbd1742143521d0a28ab652b885773` clean；实际 kpanel.conf 与本包 blob/归一化摘要相同 `f03cb75911b7491cb009fee0bfe3500f4ae874327bb16ef1006894a232bcc089`，公共默认仍 latest，无需应用市场提交。保留无关 sh/apps 工作树。
-- 成对回滚：KPanel v1.24.0/e441…f3935b，先前内置脚本 `c981fb6c8b481981ac7a006e102e111e435f6d30` 与数据/配置冷备份。仅记录方案，本轮未执行回滚。
+- 成对回滚：Dongger Panel v1.24.0/e441…f3935b，先前内置脚本 `c981fb6c8b481981ac7a006e102e111e435f6d30` 与数据/配置冷备份。仅记录方案，本轮未执行回滚。
 - 初始 Windows 依赖查询仅 4/10 源成功，6 源不可达原件保留；不能据此称全部最新。本轮精确候选/main/tag 的 Dependency freshness 实际成功。已有兼容更新建议按既有治理条目推迟至 2026-10-15，不在稳定提升中夹带升级。
 
 ## CI、Release 与公开产物
@@ -124,7 +124,7 @@
 ## 生产、回滚与剩余风险
 
 - 正式产物已发布，生产未部署；本次没有 production-deploy/backup/postdeploy 操作或正式数据修改。隔离 arena-154 fixture 验收不代表生产部署。
-- `prod-108` / `108` 禁用全部 KPanel 操作；本次未连接、未部署、未核对。
+- `prod-108` / `108` 禁用全部 Dongger Panel 操作；本次未连接、未部署、未核对。
 - 生产备份、健康采样、SQLite quick_check、实际升级/回滚、生产完成时间均未验证。回滚前需独立授权，停写冷备份并使用标准应用市场事务恢复 v1.24.0 指定 digest 与匹配数据/脚本，再按固定生产入口复核；本轮未执行。
 - 当前公共默认来源为 GitHub v1.25.0、Docker latest=sha256:a183a818ac94446e19078087cee0b7d9d7505bd8ecae8e6fdac1e5c8efc326d9、应用市场 latest；没有失败生产版本或生产回滚引发的公共默认恢复操作。
 - 实体路由器、WAN、ARM64 浏览器、最大传输容量、掉电与长时 soak 未验证；认证 fsync、终端已发送字节、HTTP 凭据拓扑、节点回滚、软链 TOCTOU、应用绑定与运行时资源后续项保持公开记录状态，不将源码线索标成修复或接受风险。

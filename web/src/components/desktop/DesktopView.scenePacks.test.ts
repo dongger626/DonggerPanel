@@ -19,7 +19,7 @@ const available: ScenePack = {
   version: '1.0.0',
   name: { 'zh-CN': '星港轨道', 'en-US': 'Orbital Station' },
   description: { 'zh-CN': '曲速抵达行星轨道', 'en-US': 'Drop out of warp above a planet' },
-  author: { name: 'KPanel' },
+  author: { name: 'Dongger Panel' },
   license: 'MIT',
   tags: ['space'],
   theme: { brand: '#2f6fd0', neutral: '#33415a', signature: '#35b8d6' },

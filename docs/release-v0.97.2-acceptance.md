@@ -1,4 +1,4 @@
-# KPanel v0.97.2 发布验收记录
+# Dongger Panel v0.97.2 发布验收记录
 
 日期：2026-08-24
 
@@ -10,7 +10,7 @@
 
 ## 发布画像
 
-- 业务域：KPanel 应用市场安装生命周期、系统日志管理界面。
+- 业务域：Dongger Panel 应用市场安装生命周期、系统日志管理界面。
 - 变更面：安装、更新、卸载和失败清理在比较 systemd unit 与应用目录时同时规范化真实路径，兼容 `/home/docker` 为 NAS 挂载或符号链接的拓扑；系统日志增加稳定严重级别、消息层级、字面量搜索高亮和更清晰的元数据呈现。
 - 不变边界：不修改 API、Agent 协议、权限模型、端口、数据 schema、受管 `kejilion.sh` 或 Compose 网络；系统日志查询与清理语义不变。
 - 风险等级：中；安装契约改变必须验证普通与符号链接拓扑、应用市场同步、失败回滚和生产配置保持，日志改动必须验证特殊字符搜索及桌面/手机几何。
@@ -56,11 +56,11 @@
 - `linux/amd64`=`sha256:f7e6d18342c192997413f375831d7a6bc9ac382a87dc150eaa83837464ca5895`；`linux/arm64`=`sha256:97715ab80e78ffefa6c3f9f4328db26e72ed89f32a94e5a57f0bf884f459e930`。
 - OCI labels：version=`0.97.2`、revision=`687c3f0...`；managed script revision=`9fec61b50cc6ef798dfac1edf11c2ec60ca6b0d1`、SHA-256=`54ceb0e72c4c342382500fc35da636fa436c484a12c4766fb9c7f806a23ae8fa`。
 - arena-154 从公开仓库重新拉取并执行正式 `packaging/tests/image-e2e.sh`，输出 `image_e2e=pass`；额外受限容器 health、revision、version、restart=0、OOM=false 全部通过并已清理。
-- `kejilion/apps` 主线提交=`f07bb5112b776cc9c2384dc1d417e0ba2b825892`；`kpanel.conf` Git blob 与 KPanel 打包配置均为 `abf0efd22876f34aa3731f5b6d8ba04e373b965e`，公开文件 SHA-256=`7b5b52af0ff20cff4bebf114e747ddf1c82996500f2767ba8d3733217e83121c`。
+- `kejilion/apps` 主线提交=`f07bb5112b776cc9c2384dc1d417e0ba2b825892`；`kpanel.conf` Git blob 与 Dongger Panel 打包配置均为 `abf0efd22876f34aa3731f5b6d8ba04e373b965e`，公开文件 SHA-256=`7b5b52af0ff20cff4bebf114e747ddf1c82996500f2767ba8d3733217e83121c`。
 
 ## 生产部署与回滚
 
-- 目标仅 `arena-154`；108 禁用全部 KPanel 操作，本次未连接、未测试、未备份、未部署、未核对。
+- 目标仅 `arena-154`；108 禁用全部 Dongger Panel 操作，本次未连接、未测试、未备份、未部署、未核对。
 - 部署前：Panel `0.97.1` healthy、Agent active、restart=0、OOM=false；旧 OCI=`sha256:536db80fd6c5699e6c7bc98a2f4b4c8ad206fd21b522d2be5cf37f54dd9141e5`。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.97.2-20260824T134520Z`；`SHA256SUMS` SHA-256=`b6c321c0a54107b6c336b382ed4f879192aeadcdd3468b47488420ab41062f38`。状态目录、旧 OCI、Compose、`.env`、Agent 文件和 apps 配置均完成压缩校验、tar 逐项比较、旧镜像加载与旧版重启核验。
 - 标准更新入口一次成功：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；日志 SHA-256=`8b63f3d9de1be0b0f1bd42b7ed52548f4b06d1da255c39e0beb6354dc190e74f`。
@@ -129,7 +129,7 @@
     "position": "after-production-write",
     "count": 1,
     "impact": "最终远端只读核对首次在无仓库上下文中直接使用 GitHub SSH URL，因本机默认 SSH key 不匹配而失败；没有远端写入，也未影响已健康运行的生产。",
-    "recoveryEvidence": "立即改为 KPanel 与 apps 各自已配置的 origin，确认 KPanel main、Tag peel、apps 线性包含本轮提交及生产版本均正确。",
+    "recoveryEvidence": "立即改为 Dongger Panel 与 apps 各自已配置的 origin，确认 Dongger Panel main、Tag peel、apps 线性包含本轮提交及生产版本均正确。",
     "permanentAction": "所有最终 Git 核对必须在目标仓库上下文内使用该仓库 origin，禁止脱离仓库手写远端 URL。",
     "historicalReleases": []
   }

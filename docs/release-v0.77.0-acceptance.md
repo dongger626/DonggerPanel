@@ -1,4 +1,4 @@
-# KPanel v0.77.0 上线验收记录
+# Dongger Panel v0.77.0 上线验收记录
 
 日期：2026-08-16（Asia/Shanghai）
 
@@ -17,7 +17,7 @@
 - 业务域：前端国际化、应用市场目录元数据。
 - 变更面：展示、浏览器语言检测与偏好持久化；不改变宿主机写入、协议、端口或 Compose。
 - 受影响用户旅程：首次访问语言识别、语言切换、刷新恢复、全部核心页面和应用市场繁体中文显示、手机窄屏。
-- 未变化契约：Panel/Agent API、数据、端口、Compose、Agent 权限、`kejilion.sh` 固定摘要和 KPanel 应用市场安装契约。
+- 未变化契约：Panel/Agent API、数据、端口、Compose、Agent 权限、`kejilion.sh` 固定摘要和 Dongger Panel 应用市场安装契约。
 - 风险等级及理由：中；覆盖全站文案与目录展示，但无数据迁移或宿主机写操作，并以全量自动化、隔离真机和真实 Chrome 验收约束。
 
 ## 发布范围与未纳入内容
@@ -77,7 +77,7 @@
 - 生产目标和授权范围：唯一目标 `arena-154`；已授权正式升级、健康与回滚核对。
 - 验证/灰度环境：`arena-154` 隔离容器。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前 v0.76.0：Panel healthy、restart 0、OOM false，Agent active；运行 OCI/revision 为 `sha256:7cfc37123f870b66e46d20b06387e3f5dc7401a1da7d23ba7f12618fbd9f352d` / `985774771a36037e638e7a87d3be1824223bda52`。
 - 停写备份：`/root/kpanel-backups/v0.77.0-preupgrade-arena154-20260815T175825Z.tar.gz`，SHA-256 `c5512a2eb2b2a55c28d41410addded183cd314f11d8d65feeabccd0f2c53732f`；旧镜像归档同名 `.image.tar`，SHA-256 `f1e45af8ef4e412e0f7681d795813509417f55eb1ae7db8c2c6a55d4deb4c9d3`。
 - 部署入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel`；更新日志 SHA-256 `d8799153706725346e4af26c45a230ce0bd40ed4c5f377f290ad38a9c7700114`。

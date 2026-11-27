@@ -1,8 +1,8 @@
-# KPanel v0.24.1 验收记录
+# Dongger Panel v0.24.1 验收记录
 
 ## 交付范围
 
-- 标准化 KPanel 品牌、PWA/SEO 与本地轻量发行版图标。
+- 标准化 Dongger Panel 品牌、PWA/SEO 与本地轻量发行版图标。
 - 限制登录密码校验、Docker 批量探测和宿主机采集的并发与重复请求。
 - 静态资源增加预压缩、不可变缓存，API 响应按安全类型启用 gzip。
 - 增加 HSTS、COOP、CORP 等网络响应头，同时保留可信反向代理下的 `k fd`
@@ -63,10 +63,10 @@
 
 ## 回滚
 
-- KPanel 镜像可回滚到 `0.24.0` /
+- Dongger Panel 镜像可回滚到 `0.24.0` /
   `sha256:d9d54d7945d0a3510780134e7a65475560d1cc69e1fd20e1cb9a571b15829d02`。
 - Git 回滚点为标签 `v0.24.0`。
-- 本版本没有数据库格式迁移；回滚 KPanel/Agent 不删除 `/home/web`、应用容器、
+- 本版本没有数据库格式迁移；回滚 Dongger Panel/Agent 不删除 `/home/web`、应用容器、
   域名配置或环境备份。
 
 ## 边界说明

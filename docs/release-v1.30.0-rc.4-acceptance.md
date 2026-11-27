@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.4 发布验收
+# Dongger Panel v1.30.0-rc.4 发布验收
 
 日期：2026-11-06；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.30.0`。
 
@@ -9,7 +9,7 @@
 - 业务域：站点访问保护、移动终端、Agent 终端恢复、AI/MCP 文件尾读取与媒体目录浏览。
 - 变更面：展示、只读、宿主机写入（访问密码通过绑定的 `kejilion.sh` 配置 Nginx）。
 - 受影响用户旅程：配置站点访问密码；在手机终端输入 Ctrl 组合命令；终端断线/刷新后恢复；AI/MCP 请求读取文件尾；媒体目录扫描期间查看已发现影片。
-- 未变化契约：没有 KPanel 端口、Compose 或数据库 schema 迁移；Agent、终端和脚本协议按候选绑定版本检查。网站访问密码需要配套脚本，不能混用旧版脚本。
+- 未变化契约：没有 Dongger Panel 端口、Compose 或数据库 schema 迁移；Agent、终端和脚本协议按候选绑定版本检查。网站访问密码需要配套脚本，不能混用旧版脚本。
 - 风险等级：L3。涉及主机 Nginx 写入、AI/MCP 文件读取边界与公开 OCI/安装产物。
 
 ## 发布范围与未纳入内容
@@ -29,11 +29,11 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`。
-- 变更集编号：验收补记 `kpanel-v1.30.0-rc.4-website-access-password`，绑定 KPanel `e06c4c181c4b7dee18d0d9afe05291e28908e60b` 与脚本 `1faee13f3faef164efbfa899e244fc19ad58aaff`。候选原始证据未找到更早共享编号，故明确作为验收记录标识，不声称此前已建立。
-- KPanel 实际内置脚本基线：RC4 image labels 中脚本 commit/SHA-256 与上方配套脚本一致；公开镜像 amd64/arm64 均相同。
+- 变更集编号：验收补记 `kpanel-v1.30.0-rc.4-website-access-password`，绑定 Dongger Panel `e06c4c181c4b7dee18d0d9afe05291e28908e60b` 与脚本 `1faee13f3faef164efbfa899e244fc19ad58aaff`。候选原始证据未找到更早共享编号，故明确作为验收记录标识，不声称此前已建立。
+- Dongger Panel 实际内置脚本基线：RC4 image labels 中脚本 commit/SHA-256 与上方配套脚本一致；公开镜像 amd64/arm64 均相同。
 - 脚本候选 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`；中文 SHA-256 `c1d09c83333802c75a4c6449f988ef457afde7b7ef13aabb6ad5d999606d7c3d`。
 - 状态依据：容器标签、配套脚本测试与发布 CI 生命周期检查通过；完整 Panel→Agent→脚本→真实 Nginx 主机链路未在本次公开验收中执行。
-- 发布决定：配套脚本先行公开，再发布 KPanel 预览版；未变更 `kejilion/apps` 默认稳定入口。
+- 发布决定：配套脚本先行公开，再发布 Dongger Panel 预览版；未变更 `kejilion/apps` 默认稳定入口。
 - 阻断或移除范围：未移除功能。自定义 `error_page`/认证前响应正文、`add_header ... always`、回调与证书续期、直连上游端口及 Bitwarden/Halo 创建时启用访问密码等边界按 Release 与外联配置登记的限制披露。
 
 ## 多维质量结论
@@ -65,7 +65,7 @@
 - 直接/基座行动项：产品运行时与 RC4 基座未升级；`packaging/release-runner/Dockerfile` 的验收工具仅更新 `docker-cli` pin `29.9.2-r0`→`29.9.3-r0`，保持 `docker-cli-buildx=0.38.1-r0` 和其他 pin 不变。原因是 Alpine 已提供 29.9.3-r0，旧 pin 使首轮发布后验收容器无法构建。
 - 版本/摘要：验收 Runner 修复提交 `53d335ec2bddad570afd05ff0ba4e41b504afe00`；该修改不进入 RC4 tag 或产品镜像。恢复公开验收使用新 Runner 成功构建，`productImageUnchanged=true`。
 - 暂缓候选：无产品依赖更新。Alpine APK pin 会随上游包滚动失效；下次预览前需复核精确包版本并在公开发布前构建验收 Runner。
-- 兼容、性能与回滚：仅影响验收工具容器，不影响 KPanel、Agent 或生产镜像；可通过回滚 `53d335ec` 恢复旧 pin，但旧 pin 当前不可构建。
+- 兼容、性能与回滚：仅影响验收工具容器，不影响 Dongger Panel、Agent 或生产镜像；可通过回滚 `53d335ec` 恢复旧 pin，但旧 pin 当前不可构建。
 
 ## 隔离真机与浏览器验收
 
@@ -104,8 +104,8 @@
 
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境：GitHub-hosted，仅运行公开验收。
-- 正式部署环境：不适用；未连接 `arena-154` 或其他 KPanel 生产主机。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- 正式部署环境：不适用；未连接 `arena-154` 或其他 Dongger Panel 生产主机。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用。
 - 部署命令/入口：未运行。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：未验证（无生产部署）。
@@ -148,7 +148,7 @@
     "count": 1,
     "impact": "RC4 Release 与预览镜像公开后，首次真实公开验收在构建验收 Runner 时因 Alpine 已提供 docker-cli 29.9.3-r0、Runner 仍固定 29.9.2-r0 而失败；浏览器和容器断言尚未开始。无生产部署或产品镜像变更。",
     "recoveryEvidence": "原始发布 run 42183446758 job 127802102697 保留失败日志/artifact 13489244042；Runner pin 修复 53d335ec 的 main CI 42192631177 通过；恢复 run 42192715429 job 127808390900 与 artifact 13490094357 报告通过，productImageUnchanged=true，稳定摘要仍为 v1.29.0。",
-    "permanentAction": "KPanel Release Maintainer 在下次预览冻结前核对官方 Alpine APK 版本并先构建精确验收 Runner；跟进将 Runner 构建前移到发布前。v1.28.0-rc.2 有同指纹旧记录；对照本次之前最近五个公开版本 v1.30.0-rc.3、rc.1、v1.29.0、v1.29.0-rc.7、rc.6，未发现同指纹；下次预览前关闭此项并留存预检证据。",
+    "permanentAction": "Dongger Panel Release Maintainer 在下次预览冻结前核对官方 Alpine APK 版本并先构建精确验收 Runner；跟进将 Runner 构建前移到发布前。v1.28.0-rc.2 有同指纹旧记录；对照本次之前最近五个公开版本 v1.30.0-rc.3、rc.1、v1.29.0、v1.29.0-rc.7、rc.6，未发现同指纹；下次预览前关闭此项并留存预检证据。",
     "historicalReleases": []
   }
 ]

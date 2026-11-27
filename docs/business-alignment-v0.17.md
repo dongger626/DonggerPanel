@@ -3,7 +3,7 @@
 > 历史版本说明：本文件记录 v0.17 的行为。来源、漂移或归属导致的只读策略
 > 已由 [`PROJECT_RULES.md`](../PROJECT_RULES.md) 废止。
 
-本文记录 KPanel 与 `kejilion.sh` 的共同事实来源、已开放能力和必须保留的安全边界。
+本文记录 Dongger Panel 与 `kejilion.sh` 的共同事实来源、已开放能力和必须保留的安全边界。
 
 ## 页面加载策略
 
@@ -21,7 +21,7 @@
 
 - CLI 和 Web 均以 `/home/web/conf.d`、`/home/web/html`、`/home/web/certs` 和实际 Docker/证书状态为事实来源，Panel 数据库不复制站点真相。
 - Web 创建的静态站、PHP 站、IP + 端口反代、域名反代、负载均衡和重定向使用与脚本兼容的文件布局，`k web` 可继续发现和管理。
-- 脚本创建且结构可确认的上述站点可在 Web 修改。KPanel只修补已识别指令，保留证书、站点目录、安全规则和未知 Nginx 指令；提交前校验 `resourceVersion`，执行 `nginx -t`，失败回滚原文件。
+- 脚本创建且结构可确认的上述站点可在 Web 修改。Dongger Panel只修补已识别指令，保留证书、站点目录、安全规则和未知 Nginx 指令；提交前校验 `resourceVersion`，执行 `nginx -t`，失败回滚原文件。
 - 脚本与 Panel 创建、配置文件名和主域名一致且未漂移的站点可删除：默认只移除
   Nginx 入口；管理员逐字确认主域名后，可按 `k web` 产物范围完整清理目录、
   域名证书和同名数据库。文件先原子暂存，`nginx -t` 或 reload 失败时恢复。
@@ -33,20 +33,20 @@
 
 ## Docker 业务
 
-| `kejilion.sh` 业务 | KPanel v0.17 |
+| `kejilion.sh` 业务 | Dongger Panel v0.17 |
 | --- | --- |
 | 全局状态、容器、镜像、网络、卷 | 分区渐进展示 |
 | 容器启动/停止/重启/日志 | 已识别 Kejilion 容器可执行 |
-| 删除容器 | 仅已停止、归属可验证且非 KPanel 容器；保留镜像和卷 |
-| 拉取/更新镜像、删除未使用镜像 | 后台任务；保护 KPanel 镜像 |
-| 创建/删除网络、加入/退出网络 | 后台任务；保护系统网络与 KPanel 网络 |
-| 创建/删除本地卷 | 后台任务；拒绝使用中或 KPanel 卷 |
+| 删除容器 | 仅已停止、归属可验证且非 Dongger Panel 容器；保留镜像和卷 |
+| 拉取/更新镜像、删除未使用镜像 | 后台任务；保护 Dongger Panel 镜像 |
+| 创建/删除网络、加入/退出网络 | 后台任务；保护系统网络与 Dongger Panel 网络 |
+| 创建/删除本地卷 | 后台任务；拒绝使用中或 Dongger Panel 卷 |
 | 清理未使用资源 | 输入 `PRUNE` 后执行固定 Docker API 清理序列 |
 | 中国大陆镜像源/官方源 | 使用脚本同一镜像列表；保留其他 `daemon.json` 键，重启失败自动回滚 |
 | Docker IPv6 | 开启/关闭并保留其他配置；要求真实 IPv6/ULA `/64`，拒绝脚本中的 `2001:db8::/32` 文档示例网段 |
-| 备份 | 后台归档 `/home/docker`，排除 KPanel 自身、符号链接和设备文件；单文件 10 GiB、总计 50 GiB，归档权限 `0600` |
-| 环境安装/更新 | KPanel 本身依赖 Docker；安装由 `kejilion.sh`/安装器完成，发行版软件包更新由“系统更新”维护 |
+| 备份 | 后台归档 `/home/docker`，排除 Dongger Panel 自身、符号链接和设备文件；单文件 10 GiB、总计 50 GiB，归档权限 `0600` |
+| 环境安装/更新 | Dongger Panel 本身依赖 Docker；安装由 `kejilion.sh`/安装器完成，发行版软件包更新由“系统更新”维护 |
 | 还原/SSH 迁移 | 当前通过已校验备份路径交给管理员迁移；不在 Web 执行脚本现有的 `eval` 还原或关闭主机校验的 SSH 传输 |
-| 卸载 Docker | 不在 Web 开放；卸载会同时终止 KPanel，必须从 `kejilion.sh` 或 SSH 执行 |
+| 卸载 Docker | 不在 Web 开放；卸载会同时终止 Dongger Panel，必须从 `kejilion.sh` 或 SSH 执行 |
 
-KPanel 对齐业务目的和产物，但不复制脚本中任意命令、`eval`、任意 Compose、交互式 Exec、批量强制删除或关闭 SSH 主机校验等高风险入口。
+Dongger Panel 对齐业务目的和产物，但不复制脚本中任意命令、`eval`、任意 Compose、交互式 Exec、批量强制删除或关闭 SSH 主机校验等高风险入口。

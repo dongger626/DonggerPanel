@@ -1,4 +1,4 @@
-# KPanel 质量审计记录（2026-08-02）
+# Dongger Panel 质量审计记录（2026-08-02）
 
 ## 范围
 
@@ -88,7 +88,7 @@ security=["no-new-privileges"]
 
 - `scripts/check-version-consistency.sh`：阻止 `VERSION`、Go 和 Web 版本漂移。
 - `scripts/security-scan.sh`：固定摘要执行源码和最终镜像 Trivy。
-- `scripts/verify-deploy.sh`：隔离运行安装安全测试，不碰撞已部署 KPanel。
+- `scripts/verify-deploy.sh`：隔离运行安装安全测试，不碰撞已部署 Dongger Panel。
 - `make verify-release`：统一覆盖全量测试、race、`govulncheck`、`npm audit`、Trivy、
   Linux 构建和最终镜像扫描。
 - CI 增加核心 race 和源码扫描；Release 增加最终镜像扫描及生产资源限制断言。

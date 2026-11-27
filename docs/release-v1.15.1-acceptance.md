@@ -1,4 +1,4 @@
-# KPanel v1.15.1 发布验收
+# Dongger Panel v1.15.1 发布验收
 
 日期：2026-09-13
 
@@ -10,15 +10,15 @@
 
 ## 发布画像
 
-- 业务域：完整 KPanel 节点间文件浏览、上传、下载和复制；轻量节点文件中继。
+- 业务域：完整 Dongger Panel 节点间文件浏览、上传、下载和复制；轻量节点文件中继。
 - 变更面：集群文件协议、完整节点文件读写链路、传输回归测试、发布与生产证据入口。
-- 受影响用户旅程：完整 KPanel 节点通过 Noise 加密连接和 HTTP POST 中继操作远端文件；轻量节点继续通过 `light-control` / `light-data` WebSocket 操作文件。
+- 受影响用户旅程：完整 Dongger Panel 节点通过 Noise 加密连接和 HTTP POST 中继操作远端文件；轻量节点继续通过 `light-control` / `light-data` WebSocket 操作文件。
 - 未变化契约：无数据库 schema、配置、端口、Compose、Agent 权限、节点身份、配对密钥、业务数据或 `kejilion.sh` 应用市场动作迁移。
 - 风险等级及理由：中高风险。完整节点文件读写协议回退到旧链路，但轻量节点保留 v1.15.0 实现；最终候选、公开 OCI、停写备份与生产 postdeploy 均通过。
 
 ## 发布范围与未纳入内容
 
-- `40d6fa67fc16124d97d37084395be3c5b3440230`：完整 KPanel 文件链路恢复到 v1.14.1 的 Noise/HTTP POST 实现，轻量节点文件链路保持 v1.15.0 WebSocket 实现。
+- `40d6fa67fc16124d97d37084395be3c5b3440230`：完整 Dongger Panel 文件链路恢复到 v1.14.1 的 Noise/HTTP POST 实现，轻量节点文件链路保持 v1.15.0 WebSocket 实现。
 - `36ee5bc638b7c981d035c0542f3c587d6dbfb7d4`：固定 1.15.1 版本、Changelog、升级与回滚说明，并收敛停写备份恢复窗口的健康探测噪声。
 - 最终产品树相对 `v1.15.0` 为 19 个文件、679 行新增、663 行删除；其中包含 v1.15.0/v1.16.0 已发布与回滚验收记录，产品范围仅为上述两个提交。
 - 未纳入 v1.16.0 的公开分享、设置页布局、持久复制任务和新版完整节点 WebSocket 文件流；`v1.16.0` 标签、Release 与版本镜像继续保留为 withdrawn/prerelease 审计产物。
@@ -27,7 +27,7 @@
 
 - `scriptLinkageState=not-required`（无需发布脚本（不适用））。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本：`kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`。
+- Dongger Panel 实际内置脚本：`kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：应用市场动作、镜像内受管脚本 revision/SHA、安装更新回滚卸载生命周期均未变化并通过 L3、Release 与公开镜像核对。
 - 本版发布决定：脚本不在范围。
@@ -82,14 +82,14 @@
 ## 生产部署安全核对
 
 - 用户明确授权完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`。
-- `prod-108` / `108` 禁用全部 KPanel 操作；本轮未连接、未核对、未备份、未部署或升级。
+- `prod-108` / `108` 禁用全部 Dongger Panel 操作；本轮未连接、未核对、未备份、未部署或升级。
 - preflight run `v1.15.1-production-20260913` 于 17:52:00+08:00 至 17:52:01+08:00 通过：原生产 `1.15.0` / `sha256:80a9013765c56c4bd0efb1b0c19fb76a73a6467f318a70496b070c39c3cd40e9` 健康，Panel running/healthy、restart 0、OOM false，Agent active/running/enabled、NeedDaemonReload=no，SQLite 和 64 行数据清单正常。
 - 停写备份于 17:52:18+08:00 至 17:52:28+08:00 通过，创建 `/root/kpanel-backups/pre-v1.15.0-20260913T095218Z`。数据归档 SHA-256 `d900cd306093c1dc7a45f23c977713f8c45c003440f039e9d95b9e34e305dcf6`，旧镜像归档 `1501853c8997c8611dacf77938da998a1d1ea5aa56c1bb58d2f64a8d9b04017f`；6 个备份文件、旧镜像加载、保护文件和恢复健康均通过。
 - 唯一更新入口为 `env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，退出 0并拉取精确新 OCI。
 - postdeploy 于 17:53:09+08:00 至 17:53:11+08:00 通过：`1.15.1`、产品 revision、OCI、受管脚本均精确匹配；Panel running/healthy、restart 0、OOM false；Agent loaded/active/running/enabled、NeedDaemonReload=no；SQLite 正常、保护文件 diff 为空，64 行数据清单保持一致。
 - 公网 `https://kpanel.154.36.153.9.sslip.io/api/v1/health` 于 17:53:23+08:00 返回 HTTP 200、`status=ok`、`initialized=true`、`version=1.15.1`。
 - 生产三阶段证据为 `C:/GitHub/_release-artifacts/v1151-production-preflight-r1`、`v1151-production-backup-r1` 和 `v1151-production-postdeploy-r1`。
-- 生产已执行写操作：停写备份和标准 KPanel 更新；未执行真实跨主机文件写入、故障注入、数据恢复、DNS/端口/身份切换或回滚演练。
+- 生产已执行写操作：停写备份和标准 Dongger Panel 更新；未执行真实跨主机文件写入、故障注入、数据恢复、DNS/端口/身份切换或回滚演练。
 
 ## 回滚
 
@@ -125,7 +125,7 @@
     "fingerprint": "release-preflight/worktree-path/nonexistent",
     "position": "before-production-write",
     "count": 1,
-    "impact": "首次终态核对使用不存在的 C:/GitHub/KPanel 路径，在任何标签或远端写入前停止。",
+    "impact": "首次终态核对使用不存在的 C:/GitHub/Dongger Panel 路径，在任何标签或远端写入前停止。",
     "recoveryEvidence": "定位规范候选工作树后确认 HEAD、origin/main 与候选分支均为产品 SHA，目标标签不存在。",
     "permanentAction": "发布终态命令从 git worktree list 选择已登记工作树，不再推断仓库目录名。",
     "historicalReleases": []

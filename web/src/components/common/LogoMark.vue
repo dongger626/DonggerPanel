@@ -27,7 +27,7 @@ watch(branding.icon, () => { failed.value = false })
       <img :src="logoPath" alt="" width="38" height="38" @error="failed = true" />
     </span>
     <span v-if="!compact" class="brand__text">
-      <strong :title="site ? branding.name.value : undefined">{{ site ? branding.name.value : 'KPanel' }}</strong>
+      <strong :title="site ? branding.name.value : undefined">{{ site ? branding.name.value : 'Dongger Panel' }}</strong>
     </span>
   </div>
 </template>

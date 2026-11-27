@@ -58,7 +58,7 @@ func TestRestoreDockerBackupReplacesExistingArtifactsFromBackup(t *testing.T) {
 	}
 	if data, err := os.ReadFile(filepath.Join(client.appRoot, "kpanel", "data", "state")); err != nil ||
 		string(data) != "restored" {
-		t.Fatalf("KPanel ecosystem artifact was not restored: %q, %v", data, err)
+		t.Fatalf("Dongger Panel ecosystem artifact was not restored: %q, %v", data, err)
 	}
 }
 

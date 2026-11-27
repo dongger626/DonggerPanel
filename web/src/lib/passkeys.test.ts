@@ -13,7 +13,7 @@ describe('WebAuthn browser conversion', () => {
 
   it('decodes all creation binary fields without changing server policy or the input', () => {
     const options = {
-      challenge: 'AQI', rp: { name: 'KPanel', id: 'panel.example.com' },
+      challenge: 'AQI', rp: { name: 'Dongger Panel', id: 'panel.example.com' },
       user: { id: 'AwQ', name: 'admin', displayName: 'Admin' },
       pubKeyCredParams: [{ type: 'public-key' as const, alg: -7 }],
       excludeCredentials: [{ type: 'public-key' as const, id: '-_8', transports: ['usb' as const] }],

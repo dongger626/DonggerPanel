@@ -1,4 +1,4 @@
-# KPanel v0.84.0 上线验收记录
+# Dongger Panel v0.84.0 上线验收记录
 
 日期：2026-08-18（Asia/Shanghai）
 
@@ -15,7 +15,7 @@
 ## 发布范围
 
 - 产品提交：`4d37410`（Activity 作业弹窗阶段标记不再溢出）和 `61e2ee7`（文件/目录原生拖出，单文件使用 `DownloadURL`，目录和多选使用受限流式 ZIP）。两项均从最新主线重放后形成 `ce3338f`、`c65a63a`，未夹带旧分支差异。
-- 版本提交：`32ca51c`，将 KPanel、Web 包和 CHANGELOG 统一为 `0.84.0`，补充升级/回滚说明。
+- 版本提交：`32ca51c`，将 Dongger Panel、Web 包和 CHANGELOG 统一为 `0.84.0`，补充升级/回滚说明。
 - 明确不属于产品发布的内容：`local-feature-preview-standard` 仅作为治理文档和脚本普通快进并入 main（最终治理提交 `85a9388`），没有创建产品 Tag、Release、OCI 或生产变更。
 - 未纳入：未提交的预览夹具、`scripts/mock-file-drag-out-api.mjs`、`web/drag-out-kpanel-preview.html`、其他工作树草稿、108 操作和任何 `kejilion.sh` 源码改动。
 
@@ -69,4 +69,4 @@
 
 - 未对现有业务 Compose 执行写操作，避免影响用户业务；文件拖出、目录/多选归档的真实资源版本、权限、路径和预算边界已由 L3/定向测试覆盖。
 - 未做长时间 soak；本版没有新增常驻任务，生产以正式 OCI、健康、资源和日志快照作为上线后核对。
-- 108 明确排除在 KPanel 测试、灰度、观察和部署之外，以节省正式服流量。
+- 108 明确排除在 Dongger Panel 测试、灰度、观察和部署之外，以节省正式服流量。

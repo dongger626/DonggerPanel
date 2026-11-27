@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.19 发布验收记录
+# Dongger Panel v1.26.0-rc.19 发布验收记录
 
 发布级别：L3。releaseChannel=preview，releaseTrain=1.26.0。批准main基线a06ab4ce25464f7632e7a26160ff10e88a36af0c，冻结产品34666bb4225b1aaefb270108eb856ba06b74dbe7。[v1.26.0-rc.19](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.19)于2026-10-14T14:57:43Z公开，draft=false、prerelease=true，产物已发布，生产未部署。
 
@@ -55,7 +55,7 @@ environment-policy arena-154，允许candidate/browser validation；正式服务
 
 ## 生产部署与清理
 
-不适用（预览版禁止生产部署）。prod-108/108禁用全部KPanel操作，本次未连接、未备份、未部署、未核对。没有生产写入、回滚、紧急热修复或重发已公开版本。自有Mock/浏览器/隧道/E2E已清理；清理范围仅含可再生自有副本/依赖/新浏览器缓存，保留原始失败/成功、脚本/spec/截图/锁、bundle、可信Runner和公开资产；作者工作树/预览不动。自动审批拒绝删除的中断r1本地临时目录保留，没有换用其他删除方式。卷观察净释放3893841920字节，非Windows C盘净释放声明。证据根C:/GitHub/_release-evidence/v1.26.0-rc.19，公开附件原件/root/kpanel-release-evidence/v1.26.0-rc.19-public-assets/。复用既有流程，没有新增工作流或知识文档。
+不适用（预览版禁止生产部署）。prod-108/108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未核对。没有生产写入、回滚、紧急热修复或重发已公开版本。自有Mock/浏览器/隧道/E2E已清理；清理范围仅含可再生自有副本/依赖/新浏览器缓存，保留原始失败/成功、脚本/spec/截图/锁、bundle、可信Runner和公开资产；作者工作树/预览不动。自动审批拒绝删除的中断r1本地临时目录保留，没有换用其他删除方式。卷观察净释放3893841920字节，非Windows C盘净释放声明。证据根C:/GitHub/_release-evidence/v1.26.0-rc.19，公开附件原件/root/kpanel-release-evidence/v1.26.0-rc.19-public-assets/。复用既有流程，没有新增工作流或知识文档。
 
 <!-- kpanel-release-metrics:start -->
 - 首个纳入提交时间：2026-10-14T19:18:40+08:00

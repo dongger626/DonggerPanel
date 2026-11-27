@@ -2,11 +2,11 @@
 
 ## 范围与事实来源
 
-KPanel `v0.22.0` 在“网站 → 环境管理”开放 `/home/web` 对应的 LDNMP 生命周期。
+Dongger Panel `v0.22.0` 在“网站 → 环境管理”开放 `/home/web` 对应的 LDNMP 生命周期。
 `kejilion.sh` 仍是安装、防护、优化、更新、备份、还原和卸载的唯一业务真源；
 Agent 只负责固定参数校验、后台任务、安全边界、审计和真实产物复核。
 
-KPanel 不维护第二份 Compose、Nginx、Fail2Ban、优化模板或版本目录。页面状态每次从
+Dongger Panel 不维护第二份 Compose、Nginx、Fail2Ban、优化模板或版本目录。页面状态每次从
 Docker、`/home/web`、Nginx、MySQL、Fail2Ban、iptables、cron 与脚本协议重新采集。
 
 ## 脚本协议
@@ -36,7 +36,7 @@ KPANEL_LDNMP_EVENT {...}
 KPANEL_LDNMP_RESULT {...}
 ```
 
-环境任务、KPanel 一键建站和关键网站写操作共同使用
+环境任务、Dongger Panel 一键建站和关键网站写操作共同使用
 `/run/lock/kejilion-web-environment.lock`。任务成功必须同时满足：
 
 1. systemd/OpenRC worker 已退出；
@@ -65,7 +65,7 @@ GET  /v1/web-environment/backups/{id}
 
 网站 → 流量与安全页的“WAF 防御”视图在显示流量统计与 WAF 审计事件之外，复用 `GET /v1/web-environment` 返回的 `protection` 状态；环境管理页仍是所有防护配置与开关的唯一操作入口。监控页只读，不再提供第二组开关。
 
-共享状态由 `kejilion.sh` 采集，KPanel 不自行探测或拼装另一份状态：
+共享状态由 `kejilion.sh` 采集，Dongger Panel 不自行探测或拼装另一份状态：
 
 - Fail2Ban 通过 daemon ping 确认运行状态；只查询固定网站 Jail `waf-attack` 和 `waf-rate`，缺失或不可用时返回 `available=false`，不会轮询不存在的 Jail 名称。网站日志只显示这两个 Jail 最近 20 条记录，不混入 SSH 防护日志。
 - Cloudflare 沿用共享 WAF 的 `ban-status`，只传递模式、配置/运行/健康状态、同步等待、关闭清理待重试和活动封禁数；账号、Token、Zone ID 不进入状态响应。
@@ -98,7 +98,7 @@ GET  /v1/web-environment/backups/{id}
 凭据、输入通道和全部日志分段一并清理；运行中的任务不受影响。
 
 当前不会向环境任务发送强制终止信号。关闭终端只是关闭显示；在脚本尚未提供可验证的
-事务安全停止点前，KPanel 不暴露可能中断数据库、归档或目录切换的“停止任务”按钮。
+事务安全停止点前，Dongger Panel 不暴露可能中断数据库、归档或目录切换的“停止任务”按钮。
 
 ## 敏感信息
 
@@ -114,7 +114,7 @@ Cloudflare 账号、API Key/Token 与 Zone ID：
 
 ## 备份格式
 
-KPanel 冷备仍生成原脚本可发现的：
+Dongger Panel 冷备仍生成原脚本可发现的：
 
 ```text
 /home/web_YYYYMMDDHHMMSS.tar.gz
@@ -143,10 +143,10 @@ KPanel 冷备仍生成原脚本可发现的：
 
 ## 发布与回滚
 
-- KPanel 回滚点：`v0.21.0` / `4b41740`。
+- Dongger Panel 回滚点：`v0.21.0` / `4b41740`。
 - 计划发布：`v0.22.0`。
 - 固定脚本：`f031d1206224de3743845d2fc81c4801ecda32f4`；
   SHA-256 `278526cee183cdc826c25e113a399fcac72484f8f2af2fd17a8f75a1cd6a40c1`。
-- 发布顺序：先推送脚本协议，再固定脚本提交与 SHA-256，最后构建 KPanel 镜像。
-- 回滚 KPanel/Agent 不删除或覆盖 `/home/web` 与 `/home/web_*.tar.gz`。
+- 发布顺序：先推送脚本协议，再固定脚本提交与 SHA-256，最后构建 Dongger Panel 镜像。
+- 回滚 Dongger Panel/Agent 不删除或覆盖 `/home/web` 与 `/home/web_*.tar.gz`。
 - 正式发布前执行 `verify-l2`、完整 `verify-release`、镜像内脚本摘要核验和独立主机实测。

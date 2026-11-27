@@ -1,4 +1,4 @@
-# KPanel v0.99.3 发布验收记录
+# Dongger Panel v0.99.3 发布验收记录
 
 日期：2026-08-29
 
@@ -10,7 +10,7 @@
 
 ## 发布画像
 
-- 业务域：KPanel 桌面模式下的网站页布局展示。
+- 业务域：Dongger Panel 桌面模式下的网站页布局展示。
 - 变更面：展示与前端布局；不涉及 API、数据、宿主机写入、Agent 权限或部署协议。
 - 受影响用户旅程：用户在桌面模式打开“网站”页时，页面内容按实际内容高度布局，体检/表格等页面区域不再被异常撑高或产生多余空白。
 - 未变化契约：API、数据 schema、端口、Compose、Agent 权限、`kejilion.sh` 和应用市场功能契约均不变。
@@ -74,12 +74,12 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 KPanel `v0.99.3` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
+- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 Dongger Panel `v0.99.3` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
 - 验证/灰度环境：固定 `arena-154` L3 runner、公开 OCI 校验和生产安全证据入口，均来自 `environment-policy.json`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight `0.99.2`、health `ok`，Agent `loaded/active/running/enabled`；backup gate 通过，备份目录为 `/root/kpanel-backups/pre-v0.99.2-20260829T105139Z`，服务恢复快照通过，`protected.diff` 为 0 字节。
-- 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，实际返回 exit 0、`KPanel 更新完成 / Update Complete`。
+- 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，实际返回 exit 0、`Dongger Panel 更新完成 / Update Complete`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：固定 postdeploy `status=passed`，health `status=ok`、`version=0.99.3`；容器标签 `org.opencontainers.image.revision=0cf8a57259297e844a2f2077eeb9cdc102c79e87`、`org.opencontainers.image.version=0.99.3`，镜像 RepoDigest 精确匹配 `sha256:d76ce9d40b2017d80e9723509704c5dfcb25e13b6a19f6830b8a0a373020bafb`；Panel `running/healthy`、restart=0、OOM=false；Agent `loaded/active/running/enabled` 且 `NeedDaemonReload=no`；`protected.diff` 0 字节，SQLite quick check 为 `ai.db empty`、`panel/ai.db ok`，最近 10 分钟 Panel/Agent fatal、panic、OOM、error signature scan 无匹配。本次未单独执行生产浏览器公网入口 UI 矩阵。
 - 生产已执行写操作：固定 backup 阶段受控停止/恢复服务并创建旧版本备份；标准应用市场入口拉取目标 `latest` digest 并重建 Panel；未执行业务数据写入、schema 迁移或端口变更。
 - 仅在隔离真机执行、未在生产执行的场景：L3 负例、脚本失败清理/回滚模拟和自动化布局回归；正式生产浏览器 UI 矩阵和长期 soak 未执行。

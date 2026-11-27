@@ -1,8 +1,8 @@
-# KPanel 多智能体项目管理规范
+# Dongger Panel 多智能体项目管理规范
 
 - 状态：长期强制规范
 - 版本：2026-10-30
-- 适用范围：KPanel 主仓、关联的 `kejilion/sh` 与 `kejilion/apps` 变更、Codex/Claude 等多智能体协作和版本发布
+- 适用范围：Dongger Panel 主仓、关联的 `kejilion/sh` 与 `kejilion/apps` 变更、Codex/Claude 等多智能体协作和版本发布
 - 权威关系：工程与产品规则以 `PROJECT_RULES.md` 为准；本文件负责工作分解、并发隔离、集成和发布治理
 
 ## 0. 规范信息架构
@@ -30,7 +30,7 @@
 
 ## 1. 管理目标
 
-KPanel 允许不同 AI 工具中的分析、开发、验证和发布任务并行，但每项写入必须物理隔离、责任唯一、
+Dongger Panel 允许不同 AI 工具中的分析、开发、验证和发布任务并行，但每项写入必须物理隔离、责任唯一、
 状态跨工具可发现、交付可复核。并行的单位不是“会话”，而是下面这条可追踪链：
 
 ```text
@@ -72,7 +72,7 @@ Codex 无法天然读取 Claude 会话，Claude 也无法天然读取 Codex 任�
 | 4 | Codex/Claude 本地任务 | 负责人、允许路径、权限和临时上下文，不是长期全局台账 |
 
 每个写任务必须有稳定 scope、唯一负责人、专用分支和 worktree。开始写入前在任务上下文中明确允许与
-禁止路径、基线提交、验证等级、依赖和推送/发布权限。用户明确要求修改、开发或修复 KPanel，即授权
+禁止路径、基线提交、验证等级、依赖和推送/发布权限。用户明确要求修改、开发或修复 Dongger Panel，即授权
 任务在专用分支形成非空、聚焦的本地任务候选提交；这是写任务的完成条件，不授权 SSH 推送、更新
 `main`、Tag、Release、镜像或生产。跨智能体交接不得依赖未提交文件或聊天记忆。
 
@@ -131,7 +131,7 @@ clean 或覆盖未知改动。写角色必须是链接 task worktree 和非 `mai
 
 | 对象 | 格式 | 示例 |
 | --- | --- | --- |
-| 任务标题 | `KPanel · <AI> · <角色> · <领域>` | `KPanel · Claude · 开发 · 历史监控框选` |
+| 任务标题 | `Dongger Panel · <AI> · <角色> · <领域>` | `Dongger Panel · Claude · 开发 · 历史监控框选` |
 | 功能分支 | `feature/<scope>` | `feature/monitoring-range-zoom` |
 | 修复分支 | `fix/<scope>` | `fix/container-cpu-sampling` |
 | 规范分支 | `docs/<scope>` | `docs/project-management-standard` |
@@ -158,7 +158,7 @@ clean 或覆盖未知改动。写角色必须是链接 task worktree 和非 `mai
 - “产物已发布”表示 tag、Release 和公开镜像成功；没有生产部署授权时停留在该状态，不复用历史现场结果。
 - “生产已部署”表示已授权目标完成备份、标准部署和部署安全核对；它不新增质量验证证据，公开镜像 E2E
   也不能替代部署事实。
-- 目标必须登记在 `environment-policy.json`。`prod-108`（含别名 `108`）已禁用全部 KPanel 操作，
+- 目标必须登记在 `environment-policy.json`。`prod-108`（含别名 `108`）已禁用全部 Dongger Panel 操作，
   测试、只读检查、备份、部署、升级、回滚演练、健康采样、日志读取和清理均不得连接。发布验证只使用 `github-hosted` 的 GitHub Actions，发布流程终止于 Docker Hub 与公开产物验收，不提供自有服务器或 WSL 发布方案，也不包含生产部署。
 - 同时进行的写任务上限为 3，其中发布通道最多 1 个、同一业务领域最多 1 个。只读分析不计入上限。
 - 协调中心通过 `git worktree list`、SSH 远端分支和提交差集重建全局状态；Codex 或 Claude 会话列表
@@ -189,7 +189,7 @@ worktree / branch / base / rollback：
 
 1. 稳定任务 scope、目标、允许范围、禁止范围、交付物和验收等级；
 2. 专用 worktree、分支、基线提交和回滚点；
-3. 计划修改的文件/模块，以及是否跨 `KPanel`、`sh`、`apps`；
+3. 计划修改的文件/模块，以及是否跨 `Dongger Panel`、`sh`、`apps`；
 4. 写任务的本地任务候选提交随修改授权生效；是否允许 SSH 推送、合并、打标签或部署仍须分别明确，
    未明确授权一律视为不允许；
 5. 当前智能体、相邻活跃任务及可能重叠的文件或契约。
@@ -211,10 +211,10 @@ worktree / branch / base / rollback：
    一次 `make dependency-report`，明确版本通道候选、检测失败、每日安全审计、EOL/例外期限、采用分类和
    是否需要独立 L2/L3。
 
-8. 只要任务涉及 KPanel、`kejilion/sh` 或两者的安装/更新/运行契约，必须依据
+8. 只要任务涉及 Dongger Panel、`kejilion/sh` 或两者的安装/更新/运行契约，必须依据
    `dependency-policy.json#crossRepositoryReleaseLinkage` 决定 `scriptLinkageState`：
    `not-required` 必须写明“无需发布脚本（不适用）”及脚本基线 commit/摘要；`coupled` 必须有同一
-   变更集编号、双方精确提交和兼容脚本发布计划；`script-only` 必须确认没有 KPanel 代码、镜像、
+   变更集编号、双方精确提交和兼容脚本发布计划；`script-only` 必须确认没有 Dongger Panel 代码、镜像、
    配置或版本变化。状态缺失、证据不足或矛盾时不得进入已就绪。
 
 ### 6.2.1 任务输入与交付资格
@@ -289,14 +289,14 @@ handoff 额外核对 clean 非空候选、diff 允许/禁止范围、精确身�
 `scriptLinkageState` 是交付和发布的必填机器字段，不允许使用“暂不发布脚本”“之后再看”或空白状态：
 
 - `not-required` 表示本次不需要新的或变更的脚本契约/修订，而不是脚本发布延期；已有且兼容的脚本
-  契约可以继续使用。KPanel 可以继续发布，但必须锁定实际内置脚本基线并保留兼容性证据。
-- `coupled` 表示 KPanel 与新的或变更的脚本能力必须成对验收；脚本兼容版本未就绪时，阻断 KPanel 候选或移除依赖
+  契约可以继续使用。Dongger Panel 可以继续发布，但必须锁定实际内置脚本基线并保留兼容性证据。
+- `coupled` 表示 Dongger Panel 与新的或变更的脚本能力必须成对验收；脚本兼容版本未就绪时，阻断 Dongger Panel 候选或移除依赖
   范围，不得静默沿用旧脚本。
-- `script-only` 只允许脚本仓库独立发布；不改 KPanel `VERSION`、tag、Release 或镜像，并记录对
-  受支持 KPanel 基线的兼容性证据。
+- `script-only` 只允许脚本仓库独立发布；不改 Dongger Panel `VERSION`、tag、Release 或镜像，并记录对
+  受支持 Dongger Panel 基线的兼容性证据。
 
 跨仓库任务仍分别使用专用 worktree/分支，以同一变更集编号关联。脚本的根/中文同步、语法和 smoke
-属于脚本侧门禁；KPanel 的契约、镜像和发布门禁仍在 KPanel 侧执行，任何一侧证据变化都使成对结论失效。
+属于脚本侧门禁；Dongger Panel 的契约、镜像和发布门禁仍在 Dongger Panel 侧执行，任何一侧证据变化都使成对结论失效。
 
 启动检查复用工具入口和第 4.1 节已经完成的远端、工作树与角色核对，不在填写跨仓库字段后再跑一遍。
 任务契约中的 `base` 必须使用精确提交；浮动 `origin/main` 前移不能替换原基线。
@@ -375,7 +375,7 @@ worktree / branch / base：
    测试/构建基础设施或只能在登记隔离真机验证的任务已记录不适用依据，不制造无意义预览。
 10. 涉及跨仓库契约时，交付包包含 `scriptLinkageState`、变更集编号、双方精确提交/摘要、状态对应的
      兼容性证据和发布决定；`not-required` 明确记录“无需发布脚本（不适用）”，`script-only` 没有
-     KPanel 版本/镜像变化，`coupled` 具备成对回滚点。
+     Dongger Panel 版本/镜像变化，`coupled` 具备成对回滚点。
 
 只读分析、经核对确认无需修改、用户取消或真实阻塞可以不产生提交，但必须分别标记为“只读完成”、
 “无需修改关闭”、“已取消”或“阻塞”，不能宣布仓库写任务完成。禁止用空提交满足本节。
@@ -591,7 +591,7 @@ git worktree list --porcelain
 | --- | --- |
 | 只读分析、创建本地专用 worktree、运行测试 | 允许 |
 | 修改任务范围内文件 | 用户要求开发/修复时允许 |
-| 创建聚焦本地任务候选提交 | 用户明确要求修改、开发或修复 KPanel 时允许，且为写任务完成条件 |
+| 创建聚焦本地任务候选提交 | 用户明确要求修改、开发或修复 Dongger Panel 时允许，且为写任务完成条件 |
 | 推送功能/候选分支 | 需要明确授权 |
 | 快进 `main` | 仅唯一集成/发布任务且需要明确主线集成授权 |
 | 打标签、GitHub Release、镜像发布、生产部署 | 仅唯一发布任务且需要明确上线授权 |
@@ -610,7 +610,7 @@ git worktree list --porcelain
 
 ### 13.1 本地磁盘空间回收
 
-本节管理开发机上的 KPanel 工作树、依赖、临时产物和本地证据，不管理生产磁盘，也不授权清理同一
+本节管理开发机上的 Dongger Panel 工作树、依赖、临时产物和本地证据，不管理生产磁盘，也不授权清理同一
 父目录下其他项目。清理采用任务生命周期触发，不创建周期监工，不为释放空间召回旧任务。
 
 **触发与责任：**
@@ -654,7 +654,7 @@ git worktree list --porcelain
 
 ## 14. 受控自我改进循环
 
-KPanel 允许智能体持续优化规范、自动门禁和协作流程，但“自我进化”是受控工程变更，不是智能体自行
+Dongger Panel 允许智能体持续优化规范、自动门禁和协作流程，但“自我进化”是受控工程变更，不是智能体自行
 改写约束。循环统一为：
 
 1. **观察**：从重复缺陷、滚动发布指标、CI/验收缺口、事故逃逸或反复人工步骤收集可复核证据；

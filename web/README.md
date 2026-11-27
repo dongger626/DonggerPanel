@@ -1,6 +1,6 @@
-# KPanel Web
+# Dongger Panel Web
 
-Vue 3 + TypeScript + Vite 实现的 KPanel 前端。所有数据均来自同源 `/api/v1`，不包含 mock 数据，也不会直接执行 Shell 或访问 Docker Socket。
+Vue 3 + TypeScript + Vite 实现的 Dongger Panel 前端。所有数据均来自同源 `/api/v1`，不包含 mock 数据，也不会直接执行 Shell 或访问 Docker Socket。
 
 ## 本地开发
 
@@ -19,7 +19,7 @@ npm run dev
 VITE_DEV_API_TARGET=http://127.0.0.1:9000 npm run dev
 ```
 
-WSL 中的 KPanel 使用独立端口时，可在 PowerShell 中启用目标 Host 改写：
+WSL 中的 Dongger Panel 使用独立端口时，可在 PowerShell 中启用目标 Host 改写：
 
 ```powershell
 $env:VITE_DEV_API_TARGET='http://127.0.0.1:8866'

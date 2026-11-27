@@ -117,7 +117,7 @@ afterEach(() => {
 })
 
 describe('Docker resource toolbar layout', () => {
-  it('gives Docker text and select controls a consistent KPanel treatment', () => {
+  it('gives Docker text and select controls a consistent Dongger Panel treatment', () => {
     expect(dockerSource).toMatch(/\.text-input,\s*\.select-input\s*\{[^}]*border-radius:\s*11px;[^}]*background-color:\s*var\(--surface-subtle\);/)
     expect(dockerSource).toMatch(/\.select-input\s*\{[^}]*appearance:\s*none;[^}]*background-image:\s*url\(/)
     expect(dockerSource).toMatch(/\.text-input:focus,\s*\.select-input:focus\s*\{[^}]*border-color:\s*var\(--brand\);[^}]*box-shadow:/)

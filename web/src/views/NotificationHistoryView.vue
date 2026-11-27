@@ -78,7 +78,7 @@ async function load(append = false): Promise<void> {
       ? '登录已过期，请重新登录。'
       : reason instanceof ApiError && reason.status === 400
         ? '筛选条件无效，请缩短搜索内容或调整筛选后重试。'
-        : '通知记录暂时不可用，请重试或检查 KPanel 数据目录。'
+        : '通知记录暂时不可用，请重试或检查 Dongger Panel 数据目录。'
   } finally {
     if (id === requestID) { loading.value = false; loadingMore.value = false }
   }
@@ -102,7 +102,7 @@ onBeforeUnmount(() => { requestID++; controller?.abort(); hostController.abort()
 <template>
   <div class="page notification-history">
     <div class="notification-history__summary">
-      <p class="notification-history__intro">{{ phrase('本机与集群事件默认保存在当前 KPanel，外部推送可选。') }}</p>
+      <p class="notification-history__intro">{{ phrase('本机与集群事件默认保存在当前 Dongger Panel，外部推送可选。') }}</p>
       <p class="notification-history__retention">{{ phrase('保留最近') }} {{ retention.days }} {{ phrase('天，最多') }} {{ retention.events }} {{ phrase('条；达到容量上限时清理最早记录。') }}</p>
     </div>
     <form class="notification-history__filters toolbar-card" @submit.prevent="load()">

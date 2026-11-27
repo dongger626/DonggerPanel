@@ -522,7 +522,7 @@ func TestSetKernelTuningMatchesKejilionStreamProfileAndAcceptsScriptArtifact(t *
 		}
 	}
 	if regularFile(autoPath) || regularFile(kpanelBBRPath) {
-		t.Fatal("conflicting automatic or standalone KPanel BBR profile remains")
+		t.Fatal("conflicting automatic or standalone Dongger Panel BBR profile remains")
 	}
 	if got := readLimited(limitsPath); !strings.Contains(got, "# user limit") ||
 		!strings.Contains(got, kejilionLimitsMarker) ||
@@ -669,7 +669,7 @@ func TestSetKernelTuningOffRestoresKejilionArtifactsAndPreservesStandaloneBBR(t 
 		t.Fatal("Kejilion optimization artifacts remain after restore")
 	}
 	if !regularFile(kpanelBBRPath) {
-		t.Fatal("independently managed KPanel BBR profile was removed")
+		t.Fatal("independently managed Dongger Panel BBR profile was removed")
 	}
 	if got := readLimited(limitsPath); !strings.Contains(got, "# keep") ||
 		strings.Contains(got, kejilionLimitsMarker) {
@@ -890,7 +890,7 @@ func TestSetSwapResizesKejilionFileAndMigratesLegacySwap(t *testing.T) {
 	if err != nil || !changed {
 		t.Fatalf("resize swap: changed=%v message=%q err=%v", changed, message, err)
 	}
-	if !strings.Contains(message, "合并旧版 KPanel Swap") {
+	if !strings.Contains(message, "合并旧版 Dongger Panel Swap") {
 		t.Fatalf("migration was not reported: %q", message)
 	}
 	info, err := os.Stat(primaryPath)

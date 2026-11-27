@@ -269,7 +269,7 @@ const basicSettings = computed<ManagementTool[]>(() => {
         : '/swapfile 尚未创建',
   ]
   if (management.swap.legacyExists || management.swap.legacyActive) {
-    swapDetails.push(`待合并旧版 KPanel Swap ${formatBytes(management.swap.legacySizeBytes)}`)
+    swapDetails.push(`待合并旧版 Dongger Panel Swap ${formatBytes(management.swap.legacySizeBytes)}`)
   }
   if (management.swap.otherActiveDevices) {
     swapDetails.push(`保留 ${management.swap.otherActiveDevices} 个其他 Swap`)
@@ -292,7 +292,7 @@ const basicSettings = computed<ManagementTool[]>(() => {
       value: management.ssh.ports.length ? management.ssh.ports.join('、') : '待 Agent 升级',
       detail: management.ssh.source === 'default' ? 'OpenSSH 默认端口' : '来自 sshd 配置',
       capability: 'system.ssh-port.write',
-      safety: '由本机可信 kejilion.sh 执行原有 SSH 修改主业务；KPanel 负责结构化校验、执行前备份和结果回读。云安全组仍需单独放行新端口。',
+      safety: '由本机可信 kejilion.sh 执行原有 SSH 修改主业务；Dongger Panel 负责结构化校验、执行前备份和结果回读。云安全组仍需单独放行新端口。',
       icon: KeyRound,
       tone: 'blue',
     },
@@ -337,7 +337,7 @@ const basicSettings = computed<ManagementTool[]>(() => {
         : '未启用',
       detail: swapDetails.join(' · '),
       capability: 'system.swap.write',
-      safety: '与 kejilion.sh 统一管理 /swapfile；调整时自动合并旧版 KPanel Swap，不清除 Swap 分区或第三方 swapfile。',
+      safety: '与 kejilion.sh 统一管理 /swapfile；调整时自动合并旧版 Dongger Panel Swap，不清除 Swap 分区或第三方 swapfile。',
       icon: MemoryStick,
       tone: management.swap.legacyExists || management.swap.legacyActive ? 'amber' : undefined,
     },
@@ -531,7 +531,7 @@ const networkTools = computed<ManagementTool[]>(() => {
       value: management.ipPreference === 'ipv4' ? 'IPv4 优先' : management.ipPreference === 'system_default' ? '系统默认' : '未识别',
       detail: management.ipPreference === 'ipv4' ? '已识别 gai.conf 规则' : '未发现 Kejilion IPv4 优先规则',
       capability: 'system.ip-preference.write',
-      safety: '只维护一条带 KPanel 标识的 gai.conf 规则，撤销时不删除用户原配置。',
+      safety: '只维护一条带 Dongger Panel 标识的 gai.conf 规则，撤销时不删除用户原配置。',
       icon: ArrowLeftRight,
       tone: 'violet',
     },
@@ -633,7 +633,7 @@ const maintenanceTools = computed<ManagementTool[]>(() => {
       title: '系统清理',
       description: '对应 kejilion.sh 的“系统清理”，提供缓存清理和标准安全清理。',
       value: valueFor('cleanup', '缓存 · 无用依赖 · 旧日志'),
-      detail: detailFor('cleanup', '不执行 Docker prune，不清空 /var/log、/tmp、网站目录或 KPanel 备份。'),
+      detail: detailFor('cleanup', '不执行 Docker prune，不清空 /var/log、/tmp、网站目录或 Dongger Panel 备份。'),
       capability: 'system.cleanup.write',
       safety: `仅调用固定 ${packageManager} 与 journalctl 参数；标准模式保留最近 7 天日志并限制 journal 最大 500 MiB。`,
       icon: Database,
@@ -1605,7 +1605,7 @@ onBeforeUnmount(() => {
               <span class="danger-zone__icon"><CircleAlert :size="21" /></span>
               <span class="danger-zone__body">
                 <strong id="reinstall-title">重装系统</strong>
-                <small>清除系统数据并导致 KPanel 离线。没有带外恢复通道时保持锁定。</small>
+                <small>清除系统数据并导致 Dongger Panel 离线。没有带外恢复通道时保持锁定。</small>
               </span>
               <button
                 class="button button--danger button--small"
@@ -1797,7 +1797,7 @@ onBeforeUnmount(() => {
               v-if="data?.management.swap.legacyExists || data?.management.swap.legacyActive"
               class="inline-alert inline-alert--warning"
             >
-              {{ phrase('检测到旧版 KPanel Swap。执行后会移除旧文件，并由所选大小的 `/swapfile` 替代，不会把两者容量相加，也不会改动其他 Swap。') }}
+              {{ phrase('检测到旧版 Dongger Panel Swap。执行后会移除旧文件，并由所选大小的 `/swapfile` 替代，不会把两者容量相加，也不会改动其他 Swap。') }}
             </div>
           </div>
           <fieldset v-else-if="selectedTool.id === 'mirror'" class="mirror-route-field">
@@ -1858,7 +1858,7 @@ onBeforeUnmount(() => {
               <option v-if="data?.management.bbrv3.installed" value="uninstall">{{ phrase('卸载 XanMod BBRv3 内核') }}</option>
             </select>
             <small>
-              {{ phrase('安装、更新或卸载内核后需要重启才能完成切换；KPanel 只提交后台任务，不会自动重启。') }}
+              {{ phrase('安装、更新或卸载内核后需要重启才能完成切换；Dongger Panel 只提交后台任务，不会自动重启。') }}
             </small>
           </label>
           <label v-else-if="selectedTool.id === 'system-update'" class="field">
@@ -1874,7 +1874,7 @@ onBeforeUnmount(() => {
               <option value="cache">{{ phrase('仅清理软件包缓存') }}</option>
               <option value="standard">{{ phrase('标准清理：无用依赖、缓存和旧日志') }}</option>
             </select>
-            <small>{{ phrase('不会清理 Docker、网站文件、数据库、`/tmp` 或 KPanel 配置备份。') }}</small>
+            <small>{{ phrase('不会清理 Docker、网站文件、数据库、`/tmp` 或 Dongger Panel 配置备份。') }}</small>
           </label>
           <div v-else-if="selectedTool.id === 'system-reboot'" class="form-stack compact">
             <div class="inline-alert inline-alert--danger">

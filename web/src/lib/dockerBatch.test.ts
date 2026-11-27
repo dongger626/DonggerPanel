@@ -56,12 +56,12 @@ describe('container batch planning', () => {
       .toBe('缺少资源版本，请刷新后重试')
   })
 
-  it('keeps KPanel itself selectable but moves it to the end with a warning', () => {
+  it('keeps Dongger Panel itself selectable but moves it to the end with a warning', () => {
     const panel = container('kejilion-panel', 'running', { image: 'docker.io/kjlion/kejilion-panel@sha256:abc' })
     const plan = planContainerBatch([panel, container('web', 'running'), container('db', 'running')], 'stop')
     expect(plan.items.map((item) => item.label)).toEqual(['web', 'db', 'kejilion-panel'])
     expect(plan.items[2]!.self).toBe(true)
-    expect(dockerBatchSelfWarning(plan)).toContain('所选包含 KPanel 自身容器 kejilion-panel，会放在最后执行')
+    expect(dockerBatchSelfWarning(plan)).toContain('所选包含 Dongger Panel 自身容器 kejilion-panel，会放在最后执行')
     expect(dockerBatchSelfWarning(planContainerBatch([container('web', 'running')], 'stop'))).toBe('')
   })
 

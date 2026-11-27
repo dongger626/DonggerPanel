@@ -1,4 +1,4 @@
-# KPanel v0.99.2 发布验收记录
+# Dongger Panel v0.99.2 发布验收记录
 
 日期：2026-08-29
 
@@ -10,15 +10,15 @@
 
 ## 发布画像
 
-- 业务域：KPanel 品牌资产与应用市场展示资源。
+- 业务域：Dongger Panel 品牌资产与应用市场展示资源。
 - 变更面：展示与静态资源；不涉及 API、数据、宿主机写入、Agent 权限或部署协议。
-- 受影响用户旅程：用户打开 KPanel、浏览器标签页、PWA/桌面快捷方式、应用市场和公开 README/截图时，看到统一的新 Logo、favicon、Apple touch icon、manifest 图标、Safari mask 和配套展示素材。
-- 未变化契约：API、数据 schema、端口、Compose、Agent 权限、`kejilion.sh` 和应用市场功能契约均不变；应用市场仅更新 KPanel 静态图标及对应 catalog 资源哈希。
+- 受影响用户旅程：用户打开 Dongger Panel、浏览器标签页、PWA/桌面快捷方式、应用市场和公开 README/截图时，看到统一的新 Logo、favicon、Apple touch icon、manifest 图标、Safari mask 和配套展示素材。
+- 未变化契约：API、数据 schema、端口、Compose、Agent 权限、`kejilion.sh` 和应用市场功能契约均不变；应用市场仅更新 Dongger Panel 静态图标及对应 catalog 资源哈希。
 - 风险等级及理由：低；变更集中在品牌位图/SVG/WebP、静态截图、HTML 图标引用和资源校验测试，未改变业务逻辑、布局结构、数据流或宿主机写入链路。
 
 ## 发布范围与未纳入内容
 
-- 用户可见更新：Panel Logo、favicon、Apple touch icon、PWA/manifest 图标、Safari mask、应用市场 KPanel 图标，以及 README/公开截图中的品牌素材；`web/index.html` 的 favicon 引用使用 `?v=20260829` cache bust。
+- 用户可见更新：Panel Logo、favicon、Apple touch icon、PWA/manifest 图标、Safari mask、应用市场 Dongger Panel 图标，以及 README/公开截图中的品牌素材；`web/index.html` 的 favicon 引用使用 `?v=20260829` cache bust。
 - 精确提交清单：候选基线为最新 `origin/main` `34832d33e25e7cb7138b7dd82ab81e2135f7589f`；源修复 `0aeb18dcf5ce5a21b5cf0f93ec65b2532ba29b3b`（父 `9fe3ed9281722117c0e893f4b91032daa4268eb4`）在候选中形成 cherry-pick `c9e4ddbdae8f94f3f29f1ef1a7f454f58089e0fb`；版本准备提交为 `8efb92d2529711500d42832f6a39591a4188e62c`（父 `c9e4ddbdae8f94f3f29f1ef1a7f454f58089e0fb`）。相对候选基线的 24 个文件仅包括 19 个品牌变更文件与 `CHANGELOG.md`、`VERSION`、`internal/version/version.go`、`web/package.json`、`web/package-lock.json` 五个版本元数据文件。
 - 明确未纳入的分支、文件或后续事项：候选差异不含 System Center 页面、路由、API 或文档；`system-settings.webp` 只是公开静态截图中的品牌素材，不是 System Center 功能变更。`kejilion/apps` 未产生提交，`kejilion.sh` 未改动，`108`/`prod-108` 未连接。真实生产浏览器 Logo 视觉矩阵未在本轮重新执行，保留为后续专项验收事项。
 
@@ -74,10 +74,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 KPanel `v0.99.2` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
+- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 Dongger Panel `v0.99.2` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
 - 验证/灰度环境：固定 `arena-154` L3 runner、公开 OCI 校验和生产安全证据入口，均来自 `environment-policy.json`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight `0.99.1`、health `ok`，Agent `loaded/active/running/enabled`；backup gate 通过，备份目录为 `/root/kpanel-backups/pre-v0.99.1-20260829T070650Z`，`image-load-verify.txt`、`kejilion-agent.service`、`kpanel.conf`、`kpanel.tar.zst`、`old-image.tar.zst`、`panel-inspect.json` 六项摘要均为 `OK`，受保护配置差异为空。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy health `status=ok`、`version=0.99.2`；容器标签 `org.opencontainers.image.revision=8efb92d2529711500d42832f6a39591a4188e62c`、`org.opencontainers.image.version=0.99.2`，镜像 RepoDigest 精确匹配 `sha256:bf518818feed806e6f2748be09f388b95183951e1d736cb420e0f0fef8ba3e85`；Panel `running/healthy`、restart=0、OOM=false；Agent `loaded/active/running/enabled` 且 `NeedDaemonReload=no`；`protected.diff` 0 字节，SQLite quick check 为 `ai.db empty`、`panel/ai.db ok`，最近 10 分钟 Panel/Agent panic/fatal/OOM signature scan=`NONE`。本次未单独执行生产浏览器公网入口矩阵。

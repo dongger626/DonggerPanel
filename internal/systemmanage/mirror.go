@@ -86,7 +86,7 @@ func resolvePublicCountry(ctx context.Context) (string, error) {
 		return "", err
 	}
 	request.Header.Set("Accept", "text/plain")
-	request.Header.Set("User-Agent", "KPanel mirror selector")
+	request.Header.Set("User-Agent", "Dongger Panel mirror selector")
 	client := &http.Client{Timeout: 4 * time.Second}
 	response, err := client.Do(request)
 	if err != nil {

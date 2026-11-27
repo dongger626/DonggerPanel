@@ -1,4 +1,4 @@
-# KPanel v1.27.0-rc.7 发布验收记录
+# Dongger Panel v1.27.0-rc.7 发布验收记录
 
 已验证：RC7于2026-10-17T16:11:57Z公开，正式GitHub run39045179405 attempt1终态success；生产未部署。
 
@@ -22,7 +22,7 @@
 
 备份恢复祖先目录竞态H已在本轮范围内关闭：固定直接父Root并校验SameFile，应用/回滚/清理均使用父句柄与basename，日志记录平台文件身份，恢复时拒绝缺失或替换身份；新旧容器启动前再次复核路径。不同验证者复核源码和确定性测试，Linux完整CI覆盖相应回归。另一修复为超长扩展名碰撞时有界UTF8截断，避免重名循环。
 
-延期3项：复杂空格/YAML多行脱敏、编码JSON/URL字段名脱敏、Agent复核与Docker daemon解析宿主bind路径之间的非原子窗口。前两项有外部overlay复现和授权AI/MCP输出路径核验；第三项确认边界但未实测Linux Docker利用，不冒称已原子保证或动态利用成功。负责人均KPanel release maintainers，2026-10-23复核，原始线索及处置保留。
+延期3项：复杂空格/YAML多行脱敏、编码JSON/URL字段名脱敏、Agent复核与Docker daemon解析宿主bind路径之间的非原子窗口。前两项有外部overlay复现和授权AI/MCP输出路径核验；第三项确认边界但未实测Linux Docker利用，不冒称已原子保证或动态利用成功。负责人均Dongger Panel release maintainers，2026-10-23复核，原始线索及处置保留。
 
 安全最终报告SHA256`0dc7caf2c424e04ce4fdfaeef6a031651dfebc4c0a8dc203ad24db1c1e39410d`；父目录独立验证R2为`f0bc7c4f4187e9e4548cf18ab72986b70536c717867321695e0c7071fcdc5a55`（实际文件摘要以仓库外原件回读为准）。初始验证FAIL和平台中断原件保留，不计为通过；同会话防御性续审及独立源码结论分别记录。
 

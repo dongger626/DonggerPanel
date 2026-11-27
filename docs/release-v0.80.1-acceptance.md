@@ -1,4 +1,4 @@
-# KPanel v0.80.1 上线验收记录
+# Dongger Panel v0.80.1 上线验收记录
 
 日期：2026-08-16（Asia/Shanghai）
 
@@ -15,9 +15,9 @@
 ## 发布范围
 
 - 修复桌面文件或目录快捷方式快速拖放时，原生 `drop` 已发生但 `dragend` 尚未回传 `dropEffect`，导致最终位置偶发未持久化的问题。
-- 跨 KPanel 复制仍不会被误判为本地移动；拖离本桌面期间隐藏本地预览，返回或结束后完整恢复。
+- 跨 Dongger Panel 复制仍不会被误判为本地移动；拖离本桌面期间隐藏本地预览，返回或结束后完整恢复。
 - 版本与 CHANGELOG 更新到 v0.80.1；无数据库、API、配置、应用市场契约或托管脚本迁移。
-- 已盘点 KPanel、`kejilion/sh` 与 `kejilion/apps`：本次仅上述 KPanel 聚焦补丁未上线；历史工作树、已上线提交、被替代候选和未形成独立交付的实验均未混入。
+- 已盘点 Dongger Panel、`kejilion/sh` 与 `kejilion/apps`：本次仅上述 Dongger Panel 聚焦补丁未上线；历史工作树、已上线提交、被替代候选和未形成独立交付的实验均未混入。
 
 ## 自动门禁
 
@@ -49,7 +49,7 @@
 
 ## 生产部署与健康
 
-- 唯一 KPanel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
+- 唯一 Dongger Panel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
 - 部署前：v0.80.0，Panel healthy、restart 0、OOM false，Agent active；运行 OCI/revision 为 `sha256:206ebd3571432cd91ec15b6cd8285a199fcfa0f5f5d3a18e5edd217e430383ef` / `88bdb3cf13e125acaba53ba5e2ff80a3af2cece7`。
 - 停写备份：`/root/kpanel-backups/v0.80.1-preupgrade-arena154-20260816T065847Z.tar.gz`，SHA-256 `e16191580ea84927dc8910bc2899d39cb730ea661469a52d7672f299f3bf9e3f`。
 - 旧镜像归档：同名 `.image.tar`，SHA-256 `5e048764f1781360809824876ffdc8c1b4217f37c8e159bf7193799b6f23d9fa`；manifest SHA-256 `61467bcd7857a44614f3e8013f0fcf5bd591cf3b489276ff3d4c6b0ddc13314f`。备份已独立解包并核对文件清单、`.env` 权限、Compose、Agent unit、两个 SQLite 库和镜像可加载性。

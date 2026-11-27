@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.8 发布验收记录
+# Dongger Panel v1.25.0-rc.8 发布验收记录
 
 日期：2026-10-06
 
@@ -26,7 +26,7 @@ releaseTrain：1.25.0
 
 - 业务域：集群节点管理、轻量节点监控与远程节点访问。
 - 变更面：移除 Windows 节点界面、接入、报告、终端/桌面桥接、文件/图库/历史监控、安装更新链路及专属发布资产；保留 Linux 轻量节点、通用 Windows MCP 客户端及 RC2–RC7 的其他功能。
-- 受影响用户旅程：Windows 主机不能作为 KPanel 轻量节点加入或管理；Linux 轻量节点、节点监控和其他既有业务继续按原契约运行。历史 Windows 节点数据由当前 API 隔离/拒绝，UI 不再暴露对应业务。
+- 受影响用户旅程：Windows 主机不能作为 Dongger Panel 轻量节点加入或管理；Linux 轻量节点、节点监控和其他既有业务继续按原契约运行。历史 Windows 节点数据由当前 API 隔离/拒绝，UI 不再暴露对应业务。
 - 未变化契约：没有数据库 schema 迁移、API 新增、端口或 Compose 变化；没有修改 kejilion/sh；稳定更新通道、GitHub Latest 和默认应用市场 stable 来源不变。Windows MCP 客户端是通用 MCP 工具，不是 Windows 节点 Agent/安装器，继续保留。
 - 风险等级及理由：L3。版本移除已发布的远程节点能力并清理服务端、界面和交付路径；通过预览通道发布，不覆盖稳定版本或生产环境。
 
@@ -50,9 +50,9 @@ releaseTrain：1.25.0
 
 - scriptLinkageState：not-required（无需发布脚本）。
 - 变更集编号：不适用；没有跨仓库发布。
-- KPanel 实际内置脚本基线 commit / SHA-256：c3a8bd895f8878d9e4ced7592c91a20c974472a5 / d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：c3a8bd895f8878d9e4ced7592c91a20c974472a5 / d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0。
 - 脚本候选 commit / SHA-256：不适用；本版未修改脚本。
-- 状态判定依据与兼容性证据：节点 Linux 协议和脚本未改；Windows 节点安装/接入由 KPanel 仓库的 Agent、安装器和服务端路径提供，本版已删除。
+- 状态判定依据与兼容性证据：节点 Linux 协议和脚本未改；Windows 节点安装/接入由 Dongger Panel 仓库的 Agent、安装器和服务端路径提供，本版已删除。
 - 本版发布决定：脚本不在范围；先前固定脚本基线仍满足现有 Linux 节点链路。
 - 阻断或移除的依赖范围：删除 Windows 节点专属 build/install 链路与 IronRDP；其他跨仓依赖不适用。
 

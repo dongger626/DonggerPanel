@@ -1,4 +1,4 @@
-# KPanel v0.44.2 发布验收
+# Dongger Panel v0.44.2 发布验收
 
 ## 发布范围
 
@@ -29,7 +29,7 @@ Release 已公开且不是 prerelease；Agent、Node、部署归档、许可证�
 - 候选 CI 与 main CI 均通过变更门禁、特权核心 race、`govulncheck`、`npm audit`、Trivy 和应用市场生命周期测试。
 - Release 工作流通过源码复验、原生镜像扫描、运行时契约、多架构构建、SBOM/Provenance 和公开发布。
 - 在 `kp.kejilion.pro` 使用 700 KiB 请求体复现旧 Base64 JSON 为 `400 text/html`；相同数据改为 multipart
-  后越过 WAF 并到达 KPanel 路由，返回测试会话不存在的应用层 404。由此确认无需放宽全站
+  后越过 WAF 并到达 Dongger Panel 路由，返回测试会话不存在的应用层 404。由此确认无需放宽全站
   `SecRequestBodyNoFilesLimit 524288`。
 
 ## 154 上线与运行观察

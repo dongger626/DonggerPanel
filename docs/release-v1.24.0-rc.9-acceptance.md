@@ -1,4 +1,4 @@
-# KPanel v1.24.0-rc.9 发布验收记录
+# Dongger Panel v1.24.0-rc.9 发布验收记录
 
 日期：2026-10-03；发布级别：L3。
 
@@ -56,7 +56,7 @@ Mock 使用 Chrome 154.0.8037.93 / Playwright 1.62.1；pageErrors/unexpectedErro
 
 版本与 preview index `sha256:11ee0a1c6691d36cf2523d30304ae8fedbd9a9ec657f21a1e5d8bcac372d384f`；amd64 `sha256:425ba0cac894f98dede438e22cc7c9418036477edd5d686a03384a39b2fe3f7c`；arm64 `sha256:95641839c5347c331b8aad2a99818264fcde12805f3fadda31ee529fa0978236`。双架构 manifest/config 原始 byte 摘要、version/revision/script labels、65532:65532、entrypoint 与 SPDX/SLSA subject binding 通过。公开 immutable amd64 镜像 `packaging/tests/image-e2e.sh` 和独立内置 bytes 核验通过；临时 E2E 容器/网络/数据已移除。
 
-GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb66d3bd7a3f9f3d3c7a9110df3110b3048d11f46e5`。只提升 preview；加入预览不会自动安装，退出不会自动降级，轻量 Node 无人值守仍只跟 stable/latest。生产部署不适用，生产写入 0，`prod-108`/108 本轮未连接或执行任何 KPanel 操作。
+GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb66d3bd7a3f9f3d3c7a9110df3110b3048d11f46e5`。只提升 preview；加入预览不会自动安装，退出不会自动降级，轻量 Node 无人值守仍只跟 stable/latest。生产部署不适用，生产写入 0，`prod-108`/108 本轮未连接或执行任何 Dongger Panel 操作。
 
 ## 回滚与分支处置
 
@@ -89,7 +89,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "Inline Python newline quoting rejected the first mandatory public preflight; no external write.",
     "recoveryEvidence": "public-preflight.py and public-preflight.json passed",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -98,7 +98,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "Vitest ran from the wrong cwd, failed the import alias and executed zero tests.",
     "recoveryEvidence": "marker-video-regression-r2.log: 12 passed from web cwd",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -107,7 +107,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "Chinese-only refresh selector invalidated the English case of the first menu browser run.",
     "recoveryEvidence": "menu-browser-r2/result.json: 10 passed using locale-aware refresh selector; original run retained",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -116,7 +116,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 5,
     "impact": "Five feature harness attempts failed on nonexistent selectors, selection state, toast timing or invalid image fixture; none is used as a passing product result.",
     "recoveryEvidence": "feature-browser-r1/result.json; feature-browser-r2/result.json; feature-browser-r3/result.json; feature-browser-r4/result.json; feature-browser-r5/result.json; feature-browser-r6/result.json: 8 passed with valid PNG, explicit selection completion and decoded-media wait",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -125,7 +125,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "PowerShell quoting made the first mandatory public validator preparation invalid; no publication occurred.",
     "recoveryEvidence": "prepare-public-validator.py syntax checked; publication-helper-hashes.json refreshed; file-based helper used",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -134,7 +134,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "The first mandatory incident consolidation referenced a nonexistent feature-browser result path and stopped; no metrics were published.",
     "recoveryEvidence": "rg --files located feature-browser-r1/result.json; consolidated ledger checks every actual result and total",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -143,7 +143,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "First real API fixture passed 20 checks but failed Docker stats because its isolated PID namespace could not verify the live dockerd PID; existing activation guard refused connection.",
     "recoveryEvidence": "real-api-raw/result.json failed retained; real-api-raw-r2/result.json: 21 passed with read-only daemon PID/socket and host process visibility; system mutations disabled, default activation guard unchanged",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -152,7 +152,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 2,
     "impact": "Two real browser runs finished all six functional cases but were rejected by the final console-error gate: transient stale-thumbnail conflict plus existing business private-registry authorization failures had not been classified with exact response evidence.",
     "recoveryEvidence": "real-browser-r1/result.json and real-browser-r2/result.json retained; final real-browser/result.json records fresh thumbnail 200 and decoded image, exact known business IDs/403 registry-auth response bodies; all other errors still fail",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -161,7 +161,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "All first acceptance validators passed, but the exact-path guard consumed a Git CRLF warning merged into stdout and refused the commit. Only the two allowed docs were changed.",
     "recoveryEvidence": "acceptance-checks.log validators passed; native git status confirmed the exact two paths; acceptance-checks-r2.log separates stderr from metadata stdout and writes repository docs with LF",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -170,7 +170,7 @@ GitHub Latest 仍 `v1.23.0`，Docker latest 仍 `sha256:236759215c0f527ac8e35bb6
     "count": 1,
     "impact": "Second acceptance preparation stopped because the current-context writer searched only for the old RC8 paragraph after the first attempt had already written RC9; no commit/push occurred.",
     "recoveryEvidence": "acceptance-checks-r2.log failed retained; write-acceptance.py now finds the preview paragraph independently of RC number; acceptance-checks-r3.log validates the resumed exact two-file scope",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-04 复核；下一次正式生产写入前，把已验证的文件式脚本、真实媒体夹具和页面状态定位纳入稳定入口并补回归。本次保留失败原件及核对后的重试，不宣称仓库永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   }

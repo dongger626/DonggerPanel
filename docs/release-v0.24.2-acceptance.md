@@ -1,4 +1,4 @@
-# KPanel v0.24.2 验收记录
+# Dongger Panel v0.24.2 验收记录
 
 ## 交付范围
 
@@ -14,7 +14,7 @@
 
 ## 发布提交
 
-- KPanel：`f82cb9e375621918e5e1a515db839423d5afdd8e`
+- Dongger Panel：`f82cb9e375621918e5e1a515db839423d5afdd8e`
 - 标签：`v0.24.2`
 - `kejilion.sh`：
   `9c19fc3f10e77dd352e5f6f7a0c53d8a1ba64761`
@@ -57,9 +57,9 @@
 - 代码回滚点：标签 `v0.24.1`。
 - 镜像回滚点：
   `docker.io/kjlion/kejilion-panel@sha256:d6da7b6be360520a6847d7a39168520ed1e16db22c8c5c16ff4a82089b3e55ce`
-- 本版本没有数据格式迁移。回滚 KPanel/Agent 不删除 `/home/web`、应用容器、域名配置或环境备份。
+- 本版本没有数据格式迁移。回滚 Dongger Panel/Agent 不删除 `/home/web`、应用容器、域名配置或环境备份。
 
 ## 边界
 
 - 本次发布完成 GitHub Release、Docker Hub 版本镜像和 `latest` 更新。
-- 没有自动替用户升级任何生产主机；用户从应用市场更新 KPanel 时才执行原位升级与失败回滚。
+- 没有自动替用户升级任何生产主机；用户从应用市场更新 Dongger Panel 时才执行原位升级与失败回滚。

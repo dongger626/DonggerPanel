@@ -1,4 +1,4 @@
-# KPanel 质量改进提案：重复流程异常指纹的机器入口
+# Dongger Panel 质量改进提案：重复流程异常指纹的机器入口
 
 > 按 `docs/quality-improvement-proposal-template.md` 填写。本提案只为 `PROJECT_RULES.md` 5.1.7 的
 > 重复指纹判定补机器入口，不改变严重度定义、不降低任何 fail-closed 门禁。

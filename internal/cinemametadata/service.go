@@ -120,7 +120,7 @@ func (s *Service) request(ctx context.Context, raw, credential string, limit int
 	if err != nil {
 		return nil, "", ErrUnavailable
 	}
-	r.Header.Set("User-Agent", "KPanel-Cinema/1 (https://github.com/kejilion/KPanel)")
+	r.Header.Set("User-Agent", "Dongger Panel-Cinema/1 (https://github.com/kejilion/KPanel)")
 	r.Header.Set("Accept", "application/json, image/jpeg, image/png")
 	if credential != "" {
 		r.Header.Set("Authorization", "Bearer "+credential)

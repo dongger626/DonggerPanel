@@ -12,7 +12,7 @@ export function applySiteBranding(value?: SiteBranding): void {
 export function useSiteBranding() {
   return {
     value: readonly(branding),
-    name: computed(() => branding.value.name || 'KPanel'),
+    name: computed(() => branding.value.name || 'Dongger Panel'),
     icon: computed(() => branding.value.icon || DEFAULT_SITE_ICON),
   }
 }

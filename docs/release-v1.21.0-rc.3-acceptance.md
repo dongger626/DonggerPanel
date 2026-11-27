@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.3 发布验收记录
+# Dongger Panel v1.21.0-rc.3 发布验收记录
 
 日期：2026-09-20
 
@@ -59,7 +59,7 @@
 
 ## 发布产物与隔离验收
 
-- [KPanel v1.21.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.3) 为非 draft、prerelease、非 Latest；GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.3) 为非 draft、prerelease、非 Latest；GitHub Latest 仍为 `v1.20.0`。
 - 14 个非空附件完整：MCP 六个平台二进制、Agent/Node 双架构、部署包、LICENSE、`SHA256SUMS` 和 THIRD_PARTY_NOTICES。
 - Docker `1.21.0-rc.3` 与 `preview` OCI index 均为 `sha256:1f6fa3f208a7742e11a078f82c5f6060a63df21f872d05d9ed93e3827c13c6cf`；`linux/amd64` / `linux/arm64` 分别为 `sha256:13a56148416914439b3a7769d572f98113a07018677ffcd801fd25bc5b5fd0a7` / `sha256:17beb67965efd8e569a200a90a6f0d00923085a9b88e25d3f9b128ee84669bb7`；另两项 `unknown/unknown` 为 attestation。
 - 稳定 `latest` 与 `1.20.0` 均保持 `sha256:a991b5d27d7d6519c694b6cbc88c037bbaa0fcef418a43b0ff94cb638dee575f`。

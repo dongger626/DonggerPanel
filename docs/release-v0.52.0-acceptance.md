@@ -1,4 +1,4 @@
-# KPanel v0.52.0 上线验收记录
+# Dongger Panel v0.52.0 上线验收记录
 
 ## 发布结论
 
@@ -32,7 +32,7 @@
 - `5b83325` `fix(desktop): hide app-backed website icons`
 - `f1cb879` `feat(system): add lightweight process manager`
 - `8761fe4` `feat(desktop): add taskbar process manager shortcut`
-- `a314dd9` `chore: prepare KPanel 0.52.0`
+- `a314dd9` `chore: prepare Dongger Panel 0.52.0`
 
 ## 上线前验证
 
@@ -46,7 +46,7 @@
 - 主分支 CI 通过：[run 31264372351](https://github.com/kejilion/KPanel/actions/runs/31264372351)。
 - 发布工作流通过：[run 31264520667](https://github.com/kejilion/KPanel/actions/runs/31264520667)。
 - 公共镜像隔离启动与健康检查通过。
-- `apps` 的 `kpanel.conf` 与 KPanel 打包配置一致，且本次无 `apps` 变更。
+- `apps` 的 `kpanel.conf` 与 Dongger Panel 打包配置一致，且本次无 `apps` 变更。
 
 ## 发布产物
 
@@ -79,8 +79,8 @@
 ## 回滚方案
 
 1. 将生产镜像固定回 `v0.51.0` 对应镜像摘要 `sha256:9006758325cb941eeaed90f668a48bf03cf4ac6da288dd8723face887986aba4`。
-2. 重新创建 KPanel 容器并确认健康接口返回 `0.51.0`。
-3. 如需恢复数据，使用升级前备份 `/root/kpanel-backups/v0.52.0-preupgrade-20260808T153555Z`；恢复前先停止 KPanel 并再次备份当前数据。
+2. 重新创建 Dongger Panel 容器并确认健康接口返回 `0.51.0`。
+3. 如需恢复数据，使用升级前备份 `/root/kpanel-backups/v0.52.0-preupgrade-20260808T153555Z`；恢复前先停止 Dongger Panel 并再次备份当前数据。
 4. 回滚后核验容器健康、Agent 版本一致性、SQLite 完整性及近 10 分钟日志。
 
 ## 已知限制

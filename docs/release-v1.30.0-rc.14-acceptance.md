@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.14 发布验收记录
+# Dongger Panel v1.30.0-rc.14 发布验收记录
 
 日期：2026-11-12
 
@@ -45,7 +45,7 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`not-required`；本版不修改或发布 `kejilion.sh`。
-- KPanel 实际内置脚本基线：`kejilion/sh@1faee13f3faef164efbfa899e244fc19ad58aaff`，SHA-256 `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
+- Dongger Panel 实际内置脚本基线：`kejilion/sh@1faee13f3faef164efbfa899e244fc19ad58aaff`，SHA-256 `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
 - 脚本候选、变更集编号及阻断范围：不适用。
 - 本版决定：脚本不在范围；复用 RC4 起已公开且镜像固定的兼容脚本来源。
 

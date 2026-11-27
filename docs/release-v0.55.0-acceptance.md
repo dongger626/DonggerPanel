@@ -1,4 +1,4 @@
-# KPanel v0.55.0 发布验收记录
+# Dongger Panel v0.55.0 发布验收记录
 
 日期：2026-08-09
 
@@ -10,7 +10,7 @@
 本版本包含以下已冻结内容：
 
 - `2dd61d8`：新增 root 本地交互式管理员密码恢复，默认保留 TOTP、撤销旧 Session，不增加公网恢复 API；
-- `7986ced`：统一版本字段并准备 KPanel `0.55.0`。
+- `7986ced`：统一版本字段并准备 Dongger Panel `0.55.0`。
 
 正式源码、标签和通过 CI 的提交均为：
 
@@ -98,7 +98,7 @@ KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh
 - 近 10 分钟容器日志无 `panic`、`fatal` 或 `error`；
 - 公开首页返回 HTTP 200；
 - 2 分钟 60 次健康请求全部成功，版本始终为 `0.55.0`；
-- 真实浏览器进入 `/login?redirect=/overview`，标题为“登录 · KPanel”；“忘记密码？”与展开后的恢复说明均可见，页面控制台无错误或警告。
+- 真实浏览器进入 `/login?redirect=/overview`，标题为“登录 · Dongger Panel”；“忘记密码？”与展开后的恢复说明均可见，页面控制台无错误或警告。
 
 未使用生产管理员凭据，因此未在生产账户中进入桌面工作区；桌面功能由冻结候选的全量测试、原任务视觉验收、正式镜像 E2E 和公开页面加载共同覆盖。
 

@@ -1,4 +1,4 @@
-# KPanel v0.48.4 发布验收
+# Dongger Panel v0.48.4 发布验收
 
 ## 发布范围
 

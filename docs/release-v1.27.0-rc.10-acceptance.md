@@ -1,4 +1,4 @@
-# KPanel v1.27.0-rc.10 发布验收记录
+# Dongger Panel v1.27.0-rc.10 发布验收记录
 
 已验证：RC10 已公开为预览版；候选 CI、主线 CI、L3、Release workflow 和公开镜像浏览器/隔离容器验收均通过。生产未部署。
 
@@ -56,7 +56,7 @@
 
 - `scriptLinkageState`：`not-required`。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`160924a498d9b8d071fed72f165d23c1b9e886de` / `39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`160924a498d9b8d071fed72f165d23c1b9e886de` / `39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：图库和 POSIX IPC ACL 改动不要求跨仓库更新 `kejilion.sh`；Release image labels、受管脚本 hash 和版本均在公开验收中匹配。
 - 本版发布决定：脚本不在范围。
@@ -130,7 +130,7 @@
 - 生产目标和部署授权范围：不适用；本次授权为发布预览，不含生产部署。
 - 验证/灰度环境：仅 GitHub-hosted 隔离测试；未使用 arena-154。
 - 正式部署环境：未使用；未连接生产主机。
-- `prod-108`：未连接、未备份、未部署、未升级、未核对；本次没有对其执行 KPanel 操作。
+- `prod-108`：未连接、未备份、未部署、未升级、未核对；本次没有对其执行 Dongger Panel 操作。
 - 部署前版本、健康、备份位置及摘要：不适用，未执行生产部署。
 - 部署命令/入口：不适用。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用。

@@ -319,7 +319,7 @@ func RemoveServices() error {
 	}
 	// A failed bootstrap can precede task registration. Only a known absent
 	// definition is benign; permission/inspection errors still fail closed.
-	if _, err := os.Lstat(filepath.Join(directory, "Tasks", "KPanel", "KejilionNodeUpdate")); errors.Is(err, os.ErrNotExist) {
+	if _, err := os.Lstat(filepath.Join(directory, "Tasks", "Dongger Panel", "KejilionNodeUpdate")); errors.Is(err, os.ErrNotExist) {
 		return nil
 	} else if err != nil {
 		return err

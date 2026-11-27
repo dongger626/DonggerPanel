@@ -1,11 +1,11 @@
-# KPanel v0.34.8 发布验收
+# Dongger Panel v0.34.8 发布验收
 
 发布日期：2026-08-01
 
 ## 发布范围
 
 - 交互式终端统一空闲与运行状态的深色画布、输入区和滚动条，降低 ANSI 彩色输出偏色，品牌绿色仅用于光标、选区和交互状态。
-- 代码编辑器、Docker 日志与控制台、应用日志和体检输出统一使用 KPanel 深色工作区色板。
+- 代码编辑器、Docker 日志与控制台、应用日志和体检输出统一使用 Dongger Panel 深色工作区色板。
 - 深色工作区统一为 12px 圆角、细边框和轻量内描边；浅色主题下保留浅色弹窗外壳，终端和编辑器画布维持固定深色。
 
 ## 源码与自动化
@@ -45,7 +45,7 @@ GitHub Release 已公开并包含 6 个附件：amd64/arm64 Agent、部署归档
 ## 实机与应用市场兼容性
 
 - 154 验收机从 Docker Hub 拉取上述不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`；镜像内 Agent 返回 `0.34.8 v1alpha1`。
-- 验收后生产 `kejilion-panel` 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器、网络、Agent、数据目录和 SSH 隧道均已清理，未替换或重启生产 KPanel。
+- 验收后生产 `kejilion-panel` 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器、网络、Agent、数据目录和 SSH 隧道均已清理，未替换或重启生产 Dongger Panel。
 - 本次未修改 `kejilion.sh`、Compose 或 `packaging/kejilion-app/kpanel.conf`。应用市场继续使用 `latest`，无需修改或提交 `kejilion/apps`。
 - 没有数据库、站点、Docker 业务资源、文件管理格式或部署参数迁移。
 

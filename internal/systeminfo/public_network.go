@@ -180,7 +180,7 @@ func queryIPInfo(
 		return ipInfoResponse{}, err
 	}
 	request.Header.Set("Accept", "application/json")
-	request.Header.Set("User-Agent", "KPanel host information")
+	request.Header.Set("User-Agent", "Dongger Panel host information")
 	response, err := client.Do(request)
 	if err != nil {
 		return ipInfoResponse{}, err

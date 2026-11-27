@@ -30,5 +30,5 @@ export default [
   ["去 kejilion.pro 查看更多 VPS 优惠", "See more VPS deals on kejilion.pro"],
   ["重试", "Retry"],
   ["刷新", "Refresh"],
-  ["科技lion 推荐的厂商，链接含推广返利（AFF），你支付的价格不变。价格和配置以厂商页面为准；KPanel 不经手订单和付款，也不记录你点了哪些横幅。", "Providers recommended by Kejilion. Links are affiliate (AFF) links and you pay the same price. Prices and specs are set by each provider; KPanel does not handle orders or payments and does not record which banners you open."],
+  ["科技lion 推荐的厂商，链接含推广返利（AFF），你支付的价格不变。价格和配置以厂商页面为准；Dongger Panel 不经手订单和付款，也不记录你点了哪些横幅。", "Providers recommended by Kejilion. Links are affiliate (AFF) links and you pay the same price. Prices and specs are set by each provider; Dongger Panel does not handle orders or payments and does not record which banners you open."],
 ] as const satisfies PhraseCatalog

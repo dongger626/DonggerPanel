@@ -16,7 +16,7 @@
         "en-US": "An htop-style heat table and tmux panes, dense and scannable"
       },
       "author": {
-        "name": "KPanel",
+        "name": "Dongger Panel",
         "url": "https://github.com/kejilion/KPanel"
       },
       "license": "AGPL-3.0-only",
@@ -71,7 +71,7 @@
         "en-US": "A bright status page: health ring, bold meters, cards and list"
       },
       "author": {
-        "name": "KPanel",
+        "name": "Dongger Panel",
         "url": "https://github.com/kejilion/KPanel"
       },
       "license": "AGPL-3.0-only",
@@ -126,7 +126,7 @@
         "en-US": "A dark world map: where every server is and how it is doing"
       },
       "author": {
-        "name": "KPanel",
+        "name": "Dongger Panel",
         "url": "https://github.com/kejilion/KPanel"
       },
       "license": "AGPL-3.0-only",

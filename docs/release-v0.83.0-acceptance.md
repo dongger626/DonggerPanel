@@ -1,4 +1,4 @@
-# KPanel v0.83.0 上线验收记录
+# Dongger Panel v0.83.0 上线验收记录
 
 日期：2026-08-18（Asia/Shanghai）
 
@@ -17,7 +17,7 @@
 - 业务域：Docker 容器部署、Compose 项目管理与容器列表交互。
 - 变更面：展示、宿主机 Compose 配置写入和部署；新增项目 `.env` 管理，不改变 Panel/Agent 网络协议、端口或权限模型。
 - 受影响用户旅程：Docker Run/Compose 粘贴诊断、精确错误定位、Compose/独立容器编组、项目收起展开、项目变量编辑、生命周期、重新部署、失败恢复和零容器项目恢复。
-- 未变化契约：认证、端口、Agent 权限、`kejilion.sh`、KPanel 应用市场安装/更新入口和 `packaging/kejilion-app/kpanel.conf` 未变化。
+- 未变化契约：认证、端口、Agent 权限、`kejilion.sh`、Dongger Panel 应用市场安装/更新入口和 `packaging/kejilion-app/kpanel.conf` 未变化。
 - 风险等级及理由：中高；涉及宿主机 Compose 与 `.env` 原子写入、Docker 生命周期和失败回滚，因此按 L3、真实 Docker 和生产隔离项目验证。
 
 ## 发布范围与未纳入内容
@@ -74,14 +74,14 @@
 - `linux/amd64`：`sha256:2ef3addd2c86716bf533ae8ecedb9f43b413915999fcef40fe61590ad90ff4f6`；`linux/arm64`：`sha256:69ebb3426ccf180b4824ae38608a8ac7ecf90587e008a163edaf9b328b764e71`；另含对应 attestation manifests。
 - 附件：双架构 Agent、双架构 lightweight node、部署归档、LICENSE、`SHA256SUMS` 和 `THIRD_PARTY_NOTICES`。
 - 公开镜像在 154 重新拉取并运行 `packaging/tests/image-e2e.sh`，输出 `image_e2e=pass`；日志 SHA256 `d6918030f72af42d7c376ceb7a1f902705a8473b11ff4ccacb39706e81322eb9`。
-- `packaging/kejilion-app/kpanel.conf` 相对 v0.82.0 无差异；KPanel 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需空提交；`kejilion.sh` 契约未变化。
+- `packaging/kejilion-app/kpanel.conf` 相对 v0.82.0 无差异；Dongger Panel 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需空提交；`kejilion.sh` 契约未变化。
 
 ## 生产部署安全核对
 
 - 生产目标和部署授权范围：仅 `arena-154`；用户明确授权合并、发布与上线。
 - 验证/灰度环境：`arena-154`；环境策略允许候选、浏览器和生产安全检查。
 - 正式部署环境：仅 `arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 部署前：v0.82.0，revision `4b4469128feeed6ee54d48ff74c024dd7a5acb89`，运行镜像 `sha256:76acd065a99b296c64712d8db611e337b38727018869f073940dabb82c749c61`；Panel healthy、restart 0、OOM false，Agent active。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.83.0-20260817T175359Z`；应用归档 SHA256 `713b145e4a6222fbe5de216db9351ad16c3683a21b0f6e3c3cc757ca9bfb5cb0`，旧镜像归档 `4760823a61a73b520fdcc7e294f102505f78677f343405fd22d77521cf82c27b`，`kpanel.conf` `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`。
 - 备份已独立解包逐文件比对，原始/恢复 SQLite 均 `quick_check=ok`；服务恢复到 v0.82.0 healthy 后才执行升级。

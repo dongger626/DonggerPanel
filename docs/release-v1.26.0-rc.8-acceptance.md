@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.8 发布验收记录
+# Dongger Panel v1.26.0-rc.8 发布验收记录
 
 日期：2026-10-12。发布级别：L3。releaseChannel：preview；releaseTrain：1.26.0。
 
@@ -23,7 +23,7 @@
 - 变更面：展示与状态反馈、向所选主机终端写入命令、Docker build/Compose 部署操作；风险为 L3，涉及宿主机状态变更。
 - 用户旅程：从文件管理器、编辑器或桌面快捷方式将脚本交给所选主机终端执行；从 Dockerfile 启动构建；从 Compose 文件启动服务；查看 Agent 当前 PATH 可发现的 Python、Node.js、Java、Go 运行时。
 - 执行前需核对主机和文件内容。Compose 操作可能创建/重建并启动容器。运行时检测不覆盖用户私有环境或容器内运行时。
-- 未单独验证数据库/配置迁移、公网 KPanel 更新弹窗及真实终端主机的 RC 升级旅程；没有生产部署或回滚操作。
+- 未单独验证数据库/配置迁移、公网 Dongger Panel 更新弹窗及真实终端主机的 RC 升级旅程；没有生产部署或回滚操作。
 
 ## 外部审计与安全覆盖
 
@@ -35,7 +35,7 @@
 
 ## 跨仓库联动判定
 
-- `scriptLinkageState`：`not-required`。本次 KPanel 差异未改动跨仓库 `apps` 或 `kejilion.sh` 源文件；release workflow 的 `kejilion.sh` 生命周期检查通过。
+- `scriptLinkageState`：`not-required`。本次 Dongger Panel 差异未改动跨仓库 `apps` 或 `kejilion.sh` 源文件；release workflow 的 `kejilion.sh` 生命周期检查通过。
 - 变更集编号、脚本候选 commit/SHA、脚本阻断范围：不适用。没有据此宣称跨仓库发布或真实应用市场验证通过。
 
 ## 多维质量结论
@@ -66,7 +66,7 @@
 
 - GitHub Release `draft=false`、`prerelease=true`；GitHub Latest 仍为稳定版 `v1.25.1`。15 个附件包含 `SHA256SUMS`、Linux Agent/轻量节点二进制、MCP 二进制、metadata archive 与 `KPANEL_MODIFIED_COMPONENTS.json`；Release workflow 的 provenance、最终说明及产物校验通过。
 - Docker Hub 公开读回确认版本 OCI index 与 `preview` digest 完全一致；双架构 child digest 如本记录顶部所列。`latest` 摘要未改变。
-- 设置页加入预览版、只切换来源并立即检查、自动安装与立即安装分离、退出预览不降级、systemd 失败恢复等 live KPanel 更新旅程：已实现未实机验证。本次没有安装 RC8 到真实 Panel，也没有访问应用市场发布接口。
+- 设置页加入预览版、只切换来源并立即检查、自动安装与立即安装分离、退出预览不降级、systemd 失败恢复等 live Dongger Panel 更新旅程：已实现未实机验证。本次没有安装 RC8 到真实 Panel，也没有访问应用市场发布接口。
 - `kejilion.sh` 生命周期容器检查通过；`kejilion/apps` 实际生产入口与公网上的更新信息 API：未验证。
 
 ## 生产部署安全核对

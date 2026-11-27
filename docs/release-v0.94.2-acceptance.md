@@ -1,4 +1,4 @@
-# KPanel v0.94.2 发布验收记录
+# Dongger Panel v0.94.2 发布验收记录
 
 日期：2026-08-23
 
@@ -77,11 +77,11 @@
 - 生产目标和部署授权范围：仅 `arena-154`，执行停写备份、标准应用市场更新和最小健康/数据/资源核对。
 - 验证/灰度环境：`arena-154`，来源为 `environment-policy.json` 的 candidate-validation 和 production-safety-check。
 - 正式部署环境：`arena-154`，来源为 production-deploy。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未读取、未测试、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未读取、未测试、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：v0.94.1，Panel healthy、Agent active、restart=0、OOM=false；备份 `/root/kpanel-backups/pre-v0.94.2-20260823T151350Z`，`SHA256SUMS` SHA-256=`d9f51d772cda25a671d3f86df88a81c0b312e6c9da1af31a2bfea8f9db9ab94f`。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，标准入口一次成功；更新日志 SHA-256=`f127db99c84d7c521acddee9fd8b8d5029e18fcba255b12811f4bdebf9b90dfa6`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：Panel/Agent 0.94.2，healthy/active、restart=0、OOM=false；日志无 panic/fatal/OOM；`.env` 和 `panel-state.json` 逐字节不变；Compose config 通过，无 `.new`/`.rollback` 残留。
-- 生产已执行写操作：停写一致性备份、旧版原位恢复核验、标准 KPanel 更新和服务重建；没有修改用户文件或业务设置。
+- 生产已执行写操作：停写一致性备份、旧版原位恢复核验、标准 Dongger Panel 更新和服务重建；没有修改用户文件或业务设置。
 - 仅在隔离真机执行、未在生产执行的场景：真实视频样本上传、浏览器媒体播放和不兼容编码测试仅在隔离候选执行，生产没有注入测试数据。
 
 ## 回滚
@@ -89,7 +89,7 @@
 - 源码/tag：`v0.94.1` / `cdaf6b82d9c2f1169f0411ee0d783fbff491bdc4`。
 - 镜像 digest：`sha256:e666a8e67680e9a838e752ac1828286fa504a770afd224d439aa6452f38eb62a`。
 - 数据/配置备份：`/root/kpanel-backups/pre-v0.94.2-20260823T151350Z`，含完整 `/home/docker/kpanel`、Compose、`.env`、Agent unit/二进制/脚本、数据、apps 配置和旧 OCI；独立解包、SQLite/JSON/Compose 和 `docker load` 均通过。
-- 回滚步骤和回滚后复核：停写；加载旧 OCI；成套恢复完整 KPanel 目录和 Agent unit；`systemctl daemon-reload`；启动 Agent/Panel；复核 v0.94.1、digest、health、restart/OOM、Compose、SQLite/JSON 和公网入口。禁止只换镜像。
+- 回滚步骤和回滚后复核：停写；加载旧 OCI；成套恢复完整 Dongger Panel 目录和 Agent unit；`systemctl daemon-reload`；启动 Agent/Panel；复核 v0.94.1、digest、health、restart/OOM、Compose、SQLite/JSON 和公网入口。禁止只换镜像。
 - 回滚后生产实际版本与健康状态：未执行回滚；当前 v0.94.2 healthy/active。
 - GitHub Latest、Docker `latest` 与标准更新入口实际指向：v0.94.2 / `sha256:548ed3c...`。
 - 公共默认更新通道决策：不适用；本版验收通过并保持 v0.94.2。

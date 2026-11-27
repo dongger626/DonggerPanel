@@ -1,4 +1,4 @@
-# KPanel v1.24.0-rc.7 发布验收记录
+# Dongger Panel v1.24.0-rc.7 发布验收记录
 
 日期：2026-10-02
 
@@ -37,9 +37,9 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`；变更集 `light-node-procd-20261002`。
-- 旧 KPanel 内置脚本 `8bebc2d80614e96b844c2c5f88acb0a81d4abd10` / SHA-256 `578b9e4328ba231ad08783c3f2007034f332621d48db07cffe3429da807940b4`。脚本集成基线 `cc5d2fe54377bc8b7fe1b0806f3e2efe37031219` 的根脚本字节与它相同，两者不是同一 commit。
+- 旧 Dongger Panel 内置脚本 `8bebc2d80614e96b844c2c5f88acb0a81d4abd10` / SHA-256 `578b9e4328ba231ad08783c3f2007034f332621d48db07cffe3429da807940b4`。脚本集成基线 `cc5d2fe54377bc8b7fe1b0806f3e2efe37031219` 的根脚本字节与它相同，两者不是同一 commit。
 - 脚本候选 `c981fb6c8b481981ac7a006e102e111e435f6d30` / 根 SHA-256 `0eb9a82860e6cf6cf76d4f946782a02fd90bef8e7be5a3fa724b93920d8e35cb`；CN SHA-256 `5be9c4462664ed12833a9dbeba64c4623f7f00deb3ddd5adb8e1539615ff617a`。
-- 已先发布脚本 main，公开根/CN 实际字节与候选 Git blob 相同，再合入 KPanel；Dockerfile labels/ADD 和 Node 七个权威更新模板固定同一来源。阻断或移除的依赖范围：不适用。
+- 已先发布脚本 main，公开根/CN 实际字节与候选 Git blob 相同，再合入 Dongger Panel；Dockerfile labels/ADD 和 Node 七个权威更新模板固定同一来源。阻断或移除的依赖范围：不适用。
 - 发布 owner 重新执行 31 项更新器回归和 installer smoke，全部通过，旧 systemd/OpenRC 路径保留。源 OpenWrt native fixture 与最终受影响目录逐字相同，新候选 Node 二进制另行重跑；旧稳定二进制 version/health 和现有 generation-5 updater 保留验证通过。
 - `kejilion/apps` 本地/公开/打包 `kpanel.conf` 一致，归一化 SHA-256 `f03cb75911b7491cb009fee0bfe3500f4ae874327bb16ef1006894a232bcc089`；apps 无写入，默认 stable/latest。
 
@@ -63,7 +63,7 @@
 ## 依赖与技术栈变化
 
 - Go 1.27.1、Node 24.21.0 LTS、TypeScript 6.0.3、Action、基础镜像和扫描器 pin 保持 rc.6；只更新受管脚本 c981 来源与发行版本。package-lock 仅根版本两处变化。
-- 原 TypeScript/@types-node 有期限例外由 KPanel base maintenance 在 2026-10-15 复核；Trivy 0.75 qualification 保持首次检测 `2026-10-01T15:47:46.958Z`，最晚 10-15 启动、10-31 决策、11-30 处置，不重置日期、不搭车变更。本版没有新采用/拒绝/暂缓决策。
+- 原 TypeScript/@types-node 有期限例外由 Dongger Panel base maintenance 在 2026-10-15 复核；Trivy 0.75 qualification 保持首次检测 `2026-10-01T15:47:46.958Z`，最晚 10-15 启动、10-31 决策、11-30 处置，不重置日期、不搭车变更。本版没有新采用/拒绝/暂缓决策。
 - 最近每日安全/EOL 审计复用既有证据，本轮未重新执行每日全审计。L3/CI 的当前扫描单独记录，不等于全部软件支持周期或 CF 审计完成。
 
 ## 隔离真机与浏览器验收
@@ -85,17 +85,17 @@
 ## 自更新通道验收
 
 - stable/preview 选择、合法版本、唯一官方 digest、切换清候选、退出不自动降级、开关/立即安装互不越权，由完整现有回归验证。
-- 本版只提升 preview；标准 apps 安装仍 latest/stable。OpenRC 完整 KPanel 自动更新边界保留，轻量 Node 无人值守只跟 stable，新 procd 能力需要对应 Node 版本，不宣称设备自动收到 RC。
+- 本版只提升 preview；标准 apps 安装仍 latest/stable。OpenRC 完整 Dongger Panel 自动更新边界保留，轻量 Node 无人值守只跟 stable，新 procd 能力需要对应 Node 版本，不宣称设备自动收到 RC。
 
 ## 生产部署安全核对
 
 - 不适用（预览版禁止生产部署）。产物已发布，生产未部署；本轮生产写入 0，没有生产备份、升级、重启、回滚或数据修改。隔离容器内安装路径不等于业务宿主安装。
-- prod-108/108 禁用全部 KPanel 操作，本轮未连接、备份、部署、升级或核对。
+- prod-108/108 禁用全部 Dongger Panel 操作，本轮未连接、备份、部署、升级或核对。
 
 ## 回滚
 
 - 前一 preview v1.24.0-rc.6 / 0a16722239495e5e37399decf31c6579d998bff7 / sha256:4deadfed891d113d8ec3886a6a0b4ae15a191a226b152c840dd10d40c009ac62 保留。
-- 成对源码回滚脚本基线 cc5d2fe54377bc8b7fe1b0806f3e2efe37031219，KPanel 上一 RC。共享 main 只做聚焦 revert 并重验，不改写历史；稳定默认未改变，无生产回滚需求。未来设备回滚必须核对 /etc 持久状态、旧 /var 状态和备份，不能以通道开关代替。
+- 成对源码回滚脚本基线 cc5d2fe54377bc8b7fe1b0806f3e2efe37031219，Dongger Panel 上一 RC。共享 main 只做聚焦 revert 并重验，不改写历史；稳定默认未改变，无生产回滚需求。未来设备回滚必须核对 /etc 持久状态、旧 /var 状态和备份，不能以通道开关代替。
 
 ## 交付节奏数据
 
@@ -259,8 +259,8 @@
 
 | 仓库 / 来源 | 精确 tip | 归档 ref / SHA | 处置与责任 |
 | --- | --- | --- | --- |
-| KPanel / fix/desktop-site-status | `10ba3d76d2fa242b6454e04d60767160b2a69323` | `archive/fix/desktop-site-status` / 同 tip | 已纳入 rc.7；直接保存归档，远端活跃 ref 原本不存在；本轮发布 owner 核验，来源工作树保留 |
-| KPanel / feature/light-node-procd | `7d084570bda3a9f7af81841ea15485f3ee3e59c3` | `archive/feature/light-node-procd` / 同 tip | 已纳入 rc.7；直接保存归档，远端活跃 ref 原本不存在；本轮发布 owner 核验，来源工作树保留 |
+| Dongger Panel / fix/desktop-site-status | `10ba3d76d2fa242b6454e04d60767160b2a69323` | `archive/fix/desktop-site-status` / 同 tip | 已纳入 rc.7；直接保存归档，远端活跃 ref 原本不存在；本轮发布 owner 核验，来源工作树保留 |
+| Dongger Panel / feature/light-node-procd | `7d084570bda3a9f7af81841ea15485f3ee3e59c3` | `archive/feature/light-node-procd` / 同 tip | 已纳入 rc.7；直接保存归档，远端活跃 ref 原本不存在；本轮发布 owner 核验，来源工作树保留 |
 | sh / feature/light-node-procd | `c981fb6c8b481981ac7a006e102e111e435f6d30` | `archive/feature/light-node-procd` / 同 tip | 脚本 main 已发布；原子保存归档并移除同 SHA 活跃 ref；本轮发布 owner 核验，来源工作树保留 |
 
 - 自有 L3 work/inbox、当前 native/script 可再生源目录已按准确路径、证据摘要、Git clean、无活动挂载核验后回收；逻辑字节 1051614341，磁盘实际空闲 20923613184 → 22077681664。保留原件、kit/bundle、Runner 和 native image，不做全局 Docker prune。

@@ -1,4 +1,4 @@
-# KPanel v0.100.0 发布验收记录
+# Dongger Panel v0.100.0 发布验收记录
 
 日期：2026-09-02
 
@@ -26,7 +26,7 @@
   1. 集群通知新增 Telegram 渠道与通知配置管理，沿用既有节点能力协商、签名和后台任务边界。
   2. 网站新建与管理支持自定义 TLS 证书材料并复用有效证书；证书格式、密钥匹配和来源由 Panel 侧校验与受管 `kejilion.sh` 共同约束。
   3. 系统中心防火墙界面简化，新增受控的国家/地区入站允许、阻止和清除规则。
-  4. 文件分享与集群分享页统一使用新版彩色 KPanel Logo。
+  4. 文件分享与集群分享页统一使用新版彩色 Dongger Panel Logo。
   5. 补齐三级页面、弹窗和门户操作的英文运行时多语言资源及回归检查。
 - 精确提交清单：基线 `06e43b7f572245165f7ed71e929f9ce1ceed7916`（`v0.99.6`）；纳入 `c4b6d59914491a61c1c9505ef22ff2936da841a9`（三级英文弹窗 i18n）、`0083be4e56fdc3f97037bbe05949bb7d3ce90208`（门户弹窗 i18n）、`72cdd6d5f2127cfc94e568c0e3aaf8e07eab62ef`（分享页 Logo）、`a1c0a0ad3ee90d47d0cb0096c48e7a5a0e06b803` 与 `07ef85a1d010342e12ec01449104305e0bbd424b`（集群 Telegram 通知与渠道选择）、`59c038075866f398f087af65b5849762f5726a41` 与 `ea1b33925eac4b93a27f6b4b4582be5c3c19f6ab`（防火墙简化与国家控制）、`5d9ba94aff47d081db2a6adedc90c7c07a5e6885`（防火墙候选锁定受管脚本）、`72433c3d766007603a7060560b1c7fee5c3bc405`（自定义 TLS 证书）、`30ab1d85156d74b39c16afde7e09733f5ed029a5`（固定合并版受管脚本）、`234eb4921eb35632a0208d241073606487f83c17`、`7cc1533bb86d30a97df6a5764d688eb05132822b`、`456587385ebf22c05dd4401a65841a67a827958a`（版本准备）、`ff072823cba50d4def83e39ada7c01b76e9d82f4`（清理失效防火墙翻译键）、`ca9f96266ec26e111224f7b3316ff7c03a333bc1`（`golang.org/x/crypto` 安全升级）、`144a12b0e7bb8352b862a34ce155f67c71e4e0c5`（修正受管脚本校验和）和 `89a384c7d65c42b14222dcace8843ff23602dc11`（业务上下文刷新）。候选相对 `v0.99.6` 为 109 个文件、9009 行新增、1101 行删除。
 - 明确未纳入的分支、文件或后续事项：未纳入其余候选与集成分支的功能；没有复用旧版本 L3、公开镜像或生产证据；没有连接、备份、部署、升级或核对 `108`/`prod-108`。本版未执行真实浏览器人工视觉验收、长期 soak、生产故障注入和受控回滚演练。
@@ -87,7 +87,7 @@
 - 生产目标和部署授权范围：用户已明确授权本次完整上线；正式写入仅执行 `arena-154`。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154`，用途为 candidate-validation、production-safety-check、production-deploy。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v0.100.0-89a384c-prod-preflight-r2` / phase=`preflight` / passed，health `status=ok`、`version=0.99.6`、`initialized=true`，Panel `20.62MiB / 256MiB`、8 PIDs；backup run=`v0.100.0-89a384c-prod-backup-r1` / passed，备份=`/root/kpanel-backups/pre-v0.100.0-20260901T173810Z`，`backup-SHA256SUMS` 覆盖 `image-load-verify.txt`、`kejilion-agent.service`、`kpanel.conf`、`kpanel.tar.zst`、`old-image.tar.zst`、`panel-inspect.json` 六个文件，`protected.diff` 为 0 字节。
 - 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy run=`v0.100.0-89a384c-prod-postdeploy-r1` / phase=`postdeploy` / passed，`expected_revision=89a384c7d65c42b14222dcace8843ff23602dc11`、`expected_image_digest=sha256:ae31b3f821b19393eef3fda0480b57c3fdf211b7363b06173fab58431cdaa601`、`baseline_run_id=v0.100.0-89a384c-prod-preflight-r2`；health `status=ok`、`version=0.100.0`、`protocolVersion=v1alpha1`；容器 `running`、`healthy`、`RestartCount=0`、`OOMKilled=false`，`StartedAt=2026-09-01T17:38:52Z`；镜像 label `org.opencontainers.image.revision=89a384c7d65c42b14222dcace8843ff23602dc11`、`version=0.100.0`、`io.kejilion.script.revision=6e65c0cd7028cb198efb0c88a57726713ee1b23b`；Agent `active/running/enabled`、`NeedDaemonReload=no`；`panel.log` 无 panic/fatal/OOM 签名；`protected.diff` 为 0 字节，SQLite `ai.db empty` / `panel/ai.db ok`；Panel `73.89MiB / 256MiB`、`CPUPerc=0.03%`、7 PIDs。
@@ -150,4 +150,4 @@
 - 未验证风险：真实浏览器人工验收（浅/深色主题、键盘/焦点、100%/125%/200% 缩放、最小计算字号、三语巡检）、长期 soak、生产故障注入和受控回滚演练未执行；本版新增的自定义 TLS 证书链导入与国家防火墙规则未用真实外部证书和真实跨境流量在生产实测；Telegram 通知未在生产触发真实投递；本版未单独执行 `packaging/tests/image-e2e.sh`；`GOMEMLIMIT` 未针对 256MiB 容器上限显式设置。
 - 已实现待实机准入：集群 Telegram 通知与渠道管理、网站自定义 TLS 证书材料、防火墙简化与国家控制、分享页 Logo 和三级页面 i18n 均已由自动回归、L3 门禁和生产健康证据覆盖；真实浏览器视觉/交互证据、外部证书与跨境流量实测应在后续专项补齐。
 - 不阻断本版的理由：候选 CI、主线 CI、Release workflow、公开双架构 OCI 与 attestation、L3 全量门禁、生产 preflight/backup/postdeploy 均以精确 SHA 和 immutable digest 通过；唯一 CRITICAL 依赖漏洞已在进入生产前被门禁拦截并修复；未验证项不涉及数据迁移或新增常驻后台任务，且回滚点已校验可用。
-- 后续应进入的自动门禁或专项工作流：补充真实浏览器视觉/交互矩阵、长期 soak 和受控回滚演练；为本版新增的 TLS 证书与国家防火墙路径补真实外部材料的隔离真机验收；把公开镜像 `image-e2e` 恢复为每版必需门禁；评估为 Panel 容器显式设置 `GOMEMLIMIT`；升级 Trivy 到 `0.74.0`。`arena-154` 磁盘压力已于 2026-09-02 处置：根分区从 98%（可用 2.4G）降至 44%（可用 54G），清理范围为 Docker 构建缓存 20.15GB、v0.43–v0.89 历史发布工作目录与过期构建缓存 108 项、110 个陈旧 KPanel 备份（保留回滚点与最近 10 个）、19 个未使用 Docker 卷和 journal 870MB；15 个业务容器与 KPanel 自身 104MB 数据未受影响，需保持磁盘水位监控为常态门禁。
+- 后续应进入的自动门禁或专项工作流：补充真实浏览器视觉/交互矩阵、长期 soak 和受控回滚演练；为本版新增的 TLS 证书与国家防火墙路径补真实外部材料的隔离真机验收；把公开镜像 `image-e2e` 恢复为每版必需门禁；评估为 Panel 容器显式设置 `GOMEMLIMIT`；升级 Trivy 到 `0.74.0`。`arena-154` 磁盘压力已于 2026-09-02 处置：根分区从 98%（可用 2.4G）降至 44%（可用 54G），清理范围为 Docker 构建缓存 20.15GB、v0.43–v0.89 历史发布工作目录与过期构建缓存 108 项、110 个陈旧 Dongger Panel 备份（保留回滚点与最近 10 个）、19 个未使用 Docker 卷和 journal 870MB；15 个业务容器与 Dongger Panel 自身 104MB 数据未受影响，需保持磁盘水位监控为常态门禁。

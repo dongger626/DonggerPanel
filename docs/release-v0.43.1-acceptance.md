@@ -1,4 +1,4 @@
-# KPanel v0.43.1 发布验收
+# Dongger Panel v0.43.1 发布验收
 
 ## 发布范围
 
@@ -24,7 +24,7 @@ v0.43.1 把 AI 助手从基础对话与结构化调用补齐为轻量运维闭�
 - Linux `go test ./...`、`go vet ./...` 通过；AI、Agent、Panel 与 SystemInfo 关键包 `-race` 通过。
 - 版本一致性与生态策略检查通过；Trivy 源码、依赖、Secret、Dockerfile 和最终镜像 HIGH/CRITICAL 扫描均为 `0`。
 - OpenAI-compatible、Anthropic、Gemini 仍通过同一 Tool Registry 调用结构化工具；本轮无协议、依赖、端口、Compose 或应用市场安装契约变更。
-- AI 文件内容额外拒绝密钥、`.env`、SSH 凭据、私钥、进程环境和 KPanel 数据；文件改写拒绝 KPanel、Docker、systemd、SSH、PAM、sudo、cron、系统账号及系统程序目录。Agent 仍二次执行路径、符号链接、保护目录和资源版本校验。
+- AI 文件内容额外拒绝密钥、`.env`、SSH 凭据、私钥、进程环境和 Dongger Panel 数据；文件改写拒绝 Dongger Panel、Docker、systemd、SSH、PAM、sudo、cron、系统账号及系统程序目录。Agent 仍二次执行路径、符号链接、保护目录和资源版本校验。
 - 进程采样不读取命令行；磁盘分析固定根目录、同文件系统、不跟随符号链接，最多四线程、20 万目录项、8 秒且单实例只运行一个扫描。
 
 ## 154 隔离真机工作流
@@ -32,7 +32,7 @@ v0.43.1 把 AI 助手从基础对话与结构化调用补齐为轻量运维闭�
 候选 Panel、候选 Agent、本地 Mock Provider 和真实 154 Host/Docker 组成隔离验收环境；没有使用用户提供的 API Key，也没有调用付费模型：
 
 - 自动会话标题、Docker 资源只读路由、文件列表/读取、聊天工具数据过滤通过。
-- `manual` 模式在文件写入前阻塞，批准后执行；`auto` 模式对普通文件写入和可恢复回收站操作自动放行；KPanel 保护路径仍拒绝。
+- `manual` 模式在文件写入前阻塞，批准后执行；`auto` 模式对普通文件写入和可恢复回收站操作自动放行；Dongger Panel 保护路径仍拒绝。
 - CPU 闭环依次读取系统概览、宿主机进程排行和 Docker 容器指标，并复查；没有任意 PID kill。
 - 磁盘闭环分析 `/tmp`，读取测试文件 `resourceVersion`，移入 Agent 回收站并复查；验收目录清理后测试文件与回收站一并移除。
 - Nginx 闭环尾读真实错误日志、执行固定 `nginx -t`、安全重载并再次校验，全部成功。
@@ -48,7 +48,7 @@ v0.43.1 把 AI 助手从基础对话与结构化调用补齐为轻量运维闭�
 
 ## 154 上线结果
 
-- 使用公开应用市场 `KJ_APP_ACTION=update` 原生链路完成 v0.43.0 → v0.43.1 更新，输出 `KPanel 更新完成 / Update Complete`。
+- 使用公开应用市场 `KJ_APP_ACTION=update` 原生链路完成 v0.43.0 → v0.43.1 更新，输出 `Dongger Panel 更新完成 / Update Complete`。
 - Agent：`0.43.1 v1alpha1`，服务 `active/running`、`NRestarts=0`；安装二进制与正式镜像 `/release/kejilion-agent` SHA-256 均为 `268f3604b5e1a3a3636db75ee7e9aa5b515ba88f96918771b3e2212ebfb1a4c6`。
 - Panel：`version=0.43.1`、`status=ok`、容器 `healthy`；连续观察十分钟 Panel/Agent 重启数均为 `0`，运行镜像 ID 为正式摘要。
 - 配置的公共入口 `http://154.36.153.9:8080` 下 `/`、`/ai` 和健康接口均返回 `200`；未登录 Provider API 返回 `401`，无效 Host 返回 `421`。
@@ -62,11 +62,11 @@ v0.43.1 把 AI 助手从基础对话与结构化调用补齐为轻量运维闭�
 - 公开源码与镜像回滚点：`v0.43.0`，镜像摘要 `sha256:8da3c071341faebb8356148876486726e63b1b651c403ad5bd57086c53401574`。
 - 154 升级前一致性备份：`/root/kpanel-backups/v0.43.1-preupgrade-20260804T092205Z/kpanel-home.tar.gz`。
 - 备份权限 `0600`，大小 `20,592,829` B，SHA-256：`1206ca02048c0748f17db500e780fac06fd6d50710e0486287f5857e6fa917c4`。
-- 回滚时恢复旧镜像、Agent、Compose、systemd 单元与完整 KPanel 目录；`ai.db*` 必须与 `ai-secrets.key` 成对保留。
+- 回滚时恢复旧镜像、Agent、Compose、systemd 单元与完整 Dongger Panel 目录；`ai.db*` 必须与 `ai-secrets.key` 成对保留。
 
 ## 已知边界
 
 - Mock Provider 证明协议归一化后的工具调用与宿主机闭环，不等同于某个真实模型的质量或兼容性测试；用户先前在会话中发送的 Key 未用于本轮验收，应轮换后再做独立短期真 API 测试。
 - 迁移验收只完成盘点和备份；没有明确目标主机与可信 SSH 配置，因此没有执行跨机传输。
-- 154 的可选域名 `gm.kejilion.eu.org` 当前提供自签名证书且连接复核失败；KPanel 配置的公共入口仍为 IP HTTP，升级前后未改动该域名。该 Nginx/TLS 问题需作为独立任务处理。
+- 154 的可选域名 `gm.kejilion.eu.org` 当前提供自签名证书且连接复核失败；Dongger Panel 配置的公共入口仍为 IP HTTP，升级前后未改动该域名。该 Nginx/TLS 问题需作为独立任务处理。
 - 原 `feature/health-center` 脏工作树保持在 `c9a3419`，本次未 stash、reset、提交或修改其文件。

@@ -228,7 +228,7 @@ func NewService(config ServiceConfig) (*Service, error) {
 	}
 	config.Hostname = cleanDisplayText(config.Hostname, 253)
 	if config.Hostname == "" {
-		config.Hostname = "KPanel"
+		config.Hostname = "Dongger Panel"
 	}
 	store, err := OpenStore(filepath.Join(config.DataDir, "cluster-state.json"))
 	if err != nil {
@@ -1584,15 +1584,15 @@ func remoteErrorMessage(code string) string {
 	case "tls_error":
 		return "远端 HTTPS 证书校验失败"
 	case "protocol_incompatible":
-		return "远端 KPanel 集群协议不兼容"
+		return "远端 Dongger Panel 集群协议不兼容"
 	case "identity_changed":
-		return "远端 KPanel 身份发生变化，已停止信任"
+		return "远端 Dongger Panel 身份发生变化，已停止信任"
 	case "rate_limited":
 		return "远端暂时限制了监控请求"
 	case "invalid_response", "response_too_large":
 		return "远端返回了无效的监控摘要"
 	default:
-		return "暂时无法连接远端 KPanel"
+		return "暂时无法连接远端 Dongger Panel"
 	}
 }
 

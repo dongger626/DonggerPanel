@@ -1,4 +1,4 @@
-# KPanel 图库设计
+# Dongger Panel 图库设计
 
 - 状态：本地候选（`claude/media-gallery`），未合入主线；正式状态以候选门禁、浏览器验收和发布记录为准
 - 路由：`/gallery`（可带 `path=<绝对路径>` 与 `hostId=<集群主机>`）

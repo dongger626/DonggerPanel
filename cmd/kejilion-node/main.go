@@ -303,7 +303,7 @@ func runEnroll(arguments []string) error {
 			return fmt.Errorf("remove completed batch enrollment state: %w", err)
 		}
 	}
-	fmt.Printf("KPanel lightweight node enrolled: %s\n", response.NodeID)
+	fmt.Printf("Dongger Panel lightweight node enrolled: %s\n", response.NodeID)
 	return nil
 }
 
@@ -729,7 +729,7 @@ func postRawJSONWithHTTPClient(ctx context.Context, client *http.Client, endpoin
 		return 0, nil, err
 	}
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("User-Agent", "KPanel-Light-Node/"+version.Version)
+	request.Header.Set("User-Agent", "Dongger Panel-Light-Node/"+version.Version)
 	for name, value := range headers {
 		request.Header.Set(name, value)
 	}
@@ -783,7 +783,7 @@ func validateHTTPSOrigin(value string) (string, error) {
 	if err != nil || parsed.Scheme != "https" || parsed.Host == "" || parsed.Hostname() == "" ||
 		parsed.User != nil || parsed.Opaque != "" || parsed.Path != "" || parsed.RawPath != "" ||
 		parsed.RawQuery != "" || parsed.Fragment != "" || parsed.ForceQuery || strings.ContainsAny(parsed.Host, "\r\n\t ") {
-		return "", errors.New("KPanel origin must be an HTTPS origin")
+		return "", errors.New("Dongger Panel origin must be an HTTPS origin")
 	}
 	return value, nil
 }

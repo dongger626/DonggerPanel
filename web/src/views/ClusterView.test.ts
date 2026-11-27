@@ -181,7 +181,7 @@ function host(id: string, isLocal: boolean, origin: string): ClusterHost {
     id,
     isLocal,
     kind: 'panel',
-    name: isLocal ? '当前 KPanel' : '香港节点',
+    name: isLocal ? '当前 Dongger Panel' : '香港节点',
     origin,
     transportSecurity: origin.startsWith('http://') ? 'e2e_http' : 'tls',
     peerFingerprint: isLocal ? undefined : `sha256:${'a'.repeat(64)}`,
@@ -1103,7 +1103,7 @@ describe('ClusterView inventory and navigation', () => {
 
     expect(mocks.toastSuccess).toHaveBeenLastCalledWith(
       '主机已加入集群',
-      '香港节点 已完成配对，当前保持单向文件读取；可在主机管理中启用，旧版 KPanel 需先升级。',
+      '香港节点 已完成配对，当前保持单向文件读取；可在主机管理中启用，旧版 Dongger Panel 需先升级。',
     )
   })
 
@@ -1146,7 +1146,7 @@ describe('ClusterView inventory and navigation', () => {
     expect(view.inventory.value?.items[0]).toEqual(enabled)
     expect(mocks.toastSuccess).toHaveBeenCalledWith(
       '双向文件互传已启用',
-      '香港节点 现在可以与当前 KPanel 互相复制文件。',
+      '香港节点 现在可以与当前 Dongger Panel 互相复制文件。',
     )
 
     const source = readFileSync(new URL('./ClusterView.vue', import.meta.url), 'utf8')
@@ -1174,7 +1174,7 @@ describe('ClusterView inventory and navigation', () => {
     expect(view.selected.value?.mutualFileTransferAvailable).toBe(false)
     expect(mocks.toastDanger).toHaveBeenCalledWith(
       '启用双向文件互传失败',
-      '目标 KPanel 版本不支持双向文件互传，请先升级目标面板后重试。',
+      '目标 Dongger Panel 版本不支持双向文件互传，请先升级目标面板后重试。',
     )
   })
 
@@ -1198,7 +1198,7 @@ describe('ClusterView inventory and navigation', () => {
     expect(view.inventory.value?.items[0]).toEqual(refreshed)
     expect(mocks.toastSuccess).toHaveBeenCalledWith(
       '双向文件互传连接已刷新',
-      '香港节点 已使用当前 KPanel 地址刷新互传连接。',
+      '香港节点 已使用当前 Dongger Panel 地址刷新互传连接。',
     )
 
     mocks.enableMutualFiles.mockRejectedValueOnce(
@@ -1212,7 +1212,7 @@ describe('ClusterView inventory and navigation', () => {
     expect(view.inventory.value?.items[0]?.mutualFileTransferAvailable).toBe(true)
     expect(mocks.toastDanger).toHaveBeenCalledWith(
       '刷新双向文件互传连接失败',
-      '暂时无法连接目标 KPanel，请检查域名、证书和网络。',
+      '暂时无法连接目标 Dongger Panel，请检查域名、证书和网络。',
     )
   })
 

@@ -85,7 +85,7 @@ func (c *FileRelayClient) PollV2(
 	}
 	request.Header.Set("Accept", "application/json")
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("User-Agent", "KPanel federation/"+FederationProtocolV2)
+	request.Header.Set("User-Agent", "Dongger Panel federation/"+FederationProtocolV2)
 	response, err := c.client.Do(request)
 	if err != nil {
 		return output, classifyRemoteTransportError(err)

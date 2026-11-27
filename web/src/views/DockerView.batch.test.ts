@@ -173,7 +173,7 @@ describe('Docker batch operations', () => {
 
     expect(document.body.textContent).toContain('批量停止容器')
     expect(document.body.textContent).toContain('将逐个停止 3 个容器。')
-    expect(dialog().textContent).toContain('所选包含 KPanel 自身容器 kejilion-panel，会放在最后执行')
+    expect(dialog().textContent).toContain('所选包含 Dongger Panel 自身容器 kejilion-panel，会放在最后执行')
     expect([...dialog().querySelectorAll('.docker-batch__item strong')].map((item) => item.textContent))
       .toEqual(['db', 'web', 'kejilion-panel'])
     expect(dialog().querySelector('.docker-batch__skipped')?.textContent).toContain('worker')
@@ -218,7 +218,7 @@ describe('Docker batch operations', () => {
     await flushPromises()
     const item = dialog().querySelector('.docker-batch__item')!
     expect(item.classList.contains('is-unknown')).toBe(true)
-    expect(item.textContent).toContain('KPanel 自身容器可能正在停止或重启')
+    expect(item.textContent).toContain('Dongger Panel 自身容器可能正在停止或重启')
     expect(document.body.querySelector('button')?.textContent).not.toContain('重试失败项')
   })
 

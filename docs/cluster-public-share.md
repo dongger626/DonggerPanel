@@ -1,4 +1,4 @@
-# KPanel 集群公开分享
+# Dongger Panel 集群公开分享
 
 ## 任务契约
 
@@ -20,7 +20,7 @@
 3. 首版固定展示所有集群机器，不提供单机选择。机器名称本身属于公开字段，管理员启用前需确认名称适合公开。
 4. 关闭后公开 API 返回 404；重置后旧链接返回 404。不存在、关闭和错误 Token 使用相同结果，避免泄露配置状态。
 5. 匿名页只展示当前快照，不提供历史趋势、终端、文件、面板跳转或任何管理操作。
-6. 匿名页默认使用紧凑列表，可切换为卡片排列；系统图标和国家旗帜复用 KPanel 现有组件，深浅模式沿用全局主题偏好。
+6. 匿名页默认使用紧凑列表，可切换为卡片排列；系统图标和国家旗帜复用 Dongger Panel 现有组件，深浅模式沿用全局主题偏好。
 
 ## 公开字段契约
 
@@ -64,7 +64,7 @@
 - 哪吒官方文档将用户前台与管理前台分开，游客可访问部分只读 API；支持按服务器“对游客隐藏”，也可通过 `force_auth` 禁止游客访问。游客历史范围比登录用户更小。参考：[Servers](https://nezha.wiki/en_US/guide/servers.html)、[API Interface](https://nezha.wiki/en_US/guide/api)、[Settings](https://nezha.wiki/en_US/guide/settings.html)。
 - Komari 官方文档说明主题可通过公开 API 获取站点设置和节点状态，并提供私有站点及临时访问链接语义。参考：[Public API](https://komari-document.pages.dev/en/dev/api)、[Theme Development](https://komari-document.pages.dev/en/dev/theme)。
 
-KPanel 首版不把现有集群 API整体改成游客可读，也不默认公开首页；使用独立、可撤销的随机链接和新 DTO，减少现有管理面扩大匿名攻击面的风险。
+Dongger Panel 首版不把现有集群 API整体改成游客可读，也不默认公开首页；使用独立、可撤销的随机链接和新 DTO，减少现有管理面扩大匿名攻击面的风险。
 
 ## 回滚与恢复
 
@@ -81,16 +81,16 @@ KPanel 首版不把现有集群 API整体改成游客可读，也不默认公开
 - Go：Store、Cluster、分享功能与相关认证/安全入口测试通过；`go vet ./...` 通过；Linux amd64/arm64 的 `paneld`、Agent、Node 和 CLI 交叉构建通过。
 - Web：i18n 校验、TypeScript 类型检查、生产构建通过；Vitest 全量 98 个测试文件、720 个测试通过。
 - 页面：本地匿名公开页完成桌面与 390×844 移动视口复核；移动端无横向溢出，浏览器控制台无 warning/error。
-- L2 汇总脚本在 Windows 全量 Go 测试处未通过；失败集中在仓库既有的 Docker 临时路径、Windows 权限/数据目录和 Linux systemd 专用用例，分享功能相关测试均通过。尚未在两台真实 KPanel 或 Linux 运行态进行端到端联调。
+- L2 汇总脚本在 Windows 全量 Go 测试处未通过；失败集中在仓库既有的 Docker 临时路径、Windows 权限/数据目录和 Linux systemd 专用用例，分享功能相关测试均通过。尚未在两台真实 Dongger Panel 或 Linux 运行态进行端到端联调。
 - 本次没有提交、推送、发布或部署。
 
 ## 分享主题（`kpanel-share-theme@2`）
 
 管理员可在分享设置中下载并应用社区/官方主题，改变匿名页的整体版式与风格。主题包是完整的独立网页，运行在
 `sandbox="allow-scripts"` 的不透明来源 iframe 中，只通过 postMessage 接收字段白名单后的快照；样式、
-版式与交互不依赖 KPanel 前端框架。协议 2 在保持隐私白名单不变的前提下额外提供原始数值（`ratio`、
+版式与交互不依赖 Dongger Panel 前端框架。协议 2 在保持隐私白名单不变的前提下额外提供原始数值（`ratio`、
 字节、速率，未知为 `null`）、本地化词表与状态名；未声明 `protocol: 2` 的旧主题继续收到 schema 1 快照。
-主题在 `ready` 中声明 `chrome: 'self'` 即可接管整页：公开页的 KPanel 页头、标志、外框与页脚全部隐藏，刷新、浅深色与
+主题在 `ready` 中声明 `chrome: 'self'` 即可接管整页：公开页的 Dongger Panel 页头、标志、外框与页脚全部隐藏，刷新、浅深色与
 「使用默认样式」由主题自己绘制，并通过白名单内的 `action` 消息（`refresh`、`set-mode`、`use-default`）请求宿主执行；
 未声明的主题保持原有外框。
 协议、字段与作者约束以 [`share-themes/README.md`](../share-themes/README.md) 为准。

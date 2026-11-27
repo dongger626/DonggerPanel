@@ -4,7 +4,7 @@ const domainPattern = /^(?=.{1,253}$)(?:[a-z\d](?:[a-z\d-]{0,61}[a-z\d])?\.)+[a-
 
 /**
  * Settings route that verifies a freshly bound panel domain and offers the
- * jump to it. The App Market sends KPanel itself here instead of blocking
+ * jump to it. The App Market sends Dongger Panel itself here instead of blocking
  * IP+port access before the new address is proven to work.
  */
 export function panelDomainSwitchPath(domain: string): string {
@@ -32,7 +32,7 @@ const ipv4Pattern = /^\d{1,3}(?:\.\d{1,3}){3}$/
 
 /**
  * True unless this page was reached through an HTTPS domain. Blocking
- * IP+port for KPanel itself from such a page would cut off the session that
+ * IP+port for Dongger Panel itself from such a page would cut off the session that
  * is making the change, so the block must go through the verify-and-switch
  * flow instead.
  */

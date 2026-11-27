@@ -1,4 +1,4 @@
-# KPanel v0.99.6 发布验收记录
+# Dongger Panel v0.99.6 发布验收记录
 
 日期：2026-08-31
 
@@ -12,7 +12,7 @@
 
 - 业务域：IP 质量信息展示、应用终端与 Apps/Cluster/Terminal 页面运行时多语言、发布构建工具链。
 - 变更面：展示 / 只读 / 前端运行时资源 / 构建与发布门禁；不新增宿主机写操作、数据库迁移或业务协议。
-- 受影响用户旅程：查看合并后的 IP 质量风险与属性详情；在应用终端、Apps、Cluster 和 Terminal 页面切换 `en-US`、`zh-CN`、`zh-TW`；通过标准入口安装或更新 KPanel。
+- 受影响用户旅程：查看合并后的 IP 质量风险与属性详情；在应用终端、Apps、Cluster 和 Terminal 页面切换 `en-US`、`zh-CN`、`zh-TW`；通过标准入口安装或更新 Dongger Panel。
 - 未变化契约：Panel/Agent API、数据库、端口、Compose、Agent 权限、受管 `kejilion.sh` 和应用市场安装契约均未变化；`packaging/kejilion-app/kpanel.conf` 相对 `v0.99.5` 无差异。
 - 风险等级及理由：中风险。包含前端多页面文案和 IP 质量布局调整，并升级构建基座；无数据迁移和协议变化，候选/main/Release/公开镜像及生产 postdeploy 均通过。
 
@@ -80,7 +80,7 @@
 - 生产目标和部署授权范围：用户已明确授权本次完整上线；正式写入仅执行 `arena-154`。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154`，用途为 candidate-validation、production-safety-check、production-deploy。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v0.99.6-production` / phase=`preflight` / pass，健康版本 `0.99.5`；backup phase pass，备份=`/root/kpanel-backups/pre-v0.99.6-20260831T075307Z`，归档内容及 `SHA256SUMS` 校验通过。
 - 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy run=`v0.99.6-production` / phase=`postdeploy` / pass；health `status=ok/version=0.99.6`；Panel `running/healthy`、Agent `active`、restart `0`、OOM `false`；revision=`79793bdb531b969a2d45ea1afec4ba0e28c9a2d2`、image version=`0.99.6`、RepoDigest=`sha256:37607dc67a5b8b011d5335cda9f1dbfba8abf4d97ce9c3b475ced8fd7e78fb38`；Panel 资源约 `74.06MiB/256MiB`、7 PIDs；近 10 分钟 fatal/panic/OOM 日志签名为 none；protected diff 为 0，SQLite quick check 通过。

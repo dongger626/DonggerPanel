@@ -79,5 +79,5 @@ func dockerMaintenanceActionGuide() string {
 		}
 		items = append(items, item)
 	}
-	return "选择一个 Docker 维护动作并根据真实状态自主填写相关字段；KPanel 只固定动作入口、鉴权、审批和审计，底层技术前置条件由 Agent 校验并作为可纠正结果返回。" + strings.Join(items, "；")
+	return "选择一个 Docker 维护动作并根据真实状态自主填写相关字段；Dongger Panel 只固定动作入口、鉴权、审批和审计，底层技术前置条件由 Agent 校验并作为可纠正结果返回。" + strings.Join(items, "；")
 }

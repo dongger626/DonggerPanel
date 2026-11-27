@@ -1,4 +1,4 @@
-# KPanel v0.63.1 发布验收记录
+# Dongger Panel v0.63.1 发布验收记录
 
 日期：2026-08-11
 
@@ -12,15 +12,15 @@
 
 - 概览新增“一键系统调优”：固定 12 项、默认全选且可逐项取消，显示风险说明、逐项进度和断开恢复状态；维护任务逐项调用脚本，首项失败立即停止。
 - 新增独立 typed API：`GET/POST /api/v1/system/system-tuning`，没有扩展旧 `/system/actions`；危险写入继续受 Agent、审计、版本和脚本协议边界约束。
-- `kejilion.sh` 是唯一业务真源：新增 `KPANEL_SYSTEM_TUNING_PROTOCOL_VERSION="1"`、固定 12 项 `status/apply-item`、共享安全锁和结构化回执；菜单 66 与 KPanel 使用同一实现。
+- `kejilion.sh` 是唯一业务真源：新增 `KPANEL_SYSTEM_TUNING_PROTOCOL_VERSION="1"`、固定 12 项 `status/apply-item`、共享安全锁和结构化回执；菜单 66 与 Dongger Panel 使用同一实现。
 - 脚本修复原第 6 项“仅打印命令但不执行”的问题，改为复用事务化 firewall open-all；LinuxMirrors 与 network-optimize 均固定上游提交和摘要。
-- 原始 KPanel 功能提交为 `6dcfcf71c1864a0d213c84114ca188768fd97763`，从最新主线迁入后的等价聚焦提交为 `5e240a11459ee0a58e063b6d960234fd222d929f`，L2 记录提交为 `7a89a77153ac17330649837b79e0771e64bd59cc`。
+- 原始 Dongger Panel 功能提交为 `6dcfcf71c1864a0d213c84114ca188768fd97763`，从最新主线迁入后的等价聚焦提交为 `5e240a11459ee0a58e063b6d960234fd222d929f`，L2 记录提交为 `7a89a77153ac17330649837b79e0771e64bd59cc`。
 - `v0.63.0` 已冻结为 `071d4fb5af59426a61e018c465c3e8b2935d7768`，但 Release workflow 在正式产物发布前发现脚本契约校验仍硬编码旧摘要并停止；该 tag 不改写、没有 GitHub Release、没有正式镜像、没有生产部署。
 - `v0.63.1` 增加共享脚本契约门禁 `c3d6508372f4fd7e3133820ba567b47ba7240b83`，最终版本冻结提交为 `6010b0ad281ad0b586d888f7c4f9a5c7d20197af`。产品功能相对冻结的 `v0.63.0` 未变。
 
 ## 未上线内容审计与排除项
 
-- 本次候选只迁入系统调优的两个 KPanel 聚焦提交、对应 `kejilion.sh` 聚焦提交、发布契约修复和版本元数据；没有整体提交任何脏工作树。
+- 本次候选只迁入系统调优的两个 Dongger Panel 聚焦提交、对应 `kejilion.sh` 聚焦提交、发布契约修复和版本元数据；没有整体提交任何脏工作树。
 - 旧诊断救援、服务状态、文件管理器应用配置等未完成草稿均保持原状并排除；后续必须分别审计、验收并形成独立候选。
 - apps 主线保持 `e7f90760b71cfe69c8b05af40131ab89739eb0f5`。`packaging/kejilion-app/kpanel.conf` 在 `v0.62.2` 与 `v0.63.1` 的 blob 均为 `7289637a42b8209b301772139ff4404d08e196d2`，因此没有制造 apps 空提交。
 - `C:\GitHub\kejilion-apps-file-manager\kpanel.conf` 等无关本地差异已保留，未覆盖、未提交、未上线。
@@ -31,11 +31,11 @@
 - GitHub raw `kejilion.sh` SHA-256 为 `0583f7cd5be1f0bb6ec48d92e2cf224bfabfafada5788658bda4414ba9561229`；公开下载复核通过，根/CN 归一化同步，协议 marker 唯一。
 - 154 聚焦发布检查通过：根/CN 语法与同步、system tuning smoke、多网络防火墙 smoke。证据 `/root/kpanel-release-evidence/system-tuning-sh-28f89c1/summary.log`，SHA-256 `88c48ec2681956a6766937d309a8f3670f1bbb73ee063443af3c0eeb3869f599`。
 - 批量 Shell 测试另有 23 项通过、7 项既有 OpenClaw harness 依赖失败；这些失败与本功能无关，但本记录不将其表述为“全量 Shell 通过”。
-- KPanel Dockerfile、文档、Release workflow、`scripts/verify-change.sh` 和镜像运行时现在都通过同一 `scripts/check-managed-script-contract.sh` 派生并核对脚本提交、raw URL、摘要、OCI label 与镜像内实际文件，避免多处硬编码再次漂移。
+- Dongger Panel Dockerfile、文档、Release workflow、`scripts/verify-change.sh` 和镜像运行时现在都通过同一 `scripts/check-managed-script-contract.sh` 派生并核对脚本提交、raw URL、摘要、OCI label 与镜像内实际文件，避免多处硬编码再次漂移。
 
 ## 自动门禁
 
-- KPanel 全量验证通过：`go test -count=1 ./...`、核心四包 race、`go vet ./...`、Linux amd64/arm64 Agent 与 Panel 构建、Web 85 个测试文件和 609 项测试、i18n 2109 条、typecheck、生产构建、ecosystem/version/diff 检查。
+- Dongger Panel 全量验证通过：`go test -count=1 ./...`、核心四包 race、`go vet ./...`、Linux amd64/arm64 Agent 与 Panel 构建、Web 85 个测试文件和 609 项测试、i18n 2109 条、typecheck、生产构建、ecosystem/version/diff 检查。
 - `v0.63.1` 在 154 重新执行完整 L3：Trivy Panel/Agent 可达漏洞为 0，密钥扫描通过，镜像构建、运行约束、应用配置生命周期和新增 `managed_script_contract=pass` 均通过。
 - L3 日志 `/root/kpanel-release-evidence/v0.63.1/l3-verify-release.log`，SHA-256 `bbf0db8046265d1fbfa060fa40e8957149365ce6ef9bcf4548c43495b061032b`；应用配置生命周期证据 SHA-256 `2e5731ab77ce82c4dc53d45bf14e09b46f522d7cca3da33f7d2fcf0cbc7a0c3f`。
 - 候选 CI `31479460859`、主线 CI `31479720048`、Release run `31479983958` 均成功，且三个运行的 `head_sha` 都是正式提交 `6010b0ad...`。

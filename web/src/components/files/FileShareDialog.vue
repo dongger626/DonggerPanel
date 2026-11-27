@@ -273,7 +273,7 @@ onBeforeUnmount(() => {
         <div v-else-if="share && !linksAvailable" class="file-share-dialog__notice">
           <Link2 :size="18" />
           <p>
-            <strong>{{ phrase('出于安全考虑，旧链接不会保存在 KPanel 中。') }}</strong>
+            <strong>{{ phrase('出于安全考虑，旧链接不会保存在 Dongger Panel 中。') }}</strong>
             {{ phrase('如需再次复制，请重新生成；旧链接会立即失效。') }}
           </p>
         </div>

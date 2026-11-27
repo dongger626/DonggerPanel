@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.7 发布验收记录
+# Dongger Panel v1.21.0-rc.7 发布验收记录
 
 日期：2026-09-21
 
@@ -28,7 +28,7 @@
 - 业务域：MCP 客户端授权主机选择、发布验证与责任移交。
 - 变更面：MCP 管理界面的主机全选/反选；环境策略、固定 Linux Runner、WSL 传输、独立 handoff kit 与证据回收。没有新增 MCP 权限、API、数据迁移、受管脚本协议或生产部署目标。
 - 受影响用户旅程：管理员创建 MCP 客户端时批量选择授权主机；发布负责人在 `arena-154` 不可达时显式选择本地 WSL 完成同一 L3，或把冻结 kit 与独立 manifest 摘要移交给登记接收端。
-- 未变化契约：选择只在创建客户端时按现有权限边界一次性保存；默认 L3 与唯一正式部署目标仍为 `arena-154`，`local-wsl-dr` 只允许 `candidate-validation`，`108`/`prod-108` 禁止全部 KPanel 操作。
+- 未变化契约：选择只在创建客户端时按现有权限边界一次性保存；默认 L3 与唯一正式部署目标仍为 `arena-154`，`local-wsl-dr` 只允许 `candidate-validation`，`108`/`prod-108` 禁止全部 Dongger Panel 操作。
 - 风险等级及理由：L3。用户功能很小，但发布治理涉及执行身份、Docker socket、代理、Runner 归档和跨控制端证据链，必须以完整 L3、候选/main/tag 门禁、公开 OCI 和真实移交演练收敛。
 
 ## 发布范围与未纳入内容
@@ -48,7 +48,7 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：产品只改变设置前端；治理只改变发布入口和验证环境，不修改 `kejilion.sh` 内容或调用契约。L3 managed-script-contract 与应用生命周期通过。
 - 本版发布决定：脚本不在范围。
@@ -90,7 +90,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.21.0-rc.7](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.7) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 11:45:13 +08:00，GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.7](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.7) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 11:45:13 +08:00，GitHub Latest 仍为 `v1.20.0`。
 - 14 个附件均为 uploaded 且非空；`SHA256SUMS` 自身摘要 `908ddb6f...` 与 GitHub API digest 一致，包含 11 个二进制/部署包条目。
 - Docker `1.21.0-rc.7` 与 `preview` OCI index 均为 `sha256:feaa30df0b999a8e9ace7294f936b3c1ecedfa04de12fb531affe2b90c259562`。
 - `linux/amd64` / `linux/arm64` 分别为 `sha256:1fe004dacefc75722a311c1f75bcf4bc72417436b98c7eab6d3d6d25b513fe7b` / `sha256:d0faa1cf0e6b4b35dcb8bfd9865c7501200ac53a911799dcb4f7c706b5db31e6`；另外两项为 attestations。

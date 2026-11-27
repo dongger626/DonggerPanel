@@ -244,7 +244,7 @@ func (s *Service) inventory(ctx context.Context, imageUpdateID string) (Inventor
 				}
 			} else if marker {
 				scriptBacked = true
-				item.Runtime.Warning = "应用配置使用动态写法；KPanel 继续复用 kejilion.sh 原生管理流程"
+				item.Runtime.Warning = "应用配置使用动态写法；Dongger Panel 继续复用 kejilion.sh 原生管理流程"
 			}
 		}
 		container, hasContainer, detectedBy := resolveAppContainer(
@@ -287,7 +287,7 @@ func (s *Service) inventory(ctx context.Context, imageUpdateID string) (Inventor
 		}
 		if item.Runtime.Installed && scriptBacked {
 			item.Capabilities["manage"] = Capability{
-				Reason: "该应用使用 KPanel 常规管理入口",
+				Reason: "该应用使用 Dongger Panel 常规管理入口",
 			}
 		} else if _, eligible := s.scriptSelectorFor(item); item.Runtime.Installed && eligible {
 			item.Capabilities["manage"] = Capability{
@@ -590,7 +590,7 @@ func (s *Service) applyInstalledCapabilities(
 			item.Capabilities["update"] = Capability{Reason: reason}
 			item.Capabilities["direct_access"] = Capability{Reason: reason}
 		}
-		item.Capabilities["manage"] = Capability{Reason: "该应用使用 KPanel 统一管理架构"}
+		item.Capabilities["manage"] = Capability{Reason: "该应用使用 Dongger Panel 统一管理架构"}
 	} else if scriptManage {
 		item.Capabilities["update"] = Capability{Enabled: true}
 		item.Capabilities["uninstall"] = Capability{Enabled: true}

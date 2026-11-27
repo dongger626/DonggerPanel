@@ -1,4 +1,4 @@
-# KPanel v1.4.1 发布验收记录
+# Dongger Panel v1.4.1 发布验收记录
 
 日期：2026-09-06
 
@@ -24,10 +24,10 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`；变更集：`v1.4.1-light-node-lifecycle`。
-- KPanel原内置脚本基线a74495cc3ea4bac1b0b42bf572f0f122ba9e2cf1 / SHA256 d9e2a75d97e5914c2fb3d163122e025dee8e1c757ae8515cc34ba6991b319974；本版实际内置3759e10692f61fe375c0424389842ddc70a73ed7 / SHA256 8c0edc5b97d9f7ec67edbfa6ed8dbbf473f9f651333334e2ac3c4cfb27bfe1dd。
+- Dongger Panel原内置脚本基线a74495cc3ea4bac1b0b42bf572f0f122ba9e2cf1 / SHA256 d9e2a75d97e5914c2fb3d163122e025dee8e1c757ae8515cc34ba6991b319974；本版实际内置3759e10692f61fe375c0424389842ddc70a73ed7 / SHA256 8c0edc5b97d9f7ec67edbfa6ed8dbbf473f9f651333334e2ac3c4cfb27bfe1dd。
 - 脚本候选已发布为同一3759/SHA256，脚本版本号不改；source d028及发布修复3805/3759全部包含。
 - 判定依据：实际改变轻量节点安装/自动更新/卸载协议与嵌入运行时；成对源码、旧公开资产及新正式资产真实systemd矩阵通过。
-- 发布决定：脚本兼容修复先行，再发布KPanel固定脚本pin与节点附件；阻断或移除依赖范围：不适用。
+- 发布决定：脚本兼容修复先行，再发布Dongger Panel固定脚本pin与节点附件；阻断或移除依赖范围：不适用。
 
 ## 多维质量结论
 
@@ -81,7 +81,7 @@
 
 ## 生产部署安全核对
 
-- 生产/验证唯一arena-154；prod-108及108禁用全部KPanel操作，本次未连接、未备份、未部署、未核对。
+- 生产/验证唯一arena-154；prod-108及108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未核对。
 - 新preflight `v1.4.1-production-7cb-r2` PASS，2026-09-05T17:16:47.059994451Z线上1.4.0/ok，revision bfbd1bf、RepoDigest/ID `sha256:9f70d341db62e16376f281b301c4031fc1bfb92e94b289b2c20facd9a764137b`。旧pre-v1.4.0备份不作为本次回滚备份。
 - 本次backup passed，停写归档并验证旧镜像可load，备份`/root/kpanel-backups/pre-v1.4.1-20260905T174318Z`；kpanel.tar.zst SHA256 `4985da6e3c9f323e974277d1248849cea17b7781ad5c6b531f231ac0acdfc6e6`，old-image.tar.zst `616dc833c665d53447fcff992eb10af9be5aad3cfc44aac80ffb165ea79069de`，其余服务/安装标记/旧inspect及SHA256SUMS一并保留。备份后服务恢复1.4.0且受保护文件与preflight相同。
 - 标准应用市场更新exit0，原生update完成且访问策略恢复。deploy log SHA256 `e3fddf870039d3e75a65be77beca438f7866addf61db0d48616dddafdff1420f`；没有临时改生产wrapper/直接替换容器。

@@ -1,4 +1,4 @@
-# KPanel v0.75.0 上线验收记录
+# Dongger Panel v0.75.0 上线验收记录
 
 日期：2026-08-15（Asia/Shanghai）
 
@@ -15,8 +15,8 @@
 ## 发布画像
 
 - 业务域：集群配对、文件管理器、桌面文件工作区、应用市场集成。
-- 变更面：跨 KPanel 文件读取协议、Agent/Panel 流式传输、文件与桌面拖放、权限与失败恢复。
-- 受影响用户旅程：已配对 KPanel 之间复制文件或目录；从远端文件窗口拖入本地目录或桌面；同名、冲突、取消、部分失败及重启恢复；应用市场在线目录中的 DeepSeek Harness 展示。
+- 变更面：跨 Dongger Panel 文件读取协议、Agent/Panel 流式传输、文件与桌面拖放、权限与失败恢复。
+- 受影响用户旅程：已配对 Dongger Panel 之间复制文件或目录；从远端文件窗口拖入本地目录或桌面；同名、冲突、取消、部分失败及重启恢复；应用市场在线目录中的 DeepSeek Harness 展示。
 - 未变化契约：数据库 schema、端口、Compose、Agent 特权、受管 `kejilion.sh` 和应用市场打包格式均未改变；跨主机操作只复制，不移动或删除源文件。
 - 风险等级及理由：L3；新增双端文件流和宿主机目标写入，必须验证权限最小化、归档边界、原子提交、失败清理、双向互通与旧配对兼容。
 
@@ -74,20 +74,20 @@
 - `linux/amd64`：`sha256:79034dfbd975968c0a516a78a33601aab1f6fcabcdc1abb42419162f3b07564f`；`linux/arm64`：`sha256:7c2212a46ec8a12fe1d3a89e6999262d0a81520b04e62111cd8655f7935bbf85`。
 - `SHA256SUMS` SHA-256 `60b4bff76fd5663e2d89c25893c91cf374af6a9255a0482abc1bfce6b94e3997`；公开下载的部署包校验为 `aded8e299df2f0555011b3870253c443182929aaa3d1783d2b41cfc7fcb4fb42`，与清单一致。
 - 公开镜像按不可变 index 在 arena-154 执行 `image_e2e=pass`，运行标签为 version `0.75.0`、revision `de5a9b7af17ba9d69eeaa11a346fb3102f8b33ad`，临时容器与网络已清理。
-- `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` 的 `kpanel.conf` blob `34316059d4e42f527819bc7d56e0ff14ec434c96` 与 KPanel 冻结源码完全一致；完整 lifecycle 已通过，无 apps 空提交。
+- `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` 的 `kpanel.conf` blob `34316059d4e42f527819bc7d56e0ff14ec434c96` 与 Dongger Panel 冻结源码完全一致；完整 lifecycle 已通过，无 apps 空提交。
 
 ## 生产部署安全核对
 
 - 生产目标与授权：唯一目标 `arena-154`；只执行停写备份、标准应用市场更新和最小生产安全核对。
 - 验证/灰度环境：`arena-154`；正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未检查、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未检查、未备份、未部署、未升级、未核对。
 - 升级前：v0.74.1、OCI `sha256:068c69a4c70c15656535cb78f7c51f8199d66f35391a546030f5157edead8279`，Panel healthy、restart 0、OOM false，Agent active。
 - 停写备份：`/root/kpanel-backups/v0.75.0-preupgrade-arena154-20260815T142528Z.tar.gz`，SHA-256 `cf785268cdf62e884d771eb50d0f60722b2863df5d24cb35af2ecf2a3d3f9508`；旧镜像归档同名 `.image.tar`，SHA-256 `a0736f6a9887f58b1598b9d153c17114609acd1042348252a735cf96a3f34f28`。
 - 备份恢复核对：在独立目录实际解包，文件树摘要、`.env` 权限、Compose、SQLite 完整性通过；旧镜像归档已实际 `docker load` 并核对 v0.74.1/revision。
 - 第一次标准更新在进入镜像更新事务前被 `/root/apps/kpanel.conf` 本地修改安全拦截；该工作文件 blob 与最新 apps main 和冻结契约三方一致。先备份为 `/root/kpanel-backups/v0.75.0-preupgrade-arena154-20260815T142528Z.apps-kpanel.conf.local`（SHA-256 `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`），仅恢复该文件索引并将 apps 仓库 `--ff-only` 到 `6d86eee…`，内容未丢失。
 - 部署入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel`；第二次执行成功，更新日志 SHA-256 `58e7f607cbcff92ff97d4368a958bf8cc9507fe753db83495580ac43d99be88e`，未触发应用回滚。
 - 升级后：v0.75.0，运行 OCI/revision 与公开产物一致；Panel healthy、restart 0、OOM false；Agent active 且 `0.75.0 v1alpha1`；Compose、Panel-Agent、固定脚本、SQLite、错误日志和两轮 5 次短采样通过，约 11 MiB/256 MiB、8 PIDs。
-- 生产已执行写操作：停写备份、apps 仓库安全快进、标准 KPanel 更新；未主动修改生产业务文件或配对。
+- 生产已执行写操作：停写备份、apps 仓库安全快进、标准 Dongger Panel 更新；未主动修改生产业务文件或配对。
 - 仅在隔离真机执行：跨主机复制、冲突、取消、恶意归档、旧配对拒绝、重启恢复及真实浏览器拖放。
 - 生产证据：`/root/kpanel-release-evidence/v0.75.0/arena154-20260815T142528Z`，`SHA256SUMS` 文件摘要 `a917a5541db838b3db6f1ee3e8f935595bcd5a535f9dc9163fbc9d85f30a2f7a`。
 

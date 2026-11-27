@@ -18,7 +18,7 @@
 - 默认有效期为 7 天，可选 30 天或永久。
 - 首版不提供密码、访问统计、目录浏览、相册、自定义域名、上传 API 或批量分享。
 
-这保持了 KPanel 的既有设计：真实文件系统仍是事实源，Panel 只保存少量授权元数据，所有宿主机文件读取继续由 Agent 和 `filemanager` 完成。
+这保持了 Dongger Panel 的既有设计：真实文件系统仍是事实源，Panel 只保存少量授权元数据，所有宿主机文件读取继续由 Agent 和 `filemanager` 完成。
 
 ## 状态与链接生命周期
 
@@ -42,7 +42,7 @@
 
 Panel 通过内部 `GET /v1/files/share-entry` 取得分享专用版本，并仅通过新的 `GET|HEAD /v1/files/share-content` 读取公开流，同时固定注入 `If-Match: "<resourceVersion>"` 和必填的 `X-KPanel-File-Share-Version: <shareVersion>`；客户端不能覆盖后者。普通 `/v1/files/content` 明确拒绝该分享 header。Agent 在 `filemanager` 安全打开文件并对打开的 fd 执行 `fstat` 后，先用 `If-Match` O(1) 拒绝普通元数据变化，再在写出任何文件响应头或正文前完成内容强校验。
 
-`resourceVersion` 继续保持 KPanel 既有并发语义，不影响现有文件编辑、预览和下载。分享专用的 `shareVersion v2` 从安全打开并完成 `fstat` / `SameFile` 复核的同一个 fd 全量计算 SHA-256，同时绑定 `resourceVersion` 及 Linux device、inode、ctime；普通 `Stat`、目录列表、编辑和登录态下载不计算内容摘要。ctime 是时间戳而不是单调变更计数器，因此不能单独证明文件未变；内容摘要保证同长度改写并恢复 mtime 时旧分享仍失效，Linux 对象身份保证内容相同的 inode 替换也失效。Agent 在公开流发送响应头前重新完成全量校验并将 fd rewind。公开 JSON 元数据只做 O(1) 的普通资源版本检查，因此同元数据改写后页面可能仍显示原文件描述，但 `/f/{token}` 在发送任何文件字节前必定 404。全量校验同时生成 64 KiB 分块摘要；发送前将每块读入私有缓冲并核对摘要，只有匹配的字节可以发送。源文件在传输中原地变化时，已验证缓冲可继续发送，但不匹配的新块会终止响应，客户端可能收到不完整文件；后续请求仍按版本失效。每个最大 10 GiB 分享约需 5 MiB 摘要和 64 KiB 数据缓冲，不生成同尺寸磁盘副本。
+`resourceVersion` 继续保持 Dongger Panel 既有并发语义，不影响现有文件编辑、预览和下载。分享专用的 `shareVersion v2` 从安全打开并完成 `fstat` / `SameFile` 复核的同一个 fd 全量计算 SHA-256，同时绑定 `resourceVersion` 及 Linux device、inode、ctime；普通 `Stat`、目录列表、编辑和登录态下载不计算内容摘要。ctime 是时间戳而不是单调变更计数器，因此不能单独证明文件未变；内容摘要保证同长度改写并恢复 mtime 时旧分享仍失效，Linux 对象身份保证内容相同的 inode 替换也失效。Agent 在公开流发送响应头前重新完成全量校验并将 fd rewind。公开 JSON 元数据只做 O(1) 的普通资源版本检查，因此同元数据改写后页面可能仍显示原文件描述，但 `/f/{token}` 在发送任何文件字节前必定 404。全量校验同时生成 64 KiB 分块摘要；发送前将每块读入私有缓冲并核对摘要，只有匹配的字节可以发送。源文件在传输中原地变化时，已验证缓冲可继续发送，但不匹配的新块会终止响应，客户端可能收到不完整文件；后续请求仍按版本失效。每个最大 10 GiB 分享约需 5 MiB 摘要和 64 KiB 数据缓冲，不生成同尺寸磁盘副本。
 
 ## API 契约
 
@@ -67,7 +67,7 @@ Panel 通过内部 `GET /v1/files/share-entry` 取得分享专用版本，并仅
 
 大文件指纹计算可能在发送响应头前持续五分钟。配套 `kejilion/nginx` 已发布提交 `2677b00aeb578a76ac0557413b4e9dd699e29050` 在官方 `reverse-proxy-backend.conf` 中启用 `proxy_read_timeout 360s`，覆盖该校验窗口；模板 SHA-256 为 `9ce68093700f9c9afa99fba4c2403769cb53f516bbe30e6ffe042bcc2fd88430`，回滚基线为 `05f5a2eac269967706f30dc3ff7985339e1f3ce4`。
 
-发布时须先发布这份官方模板，再应用到使用旧模板的相关反代站点并执行 Nginx 语法检查、重载和慢校验验收。模板更新不会自动修改既有站点；自定义或额外代理层也须覆盖五分钟校验窗口。该模板同时供其他 IP/端口反代站点使用，此变更增加其等待上游响应的时间。`kejilion.sh` 已从同一官方 URL 获取模板，无需新增脚本协议或 KPanel 内置模板。变更集 `file-share-large-files-20261013` 登记为 `scriptLinkageState=coupled`，配套产物为上述官方外联模板；现有脚本源码和协议继续复用，模板须先就绪才能发布 KPanel。官方模板已于 2026-10-13 发布到 main 并核对公开字节；既有站点未因此自动修改或重载。
+发布时须先发布这份官方模板，再应用到使用旧模板的相关反代站点并执行 Nginx 语法检查、重载和慢校验验收。模板更新不会自动修改既有站点；自定义或额外代理层也须覆盖五分钟校验窗口。该模板同时供其他 IP/端口反代站点使用，此变更增加其等待上游响应的时间。`kejilion.sh` 已从同一官方 URL 获取模板，无需新增脚本协议或 Dongger Panel 内置模板。变更集 `file-share-large-files-20261013` 登记为 `scriptLinkageState=coupled`，配套产物为上述官方外联模板；现有脚本源码和协议继续复用，模板须先就绪才能发布 Dongger Panel。官方模板已于 2026-10-13 发布到 main 并核对公开字节；既有站点未因此自动修改或重载。
 
 隔离 Nginx 1.29.8 实测上游静默 65 秒：旧模板的管理创建路径和公开文件路径均约 60 秒返回 504，配套模板均约 65 秒返回 200。此证据验证反代等待窗口，不替代完整 10 GiB 文件在实际磁盘及部署代理链上的性能验收。
 
@@ -83,13 +83,13 @@ Panel 通过内部 `GET /v1/files/share-entry` 取得分享专用版本，并仅
 - 原始直链返回 `Cache-Control: public, max-age=0, must-revalidate` 和现有 ETag，允许缓存复用但每次使用前必须验证撤销、过期和文件版本。
 - `/f/{token}` 将全局 `Cross-Origin-Resource-Policy` 覆盖为 `cross-origin`，因此外站可以嵌入图片；不返回 CORS 授权，任意来源 JavaScript / Canvas 读取不属于首版契约。
 - 只有 JPEG、PNG、GIF、WebP、AVIF 五类安全位图可以 `inline`；HTML、SVG、XML、JavaScript、CSS、PDF、`text/*` 及其他类型统一改为 `application/octet-stream` 并强制 `attachment`。
-- Panel 不信任 Agent 的内容 CSP，会在所有原始分享响应上覆盖 `default-src 'none'; sandbox; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`，并保留 `nosniff`，防止主动内容借 KPanel 同源执行。
+- Panel 不信任 Agent 的内容 CSP，会在所有原始分享响应上覆盖 `default-src 'none'; sandbox; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`，并保留 `nosniff`，防止主动内容借 Dongger Panel 同源执行。
 
 ## 交互与视觉约束
 
 - 单文件分享入口仅位于文件的右键 / `···` 菜单；文件管理工具区另有一个克制的“分享管理”入口用于统一撤销。不增加侧栏、桌面应用、图片托管标签或批量分享按钮。
 - 对话框复用 `ModalDialog size="small"`，包含加载、未分享、已分享、创建中、复制结果、确认停止和错误恢复状态。
-- 公开页只包含 KPanel 品牌、主题切换、文件信息、安全位图预览和一个清晰下载按钮；SVG 和主动内容不内嵌。超过 12 MiB 的位图不自动拉取预览，避免页面打开即占用公开流。
+- 公开页只包含 Dongger Panel 品牌、主题切换、文件信息、安全位图预览和一个清晰下载按钮；SVG 和主动内容不内嵌。超过 12 MiB 的位图不自动拉取预览，避免页面打开即占用公开流。
 - 正文和控件不小于 14px，辅助文字不小于 13px，仅紧凑标签与页脚可使用 12px；覆盖浅色、深色、390 / 768 / 1280px、100% / 125% / 200% 缩放、长文件名和长 URL。
 - 新文案纳入 `zh-CN`、`en-US`、`zh-TW`；对话框关闭后恢复触发元素焦点，复制结果通过可见文本和 live region 提示。
 

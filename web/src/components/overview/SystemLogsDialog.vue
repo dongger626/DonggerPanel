@@ -103,7 +103,7 @@ const systemLogBackendPhrases = [
   'OpenRC 主机不使用 systemd journal',
   'journalctl 与固定 syslog 文件均不可用',
   'journalctl 不可用',
-  'Agent 后台执行程序不可用，请更新或重新安装 KPanel',
+  'Agent 后台执行程序不可用，请更新或重新安装 Dongger Panel',
   'last 命令不可用',
   'journal 与固定认证日志文件均不可用',
   'du 命令不可用',

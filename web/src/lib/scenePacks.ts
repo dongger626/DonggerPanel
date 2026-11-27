@@ -53,9 +53,9 @@ export interface ScenePackList {
   packs: ScenePack[]
 }
 
-/** Packs published by the KPanel maintainers; everything else is community work. */
+/** Packs published by the Dongger Panel maintainers; everything else is community work. */
 export function isOfficialScenePack(pack: Pick<ScenePack, 'author'>): boolean {
-  return pack.author?.name === 'KPanel'
+  return pack.author?.name === 'Dongger Panel'
 }
 
 /**

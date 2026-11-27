@@ -1,6 +1,6 @@
 # 宿主机系统兼容矩阵
 
-KPanel 的 Panel 只维护一个 `linux/amd64`、`linux/arm64` 多架构 Docker
+Dongger Panel 的 Panel 只维护一个 `linux/amd64`、`linux/arm64` 多架构 Docker
 镜像。发行版差异由宿主机 `kejilion-agent` 处理，不为 Debian、Ubuntu、
 Rocky 等系统分别制作 Panel 镜像。
 
@@ -38,7 +38,7 @@ Rocky 等系统分别制作 Panel 镜像。
 | 软件源读取 | APT、DNF/YUM、APK、Pacman、Zypper | 页面展示实际源主机 |
 | 软件源切换 | Debian/Ubuntu APT | 其他系统的换源适配器尚未实现 |
 | 系统更新/清理 | APT、DNF/DNF5/YUM、APK、Pacman、Zypper | 固定命令；不接受 Web 传入的包名、命令或 Shell |
-| 多主机终端 | systemd/OpenRC Linux `amd64`、`arm64`；KPanel 被控端由 Agent 打开 `/dev/ptmx`，更新后的轻量节点由独立 root terminal service 打开固定登录 Shell PTY，并通过 v2 Noise relay 出站 | 本机、新授权 v2 KPanel 和使用新接入命令完成终端公钥注册的轻量节点支持；旧 v1/v2 配对和仅旧遥测配置不支持；OpenRC 路径仍需实机准入 |
+| 多主机终端 | systemd/OpenRC Linux `amd64`、`arm64`；Dongger Panel 被控端由 Agent 打开 `/dev/ptmx`，更新后的轻量节点由独立 root terminal service 打开固定登录 Shell PTY，并通过 v2 Noise relay 出站 | 本机、新授权 v2 Dongger Panel 和使用新接入命令完成终端公钥注册的轻量节点支持；旧 v1/v2 配对和仅旧遥测配置不支持；OpenRC 路径仍需实机准入 |
 | 重装系统 | 非交互适配器未实现 | 需要补齐镜像参数、后台执行和重装后结果回传协议 |
 
 ## 部署前置条件
@@ -65,7 +65,7 @@ rc-service docker start
 ```
 
 账户管理和 SSH 防御等可选能力还需要对应工具，例如 `shadow`、`sudo`、`openssh`、
-`fail2ban` 与 `python3`；缺失时 KPanel 按 capability 降级，不伪装为可用。
+`fail2ban` 与 `python3`；缺失时 Dongger Panel 按 capability 降级，不伪装为可用。
 
 OpenRC 可提供 `no_new_privs`、固定用户/组、umask、进程组停止和 `supervise-daemon`
 重启，但不等价于 systemd unit 的 namespace、mount、capability bounding 等沙箱。
@@ -85,7 +85,7 @@ Agent 标准输出通过 OpenRC `output_logger`/`error_logger` 送入本机 sysl
 
 所有维护任务均由固定参数的 systemd transient unit 或 OpenRC
 `start-stop-daemon` 独立进程组执行，不自动重启宿主机，不清理
-Docker、网站目录、KPanel 备份、`/tmp` 或完整日志目录。
+Docker、网站目录、Dongger Panel 备份、`/tmp` 或完整日志目录。
 
 ## Windows 轻量节点候选
 

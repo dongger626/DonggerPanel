@@ -1,4 +1,4 @@
-# KPanel v0.99.4 发布验收记录
+# Dongger Panel v0.99.4 发布验收记录
 
 日期：2026-08-30
 
@@ -10,7 +10,7 @@
 
 ## 发布画像
 
-- 业务域：KPanel 网站反向代理创建表单、进程管理列表和全局键盘聚焦视觉反馈。
+- 业务域：Dongger Panel 网站反向代理创建表单、进程管理列表和全局键盘聚焦视觉反馈。
 - 变更面：展示、只读宿主信息选择；不新增宿主机写入、数据迁移、协议、权限或应用市场契约。
 - 受影响用户旅程：在网站页创建/编辑 IP / 端口反代时扫描并选择本机 TCP 监听服务；在进程管理中按 CPU/内存峰值快速识别高占用进程；使用键盘操作表单时获得紧凑一致且不重复的聚焦框。
 - 未变化契约：复用现有只读端口占用 API；不改变 API schema、数据库、端口协议、Compose、Agent 权限、`kejilion.sh` 或 `kejilion/apps` 安装更新契约。
@@ -51,7 +51,7 @@
 - 最近每日安全通告审计、EOL 复核状态及证据：本版沿用固定 L3、候选 CI、主线 CI 和 Release 的扫描链路；未单独作“所有上游依赖当前”的额外结论。
 - 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：未新增依赖行动项。
 - 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go `1.26.6`、Node `24`、`kpanel-release-gate:go1.26.6-node24`、既有构建/扫描工具链；未改变受管脚本。
-- 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：KPanel/Web `0.99.4`；生产脚本 revision=`d58079304a92936bf8e3d90467eea484c5b63d6f`，clean Git blob SHA-256=`68a9451582034444f5178f893e8a00d6c4d5e24d109401b6bdf091f948251cf2`；公开 OCI index=`sha256:ff04275f9966cf2fca940df07a68dd6cc4a86284450a26eced1986279402767a`。
+- 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：Dongger Panel/Web `0.99.4`；生产脚本 revision=`d58079304a92936bf8e3d90467eea484c5b63d6f`，clean Git blob SHA-256=`68a9451582034444f5178f893e8a00d6c4d5e24d109401b6bdf091f948251cf2`；公开 OCI index=`sha256:ff04275f9966cf2fca940df07a68dd6cc4a86284450a26eced1986279402767a`。
 - 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：Docker owner port-picker enhancement 因 System Center 排除规则撤回，候选 `f4edd219` 由 `fc698fe1` 完整 revert；后续如解除范围，需独立候选、审查和 L3。
 - 升级后的兼容、安全、构建、性能资源和回滚结论：自动门禁、公开 Release/OCI、公开镜像 E2E、生产标准更新和 postdeploy 均通过；无 Panel schema 迁移；可用 `v0.99.3`、旧 OCI 和本次生产备份回滚。
 
@@ -80,9 +80,9 @@
 - 生产目标和部署授权范围：用户明确要求将“聚焦框优化、本地 Web 服务选择器、进程管理热力图”走上线流程；正式写入仅执行本次 `v0.99.4` 标准应用更新和固定证据入口，目标仅 `arena-154`。
 - 验证/灰度环境：固定 Linux L3、公开镜像 E2E 和生产安全证据均使用 `arena-154`，用途策略通过。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight `status=passed`，Panel `0.99.3`、health `ok`，Agent `loaded/active/running/enabled`、容器 healthy、restart=0、OOM=false；backup `status=passed`，备份目录为 `/root/kpanel-backups/pre-v0.99.4-20260830T125458Z`，备份校验摘要在 `C:\GitHub\_release-artifacts\v0.99.4-production-backup-20260830-01\remote-evidence\backup-SHA256SUMS`。
-- 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；实际 exit 0，返回 `KPanel 更新完成 / Update Complete`。
+- 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；实际 exit 0，返回 `Dongger Panel 更新完成 / Update Complete`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy `status=passed`；health `status=ok`、version=`0.99.4`；容器 image=`sha256:ff04275f9966cf2fca940df07a68dd6cc4a86284450a26eced1986279402767a`，OCI revision=`a4c163ffd432ba012b61a4d57b95d82532554445`，`running/healthy`、restart=0、OOM=false；Agent `loaded/active/running/enabled`、`NeedDaemonReload=no`，日志显示 version=`0.99.4`；`protected.diff` 0 字节，SQLite quick check 为 `ai.db empty`、`panel/ai.db ok`，固定 postdeploy 的近端致命日志检查通过。preflight/backup 后磁盘使用率约 `98%`、可用约 `2.6G`，这是当前遗留风险。
 - 生产已执行写操作：固定 backup 阶段受控停止/恢复服务并创建旧版本备份；标准应用市场入口拉取 `latest` 的目标 digest 并重建 Panel；未执行业务数据写入、schema 迁移、端口变更或进程终止操作。
 - 仅在隔离真机执行、未在生产执行的场景：L3 失败清理/生命周期夹具、公开镜像临时容器 E2E、mock 浏览器交互和前端自动回归；生产浏览器 UI 完整矩阵、进程 signal 和长期 soak 未执行。
@@ -91,7 +91,7 @@
 
 - 源码/tag：`v0.99.3` / commit `0cf8a57259297e844a2f2077eeb9cdc102c79e87`。
 - 镜像 digest：`docker.io/kjlion/kejilion-panel@sha256:d76ce9d40b2017d80e9723509704c5dfcb25e13b6a19f6830b8a0a373020bafb`。
-- 数据/配置备份：`/root/kpanel-backups/pre-v0.99.4-20260830T125458Z`，包含旧镜像、KPanel 应用目录、Agent unit、应用配置、panel inspect 和 SHA256 校验。
+- 数据/配置备份：`/root/kpanel-backups/pre-v0.99.4-20260830T125458Z`，包含旧镜像、Dongger Panel 应用目录、Agent unit、应用配置、panel inspect 和 SHA256 校验。
 - 回滚步骤和回滚后复核：本次未执行回滚；如需回滚，按 `kejilion.sh` 应用更新的原生回滚能力成套恢复 `v0.99.3` OCI、Compose、`.env`、数据和 Agent，再运行固定 preflight/postdeploy。
 - 回滚后生产实际版本与健康状态：未执行，不作已回滚声明。
 - GitHub Latest、Docker `latest` 与标准更新入口实际指向：当前 GitHub Release 为 `v0.99.4`；Docker `0.99.4` 与 `latest` 同为 `sha256:ff04275f9966cf2fca940df07a68dd6cc4a86284450a26eced1986279402767a`；标准更新入口本次已实际拉取该 digest。

@@ -362,7 +362,7 @@ jobs:
             gh release edit "$RELEASE_TAG" \
               --latest=false \
               --prerelease="$prerelease_value" \
-              --title "KPanel $VERSION" \
+              --title "Dongger Panel $VERSION" \
               --notes-file release/DRAFT_NOTES.md
             gh release upload "$RELEASE_TAG" --clobber \
               release/kpanel-mcp-* \
@@ -384,7 +384,7 @@ jobs:
               --verify-tag \
               --draft \
               "${create_flags[@]}" \
-              --title "KPanel $VERSION" \
+              --title "Dongger Panel $VERSION" \
               --notes-file release/DRAFT_NOTES.md \
               release/kejilion-agent-linux-amd64 \
               release/kejilion-agent-linux-arm64 \
@@ -564,14 +564,14 @@ jobs:
               --draft=false \
               --prerelease=false \
               --latest \
-              --title "KPanel $VERSION" \
+              --title "Dongger Panel $VERSION" \
               --notes-file release/RELEASE_NOTES.md
           else
             gh release edit "$RELEASE_TAG" \
               --draft=false \
               --prerelease \
               --latest=false \
-              --title "KPanel $VERSION" \
+              --title "Dongger Panel $VERSION" \
               --notes-file release/RELEASE_NOTES.md
           fi
 

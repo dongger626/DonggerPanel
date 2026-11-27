@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({ shareThemes: vi.fn(), uploadShareTheme: vi.fn(
 vi.mock('@/lib/api', async importOriginal => ({ ...await importOriginal<typeof import('@/lib/api')>(), api: { cluster: mocks } }))
 const wrappers: ReturnType<typeof mount>[] = []
 afterEach(() => { wrappers.splice(0).forEach(wrapper => wrapper.unmount()); vi.resetAllMocks() })
-const pack = { id: 'minimal', name: { 'zh-CN': '<script>主题</script>' }, description: { 'zh-CN': '一句话介绍' }, author: { name: 'KPanel' }, theme: { brand: '#112233', neutral: '#ffffff', signature: '#00aa66' }, sizeBytes: 1024, version: '1.0.0', installed: false, resourceVersion: 'pack-version' }
+const pack = { id: 'minimal', name: { 'zh-CN': '<script>主题</script>' }, description: { 'zh-CN': '一句话介绍' }, author: { name: 'Dongger Panel' }, theme: { brand: '#112233', neutral: '#ffffff', signature: '#00aa66' }, sizeBytes: 1024, version: '1.0.0', installed: false, resourceVersion: 'pack-version' }
 describe('share theme settings', () => {
   it('uploads then applies explicitly, identifies local content and permits retry', async () => {
     let uploaded = false

@@ -1,4 +1,4 @@
-# KPanel v0.38.3 发布验收
+# Dongger Panel v0.38.3 发布验收
 
 发布日期：2026-08-02
 
@@ -50,7 +50,7 @@
 ## 154 隔离实机、应用市场与回滚
 
 - 154 验收机从 Docker Hub 重新拉取 `0.38.3` 公共镜像并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 验收后生产 KPanel 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器和网络已清理。
-- 本轮没有替换或重启 154 的生产 KPanel，用户仍可通过应用市场自行选择升级时间。
+- 验收后生产 Dongger Panel 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器和网络已清理。
+- 本轮没有替换或重启 154 的生产 Dongger Panel，用户仍可通过应用市场自行选择升级时间。
 - `packaging/kejilion-app/kpanel.conf` 相对 `v0.38.2` 无变化；继续使用 `latest` 和镜像内版本契约，无需提交 `kejilion/apps`。
 - 源码和镜像回滚点为 `v0.38.2`，提交 `fc89ee94d03a324ac325516c593c97cc9b9a1435`。

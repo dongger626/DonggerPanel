@@ -1,4 +1,4 @@
-# KPanel v0.86.0 发布验收记录
+# Dongger Panel v0.86.0 发布验收记录
 
 日期：2026-08-19
 
@@ -24,7 +24,7 @@
   - `51f3256bfc57e3d1913806885940cb36542c5634` fix(files): make media preview streamable
   - `d552d01e7cbb0a84427b1a0d67209d37595475fc` feat(docker): sort compose groups with containers
   - `7b9febac7185888512a9eab54a1fc38a056e0b97` fix(monitoring): hide idle history zoom hint
-  - `132a06a84f359ccdbd863ad167f5740aacb78049` chore: prepare KPanel 0.86.0
+  - `132a06a84f359ccdbd863ad167f5740aacb78049` chore: prepare Dongger Panel 0.86.0
 - 明确未纳入的分支、文件或后续事项：旧文件拖拽草稿 `11e5825…` 未纳入；已在主线等价存在的归档/桌面传输功能未重复 cherry-pick；未纳入视频内核、108 环境及任何未审查工作树改动。
 
 ## 多维质量结论
@@ -59,7 +59,7 @@
 ## 隔离真机与浏览器验收
 
 - 主机/发行版/架构/运行时版本：arena-154 隔离 Debian 13、Docker 29.6.2、x86_64；发布 Runner 使用 Linux amd64/arm64。
-- 环境策略 ID 与允许用途：`arena-154`，验证与正式 KPanel 部署；未使用 108。
+- 环境策略 ID 与允许用途：`arena-154`，验证与正式 Dongger Panel 部署；未使用 108。
 - 使用的精确候选或公开产物：公开 `docker.io/kjlion/kejilion-panel@sha256:d27e5fb6ec0d56cc6a862754bc2d21a4fbfd5608e79b2561304b670fb0f24ed8`。
 - 后台作业 ID、终态、退出码、超时、证据目录、命令规格路径及 SHA-256：Release run `32158969994` success；WSL/隔离证据保存在本次受限 release artifacts，完整 bundle SHA-256=`0A361FBC8AFC24BC448FFFB7E8306A0CD14EA8CAE2B844DC2F4261335EC4C651`。
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：媒体播放、Range/HEAD、Docker 生命周期与回滚按受影响画像完成；长时 soak 不适用，本版无长时驻留内核变更。
@@ -78,10 +78,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：仅 `arena-154`；用户已授权 KPanel v0.86.0 正式升级。
+- 生产目标和部署授权范围：仅 `arena-154`；用户已授权 Dongger Panel v0.86.0 正式升级。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 隔离容器及本机回环端口。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：v0.85.0，Panel healthy、Agent active、restart=0、OOM=false；备份 `/root/kpanel-backups/pre-v0.86.0-20260818T162729Z`，旧镜像 tar SHA-256=`3f527dff95b92dcb367bc58392d7f72d568b531c8eff0483521ff733647401dd`。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：Panel `0.86.0`、`/api/v1/health` 连续 3 次 `status=ok`、Agent `0.86.0 v1alpha1` active、restart=0、OOM=false、近 3 分钟无 panic/fatal/OOM；根 HTTP 200；配置哈希与升级前一致。
@@ -116,7 +116,7 @@
 
 ## 遗留风险与后续准入
 
-- 未验证风险：生产 SQLite 深度完整性未单独执行；未做长时 soak；108 永久不纳入 KPanel 测试或部署。
+- 未验证风险：生产 SQLite 深度完整性未单独执行；未做长时 soak；108 永久不纳入 Dongger Panel 测试或部署。
 - 已实现待实机准入：无；受影响功能已在 arena-154 隔离真机完成对应画像验收。
 - 不阻断本版的理由：生产健康、版本、配置和回滚备份均已核对；未验证项不涉及本版新增迁移或危险宿主机写操作。
 - 后续应进入的自动门禁或专项工作流：将 SQLite integrity 与短时资源采样纳入后续只读发布后核对；继续保留 v0.85.0 成套回滚资料。

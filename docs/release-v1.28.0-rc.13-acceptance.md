@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.13 发布验收记录
+# Dongger Panel v1.28.0-rc.13 发布验收记录
 
 日期：2026-10-28（Asia/Shanghai）。发布级别：L3；releaseChannel=preview，releaseTrain=1.28.0。公开预览产物已发布，生产未部署。
 
@@ -50,11 +50,11 @@
 ## 跨仓库联动判定
 
 - scriptLinkageState：coupled
-- 变更集编号：不适用（该脚本提交已在 KPanel 发布前进入 kejilion/sh 公开 main）。
-- KPanel 实际内置脚本基线 commit / SHA-256：594138a9a55ab9d75282948a27fcbcf9835650ec / 27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01。
+- 变更集编号：不适用（该脚本提交已在 Dongger Panel 发布前进入 kejilion/sh 公开 main）。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：594138a9a55ab9d75282948a27fcbcf9835650ec / 27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01。
 - 脚本候选 commit / SHA-256：594138a9a55ab9d75282948a27fcbcf9835650ec / 27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01；该 commit 已是公开 kejilion/sh/main 的祖先。
 - 状态判定依据与兼容性证据：Dockerfile、镜像 OCI 标签和发布检查绑定同一 revision/hash；managed-script contract、tests/test_cn_script_sync.sh 与 tests/test_unified_cf_smoke.sh 通过。
-- 本版发布决定：脚本先进入权威 main，再发布 KPanel 预览版。
+- 本版发布决定：脚本先进入权威 main，再发布 Dongger Panel 预览版。
 - 阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
@@ -88,7 +88,7 @@
 - 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：上述例外作为待维护事项保留；本次没有变更依赖版本。
 - 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go 1.27.3、Node 24.22.1、Docker 28.0.4；Dockerfile 固定 kejilion/sh revision 594138a9a55ab9d75282948a27fcbcf9835650ec。
 - 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：package.json/lockfile 仅更新 RC 版本号至 1.28.0-rc.13；镜像版本 sha256:afb71c77a0ed9bb9dc6e01ecd0feba2d829d53c8f163c66cead1ccfad4f310d6；配套脚本 SHA-256 27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01。
-- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：TypeScript 与 @types/node 例外待维护者复核，责任角色为 KPanel base maintenance；不作为本 RC 新依赖升级。
+- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：TypeScript 与 @types/node 例外待维护者复核，责任角色为 Dongger Panel base maintenance；不作为本 RC 新依赖升级。
 - 升级后的兼容、安全、构建、性能资源和回滚结论：RC13 build、audit 与镜像契约通过；没有单独性能对比。回滚预览镜像使用 RC12 的精确 digest。
 
 ## 隔离真机与浏览器验收
@@ -141,7 +141,7 @@
 - 源码/tag：恢复 v1.28.0-rc.12；RC12 镜像 digest sha256:773f5dd758cd46b5969fb8748b2dfd96adf2607a5cdf9f406421d20595d61257。
 - 镜像 digest：RC13 sha256:afb71c77a0ed9bb9dc6e01ecd0feba2d829d53c8f163c66cead1ccfad4f310d6；回退到上一个 preview digest，不覆盖不可变版本镜像。
 - 数据/配置备份：无生产数据改动，因此没有生产备份。
-- 回滚步骤和回滚后复核：在 KPanel 更新来源中选择稳定通道并检查版本；退出预览不会自动安装较低版本。手工部署回退时使用 RC12 固定 digest 并核对镜像标签与运行状态。
+- 回滚步骤和回滚后复核：在 Dongger Panel 更新来源中选择稳定通道并检查版本；退出预览不会自动安装较低版本。手工部署回退时使用 RC12 固定 digest 并核对镜像标签与运行状态。
 - 回滚后生产实际版本与健康状态：不适用，未部署生产。
 - GitHub Latest、Docker latest 与标准更新入口实际指向：仍为 v1.27.2 / sha256:5369dc9a2b8151314181d306e8d490939e63607d017b07c3985a0f4afb65aa10。
 - 公共默认更新通道决策：短期保留 preview RC；稳定默认仍为 v1.27.2，退出 preview 不自动降级。
@@ -170,7 +170,7 @@
     "count": 1,
     "impact": "Publish preview attempt 1 的 main-ci Windows SCM rollback 检查恢复旧 binary 时返回 Access is denied，门禁失败并阻止 publish job；没有生产写入。",
     "recoveryEvidence": "同一 run attempt 2 的 main-ci/windows-node job 122769014180 通过；publish/windows-node job 122769920530 通过；最终 public-acceptance job 122776198059 与 run 40671168205 attempt 2 成功。原失败 job 122764104183 日志保留。",
-    "permanentAction": "根因尚未确认。由 KPanel 发布维护者在下一 RC 前比较失败与通过 runner 的 SYSTEM 文件 ACL、旧 binary 句柄和 SCM 日志；若可复现则修复 updater 或测试隔离。退出条件为根因有证据且两次独立 Windows run 通过，不能以一次重跑成功代替根因分析。",
+    "permanentAction": "根因尚未确认。由 Dongger Panel 发布维护者在下一 RC 前比较失败与通过 runner 的 SYSTEM 文件 ACL、旧 binary 句柄和 SCM 日志；若可复现则修复 updater 或测试隔离。退出条件为根因有证据且两次独立 Windows run 通过，不能以一次重跑成功代替根因分析。",
     "historicalReleases": []
   }
 ]

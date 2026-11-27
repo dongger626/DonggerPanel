@@ -75,7 +75,7 @@ func TestPanelLoginIsDeliveredImmediatelyWithoutCredentialsOrSessionData(t *test
 	if len(messages) != 2 {
 		t.Fatalf("robot messages = %#v, want validation + login", messages)
 	}
-	want := "🔐 [KPanel 集群通知]\n\n主机：主控面板\n面板登录：2026-10-04 20:00:00 (UTC+08:00)\n用户：admin\n来源：203.0.113.9\n方式：密码 + 两步验证\n\n发送时间：2026-10-04 20:00:00 (UTC+08:00)"
+	want := "🔐 [Dongger Panel 集群通知]\n\n主机：主控面板\n面板登录：2026-10-04 20:00:00 (UTC+08:00)\n用户：admin\n来源：203.0.113.9\n方式：密码 + 两步验证\n\n发送时间：2026-10-04 20:00:00 (UTC+08:00)"
 	if messages[1] != want {
 		t.Fatalf("login message = %q, want %q", messages[1], want)
 	}
@@ -234,9 +234,9 @@ func TestPanelLoginMessagesAreLocalizedAndSanitized(t *testing.T) {
 	login := PanelLogin{Username: "ad\nmin", RemoteAddress: "", Method: PanelLoginPasskey, occurredAt: now}
 	host := cluster.Host{ID: cluster.LocalHostID, Name: "Main\tpanel"}
 	cases := map[string][]string{
-		"en-US": {"🔐 [KPanel Cluster Notice]", "Host: Mainpanel", "Panel login: 2026-10-04 20:00:00 (UTC+08:00)", "User: admin", "Source: -", "Method: Passkey", "Sent: "},
-		"zh-TW": {"🔐 [KPanel 叢集通知]", "主機：Mainpanel", "面板登入：", "使用者：admin", "來源：-", "方式：通行金鑰", "傳送時間："},
-		"zh-CN": {"🔐 [KPanel 集群通知]", "主机：Mainpanel", "面板登录：", "用户：admin", "来源：-", "方式：通行密钥", "发送时间："},
+		"en-US": {"🔐 [Dongger Panel Cluster Notice]", "Host: Mainpanel", "Panel login: 2026-10-04 20:00:00 (UTC+08:00)", "User: admin", "Source: -", "Method: Passkey", "Sent: "},
+		"zh-TW": {"🔐 [Dongger Panel 叢集通知]", "主機：Mainpanel", "面板登入：", "使用者：admin", "來源：-", "方式：通行金鑰", "傳送時間："},
+		"zh-CN": {"🔐 [Dongger Panel 集群通知]", "主机：Mainpanel", "面板登录：", "用户：admin", "来源：-", "方式：通行密钥", "发送时间："},
 	}
 	if got := panelLoginMethodLabel(PanelLoginPasswordTOTP, "zh-TW"); got != "密碼 + 兩步驗證" {
 		t.Fatalf("zh-TW two-factor label = %q, want the catalog term 兩步驗證", got)

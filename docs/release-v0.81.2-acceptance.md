@@ -1,4 +1,4 @@
-# KPanel v0.81.2 上线验收记录
+# Dongger Panel v0.81.2 上线验收记录
 
 日期：2026-08-17（Asia/Shanghai）
 
@@ -14,7 +14,7 @@
 
 ## 发布画像
 
-- 业务域：KPanel 前端可见文案与简体中文、繁体中文、英文词条。
+- 业务域：Dongger Panel 前端可见文案与简体中文、繁体中文、英文词条。
 - 变更面：展示；无后端、API、依赖、数据、宿主机权限或部署契约变化。
 - 受影响用户旅程：登录、首次初始化、密码恢复，以及概览、网站、Docker、应用、AI、集群、终端、文件、审计、任务、诊断、监控和设置页面的可见提示。
 - 未变化契约：API、数据、端口、Compose、Agent 权限、`kejilion.sh`、应用安装/更新入口和 `packaging/kejilion-app/kpanel.conf` 均未变化。
@@ -71,12 +71,12 @@
 - `linux/amd64`：`sha256:bd416bb74718ee80668b22d07de0829d45c1462581dc5e35b1d40054e8fef804`；`linux/arm64`：`sha256:25a0a1059d14d030e591bb421e6e81214b54d4ed90d009da18761d16408cf5d7`；另含对应 provenance/SBOM attestation。
 - 附件包括双架构 Agent、双架构 lightweight node、`kejilion-panel-deploy-0.81.2.tar.gz`、`SHA256SUMS`、LICENSE 和 notices。
 - 公开镜像重新拉取并运行 `packaging/tests/image-e2e.sh`，输出 `image_e2e=pass`。
-- `packaging/kejilion-app/kpanel.conf` 相对 v0.81.1 无差异；KPanel 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需空提交。
+- `packaging/kejilion-app/kpanel.conf` 相对 v0.81.1 无差异；Dongger Panel 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需空提交。
 
 ## 生产部署安全核对
 
 - 生产目标和授权：仅 `arena-154`；用户明确授权完整发布和生产部署。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前：v0.81.1，revision `e2416ae393e0e23323c0d3088b996bc8d89273d5`，OCI `sha256:83372a7c772e67ddf3682c7b28d2ca1763ed48284fe50e187d1541c81b3f1ddd`；Panel healthy、restart 0、OOM false，Agent active。
 - 停写备份：`/root/kpanel-backups/pre-v0.81.2-20260817T062910Z`；应用目录归档 SHA256 `46d6ef947b59b7456e15612ee9c690442417a99b5b0f297fce1f3811e008aaa5`，旧镜像归档 SHA256 `a7aa4cc3feab4a4e593464aea4367f7677872e78b624d2fe7eebc3f1bf798fdc`。
 - 备份已独立解包并逐文件对比，原始/恢复 SQLite 均 `integrity_check=ok`。
@@ -84,7 +84,7 @@
 - 部署后：v0.81.2，revision 与正式 OCI 一致；Panel healthy、restart 0、OOM false，Agent `0.81.2 v1alpha1` active；生产登录页三语双视口复验通过。
 - 更新日志 SHA256 `d6b831a254c4f4e2511e07b03f4498bbed4de52f6f146930bcff4b64e5e2742c`；健康采样 SHA256 `c39781141bfa509456a9eaf36728ec5e6d89dcc410719de04195ff2be5a5378b`。
 - `.env`、Compose 和托管 `kejilion.sh` 更新前后保持一致；脚本 SHA256 均为 `d73231f146f7398d7b50133695faf2116134fbfe33a7b94068e277cc7b82df55`。
-- 生产已执行写操作：停写备份和标准 KPanel 更新事务；未修改账户、应用、站点或业务配置。
+- 生产已执行写操作：停写备份和标准 Dongger Panel 更新事务；未修改账户、应用、站点或业务配置。
 
 ## 回滚
 

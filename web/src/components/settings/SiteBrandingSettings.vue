@@ -122,7 +122,7 @@ onMounted(load)
         <div class="site-branding-fields">
           <label class="field">
             <span>{{ i18n.t('branding.name') }}</span>
-            <input v-model="form.name" name="siteName" placeholder="KPanel" @input="saved = false" />
+            <input v-model="form.name" name="siteName" placeholder="Dongger Panel" @input="saved = false" />
             <small>{{ i18n.t('branding.nameHint') }}</small>
           </label>
           <div class="site-branding-icon-field">

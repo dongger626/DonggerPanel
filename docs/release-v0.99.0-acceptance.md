@@ -1,4 +1,4 @@
-# KPanel v0.99.0 发布验收记录
+# Dongger Panel v0.99.0 发布验收记录
 
 日期：2026-08-29
 
@@ -12,14 +12,14 @@
 
 - 业务域：集群监控、轻量节点接入与多主机终端。
 - 变更面：协议与状态、宿主机 root PTY 服务、部署脚本、终端页面和发布产物。
-- 受影响用户旅程：从 KPanel 生成轻量节点接入命令，节点安装或更新后通过出站 HTTPS 注册终端能力，在集群页面打开终端并完成输入、输出、调整大小和关闭。
-- 未变化契约：既有 `light-v1` 遥测兼容；不增加 SSH、WebSocket 或其他入站监听；既有 KPanel 数据库 schema、应用市场入口和 Panel 无特权容器边界不变。
+- 受影响用户旅程：从 Dongger Panel 生成轻量节点接入命令，节点安装或更新后通过出站 HTTPS 注册终端能力，在集群页面打开终端并完成输入、输出、调整大小和关闭。
+- 未变化契约：既有 `light-v1` 遥测兼容；不增加 SSH、WebSocket 或其他入站监听；既有 Dongger Panel 数据库 schema、应用市场入口和 Panel 无特权容器边界不变。
 - 风险等级及理由：中到高；新增 root PTY broker 和端到端加密终端 relay，但终端私钥 root-only、能力需认证后公布、请求有 scope/大小/重放保护，节点仍只主动出站。
 
 ## 发布范围与未纳入内容
 
 - 用户可见更新：轻量节点新增与多主机终端一致的安全远程终端；节点更新/卸载链路管理独立的 `kejilion-node-terminal.service`；旧中心不支持 relay 时继续遥测并退避。
-- 精确提交清单：KPanel `641a3655c928146fa8daa510c5d3d01747f5d15f`（父提交/候选基线 `9fe3ed9281722117c0e893f4b91032daa4268eb4`）；`kejilion-sh` `d58079304a92936bf8e3d90467eea484c5b63d6f`。
+- 精确提交清单：Dongger Panel `641a3655c928146fa8daa510c5d3d01747f5d15f`（父提交/候选基线 `9fe3ed9281722117c0e893f4b91032daa4268eb4`）；`kejilion-sh` `d58079304a92936bf8e3d90467eea484c5b63d6f`。
 - 明确未纳入的分支、文件或后续事项：相对候选基线的最终文件差异不含 System Center 页面、路由、API 或文档；`kejilion/apps` 未产生提交；`108`/`prod-108` 未连接。独立 Linux 轻量节点的实机安装、更新、断网恢复、摘要拒绝、broker 重启、回滚、卸载和真实浏览器终端旅程未在本轮执行。
 
 ## 多维质量结论
@@ -74,10 +74,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 KPanel `v0.99.0` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
+- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 Dongger Panel `v0.99.0` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
 - 验证/灰度环境：固定 `arena-154` L3 runner、公开 OCI 校验和生产安全证据入口，均来自 `environment-policy.json`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight `0.98.4`，Panel health `ok`，Agent `loaded/active/running/enabled`；backup 通过，备份目录为 `/root/kpanel-backups/pre-v0.98.4-20260829T001313Z`，六项备份摘要均为 `OK`，protected diff 为空。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy health version=`0.99.0`、status=`ok`、revision=`641a3655c928146fa8daa510c5d3d01747f5d15f`、OCI digest 精确匹配；Panel `running/healthy`、restart=0、OOM=false；Agent `active/running/enabled`；protected diff 为空，SQLite quick check 通过，fatal signature scan=`NONE`。
@@ -138,6 +138,6 @@
 ## 遗留风险与后续准入
 
 - 未验证风险：独立 Linux 轻量节点真实安装、离线恢复、自动更新、摘要拒绝、broker 重启、回滚、卸载，以及真实浏览器终端连接/输入/输出/resize/断线重连尚未执行。
-- 已实现待实机准入：轻量节点 terminal-broker、v2 Noise relay、节点脚本生命周期和 KPanel 终端入口已实现并通过自动门禁；需在获授权的独立 systemd Linux 节点补齐上述闭环。
+- 已实现待实机准入：轻量节点 terminal-broker、v2 Noise relay、节点脚本生命周期和 Dongger Panel 终端入口已实现并通过自动门禁；需在获授权的独立 systemd Linux 节点补齐上述闭环。
 - 不阻断本版的理由：v0.99.0 已完成候选/main CI、固定 L3、公开 Release/OCI、生产备份、标准更新和 postdeploy；当前没有轻量节点实机失败证据，不以 Panel 生产健康冒充节点验收，也不自动回滚已健康的 Panel 发布。
 - 后续应进入的自动门禁或专项工作流：在下一次轻量节点专项验收中使用独立 Linux 测试节点和一次性 enrollment token，按 `docs/cluster-monitoring.md` §8 完成安装、断网、更新、摘要拒绝、broker 重启、回滚、卸载及浏览器终端证据；完成前该功能维持“已实现未实机验证”状态。

@@ -1,12 +1,12 @@
 # 系统监控与管理
 
-KPanel 的系统管理业务以 `kejilion.sh` 为功能基准，但不把整个 Shell
+Dongger Panel 的系统管理业务以 `kejilion.sh` 为功能基准，但不把整个 Shell
 脚本暴露给 Web。Agent 只提供固定输入、固定输出的类型化接口；Panel
 负责登录、CSRF、Origin 校验和审计，不能传入任意命令。
 
 ## 状态一致性
 
-- 首页状态直接读取宿主机当前配置，不以 KPanel 数据库代替系统事实。
+- 首页状态直接读取宿主机当前配置，不以 Dongger Panel 数据库代替系统事实。
 - `kejilion.sh` 或人工修改产生的 SSH、DNS、时区、Swap、磁盘挂载、更新源、Hosts、
   root Crontab、网卡、iptables、`gai.conf`、内核优化和 BBR 状态，刷新后应被
   Agent 重新识别。
@@ -19,7 +19,7 @@ KPanel 的系统管理业务以 `kejilion.sh` 为功能基准，但不把整个 
 系统首页按“主机信息、网络与位置、实时指标、资源一致性”展示
 `kejilion.sh` 的 `linux_info` 信息：
 
-| `k info` 信息 | KPanel 展示 |
+| `k info` 信息 | Dongger Panel 展示 |
 | --- | --- |
 | 主机名、系统版本、内核、架构 | 主机信息 |
 | CPU 型号、核心数、频率、使用率 | 主机信息与实时指标 |
@@ -45,7 +45,7 @@ IPinfo IPv4/IPv6 HTTPS 端点，成功结果缓存 30 分钟；外部查询超�
 | SSH 防御 | `k f2b manager status|enable|disable|set-profile|unban|unban-all|add-trusted|remove-trusted|uninstall` | 读取真实 Fail2Ban SSH jail；提供三档策略、封禁 IP 解封、信任地址和最近事件；启停/卸载由后台任务执行 |
 | DNS | `resolv.conf`、systemd-resolved 与脚本 DNS 协议 | 调用本机可信 `kejilion.sh` 固定非交互入口；systemd-resolved 使用原生配置，其他管理器沿用脚本的 `resolv.conf` 写入与锁定语义 |
 | 时区 | `/etc/timezone` 或 `localtime` | 有效 IANA 时区名称、回读 |
-| 虚拟内存 | `/proc/meminfo`、`/proc/swaps`、`/swapfile` | 与 `kejilion.sh` 共用 `/swapfile`；合并旧版 KPanel Swap，不清除现有分区或第三方 swapfile |
+| 虚拟内存 | `/proc/meminfo`、`/proc/swaps`、`/swapfile` | 与 `kejilion.sh` 共用 `/swapfile`；合并旧版 Dongger Panel Swap，不清除现有分区或第三方 swapfile |
 | 磁盘与分区 | `lsblk`、`findmnt`、`blkid`、`fstab` 与 sysfs | 展示真实块设备拓扑；固定协议完成挂载、普通卸载、格式化及文件系统检查，保护系统盘、Swap、holder、非叶子设备与关键路径；详见[磁盘与分区管理](disk-partition-management.md) |
 | 系统更新源 | APT/RPM/APK/Pacman/Zypper 源地址 | Debian/Ubuntu 对齐脚本四种区域模式；第三方源不修改，隔离 `apt-get update` 失败回滚 |
 | 本地 Hosts | `/etc/hosts` 原始内容 | 按精确行管理；写入前后校验整文件资源版本，保留注释、权限和属主，失败回滚 |
@@ -70,7 +70,7 @@ Agent 根据宿主机命令、配置管理器和 root/sandbox 条件动态返回
 真实状态和缺少的命令、服务或适配器。
 
 已开放：主机名、`kejilion.sh` 同源 SSH 单端口切换、同源 SSH 防御、DNS、时区、脚本兼容
-`/swapfile`、Debian/Ubuntu APT 四种区域镜像预设、地址优先级、KPanel 内核调优预设和
+`/swapfile`、Debian/Ubuntu APT 四种区域镜像预设、地址优先级、Dongger Panel 内核调优预设和
 BBR、BBRv3、本地 Hosts、root 定时任务、网卡即时启停、固定防火墙动作、受保护边界内的磁盘文件系统动作，
 以及普通确认的服务器重启。
 重装系统、其他发行版换源和通用
@@ -175,17 +175,17 @@ Shell→Agent→Panel L2 闭环。
 - Web 只接受 `install`、`update`、`uninstall` 三个枚举动作；Agent 通过可信脚本校验后，
   使用现有 systemd/OpenRC 维护队列执行，同一时间不与系统更新、清理或 SSH 防御并发。
 - 安装、更新和卸载继续复用脚本的 XanMod 软件源、CPU PSABI 匹配、磁盘/Swap 检查、
-  BBR + fq 配置和包管理语义；KPanel 不维护第二份内核安装命令。
+  BBR + fq 配置和包管理语义；Dongger Panel 不维护第二份内核安装命令。
 - 任务完成后只标记“需要重启”，不会自动重启。用户可使用同页受控重启入口，并在重连后
   由状态接口复核运行内核包含 XanMod、拥塞算法为 `bbr` 且 qdisc 为 `fq`。
-- 当前 KPanel 受控安装支持 x86_64 的 Debian 12 / Ubuntu 24 及脚本列出的后续受支持版本。
+- 当前 Dongger Panel 受控安装支持 x86_64 的 Debian 12 / Ubuntu 24 及脚本列出的后续受支持版本。
   原 ARM64 菜单依赖未固定摘要的第三方安装器，因此只保留 SSH 脚本入口，不从 Web 自动执行。
   已安装但发行版已不在支持列表时仍允许卸载。
 
 ## 常用软件包管理
 
 - 入口位于“系统中心 → 日常维护”，从 `kejilion.sh` 的“4. 基础工具”保留 17 项常用实用工具；
-  `cmatrix`、`sl`、`bastet`、`nsnake`、`ninvaders` 等屏保/游戏不进入 KPanel 软件包目录。
+  `cmatrix`、`sl`、`bastet`、`nsnake`、`ninvaders` 等屏保/游戏不进入 Dongger Panel 软件包目录。
 - 已安装状态沿用脚本的“命令是否可执行”语义；页面只在打开管理器时读取，不给系统中心首页
   增加 17 次软件包查询。
 - Web API 仅接受固定包 ID、`install`/`remove` 动作和 64 位资源版本；不接受任意包名、仓库、URL、
@@ -220,7 +220,7 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
   完成凭据时必须显示未验证失败，不能从启动进度直接推断成功。
 - init backend 对账属于并发观察者；写入任何推断终态前必须重新读取原子状态文件。若 worker
   已推进阶段或写入终态，对账只能返回该新状态，不能用先前读取的启动快照覆盖。
-- 更新和清理属于不可逆的软件包事务，KPanel 不宣称自动回滚；失败时保留
+- 更新和清理属于不可逆的软件包事务，Dongger Panel 不宣称自动回滚；失败时保留
   阶段和错误摘要供人工检查。任务不会自动重启宿主机。
 
 系统备份保存在 `/var/lib/kejilion-panel/system/backups`。Panel 数据、
@@ -247,8 +247,8 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
   页面刷新详情确认当前状态；超时、断连或回读失败明确提示结果未确认，不自动重试写操作。
 - 开机启动动作不带 `--now`，不改变当前运行状态；只有回读确认后才返回 `accepted=false`
   和完成提示。失败或部分更新不宣称自动回滚。服务为静态、模板、masked 或不支持 reload 等状态时，
-  保留 systemd 的真实能力和错误；不以 KPanel 归属、SSH/Docker 关键性或面板自身为由另设保护名单。
-  管理 KPanel/Agent 自身可能中断连接，此时以未知结果提示并保留已落盘的意图审计。
+  保留 systemd 的真实能力和错误；不以 Dongger Panel 归属、SSH/Docker 关键性或面板自身为由另设保护名单。
+  管理 Dongger Panel/Agent 自身可能中断连接，此时以未知结果提示并保留已落盘的意图审计。
 - 单项日志固定读取 journal 最近 100 行、原始输出最多 256 KiB、每行最多 2048 字节，最长 10 秒；
   使用既有日志脱敏器，日志正文不进入审计，不运行 `journalctl -f` 或常驻采集。
 - `kejilion.sh` 通用服务封装使用原生 systemctl，没有独立服务管理模板；本能力由 Agent 固定 argv
@@ -278,7 +278,7 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
   维护槽冲突都不得显示成功。动作响应返回刚持久化的任务 ID 与策略；页面只跟踪 ID、动作和策略
   同时匹配的任务，缺失或被另一标签页任务替换时停止轮询，不得把其他任务的终态显示为本次成功。
 - 本功能不浏览、编辑或删除任意日志文件，不执行 `rm -rf /var/log/*`，不修改 `journald.conf` 或
-  `logrotate`，不混入网站、Docker、应用、KPanel 审计或后台任务日志，也不引入远程聚合、全文索引、
+  `logrotate`，不混入网站、Docker、应用、Dongger Panel 审计或后台任务日志，也不引入远程聚合、全文索引、
   告警规则或自定义清理路径。
 
 ## 病毒查杀
@@ -315,7 +315,7 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
   `apt-get update`；任何文件写入或索引验证失败都会恢复原文件。
 - 换源动作与脚本的 `upgrade_software=false`、`clean_cache=false` 一致：不升级软件包、
   不清理缓存。Docker、NodeSource 等第三方源保持不变。
-- KPanel 的系统维护读取范围已覆盖 RPM、Pacman 和 Zypper，但本版换源写入仍只开放
+- Dongger Panel 的系统维护读取范围已覆盖 RPM、Pacman 和 Zypper，但本版换源写入仍只开放
   Debian/Ubuntu。其他发行版继续显示真实源和缺少换源适配器的原因，不伪装为已支持。
 
 ## v0.11 服务器重启
@@ -326,17 +326,17 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
   OpenRC 通过受保护后台 worker 固定延迟后调用受信任的 `/sbin/reboot`。两者都让 Panel 有时间落盘成功审计并向浏览器返回结果。
 - 软件包更新或清理任务运行时仍允许管理员重启；缺少 systemd/OpenRC 后台工具、Agent 写入开关关闭、非 Linux 或
   Agent 非 root 时，页面显示真实依赖原因。
-- 重启会短暂中断 KPanel、网站和 SSH。KPanel 不声称业务已安全停机，因此管理员仍需先确认
+- 重启会短暂中断 Dongger Panel、网站和 SSH。Dongger Panel 不声称业务已安全停机，因此管理员仍需先确认
   数据库迁移、备份、长连接和外部任务状态。
 
 ## v0.5.1 虚拟内存事务
 
-- 状态读取同时区分 `/swapfile`、旧版 KPanel Swap 和其他活动 Swap，页面
+- 状态读取同时区分 `/swapfile`、旧版 Dongger Panel Swap 和其他活动 Swap，页面
   的总量仍以 `/proc/meminfo` 为准。
 - 设置入口提供 `kejilion.sh` 相同的 1/2/4 GiB 常用值，并允许
   任意正整数 MiB 自定义值或 0 停用；脚本默认值为 1 GiB。
 - 创建或调整时在同一文件系统分配临时 swapfile，不以当前内存余量阻止管理员提交。
-- 事务只会 `swapoff` `/swapfile` 和旧版 KPanel 路径；不会执行 `wipefs`，
+- 事务只会 `swapoff` `/swapfile` 和旧版 Dongger Panel 路径；不会执行 `wipefs`，
   不会停用 Swap 分区或第三方 swapfile。
 - 新文件、`fstab` 和 `swapon` 任一步失败时，恢复原文件、原 `fstab` 和原
   活动状态。成功后启动项使用脚本同款
@@ -352,13 +352,13 @@ systemd transient unit 或 OpenRC `start-stop-daemon` 进程组执行。Web 请�
 - Agent 将所选项目拆成持久化 systemd/OpenRC 后台步骤，逐项调用 `KJ_SYSTEM_TUNING_NONINTERACTIVE=1 k kpanel system-tuning apply-item <id>`。页面关闭或浏览器断开不会取消任务，重新打开会继续显示真实阶段和进度。
 - 每个项目由脚本共享锁串行执行并输出结构化回执；项目失败时任务立即停止，后续项目不会被标记为成功。系统更新、清理、换源和安装软件包属于不可整体回滚操作，界面不宣称整套事务可以自动撤销。
 - 后台执行分别采集原生操作日志与结构化 stdout 回执，软件包管理器、操作返回码和完成态回读任一失败都会停止；交互菜单 66 使用同一失败停止与回读规则，不再在失败后继续打印 `[OK]`。全新系统缺少 OpenSSH Server 时，仅一条龙 SSH 项会按发行版安装并处理 Ubuntu 24.04 的 `ssh.socket`/`ssh.service` 前置条件，再调用既有单项 SSH 协议。
-- 1 GiB Swap 按 `/swapfile` 的 1 GiB 文件大小、`/proc/swaps` 激活项和 `fstab` 启动项共同判断，不再使用会因 `mkswap` 元数据取整或其他 Swap 而误判的总量；自动 DNS 直接复用 KPanel 已有的固定 DNS 协议，不修改单项 DNS 功能。
-- 原脚本第 6 项此前只显示“开放所有端口”而未执行动作；现在交互菜单与 KPanel 都调用同一个事务化 firewall `open-all` 真源实现，并在持久化或回读失败时恢复快照。
+- 1 GiB Swap 按 `/swapfile` 的 1 GiB 文件大小、`/proc/swaps` 激活项和 `fstab` 启动项共同判断，不再使用会因 `mkswap` 元数据取整或其他 Swap 而误判的总量；自动 DNS 直接复用 Dongger Panel 已有的固定 DNS 协议，不修改单项 DNS 功能。
+- 原脚本第 6 项此前只显示“开放所有端口”而未执行动作；现在交互菜单与 Dongger Panel 都调用同一个事务化 firewall `open-all` 真源实现，并在持久化或回读失败时恢复快照。
 - LinuxMirrors 固定到 `649e948763042e485e411be540d21c32cface1c1`，网络参数脚本固定到 `e9c3078eb516b05f9df6d2a9294cf3b226ca02bd`；两者下载后都先校验已登记 SHA-256，再交给 Bash 执行。
-- 2026-08-11 已在 154 的隔离 Ubuntu 24.04 systemd 容器完成固定 12 项状态、Panel typed 选择、Agent 后台运行态与恢复、时区安全项成功、首项失败即停止、后续项不执行、资源版本冲突和审计闭环；生产 KPanel、Agent、Swap、SSH 和防火墙均未改动。
-- 2026-08-17 在全新 `Ubuntu 24.04.4 LTS` WSL2 systemd 实例以固定脚本 `4d7265310cb89d39c09201d99bef213a0e494e3c` 完成 12/12 实机执行和逐项回读，12 项均为 `applied`；随后由当前 KPanel `Manager.RunMaintenance` 对受管授权副本完成 12 步二次闭环，最终状态为 `succeeded/completed/100%`。该证据覆盖新机 OpenSSH 安装、Ubuntu `ssh.socket` 转服务、5522 监听、Fail2Ban、Swap、防火墙、BBR、DNS、Docker 和内核参数；不等同于生产部署或所有发行版矩阵。
+- 2026-08-11 已在 154 的隔离 Ubuntu 24.04 systemd 容器完成固定 12 项状态、Panel typed 选择、Agent 后台运行态与恢复、时区安全项成功、首项失败即停止、后续项不执行、资源版本冲突和审计闭环；生产 Dongger Panel、Agent、Swap、SSH 和防火墙均未改动。
+- 2026-08-17 在全新 `Ubuntu 24.04.4 LTS` WSL2 systemd 实例以固定脚本 `4d7265310cb89d39c09201d99bef213a0e494e3c` 完成 12/12 实机执行和逐项回读，12 项均为 `applied`；随后由当前 Dongger Panel `Manager.RunMaintenance` 对受管授权副本完成 12 步二次闭环，最终状态为 `succeeded/completed/100%`。该证据覆盖新机 OpenSSH 安装、Ubuntu `ssh.socket` 转服务、5522 监听、Fail2Ban、Swap、防火墙、BBR、DNS、Docker 和内核参数；不等同于生产部署或所有发行版矩阵。
 - 2026-08-17 在全新 `AlmaLinux 9.8` WSL2 systemd 实例以固定脚本 `6fa7bcc7c2d15fe09d829cb9664941ff40bf4aaf` 的线性前置功能完成 12/12 实机执行和逐项回读：DNF、OpenSSH `sshd.service`/5522、EPEL Fail2Ban、`cronie`/iptables 持久化、BBR、DNS、Docker 与内核网络参数均通过。WSL 文件系统不支持 `/etc/resolv.conf` 的 immutable 标志时写入受管副本，并通过 `/etc/wsl.conf` 与 one-shot systemd 服务跨重启恢复；非 WSL 仍强制该锁定语义。该证据覆盖红帽系新机引导，不等同于 SELinux Enforcing 与 firewalld 默认策略的完整 VM/VPS 矩阵；自动化 smoke 另覆盖受管联网与外部调优脚本在清除代理环境后的直连执行。
-- 发布顺序门禁仍保持：必须先发布固定的 kejilion.sh 提交，再构建 KPanel 镜像并复核镜像内脚本摘要；未发布脚本提交时 Docker `ADD` 不可用，不能绕过摘要改用分支或浮动地址。
+- 发布顺序门禁仍保持：必须先发布固定的 kejilion.sh 提交，再构建 Dongger Panel 镜像并复核镜像内脚本摘要；未发布脚本提交时 Docker `ADD` 不可用，不能绕过摘要改用分支或浮动地址。
 
 ## v0.6 内核优化
 

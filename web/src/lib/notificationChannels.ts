@@ -64,8 +64,8 @@ export function notificationErrorMessage(reason: unknown): string {
     cluster_notifications_telegram_unavailable: 'Telegram 暂时不可用，请稍后重试。',
     cluster_notifications_channel_unavailable: '渠道连接失败，请检查配置和服务器网络后重试。',
     cluster_notifications_save_failed_after_delivery:
-      '验证消息已发送，但通知设置未保存；请检查 KPanel 数据目录权限后重试。',
-    cluster_notifications_unavailable: '通知配置暂时不可用，请检查 KPanel 数据目录权限。',
+      '验证消息已发送，但通知设置未保存；请检查 Dongger Panel 数据目录权限后重试。',
+    cluster_notifications_unavailable: '通知配置暂时不可用，请检查 Dongger Panel 数据目录权限。',
   }
   return messages[reason.code] || '通知操作未完成，请稍后重试；已填写内容仍保留。'
 }

@@ -60,7 +60,7 @@ func (c metadataClient) Open(ctx context.Context, raw string) (*http.Response, e
 	if err != nil {
 		return nil, err
 	}
-	r.Header.Set("User-Agent", "KPanel-Music-Metadata/1")
+	r.Header.Set("User-Agent", "Dongger Panel-Music-Metadata/1")
 	if r.URL.Host == "c.y.qq.com" {
 		r.Header.Set("Referer", "https://y.qq.com/")
 	}

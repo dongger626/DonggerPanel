@@ -1,4 +1,4 @@
-# KPanel v1.22.0-rc.1 发布验收记录
+# Dongger Panel v1.22.0-rc.1 发布验收记录
 
 日期：2026-09-23
 
@@ -90,7 +90,7 @@
 
 ## 发布产物与自更新通道
 
-- GitHub Release：[KPanel v1.22.0-rc.1](https://github.com/kejilion/KPanel/releases/tag/v1.22.0-rc.1)，Release ID `394424619`，2026-09-23 08:06:10Z 发布，非 draft、prerelease=true、非 Latest；注释 Tag object `83fa0958f6e3700c3a14f008a9530e8d59862207` 解引用到候选 `370877ed`。
+- GitHub Release：[Dongger Panel v1.22.0-rc.1](https://github.com/kejilion/KPanel/releases/tag/v1.22.0-rc.1)，Release ID `394424619`，2026-09-23 08:06:10Z 发布，非 draft、prerelease=true、非 Latest；注释 Tag object `83fa0958f6e3700c3a14f008a9530e8d59862207` 解引用到候选 `370877ed`。
 - Release 附件：14 项已上传；`SHA256SUMS` 含 11 项二进制/部署归档，逐项与 GitHub asset digest 比较全部匹配；清单自身 digest `sha256:96f8a6447748c8c4dc51a8a0ef588042e3e68d3fb759bcf6ebba524a450e1253`。
 - Docker 版本与通道 OCI index：`1.22.0-rc.1` 与 `preview` 均为 `sha256:7c540253e0091c11c76d2be67561c4e17c1a7d5a42a5c320458bc4d67d86f860`；amd64 `sha256:37aa40476429351c2ce9ec5a322ea35f034d563c6fb14b6d6743aa5786523600`，arm64 `sha256:072e00c499bcb2ff4f5655a9707279de1450c6e90fc937959ee816dc6583f64b`。
 - GitHub Latest 仍为 `v1.21.0`；Docker `latest` 仍为稳定版 `sha256:e2c5d392dfcee8263ea82ebe0c8aed15276c046a3bd260b6219b634a844f3f61`；发布前 `preview` 回退点为 `sha256:bd79e42938a319b325cdfd02d61241525428bef887d2f181636ea2f73d406308`。

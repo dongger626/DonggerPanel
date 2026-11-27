@@ -1,4 +1,4 @@
-# KPanel v1.29.0-rc.3 发布验收记录
+# Dongger Panel v1.29.0-rc.3 发布验收记录
 
 日期：2026-11-01；发布级别 L3；releaseChannel=preview；releaseTrain=1.29.0。
 
@@ -38,7 +38,7 @@ scriptLinkageState=coupled，变更集 linuxmirrors-preview-20261101。旧镜像
 
 干净Codex复核30371c9e..8cc53bcf与脚本5b8327f..36ad597为PASS WITH FOLLOW-UP，仅针对本地准备，其他提供商CLI不可用。扩大到54a337d后由发布者核对原始补丁、逐字节保留范围及定向回归；先前独立复核只复用不变部分，不冒充扩大范围全新独立审查。原脚本/HTTPS主要业务来源于独立作者；发布者修复AI真实锁冲突，并由干净独立Codex上下文另行复核生产方法/测试和最终派生元数据，结论PASS，其他提供商CLI仍不可用。独立overlay补验持锁取消无插入/锁释放、8并发retry恰一成功及父任务权限等7项通过。
 
-OCR1.12.11先完成自由臂再圈选，最初7/7覆盖、有效H0/M0/L0、constrained-only=0；扩大范围已见过重叠规则，明确blind=false、constrained-only=unreported，再核对7/7，不计新盲测收益。AI源码自由臂0、约束臂2/2、constrained-only=0；最终发布扩大范围已见重叠规则，6/6、constrained-only=unreported。安全敏感自动范围internal/ai由无实现上下文的候选盲审实际执行：原始H0/M2/L0，核实1、修复0、待办1；一项既有累计历史容量风险由KPanel release maintainers负责，2026-11-08前复核，吞吐扩展或ai.db存储压力时触发；另一连接池外键线索被精确驱动支持和双连接删除级联探针反证。原始线索/核实仅留仓库外。审查模型使用父任务继承默认配置，运行标识未暴露；早期元数据中误标的具体型号以最终inherited-default声明更正。本版未执行CF审计或稳定前补漏，不把未执行记录为通过，也不改变稳定周期退出判定。
+OCR1.12.11先完成自由臂再圈选，最初7/7覆盖、有效H0/M0/L0、constrained-only=0；扩大范围已见过重叠规则，明确blind=false、constrained-only=unreported，再核对7/7，不计新盲测收益。AI源码自由臂0、约束臂2/2、constrained-only=0；最终发布扩大范围已见重叠规则，6/6、constrained-only=unreported。安全敏感自动范围internal/ai由无实现上下文的候选盲审实际执行：原始H0/M2/L0，核实1、修复0、待办1；一项既有累计历史容量风险由Dongger Panel release maintainers负责，2026-11-08前复核，吞吐扩展或ai.db存储压力时触发；另一连接池外键线索被精确驱动支持和双连接删除级联探针反证。原始线索/核实仅留仓库外。审查模型使用父任务继承默认配置，运行标识未暴露；早期元数据中误标的具体型号以最终inherited-default声明更正。本版未执行CF审计或稳定前补漏，不把未执行记录为通过，也不改变稳定周期退出判定。
 
 ## 自动门禁与供应链资格
 
@@ -125,7 +125,7 @@ Runner实际ID `sha256:8cbc94f41f3b13ce4d8d305fe284b87d2232df78e6d05fbdcaa35f095
     "fingerprint": "preparation/preview/missing-self-app-fixture-option",
     "count": 1,
     "position": "before-production-write",
-    "impact": "The first mock preview used the default inventory without KPanel installed, so the intended DNS domain guide journey was unavailable despite services being ready.",
+    "impact": "The first mock preview used the default inventory without Dongger Panel installed, so the intended DNS domain guide journey was unavailable despite services being ready.",
     "recoveryEvidence": "Original preview/manifest.json in the preparation root is preserved stopped. Repository-supported KPANEL_MOCK_SELF_APP=1 enabled the intended scenario in separate preview-self-app and final manifests. DOM proof observed the DNS empty-IP guide and retained input; no real app installation or host write occurred.",
     "permanentAction": "Set the documented mock self-app option during scenario preparation; distinguish service readiness from visible journey completion.",
     "historicalReleases": []
@@ -164,8 +164,8 @@ Runner实际ID `sha256:8cbc94f41f3b13ce4d8d305fe284b87d2232df78e6d05fbdcaa35f095
     "fingerprint": "preparation/file-discovery/wrong-repository",
     "count": 1,
     "position": "before-production-write",
-    "impact": "One exploratory source-helper search ran in the paired sh worktree instead of KPanel, returning missing files; no gate was run or marked passed.",
-    "recoveryEvidence": "Original errors retained; source qualification then used the exact KPanel absolute import and independently reproduced its baseline.",
+    "impact": "One exploratory source-helper search ran in the paired sh worktree instead of Dongger Panel, returning missing files; no gate was run or marked passed.",
+    "recoveryEvidence": "Original errors retained; source qualification then used the exact Dongger Panel absolute import and independently reproduced its baseline.",
     "permanentAction": "Bind repository and workdir in the command spec before cross-repository source discovery.",
     "historicalReleases": []
   },
@@ -270,7 +270,7 @@ Runner实际ID `sha256:8cbc94f41f3b13ce4d8d305fe284b87d2232df78e6d05fbdcaa35f095
     "position": "before-production-write",
     "impact": "The original published-mode UI assertion failed before a terminal tab became visible. The verifier closed the browser before preserving the failing URL/network/DOM/screenshot, leaving root cause inconclusive; the assertion itself is a separate unclassified quality failure.",
     "recoveryEvidence": "Original run41285840378/attempt1 remainsFAIL with8 published checks and full log/report; initial48/restart26 and public assets passed. One canonical read-only recovery run41290512546/attempt1 passed150 checks on a fresh runner with identical3 controller resource bytes, original SHA/digest/snapshot and unchanged assertions. This is additional environment evidence, not a fix or root-cause closure.",
-    "permanentAction": "Owner KPanel release maintainers; due2026-11-03. Any recurrence blocks further fresh-host retries; add bounded original-browser failure diagnostics under a separately reviewed governance candidate, then diagnose and repair. Original failure and needs-validation remain open.",
+    "permanentAction": "Owner Dongger Panel release maintainers; due2026-11-03. Any recurrence blocks further fresh-host retries; add bounded original-browser failure diagnostics under a separately reviewed governance candidate, then diagnose and repair. Original failure and needs-validation remain open.",
     "historicalReleases": []
   }
 ]
@@ -278,7 +278,7 @@ Runner实际ID `sha256:8cbc94f41f3b13ce4d8d305fe284b87d2232df78e6d05fbdcaa35f095
 
 失败rc.2 run41280745365/attempt1在main/tag提升后被Verify source拦截：event_hub_test.go:277 SQLite517；保留首次日志与标签，没有Release/公开镜像。旧生产代码新增16并发回归首轮11/16成功并复现517/5；修复写前读升级冲突后Linux200轮、AI整包、Windows20轮、独立取消/retry探针及本rc.3源码/主线/发布门禁通过；公开门禁由唯一受限只读复核补齐，原失败保留。不重跑rc.2碰绿、不改原断言、不覆盖标签；该产品缺陷为生产前质量门禁捕获，未计入生产失败或执行流程异常。
 
-本rc.3首轮公开验收在published模式首次goto终端页后，等待terminal-tab__close可见30秒超时，尚未执行reload；原initial48/restart26及published前8项PTY/bootstrap/API检查通过，但后续published37项与upgrade31项当轮未执行。Panel/Agent健康、未OOM、资源充足；终端/auth/router/fixture源码与rc.1未变。无原页面URL/网络/失败截图，根因INCONCLUSIVE，不能推断上游瞬态或同一Agent502。独立只读复核确认该证据边界。按6.2.2只做一次新canonical runner实验，完整real-feature/published/upgrade全部断言保持；新轮150项通过，原FAIL与needs-validation仍保留。负责人KPanel release maintainers，2026-11-03前定位；任何同指纹再现停止fresh-host追加尝试，先补原浏览器失败诊断并修复入口。诊断allowlist扩展属于另行治理候选，本轮未改发布工作流或断言。
+本rc.3首轮公开验收在published模式首次goto终端页后，等待terminal-tab__close可见30秒超时，尚未执行reload；原initial48/restart26及published前8项PTY/bootstrap/API检查通过，但后续published37项与upgrade31项当轮未执行。Panel/Agent健康、未OOM、资源充足；终端/auth/router/fixture源码与rc.1未变。无原页面URL/网络/失败截图，根因INCONCLUSIVE，不能推断上游瞬态或同一Agent502。独立只读复核确认该证据边界。按6.2.2只做一次新canonical runner实验，完整real-feature/published/upgrade全部断言保持；新轮150项通过，原FAIL与needs-validation仍保留。负责人Dongger Panel release maintainers，2026-11-03前定位；任何同指纹再现停止fresh-host追加尝试，先补原浏览器失败诊断并修复入口。诊断allowlist扩展属于另行治理候选，本轮未改发布工作流或断言。
 
 最近五个稳定记录的原始指纹已读取并保留引用；前次Windows首次启动超时及Agent版本信息502上游原因仍未确认，不能因本轮通过关闭。若同指纹再现先诊断，不继续换runner重试。当前质量/流程失败以原日志及明细为准，不把产品断言、额外历史夹具失败、生产前流程拦截混算生产变更失败。
 

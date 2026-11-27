@@ -14,7 +14,7 @@ const TelemetryService = "KejilionNode"
 const TerminalService = "KejilionNodeTerminal"
 const FileService = "KejilionNodeFile"
 const BootstrapService = "KejilionNodeBootstrap"
-const UpdateTask = `\KPanel\KejilionNodeUpdate`
+const UpdateTask = `\Dongger Panel\KejilionNodeUpdate`
 
 func DataDir() string    { return knownPath(windows.FOLDERID_ProgramData) }
 func InstallDir() string { return knownPath(windows.FOLDERID_ProgramFiles) }

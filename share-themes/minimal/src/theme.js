@@ -142,7 +142,7 @@ function render() {
   const hosts = data.hosts.filter(host => (filter === 'all' || host.state === filter) && `${host.name} ${host.location.text} ${host.os}`.toLowerCase().includes(needle))
   const list = $('hosts'); list.className = `hosts is-${view}`
   list.replaceChildren(...(hosts.length ? hosts.map(host => view === 'card' ? card(host, labels) : row(host, labels)) : [h('p', 'empty', labels.empty)]))
-  $('foot').textContent = `KPanel · ${labels.updated} ${stamp}`
+  $('foot').textContent = `Dongger Panel · ${labels.updated} ${stamp}`
 }
 
 function toggle(text, pressed, onClick, count) {

@@ -1,4 +1,4 @@
-# KPanel Claude 适配入口
+# Dongger Panel Claude 适配入口
 
 本地工作树、缓存和证据的空间回收统一遵循 `docs/project-management.md` 13.1；不清理活跃、未知归属或未提交内容。
 
@@ -65,7 +65,7 @@
 - 候选提交涉及本地可安全复现的用户可见页面、交互、文案、布局或状态反馈时，随后必须按
   `docs/local-feature-preview-standard.md` 提供绑定当前提交的 acceptance 预览；候选改变后重新预览。
   纯后端、文档、测试/构建基础设施或只能在登记隔离真机验证时写明不适用依据。
-- 用户要求修改、开发或修复 KPanel 即授权形成该本地候选提交；不自动授权 SSH 推送、更新 `main`、
+- 用户要求修改、开发或修复 Dongger Panel 即授权形成该本地候选提交；不自动授权 SSH 推送、更新 `main`、
   tag、Release 或部署。
 - 获得推送授权后通过 SSH 推送任务分支；只有唯一集成/发布任务在明确授权后
   才能更新 `main` 或发布。

@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.2 预览版发布验收记录
+# Dongger Panel v1.28.0-rc.2 预览版发布验收记录
 
 日期：2026-10-23。发布级别：L3。`releaseChannel=preview`，`releaseTrain=1.28.0`。
 
@@ -26,13 +26,13 @@
 
 `security-review-scope` 相对批准基线 recorded14 组；另对冻结产品相对上一稳定版 `v1.27.2` 执行，19组均recorded、没有missing/stale输出，原件 `security-scope-since-stable.log`。继承旧格式 trailer 有 `invalid_trailer=true` 提醒，不等于 missing 或全仓安全结论。`move-existing-20261023-H1` 已静态证实并在 `206f3e13` / `f388bde8` 等修复，有 Linux 安全临时根回归和非作者复核；不声称已完成动态特权利用或生产实演。归档/Office/终端回收/relay 回放等来源发现对应修复已包含于 cc6807f3，较早独立 FAIL 与修后通过原件均保留。
 
-`legacy-export-revoke-20261023-M1` 仍为 needs-validation：已授权的旧单次二进制导出在途不与 revoke 同步取消；fresh requests 拒绝、Close 释放槽。负责人 KPanel cluster maintainers，2026-10-30 前复核；不是 confirmed HIGH，不写成已修复或所有传输立即取消。其他历史 MEDIUM backlog 不由本记录关闭。源码 / RC / 稳定 / 生产交付分层：已交付源码和本RC；尚未进入稳定版或生产。旧RC1两项HIGH修复也继续包含，既有公开原件不改写。
+`legacy-export-revoke-20261023-M1` 仍为 needs-validation：已授权的旧单次二进制导出在途不与 revoke 同步取消；fresh requests 拒绝、Close 释放槽。负责人 Dongger Panel cluster maintainers，2026-10-30 前复核；不是 confirmed HIGH，不写成已修复或所有传输立即取消。其他历史 MEDIUM backlog 不由本记录关闭。源码 / RC / 稳定 / 生产交付分层：已交付源码和本RC；尚未进入稳定版或生产。旧RC1两项HIGH修复也继续包含，既有公开原件不改写。
 
 OCR1.12.11 自由臂先落盘，组装53/53文件 reviewed，7个排除项（4文档、2删除的平台实现、1锁文件）另行审查；精确逐路径差异相同才复用原件。当前自由臂 `blind=false`，`constrained-only=unreported`，不将历史独立 finding 冒充 OCR 新收益，不从一次 RC 推断三个稳定周期收益。仓库外原件根 `C:/GitHub/_release-evidence/kpanel-v128-rc2`，含 assembly/helper 的独立审查、free-form、rules 和 coverage JSON；来源原件位于 `C:/GitHub/_codex-evidence/kpanel-security-inventory-20261023` 等已绑定路径。
 
 ## 跨仓库联动与供应链身份
 
-`scriptLinkageState=coupled`，changeSetId `necessary-security-20261023`。用户追加授权后，先通过 SSH 将 `kejilion/sh` main 从 `bbda9e9c8c4a48154b59d59de44e8c4042cd09dc` 快进到 [24f65f9f](https://github.com/kejilion/sh/commit/24f65f9fb8cbf779d03451d528f038b69627ab14)，再冻结 KPanel。共4文件，根脚本 SHA-256 `c34c2ca3a04018a0c6b22628be63f290944c0ef429b4d3a9f06a582bd3143364`，中英文归一后相同，双脚本语法、37项隔离 updater 测试和安装 smoke 有精确来源成功证据。内嵌 Node runtime source.json pin该提交，7模板逐一摘要及 canonical sync --check 通过。同版本修复和失败升级事务恢复保留；不主动发起版本回退。
+`scriptLinkageState=coupled`，changeSetId `necessary-security-20261023`。用户追加授权后，先通过 SSH 将 `kejilion/sh` main 从 `bbda9e9c8c4a48154b59d59de44e8c4042cd09dc` 快进到 [24f65f9f](https://github.com/kejilion/sh/commit/24f65f9fb8cbf779d03451d528f038b69627ab14)，再冻结 Dongger Panel。共4文件，根脚本 SHA-256 `c34c2ca3a04018a0c6b22628be63f290944c0ef429b4d3a9f06a582bd3143364`，中英文归一后相同，双脚本语法、37项隔离 updater 测试和安装 smoke 有精确来源成功证据。内嵌 Node runtime source.json pin该提交，7模板逐一摘要及 canonical sync --check 通过。同版本修复和失败升级事务恢复保留；不主动发起版本回退。
 
 Docker 受管整脚本基线仍 `160924a498d9b8d071fed72f165d23c1b9e886de` / `39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1`，不承担 Node binary 内嵌升级运行时；不扩大到无关基座升级。sh 管理树已有 firewall/未跟踪内容未改动；发布使用逐命令既有授权 SSH identity，没有读取/展示私钥或改变共享 Git 设置。
 
@@ -99,7 +99,7 @@ snapshot artifact12484425987 SHA-256 `388e17be99181acf7fdbc708025215bbefd0e1a7ce
 
 原始tip也可从v1.28.0-rc.2恢复。另验收Runner修复archive/fix/rc2-runner-packages精确0e145337，同SHA候选/main CI与恢复验收通过后expected-SHA原子保存/移除原活跃ref，远端回读成功，本地改archive、旧upstream解除，工作树clean保留。
 
-既有 helper archive/fix/rc2-public-acceptance-mode、archive/fix/rc2-public-acceptance-qualified 均精确88bedbe1，已回读并以expected-SHA lease删除原活跃ref，本地改archive且工作树clean保留。RC列车release/v1.28.0-candidate保留37427b4c。验收文档单独候选，同SHA Linux候选CI、main快进/CI成功后归档到archive/docs/release-v128-rc2-acceptance，不重打产品版本。来源及证据恢复点保留；sh来源分支保留作为跨仓恢复证据，不将其当下一KPanel候选。
+既有 helper archive/fix/rc2-public-acceptance-mode、archive/fix/rc2-public-acceptance-qualified 均精确88bedbe1，已回读并以expected-SHA lease删除原活跃ref，本地改archive且工作树clean保留。RC列车release/v1.28.0-candidate保留37427b4c。验收文档单独候选，同SHA Linux候选CI、main快进/CI成功后归档到archive/docs/release-v128-rc2-acceptance，不重打产品版本。来源及证据恢复点保留；sh来源分支保留作为跨仓恢复证据，不将其当下一Dongger Panel候选。
 
 本任务4174预览已按精确manifest停止，2026-10-23T07:36:06.470Z mockApi/web均stopped；证据保留。管理树及未知内容未改动。没有执行磁盘文件删除，不推断净释放字节；当前候选、首轮失败、审查和回滚证据仍需保留。不新增知识库或工作流；修正的是已有公开验收工作流。
 
@@ -136,7 +136,7 @@ snapshot artifact12484425987 SHA-256 `388e17be99181acf7fdbc708025215bbefd0e1a7ce
     "fingerprint": "publication/sh-ssh/missing-repository-identity",
     "position": "before-production-write",
     "count": 1,
-    "impact": "First SSH query from the sh source worktree was denied publickey because it lacked KPanel's per-repository GitHub SSH identity selection; no writes occurred.",
+    "impact": "First SSH query from the sh source worktree was denied publickey because it lacked Dongger Panel's per-repository GitHub SSH identity selection; no writes occurred.",
     "recoveryEvidence": "Tool transcript and paired-script-publication.json; explicitly reused the existing authorized GitHub identity via per-command SSH options, then verified the exact script main tip.",
     "permanentAction": "Release maintainers to verify an explicit repository-authorized identity before the next paired publication and review by2026-10-25; do not treat SSH availability in one repo as another repo's configuration or alter shared dirty checkout settings.",
     "historicalReleases": []
@@ -156,7 +156,7 @@ snapshot artifact12484425987 SHA-256 `388e17be99181acf7fdbc708025215bbefd0e1a7ce
     "count": 1,
     "impact": "Same initial ready invocation also reported missing Go because the known fixed Go path had not been applied to this fresh shell.",
     "recoveryEvidence": "Tool transcript; explicit Go1.27.3 path and GOTOOLCHAIN=local yielded passed ready and release-notes check. Original failed observation is retained here rather than declared passed.",
-    "permanentAction": "KPanel release maintainers: recurring local entry problem also seen in RC1 and v1.27.2; by2026-10-25 and before the next applicable production-write gate, qualify/fix the unique Go discovery entry and regress it. This turn's explicit PATH is a workaround, no permanent repository fix claimed.",
+    "permanentAction": "Dongger Panel release maintainers: recurring local entry problem also seen in RC1 and v1.27.2; by2026-10-25 and before the next applicable production-write gate, qualify/fix the unique Go discovery entry and regress it. This turn's explicit PATH is a workaround, no permanent repository fix claimed.",
     "historicalReleases": [
       "v1.27.2"
     ]

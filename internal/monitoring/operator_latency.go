@@ -335,7 +335,7 @@ func probeCheck(ctx context.Context, ping OperatorLatencyProber, target Check) (
 		if err != nil {
 			return 0, err
 		}
-		request.Header.Set("User-Agent", "KPanel-Monitor/1")
+		request.Header.Set("User-Agent", "Dongger Panel-Monitor/1")
 		startedAt := time.Now()
 		response, err := client.Do(request)
 		latency := time.Since(startedAt)

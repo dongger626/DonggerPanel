@@ -400,7 +400,7 @@ function inventory(resourceVersion: string): AppMarketInventory {
           restart: { enabled: true },
           update: { enabled: true },
           uninstall: { enabled: true },
-          manage: { enabled: false, reason: '该应用使用 KPanel 常规管理入口' },
+          manage: { enabled: false, reason: '该应用使用 Dongger Panel 常规管理入口' },
         },
       },
     ],
@@ -473,8 +473,8 @@ function kpanelInventory(resourceVersion: string): AppMarketInventory {
     num: undefined,
     source: 'thirdparty',
     token: 'kpanel',
-    name_zh: 'KPanel',
-    name_en: 'KPanel',
+    name_zh: 'Dongger Panel',
+    name_en: 'Dongger Panel',
     slug: 'kpanel',
   }
   return result
@@ -508,7 +508,7 @@ beforeEach(() => {
     imageDigest: `sha256:${'c'.repeat(64)}`,
     releaseUrl: 'https://github.com/kejilion/KPanel/releases/tag/v1.18.0',
     publishedAt: '2026-09-14T00:00:00Z',
-    notes: [{ kind: 'changed', text: '统一 KPanel 更新入口。' }],
+    notes: [{ kind: 'changed', text: '统一 Dongger Panel 更新入口。' }],
     upgradeNotes: [],
     cached: true,
     stale: false,
@@ -628,7 +628,7 @@ describe('AppsView install port preflight', () => {
 })
 
 describe('AppsView domain binding', () => {
-  it('sends KPanel itself to the settings switch flow instead of blocking IP access first', async () => {
+  it('sends Dongger Panel itself to the settings switch flow instead of blocking IP access first', async () => {
     const created = { ...proxySite(), primaryDomain: 'panel.example.com' }
     mocks.createSite.mockResolvedValueOnce(created)
     const result = inventory('kpanel-version')
@@ -762,7 +762,7 @@ describe('AppsView domain binding', () => {
     expect(view.activeJob.value?.id).toBe('access-job')
   })
 
-  it('never blocks KPanel itself from an IP page and hands off to the settings switch flow', async () => {
+  it('never blocks Dongger Panel itself from an IP page and hands off to the settings switch flow', async () => {
     const result = inventory('kpanel-version')
     const item = result.items[0]
     if (!item) throw new Error('test inventory is incomplete')
@@ -1041,7 +1041,7 @@ describe('AppsView script management', () => {
     const job: AppInstallJob = {
       id: 'fedcba9876543210fedcba9876543210',
       appId: 'builtin-13',
-      appName: 'KPanel',
+      appName: 'Dongger Panel',
       action: 'update',
       status: 'running',
       stage: 'executing',
@@ -1091,7 +1091,7 @@ describe('AppsView script management', () => {
     const job: AppInstallJob = {
       id: '0123456789abcdef0123456789abcdef',
       appId: 'builtin-13',
-      appName: 'KPanel',
+      appName: 'Dongger Panel',
       action: 'update',
       status: 'running',
       stage: 'executing',
@@ -1358,7 +1358,7 @@ describe('AppsView application mutations', () => {
     expect(mocks.routerReplace).toHaveBeenCalledWith({ query: {} })
   })
 
-  it('opens the dedicated KPanel update confirmation from the sidebar intent', async () => {
+  it('opens the dedicated Dongger Panel update confirmation from the sidebar intent', async () => {
     const view = setupView()
     view.inventory.value = kpanelInventory('kpanel-version')
     mocks.route.query = { app: 'kpanel', action: 'update' }
@@ -1372,17 +1372,17 @@ describe('AppsView application mutations', () => {
     expect(view.kpanelUpdateConfirmOpen.value).toBe(true)
     expect(mocks.getKPanelRelease).toHaveBeenCalledWith('stable', expect.any(AbortSignal))
     expect(view.kpanelRelease.value?.notes).toEqual([
-      { kind: 'changed', text: '统一 KPanel 更新入口。' },
+      { kind: 'changed', text: '统一 Dongger Panel 更新入口。' },
     ])
     expect(mocks.routerReplace).toHaveBeenCalledWith({ query: {} })
   })
 
-  it('schedules an interface reload only after a successful KPanel self update', () => {
+  it('schedules an interface reload only after a successful Dongger Panel self update', () => {
     const view = setupView()
     const job: AppInstallJob = {
       id: '89abcdef0123456789abcdef01234567',
       appId: 'thirdparty-kpanel',
-      appName: 'KPanel',
+      appName: 'Dongger Panel',
       action: 'update',
       status: 'succeeded',
       stage: 'completed',

@@ -1,4 +1,4 @@
-# KPanel v1.20.0 发布验收记录
+# Dongger Panel v1.20.0 发布验收记录
 
 日期：2026-09-19
 
@@ -48,9 +48,9 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
 - 脚本候选 commit / SHA-256：不适用。
-- 状态判定依据与兼容性证据：未改 KPanel 与 `kejilion.sh` 的接口；L3 `managed_script_contract=pass`、应用生命周期和公开镜像 E2E 通过。
+- 状态判定依据与兼容性证据：未改 Dongger Panel 与 `kejilion.sh` 的接口；L3 `managed_script_contract=pass`、应用生命周期和公开镜像 E2E 通过。
 - 本版发布决定：脚本不在范围。
 - 阻断或移除的依赖范围：不适用。
 
@@ -119,7 +119,7 @@
 - 生产目标和部署授权范围：用户明确授权稳定版上线；仅 arena-154。
 - 验证/灰度环境：arena-154（hybrid）。
 - 正式部署环境：arena-154。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight 2026-09-19T18:03:52+08:00 至 18:03:54+08:00，版本 1.19.0、健康通过；backup 18:29:19 至 18:29:30 通过，路径 `/root/kpanel-backups/pre-v1.20.0-20260919T102919Z`，数据、旧镜像、Agent unit、kpanel.conf 和 SHA256SUMS 均校验成功，恢复后配置 diff=0。
 - 部署命令/入口：`env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy 18:30:26 至 18:30:28 通过；version=1.20.0、revision=`c98727c8`、RepoDigest 含正式 index、Agent active、容器 healthy/restart=0/OOM=false、近 10 分钟无 panic/fatal、配置 diff=0；`panel/ai.db` 与 `panel/panel-state-audit.db` quick_check ok；公网健康 18:30:55 返回 status=ok/version=1.20.0。

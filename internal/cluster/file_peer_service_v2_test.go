@@ -119,7 +119,7 @@ func TestServiceV2SinglePairEnablesFilesInBothDirections(t *testing.T) {
 	}
 	t.Cleanup(func() { _ = center.Close() })
 
-	input := FederationFileOpenRequest{Path: "/home/KPanel Desktop/app", ResourceVersion: "sha256:source-version"}
+	input := FederationFileOpenRequest{Path: "/home/Dongger Panel Desktop/app", ResourceVersion: "sha256:source-version"}
 	metadata := contract.FileTransferMetadata{
 		Name: "app", Kind: "directory", SizeBytes: 20,
 		ResourceVersion: input.ResourceVersion,

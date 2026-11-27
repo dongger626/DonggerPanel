@@ -1,4 +1,4 @@
-# KPanel v0.48.1 发布验收
+# Dongger Panel v0.48.1 发布验收
 
 ## 发布范围
 
@@ -19,7 +19,7 @@
 - Docker OCI index：`sha256:132f311530d9782d14f569510fd27fd8be2a6f87f84e580b21e85a15f9d9947d`；`0.48.1` 与 `latest` 一致。
 - linux/amd64：`sha256:aad9bfbbbaad1022a098678943b36273860722baefe85adbb1fdbb64a1191bfb`。
 - linux/arm64：`sha256:d41294a783e1cfdbcfb869a24542c654838e0278862854232f374271cf84327f`。
-- `kejilion/apps` 无契约变化；仓库仍为 `1f2740666a55ccbb3749ce83168e073c1ea08431`，`kpanel.conf` 与 KPanel 发布配置的 Git blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`。
+- `kejilion/apps` 无契约变化；仓库仍为 `1f2740666a55ccbb3749ce83168e073c1ea08431`，`kpanel.conf` 与 Dongger Panel 发布配置的 Git blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`。
 
 ## 上线前验证
 

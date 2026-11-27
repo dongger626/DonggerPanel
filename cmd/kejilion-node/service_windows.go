@@ -153,7 +153,7 @@ func installWindowsNode(arguments []string) (resultErr error) {
 			if status.Win32ExitCode != 0 || status.ServiceSpecificExitCode != 0 {
 				return errors.New("SYSTEM enrollment bootstrap failed; review Windows service status; batch attempt identity is retained")
 			}
-			fmt.Println("KPanel Windows node installed; reporting credentials and relay identity are protected by SYSTEM DACLs")
+			fmt.Println("Dongger Panel Windows node installed; reporting credentials and relay identity are protected by SYSTEM DACLs")
 			return nil
 		}
 		time.Sleep(200 * time.Millisecond)

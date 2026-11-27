@@ -1,4 +1,4 @@
-# KPanel v0.53.0 上线验收记录
+# Dongger Panel v0.53.0 上线验收记录
 
 ## 发布结论
 
@@ -34,7 +34,7 @@
 - 来源 `6435a14`，候选 `2f87652`：`feat(desktop): merge app identity into script terminal chrome`。
 - 来源 `7c38ba6`，候选 `334937e`：`fix(desktop): align process manager window spacing`。
 - 来源 `840f34d`，候选 `5598e6e`：`fix(ai): enforce Docker maintenance contracts`。
-- `4c37a0e`：`chore: prepare KPanel 0.53.0`。
+- `4c37a0e`：`chore: prepare Dongger Panel 0.53.0`。
 
 ## 上线前验证
 
@@ -59,7 +59,7 @@
 - linux/amd64：`sha256:8b5fbbf3ad2b388d0a1aeaf6c0f481e51d817c22c0681f690630dc6221b1b842`。
 - linux/arm64：`sha256:2df31a00017618154d444ee7bd86987a9109cf67e60ec04012200a3916fa608c`。
 - 公共镜像隔离拉取与 E2E 返回 `image_e2e=pass`。
-- `apps` 安装/更新契约没有变化，KPanel 打包配置与 `apps/kpanel.conf` blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`，无需应用市场提交。
+- `apps` 安装/更新契约没有变化，Dongger Panel 打包配置与 `apps/kpanel.conf` blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`，无需应用市场提交。
 - `kejilion.sh` 没有变化，本地与远端 `main` 均为 `dd26cf7eb962f985f94773c15f9b643677b4471c`。
 
 ## 生产备份与部署
@@ -84,8 +84,8 @@
 ## 回滚方案
 
 1. 将生产镜像固定回 `v0.52.0` 的摘要 `sha256:e800d0d7cc8fffc906f37fe41ac1570a3e1fc6c71ac392eb130a04a452cc86e4`。
-2. 重新创建 KPanel 容器并确认健康接口返回 `0.52.0`。
-3. 如需恢复数据，先停止 KPanel、再次备份当前状态，再使用 `/root/kpanel-backups/v0.53.0-preupgrade-20260808T172451Z`。
+2. 重新创建 Dongger Panel 容器并确认健康接口返回 `0.52.0`。
+3. 如需恢复数据，先停止 Dongger Panel、再次备份当前状态，再使用 `/root/kpanel-backups/v0.53.0-preupgrade-20260808T172451Z`。
 4. 回滚后核验容器健康、Agent 二进制一致性、SQLite 完整性及日志。
 
 ## 已知限制

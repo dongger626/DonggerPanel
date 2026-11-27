@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.4 发布验收记录
+# Dongger Panel v1.25.0-rc.4 发布验收记录
 
 日期：2026-10-05（北京时间）
 
@@ -142,11 +142,11 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`；变更集编号 `rc4-light-node-integration-20261005`。
-- KPanel 实际内置脚本基线 commit / SHA-256：RC3内置 `c981fb6c8b481981ac7a006e102e111e435f6d30` / `0eb9a82860e6cf6cf76d4f946782a02fd90bef8e7be5a3fa724b93920d8e35cb`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：RC3内置 `c981fb6c8b481981ac7a006e102e111e435f6d30` / `0eb9a82860e6cf6cf76d4f946782a02fd90bef8e7be5a3fa724b93920d8e35cb`。
 - 脚本候选 commit / SHA-256：`c3a8bd895f8878d9e4ced7592c91a20c974472a5` / ROOT `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`；CN raw `d92c6643df6acfe15e1f4556855f42eb2ada1e831ddd9f055e85a5619102cf4f`，CN归一化与ROOT一致。
 - 状态依据：sh main从 `39a19cd7c1a2ef1193d07a1c40d7d897cc8f5547` 正常FF至c3a，同源feature tip；公开 exact-revision ROOT/CN真实下载与Git blob/pin逐字节核对，原件 `sh-public-c3a8bd8-r1/`。Docker ADD、生成runtime、dependency policy与updater pin同步，不能沿用RC1旧422拒绝结论。
 - 兼容性证据：`paired-script-r6-verified.json`；arena-154真实Linux/root，ROOT/CN各22 dependency +35 update +smoke，无skip、18原件摘要独立复核。Windows Python skip不是PASS；历史curl35、独立reader网络/MCP大小限制照实保留。
-- 本版发布决定：脚本先行公开且验证字节后，再冻结/发布KPanel RC4；未改 apps 仓库。apps公开 `kpanel.conf` 与产品实际字节SHA `f03cb75911b7491cb009fee0bfe3500f4ae874327bb16ef1006894a232bcc089` 一致，公共默认latest。
+- 本版发布决定：脚本先行公开且验证字节后，再冻结/发布Dongger Panel RC4；未改 apps 仓库。apps公开 `kpanel.conf` 与产品实际字节SHA `f03cb75911b7491cb009fee0bfe3500f4ae874327bb16ef1006894a232bcc089` 一致，公共默认latest。
 - 阻断或移除依赖范围：不适用（原待公开的c3a阻断已由用户授权的先行脚本发布和公开字节证据解除）；未经资格的Node26/TS7及旧签名候选按上节排除，没有将原6b63不完整pin直接纳入。
 
 ## 多维质量结论
@@ -182,8 +182,8 @@
 - 本版采用：配套sh c3a依赖补齐、logger兼容与镜像回退，同源生成runtime和精确SHA消费；Go1.27.1、Node24.21.0 LTS、TypeScript6.0.3及既有Action/基础镜像/扫描器保持，版本字段rc3→rc4同步，不修改Go/npm依赖图。
 - 版本与锁定：go.mod SHA `19541abd4371ef032781ee2d35a750513a23880d9586fd41427f591754fe57b3`，go.sum `d4718070511ef8f93fa69bbef2ef65c04893bedd42e522282d2cbb13fa09073a`，web/package-lock.json `4a9db25cbc3cac0639eaf84b57123f10dd7e314d55ea396355b0db3e7b457401`，dependency-policy.json `3d8ca5c48056dc9a2255f0ec7cd3773d3203d1dce0a16ad563d3aeb88e38bbd0`；均为冻结5c文件摘要。
 - 基础镜像/Action：node24.21.0-alpine固定 `sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1`，golang1.27.1-alpine固定 `sha256:8a5910f31396cd4d89662f56c68b3ae31d374308270a1c3bd96672ee5ed43414`，runtime为scratch。checkout `3d3c42e5aac5ba805825da76410c181273ba90b1`、setup-go `b7ad1dad31e06c5925ef5d2fc7ad053ef454303e`、setup-node `820762786026740c76f36085b0efc47a31fe5020`；其余Action精确SHA见冻结 `.github/workflows/release.yml`（文件SHA `7c88825c99604073df1148ec55c003bd2aec5429e5a2284b0bda511a48de2402`），不追认浮动发现入口为发布pin。脚本commit/SHA见跨仓库章节，发布OCI见产物章节。
-- 暂缓/拒绝：TS6.0.3→7.0.2、@types/node24.19.0→26.6.3的既有active例外owner为KPanel base maintenance，复核2026-10-15。报告另发现@types/node26.6.4，不能将它与例外候选26.6.3混称。TS退出条件为受支持Vue路径在不关闭检查情况下通过typecheck/tests/scene-pack/prodbuild；Node退出条件为批准LTS runtime转Node26且matching types通过完整门禁。Node26实验会回退Go基座，TS7不具备完整Vue采用证据，保留原候选不强合；本轮未宣称对全部其他候选做了采用决定。
-- 升级结论：sh当前ROOT/CN/Linux/root、完整KPanel构建/扫描/镜像契约通过；Windows真实执行与长期资源收益未验证。受管脚本及嵌入内容恢复点分别为39a/c981/RC3，现行稳定源/锁图/镜像恢复点保持。回滚是另行授权动作，未经实机数据/配置核对不宣称已执行。
+- 暂缓/拒绝：TS6.0.3→7.0.2、@types/node24.19.0→26.6.3的既有active例外owner为Dongger Panel base maintenance，复核2026-10-15。报告另发现@types/node26.6.4，不能将它与例外候选26.6.3混称。TS退出条件为受支持Vue路径在不关闭检查情况下通过typecheck/tests/scene-pack/prodbuild；Node退出条件为批准LTS runtime转Node26且matching types通过完整门禁。Node26实验会回退Go基座，TS7不具备完整Vue采用证据，保留原候选不强合；本轮未宣称对全部其他候选做了采用决定。
+- 升级结论：sh当前ROOT/CN/Linux/root、完整Dongger Panel构建/扫描/镜像契约通过；Windows真实执行与长期资源收益未验证。受管脚本及嵌入内容恢复点分别为39a/c981/RC3，现行稳定源/锁图/镜像恢复点保持。回滚是另行授权动作，未经实机数据/配置核对不宣称已执行。
 
 ## 隔离真机与浏览器验收
 
@@ -242,7 +242,7 @@
 - 生产目标和部署授权：不适用（预览版禁止生产部署）；用户授权仅配套脚本与RC4公开产物/preview，production=false。
 - 验证/灰度环境：登记arena-154仅隔离验收，非生产灰度；来源 `.governance/environment-policy.json`，不包含prod-108。
 - 正式部署环境：不适用（预览版禁止生产部署）。
-- prod-108：禁用全部KPanel操作，本次未连接、未备份、未部署、未升级、未做健康或公网核对。
+- prod-108：禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未升级、未做健康或公网核对。
 - 部署前版本、健康、生产备份位置和摘要：不适用（预览版禁止生产部署）。
 - 部署命令/入口：不适用（预览版禁止生产部署）；Release workflow是产物发布，不是生产部署。
 - 部署后版本、Panel/Agent、重启、日志、数据完整性与公网入口：不适用（预览版禁止生产部署）。

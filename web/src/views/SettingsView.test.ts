@@ -347,7 +347,7 @@ beforeEach(() => {
 		stale: false,
 	} satisfies KPanelReleaseInfo)
   mocks.startTOTPEnrollment.mockResolvedValue({
-    id: 'enrollment-1', secret: 'JBSWY3DPEHPK3PXP', otpauthUri: 'otpauth://totp/KPanel:admin', expiresAt: '2026-08-01T00:10:00Z',
+    id: 'enrollment-1', secret: 'JBSWY3DPEHPK3PXP', otpauthUri: 'otpauth://totp/Dongger Panel:admin', expiresAt: '2026-08-01T00:10:00Z',
   })
   mocks.confirmTOTPEnrollment.mockResolvedValue({ recoveryCodes: ['AAAAA-BBBBB-CCCCC', 'DDDDD-EEEEE-FFFFF'] })
   mocks.sessionState.authenticated = true
@@ -487,8 +487,8 @@ describe('SettingsView appearance', () => {
     expect(settingsSource).toContain('@click="cancelThemeColorChanges"')
     expect(settingsSource).toContain('@click="applyThemeColors"')
     expect(settingsSource).not.toContain('theme.setSkin')
-    expect(settingsSource).not.toContain('KPanel VIP')
-    expect(settingsSource).not.toContain('KPanel 经典')
+    expect(settingsSource).not.toContain('Dongger Panel VIP')
+    expect(settingsSource).not.toContain('Dongger Panel 经典')
   })
 
   it('uses a preset as an editable draft and persists only the final color values', () => {

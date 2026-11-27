@@ -1,4 +1,4 @@
-# KPanel v1.3.0 发布验收记录
+# Dongger Panel v1.3.0 发布验收记录
 
 日期：2026-09-05
 
@@ -16,7 +16,7 @@
 
 - 业务域：集群主机排序、当前面板文件切换、跨面板文件受限中继、公开分享入口、轻量节点显示名和文件拖入提示。
 - 变更面：展示、只读、集群文件协议/中继和发布部署；未新增宿主机危险写入。
-- 受影响用户旅程：在集群页设置并保持主机顺序；在文件管理、公开分享和终端主机列表中使用相同顺序；在当前 KPanel 内切换已配对主机并进行受限文件访问/互传；轻量节点重新接入后保留显示名；浅色主题下从其他 KPanel 拖入文件时清晰显示提示。
+- 受影响用户旅程：在集群页设置并保持主机顺序；在文件管理、公开分享和终端主机列表中使用相同顺序；在当前 Dongger Panel 内切换已配对主机并进行受限文件访问/互传；轻量节点重新接入后保留显示名；浅色主题下从其他 Dongger Panel 拖入文件时清晰显示提示。
 - 未变化契约：无数据库迁移、无 Compose 端口变化、无 `System Center` 页面/路由/API/数据/文档/写入变化；保留既有文件 API 白名单、权限、路径校验、`ResourceVersion`、流式传输限制和 Panel → Agent 边界；无 `kejilion.sh` 脚本源码变更，应用市场标准更新入口不变。
 - 风险等级及理由：中等兼容性风险。变更集中在集群文件访问、排序持久化和前端交互，涉及 Panel/Agent 协同但没有 schema 或端口迁移；已通过固定 L3、CI、公开镜像复核和生产三阶段证据。
 
@@ -26,7 +26,7 @@
   - 集群文件管理、终端主机列表和公开分享页统一使用用户排序，排序持久化后在相关入口保持一致。
   - 已配对主机支持当前页面文件切换与受限的跨面板文件访问/互传。
   - 轻量节点重新接入保留用户设置的显示名。
-  - 浅色模式的跨 KPanel 文件拖入提示提高文字与背景对比度。
+  - 浅色模式的跨 Dongger Panel 文件拖入提示提高文字与背景对比度。
 - 精确提交清单：`62c668e`（轻量节点显示名，候选 cherry-pick `a984581`）、`7cb2a39`（主机排序，候选 `2cd9921`，冲突已按共享排序 helper 最小化解决）、`32a7200`（当前面板集群主机文件切换，候选 `0b80188`）、`d1ae676`（浅色主题拖入对比度，候选 `b8e46fa`）、`b211190`（公开分享主机排序，候选 `cd55c3c`）、`afeefc2`（视觉 radius token 修正）、`a7ddfd5`（文件代理签名参数修正）、`adb0bba`（排序结构测试安全比较）；版本与发布准备提交为 `4b0c7f8`，治理基线刷新为 `2215c3d`，最终发布记录修正提交为 `8374ff2`。最终相对候选基线差异为 42 个文件、1433 行新增、153 行删除。
 - 明确未纳入的分支、文件或后续事项：Claude 界面美化工作树、轻量节点 SSH 终端未提交改动、进程管理热力图、云存储、原生图标、浏览器拖出专项及其他未形成干净可验收提交的工作树；所有 `System Center` 相关内容均排除。本次未连接 `108` 或 `prod-108`。
 
@@ -38,7 +38,7 @@
 | 网络入侵与供应链安全 | 已验证 | `govulncheck`、`npm audit`、Trivy 源码/依赖/secret/config/镜像扫描、脚本契约和固定 Runner | 未进行独立第三方渗透测试 |
 | 稳定性、失败恢复与兼容 | 已验证 | L3 Go/前端/应用生命周期、重启恢复、备份及生产前后证据通过；旧版本回滚点明确 | 未执行受控生产回滚演练 |
 | 性能与资源预算 | 已验证 | L3 runtime contract 与生产容器资源证据通过；postdeploy 内存约 72.64 MiB / 256 MiB | 未做长时间压力或多节点吞吐基线 |
-| 用户体验与可访问性 | 已实现未实机验证 | 相关前端定向测试、全量测试、typecheck、build 通过；保留 `:focus-visible` 等既有语义 | 未执行完整浏览器视口、缩放、主题和键盘人工矩阵；跨两台真实 KPanel 的拖入仍需专项验收 |
+| 用户体验与可访问性 | 已实现未实机验证 | 相关前端定向测试、全量测试、typecheck、build 通过；保留 `:focus-visible` 等既有语义 | 未执行完整浏览器视口、缩放、主题和键盘人工矩阵；跨两台真实 Dongger Panel 的拖入仍需专项验收 |
 | 数据、配置与迁移 | 已验证 | 无 schema migration；保护配置 diff 为空；backup 包含旧镜像、Agent unit、`kpanel.conf`、数据归档和校验清单 | 未执行实际回滚，因此回滚结果为预案/备份证据而非演练证据 |
 
 ## 自动门禁
@@ -86,10 +86,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：本次唯一生产目标为 `arena-154`，仅执行 KPanel 标准应用市场更新。
+- 生产目标和部署授权范围：本次唯一生产目标为 `arena-154`，仅执行 Dongger Panel 标准应用市场更新。
 - 验证/灰度环境：`environment-policy.json` 中仅使用允许的 `arena-154`；未使用 `prod-108`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v1.3.0-production-20260905`，expected version=`1.2.0`，passed/exit 0，开始 `2026-09-04T16:11:31Z`、结束 `2026-09-04T16:11:33Z`；backup 同 run expected version=`1.3.0`，passed/exit 0，结束 `2026-09-04T16:12:07Z`；备份为 `/root/kpanel-backups/pre-v1.3.0-20260904T161158Z`。本地 manifest SHA-256：preflight=`d6e1c4ca3ab40e4ed5bcbffebd242510fdcbb9bb1afc446649862b80a7ed33b2`、backup=`c5a60eabcb1d0be8d8fc6ef037aa47672352816269f3dd6abd9de4ba04cff412`。
 - 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；应用市场更新成功，拉取 digest 与本版 OCI index 一致。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy run 同上，expected version=`1.3.0`、revision=`8374ff2d4a20d6cd949dc37a93f412eed64a1ec9`、image digest=`sha256:d84d8b748c516f095a6eb34c1c4f698bcc4a77c9fc7bf08fcc67efcb02e830b4`，passed/exit 0，结束 `2026-09-04T16:13:13Z`；Panel running/healthy，health `status=ok`、version=`1.3.0`，Agent active/running/enabled，restart=0，OOM=false；panel/agent 日志无 fatal、panic、OOM signature，SQLite/data check 通过，protected config diff 为空。公网入口沿用生产现有入口，未改域名/端口契约。本地 postdeploy manifest SHA-256=`48491405ba2325b5cc9ae7d82006662fd2db2717b8a9a08115cf9a9c7cc1efd6`。

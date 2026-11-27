@@ -1,4 +1,4 @@
-# KPanel v1.22.0-rc.6 发布验收记录
+# Dongger Panel v1.22.0-rc.6 发布验收记录
 
 日期：2026-09-25。发布级别：L3；发布通道为预览。生产未部署。
 
@@ -63,7 +63,7 @@
 - 主线 CI：[36119651224](https://github.com/kejilion/KPanel/actions/runs/36119651224)，success；Dependency freshness：[36119651210](https://github.com/kejilion/KPanel/actions/runs/36119651210)，success。上述工作流均针对精确提交 245caaa9e85d9e2432b4c7743aa97212d1f5d044。
 - Release workflow：[36120566814](https://github.com/kejilion/KPanel/actions/runs/36120566814)，success。
 - 依赖新鲜度采用同日 RC5 完整报告：2026-09-25T02:02:26.128Z、检测源 10/10、失败源 0、SHA-256 C81DBD1A7E23A91CA6341D5191E67845BEE75188C1A97F9E6666A77174FE4C47。RC6 对比范围未改依赖声明、版本、Action pin、基础镜像或脚本 pin。RC6 四次重跑尝试分别遇到 Windows 检测源不完整、Runner 未挂载 Git 元数据、工作目录错误、Go 依赖查询超过 4 分钟；均未冒充为完整报告，故复用当日 10/10 报告。原始证据在 C:/GitHub/_release-evidence/v1.22.0-rc.6-20260925/dependency-evidence.md。
-- scriptLinkageState：not-required。无 KPanel 与 kejilion.sh 的联动提交；面板应用配置契约未变化。
+- scriptLinkageState：not-required。无 Dongger Panel 与 kejilion.sh 的联动提交；面板应用配置契约未变化。
 
 ## 隔离真机与浏览器验收
 
@@ -86,7 +86,7 @@
 
 - 预览来源已发布为规范 RC；加入预览会切换来源并立即检查，不自动安装。发布本身不代表用户设备已更新。
 - 生产部署安全核对：不适用（预览版禁止生产部署）。产物已发布，生产未部署；没有生产写入。
-- prod-108：禁用全部 KPanel 操作，本轮未连接、未备份、未部署、未升级、未核对；arena-154 本轮未连接。
+- prod-108：禁用全部 Dongger Panel 操作，本轮未连接、未备份、未部署、未升级、未核对；arena-154 本轮未连接。
 - 回滚源码/Tag：v1.22.0-rc.5 / aea1a75bc00c32172cb9c52b4a65805f86398f52。回滚预览镜像 index：sha256:7fd3ff5f9e9cc0d14df2313520f5d16a150bc744c7076b4efc313efcde9359c5。
 - 上一稳定回滚镜像：v1.21.0 / sha256:e2c5d392dfcee8263ea82ebe0c8aed15276c046a3bd260b6219b634a844f3f61。未执行任何生产回滚。
 - GitHub Latest、Docker latest 和标准稳定更新入口均保持 v1.21.0；公共默认更新通道决策：不适用（预览版）。

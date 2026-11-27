@@ -232,7 +232,7 @@ func (s *Server) handleMCPOAuth(w http.ResponseWriter, r *http.Request) bool {
 	return true
 }
 
-var mcpOAuthLanding = template.Must(template.New("oauth").Parse(`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KPanel MCP 授权</title><style>body{font:16px/1.7 system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;color:#183528;background:#f6faf7}h1{font-size:24px}a{display:inline-block;padding:12px 20px;border-radius:8px;background:#17623d;color:white;text-decoration:none}p{overflow-wrap:anywhere}a:focus-visible{outline:3px solid #2165c9;outline-offset:4px}</style></head><body><h1>连接 KPanel</h1><p>{{.Name}} 请求连接此面板。接下来选择允许访问的主机和功能；不会自动授予管理权限。</p><p>若已启用安全入口，请先通过您保存的入口登录面板，然后返回此页继续。</p><a href="{{.Target}}">继续到面板审阅授权</a></body></html>`))
+var mcpOAuthLanding = template.Must(template.New("oauth").Parse(`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dongger Panel MCP 授权</title><style>body{font:16px/1.7 system-ui,sans-serif;max-width:640px;margin:12vh auto;padding:24px;color:#183528;background:#f6faf7}h1{font-size:24px}a{display:inline-block;padding:12px 20px;border-radius:8px;background:#17623d;color:white;text-decoration:none}p{overflow-wrap:anywhere}a:focus-visible{outline:3px solid #2165c9;outline-offset:4px}</style></head><body><h1>连接 Dongger Panel</h1><p>{{.Name}} 请求连接此面板。接下来选择允许访问的主机和功能；不会自动授予管理权限。</p><p>若已启用安全入口，请先通过您保存的入口登录面板，然后返回此页继续。</p><a href="{{.Target}}">继续到面板审阅授权</a></body></html>`))
 
 // The parent settings router has authenticated Session and Origin/CSRF.
 func (s *Server) handleMCPOAuthConsent(w http.ResponseWriter, r *http.Request, actor string) {

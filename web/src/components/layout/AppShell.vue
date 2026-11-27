@@ -175,7 +175,7 @@ const kpanelUpdateDescription = computed(() => kpanelUpdateAvailable.value
   ? kpanelUpdateHint(panel.state.agent?.version)
   : i18n.t('nav.versionUpdates'))
 
-const pageTitle = computed(() => route.meta.titleKey ? i18n.t(route.meta.titleKey) : 'KPanel')
+const pageTitle = computed(() => route.meta.titleKey ? i18n.t(route.meta.titleKey) : 'Dongger Panel')
 const isAIWorkspace = computed(() => route.path.startsWith('/ai'))
 const agentStatus = computed(() => {
   const agent = panel.state.agent

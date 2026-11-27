@@ -62,7 +62,7 @@ func TestRenderedReleaseNotesForPublication(t *testing.T) {
 	} else {
 		body = renderChangelogRelease(t, root, version)
 	}
-	if !strings.HasPrefix(body, "## KPanel "+version+"\n") {
+	if !strings.HasPrefix(body, "## Dongger Panel "+version+"\n") {
 		t.Fatal("rendered release notes do not match the publication version")
 	}
 	wantNotes := make([]ReleaseNote, 0, maxReleaseNotes)
@@ -74,7 +74,7 @@ func TestRenderedReleaseNotesForPublication(t *testing.T) {
 		line := strings.TrimSpace(strings.TrimSuffix(rawLine, "\r"))
 		if heading, ok := markdownHeading(line); ok {
 			if strings.HasPrefix(line, "## ") {
-				if inUpdates || heading != "KPanel "+version {
+				if inUpdates || heading != "Dongger Panel "+version {
 					t.Fatalf("unsupported rendered release heading: %s", heading)
 				}
 				continue

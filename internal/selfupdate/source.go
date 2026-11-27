@@ -86,7 +86,7 @@ func (s *GitHubLatestSource) Latest(ctx context.Context) (Release, error) {
 	}
 	request.Header.Set("Accept", "application/vnd.github+json")
 	request.Header.Set("X-GitHub-Api-Version", "2022-11-28")
-	request.Header.Set("User-Agent", "KPanel-Release-Update/2")
+	request.Header.Set("User-Agent", "Dongger Panel-Release-Update/2")
 	response, err := s.client.Do(request)
 	if err != nil {
 		return Release{}, err

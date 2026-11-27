@@ -16,7 +16,7 @@ import (
 	"github.com/kejilion/kejilion-panel/internal/version"
 )
 
-const lightNodeProcdCronLine = "17 * * * * /usr/local/lib/kejilion-node/update-cron.sh # KPanel lightweight node updater"
+const lightNodeProcdCronLine = "17 * * * * /usr/local/lib/kejilion-node/update-cron.sh # Dongger Panel lightweight node updater"
 const lightNodeProcdCronWrapper = "/usr/local/lib/kejilion-node/update-cron.sh"
 const nodeProcdHealthPath = "/run/kejilion-node-monitoring/procd-health.json"
 

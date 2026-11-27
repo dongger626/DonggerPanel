@@ -273,7 +273,7 @@ func TestFirewallDDoSStatusRequiresAllExactInputRules(t *testing.T) {
 	if firewallDDoSRuleSignature("-A DOCKER-USER -p udp -j DROP") != 0 ||
 		firewallDDoSRuleSignature("-A INPUT -p udp -s 192.0.2.0/24 -j DROP") != 0 ||
 		firewallDDoSRuleSignature("-A INPUT -p tcp --syn -s 192.0.2.0/24 -m limit --limit 500/s --limit-burst 100 -j ACCEPT") != 0 {
-		t.Fatal("unrelated or cross-chain rules were recognized as KPanel DDoS rules")
+		t.Fatal("unrelated or cross-chain rules were recognized as Dongger Panel DDoS rules")
 	}
 }
 

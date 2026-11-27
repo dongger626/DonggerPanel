@@ -1,4 +1,4 @@
-# KPanel v1.27.0-rc.12 发布验收记录
+# Dongger Panel v1.27.0-rc.12 发布验收记录
 
 已验证：RC12 已作为 GitHub prerelease 和 Docker Hub preview 镜像公开。精确候选的 push CI、L3、候选 CI、主线快进与主线 CI、Release、公开镜像核验及浏览器/隔离容器验收通过。首次公开验收遇到 GitHub API 403，按冻结 snapshot 仅重跑该验收 job 后通过；没有重发 Release 或镜像。GitHub Latest、Docker latest 和生产环境未改变。
 
@@ -59,7 +59,7 @@ releaseTrain：1.27.0
 - 安全盲审补漏（quality-audit review 档）：本轮 RC12 来源候选完成差异审阅；未发现新增已确认漏洞，free-form findings=0，constrained high/medium/low=0。61 个 reviewable 文件均有审阅记录。仍有 15 个历史安全包组缺少 review 记录，见下项。
 - node scripts/security-review-scope.mjs --base v1.26.0 --head 3d4cc7435ba3ff6d1204c8eac3800e02a80bfb15 --format json：overall=missing，38 组中 23 recorded、15 missing，invalidTrailer=true。新增 internal/panel/self_signed_tls.go 与本轮变更范围已有 review 记录；不能据此宣称整仓审计完整。
 - OCR：open-code-review 1.12.11 delegation mode；差异 d35e0e0e70d913e1545741b298322a2de32785e0..006ff513255d9b74bed80021afabd2fbfe91d40b；66 个文件、61 个 reviewable、5 个排除、61/61 已审。free-form 新 finding=0；constrained H0/M0/L0；constrained-only=unreported。RC12 后续 Go 格式对齐与版本身份变更另有范围记录，六平台闭包未变。
-- finding fingerprint / 修复 commit / 独立复核与回归证据：已知中风险 light-node-self-signed-tls-accept-loop-resource-cap，状态 confirmed-deferred，owner=KPanel release maintainers，backlog #40，目标日期 2026-11-01。现有接受循环并发资源上限待补；Release notes 将预览限定于可信网络。该项不是新确认的外部攻击利用路径。
+- finding fingerprint / 修复 commit / 独立复核与回归证据：已知中风险 light-node-self-signed-tls-accept-loop-resource-cap，状态 confirmed-deferred，owner=Dongger Panel release maintainers，backlog #40，目标日期 2026-11-01。现有接受循环并发资源上限待补；Release notes 将预览限定于可信网络。该项不是新确认的外部攻击利用路径。
 - 另一个 medium store/backup 审计条目来自 XP 审阅，位于本次桌面差异之外，未由本次 RC12 修复；不得以本版发布关闭该事项。
 - 修复交付状态：本轮五项已纳入 RC12 源码、GitHub prerelease 和 Docker preview；未提升稳定版，未部署生产。
 - OCR 观察区间 / 适用候选计数及口径 / 有效、skipped、unreported 数 / 经抽查成立的 constrained-only：本次候选记录 66 个差异文件、61 个 reviewable 均完成、5 个明确排除；free-form=0 finding，constrained=0 H/M/L，constrained-only=unreported。此单次候选结果不代表长期工具效能。
@@ -69,7 +69,7 @@ releaseTrain：1.27.0
 
 - scriptLinkageState：not-required。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：160924a498d9b8d071fed72f165d23c1b9e886de / 39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：160924a498d9b8d071fed72f165d23c1b9e886de / 39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：本版不修改 kejilion.sh 或应用市场集成。
 - 本版发布决定：脚本不在范围。
@@ -105,7 +105,7 @@ releaseTrain：1.27.0
 - 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：没有新增运行时依赖候选或待处理升级项。
 - 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go 1.27.2、Node 24.21.0、Docker 28.0.4；产品运行时依赖未新增；受管脚本基线保持不变。
 - 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：版本元数据更新至 1.27.0-rc.12；受管脚本 160924a498d9b8d071fed72f165d23c1b9e886de / SHA-256 39837815ce0eb23021fd4d8e8b5898000f5309b709bdc48b2713e18f78f3eaf1；preview index sha256:d2c2eac666f3dff33e5b4ae369c5a805f7de5d07a591b4a244dcba81da5130e2。
-- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：自签名 TLS 监听器资源 cap medium，负责人 KPanel release maintainers，deadline 2026-11-01，backlog #40；完成并复核接收循环并发资源上限后退出可信网络限制。
+- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：自签名 TLS 监听器资源 cap medium，负责人 Dongger Panel release maintainers，deadline 2026-11-01，backlog #40；完成并复核接收循环并发资源上限后退出可信网络限制。
 - 升级后的兼容、安全、构建、性能资源和回滚结论：候选构建、CI 与公开产物门禁通过；无数据库 schema migration；账号备份字段需按 Release notes 提醒回退；Gallery 真实大库资源表现及 TLS 长时间连接预算未实机测量。
 
 ## 隔离真机与浏览器验收
@@ -144,7 +144,7 @@ releaseTrain：1.27.0
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境：environment-policy.json 的 github-hosted 隔离验收；未使用 arena-154。
 - 正式部署环境：未使用，未连接生产主机。
-- prod-108：按项目策略禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- prod-108：按项目策略禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用，未执行生产部署。
 - 部署命令/入口：不适用。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用。
@@ -190,7 +190,7 @@ releaseTrain：1.27.0
     "count": 1,
     "impact": "attempt 1 的 public-acceptance job 在读取 annotated tag object API 时收到 HTTP 403，阻止 preview-completion；公开 Release 与镜像已经成功发布，但生产写操作没有开始。",
     "recoveryEvidence": "GitHub Actions run 39154377686 attempt 1 job 117764571250 的原始日志；publication-39154377686-1 与 snapshot-39154377686-1；认证 gh api 确认 tag object 指向精确候选 SHA；attempt 2 job 117765100216 对同一 snapshot 通过，artifact public-39154377686-2。",
-    "permanentAction": "本次未修改 verifier，不能把现场重试记作永久修复。KPanel release maintainers 在下一次预览发布前复核 GitHub tag-object API 的认证读取路径；若再次出现 403，改用受认证 API 并增加回归。退出条件：后续预览中的 tag-object 复核稳定通过，且本指纹不重复。",
+    "permanentAction": "本次未修改 verifier，不能把现场重试记作永久修复。Dongger Panel release maintainers 在下一次预览发布前复核 GitHub tag-object API 的认证读取路径；若再次出现 403，改用受认证 API 并增加回归。退出条件：后续预览中的 tag-object 复核稳定通过，且本指纹不重复。",
     "historicalReleases": []
   }
 ]

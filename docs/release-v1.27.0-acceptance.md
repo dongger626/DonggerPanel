@@ -1,4 +1,4 @@
-# KPanel v1.27.0 发布验收记录：发布失败，未公开
+# Dongger Panel v1.27.0 发布验收记录：发布失败，未公开
 
 日期：2026-10-22。发布级别：L3。`releaseChannel=stable`，`releaseTrain=1.27.0`。
 

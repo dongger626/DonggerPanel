@@ -114,7 +114,7 @@ func (e *Engine) excluded(virtual string) bool {
 	return false
 }
 
-// protectedPaths adds the resolved Agent state and KPanel roots. NAS hosts link
+// protectedPaths adds the resolved Agent state and Dongger Panel roots. NAS hosts link
 // /home/docker to a storage volume, and restore targets must be free of links,
 // so the resolved path is the only other way to reach them.
 func (e *Engine) protectedPaths() []string {

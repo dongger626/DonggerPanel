@@ -333,7 +333,7 @@ func DefaultFileManagerConfig(stateDirectory string) filemanager.Config {
 	}
 	// Protection is textual while browsing refuses symlinked components, so a
 	// host that links /home/docker to a storage volume would otherwise expose
-	// the KPanel secrets and state through their resolved paths.
+	// the Dongger Panel secrets and state through their resolved paths.
 	resolvedDirectories := make([]string, 0, len(protectedDirectories))
 	for _, directory := range protectedDirectories {
 		resolved, err := filepath.EvalSymlinks(directory)

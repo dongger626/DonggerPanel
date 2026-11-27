@@ -2,7 +2,7 @@
  * Starter scene pack: one full-screen WebGL2 shader, no libraries.
  *
  * It implements the whole host protocol (ready, camera, error; pause, resume,
- * camera) plus the three things every KPanel scene should have: an entrance,
+ * camera) plus the three things every Dongger Panel scene should have: an entrance,
  * a slow idle "breathing" loop, and eased transitions between camera shots.
  * Replace the shader and the shots with your own world — or throw this file
  * away and use any engine you like. See scene-packs/README.md.

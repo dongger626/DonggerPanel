@@ -31,7 +31,7 @@ var (
 	ErrConflict           = errors.New("automatic update state changed")
 	ErrInvalidChannel     = errors.New("automatic update channel is invalid")
 	ErrChannelUnavailable = errors.New("automatic update channel is unavailable")
-	ErrNoUpdate           = errors.New("no installable KPanel update is available")
+	ErrNoUpdate           = errors.New("no installable Dongger Panel update is available")
 )
 
 type Channel string
@@ -281,7 +281,7 @@ func (s *Service) Check(ctx context.Context, currentVersion string) (Status, err
 		}
 		state.CurrentVersion = normalizeCurrentVersion(currentVersion)
 		if state.CurrentVersion == "" {
-			return errors.New("current KPanel version is invalid")
+			return errors.New("current Dongger Panel version is invalid")
 		}
 		checkErr := s.checkLocked(ctx, &state)
 		if saveErr := s.save(&state); saveErr != nil {
@@ -384,11 +384,11 @@ func (s *Service) Run(ctx context.Context, executor Executor) (Status, error) {
 		}
 		installed, err := executor.InstalledVersion(ctx)
 		if err != nil {
-			return fmt.Errorf("read installed KPanel version: %w", err)
+			return fmt.Errorf("read installed Dongger Panel version: %w", err)
 		}
 		state.CurrentVersion = normalizeCurrentVersion(installed)
 		if state.CurrentVersion == "" {
-			return errors.New("installed KPanel version is invalid")
+			return errors.New("installed Dongger Panel version is invalid")
 		}
 		if wasUpdating {
 			s.reconcileInterrupted(&state)
@@ -462,7 +462,7 @@ func (s *Service) Run(ctx context.Context, executor Executor) (Status, error) {
 				return errors.Join(err, saveErr)
 			}
 			result = s.snapshot(state)
-			return fmt.Errorf("KPanel update to %s failed: %w", target, err)
+			return fmt.Errorf("Dongger Panel update to %s failed: %w", target, err)
 		}
 		now = s.utcNow()
 		state.State = "succeeded"
@@ -515,7 +515,7 @@ func (s *Service) checkLocked(ctx context.Context, state *persistedState) error 
 		state.State = "check_failed"
 		state.LastErrorCode = "release_check_failed"
 		state.LastError = boundedError(err)
-		return fmt.Errorf("check %s KPanel release: %w", state.Channel, err)
+		return fmt.Errorf("check %s Dongger Panel release: %w", state.Channel, err)
 	}
 	latest.Version = normalizeChannelVersion(state.Channel, latest.Version)
 	latest.ImageDigest = normalizeImageDigest(latest.ImageDigest)

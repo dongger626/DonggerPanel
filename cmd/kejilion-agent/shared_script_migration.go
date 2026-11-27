@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-var errSharedScriptMigrationBusy = errors.New("KPanel lifecycle is still running")
+var errSharedScriptMigrationBusy = errors.New("Dongger Panel lifecycle is still running")
 
 // Older installed updaters finish using their own lifecycle before installing
 // the target lifecycle. Let that transaction release its lock before migrating;
@@ -124,7 +124,7 @@ mode="$(stat -Lc '%a' /proc/$$/fd/9)"
 flock -n 9 || exit 75
 [ ! -e "$app/update-state/transaction" ] || exit 75
 trusted_file "$life" && trusted_file "$private" || exit 77
-grep -Fx '# KPanel shared script migration: v1' "$life" >/dev/null || exit 77
+grep -Fx '# Dongger Panel shared script migration: v1' "$life" >/dev/null || exit 77
 docker_app_plus() { :; }
 entry() {
   . "$life"

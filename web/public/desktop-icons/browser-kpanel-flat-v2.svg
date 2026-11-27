@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <title>KPanel browser — orbital network globe</title>
+  <title>Dongger Panel browser — orbital network globe</title>
   <defs>
     <linearGradient id="tile" x2=".8" y2="1"><stop stop-color="#dbf6ff"/><stop offset="1" stop-color="#a9d8f4"/></linearGradient>
     <radialGradient id="ocean" cx=".3" cy=".2" r=".85"><stop stop-color="#56d1ec"/><stop offset=".55" stop-color="#168dcb"/><stop offset="1" stop-color="#1855a1"/></radialGradient>

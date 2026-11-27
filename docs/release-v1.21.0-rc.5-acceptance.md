@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.5 发布验收记录
+# Dongger Panel v1.21.0-rc.5 发布验收记录
 
 日期：2026-09-21
 
@@ -47,7 +47,7 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`，沿用上一候选。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`，沿用上一候选。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：本轮没有修改 Dockerfile 中的受管脚本 revision/SHA、脚本协议或调用契约；L3 应用生命周期和公开镜像 E2E 通过。
 - 本版发布决定：脚本不在范围。
@@ -91,7 +91,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.21.0-rc.5](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.5) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 00:09:15 +08:00，GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.5](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.5) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 00:09:15 +08:00，GitHub Latest 仍为 `v1.20.0`。
 - 14 个附件均为 uploaded 且非空；`SHA256SUMS` 自身摘要 `8e747d79...` 与 GitHub API digest 一致，11 个二进制/部署包条目与 API 摘要逐项一致。
 - Docker `1.21.0-rc.5` 与 `preview` OCI index 均为 `sha256:5ee9bb3c24f58b3ad28cfb5594831ec2b4037ee4dae26b73fb71cbc2f9283740`。
 - `linux/amd64` / `linux/arm64` 分别为 `sha256:d5e801e8b0fc49c70da2ecd4afeda876fff6346ce5f9e70b2f119354f6ba6c45` / `sha256:41bad7519ffcb726e7e5f598aaac094a1a60522c06bb85fbc0e194280db8e4cf`；另外两项为 attestations。

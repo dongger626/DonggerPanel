@@ -277,7 +277,7 @@ entry`)
 		t.Fatal("root and k diverged")
 	}
 	shim, _ := os.ReadFile(app + "/bin/kejilion.sh")
-	if !strings.Contains(string(shim), "# KPanel shared script compatibility wrapper: v1") || !strings.Contains(string(shim), "exec /usr/local/bin/k") || len(shim) > 256 {
+	if !strings.Contains(string(shim), "# Dongger Panel shared script compatibility wrapper: v1") || !strings.Contains(string(shim), "exec /usr/local/bin/k") || len(shim) > 256 {
 		t.Fatal("legacy update entry did not become a small forwarding file")
 	}
 	if err := migrateSharedScript(ctx); err != nil {

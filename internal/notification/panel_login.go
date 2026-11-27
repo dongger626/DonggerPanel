@@ -24,7 +24,7 @@ const (
 	PanelLoginPasskeyTOTP  = "passkey_totp"
 )
 
-// PanelLogin is one successful sign-in to this KPanel. It deliberately carries
+// PanelLogin is one successful sign-in to this Dongger Panel. It deliberately carries
 // no password, second-factor code, session token or user agent.
 type PanelLogin struct {
 	Username      string
@@ -165,10 +165,10 @@ func panelLoginMessage(host cluster.Host, login PanelLogin, now time.Time, local
 	method := panelLoginMethodLabel(login.Method, locale)
 	switch locale {
 	case "en-US":
-		return fmt.Sprintf("🔐 [KPanel Cluster Notice]\n\nHost: %s\nPanel login: %s\nUser: %s\nSource: %s\nMethod: %s\n\nSent: %s", hostName, loginTime, username, remoteAddress, method, sentAt)
+		return fmt.Sprintf("🔐 [Dongger Panel Cluster Notice]\n\nHost: %s\nPanel login: %s\nUser: %s\nSource: %s\nMethod: %s\n\nSent: %s", hostName, loginTime, username, remoteAddress, method, sentAt)
 	case "zh-TW":
-		return fmt.Sprintf("🔐 [KPanel 叢集通知]\n\n主機：%s\n面板登入：%s\n使用者：%s\n來源：%s\n方式：%s\n\n傳送時間：%s", hostName, loginTime, username, remoteAddress, method, sentAt)
+		return fmt.Sprintf("🔐 [Dongger Panel 叢集通知]\n\n主機：%s\n面板登入：%s\n使用者：%s\n來源：%s\n方式：%s\n\n傳送時間：%s", hostName, loginTime, username, remoteAddress, method, sentAt)
 	default:
-		return fmt.Sprintf("🔐 [KPanel 集群通知]\n\n主机：%s\n面板登录：%s\n用户：%s\n来源：%s\n方式：%s\n\n发送时间：%s", hostName, loginTime, username, remoteAddress, method, sentAt)
+		return fmt.Sprintf("🔐 [Dongger Panel 集群通知]\n\n主机：%s\n面板登录：%s\n用户：%s\n来源：%s\n方式：%s\n\n发送时间：%s", hostName, loginTime, username, remoteAddress, method, sentAt)
 	}
 }

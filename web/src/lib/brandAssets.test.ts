@@ -6,7 +6,7 @@ const publicDir = fileURLToPath(new URL('../../public/', import.meta.url))
 const manifestPath = fileURLToPath(new URL('../../public/manifest.webmanifest', import.meta.url))
 const indexPath = fileURLToPath(new URL('../../index.html', import.meta.url))
 
-describe('KPanel brand assets', () => {
+describe('Dongger Panel brand assets', () => {
   it('keeps every manifest icon local and lightweight', () => {
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
       icons: Array<{ src: string; type: string; purpose: string }>

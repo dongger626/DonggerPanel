@@ -122,10 +122,10 @@ async function copyReleaseURL(): Promise<void> {
     @close="emit('close')"
   >
     <div class="kpanel-update-dialog" data-testid="kpanel-update-dialog">
-      <section class="kpanel-update-identity" aria-label="KPanel update version">
+      <section class="kpanel-update-identity" aria-label="Dongger Panel update version">
         <img :src="icon" alt="" />
         <div class="kpanel-update-identity__product">
-          <strong>KPanel</strong>
+          <strong>Dongger Panel</strong>
           <small>{{ channelLabel }}</small>
         </div>
         <div class="kpanel-update-version">

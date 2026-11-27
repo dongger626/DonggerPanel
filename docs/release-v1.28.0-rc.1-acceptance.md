@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.1 预览版发布验收记录
+# Dongger Panel v1.28.0-rc.1 预览版发布验收记录
 
 日期：2026-10-22。发布级别：L3。`releaseChannel=preview`，`releaseTrain=1.28.0`。
 
@@ -31,7 +31,7 @@
 - `archive-existing-20261022-H1`：既有普通解压暂存目录竞态 HIGH；`c5a7ce55` 固定暂存、发布和清理目录身份。
 - `archive-source-20261022-H1`：归档源目录身份竞态 HIGH；`4b6f81af` 固定已打开源目录与成员读取。旧实现三项目录替换回归失败，修复后 Linux 文件管理包成功，非作者复核确认。
 - 上述两项已交付源码和本 RC，候选 CI/L3 与公开验收均有成功回执；尚未进入稳定版或生产。静态证实与回归不冒充生产漏洞实演。
-- `archive-output-20261022-M1`：既有压缩输出目标目录竞态 MEDIUM，静态确认、未动态复现，本候选未引入；KPanel filemanager maintainers 于 2026-10-25 前独立修复或重评。既有 copy、thumbnail、auth 待办保留，不由本版关闭。
+- `archive-output-20261022-M1`：既有压缩输出目标目录竞态 MEDIUM，静态确认、未动态复现，本候选未引入；Dongger Panel filemanager maintainers 于 2026-10-25 前独立修复或重评。既有 copy、thumbnail、auth 待办保留，不由本版关闭。
 
 OCR 1.12.11 原自由臂先落盘，原产品 39 文件及后续两夹具文件有覆盖原件；后续扫描/文档 checkpoint 按实际范围留痕。`constrained-only=unreported`，不将独立安全审查的发现归功 OCR，也不从本次预览推断三个稳定周期的收益。原件位于仓库外 `C:/GitHub/_release-evidence/kpanel-v128-rc1`，含 `free-form.json`、`ocr-coverage.json`、`helper-ocr-coverage.json`、`security-dispositions.json`、两份 independent-review JSON。源码修复/RC/稳定/生产分层状态另已保留于私有 backlog。
 
@@ -57,7 +57,7 @@ Go1.27.3 对六平台 actual/original 闭包重新资格化，1009 个第一方 
 
 ## 公开产物与只读恢复验收
 
-首次public job119890044401在2026-10-22T14:41:56Z失败：复用 workflow继承外层 `workflow_dispatch`，入口误进独立dispatch校验，而 publication run/attempt未传，尚未开始公开业务断言；后续无artifact是同一前置失败的结果。原始日志 `public-acceptance-first-failed.log` 保留。自动入口尚未永久修复，KPanel release maintainers须在下一RC发车前且最晚2026-10-25前，以独立治理候选修复和回归；本次合法恢复不代替永久修复。
+首次public job119890044401在2026-10-22T14:41:56Z失败：复用 workflow继承外层 `workflow_dispatch`，入口误进独立dispatch校验，而 publication run/attempt未传，尚未开始公开业务断言；后续无artifact是同一前置失败的结果。原始日志 `public-acceptance-first-failed.log` 保留。自动入口尚未永久修复，Dongger Panel release maintainers须在下一RC发车前且最晚2026-10-25前，以独立治理候选修复和回归；本次合法恢复不代替永久修复。
 
 只读恢复39798207805/1、job119891109800成功，控制器/产品均85；输入明确绑定原publication39790232673/1、上述candidate/version与digest。下载原snapshot，不手工重建历史快照、不重新提升通道。恢复业务检查于2026-10-22T14:45:25.265Z完成，artifact于14:45:30Z生成。
 
@@ -93,7 +93,7 @@ Go1.27.3 对六平台 actual/original 闭包重新资格化，1009 个第一方 
 
 ## 生产、回滚、候选与资源处置
 
-生产动作全部不适用（预览版禁止生产部署）。没有生产目标/部署授权；未连接、备份、部署、升级、回滚或核对生产。`prod-108`禁用全部KPanel操作，本次未连接。发布/验证环境只使用github-hosted，不以隔离容器冒充arena-154或其他生产证据。
+生产动作全部不适用（预览版禁止生产部署）。没有生产目标/部署授权；未连接、备份、部署、升级、回滚或核对生产。`prod-108`禁用全部Dongger Panel操作，本次未连接。发布/验证环境只使用github-hosted，不以隔离容器冒充arena-154或其他生产证据。
 
 源码/tag回滚点v1.27.2，镜像为上述固定稳定digest；本轮未执行回滚，没有新的实体数据备份。需要回滚时按既有生命周期停止/备份后以固定稳定镜像及配套数据备份恢复，再检查Panel/Agent、数据与健康；退出preview不会自动降级。GitHub Latest/Docker latest/标准stable更新入口保持原稳定版，无恢复默认通道动作。
 
@@ -125,18 +125,18 @@ Go1.27.3 对六平台 actual/original 闭包重新资格化，1009 个第一方 
 
 <!-- kpanel-release-process-incidents:start -->
 [
-  {"fingerprint":"qualification/task-preflight/missing-go-path","position":"before-production-write","count":1,"impact":"Windows资格化时Go未在PATH，工具原回执保留","recoveryEvidence":"采用已核实Go1.27.3固定路径后预检/候选门禁通过，takeover-contract.json","permanentAction":"KPanel release maintainers：与v1.27.2重复；2026-10-25前或下一L3生产写前，修复唯一预检入口并补回归，本次固定PATH只是绕行","historicalReleases":["v1.27.2"]},
+  {"fingerprint":"qualification/task-preflight/missing-go-path","position":"before-production-write","count":1,"impact":"Windows资格化时Go未在PATH，工具原回执保留","recoveryEvidence":"采用已核实Go1.27.3固定路径后预检/候选门禁通过，takeover-contract.json","permanentAction":"Dongger Panel release maintainers：与v1.27.2重复；2026-10-25前或下一L3生产写前，修复唯一预检入口并补回归，本次固定PATH只是绕行","historicalReleases":["v1.27.2"]},
   {"fingerprint":"qualification/source-inventory/windows-esm-path","position":"before-production-write","count":1,"impact":"初次来源资格化遇Windows C: ESM路径错误","recoveryEvidence":"source-qualification.log失败、source-qualification-r2.log与result.json成功","permanentAction":"仓库外qualification脚本已修正Windows URL适配，保留修前日志；无产品规则改动","historicalReleases":[]},
-  {"fingerprint":"validation/archive-regression/offline-module-cache","position":"before-production-write","count":1,"impact":"首次Linux回归准备无法离线取得模块，未构成产品测试结果","recoveryEvidence":"archive-regression-before.log；缓存/环境修正后filemanager-linux-final-r2.log及云端L3成功","permanentAction":"KPanel release maintainers于2026-10-25复核模块缓存资格化；退出条件为固定工具/依赖可用，保留离线边界，不将一次网络成功写成永久修复","historicalReleases":[]},
+  {"fingerprint":"validation/archive-regression/offline-module-cache","position":"before-production-write","count":1,"impact":"首次Linux回归准备无法离线取得模块，未构成产品测试结果","recoveryEvidence":"archive-regression-before.log；缓存/环境修正后filemanager-linux-final-r2.log及云端L3成功","permanentAction":"Dongger Panel release maintainers于2026-10-25复核模块缓存资格化；退出条件为固定工具/依赖可用，保留离线边界，不将一次网络成功写成永久修复","historicalReleases":[]},
   {"fingerprint":"preview/archive-fixtures/malformed-json-exit","position":"before-production-write","count":1,"impact":"错误选择JSON可使必需Mock预览退出，独立复核拦截","recoveryEvidence":"takeover-independent-review.json、21例正反验证、helper两轮治理日志","permanentAction":"99f9cefb补齐输入校验；bbecee49同SHA候选/主线CI通过后集成","historicalReleases":[]},
   {"fingerprint":"candidate-ci/check-business-context-freshness/stale-baseline","position":"before-production-write","count":1,"impact":"39786281308在产品测试前因累计基线过期失败","recoveryEvidence":"candidate-ci-first-failed.log；014ab935/e566de56六维复核与独立PASS，39787356042成功","permanentAction":"刷新业务事实而不改门槛；现有freshness入口继续拦截，最终baseline8a、commits3","historicalReleases":[]},
-  {"fingerprint":"evidence/github-run-log/unresponsive-transfer","position":"before-production-write","count":1,"impact":"CLI整run日志取证无输出而停滞，自有读取进程取消，0字节文件不作证据","recoveryEvidence":"candidate-ci.log为0字节；连接器取得4.49MB candidate-ci-job.log并绑定摘要","permanentAction":"本轮改用GitHub连接器原始job日志；KPanel release maintainers于2026-10-25复核CLI通道，恢复条件为有界读取与完整日志摘要可核验","historicalReleases":[]},
-  {"fingerprint":"evidence/github-job-log/bounded-transfer-timeout","position":"before-production-write","count":1,"impact":"直接job日志下载60秒超时，未读取完整日志","recoveryEvidence":"candidate-ci-job.log.error.txt；连接器下载后摘要核对通过","permanentAction":"保留有限超时并改用连接器；KPanel release maintainers于2026-10-25复核上游传输，完整原件校验通过才退出例外","historicalReleases":[]},
-  {"fingerprint":"evidence/github-run-watch/tls-handshake-timeout","position":"before-production-write","count":1,"impact":"CLI发布watch TLS握手超时，不能据此推断workflow终态","recoveryEvidence":"publication-watch.log；以run/jobs、原始job日志和artifact继续核验","permanentAction":"KPanel release maintainers于2026-10-25复核网络/CLI；本轮使用连接器有界查询，不盲目重发版本","historicalReleases":[]},
+  {"fingerprint":"evidence/github-run-log/unresponsive-transfer","position":"before-production-write","count":1,"impact":"CLI整run日志取证无输出而停滞，自有读取进程取消，0字节文件不作证据","recoveryEvidence":"candidate-ci.log为0字节；连接器取得4.49MB candidate-ci-job.log并绑定摘要","permanentAction":"本轮改用GitHub连接器原始job日志；Dongger Panel release maintainers于2026-10-25复核CLI通道，恢复条件为有界读取与完整日志摘要可核验","historicalReleases":[]},
+  {"fingerprint":"evidence/github-job-log/bounded-transfer-timeout","position":"before-production-write","count":1,"impact":"直接job日志下载60秒超时，未读取完整日志","recoveryEvidence":"candidate-ci-job.log.error.txt；连接器下载后摘要核对通过","permanentAction":"保留有限超时并改用连接器；Dongger Panel release maintainers于2026-10-25复核上游传输，完整原件校验通过才退出例外","historicalReleases":[]},
+  {"fingerprint":"evidence/github-run-watch/tls-handshake-timeout","position":"before-production-write","count":1,"impact":"CLI发布watch TLS握手超时，不能据此推断workflow终态","recoveryEvidence":"publication-watch.log；以run/jobs、原始job日志和artifact继续核验","permanentAction":"Dongger Panel release maintainers于2026-10-25复核网络/CLI；本轮使用连接器有界查询，不盲目重发版本","historicalReleases":[]},
   {"fingerprint":"evidence/candidate-ci/base-ref-misinterpretation","position":"before-production-write","count":1,"impact":"临时契约将push CI base误记为bbecee，未据此发布新内容","recoveryEvidence":"candidate-ci-job.log实际env为8a；takeover-contract.json已按原日志更正","permanentAction":"本轮以实际job参数冻结身份，最终文档明确push/main不同base；不将资格回执冒充L3","historicalReleases":[]},
   {"fingerprint":"evidence/publication-artifact/zip-layout-assumption","position":"before-production-write","count":1,"impact":"辅助读取publication ZIP误猜flat路径，KeyError，取证未完成","recoveryEvidence":"工具原回执；按namelist实际嵌套路径读取，publication-artifact-verification.json成功","permanentAction":"仓库外verify-publication-artifacts.py按原布局验证并拒绝不安全条目；不更改公开artifact","historicalReleases":[]},
-  {"fingerprint":"public-acceptance/validate-frozen-source/inherited-dispatch-event","position":"before-production-write","count":1,"impact":"复用工作流误入独立dispatch分支，run/attempt为空，公开业务断言尚未启动","recoveryEvidence":"public-acceptance-first-failed.log；39798207805/1从原39790232673/1 snapshot只读恢复成功，public-recovery-verification.json","permanentAction":"KPanel release maintainers在下一RC前且最晚2026-10-25前独立治理修复workflow_call事件判定并补回归；本次恢复不是永久处置","historicalReleases":[]},
-  {"fingerprint":"acceptance-docs/application-lifecycle/registry-unauthorized","position":"before-production-write","count":1,"impact":"39800825318/1在拉取固定Alpine镜像时收到unauthorized，exit125，OpenRC夹具未执行","recoveryEvidence":"docs-ci-first-failed.log；原产品候选/主线/L3同镜像场景已成功，文档收尾仍须新的精确SHA候选与主线CI成功","permanentAction":"KPanel release maintainers于2026-10-25复核镜像registry认证/可用性，根因尚未证实；仅允许有限重试，完整生命周期夹具成功且同摘要身份不变才退出本次例外，不改镜像pin绕过","historicalReleases":[]}
+  {"fingerprint":"public-acceptance/validate-frozen-source/inherited-dispatch-event","position":"before-production-write","count":1,"impact":"复用工作流误入独立dispatch分支，run/attempt为空，公开业务断言尚未启动","recoveryEvidence":"public-acceptance-first-failed.log；39798207805/1从原39790232673/1 snapshot只读恢复成功，public-recovery-verification.json","permanentAction":"Dongger Panel release maintainers在下一RC前且最晚2026-10-25前独立治理修复workflow_call事件判定并补回归；本次恢复不是永久处置","historicalReleases":[]},
+  {"fingerprint":"acceptance-docs/application-lifecycle/registry-unauthorized","position":"before-production-write","count":1,"impact":"39800825318/1在拉取固定Alpine镜像时收到unauthorized，exit125，OpenRC夹具未执行","recoveryEvidence":"docs-ci-first-failed.log；原产品候选/主线/L3同镜像场景已成功，文档收尾仍须新的精确SHA候选与主线CI成功","permanentAction":"Dongger Panel release maintainers于2026-10-25复核镜像registry认证/可用性，根因尚未证实；仅允许有限重试，完整生命周期夹具成功且同摘要身份不变才退出本次例外，不改镜像pin绕过","historicalReleases":[]}
 ]
 <!-- kpanel-release-process-incidents:end -->
 

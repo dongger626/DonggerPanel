@@ -1,4 +1,4 @@
-# KPanel v1.0.0 发布验收记录
+# Dongger Panel v1.0.0 发布验收记录
 
 日期：2026-09-02
 
@@ -14,7 +14,7 @@
 
 - 业务域：集群累计流量通知与时区处理、Web 统一视觉契约、对话框全屏视口、三级页面多语言治理，以及发布验收和治理流程。
 - 变更面：展示 / 只读 / 部分后台通知配置写入 / 构建与发布治理；不新增数据库迁移，不改变 Panel/Agent 协议版本与端口契约。
-- 受影响用户旅程：在集群页面配置和接收累计流量通知；在窄视口桌面模式访问体检窗口；在页面、弹窗、文件分享、集群分享、应用终端和 Apps/Cluster 页面使用统一视觉和英文资源；通过标准应用市场更新 KPanel。
+- 受影响用户旅程：在集群页面配置和接收累计流量通知；在窄视口桌面模式访问体检窗口；在页面、弹窗、文件分享、集群分享、应用终端和 Apps/Cluster 页面使用统一视觉和英文资源；通过标准应用市场更新 Dongger Panel。
 - 未变化契约：API 协议版本 `v1alpha1`、数据库、端口、Compose、Agent 权限边界、受管 `kejilion.sh` 应用入口和应用市场安装契约均未变化；System Center 仅随统一视觉契约调整既有对话框样式，不纳入新的系统维护 API、权限或宿主机动作。
 - 风险等级及理由：中风险。包含集群通知业务逻辑、桌面窗口布局、较大范围视觉 token/CSS、i18n 和发布治理门禁；无数据库/端口/Agent 协议迁移，最终候选 CI、主线 CI、L3、Release、OCI、生产备份和 postdeploy 均通过。
 
@@ -109,7 +109,7 @@
 - 生产目标和部署授权范围：用户已明确授权本次全面梳理、主线集成、`v1.0.0` 发布和生产上线；生产写入仅执行 `arena-154`。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154`，用途为 `candidate-validation`、`production-safety-check`、`production-deploy`。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight `v1.0.0-45a2e1d-prod-preflight-r2` 通过，健康版本 `0.100.0`、`status=ok`、`initialized=true`，Agent active/running/enabled，Panel running/healthy、RestartCount=0、OOM=false；backup `v1.0.0-45a2e1d-prod-backup-r1` 通过，备份=`/root/kpanel-backups/pre-v1.0.0-20260902T110330Z`，归档与旧镜像恢复验证全部 OK。
 - 部署命令/入口：`ssh arena-154 env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy `v1.0.0-45a2e1d-prod-postdeploy-r1` 通过；health `status=ok`、`version=1.0.0`、`protocolVersion=v1alpha1`；Panel `running/healthy`、`RestartCount=0`、`OOMKilled=false`、容器 RepoDigest=`kjlion/kejilion-panel@sha256:b7f9413b1576f6211df649ebade39040f33ff9044997b53b3361c8a62c2e44b5`；镜像 label revision=`45a2e1d...`、version=`1.0.0`；Agent `LoadState=loaded`、`ActiveState=active`、`SubState=running`、`UnitFileState=enabled`、`NeedDaemonReload=no`；SQLite quick check 通过；`protected.diff=0`；日志无 `panic/fatal/OOM`；公网 health endpoint HTTP 200。

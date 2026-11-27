@@ -1,4 +1,4 @@
-# KPanel v0.94.0 发布验收记录
+# Dongger Panel v0.94.0 发布验收记录
 
 日期：2026-08-23
 
@@ -76,7 +76,7 @@
 ## 生产部署安全核对
 
 - 唯一生产目标和验证/灰度环境均为 `arena-154`，来自 `environment-policy.json`；本次有明确发布和部署授权。
-- `prod-108` 固定禁用全部 KPanel 操作；本次未连接、未读取、未测试、未备份、未部署、未升级、未核对。
+- `prod-108` 固定禁用全部 Dongger Panel 操作；本次未连接、未读取、未测试、未备份、未部署、未升级、未核对。
 - 部署前 v0.93.0 healthy/active、restart=0、OOM=false；旧 OCI=`sha256:3ffdd29f78cba50d10c2efe2140af46dee2104bc6151d91c6f0031b1449bee2b`。
 - 新停写一致性备份：`/root/kpanel-backups/v0.94.0-preupgrade-arena154-20260823T083657Z`；`SHA256SUMS` SHA-256=`7627c11e617d5871db773430035facb1ee13b8055a629c420ce336782be5ceea`。状态包和旧 OCI 均通过 zstd 校验并独立解包比较关键配置。
 - 部署入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；日志 SHA-256=`25e75cf8aa188c50897b2ae1152093e4febed7062ec841a6c570b6dd5366576d`。

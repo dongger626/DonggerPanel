@@ -44,7 +44,7 @@ func windowsTaskHealth() contract.LightNodeServiceHealth {
 	if err != nil {
 		return state
 	}
-	path := filepath.Join(system, "Tasks", "KPanel", "KejilionNodeUpdate")
+	path := filepath.Join(system, "Tasks", "Dongger Panel", "KejilionNodeUpdate")
 	file, err := os.Open(path)
 	if errors.Is(err, os.ErrNotExist) {
 		state.LoadState = "not-found"

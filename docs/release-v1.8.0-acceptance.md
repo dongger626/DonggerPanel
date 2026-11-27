@@ -1,4 +1,4 @@
-# KPanel v1.8.0 发布验收记录
+# Dongger Panel v1.8.0 发布验收记录
 
 ## 发布画像与范围
 
@@ -48,7 +48,7 @@ setup-buildx-action4.3.0 `37fe631027851001ddb9b187196cc803df7f5f0e`；build-push
 
 L3唯一入口run-release-l3.mjs→run-release-gate.sh→make verify-release，run `v1.8.0-435ae91-l3-r1`。不可变Runner `sha256:0ae41a9fb92e5a9dd5fc60cbdbcde8ef6e2d703f34c17a59b3b26f73d72495d3`，Go1.26.7/Node24。bundle SHA `c13c57cf8914d79522df2fbb879c45cdf79299a4d8933c0f94a383d925d00b97`，plan `c10fd424ec9d66f129f45e21e1e4eea8cd5fc1e37958a66c4bb443af8935fb8a`，remoteScript `d8bb2cf214fb2833ea2f410d82f848ac38307308bbf261a5354727b730eb0c5c`。全量Go/race/vet、148文件1280前端测试、2208短语/21目录、typecheck/build已通过，L3最终passed，终态和摘要见下文。
 
-生产目标仅arena-154，environment-policy允许candidate/browser/performance/production用途；108/prod-108全部KPanel操作禁用，本次未连接/核对/备份/部署。production run固定 `v1.8.0-production`，preflight10:39:50Z→10:39:51Z passed，实际1.7.0 healthy。随后新备份、标准update与postdeploy全部完成，精确结果见下文。
+生产目标仅arena-154，environment-policy允许candidate/browser/performance/production用途；108/prod-108全部Dongger Panel操作禁用，本次未连接/核对/备份/部署。production run固定 `v1.8.0-production`，preflight10:39:50Z→10:39:51Z passed，实际1.7.0 healthy。随后新备份、标准update与postdeploy全部完成，精确结果见下文。
 
 已在首次生产写前执行完整收尾argv/env预检：继承VERIFY_BASE_REF=HEAD，CLI仅`--env VERIFY_LEVEL=0 -- scripts/verify-change.sh`；错误`--env VERIFY_BASE_REF`负向断言拒绝，正确参数与环境通过；真实L0在435ae91通过。秒/毫秒时间正例、7位小数负例通过；验收CLI与58tag coverage实跑通过；backup prepare-only通过。此处修复v1.7.0/v1.4.1反复调用错误，不放宽仓库白名单、不冒称新通用治理已采用。
 

@@ -1,4 +1,4 @@
-# KPanel v0.61.4 发布验收记录
+# Dongger Panel v0.61.4 发布验收记录
 
 日期：2026-08-11
 
@@ -9,7 +9,7 @@
 本补丁包含两项生产可靠性修复：
 
 - Agent systemd 单元显式保留 `CAP_SYS_PTRACE`，使受限服务中的固定只读 `ss` 适配器能够读取 socket owner 元数据；端口占用接口继续以 `kejilion.sh` 输出为唯一真源，不新增通用进程跟踪能力。
-- 应用市场更新在拉取、配置、Agent 和服务切换前，使用当前镜像、当前 KPanel 网络和回环临时端口执行一次真实 Docker 端口发布预检。预检失败时清理临时容器并在切换前中止，不自动重启 Docker。
+- 应用市场更新在拉取、配置、Agent 和服务切换前，使用当前镜像、当前 Dongger Panel 网络和回环临时端口执行一次真实 Docker 端口发布预检。预检失败时清理临时容器并在切换前中止，不自动重启 Docker。
 
 正式源码、标签和镜像对应提交：
 
@@ -23,7 +23,7 @@ e1b236bf6804ff48f770f3f4e42c467c71a46c61
 f4a8eeb fix(agent): retain socket owner metadata
 9059bfc fix(updater): preflight Docker port publishing
 4bb6b3b test(updater): preserve lifecycle audit assertions
-e1b236b chore: prepare KPanel 0.61.4
+e1b236b chore: prepare Dongger Panel 0.61.4
 ```
 
 受管脚本真源未变：

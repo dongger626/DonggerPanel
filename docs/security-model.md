@@ -1,6 +1,6 @@
-# KPanel 攻击面与操作边界
+# Dongger Panel 攻击面与操作边界
 
-本文件服从仓库根目录的 [`PROJECT_RULES.md`](../PROJECT_RULES.md)。KPanel 将“防攻击”与
+本文件服从仓库根目录的 [`PROJECT_RULES.md`](../PROJECT_RULES.md)。Dongger Panel 将“防攻击”与
 “限制管理员操作”严格分开：前者必须保留，后者不得作为产品能力门槛。
 性能、稳定性、资源预算和网络入侵防护的强制开发与发布标准见
 [`development-quality-standard.md`](development-quality-standard.md)。
@@ -9,9 +9,9 @@
 
 - 浏览器只连接无特权的 `paneld`；`kejilion-agent` 是唯一宿主机特权入口，仅监听 Unix Socket。
 - 登录、Session、CSRF/Origin、Agent Token 和 Unix Socket 文件权限决定“谁可以操作”。
-- 通过鉴权的管理员可以调用已实现的业务动作。资源来源、KPanel label、Compose 工作目录、
+- 通过鉴权的管理员可以调用已实现的业务动作。资源来源、Dongger Panel label、Compose 工作目录、
   `appno.txt` marker、人工漂移、`privileged`、host network、设备挂载、宿主机目录挂载以及
-  “这是 KPanel 自身”都不能决定“是否允许操作”。
+  “这是 Dongger Panel 自身”都不能决定“是否允许操作”。
 - 危险动作可以显示影响并要求一次普通确认，但后端不得要求固定确认词，也不得把确认字段当成
   capability 开关。
 - 资源状态、依赖和底层工具真实不支持某动作时可以拒绝。例如不存在目标、资源版本已变化、
@@ -59,10 +59,10 @@ TOTP 的注册、密钥保护、恢复和防绕过要求见
 ## 3. 真实状态与双端互通
 
 - Docker Engine、Nginx 配置、init/service 状态、系统文件和 `kejilion.sh` 兼容产物是共享事实。
-- KPanel 每次读取真实产物并计算 `resourceVersion`；Panel 持久化只允许保存账户、Session、
+- Dongger Panel 每次读取真实产物并计算 `resourceVersion`；Panel 持久化只允许保存账户、Session、
   任务索引、审计和必要缓存，高权限任务状态由 Agent 独立保存。
 - 脚本、Compose、CLI 或 Web 创建的容器都可按实时状态执行生命周期、日志、性能、控制台和访问控制。
-- 网站更新尽量在当前配置结构上补丁修改；无法解析的配置仍可按资源 ID 删除，不要求 KPanel marker。
+- 网站更新尽量在当前配置结构上补丁修改；无法解析的配置仍可按资源 ID 删除，不要求 Dongger Panel marker。
 - 网站图标接口不是任意 URL 代理：Agent 只接受已发现站点 ID，网络连接固定到本机
   `127.0.0.1:80/443`，并限制域名、重定向、字节数、并发、超时和位图格式；Panel 再做一次
   媒体校验。缓存属于可删除的派生数据，不进入网站事实和资源版本。
@@ -78,11 +78,11 @@ TOTP 的注册、密钥保护、恢复和防绕过要求见
 
 ## 4. 高风险动作的处理方式
 
-停止、删除、Prune、覆盖恢复、重启、卸载 KPanel 自身和未来的系统重装都属于正式业务能力：
+停止、删除、Prune、覆盖恢复、重启、卸载 Dongger Panel 自身和未来的系统重装都属于正式业务能力：
 
 1. 页面说明实际影响并使用普通确认；
 2. 后端校验身份、请求结构、目标 ID 和资源版本；
-3. 直接调用对应底层动作，不检查“是否由 KPanel 创建”；
+3. 直接调用对应底层动作，不检查“是否由 Dongger Panel 创建”；
 4. 记录审计与后台任务进度；
 5. 可回滚的动作失败时回滚；不可回滚的动作如实报告已完成步骤和剩余状态。
 
@@ -106,6 +106,6 @@ TOTP 的注册、密钥保护、恢复和防绕过要求见
 
 ## 6. 代理部署
 
-`k fd` 可以把域名反代到 KPanel 直连端口。只有立即来源位于配置的可信代理 CIDR，且
+`k fd` 可以把域名反代到 Dongger Panel 直连端口。只有立即来源位于配置的可信代理 CIDR，且
 `X-Forwarded-Proto` 为单一 `https` 时，Panel 才接受代理传入的 HTTPS Host/Origin、设置 Secure
 Cookie 并解析真实客户端地址。公网客户端伪造转发头不会改变信任边界。

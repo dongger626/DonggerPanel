@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.1 发布验收记录
+# Dongger Panel v1.25.0-rc.1 发布验收记录
 
 日期：2026-10-04（北京时间）；发布级别：L3。
 
@@ -100,7 +100,7 @@
 ## 生产部署安全核对与回滚
 
 - 生产目标/授权、备份、部署命令、灰度/正式部署、生产版本/Panel/Agent/重启/日志/公网核对：不适用（预览版禁止生产部署）。生产已执行写操作0；`prod-108`/108全部禁用，本轮未连接、读取、备份、部署、升级或核对。
-- 验证只使用登记 arena-154 隔离命名空间，不触及其生产 KPanel 服务；隔离成功不能充当生产结果。实际生产健康/升级/回滚未验证。
+- 验证只使用登记 arena-154 隔离命名空间，不触及其生产 Dongger Panel 服务；隔离成功不能充当生产结果。实际生产健康/升级/回滚未验证。
 - 稳定 tag/commit/digest 为首段回滚点；无需回退公共默认通道，它仍1.24.0。用户退出 preview 不自动降级；将来回退需按授权保存配对数据/配置/脚本备份并核健康，不改历史 tag。
 
 ## 交付节奏数据
@@ -149,7 +149,7 @@
     "fingerprint": "preflight/script-pin-inspection/wrong-repository",
     "position": "before-production-write",
     "count": 2,
-    "impact": "先在KPanel、再在无关旧sh克隆读取pin对象，不能构成公开存在证据",
+    "impact": "先在Dongger Panel、再在无关旧sh克隆读取pin对象，不能构成公开存在证据",
     "recoveryEvidence": "tool chunks 053172, 51123d; corrected C:/GitHub/kejilion-sh and public 422/200 receipts",
     "permanentAction": "发布责任人：读取操作数先由rg/git目录清单资格化，实际argv/文件schema来自唯一入口；网络及取证使用已核代理/有界命令和完成后摘要校验。2026-10-11前复核；退出条件为对应真实入口成功且失败原件保留。重复指纹须在下一次L3生产写入前修复唯一入口并补回归，本RC禁止生产。",
     "historicalReleases": []

@@ -1,4 +1,4 @@
-# KPanel v0.45.0 发布验收
+# Dongger Panel v0.45.0 发布验收
 
 ## 发布范围
 
@@ -13,7 +13,7 @@ v0.45.0 合并并上线以下 6 项：
 
 ## 版本与制品
 
-- KPanel 发布提交：`e24f20010fd31f6447323eefd2c52d5779cb9a37`。
+- Dongger Panel 发布提交：`e24f20010fd31f6447323eefd2c52d5779cb9a37`。
 - `kejilion/sh` 提交：`dd26cf7eb962f985f94773c15f9b643677b4471c`。
 - 镜像内原始 `kejilion.sh` SHA-256：
   `cf835ec01a10955e91d49a5653870a8cab33288b32ee5cab40405bd69ef77bf4`。
@@ -55,11 +55,11 @@ attestation。
   `sha256:3fe4b02713514e3ccbde01f14c60423a60088621fb27ffbb28e95def0b4c46a8`。
 - 一致性备份：`/root/kpanel-backups/v0.45.0-preupgrade-20260805T073037Z`，目录权限 0700、文件权限 0600。
   SQLite 在线备份 122,880 B，`integrity_check=ok`，SHA-256 为
-  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 KPanel 归档 20,803,556 B，
+  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 Dongger Panel 归档 20,803,556 B，
   SHA-256 为 `b111b67d7191105a684f15fecf808d44cf900b5b9615925a41be06e71a539426`。
 - 使用 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update k app kpanel` 完成标准应用市场更新，实际拉取正式摘要
   `sha256:6676752672d069e0c5659b31d4960b4bf11415e5d4e8d624fce6397dc0020d1c`，输出
-  `KPanel 更新完成 / Update Complete`。
+  `Dongger Panel 更新完成 / Update Complete`。
 - 升级后 Panel 与 Agent 均为 `0.45.0 v1alpha1`；本机、公网 IP 和
   `https://kp.kejilion.pro/api/v1/health` 均返回 `0.45.0/ok`。容器保持 `65532:65532`、只读根文件系统、
   非特权、`cap-drop ALL`、256 MiB 和 128 PID。
@@ -72,7 +72,7 @@ attestation。
 
 - 公共镜像回滚点为 v0.44.4：
   `sha256:3fe4b02713514e3ccbde01f14c60423a60088621fb27ffbb28e95def0b4c46a8`。
-- 现场回滚使用上述升级前归档与 SQLite 在线备份，成对恢复 KPanel 目录、Compose、Agent、受管脚本和旧镜像；
+- 现场回滚使用上述升级前归档与 SQLite 在线备份，成对恢复 Dongger Panel 目录、Compose、Agent、受管脚本和旧镜像；
   不覆盖其他业务容器、网站、证书或数据库。
 - 镜像回滚不会撤销管理员后续主动执行的 SSH 端口变更；如已变更端口，应使用该操作返回的配置备份路径恢复，
   并在切换会话前同时验证 `sshd -t`、真实监听和云安全组。

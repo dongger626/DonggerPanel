@@ -1,4 +1,4 @@
-# KPanel v0.89.0 发布验收记录
+# Dongger Panel v0.89.0 发布验收记录
 
 日期：2026-08-20
 
@@ -99,6 +99,6 @@
 
 ## 遗留风险与后续准入
 
-- Windows Explorer/Chrome/Edge 的原生拖拽会受浏览器版本、企业 DLP 与组织下载策略影响；用户将在正式版本亲测。若仍出现组织策略阻断，应使用本版显式可靠下载后备或调整浏览器策略，不能在 KPanel 中绕过安全策略。
+- Windows Explorer/Chrome/Edge 的原生拖拽会受浏览器版本、企业 DLP 与组织下载策略影响；用户将在正式版本亲测。若仍出现组织策略阻断，应使用本版显式可靠下载后备或调整浏览器策略，不能在 Dongger Panel 中绕过安全策略。
 - 没有使用真实 DeepSeek/OpenAI/Anthropic/Gemini 凭据执行在线多工具 E2E；确定性 Provider 合同、Go 全量/竞态、L3 和生产健康均通过。
 - 后续门禁继续保留：无鉴权/过期票据拒绝、归档路径与大小预算、多工具合批、reasoning 不外泄、Provider 原生序列回归。

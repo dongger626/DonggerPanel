@@ -1,4 +1,4 @@
-# KPanel v1.18.0 发布验收记录
+# Dongger Panel v1.18.0 发布验收记录
 
 日期：2026-09-14
 
@@ -16,10 +16,10 @@
 
 ## 发布画像
 
-- 业务域：KPanel 稳定/预览自更新通道、应用市场更新目标、设置页信息顺序。
+- 业务域：Dongger Panel 稳定/预览自更新通道、应用市场更新目标、设置页信息顺序。
 - 变更面：展示、只读检查、root 级更新事务、应用市场契约和发布部署。
 - 受影响用户旅程：管理员选择 stable/preview、手动安装已检查版本、设置自动安装；管理员按“外观与配色 → 备份与恢复 → 自动更新”阅读设置页；systemd 主机按固定 digest 更新。
-- 未变化契约：无数据库 schema、端口、Compose 或节点身份迁移；完整 KPanel 节点继续使用既有 Noise/HTTP POST 文件链路，轻量节点继续使用 `1.15.0` 的 `light-control` / `light-data` WebSocket 实现；OpenRC 不启用自动更新，轻量节点只消费稳定版。
+- 未变化契约：无数据库 schema、端口、Compose 或节点身份迁移；完整 Dongger Panel 节点继续使用既有 Noise/HTTP POST 文件链路，轻量节点继续使用 `1.15.0` 的 `light-control` / `light-data` WebSocket 实现；OpenRC 不启用自动更新，轻量节点只消费稳定版。
 - 风险等级及理由：高风险。涉及 root 级更新、跨仓应用配置和公共通道提升；最终 SHA 的 L3、候选/main/tag 门禁、公开 OCI E2E、停写备份和生产 postdeploy 均通过。
 
 ## 发布范围与未纳入内容
@@ -32,9 +32,9 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：`kpanel-v1.18.0-release-channels`。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：不适用；本版未改 `kejilion/sh`。
-- 状态判定依据与兼容性证据：Docker label、发布包和 L3 受管脚本契约均固定上述 revision/SHA；`kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` SHA-256 为 `81e61b2f9b2a47234505068e8856bc34c345ae9ea603192adffc16a21137c7ae`，与 KPanel 标签内文件一致。
+- 状态判定依据与兼容性证据：Docker label、发布包和 L3 受管脚本契约均固定上述 revision/SHA；`kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` SHA-256 为 `81e61b2f9b2a47234505068e8856bc34c345ae9ea603192adffc16a21137c7ae`，与 Dongger Panel 标签内文件一致。
 - 本版发布决定：脚本不在范围；正式 Release 和镜像验证后同步应用市场配置。
 - 阻断或移除的依赖范围（无则写“不适用”）：不适用。
 
@@ -82,7 +82,7 @@
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：[KPanel 1.18.0](https://github.com/kejilion/KPanel/releases/tag/v1.18.0) 于 2026-09-14T11:27:26Z 公开，为非 draft、非 prerelease、GitHub Latest；annotated tag 对象 `dc6afdf49dabed1004e91cb7e42595ffd9a5d495` peeled 到最终产品 SHA。
+- GitHub Release 的 draft / prerelease / Latest 状态：[Dongger Panel 1.18.0](https://github.com/kejilion/KPanel/releases/tag/v1.18.0) 于 2026-09-14T11:27:26Z 公开，为非 draft、非 prerelease、GitHub Latest；annotated tag 对象 `dc6afdf49dabed1004e91cb7e42595ffd9a5d495` peeled 到最终产品 SHA。
 - Docker 版本与通道 OCI index：`1.18.0` 与稳定通道 `latest` 同为 `sha256:cad0f7f035e3f6d63908a82b52a7b4a1fbe52fe0c10a7a55a704b759ad91ceeb`；预览通道 `preview` 发布前后均不存在（Docker Hub 404）。
 - `linux/amd64`、`linux/arm64` digest：amd64 `sha256:9026261e44f4689a6c078690a8608158404d2fd57a5b3d932f197e33082260f9`；arm64 `sha256:59c8420c1ca1ac7297ddd338030018ac23585a4037376ce16419ab5beb020e71`。
 - 附件及 `SHA256SUMS`：8 个附件齐全，包括双架构 Agent、双架构 Node、部署包、LICENSE、SHA256SUMS 和 THIRD_PARTY_NOTICES.md。
@@ -104,11 +104,11 @@
 - 生产目标和部署授权范围：用户明确要求本次走稳定版上线流程，授权正式发布与生产部署。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154`。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154` / `154.36.153.9`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight 2026-09-14T11:30:00Z 至 11:30:01Z 通过，版本 1.17.0、Panel healthy、Agent active。backup 11:30:20Z 至 11:30:29Z 通过；恢复包 `/root/kpanel-backups/pre-v1.18.0-20260914T113020Z`，数据归档 `e5ebf5d0139fec0785fc5181eea4ba261ead4749e46a71d9a0b2bb36cc19f3ef`，旧镜像归档 `eb40ef5d2375cc45bfcc11271117f1660dcb60a6ab4117436bc5c7bb32da2575`。
 - 部署命令/入口：`env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，2026-09-14T11:30:45Z 至 11:31:15Z，exit 0。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy 11:31:32Z 至 11:31:34Z 一次通过；公网 health HTTP 200、status ok、initialized true、version 1.18.0；Panel running/healthy、restart 0、OOM false；Agent active/running/enabled、NRestarts 0；timer active/waiting/enabled；近 10 分钟无 panic/fatal/OOM；保护配置 diff 为 0，64 个数据文件保持，SQLite 正常。
-- 生产已执行写操作：apps 工作树快进、停写备份、标准 KPanel 更新和服务重建；未直接编辑正式数据库。
+- 生产已执行写操作：apps 工作树快进、停写备份、标准 Dongger Panel 更新和服务重建；未直接编辑正式数据库。
 - 仅在隔离真机执行、未在生产执行的场景：失败注入、更新中断、安装/卸载、OpenRC 生命周期和公开镜像临时容器 E2E。
 
 ## 回滚
@@ -184,7 +184,7 @@
 
 ## 遗留风险与后续准入
 
-- 本地资源回收（按 `docs/project-management.md` 13.1）：已删除 clean 且可由远端 `main` 恢复的 KPanel/apps 本轮候选工作树，卷可用空间实际净增加 `251826176` 字节；隔离 E2E 临时容器/网络、补充脚本比较停止容器和临时文件均已清理。保留 `C:/GitHub/_release-artifacts/v1.18.0-*`、`arena-154:/root/kpanel-release-evidence/v1.18.0-*` 与唯一生产恢复包；未删除分支、其他任务路径或唯一原件。
+- 本地资源回收（按 `docs/project-management.md` 13.1）：已删除 clean 且可由远端 `main` 恢复的 Dongger Panel/apps 本轮候选工作树，卷可用空间实际净增加 `251826176` 字节；隔离 E2E 临时容器/网络、补充脚本比较停止容器和临时文件均已清理。保留 `C:/GitHub/_release-artifacts/v1.18.0-*`、`arena-154:/root/kpanel-release-evidence/v1.18.0-*` 与唯一生产恢复包；未删除分支、其他任务路径或唯一原件。
 - 未验证风险：200% 浏览器缩放、完整键盘/焦点矩阵、真实 RC 长期运行、原生 arm64 运行时、真实断电、跨地域弱网、长期 soak、生产故障注入和实际数据恢复。
 - 已实现待实机准入：未来 preview 候选需在非生产隔离环境验证 RC 获取、切换不安装、自动安装和退出预览不降级；预览版禁止生产部署。
 - 不阻断本版的理由：稳定路径的最终 SHA 已完成 L3、三层 GitHub 门禁、公开 OCI E2E、生产备份与 postdeploy，所有生产健康和数据保护断言通过。

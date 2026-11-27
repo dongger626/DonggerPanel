@@ -1,4 +1,4 @@
-# KPanel Passkey 登录
+# Dongger Panel Passkey 登录
 
 ## 范围与认证策略
 

@@ -29,7 +29,7 @@ const (
 	panelFileTransferMaxDuration   = 2 * time.Hour
 	panelFileArchiveQueryMaxBytes  = 256 << 10
 	fileTransferAgentResultTrailer = "X-KPanel-Transfer-Result"
-	desktopFileTransferDirectory   = "/home/KPanel Desktop"
+	desktopFileTransferDirectory   = "/home/Dongger Panel Desktop"
 )
 
 type agentStreamAPI interface {
@@ -564,7 +564,7 @@ func (s *Server) ensureFileTransferDirectory(ctx context.Context, directory, req
 	if directory != desktopFileTransferDirectory || err != nil || response.StatusCode != http.StatusNotFound {
 		return errors.New("target directory unavailable")
 	}
-	body, _ := json.Marshal(contract.FileActionRequest{Action: "mkdir", Target: "/home", Name: "KPanel Desktop"})
+	body, _ := json.Marshal(contract.FileActionRequest{Action: "mkdir", Target: "/home", Name: "Dongger Panel Desktop"})
 	created, err := s.agent.Do(ctx, http.MethodPost, "/v1/files/actions", "", requestID, body)
 	if err != nil || (created.StatusCode < 200 || created.StatusCode >= 300) {
 		response, checkErr := s.agent.Get(ctx, "/v1/files/entry", query.Encode(), requestID)
@@ -670,7 +670,7 @@ func (s *Server) ensureFileHostTransferDirectory(
 	if directory != desktopFileTransferDirectory {
 		return errors.New("target directory unavailable")
 	}
-	body, _ := json.Marshal(contract.FileActionRequest{Action: "mkdir", Target: "/home", Name: "KPanel Desktop"})
+	body, _ := json.Marshal(contract.FileActionRequest{Action: "mkdir", Target: "/home", Name: "Dongger Panel Desktop"})
 	created, err := s.openFileHostRequest(ctx, hostID, kind, cluster.LightFileRequest{
 		Method: http.MethodPost, Path: "/v1/files/actions", Headers: map[string]string{
 			"Content-Type": "application/json",

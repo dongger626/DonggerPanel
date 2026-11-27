@@ -1,4 +1,4 @@
-# KPanel v0.25.0 验收记录
+# Dongger Panel v0.25.0 验收记录
 
 ## 交付范围
 
@@ -7,15 +7,15 @@
 - Bitwarden 和 Halo 补充为可选的一键建站模板，继续复用脚本现有业务实现。
 - 建站任务使用独立后台 PTY；关闭弹窗、刷新页面或离开网站页不会中断任务，可从任务横幅
   重新进入终端。
-- KPanel 固定使用 `kejilion/sh@f031d1206224de3743845d2fc81c4801ecda32f4`，
+- Dongger Panel 固定使用 `kejilion/sh@f031d1206224de3743845d2fc81c4801ecda32f4`，
   GitHub Raw 字节 SHA-256 为
   `278526cee183cdc826c25e113a399fcac72484f8f2af2fd17a8f75a1cd6a40c1`。
-- KPanel 源代码及发行物采用 `AGPL-3.0-only`；部署包和镜像继续携带第三方许可与品牌说明。
+- Dongger Panel 源代码及发行物采用 `AGPL-3.0-only`；部署包和镜像继续携带第三方许可与品牌说明。
 
 ## 发布提交
 
-- KPanel 功能提交：`0b3dfc605e5657945d34cc11209ec385b9f7384a`
-- KPanel 发布提交：`e84fa8cc6e6b5c465ee5af8b9ef9a1bdb70077f3`
+- Dongger Panel 功能提交：`0b3dfc605e5657945d34cc11209ec385b9f7384a`
+- Dongger Panel 发布提交：`e84fa8cc6e6b5c465ee5af8b9ef9a1bdb70077f3`
 - 标签：`v0.25.0`
 - `kejilion.sh`：`f031d1206224de3743845d2fc81c4801ecda32f4`
 
@@ -58,9 +58,9 @@
 - 代码回滚点：标签 `v0.24.4`。
 - 镜像回滚点：
   `docker.io/kjlion/kejilion-panel@sha256:4de5e75c3fc43331de7a4f4aa8907c960a271cf38a62282bd5569ad9e5aaf395`。
-- 本版本没有数据库格式迁移；回滚 KPanel/Agent 不会删除网站、数据库、应用容器、域名配置
+- 本版本没有数据库格式迁移；回滚 Dongger Panel/Agent 不会删除网站、数据库、应用容器、域名配置
   或环境备份。
-- 发布不会自动替换用户生产主机。用户从 `kejilion.sh` 应用市场更新 KPanel 时继续执行
+- 发布不会自动替换用户生产主机。用户从 `kejilion.sh` 应用市场更新 Dongger Panel 时继续执行
   原位升级，保留当前访问端口，并在失败时恢复原镜像、Agent、脚本和服务配置。
 - Windows 本地环境未模拟 systemd 与 Linux 专属安装安全测试；这些路径已由两轮主机
   Linux CI 和 Release 工作流覆盖。

@@ -2,7 +2,7 @@
 
 - 提案状态：试行（本地资格化完成；集成候选CI与发布验收为独立门禁）
 - 提案日期：2026-10-25
-- 负责人：KPanel security and release maintainers
+- 负责人：Dongger Panel security and release maintainers
 - 适用业务域：供应链清单、源码身份与保守扫描门禁
 - 基线提交 / 标签：17f68310f1c338660d233dccdaf56534de388443
 - 关联缺陷、验收记录、CI 或事件：原观察周期于 2026-10-25T00:00:00Z 到期；实际 npm 官方审计发现 undici 8.11.2 高危通告。

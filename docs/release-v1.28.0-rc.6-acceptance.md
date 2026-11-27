@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.6 发布验收记录
+# Dongger Panel v1.28.0-rc.6 发布验收记录
 
 日期：2026-10-25；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.28.0`。
 
@@ -45,7 +45,7 @@
 
 - 候选相对受信任控制器的安全敏感组 recorded=5；沿用精确源码的原候选盲审并核对身份。所有权测试和工具、原生 artifact、事实登记分别有独立聚焦复核，结果 PASS；聚焦修订不是新盲审。
 - 复核提供商 Codex，其他提供商未提供入口，按 provider-unavailable 留痕；实际模型未暴露时记录 null，不推测。CF 未运行，不宣称全产品安全或全范围审计完成。
-- 既有低级 MCP 元数据范围线索继续留仓外，由 KPanel MCP file maintainers 在2026-11-04复核，触发为授权根变更或稳定版质量复核；未修复细节不公开。
+- 既有低级 MCP 元数据范围线索继续留仓外，由 Dongger Panel MCP file maintainers 在2026-11-04复核，触发为授权根变更或稳定版质量复核；未修复细节不公开。
 - OCR1.12.11 覆盖57/57，按 Git blob 精确复用已审来源和集成接缝；自由臂先留痕，`blind=false`、`constrained-only=unreported`。工具另按单文件修订覆盖，不把独立发现或已有源审查计算为 OCR 新收益。
 - `scriptLinkageState=not-required`（无需发布脚本，不适用）；不新增 `kejilion.sh` 协议或重复脚本发布。内置已发布脚本仍为 `614d58cee228007012a2ec602cbdc8dbaeb7950d` / `ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9`。
 
@@ -146,7 +146,7 @@
     "count": 1,
     "impact": "Dedicated writer and exact clean baseline were checked, but release JSON ready was not run until after the first approved VM source merge; no external source write had occurred.",
     "recoveryEvidence": "Original source merge and writer checkpoints retained; ready qualified before further integration, with all source paths and final required hosted CI/L3 checks unchanged.",
-    "permanentAction": "Release executor uses the complete contract checkpoint for remaining phases; release tooling maintainer reviews sequence before next preview. This local ordering correction is not a permanent policy/code fix. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "Release executor uses the complete contract checkpoint for remaining phases; release tooling maintainer reviews sequence before next preview. This local ordering correction is not a permanent policy/code fix. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -155,7 +155,7 @@
     "count": 1,
     "impact": "Full local standalone web check had36 failed suites and2 failed assertions after83 targeted tests passed. Focused diagnostic establishes Vite Denied ID for raw SVG assets outside the worktree via a reused node_modules junction; country-flag-dependent tests also fail.",
     "recoveryEvidence": "Original verify-change.log and full failure-diagnostic.log retained. Integrated owned release worktree now has its own canonical npm-ci dependencies; full integrated web and hosted final L2/L3 required.",
-    "permanentAction": "Use actual in-worktree dependencies when raw asset loading enforces Vite filesystem roots; preserve the original junction and failed evidence. No filesystem allowlist or product assertion weakening. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "Use actual in-worktree dependencies when raw asset loading enforces Vite filesystem roots; preserve the original junction and failed evidence. No filesystem allowlist or product assertion weakening. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -164,7 +164,7 @@
     "count": 1,
     "impact": "Automatic approval rejected Remove-Item for the task-created dependency junction; removal did not run.",
     "recoveryEvidence": "Junction retained; shifted validation to the already-owned integrated release worktree with its own dependency installation, avoiding directory removal.",
-    "permanentAction": "No bypass of rejected deletion. Existing release validation covers all approved changes; user code/evidence untouched. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "No bypass of rejected deletion. Existing release validation covers all approved changes; user code/evidence untouched. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -173,7 +173,7 @@
     "count": 1,
     "impact": "First helper handoff rejected six-digit fractional timestamp; validator accepts at most milliseconds.",
     "recoveryEvidence": "Original handoff.json and contract-before-time-fix.json retained; format-only precision correction preserves original times, handoff-r2.json passed.",
-    "permanentAction": "Release evidence executor uses millisecond timestamps per canonical parser, without extending expiry or altering successful raw logs. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "Release evidence executor uses millisecond timestamps per canonical parser, without extending expiry or altering successful raw logs. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -182,7 +182,7 @@
     "count": 1,
     "impact": "Helper candidate push was invoked after a failed handoff because dependent tool execution was not gated on exit status. Candidate branch only; main/tag/release unchanged.",
     "recoveryEvidence": "Handoff-r2.json now passes for the exact pushed1eb9fd4f; candidate CI40189018202 runs before any main update. Initial failure and branch publication retained.",
-    "permanentAction": "All subsequent external source writes use explicit verified-success guards and exact expected-SHA leases. This sequence correction is not claimed as a permanent repository mechanism fix. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "All subsequent external source writes use explicit verified-success guards and exact expected-SHA leases. This sequence correction is not claimed as a permanent repository mechanism fix. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -191,7 +191,7 @@
     "count": 1,
     "impact": "Trusted native helper first full governance preflight stopped at the existing50-commit business-context threshold.",
     "recoveryEvidence": "vm-fixture/governance-native-final.log; refreshed actual business facts, threshold unchanged.",
-    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -200,7 +200,7 @@
     "count": 1,
     "impact": "First refreshed facts header used an RC semantic version although the business baseline parser requires stable tag semantics; parser rejected it.",
     "recoveryEvidence": "Original commit8ace773fa4547e8c2424d8fa89606b473b4a5498 retained as Git object; corrected to actual stablev1.27.2 without changing threshold or published history.",
-    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -218,7 +218,7 @@
     "count": 1,
     "impact": "Full local361-test governance had360 pass/1 fail: an existing background browser runner fixture did not reach terminal state within10s.",
     "recoveryEvidence": "vm-fixture/governance-ownership.log preserved. Affected5 tests passed isolated; one bounded canonical full re-execution passed361/361 in governance-ownership-r2.log. Root cause not proven; no test timeout or assertions changed.",
-    "permanentAction": "OPEN: KPanel release-tool maintainers review by2026-10-28. Capture worker state and host scheduling if the10s fixture recurs; identify prerequisite before another long replay. Current isolated5 and one full361 re-execution pass, as do exact hosted CI; no timeout/assertion change and no permanent root-cause closure claimed.",
+    "permanentAction": "OPEN: Dongger Panel release-tool maintainers review by2026-10-28. Capture worker state and host scheduling if the10s fixture recurs; identify prerequisite before another long replay. Current isolated5 and one full361 re-execution pass, as do exact hosted CI; no timeout/assertion change and no permanent root-cause closure claimed.",
     "historicalReleases": []
   },
   {
@@ -227,7 +227,7 @@
     "count": 1,
     "impact": "Attempt to reduce test concurrency using NODE_OPTIONS was rejected by Node before any gate executed.",
     "recoveryEvidence": "vm-fixture/governance-ownership-serial.log retained; option removed; canonical unmodified gate executed successfully. No reduced concurrency claim.",
-    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -236,7 +236,7 @@
     "count": 1,
     "impact": "New tool ownership ready qualification correctly failed missing Go in that process PATH.",
     "recoveryEvidence": "vm-fixture/ready-ownership.json retained; explicit Go1.27.3 PATH restored; ready/handoff both must pass before push.",
-    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "No policy or assertion weakening; retain original failure and qualify the exact next inputs. Remaining hosted/native/public gates still required. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -254,7 +254,7 @@
     "count": 1,
     "impact": "Native run40197761168 initial HTTP baseline returned curl56. Docker server log was empty, container state was not captured; no VM install or native success. Root cause unconfirmed.",
     "recoveryEvidence": "native-40197761168-artifact with original hashes; retain error. Add bounded initial readiness and Docker inspection before disposal; post-install host/peer assertions and isolation limits unchanged.",
-    "permanentAction": "Committed3ea3567e/141b2120 adds finite startup readiness and Docker state capture; final source collector and independent review require healthy non-OOM64MiB/.25CPU/32PID/readOnly state. Reset cause remains unconfirmed. KPanel release-tool maintainers review by2026-10-28 if it recurs; exit requires lifecycle evidence identifying cause; later probes never retry.",
+    "permanentAction": "Committed3ea3567e/141b2120 adds finite startup readiness and Docker state capture; final source collector and independent review require healthy non-OOM64MiB/.25CPU/32PID/readOnly state. Reset cause remains unconfirmed. Dongger Panel release-tool maintainers review by2026-10-28 if it recurs; exit requires lifecycle evidence identifying cause; later probes never retry.",
     "historicalReleases": []
   },
   {
@@ -263,7 +263,7 @@
     "count": 1,
     "impact": "Automatic review rejected an optional command that would correct a synthetic browser error code and add a specific source_changed browser assertion. The command did not execute; existing reports and fixture file remain unchanged.",
     "recoveryEvidence": "Used read-only source inspection instead: actual backend emits source_changed and existing FilesView.test.ts:2453 asserts the specific message. The exact source is covered by the3178-test combined suite and successful hosted CI. Existing26 browser checks prove their stated generic/unknown-code behavior only; no new specific-mapping browser pass is claimed.",
-    "permanentAction": "Do not bypass the rejected operation or replay it through another tool. Retain existing browser evidence scope and source regression proof; required native and publication gates unchanged. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "Do not bypass the rejected operation or replay it through another tool. Retain existing browser evidence scope and source regression proof; required native and publication gates unchanged. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -281,7 +281,7 @@
     "count": 1,
     "impact": "Automatic review rejected the bundled final-preview start/tests command before execution, returning only blocked by policy.",
     "recoveryEvidence": "Established the mock preview separately and inspected exact source/PIDs and actual4176 URL. The previously assumed4174 belongs outside current release and was left untouched. Separate controlled tests use the actual manifest target, not a replay of the rejected bundle.",
-    "permanentAction": "Use qualified exact inputs and preserve original failures. Local driver/collector correction does not change product policy or release gate; final source CI/L3/public qualification remain required. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
+    "permanentAction": "Use qualified exact inputs and preserve original failures. Local driver/collector correction does not change product policy or release gate; final source CI/L3/public qualification remain required. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is a correctly ordered, exact-input preflight or the documented safe alternative on its next applicable use. This is not a claimed permanent policy change.",
     "historicalReleases": []
   },
   {
@@ -299,7 +299,7 @@
     "count": 1,
     "impact": "Full workflow-log ZIP download for successful publication40201778872 terminated with HTTP2 stream CANCEL; retained ZIP is incomplete and not accepted as full evidence. Product publication and all public checks succeeded.",
     "recoveryEvidence": "publication-full-log-transport-failure.json preserves partial bytes/hash. Existing GitHub connector fetched decoded complete release job121200572703 and public job121203714274 logs (5067991 UTF8 bytes), independently hash-recorded. L3 raw27 and public artifacts already fully verified.",
-    "permanentAction": "Known transport also occurred inRC5. Use existing decoded-job-log connector for these required logs; do not rerun publication or overwrite assets. KPanel release-tool maintainers review by2026-10-27; exit when required source/raw/public evidence is retained and transport behavior captured. No product/assertion change.",
+    "permanentAction": "Known transport also occurred inRC5. Use existing decoded-job-log connector for these required logs; do not rerun publication or overwrite assets. Dongger Panel release-tool maintainers review by2026-10-27; exit when required source/raw/public evidence is retained and transport behavior captured. No product/assertion change.",
     "historicalReleases": []
   }
 ]

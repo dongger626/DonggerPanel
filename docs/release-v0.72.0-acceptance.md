@@ -1,10 +1,10 @@
-# KPanel v0.72.0 上线验收记录
+# Dongger Panel v0.72.0 上线验收记录
 
 日期：2026-08-15（Asia/Shanghai）
 
 ## 发布结论
 
-KPanel v0.72.0 已按 `release-kpanel` v2.1 完成候选冻结、完整 L3、154 隔离 Chrome/Firefox 文件桌面旅程、候选 CI、主线 CI、Tag、GitHub Release、双架构公开镜像、应用市场契约、公开镜像 E2E、停写一致性备份以及 154/108 正式升级。
+Dongger Panel v0.72.0 已按 `release-kpanel` v2.1 完成候选冻结、完整 L3、154 隔离 Chrome/Firefox 文件桌面旅程、候选 CI、主线 CI、Tag、GitHub Release、双架构公开镜像、应用市场契约、公开镜像 E2E、停写一致性备份以及 154/108 正式升级。
 
 108 未参与候选、功能、浏览器、灰度或持续观察测试；只在不可变产物和 154 门禁全部通过后执行标准升级与最小部署安全核对。
 
@@ -55,7 +55,7 @@ KPanel v0.72.0 已按 `release-kpanel` v2.1 完成候选冻结、完整 L3、154
 - 两个架构的 OCI version 为 `0.72.0`，revision 为 `9d3217459e236bdc08dfa4cd0312cbe76f4b5a2f`。
 - 154 从 Docker Hub 按不可变摘要重新拉取，完成受限容器冷启动、初始化与 Agent 链路 E2E，输出 `public_oci_e2e=pass`。
 - `kejilion/apps` commit：`c5cc79ce4acd7f7b373573952616dbabd2060b7d`
-- 本轮应用配置无源码差异；apps 与 KPanel 的 Git blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，归一化内容一致，因此未产生空 apps 提交。
+- 本轮应用配置无源码差异；apps 与 Dongger Panel 的 Git blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，归一化内容一致，因此未产生空 apps 提交。
 - 应用配置 SHA-256 为 `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`；生命周期由最终 L3 与 Tag Release workflow 再次验证通过。
 
 ## 正式部署

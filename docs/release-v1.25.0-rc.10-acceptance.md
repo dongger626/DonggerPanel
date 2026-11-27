@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.10 发布验收记录
+# Dongger Panel v1.25.0-rc.10 发布验收记录
 
 日期：2026-10-07
 
@@ -35,7 +35,7 @@
 
 - 用户可见更新：手机桌面横向分页、分组文件夹、打开文件夹时的手势边界，以及应用脚本任务窗标题栏最小化和底部操作栏移除。
 - 精确提交清单：基线 `40a5b9299b4382eaa130c0b1044e1d67999b0076`；产品提交 `633738b73eabdeab9340c328691ffdf90515f8f3`、`107c0df61ba238ccadf26f2622e9d28bf3ec0201`、`3c82a04ece1208d958e91a736b8bc34a7451f230`、`9800f5dae9753e7f7c559ea03168d251f8905eeb`；版本准备 `c3311e1e4f831338a9f457039eab19a76af51bac`；line-review 记录 `da4c597accb0f60c09a8b7463b8192fd46d30bce`。基线至候选 20 个文件，`+972/-80`。
-- 明确未纳入的分支、文件或后续事项：不新增 Windows 节点能力；不修改 `kejilion/sh`、`kejilion/apps`、稳定更新源、Docker `latest`、GitHub Latest 或生产。100%/125%/200% 原生缩放、真实 KPanel/Agent/主机和长稳 soak 未执行，按用户计划留待后续真机测试。
+- 明确未纳入的分支、文件或后续事项：不新增 Windows 节点能力；不修改 `kejilion/sh`、`kejilion/apps`、稳定更新源、Docker `latest`、GitHub Latest 或生产。100%/125%/200% 原生缩放、真实 Dongger Panel/Agent/主机和长稳 soak 未执行，按用户计划留待后续真机测试。
 
 ## 外部审计与修复交付
 
@@ -51,7 +51,7 @@
 
 - `scriptLinkageState`：`not-required`
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh` commit `c3a8bd895f8878d9e4ced7592c91a20c974472a5`；Dockerfile 固定脚本 SHA-256 `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh` commit `c3a8bd895f8878d9e4ced7592c91a20c974472a5`；Dockerfile 固定脚本 SHA-256 `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：本版无 shell 脚本、应用市场或跨仓库变更；Docker 构建仍校验原固定脚本摘要。
 - 本版发布决定：脚本不在范围。
@@ -226,7 +226,7 @@ L3 入口使用固定 Runner 完整通过；GitHub 公开 Release 于 `2026-10-0
 ## 遗留风险与后续准入
 
 - 本地资源回收（按 `docs/project-management.md` 13.1）：10 个 Windows 相关 worktree、3 条活动 Windows 分支、RC10 集成工作树与本地来源活动分支已移除；RC10 发布来源的 `node_modules` / 构建缓存随成功删除的工作树回收。两个来源目录当前为空但系统报告占用，保留到句柄释放；C 盘前后空闲量未记录，因此净释放字节未验证。精确提交恢复位置见顶部本地 archive ref 与公开 RC10 tag。
-- 未验证风险：真实机器/实际 KPanel 与 Agent、100%/125%/200% 缩放、长稳 soak、公开镜像本机运行、CF scoped/full audit 和 1 项未见调用路径的依赖 advisory 处置。
+- 未验证风险：真实机器/实际 Dongger Panel 与 Agent、100%/125%/200% 缩放、长稳 soak、公开镜像本机运行、CF scoped/full audit 和 1 项未见调用路径的依赖 advisory 处置。
 - 已实现待实机准入：手机桌面横向分页/文件夹、脚本任务窗口标题栏最小化；用户计划后续在真机验证。
 - 不阻断本版的理由：RC 预览由用户明确要求；候选与 main CI、L3、Release workflow 均通过，公开 prerelease 和多架构 `preview` digest 已复核；没有生产或 stable/latest 写入。
 - 后续应进入的自动门禁或专项工作流：稳定版准入前完成 CF scoped/full audit 和 finding 独立验证；复核 govulncheck advisory；补真实主机/缩放/性能验收；系统不再占用两个空目录后完成物理回收。

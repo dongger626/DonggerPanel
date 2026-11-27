@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.11 发布验收记录
+# Dongger Panel v1.28.0-rc.11 发布验收记录
 
 日期：2026-10-28（Asia/Shanghai）。发布级别：L3；`releaseChannel=preview`，`releaseTrain=1.28.0`。公开预览产物已发布，生产未部署。
 
@@ -20,7 +20,7 @@
 
 来源安全盲审原件保留；轻量节点文件流相关既有中级线索未确认，未作为已修复漏洞。release maintainer 独立于产品实现任务复核来源；同一发布责任人组装合并、准备版本并重算六平台实际／原始依赖闭包和 1251 源文件身份，不声称对其组装另有独立复核。原扫描发现和观察期限未变化；最终候选 CI 和 L3 已重新扫描。浏览器组件真实服务器安装与 Windows 更新回滚此前“访问被拒绝”的根因仍未验证；rc.10 原始失败保留，后续通过不能证明根因消除。
 
-[依赖时效报告 40596595375](https://github.com/kejilion/KPanel/actions/runs/40596595375) 失败：TypeScript 7 和 @types/node 26 的既有例外复核日期已到，责任人为 KPanel base maintenance；不将该独立报告记作通过。来源浏览器候选 [CI 40519146035](https://github.com/kejilion/KPanel/actions/runs/40519146035) 因源码扫描身份不匹配失败；本版重新观察并绑定身份后最终候选 CI、L3 和发行扫描通过。历史首败保留。原始证据可从 Actions artifacts 及 `C:/GitHub/_release-evidence/kpanel-v128-rc11` 读取。
+[依赖时效报告 40596595375](https://github.com/kejilion/KPanel/actions/runs/40596595375) 失败：TypeScript 7 和 @types/node 26 的既有例外复核日期已到，责任人为 Dongger Panel base maintenance；不将该独立报告记作通过。来源浏览器候选 [CI 40519146035](https://github.com/kejilion/KPanel/actions/runs/40519146035) 因源码扫描身份不匹配失败；本版重新观察并绑定身份后最终候选 CI、L3 和发行扫描通过。历史首败保留。原始证据可从 Actions artifacts 及 `C:/GitHub/_release-evidence/kpanel-v128-rc11` 读取。
 
 ## 交付节奏数据
 

@@ -1,4 +1,4 @@
-# KPanel v1.12.0 发布验收
+# Dongger Panel v1.12.0 发布验收
 
 日期：2026-09-10。发布级别 L3。最终产品提交 `0ff1e32ec8a84099659e5e0bebcea07b4b7aad63`，annotated tag `v1.12.0`，tag object `1542f940d7ccf9d6bff6a718c4e15334e92ee16b`。候选基线 main 为 `4f4e6ab7d049e66c71b685e87b0133a8cd9d685a`；上一稳定版本为 v1.10.0，产品提交 `a21d5bfc744b2a9316578dfca83426c001e2ee6d`，旧 OCI 为 `sha256:eaecfa6a156c35b106e74820619d35734c6cbdc2fd577465f08ce95bb46e964e`。v1.11.0 的历史内容和记录保留，其主线、默认更新通道和生产发布已撤回，本轮用新候选重新发布为 v1.12.0。
 

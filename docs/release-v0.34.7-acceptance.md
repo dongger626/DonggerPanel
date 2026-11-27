@@ -1,4 +1,4 @@
-# KPanel v0.34.7 发布验收
+# Dongger Panel v0.34.7 发布验收
 
 发布日期：2026-08-01
 
@@ -7,7 +7,7 @@
 - 文件管理支持批量压缩为 TAR.GZ、ZIP 或 TAR，默认推荐适合 Linux 服务器的 TAR.GZ。
 - TAR.GZ、TGZ、ZIP 和 TAR 可从右键菜单解压到全新的文件夹，不覆盖已有目录或文件。
 - 压缩和解压支持主动停止；页面关闭、网络断开或用户停止后，请求上下文会终止流式处理并清理临时产物。
-- 将“先按 KPanel 规范独立设计，再复核 `kejilion.sh` 与竞品差距，最后开发、验收、提交和发布”的顺序固化到永久工程规范。
+- 将“先按 Dongger Panel 规范独立设计，再复核 `kejilion.sh` 与竞品差距，最后开发、验收、提交和发布”的顺序固化到永久工程规范。
 
 ## 源码与自动化
 
@@ -46,7 +46,7 @@ GitHub Release 已公开并包含 6 个附件：amd64/arm64 Agent、部署归档
 ## 实机与应用市场兼容性
 
 - 154 验收机从 Docker Hub 拉取上述不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 验收后生产 `kejilion-panel` 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器和网络均为 0，未替换或重启生产 KPanel。
+- 验收后生产 `kejilion-panel` 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器和网络均为 0，未替换或重启生产 Dongger Panel。
 - 本次未修改 `kejilion.sh`、Compose 或 `packaging/kejilion-app/kpanel.conf`。应用市场继续使用 `latest`，并从 OCI 标签及镜像内 `/release/VERSION` 动态校验版本，无需修改或提交 `kejilion/apps`。
 - 没有数据库、站点、Docker 业务资源、回收站格式或部署参数迁移。
 

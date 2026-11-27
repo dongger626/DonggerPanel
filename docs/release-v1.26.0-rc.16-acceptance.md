@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.16 发布验收记录
+# Dongger Panel v1.26.0-rc.16 发布验收记录
 
 发布级别：L3。releaseChannel=preview，releaseTrain=1.26.0。批准的 main 基线 f0d289d865a9d794ede476ccaa4d9833bbd6c0e2；最终冻结产品提交 77cdfb4b5b0dd510f7610e822f8e33663c0ba24a。
 

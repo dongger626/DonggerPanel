@@ -1,4 +1,4 @@
-# KPanel v0.42.0 发布验收
+# Dongger Panel v0.42.0 发布验收
 
 发布日期：2026-08-04
 
@@ -6,7 +6,7 @@
 
 - 新增 AI 三栏工作台、多会话、Provider/模型切换、REST/SSE 流式对话、工具进度和逐次审批。
 - 支持 OpenAI-compatible 的 Chat Completions 与 Responses、Anthropic Messages、Gemini `generateContent`。
-- 新增原生 Go Agent Runtime、受控 KPanel 工具注册表、记忆、流程和进化提案审核。
+- 新增原生 Go Agent Runtime、受控 Dongger Panel 工具注册表、记忆、流程和进化提案审核。
 - AI 数据独立使用 CGO-free SQLite；API Key 使用 XChaCha20-Poly1305 和独立 `0600` 主密钥保护。
 - Panel Compose 从旧单网络迁移为内部网络加受控出口网络，不引入 Hermes、Sidecar、通用宿主机 Shell、Web 工具或本地模型托管。
 
@@ -57,7 +57,7 @@ AI 路由保持懒加载，生产构建 chunk 为 184.76 kB（gzip 72.02 kB）�
 
 ## 154 上线与回滚
 
-- 生产实例从 `0.40.1 v1alpha1` 更新到 `0.42.0 v1alpha1`，应用市场输出 `KPanel 更新完成 / Update Complete`。
+- 生产实例从 `0.40.1 v1alpha1` 更新到 `0.42.0 v1alpha1`，应用市场输出 `Dongger Panel 更新完成 / Update Complete`。
 - 上线后 Panel healthy，镜像 revision 与发布提交一致；`/ai` 返回 200，未登录 AI API 返回 401，Agent 实际 Socket/Token 健康检查通过。
 - 容器仍为只读根文件系统、`cap_drop: ALL`、`no-new-privileges`、256 MiB；网络为 `kejilion-panel-internal` 与 `kejilion-panel-egress`，旧 `kejilion-panel-network` 已删除。
 - 可信代理网段已更新为新内部网络真实子网；AI 数据库与密钥已创建，更新目录无 `.rollback` 残留。

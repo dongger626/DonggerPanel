@@ -29,7 +29,7 @@ export interface DockerBatchPlanItem {
   detail: string
   state?: DockerContainer['state']
   note?: string
-  /** KPanel's own container: runs last because stopping it ends the batch. */
+  /** Dongger Panel's own container: runs last because stopping it ends the batch. */
   self?: boolean
   operation: DockerBatchOperation
 }
@@ -141,7 +141,7 @@ export function dockerContainerPermits(container: DockerContainer, action: strin
   )
 }
 
-/** The container this panel runs in, when KPanel itself is deployed with Docker. */
+/** The container this panel runs in, when Dongger Panel itself is deployed with Docker. */
 export function isKPanelContainer(container: Pick<DockerContainer, 'name' | 'image'>): boolean {
   return container.name === 'kejilion-panel' ||
     /(?:^|\/)kjlion\/kejilion-panel(?:[:@]|$)/i.test(container.image.trim())
@@ -187,7 +187,7 @@ export function planContainerBatch(containers: readonly DockerContainer[], actio
       label: container.name,
       detail: container.project ? `${container.project} · ${container.image}` : container.image,
       state: container.state,
-      note: lifecycle === 'unpause' ? '已暂停，将继续运行' : self ? 'KPanel 自身容器' : undefined,
+      note: lifecycle === 'unpause' ? '已暂停，将继续运行' : self ? 'Dongger Panel 自身容器' : undefined,
       self: self || undefined,
       operation: { kind: 'container', id: container.id, action: lifecycle, resourceVersion: container.resourceVersion },
     })
@@ -374,10 +374,10 @@ export function dockerBatchSelfWarning(plan: DockerBatchPlan): string {
   if (!self || self.operation.kind !== 'container') return ''
   const name = self.label
   switch (self.operation.action) {
-    case 'stop': return `所选包含 KPanel 自身容器 ${name}，会放在最后执行；停止后面板会离线，需要通过 SSH 或 kejilion.sh 重新启动。`
-    case 'restart': return `所选包含 KPanel 自身容器 ${name}，会放在最后执行；重启期间面板会短暂断开，稍后刷新页面即可。`
-    case 'pause': return `所选包含 KPanel 自身容器 ${name}，会放在最后执行；暂停后面板会失去响应，需要通过 SSH 执行 docker unpause 恢复。`
-    case 'remove': return `所选包含 KPanel 自身容器 ${name}，会放在最后执行；删除后面板会离线，需要重新运行安装脚本部署。`
+    case 'stop': return `所选包含 Dongger Panel 自身容器 ${name}，会放在最后执行；停止后面板会离线，需要通过 SSH 或 kejilion.sh 重新启动。`
+    case 'restart': return `所选包含 Dongger Panel 自身容器 ${name}，会放在最后执行；重启期间面板会短暂断开，稍后刷新页面即可。`
+    case 'pause': return `所选包含 Dongger Panel 自身容器 ${name}，会放在最后执行；暂停后面板会失去响应，需要通过 SSH 执行 docker unpause 恢复。`
+    case 'remove': return `所选包含 Dongger Panel 自身容器 ${name}，会放在最后执行；删除后面板会离线，需要重新运行安装脚本部署。`
     default: return ''
   }
 }

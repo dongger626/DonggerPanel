@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.8 发布验收记录
+# Dongger Panel v1.28.0-rc.8 发布验收记录
 
 日期：2026-10-27（Asia/Shanghai）
 
@@ -35,9 +35,9 @@ release/v1.28.0-candidate保留在3db23780805d66c0895d725947272f6b4d2c54d0，单
 
 ## 跨仓库联动与可选组件
 
-scriptLinkageState=not-required：无需发布脚本（不适用）。内置已公开脚本614d58cee228007012a2ec602cbdc8dbaeb7950d，SHA-256=ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9；本轮未改变kejilion.sh协议、Linux安装/卸载或应用市场默认入口。Windows bootstrap/安装器属于同版本KPanel附件，不冒充另一个脚本仓库发布。
+scriptLinkageState=not-required：无需发布脚本（不适用）。内置已公开脚本614d58cee228007012a2ec602cbdc8dbaeb7950d，SHA-256=ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9；本轮未改变kejilion.sh协议、Linux安装/卸载或应用市场默认入口。Windows bootstrap/安装器属于同版本Dongger Panel附件，不冒充另一个脚本仓库发布。
 
-可选组件docker.io/kjlion/kpanel-browser:0.1.0-rc.2，固定index sha256:fbc00e5b7e5bb39c117507b1995cc0e4f85976eb6818db23322d46968f7d5697，最终来源58d913f8。原组件双架构、L3、匿名公开拉取和真实Panel/HTTPS集成原件单独保留；不是本次Mock或主KPanel公开镜像验收的替代。组件需单独配置、按需启用，不自动安装或更新；未配置时不可用，不暴露原始CDP、公网端口或Docker Socket。
+可选组件docker.io/kjlion/kpanel-browser:0.1.0-rc.2，固定index sha256:fbc00e5b7e5bb39c117507b1995cc0e4f85976eb6818db23322d46968f7d5697，最终来源58d913f8。原组件双架构、L3、匿名公开拉取和真实Panel/HTTPS集成原件单独保留；不是本次Mock或主Dongger Panel公开镜像验收的替代。组件需单独配置、按需启用，不自动安装或更新；未配置时不可用，不暴露原始CDP、公网端口或Docker Socket。
 
 ## 六维质量与证据边界
 
@@ -100,7 +100,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "Combined candidate CI rejected the old business review baseline after eight sources were integrated.",
     "recoveryEvidence": "ci-40395096265-linux-first.log; actual six-dimension facts refreshed without changing freshness limits.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -109,7 +109,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The route-driven layout contract did not register the existing full-height browser workspace; the check rejected the combination.",
     "recoveryEvidence": "combined-layout-first-failure.json; owned fix registered existing workspace semantics,12 files/282 tests passed without browser runtime padding changes.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -118,7 +118,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "A layout recheck used the release checkout before the owned fix was integrated; that result was not accepted as the repaired source.",
     "recoveryEvidence": "layout-after-fix.log retained; later source checks and preview drivers bind exact HEAD/worktree.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -127,7 +127,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "Second hosted updater step tried to replace a SYSTEM-only test plan as administrator and correctly received access denied.",
     "recoveryEvidence": "ci-40406854930-windows-task-encoding.log;285eb274 makes SYSTEM consume its bounded validated test plan. No production ACL changed.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -136,7 +136,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 2,
     "impact": "SCM/nested-build and terminal package tests ran concurrently; two cloud runs timed out first-shell assertions. Internal shell cause was not separately proven.",
     "recoveryEvidence": "ci-40406854930-windows-task-encoding.log and ci-40409160889-windows-plan-consume.log; independently reviewed5490d9ba serializes packages, retaining all tests and15-second assertions. Repeated exact hosted native success follows.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -145,7 +145,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The author comparison included different per-range file lists instead of comparing the resolved Go rule body, causing a false mismatch.",
     "recoveryEvidence": "Execution transcript retained; plan-consume-ocr-rules.json rule body compared equal to task-encoding rules; plan-consume-ocr-coverage.json records1/1.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -154,7 +154,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "An inline PowerShell/JavaScript preparation command was parsed incorrectly; no prepared verifier evidence was accepted.",
     "recoveryEvidence": "Execution transcript retained; prepare-artifact-verifiers.mjs now carries exact structured file content, producing strict1220/19/15 and full/clipped note assertions.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -163,7 +163,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "An initial local enum-fix verification called nonexistent check-governance-health.mjs.",
     "recoveryEvidence": "Execution transcript retained; existing verify-governance.sh points to report-governance-health.mjs --validate; proposal-enum-health.log passes34 proposals.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -172,7 +172,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "A premature read-only handoff check lacked Go PATH, exact candidateCommit and finished CI/L3 receipts; it failed closed.",
     "recoveryEvidence": "frozen-handoff-first-unqualified.json retained. Final handoff must bind completed exact receipts and verified Go1.27.3 PATH; no permissions inferred.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -181,7 +181,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "Frozen d68a candidate CI rejected proposal state beginning with an unsupported prefix.",
     "recoveryEvidence": "ci-40414607820-linux-first.log;3db23780 changes one field to the existing trial enum prefix; no gate/decision/date changed. Canonical health and frozen CI40415118924 passed.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -190,7 +190,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The combined driver used a generic dialog selector matching both desktop window and modal.",
     "recoveryEvidence": "combined-ui-5490d9ba/result.json; scoped to the actual accessible modal name.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -199,7 +199,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The combined driver expected an installer-style word in a deliberately harmless Mock enrollment command.",
     "recoveryEvidence": "combined-ui-5490d9ba-r2/result.json; assertions now match actual harmless Windows/Linux fixture strings, not real enrollment.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -208,7 +208,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The driver sampled overflow before the asynchronous desktop viewport/resize state settled.",
     "recoveryEvidence": "combined-ui-5490d9ba-r3/result.json and screenshot; bounded actual layout settlement plus window bounds assertion retained.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -217,7 +217,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "Automated CSS200 assertions passed, but screenshot review showed fixed-window coordinates clipped; that200-percent proof was rejected.",
     "recoveryEvidence": "combined-ui-5490d9ba-r4 and ui-driver-incidents.json retained; equivalent720x500 viewport and actual fitted bounds passed in r5/final. Native browser zoom remains unverified.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -226,7 +226,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "The source site-editor driver assumed a fresh desktop, while a preceding combined Mock journey had persisted a VM window covering its icon.",
     "recoveryEvidence": "site-editor-frozen/browser-result-r2.json retained; final driver explicitly binds an empty-window Mock starting state, then13 exact3db checks pass. No product change.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -235,7 +235,7 @@ Windows原4条中风险线索仍是待核实/产品语义待定，不是4个新�
     "count": 1,
     "impact": "Original publication succeeded, but its published-browser journey failed a release-preview API request after24 checks. The same run separate real Panel restart suite returned200 and correct RC8 identity; the failed fixture did not retain status/body, so cause remains unconfirmed.",
     "recoveryEvidence": "public-40417067758-first-failure.log and original public ZIP retained. Existing read-only verification40422821013 restored the original snapshot and verified the unchanged immutable image with150 successful checks. No rebuild, channel write or republish. Review release-response diagnostics by2026-10-28/next preview; if it recurs, capture bounded HTTP status/body before further retry. Not a claimed permanent product fix.",
-    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. KPanel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
+    "permanentAction": "Existing canonical gates stay unchanged. Owned fixture/executor or evidence-driver corrections are named above; remaining invocation/evidence corrections are not claimed as permanent repository mechanisms. Dongger Panel release-tool maintainer reviews by2026-10-28 or next preview, whichever first; exit is correct canonical input ordering and stable exact-source evidence on next use.",
     "historicalReleases": []
   }
 ]

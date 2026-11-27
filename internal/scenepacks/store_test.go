@@ -13,7 +13,7 @@ import (
 )
 
 func fixturePack(id, version string) (Pack, map[string][]byte) {
-	p := Pack{Schema: 1, ID: id, Version: version, Runtime: "kpanel-scene-pack@1", Name: Text{"zh-CN": "场景", "en-US": "Scene"}, Description: Text{"zh-CN": "测试场景", "en-US": "Test scene"}, Author: Author{Name: "KPanel"}, License: "MIT", Tags: []string{"space"}, Theme: Theme{"#112233", "#445566", "#778899"}, Cameras: []Camera{{ID: "wide", Name: Text{"zh-CN": "全景", "en-US": "Wide"}}}, Entry: "index.html", Poster: "poster.webp", Thumb: "thumb.webp", Path: id + "/dist"}
+	p := Pack{Schema: 1, ID: id, Version: version, Runtime: "kpanel-scene-pack@1", Name: Text{"zh-CN": "场景", "en-US": "Scene"}, Description: Text{"zh-CN": "测试场景", "en-US": "Test scene"}, Author: Author{Name: "Dongger Panel"}, License: "MIT", Tags: []string{"space"}, Theme: Theme{"#112233", "#445566", "#778899"}, Cameras: []Camera{{ID: "wide", Name: Text{"zh-CN": "全景", "en-US": "Wide"}}}, Entry: "index.html", Poster: "poster.webp", Thumb: "thumb.webp", Path: id + "/dist"}
 	data := map[string][]byte{"index.html": []byte(`<html><script src="./scene.js"></script></html>`), "manifest.json": []byte(`{"schema":1}`), "poster.webp": []byte("poster"), "thumb.webp": []byte("thumb"), "scene.js": []byte("console.log('" + version + "')")}
 	for _, name := range []string{"index.html", "manifest.json", "poster.webp", "thumb.webp", "scene.js"} {
 		body := data[name]

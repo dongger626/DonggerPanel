@@ -253,7 +253,7 @@ describe('task terminal input channel', () => {
     const first = await readySocket()
     mocks.onData!('one\r')
     first.receive({ type: 'error', code: 'terminal_input_sequence', retryable: false })
-    expect(mocks.writes.filter((write) => write.includes('[KPanel]'))).toHaveLength(1)
+    expect(mocks.writes.filter((write) => write.includes('[Dongger Panel]'))).toHaveLength(1)
     expect(first.closed).toBe(true)
     // The next keystroke does not die with the failed stream.
     mocks.onData!('two\r')

@@ -8,5 +8,5 @@
   <path fill="url(#background)" d="M0 0h1280v720H0z"/>
   <circle cx="640" cy="320" r="86" fill="#fff" fill-opacity=".88"/>
   <path fill="#2865C7" d="M616 273.5c0-8.5 9.3-13.7 16.5-9.2l70.1 44c6.8 4.3 6.8 14.1 0 18.4l-70.1 44c-7.2 4.5-16.5-.7-16.5-9.2v-88Z"/>
-  <text x="640" y="500" fill="#34445F" font-family="Arial,sans-serif" font-size="36" font-weight="600" text-anchor="middle">KPanel</text>
+  <text x="640" y="500" fill="#34445F" font-family="Arial,sans-serif" font-size="36" font-weight="600" text-anchor="middle">Dongger Panel</text>
 </svg>

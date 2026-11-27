@@ -1,4 +1,4 @@
-# KPanel v0.86.2 发布验收记录
+# Dongger Panel v0.86.2 发布验收记录
 
 日期：2026-08-19
 
@@ -38,7 +38,7 @@
 
 ## 154 生产升级
 
-- 正式目标仅 `arena-154`；`108` 永久不纳入 KPanel 测试、灰度、备份或部署，本轮未连接。
+- 正式目标仅 `arena-154`；`108` 永久不纳入 Dongger Panel 测试、灰度、备份或部署，本轮未连接。
 - 升级前为 v0.86.1，旧镜像 `sha256:534c48bed39b05594656216308a050e0f0d7940e96aa55dbfcaf8f10f0c1aa5f`，Panel healthy、Agent active、restart=0、OOM=false。
 - 停写一致性备份：`/root/kpanel-backups/v0.86.2-preupgrade-arena154-20260819T094033Z`；归档、镜像 tar、`.env` 和 apps 配置均完成抽取/hash 校验。关键 SHA-256：目录归档 `a154fa7057e55489c5b9f425cd848cf6407768c09b928ed1a4eb2905b4073018`，旧镜像 tar `e7d5d344e3f86e70d0eba64331687f4342fe6a5daefe2ab37f3c7ab1a4727fbb`，`.env` `0ba468d8031cd5f67c5a7ffb0333c13dabd1c72c5223f7004df0084712a096f4`，apps 配置 `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`。
 - 标准更新入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；脚本输出 `KPANEL_PROGRESS 100` 和“应用更新完成”，实际新容器已启动。
@@ -72,5 +72,5 @@
 
 - 本版只改变进度条前端颜色；壁纸延迟切换属于 v0.86.0 已上线能力，本轮未增加新的壁纸代码或迁移。
 - 未进行长时间 soak；本补丁无常驻后端任务，生产已完成三次健康采样。
-- `108` 永久不纳入 KPanel 任何线上测试或部署。
+- `108` 永久不纳入 Dongger Panel 任何线上测试或部署。
 - 若后续发现产品行为问题，必须基于最新 main 制作新的最小补丁，不改写 `v0.86.2` Tag/Release。

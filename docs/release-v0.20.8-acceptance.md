@@ -1,4 +1,4 @@
-# KPanel v0.20.8 DNS 与后台维护隔离验收
+# Dongger Panel v0.20.8 DNS 与后台维护隔离验收
 
 ## 根因与修复
 
@@ -9,7 +9,7 @@
 3. 应用市场安装将维护状态放在 `/home/docker/kpanel/data/agent`，维护 transient unit
    启用了 `ProtectHome=read-only` 却没有放行自己的状态目录，因此实际任务结束后无法写入
    完成凭据。154 使用 `/var/lib/...` 状态目录，所以没有触发该差异。
-4. v0.20.8 的 KPanel 固定协议跳过脚本交互初始化，拒绝没有隔离入口的旧脚本；Agent 只增加
+4. v0.20.8 的 Dongger Panel 固定协议跳过脚本交互初始化，拒绝没有隔离入口的旧脚本；Agent 只增加
    `CAP_CHOWN`，维护与交换空间单元只增加自己的 `ReadWritePaths`，没有放宽其他宿主机路径。
 
 ## 验收
@@ -40,5 +40,5 @@
 
 ## 目标机复核
 
-在应用市场更新 KPanel 到 `0.20.8` 后，Agent 与固定 `kejilion.sh` 会一起更新。目标机应重新
+在应用市场更新 Dongger Panel 到 `0.20.8` 后，Agent 与固定 `kejilion.sh` 会一起更新。目标机应重新
 执行一次 DNS 设置、缓存清理和系统更新；旧的失败记录仍会保留，但新任务应写入完成凭据。

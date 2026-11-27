@@ -25,7 +25,7 @@ export default [
   ["变更记录筛选", "Change history filters"],
   ["创建时间", "Created"],
   ["创建网站", "Create website"],
-  ["当前服务版本尚未开放任务查询接口。", "This KPanel version does not provide task history."],
+  ["当前服务版本尚未开放任务查询接口。", "This Dongger Panel version does not provide task history."],
   ["更新网站", "Update website"],
   ["关闭", "Close"],
   ["进度", "Progress"],

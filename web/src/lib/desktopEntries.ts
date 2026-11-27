@@ -148,7 +148,7 @@ function dedupeDesktopEntries(apps: DesktopEntry[], sites: DesktopEntry[]): Desk
     const isKPanelSelf = entry.kind === 'app'
       && (entry.app?.id === kpanelAppID || entry.app?.token === kpanelAppToken)
     if (isKPanelSelf) {
-      // KPanel is already represented by the desktop shell and taskbar. Keep
+      // Dongger Panel is already represented by the desktop shell and taskbar. Keep
       // its URL reserved for deduplication so a matching site does not replace
       // the intentionally hidden self-entry.
       if (entry.url) seen.add(entry.url.replace(/\/+$/, '').toLowerCase())

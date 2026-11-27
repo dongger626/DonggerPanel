@@ -913,7 +913,7 @@ func (c *Client) updateDaemonConfig(ctx context.Context, mutate func(map[string]
 	if existed && len(bytes.TrimSpace(original)) > 0 {
 		config, err = parseDockerDaemonConfig(original)
 		if err != nil {
-			return errors.New("Docker daemon.json is invalid; repair it before using KPanel")
+			return errors.New("Docker daemon.json is invalid; repair it before using Dongger Panel")
 		}
 	}
 	mutate(config)

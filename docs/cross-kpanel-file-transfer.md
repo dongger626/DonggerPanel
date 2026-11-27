@@ -1,16 +1,16 @@
-# KPanel 跨面板文件复制
+# Dongger Panel 跨面板文件复制
 
 ## 任务契约
 
 - 任务 scope / 角色 / AI：`cross-kpanel-file-transfer` / development / Codex。
-- 目标与用户价值：允许用户把 KPanel A 文件窗口或桌面上的一个或多个普通文件/目录拖到 KPanel B 桌面或文件管理窗口；B 将内容复制到指定目录，桌面目标在复制成功后创建入口。
+- 目标与用户价值：允许用户把 Dongger Panel A 文件窗口或桌面上的一个或多个普通文件/目录拖到 Dongger Panel B 桌面或文件管理窗口；B 将内容复制到指定目录，桌面目标在复制成功后创建入口。
 - 允许路径：`internal/cluster`、`internal/filemanager`、`internal/agent`、`internal/panel`、`internal/contract`、`web/src`、本文件及针对性测试。禁止路径：安装/升级/发布脚本、生产配置、版本号、数据库迁移。
 - 共享契约：Cluster v2 Noise 身份、Panel-Agent Unix socket、文件路径/resourceVersion、桌面 workspace。
 - 业务真源与用户旅程：`docs/cluster-monitoring.md`、`docs/desktop-icon-workspace.md`、`docs/storage-strategy.md`；A 文件行或桌面文件/目录快捷方式拖拽 -> B 桌面/文件窗口识别 -> B 后端向已配对 A 拉取 -> B Agent 原子落盘 -> 桌面目标创建入口。
 - worktree / branch / base / rollback：`C:\GitHub\kejilion-panel-cross-kpanel-file-transfer` / `feat/cross-kpanel-file-transfer` / `origin/main@431b9ca5ac21d5a3d1629e46e209ce718367569f` / 源实现回滚到 `431b9ca5ac21d5a3d1629e46e209ce718367569f`；正式版本继续记录上一稳定 Tag、镜像与生产备份。
 - 依赖、相邻任务与冲突面：依赖现有 Cluster v2 配对；相邻 worktree 均未修改上述实现路径，治理 worktree 的脏文件不重叠。
 - 风险等级：L2。新增跨前后端网络认证、流式传输与 Agent 文件写入；不发布、不改安装链。
-- 验收：Go 定向测试与全量测试、Web 单测/typecheck/build、两个本地 KPanel 浏览器跨窗口拖放；长时间浏览器测试按 registered arena 工作流执行。
+- 验收：Go 定向测试与全量测试、Web 单测/typecheck/build、两个本地 Dongger Panel 浏览器跨窗口拖放；长时间浏览器测试按 registered arena 工作流执行。
 - 权限：用户已明确授权将文件互传及当前可上线内容提交并进入上线流程；由唯一发布任务负责候选推送、更新 main、tag、Release 与已授权生产部署。
 - 交付物：可审阅差异、设计文档、测试与浏览器证据、已知限制。
 
@@ -21,7 +21,7 @@
 ## 产品规则
 
 1. 跨面板操作永远是复制，不提供移动语义；源文件不发生修改。
-2. 拖到 B 桌面时，默认目标为 B 的桌面文件目录（初始值 `/home/KPanel Desktop`）。文件复制完成后才创建桌面入口。
+2. 拖到 B 桌面时，默认目标为 B 的桌面文件目录（初始值 `/home/Dongger Panel Desktop`）。文件复制完成后才创建桌面入口。
 3. 旧契约同名目标采用 `name (1)`、`name (2)` 规则。当前同名处理候选显式启用任务级覆盖/保留两份/跳过；
    文件夹合并保留目标独有内容，待决策略与任务修订号持久化。精确行为见 [统一同名处理](file-manager-design.md#11-同名文件与文件夹的统一处理候选2026-11-14)，不以本文旧契约覆盖候选能力声明。
 4. 传输中显示来源、目标、当前字节数并允许取消。失败不留下可见的半成品；快捷方式保存失败与文件复制失败分开报告。
@@ -112,12 +112,12 @@ BT/.torrent/磁力是同一任务队列的来源适配器，负责分片获取�
 
 ## 与操作系统下载和拖出的边界
 
-- 本协议支持的是 KPanel 页面内、跨标签页、跨窗口和跨 KPanel 的文件复制。目标 KPanel 会重新鉴权、
+- 本协议支持的是 Dongger Panel 页面内、跨标签页、跨窗口和跨 Dongger Panel 的文件复制。目标 Dongger Panel 会重新鉴权、
   拉取并原子提交文件；该成功状态不依赖 Windows Explorer 或 macOS Finder。
 - 用户把内容保存到本机时，可靠兜底是显式下载：单个普通文件使用短时 download ticket，单个目录或
   批量选择先用已认证 POST 封存选择和版本，再通过不含路径的短时 ticket 下载受限 ZIP。内部及跨
-  KPanel 拖拽在这些入口之外继续保留。
-- Chromium 私有 `DownloadURL` 作为尽力而为的渐进增强与 KPanel 自定义载荷并存。Windows 实机中，
+  Dongger Panel 拖拽在这些入口之外继续保留。
+- Chromium 私有 `DownloadURL` 作为尽力而为的渐进增强与 Dongger Panel 自定义载荷并存。Windows 实机中，
   同一远端目标、同一 `127.0.0.1` 发起源的 `text/plain` / `application/octet-stream` A/B 曾同时成功，
   随后全部载荷失败；全新标签页恢复原文件名和 `no-referrer` 均未改变失败，改用 `localhost` 发起后
   四种载荷又全部成功。结果因此属于会随 initiator、tab、referrer、navigation 环境翻转的下游安全分类，
@@ -125,7 +125,7 @@ BT/.torrent/磁力是同一任务队列的来源适配器，负责分片获取�
 - Chromium 源码已排除 automatic download limiter 是这批 `FILE_BLOCKED` History 记录的机制；当前
   Google Transparency 公开站点状态也未报告威胁，但它不等于 download protection 对具体下载的 verdict。
 - Web 页面没有 Chromium 下载器或 Explorer 最终落盘结果的回调；HTML `dragend` 不能证明文件已保存，
-  因此操作系统拖出不得进入跨 KPanel 复制的成功状态、失败重试或可靠性承诺；被客户端阻止时只引导
+  因此操作系统拖出不得进入跨 Dongger Panel 复制的成功状态、失败重试或可靠性承诺；被客户端阻止时只引导
   使用显式 ticket / ZIP，不影响内部或跨 Panel 拖拽。
 - 候选不应写成已修复 `kpanel.kejilion.eu.org` 的客户端拦截，也不通过伪装文件类型、删除安全响应头、
   延长 URL 凭据、改用其他下载域或其他方式规避浏览器、操作系统或组织策略。`127.0.0.1` / `localhost`
@@ -135,8 +135,8 @@ BT/.torrent/磁力是同一任务队列的来源适配器，负责分片获取�
 
 ## 明确非目标
 
-- 把 KPanel 到 Windows/macOS 的原生拖出作为跨面板复制完成条件或兼容保证。
-- KPanel A 到 B 的移动、双向同步、rsync 差分、Panel 重启后自动重发任务。
+- 把 Dongger Panel 到 Windows/macOS 的原生拖出作为跨面板复制完成条件或兼容保证。
+- Dongger Panel A 到 B 的移动、双向同步、rsync 差分、Panel 重启后自动重发任务。
 - 未配对面板或 Cluster v1 的文件传输。已授权且支持文件能力的 light node 沿用现有中继通道。
 
 ## 开发验收记录
@@ -144,4 +144,4 @@ BT/.torrent/磁力是同一任务队列的来源适配器，负责分片获取�
 - Go：`internal/agent` 全量测试、新增批量元数据 Agent/Panel 定向测试及 Panel 文件路径定向测试通过；变更范围 `go vet` 通过。Windows 下 Panel 全量测试仍受既有绝对路径与静态资源 fixture 基线限制，不作为本功能失败。
 - Web：Vitest 97 个测试文件、719 项测试通过；i18n 校验、`vue-tsc --noEmit`、Vite 生产构建与预压缩通过。
 - 浏览器：本地生产构建在应用内真实 Chromium 中完成经典页、桌面壳和桌面文件窗口烟测，页面结构正常且控制台无 warning/error。预览 workspace 没有文件快捷方式，且不具备双 Agent 和 Cluster v2 配对，因此没有把该结果记录为桌面跨面板传输 E2E；跨窗口 HTML5 drag、批量描述符、WebKit 文本回退和本地组选中移动由组件/单元测试覆盖，不代表 Windows/macOS 原生拖出已通过。
-- 待 release writer：在两台已配对 Linux KPanel 上验证文件窗口及桌面快捷方式来源的单项、多选、混合框选分别拖到桌面、文件管理当前目录与目录项；同时验证 Chrome/Safari、双方向授权、同名副本、部分失败、取消、来源变更、旧配对拒绝、断链清理及快捷方式失败保留真实文件。
+- 待 release writer：在两台已配对 Linux Dongger Panel 上验证文件窗口及桌面快捷方式来源的单项、多选、混合框选分别拖到桌面、文件管理当前目录与目录项；同时验证 Chrome/Safari、双方向授权、同名副本、部分失败、取消、来源变更、旧配对拒绝、断链清理及快捷方式失败保留真实文件。

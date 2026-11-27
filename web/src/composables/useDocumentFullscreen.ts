@@ -1,7 +1,7 @@
 import { computed, onBeforeUnmount, onMounted, readonly, ref } from 'vue'
 
 /**
- * Browser/OS fullscreen state for the whole KPanel document.
+ * Browser/OS fullscreen state for the whole Dongger Panel document.
  *
  * Requests can be rejected when the browser does not support arbitrary-element
  * fullscreen, when user activation has expired, or when a policy blocks it.

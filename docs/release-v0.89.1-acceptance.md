@@ -1,4 +1,4 @@
-# KPanel v0.89.1 发布验收记录
+# Dongger Panel v0.89.1 发布验收记录
 
 日期：2026-08-20
 
@@ -29,7 +29,7 @@
 - 390px 首轮发现网络结果的 min-content 撑宽容器，已以聚焦 `min-width: 0` 约束修复并增加布局回归测试；最终复验分数、卡片和正文完整可见。
 - arena-154 精确候选镜像真实执行 `native-comprehensive`：Panel→Agent→CPU/内存/磁盘/网络探针→结果回读成功，progress=100、parser=`kpanel-native-v1`，Panel healthy、Agent active、restart=0、OOM=false；结果 SHA-256=`2b2f29d433dff714b961b1d148a2494631e26e50bad78b87dc1ad3b1978b32fb`。
 - 正式公开 OCI 独立回拉后再次执行同一真链路并成功；结果 SHA-256=`13567c05e548e386108b3ffbda42e58ae5f2d3e8e1f4a8810fb492dd4317007e`。
-- 外部探测点或 IP 风险接口将来不可用时仍可能产生明确降级结果；不得把上游可用性等同于 KPanel 算法或 UI 故障。
+- 外部探测点或 IP 风险接口将来不可用时仍可能产生明确降级结果；不得把上游可用性等同于 Dongger Panel 算法或 UI 故障。
 
 ## 发布产物
 

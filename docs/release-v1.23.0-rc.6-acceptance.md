@@ -1,4 +1,4 @@
-# KPanel v1.23.0-rc.6 发布验收记录
+# Dongger Panel v1.23.0-rc.6 发布验收记录
 
 日期：2026-09-30。发布级别：L3。`releaseChannel=preview`；`releaseTrain=1.23.0`。
 

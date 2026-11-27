@@ -1471,7 +1471,7 @@ function currentDirectoryEntry() {
 async function addEntriesToDesktop(entry?: FileEntry, currentDirectory = false): Promise<void> {
   if (desktopAdding.value) return
   if (isRemoteFileHost.value) {
-    toast.show('远端主机暂不支持桌面快捷方式', { message: '快捷方式属于当前 KPanel 桌面，请在本机文件中添加。' })
+    toast.show('远端主机暂不支持桌面快捷方式', { message: '快捷方式属于当前 Dongger Panel 桌面，请在本机文件中添加。' })
     return
   }
   contextMenu.value = undefined
@@ -2017,7 +2017,7 @@ function openDialog(action: DialogAction, entry?: FileEntry): void {
 
 function openFileShare(entry?: FileEntry): void {
   if (isRemoteFileHost.value) {
-    toast.show('远端主机暂不支持文件分享', { message: '文件管理已支持直接操作，分享链接仍需在 KPanel 本机创建。' })
+    toast.show('远端主机暂不支持文件分享', { message: '文件管理已支持直接操作，分享链接仍需在 Dongger Panel 本机创建。' })
     return
   }
   const targets = entry ? entriesForBatch(entry) : []
@@ -2033,7 +2033,7 @@ function closeFileShare(): void {
 
 function openShareManager(): void {
   if (isRemoteFileHost.value) {
-    toast.show('远端主机暂不支持分享管理', { message: '分享链接属于当前 KPanel 的面板级能力。' })
+    toast.show('远端主机暂不支持分享管理', { message: '分享链接属于当前 Dongger Panel 的面板级能力。' })
     return
   }
   shareManagerOpen.value = true
@@ -2413,7 +2413,7 @@ function setSort(key: 'name' | 'size' | 'modified'): void {
 
 function openRemoteDownloadDialog(): void {
   if (isRemoteFileHost.value) {
-    toast.show('远端主机暂不支持远程下载', { message: '远程下载任务属于当前 KPanel 的面板级能力。' })
+    toast.show('远端主机暂不支持远程下载', { message: '远程下载任务属于当前 Dongger Panel 的面板级能力。' })
     return
   }
   if (remoteDownloadSubmitting.value) return
@@ -3313,7 +3313,7 @@ onBeforeUnmount(() => {
     tabindex="-1"
     @pointerdown="focusFilesPage"
   >
-    <PageHeader title="文件管理" description="浏览、编辑和传输服务器文件；KPanel 凭据与状态目录保持隔离。" />
+    <PageHeader title="文件管理" description="浏览、编辑和传输服务器文件；Dongger Panel 凭据与状态目录保持隔离。" />
 
     <div class="file-command-bar">
       <nav class="file-shortcuts" aria-label="常用目录">
@@ -4175,7 +4175,7 @@ onBeforeUnmount(() => {
       :title="phrase(dialogTitle)"
       :description="phrase(
         dialogAction === 'trash'
-          ? '文件将移动到 KPanel 隔离回收区，可在回收站中恢复。'
+          ? '文件将移动到 Dongger Panel 隔离回收区，可在回收站中恢复。'
           : dialogAction === 'compress'
             ? '默认使用适合 Linux 服务器的 tar.gz；也可选择 ZIP 或 TAR。'
             : dialogAction === 'extract'

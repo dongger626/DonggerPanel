@@ -2,11 +2,11 @@
 
 - 提案状态：试行（非作者复核通过；同 SHA 候选与主线 CI 待执行，长期收益待观察）
 - 提案日期：2026-11-03
-- 负责人：KPanel release maintainers
+- 负责人：Dongger Panel release maintainers
 - 适用业务域：发布候选输入资格
 - 基线提交 / 标签：`33b13119d6bc3ac23e66c63aec6e2159813bdc8f` / v1.29.0-rc.6 验收主线
 - 关联证据：`release-v1.29.0-rc.6-acceptance.md` 的 `candidate-ci/source-inventory/stale-first-party-hash`；同类问题已出现于 v1.28.0。
-- 权限：2026-11-03 用户要求发布 KPanel 稳定版；包含必要发布修复、候选与主线 CI、tag/Release/镜像，不含生产部署。
+- 权限：2026-11-03 用户要求发布 Dongger Panel 稳定版；包含必要发布修复、候选与主线 CI、tag/Release/镜像，不含生产部署。
 
 ## 观察、假设与边界
 
@@ -33,7 +33,7 @@
 - 本地界面预览不适用：只读发布工具，不改变产品页面。
 - 主指标：下一两个稳定列车是否在候选提交前拦截源码身份错误；当前没有净耗时收益数据。
 - 防回归：不更新 policy，不跳过扫描，普通 L2 契约仍通过；缺失或损坏输入失败关闭。
-- 观察负责人：KPanel release maintainers；复核触发：两个稳定列车完成或 2026-11-17（先到者）。
+- 观察负责人：Dongger Panel release maintainers；复核触发：两个稳定列车完成或 2026-11-17（先到者）。
 - 隔离真机、公开产物与生产层：本治理修复不提供这些成功结论；产品发布另按完整 L3 验收。
 
 - 复核状态：通过（精确实现候选 a229123b；非作者独立读取差异与原件，固定矩阵 PASS）

@@ -346,7 +346,7 @@ func (s *Service) StartInstall(
 		path, err := s.scriptInteractiveFinder()
 		if err != nil {
 			return AppJob{}, fmt.Errorf(
-				"%w: the installed kejilion.sh does not support KPanel interactive jobs",
+				"%w: the installed kejilion.sh does not support Dongger Panel interactive jobs",
 				ErrUnsupported,
 			)
 		}
@@ -448,7 +448,7 @@ func (s *Service) StartScriptMutation(
 	scriptPath, err := scriptFinder()
 	if err != nil {
 		return AppJob{}, true, fmt.Errorf(
-			"%w: the installed kejilion.sh does not support KPanel interactive jobs",
+			"%w: the installed kejilion.sh does not support Dongger Panel interactive jobs",
 			ErrUnsupported,
 		)
 	}
@@ -792,7 +792,7 @@ func findKejilionScriptMatching(compatible func([]byte) bool) (string, error) {
 		}
 		return resolved, nil
 	}
-	return "", errors.New("a KPanel-compatible kejilion.sh was not found")
+	return "", errors.New("a Dongger Panel-compatible kejilion.sh was not found")
 }
 
 func preferredKejilionScriptCandidates() []string {
@@ -1104,7 +1104,7 @@ func (registry *appJobRegistry) put(record appJobRecord) error {
 		return err
 	}
 	targetPath := registry.statePath(record.ID)
-	// KPanel runs on Linux, where rename atomically replaces the old state file.
+	// Dongger Panel runs on Linux, where rename atomically replaces the old state file.
 	// Windows does not allow that replacement, so remove only the test/dev copy.
 	if runtime.GOOS == "windows" {
 		_ = os.Remove(targetPath)

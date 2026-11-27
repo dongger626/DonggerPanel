@@ -55,16 +55,16 @@ for pattern in "${forbidden_patterns[@]}"; do
 done
 
 if [[ "$failed" == true ]]; then
-  echo "Resource origin, fixed confirmation words and KPanel self-protection cannot authorize business actions." >&2
+  echo "Resource origin, fixed confirmation words and Dongger Panel self-protection cannot authorize business actions." >&2
   exit 1
 fi
 
-grep -Fq '`kejilion.sh` 是 KPanel 业务行为、资源布局和兼容方式的首要真源' PROJECT_RULES.md
+grep -Fq '`kejilion.sh` 是 Dongger Panel 业务行为、资源布局和兼容方式的首要真源' PROJECT_RULES.md
 grep -Fq '不得设置用户操作护栏' PROJECT_RULES.md
 grep -Fq '必须保留的攻击面与完整性防护' PROJECT_RULES.md
 grep -Fq '核验分级' PROJECT_RULES.md
-grep -Fq '`kejilion.sh` 已有的外联配置必须直接复用，禁止 KPanel 自行编写替代模板' PROJECT_RULES.md
-grep -Fq '没有稳定脚本接口时登记为适配缺口，不得先做一套 KPanel 专属实现' docs/ecosystem-parity.md
+grep -Fq '`kejilion.sh` 已有的外联配置必须直接复用，禁止 Dongger Panel 自行编写替代模板' PROJECT_RULES.md
+grep -Fq '没有稳定脚本接口时登记为适配缺口，不得先做一套 Dongger Panel 专属实现' docs/ecosystem-parity.md
 grep -Fq '<!-- external-config-debt:website-nginx:blocked -->' docs/external-config-sources.md
 grep -F '| `wordpress-flow` ' docs/external-config-sources.md |
   grep -Fq '**已合规（代码链路）**'

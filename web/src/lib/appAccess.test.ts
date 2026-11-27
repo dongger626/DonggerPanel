@@ -66,7 +66,7 @@ describe('application access URL', () => {
     expect(appAccessURL(app(), [unavailable], '192.0.2.10')).toBe('http://192.0.2.10:18080')
   })
 
-  it('never combines the KPanel reverse-proxy hostname with an application port', () => {
+  it('never combines the Dongger Panel reverse-proxy hostname with an application port', () => {
     expect(appAccessURL(app(), [], 'kpanel.example.com')).toBe('')
   })
 

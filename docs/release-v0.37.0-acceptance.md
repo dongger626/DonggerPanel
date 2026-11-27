@@ -1,10 +1,10 @@
-# KPanel v0.37.0 发布验收
+# Dongger Panel v0.37.0 发布验收
 
 发布日期：2026-08-02
 
 ## 发布范围
 
-- 集群新增非 KPanel Linux 主机接入能力，保留原有 KPanel 节点完整配对方式。
+- 集群新增非 Dongger Panel Linux 主机接入能力，保留原有 Dongger Panel 节点完整配对方式。
 - 非面板主机仅需 `curl`/`wget`、systemd 和常见 Linux 用户态工具，不依赖 Docker、Go 或 Node.js。
 - 中心端生成一次性接入命令；轻量节点仅主动通过 HTTPS 上报只读遥测，不开放远程 Shell、文件或 Docker 管理。
 - 上报覆盖 CPU、内存、磁盘、网络、系统、地区和运行时间等摘要，沿用集群列表与排序体验。
@@ -13,7 +13,7 @@
 ## 源码与自动化
 
 - `kejilion.sh` 协议与安装器提交：`60b7982f5622c5be958a0c8197d3077783505494`
-- KPanel 功能提交：`5804922`
+- Dongger Panel 功能提交：`5804922`
 - 发布准备提交：`280bcd66f869709f4a7475347de3112763f79402`
 - 标签：`v0.37.0`
 - 候选分支 CI：<https://github.com/kejilion/KPanel/actions/runs/30736616586> — 成功
@@ -76,4 +76,4 @@ Windows 本机执行 `go test ./internal/panel` 时仍会触发现有 Linux 绝�
 - 镜像摘要：
   `sha256:0bba49179d9ea0787836154c8bbea0f59d666a418620b61c9ddf8bfd5f8fb736`
 
-回滚只切换 KPanel 镜像和程序版本，不删除用户、站点、容器、文件、集群配置或轻量节点身份数据。
+回滚只切换 Dongger Panel 镜像和程序版本，不删除用户、站点、容器、文件、集群配置或轻量节点身份数据。

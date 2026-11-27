@@ -19,7 +19,7 @@ const (
 	kejilionAutoKernelMarker   = "# 自动网络优化配置"
 	kejilionLimitsMarker       = "# kejilion-optimize"
 	networkLimitsMarker        = "# network-optimize"
-	kpanelBBRMarker            = "# Managed by KPanel; compatible with kejilion.sh bbr_on"
+	kpanelBBRMarker            = "# Managed by Dongger Panel; compatible with kejilion.sh bbr_on"
 )
 
 var kernelProfileNames = map[string]string{

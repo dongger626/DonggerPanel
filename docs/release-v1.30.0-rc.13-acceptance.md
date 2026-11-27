@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.13 发布验收记录
+# Dongger Panel v1.30.0-rc.13 发布验收记录
 
 日期：2026-11-12
 
@@ -38,7 +38,7 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`not-required`；本版不修改或发布 `kejilion/sh`。
-- KPanel 内置脚本沿用既有版本；无脚本候选或脚本 SHA 变化。
+- Dongger Panel 内置脚本沿用既有版本；无脚本候选或脚本 SHA 变化。
 - 本版决定：脚本不在范围；无需跨仓库发布。
 
 ## 多维质量结论

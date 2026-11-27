@@ -266,7 +266,7 @@ func (c *officialIconCache) fetch(ctx context.Context, source string) (AppIcon, 
 		return AppIcon{}, err
 	}
 	request.Header.Set("Accept", "image/webp")
-	request.Header.Set("User-Agent", "KPanel application icon cache")
+	request.Header.Set("User-Agent", "Dongger Panel application icon cache")
 	response, err := c.client.Do(request)
 	if err != nil {
 		return AppIcon{}, fmt.Errorf("fetch application icon: %w", err)

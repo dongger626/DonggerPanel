@@ -1,8 +1,8 @@
-# KPanel 依赖生命周期复核（2026-10-29）
+# Dongger Panel 依赖生命周期复核（2026-10-29）
 
 ## 范围与证据身份
 
-- 复核基线：`ac65c30d1f773a7da325265d7d1c8f25174b648b`（KPanel `origin/main`）。
+- 复核基线：`ac65c30d1f773a7da325265d7d1c8f25174b648b`（Dongger Panel `origin/main`）。
 - 完整依赖报告：GitHub Actions run [40893882484](https://github.com/kejilion/KPanel/actions/runs/40893882484)，生成于 2026-10-29 14:41:36 UTC，必需检测源 9/9 成功。报告发现 35 个直接依赖/基座候选（兼容补丁 7、次版本 21、主版本/工具链/基座 7）、310 个传递依赖归属信号，紧急安全候选为 0。该次作业失败是因为两条例外及 EOL 复核已过期，不代表检测器失败，也不表示所有候选都应升级。
 - 本机报告 `C:\GitHub\_task-evidence\kpanel-v128-dependency-review-20261029\dependency-report-r2.md` 仅有 4/9 个检测源成功（缺少 Windows 原生 Go，部分上游请求失败），只用于记录环境限制，不作为完整性证据。
 - 无生产主机检查；本记录是依赖维护决策，不是安全审计，也不包含 CF 审计。
@@ -17,7 +17,7 @@
 
 ## 有期限例外复核
 
-1. **TypeScript 6.0.3 / 候选 7.0.2**：继续暂缓 TypeScript 7。KPanel 现有兼容日志记录 `vue-tsc` 3.3.11 和 3.3.13 均在进入 typecheck 前因 `typescript/lib/tsc` 子路径不可导出而失败；当前 npm 最新 `vue-tsc` 仍为 3.3.13（输出保存在仓库外 `C:\GitHub\_task-evidence\kpanel-v128-dependency-review-20261029\vue-tsc-current-version.txt`）。Vue Language Tools 也有 TypeScript 7.0.2 兼容失败记录（[issue #6124](https://github.com/vuejs/language-tools/issues/6124)）。保留 6.0.3，不关闭任何类型检查；退出条件仍是完整 typecheck、测试、场景包检查和生产构建通过。负责人：KPanel base maintenance；复核截止：2026-11-28。
-2. **@types/node 24.19.0 / 候选 26.6.6**：更新记录中的候选号并继续暂缓 24→26 配套迁移。Node 26 刚进入 LTS，但 KPanel 当前构建仍固定 Node 24；应在单独工具链候选中同时验证 runtime、类型声明、Web typecheck、测试、场景包、镜像和双架构构建。负责人：KPanel base maintenance；复核截止：2026-11-28。
+1. **TypeScript 6.0.3 / 候选 7.0.2**：继续暂缓 TypeScript 7。Dongger Panel 现有兼容日志记录 `vue-tsc` 3.3.11 和 3.3.13 均在进入 typecheck 前因 `typescript/lib/tsc` 子路径不可导出而失败；当前 npm 最新 `vue-tsc` 仍为 3.3.13（输出保存在仓库外 `C:\GitHub\_task-evidence\kpanel-v128-dependency-review-20261029\vue-tsc-current-version.txt`）。Vue Language Tools 也有 TypeScript 7.0.2 兼容失败记录（[issue #6124](https://github.com/vuejs/language-tools/issues/6124)）。保留 6.0.3，不关闭任何类型检查；退出条件仍是完整 typecheck、测试、场景包检查和生产构建通过。负责人：Dongger Panel base maintenance；复核截止：2026-11-28。
+2. **@types/node 24.19.0 / 候选 26.6.6**：更新记录中的候选号并继续暂缓 24→26 配套迁移。Node 26 刚进入 LTS，但 Dongger Panel 当前构建仍固定 Node 24；应在单独工具链候选中同时验证 runtime、类型声明、Web typecheck、测试、场景包、镜像和双架构构建。负责人：Dongger Panel base maintenance；复核截止：2026-11-28。
 
 回滚点维持原例外记录的 `9c5be9c293f98ad9bce260a4562e28743951b105`。本复核不修改运行时、依赖锁或业务代码。下一次 EOL 复核不晚于 2027-01-29。

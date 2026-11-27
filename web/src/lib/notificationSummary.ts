@@ -27,7 +27,7 @@ function afterPrefix(line: string, prefixes: string[]): string | undefined {
 export function summarizeNotification(event: NotificationEvent): NotificationSummary {
   const lines = event.message.split(/\r?\n/).map(line => line.trim()).filter(Boolean)
   const fallback = { fields: [], text: lines.join(' · ') }
-  if (!/^(?:⚠️|✅|🔐|⏰) \[KPanel (?:集群(?:告警|通知)|叢集(?:警報|通知)|Cluster (?:Alert|Notice))\]$/.test(lines[0] || '') ||
+  if (!/^(?:⚠️|✅|🔐|⏰) \[Dongger Panel (?:集群(?:告警|通知)|叢集(?:警報|通知)|Cluster (?:Alert|Notice))\]$/.test(lines[0] || '') ||
     !['主机：', '主機：', 'Host: '].some(prefix => lines[1] === prefix + event.hostName)) return fallback
   const sentAt = afterPrefix(lines.at(-1) || '', ['时间：', '時間：', 'Time: ', '发送时间：', '傳送時間：', 'Sent: '])
   if (!sentAt || !timestamp.test(sentAt)) return fallback

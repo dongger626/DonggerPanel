@@ -1,6 +1,6 @@
-# KPanel 图标标准
+# Dongger Panel 图标标准
 
-KPanel 使用同一枚多彩渐变 `K` 图标覆盖面板品牌位、浏览器标签、搜索结果、iOS 主屏幕、可安装 Web 应用和应用市场条目，避免各平台出现不同字形或临时字母占位。
+Dongger Panel 使用同一枚多彩渐变 `K` 图标覆盖面板品牌位、浏览器标签、搜索结果、iOS 主屏幕、可安装 Web 应用和应用市场条目，避免各平台出现不同字形或临时字母占位。
 
 ## 资源与用途
 
@@ -12,7 +12,7 @@ KPanel 使用同一枚多彩渐变 `K` 图标覆盖面板品牌位、浏览器�
 | `web/public/icons/kpanel-192.png` | Web App Manifest 小尺寸图标 |
 | `web/public/icons/kpanel-512.png` | Web App Manifest 大尺寸及 maskable 图标 |
 | `web/public/icons/kpanel-mask.svg` | Safari 固定标签页单色蒙版 |
-| `web/public/app-icons/kpanel.webp` | 应用市场 KPanel 条目，128×128 WebP |
+| `web/public/app-icons/kpanel.webp` | 应用市场 Dongger Panel 条目，128×128 WebP |
 | `.github/assets/kpanel-logo.png` | README 横版品牌锁定，保留 1304×292 尺寸 |
 
 ## 约束

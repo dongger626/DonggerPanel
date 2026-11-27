@@ -28,7 +28,7 @@ func TestTerminalHeaderReturnsToColumnZero(t *testing.T) {
 	var output bytes.Buffer
 	writeTerminalHeader(&output, "三网线路测试", "https://example.com/backtrace/install.sh")
 
-	want := "KPanel 体检：三网线路测试\r\n" +
+	want := "Dongger Panel 体检：三网线路测试\r\n" +
 		"来源：https://example.com/backtrace/install.sh\r\n\r\n"
 	if output.String() != want {
 		t.Fatalf("terminal header = %q, want %q", output.String(), want)

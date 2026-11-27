@@ -12,7 +12,7 @@ import (
 
 // Local applications are user-authored kejilion.sh configs in ~/apps-local.
 // kejilion.sh resolves `app <name>` from ~/apps first, so an official config
-// with the same name always wins; KPanel mirrors that order.
+// with the same name always wins; Dongger Panel mirrors that order.
 const (
 	localAppSource   = "local"
 	localAppIDPrefix = "local-"

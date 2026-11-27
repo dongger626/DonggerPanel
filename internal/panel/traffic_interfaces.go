@@ -16,7 +16,7 @@ const (
 )
 
 // handleTrafficInterfaces reads and replaces the local host's traffic
-// interface selection. Other hosts keep their own selection: KPanel hosts in
+// interface selection. Other hosts keep their own selection: Dongger Panel hosts in
 // their own panel, lightweight nodes through the node CLI.
 func (s *Server) handleTrafficInterfaces(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet && r.Method != http.MethodPut {

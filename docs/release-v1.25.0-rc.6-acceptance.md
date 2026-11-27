@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.6 发布验收记录
+# Dongger Panel v1.25.0-rc.6 发布验收记录
 
 日期：2026-10-06
 
@@ -50,7 +50,7 @@ releaseTrain：1.25.0
 
 - scriptLinkageState：not-required。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：c3a8bd895f8878d9e4ced7592c91a20c974472a5 / d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：c3a8bd895f8878d9e4ced7592c91a20c974472a5 / d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0。
 - 脚本候选 commit / SHA-256：不适用；脚本未变更。
 - 状态判定依据与兼容性证据：本轮脚本联动契约记录为 not-required；package/版本与 Release 变更均未更新 kejilion.sh 或 kejilion/apps。
 - 本版发布决定：脚本不在范围。
@@ -71,7 +71,7 @@ releaseTrain：1.25.0
 
 - 定向测试及结果：Web 定向测试 73 项通过；Windows 四附件边界测试通过；OCR 工具测试 4/4 通过；依赖政策 11 组、版本一致性、主题包 build check、gofmt -d 和 git diff --check 通过。L3 最终轮还通过 Web 全套、Go 单测与 race、Linux amd64/arm64 构建、容器契约和漏洞扫描。
 - make verify-release 环境和结果：未单独调用该快捷入口；使用规范 L3 外层入口 scripts/run-release-l3.mjs 执行冻结候选验收，结果通过。
-- L3 外层入口 run ID、计划/脚本/bundle SHA-256、不可变 Runner ID、终态与证据目录：run ID v1.25.0-rc.6-9a63e0f5-l3-r2；RUNNER_IMAGE kpanel-go127-prep-runner:go1.27.1-node24.21.0；不可变 Runner ID sha256:6f1e654d1cc38727d85f1f8ff4d58441c11035013ffd455d9923705c76b22c8c；plan.env SHA-256 3e5df66a9ba586693cf1fa32c342317541e49a8bb382952e4a41829fa72faf22；远程脚本 SHA-256 21c08b11be3526a0fe766aa606a81d0e4047e8a4e89d79227da4e62914164979；bundle SHA-256 a2bde7a5f7f805756710c030657041b6bd95f8d3d335c9d00f60d6b662300020；最终 status=pass、进程退出码 0。原始计划、脚本、bundle、source-prepare 和结果摘要保存在 C:/GitHub/_release-evidence/v1.25.0-rc.6/l3-r2；运行时长和完成时间未记录。arena-154 在 environment-policy.json 中允许 candidate-validation；该次没有部署 KPanel。
+- L3 外层入口 run ID、计划/脚本/bundle SHA-256、不可变 Runner ID、终态与证据目录：run ID v1.25.0-rc.6-9a63e0f5-l3-r2；RUNNER_IMAGE kpanel-go127-prep-runner:go1.27.1-node24.21.0；不可变 Runner ID sha256:6f1e654d1cc38727d85f1f8ff4d58441c11035013ffd455d9923705c76b22c8c；plan.env SHA-256 3e5df66a9ba586693cf1fa32c342317541e49a8bb382952e4a41829fa72faf22；远程脚本 SHA-256 21c08b11be3526a0fe766aa606a81d0e4047e8a4e89d79227da4e62914164979；bundle SHA-256 a2bde7a5f7f805756710c030657041b6bd95f8d3d335c9d00f60d6b662300020；最终 status=pass、进程退出码 0。原始计划、脚本、bundle、source-prepare 和结果摘要保存在 C:/GitHub/_release-evidence/v1.25.0-rc.6/l3-r2；运行时长和完成时间未记录。arena-154 在 environment-policy.json 中允许 candidate-validation；该次没有部署 Dongger Panel。
 - 候选 CI：run 37340791717 成功；依赖 freshness run 37340791876 成功。
 - 主线 CI：run 37341747249 成功；依赖 freshness run 37341747306 成功。
 - Release workflow：run 37343002701 成功；GitHub Release 于 2026-10-05 16:57 UTC 显示发布，标记为 Pre-release。
@@ -97,7 +97,7 @@ releaseTrain：1.25.0
 - 后台作业 ID、终态、退出码、超时、证据目录、命令规格路径及 SHA-256：L3 ID v1.25.0-rc.6-9a63e0f5-l3-r2，终态 pass，退出码 0；后台任务 ID、超时、耗时未记录。L3 证据目录 C:/GitHub/_release-evidence/v1.25.0-rc.6/l3-r2；browser preview 地址 http://127.0.0.1:4175，mock API http://127.0.0.1:8083。
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：没有进行 soak；预览 UI 交互检查与自动回归不替代长期负载验证。
 - 受影响用户旅程、视口、100%/125%/200% 缩放、最小计算字号、主题、键盘/焦点、语言和失败态：mock UI 旅程包含公共分享页官方主题整页显示、刷新限速、浅深色切换、恢复原生页、关闭脚本终端后后台运行并重新进入脚本管理、搜索不存在应用的空状态。mock UI 使用模拟数据，仅验证页面交互和错误反馈；缩放比例、最小字号和完整键盘矩阵未记录。
-- 宿主机写入、失败注入、重启恢复和回滚结果：未对生产 KPanel 主机执行部署/升级写操作；自动化涵盖备份链接安全、恢复、容器运行和失败边界。未在 Windows 真机注入服务失败或实测 RDP。
+- 宿主机写入、失败注入、重启恢复和回滚结果：未对生产 Dongger Panel 主机执行部署/升级写操作；自动化涵盖备份链接安全、恢复、容器运行和失败边界。未在 Windows 真机注入服务失败或实测 RDP。
 - 未执行场景及原因：Windows 真机安装、服务重启、更新、回滚、RDP 由用户后续进行；生产部署不属于预览授权；长时间 soak 和真实用户备份恢复未执行。
 
 ## 发布产物与公开仓库复核

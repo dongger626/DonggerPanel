@@ -16,7 +16,7 @@ Panel 的 5xx 和 Agent 返回的 5xx 会输出 `panel request failure`，包含
 宿主机 Agent 与轻量节点仍以原生二进制分发。GitHub 自动生成的 tag 源码归档可供自行构建，
 但不属于受支持的原生面板部署路径。
 
-KPanel 使用两个独立进程：
+Dongger Panel 使用两个独立进程：
 
 - `paneld` 以非 root Docker 容器运行，入口使用专用 `internal` 网络；联邦监控与 AI Provider
   复用独立受控出站网络，默认不发布宿主端口。
@@ -29,7 +29,7 @@ RHEL/Fedora、Arch/Manjaro、openSUSE/SLES，以及 Alpine Linux 3.24 `sys` mode
 
 ### 继承 POSIX ACL 的文件系统
 
-安装和应用市场更新会规范化 KPanel 自有 IPC 目录的权限，不按 NAS 品牌或发行版判断。
+安装和应用市场更新会规范化 Dongger Panel 自有 IPC 目录的权限，不按 NAS 品牌或发行版判断。
 范围仅为 `run`、`secrets`（源码安装对应 `/run/kejilion-panel`、`/etc/kejilion-panel`）
 以及其中的 `agent.sock`、`agent.token`；不递归清理父目录、共享目录或用户数据的 ACL。
 目录清除扩展及默认 ACL，Token 和 Socket 清除扩展 ACL，再分别设置
@@ -128,7 +128,7 @@ docker buildx imagetools inspect "$IMAGE:$VERSION"
 不会开启以后自动安装。
 
 退出预览版计划只恢复稳定来源，不会自动降级当前 RC。稳定版尚未追上时保持现状；出现同版本正式版
-或更高稳定版后才向前升级。完整 KPanel 自动更新当前仅支持 systemd 宿主机，OpenRC 会明确显示不可用。
+或更高稳定版后才向前升级。完整 Dongger Panel 自动更新当前仅支持 systemd 宿主机，OpenRC 会明确显示不可用。
 轻量 Node 的无人值守更新仍只跟踪稳定版。
 
 ## 宿主机预检
@@ -258,7 +258,7 @@ k fd panel.example.com 127.0.0.1 8080
 
 来自显式可信代理 CIDR 的请求可以使用代理传递的 HTTPS `Host` 和
 `X-Forwarded-Proto`，无需把 `KEJILION_PANEL_PUBLIC_URL` 从直连地址改成域名。
-应用市场安装和更新会自动信任 KPanel 内部网络以及出口网络的宿主机网关单地址
+应用市场安装和更新会自动信任 Dongger Panel 内部网络以及出口网络的宿主机网关单地址
 （IPv4 `/32`、IPv6 `/128`），从而支持宿主机 Nginx 转发，但不会信任整个出口网段。
 该路径会自动启用 Secure Cookie，并从 `X-Real-IP` 或安全解析后的
 `X-Forwarded-For` 恢复客户端地址；非可信来源不能利用这些请求头绕过 Host/Origin 校验。
@@ -274,13 +274,13 @@ Passkey 设置页会把当前可信 HTTPS 域名作为候选入口显示；管�
 2. 检测：由 Panel 服务端生成一次性随机值，请求 `https://<域名>/api/v1/panel-access/probe/<随机值>`，
    使用系统信任链校验证书、不跟随重定向、拒绝回环与链路本地目标。探针经过正常的 Host 校验，只有本进程
    正在等待的随机值才返回 204，并携带未放入请求的独立随机响应凭据；状态码与凭据同时匹配才通过，
-   因此能证明域名到达的是当前这台 Panel，而不只是同版本的另一台 KPanel。
+   因此能证明域名到达的是当前这台 Panel，而不只是同版本的另一台 Dongger Panel。
    浏览器端无法完成该检测，因为 CSP 把 `connect-src` 限制为 `'self'`。
 3. 跳转：检测通过后才提供「跳转到新地址」。可选的「屏蔽 IP + 端口直连」在跳转前提交、在后台执行，
    因此当前 IP 会话不会在新地址可用前被切断。登录状态按地址隔离，跳转后需重新登录。
 
-在应用市场给 KPanel 自身绑定域名时，同样只创建反向代理并转到上述设置页，不再立即屏蔽 IP 直连。
-通过 IP 或明文 HTTP 打开面板时，应用市场中 KPanel 自身的「阻止」IP + 端口访问也不会直接执行，而是转到
+在应用市场给 Dongger Panel 自身绑定域名时，同样只创建反向代理并转到上述设置页，不再立即屏蔽 IP 直连。
+通过 IP 或明文 HTTP 打开面板时，应用市场中 Dongger Panel 自身的「阻止」IP + 端口访问也不会直接执行，而是转到
 该设置页先检测域名、跳转后再屏蔽；只有已经通过 HTTPS 域名访问时才允许直接阻止。
 
 ### 自签 HTTPS 兜底
@@ -333,7 +333,7 @@ curl --fail --silent --show-error https://panel.example.com/api/v1/health
 - `kejilion.sh` 已有站点与容器可发现并能执行对应管理动作；
 - Web 创建的测试站点产物可被脚本侧列表识别；
 - 脚本侧新增测试站点后，刷新 Web 能显示实际配置；
-- 无 KPanel label、带特权参数或人工创建的容器仍可按实时状态管理；
+- 无 Dongger Panel label、带特权参数或人工创建的容器仍可按实时状态管理；
 - Agent 离线时 Web 降级且所有宿主机写操作禁用。
 
 ## 回滚

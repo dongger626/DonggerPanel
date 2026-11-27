@@ -1,4 +1,4 @@
-# KPanel v0.67.0 发布验收记录
+# Dongger Panel v0.67.0 发布验收记录
 
 日期：2026-08-12
 
@@ -39,7 +39,7 @@
 - 生产真源为 `arena-154` 的 `http://154.36.153.9:8080`。`kp.kejilion.pro` 不属于本次生产目标。
 - 升级前 Panel 为 `0.66.0`、healthy、0 restart、OOM false；Agent 为 `0.66.0 v1alpha1`、active，systemd 无待 reload。
 - 停写一致性备份目录：`/root/kpanel-backups/v0.67.0-preupgrade-20260812T060803Z`；归档：`/root/kpanel-backups/v0.67.0-preupgrade-20260812T060803Z.tar.gz`；SHA-256 `e56d99bf91f7b5144a362d0661c4f2a970b6cbf651818607af167845e23d3c6d`。源数据、归档清单、逐文件哈希、权限、SQLite、JSON 和 JSONL 均在独立恢复目录复核通过，恢复 `v0.66.0` 健康后才继续升级。
-- 使用标准入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel` 更新成功，输出 `KPanel 更新完成 / Update Complete`，没有触发自动回滚。更新日志 SHA-256 `4b8a043be07ae66db6e85623ad36c65b6747714ccbcc784a0a17d6aa719b6e76`。
+- 使用标准入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel` 更新成功，输出 `Dongger Panel 更新完成 / Update Complete`，没有触发自动回滚。更新日志 SHA-256 `4b8a043be07ae66db6e85623ad36c65b6747714ccbcc784a0a17d6aa719b6e76`。
 - 上线后本机与公网 Panel 均为 `0.67.0/ok/v1alpha1`、healthy、0 restart、OOM false；Agent 为 `0.67.0 v1alpha1`、active。
 - 生产镜像 revision、version、公开 OCI index、固定脚本提交/摘要、Agent 二进制、应用市场配置、权限与资源边界均核对通过。Agent SHA-256 `66938f8f7e6faccd0e1737cc00083108ee3da4d397fcc076e30cb0f890c20b22`。
 - 固定脚本仍为 `kejilion/sh@28f89c1b34df4b25e6ef9b144c328fdea75dbac9`，raw SHA-256 `0583f7cd5be1f0bb6ec48d92e2cf224bfabfafada5788658bda4414ba9561229`；宿主安装脚本只存在预期的许可/区域/统计设置差异。

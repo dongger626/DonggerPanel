@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.7 发布验收记录
+# Dongger Panel v1.30.0-rc.7 发布验收记录
 
 日期：2026-11-07
 
@@ -18,7 +18,7 @@ releaseTrain：1.30.0
 - 归档 ref 与 SHA / 远端复核结果：预览版候选不归档；GitHub origin/main、origin/release/v1.30.0-candidate 和 v1.30.0-rc.7 剥离提交均为 1d628771d5ce3ec98b9abe70d5db1f8ea71192c5。远端标签对象为 a34fbf4178622d4c1c32e3eae6d0f1454c64d407。
 - 本次来源任务分支：音乐元数据实现提交为 b7d246bbe61320c6ed041dfe1024b56fc0809512、214d05c88fdbfdb105fb572f7946cb9e69bf07b7、15fb17434acdc2c705f9a7fd90b11d2d0e0a3af5；发布候选保留精确提交链。本工作树未发现额外音乐来源分支引用，未推断或执行分支删除。
 - 本地分支/upstream/worktree：发布时 release/v1.30.0-candidate 工作树 C:\GitHub\_release-candidates\kpanel-v130 干净并指向冻结 SHA；证据保存在 C:\GitHub\_release-evidence\kpanel-v130-rc7-final。此验收记录为发布后的文档提交，不属于 RC7 tag。
-- 未完成归档项 / 责任人 / 下次复核触发条件：KPanel Release Maintainer 在 1.30.0 稳定版公开并包含 RC7 候选后，按 project-management.md 10.2 归档候选并复核来源分支处置；在稳定版完成前保留候选。
+- 未完成归档项 / 责任人 / 下次复核触发条件：Dongger Panel Release Maintainer 在 1.30.0 稳定版公开并包含 RC7 候选后，按 project-management.md 10.2 归档候选并复核来源分支处置；在稳定版完成前保留候选。
 
 归档不代表生产上线；RC7 产物已公开，生产未部署。
 
@@ -69,7 +69,7 @@ releaseTrain：1.30.0
 
 - scriptLinkageState：not-required（无需发布脚本，不是延期）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：1faee13f3faef164efbfa899e244fc19ad58aaff / 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：1faee13f3faef164efbfa899e244fc19ad58aaff / 5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：RC7 没有改脚本协议、宿主机动作或内置脚本；L3 与公开镜像报告 managed_script_contract=pass，镜像标签和原始脚本摘要匹配上述基线。
 - 本版发布决定：脚本不在范围，不发布配套脚本。

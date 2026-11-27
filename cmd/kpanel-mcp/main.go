@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	endpoint := flag.String("url", os.Getenv("KPANEL_MCP_URL"), "KPanel HTTPS /mcp endpoint")
+	endpoint := flag.String("url", os.Getenv("KPANEL_MCP_URL"), "Dongger Panel HTTPS /mcp endpoint")
 	flag.Parse()
 	if flag.NArg() == 1 && flag.Arg(0) == "version" {
 		fmt.Printf("%s %s\n", version.Version, version.ProtocolVersion)

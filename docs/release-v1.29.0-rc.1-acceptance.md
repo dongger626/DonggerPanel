@@ -1,4 +1,4 @@
-# KPanel v1.29.0-rc.1 预览版发布验收记录
+# Dongger Panel v1.29.0-rc.1 预览版发布验收记录
 
 日期：2026-10-31（Asia/Shanghai）；发布级别：L3；releaseChannel=preview；releaseTrain=1.29.0。
 
@@ -20,21 +20,21 @@
 ## 候选与来源处置
 
 - `release/v1.29.0-candidate@52015445b78315e7567e48703c9dfe2d9bfe2f00` 按预览列车保留，tag/digest不可变；`release/v1.28.1-candidate` 保留此前预览恢复点。
-- KPanel原来源 `codex/fastadmin-php74@b7395dbac86b38d43d03fc3ca81788a8d30fb582` 已经映射纳入本版；具体归档引用及回读见下方收尾附记。
+- Dongger Panel原来源 `codex/fastadmin-php74@b7395dbac86b38d43d03fc3ca81788a8d30fb582` 已经映射纳入本版；具体归档引用及回读见下方收尾附记。
 - sh/nginx原任务工作树和本地分支保持原样；原有其他工作树、未公开提交与 dirty 修改未改动。新建的发布clone只在本地合入main后显式推 `refs/heads/main:refs/heads/main`，未推功能分支、未创建PR。
 - 本任务产品与验收工作树保留恢复身份；只清理已确认测试运行资源。没有将远端归档当作本地删除授权。
 
 ## 跨仓库联动判定
 
-scriptLinkageState=coupled；变更集 `fastadmin-php74-20261031`，脚本/模板先公开后发布KPanel。
+scriptLinkageState=coupled；变更集 `fastadmin-php74-20261031`，脚本/模板先公开后发布Dongger Panel。
 
 - 旧内置脚本 `6f6d8445b3e0884dc96035879b8d76ff97a175b3` / SHA-256 `fe9625222ac3ffa300de131d4f8a9da212a3ca125054ae4a0d658f69c70508b5`。
 - 新内置兼容脚本 `5b8327fa9cfed52cfb3a96b92d15280f25499bd4`，经公开main合入 `046614235e5ef96cd4a80d39218b68fee75501f7` 可达；公开main之前为 `557f571dd6ee3b0f8dee269353beb16f11fe970a`。兼容提交仅在旧镜像脚本基线上增加FastAdmin，主线保留其既有其他更新。
-- CN另恢复规范区域入口default→CN；KPanel内置根脚本区域值未变。根SHA-256 `2ba489e89be5320537135a1ca0bdd3c1b69f5ff927c548593ec6ee9ae1ed51e4`；CN `e7806a617c2a4fe9247754ee465d0c8a0ab8a6f709fa7b154172177b831711e3`，除区域入口外字节一致。
+- CN另恢复规范区域入口default→CN；Dongger Panel内置根脚本区域值未变。根SHA-256 `2ba489e89be5320537135a1ca0bdd3c1b69f5ff927c548593ec6ee9ae1ed51e4`；CN `e7806a617c2a4fe9247754ee465d0c8a0ab8a6f709fa7b154172177b831711e3`，除区域入口外字节一致。
 - 模板 `kejilion/nginx@c830bf34ae6da8e183b4892860fbce30ea6dc651/fastadmin.com.conf`，SHA-256 `986b57db53211332331c1c0022e7894546c8e8d3a1e4baeef5f2c95f01c23f46`；此前main `1e185a050b7c6d5670a82dd70a8e85bbd49de3f6`。脚本在发布站点前检查模板摘要。
 - 官方完整包1.6.8.20261019固定SHA-256 `457bbe56d5a37d69a2e1371bea09bef8ce88e2dd11516da930ea442d70ae906f`。只修正固定包两处INI读取，保留共享PHP设置。
 - 匿名GitHub contents/git-blobs API回读以上三份完整字节，摘要全部一致；本机raw域名TLS被重置的原失败保留。GitHub镜像构建以实际raw URL与Docker ADD checksum成功，未放宽验证。
-- 配套回滚：KPanel可恢复前一tag/digest和数据备份；独立脚本可读取原main/旧内置兼容commit，模板恢复此前main。本轮未执行真实回退或自动删除业务数据库。
+- 配套回滚：Dongger Panel可恢复前一tag/digest和数据备份；独立脚本可读取原main/旧内置兼容commit，模板恢复此前main。本轮未执行真实回退或自动删除业务数据库。
 
 ## 多维质量结论
 
@@ -62,7 +62,7 @@ scriptLinkageState=coupled；变更集 `fastadmin-php74-20261031`，脚本/模�
 
 Dependency freshness [41148108901](https://github.com/kejilion/KPanel/actions/runs/41148108901) success，生成2026-10-31T00:05:17.543Z，必需检测源9/9：348信号、37直接/基座行动项、311传递信号；需处理例外0，EOL current，下次2027-01-29。push事件的security-advisories按既有条件skipped，不冒充每日安全通告完成；CI/L3漏洞门禁另有实际成功证据。
 
-本轮仅采用配套受管脚本/模板，不升级其他依赖。TS7与Node26类型例外沿用负责人KPanel base maintenance和2026-11-28复核期限，采用须通过原有完整兼容门禁；其他候选不在本版范围，首次完整检测的期限不重置。CF可选工具未请求，不查询、不计成功。最终镜像scratch，不将构建Go/Node环境等同宿主运行时。
+本轮仅采用配套受管脚本/模板，不升级其他依赖。TS7与Node26类型例外沿用负责人Dongger Panel base maintenance和2026-11-28复核期限，采用须通过原有完整兼容门禁；其他候选不在本版范围，首次完整检测的期限不重置。CF可选工具未请求，不查询、不计成功。最终镜像scratch，不将构建Go/Node环境等同宿主运行时。
 
 ## 隔离Linux与界面验收
 
@@ -109,7 +109,7 @@ Dependency freshness [41148108901](https://github.com/kejilion/KPanel/actions/ru
     "fingerprint": "preparation/git-auth/repository-ssh-config-missing",
     "count": 2,
     "impact": "Fresh publication clones initially lacked the repository SSH key selection; both failed before any clone or external write.",
-    "recoveryEvidence": "Applied existing KPanel core.sshCommand to each own clone, then authenticated clone/push succeeded.",
+    "recoveryEvidence": "Applied existing Dongger Panel core.sshCommand to each own clone, then authenticated clone/push succeeded.",
     "permanentAction": "Reuse the configured repository SSH identity; do not alter global credentials.",
     "position": "before-production-write",
     "historicalReleases": []

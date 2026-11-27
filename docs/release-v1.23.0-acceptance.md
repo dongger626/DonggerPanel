@@ -1,4 +1,4 @@
-# KPanel v1.23.0 发布验收记录
+# Dongger Panel v1.23.0 发布验收记录
 
 日期：2026-09-30
 
@@ -50,10 +50,10 @@ releaseTrain：1.23.0
 
 - scriptLinkageState：coupled
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：ai-cli-20260929
-- KPanel 实际内置脚本基线 commit / SHA-256：镜像内置脚本 commit 779192048077c130442a64a126d7c0050776d868；SHA-256 33010d547355f9bde4067c189a0457f44dc00ec3a72eaa25e5b7101e1fcb9c04。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：镜像内置脚本 commit 779192048077c130442a64a126d7c0050776d868；SHA-256 33010d547355f9bde4067c189a0457f44dc00ec3a72eaa25e5b7101e1fcb9c04。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：kejilion/sh main commit 779192048077c130442a64a126d7c0050776d868；根脚本 SHA-256 33010d547355f9bde4067c189a0457f44dc00ec3a72eaa25e5b7101e1fcb9c04；中文脚本 SHA-256 b40355fddfb6c781f6b52cb421f0a30686dce38637e04b5e5ace959b6e1293c1。
 - 状态判定依据与兼容性证据：兼容 Claude Code / Codex 的脚本先行发布；公开 Release 镜像脚本标签与摘要已核对，L3 受管脚本契约检查通过。
-- 本版发布决定：脚本先行后发布 KPanel；AI CLI 更新随 KPanel 稳定版提供。
+- 本版发布决定：脚本先行后发布 Dongger Panel；AI CLI 更新随 Dongger Panel 稳定版提供。
 - 阻断或移除的依赖范围（无则写“不适用”）：不适用。
 - packaging/kejilion-app/kpanel.conf 与 kejilion/apps main blob 均为 fa4b95374ed3b186d920207537f451a5b6d839f7（后者 main commit 4fc985e964dbd1742143521d0a28ab652b885773）；完全一致，无需应用市场仓库写入。
 
@@ -106,7 +106,7 @@ releaseTrain：1.23.0
 - linux/amd64、linux/arm64 digest：amd64 sha256:b23db0b1bc757514da80f0959818cd622b906241de108073388baf90cf0df832；arm64 sha256:8efcc427b6085c27c99f79853bb66c5fcea0fefe4afa710e2ba18e5277828965。OCI index 还含绑定两架构的 provenance attestation manifests。
 - 附件及 SHA256SUMS：Release API 共 14 个附件；SHA256SUMS 11 条逐一匹配实际下载文件及 API digest。文件 SHA-256 8e8de7fba4ccfb8d3bba149978d210dd1fe20a42b3190e631ef70e6811c922b4。未将 11 条表述为全部 14 个附件均有此清单校验。
 - 公开镜像 image_e2e=pass：Docker Hub AMD64 公开镜像通过标准 packaging/tests/image-e2e.sh；公开 OCI API/容器生命周期断言通过。
-- kejilion/apps / kejilion.sh 契约结论：应用市场配置 blob 与 KPanel 内置版本相同，无仓库写入。脚本联动已先行发布并核对镜像标签和脚本摘要；详情见跨仓库章节。
+- kejilion/apps / kejilion.sh 契约结论：应用市场配置 blob 与 Dongger Panel 内置版本相同，无仓库写入。脚本联动已先行发布并核对镜像标签和脚本摘要；详情见跨仓库章节。
 
 ## 自更新通道验收
 
@@ -123,7 +123,7 @@ releaseTrain：1.23.0
 - 生产目标和部署授权范围：本次授权完成稳定版正式产物发布；没有生产服务器部署授权。
 - 验证/灰度环境（必须来自 environment-policy.json，不得包含 prod-108）：登记 local-wsl-dr 仅用于 candidate-validation，不是灰度环境。
 - 正式部署环境（默认 arena-154；不得包含 prod-108）：arena-154 SSH 超时，本轮未连接部署。
-- prod-108：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对：全部未操作。
+- prod-108：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对：全部未操作。
 - 部署前版本、健康、备份位置及摘要：不适用（无生产部署）。
 - 部署命令/入口：不适用（无生产部署）。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：未执行生产核对。
@@ -194,8 +194,8 @@ releaseTrain：1.23.0
     "position": "before-production-write",
     "count": 1,
     "impact": "首次 SSH 读取未带本仓库既有身份适配，返回 publickey 拒绝；未写远端。",
-    "recoveryEvidence": "复用 KPanel core.sshCommand、通过 git -c 显式传递后 ls-remote 取得上述精确公开 tip；不打印 SSH 凭据或改用户仓库配置。",
-    "permanentAction": "成对脚本核对的冻结命令固定使用已预检的 KPanel SSH 身份适配，兼容版本和 SHA-256 均另外由精确提交 blob 复核。",
+    "recoveryEvidence": "复用 Dongger Panel core.sshCommand、通过 git -c 显式传递后 ls-remote 取得上述精确公开 tip；不打印 SSH 凭据或改用户仓库配置。",
+    "permanentAction": "成对脚本核对的冻结命令固定使用已预检的 Dongger Panel SSH 身份适配，兼容版本和 SHA-256 均另外由精确提交 blob 复核。",
     "historicalReleases": []
   },
   {

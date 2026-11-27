@@ -54,7 +54,7 @@ type composeEditFile struct {
 }
 
 // This guard closes external-command windows, not the final check/rename race
-// with writers that do not coordinate with KPanel. Real files remain authoritative.
+// with writers that do not coordinate with Dongger Panel. Real files remain authoritative.
 type composeEditGuard struct {
 	files       map[string]composeEditFile
 	directories map[string]os.FileInfo

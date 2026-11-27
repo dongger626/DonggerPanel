@@ -1,4 +1,4 @@
-# KPanel v1.13.0 发布验收
+# Dongger Panel v1.13.0 发布验收
 
 日期：2026-09-10。发布级别 L3。最终产品提交 `271872628c1882cd444d82829d2bf585fa8ddeb7`，annotated tag `v1.13.0`，tag object `6148ca16016c0d1b27a551c2045e90981e21f07a`。候选基线 main 为 `4d1d0991730709f7ddaf89758b99b7f2684bc41e`；上一稳定版本为 v1.12.0，产品提交 `0ff1e32ec8a84099659e5e0bebcea07b4b7aad63`，旧 OCI 为 `sha256:229b81f9d31741f0bb75a1eea470566116951cec791eb70ea7bf2b046a23c34a`。
 
@@ -16,7 +16,7 @@
 
 - `d92daa9`：文件中继由服务端持有恢复状态；浏览器只发一个读取请求，旧节点不支持恢复时按 1 秒至 5 分钟退避。写操作不重放，上传等待节点 ACK。
 - `1d03057`：light node 安全重新接入，展示精确 enrollment ID 和首报状态；对应 `kejilion/sh` 先发布新的暂存、校验、原子身份切换和同令牌恢复能力。
-- `fddfa2f`：`docker_app` / `docker_app_plus` 使用 KPanel 常规入口，不再显示脚本管理；update 与 direct access 仍按实际端口绑定能力决定。
+- `fddfa2f`：`docker_app` / `docker_app_plus` 使用 Dongger Panel 常规入口，不再显示脚本管理；update 与 direct access 仍按实际端口绑定能力决定。
 - `843afb3`：关闭仍在运行的应用任务时转入停止确认；后台运行选择仍保留。
 - `1c5f628`、`9b227ea`、`39fe280`、`2718726`：同步 v1.13.0 元数据、脚本 pin、CHANGELOG、当前业务基线与 Linux 绑定测试契约。
 
@@ -26,11 +26,11 @@
 
 - `scriptLinkageState=coupled`。
 - 变更集编号：`v1.13.0-light-node-reenrollment`。
-- KPanel 上一内置脚本基线：`9f612efc4f861459c0a525491c7cdf5eda756cf7`，根脚本 SHA256 `9f3eaabaae32fd51511d2c3749cfb874bd600fb4c3b0b139b2f640b9eb877663`。
+- Dongger Panel 上一内置脚本基线：`9f612efc4f861459c0a525491c7cdf5eda756cf7`，根脚本 SHA256 `9f3eaabaae32fd51511d2c3749cfb874bd600fb4c3b0b139b2f640b9eb877663`。
 - 脚本候选与已发布 main：`7369e1d66d9db304ba9956a9e137930414629ed2`；根脚本 SHA256 `fca0829011778374e067f91539c2d229d15025e5ad665389f1c9d2c3f14bcb59`，CN 脚本 SHA256 `13126260687777e37126001c34179f8dd1e1f66722dac37cadb2a2bbda91a265`。
-- 兼容性证据：根/CN `bash -n`、脚本 smoke 和 `tests/test_kpanel_light_node_update.py` 23/23 均在 WSL root 的 `core.autocrlf=false` 精确 bundle clone 中通过；公开 raw 字节与上述摘要一致。KPanel managed-script-contract、cluster/unit tests、最终 L3 和公开镜像提取校验均绑定同一 revision/SHA256。
-- 发布决定：脚本兼容版本先纯快进到 `kejilion/sh` main，再冻结 KPanel 候选；KPanel Dockerfile 和来源文档固定该提交与摘要。
-- 配对回滚：KPanel 回到 v1.12.0 / OCI `sha256:229b81f9d31741f0bb75a1eea470566116951cec791eb70ea7bf2b046a23c34a`，脚本回到 `9f612efc4f861459c0a525491c7cdf5eda756cf7`。没有阻断后仍保留的依赖范围。
+- 兼容性证据：根/CN `bash -n`、脚本 smoke 和 `tests/test_kpanel_light_node_update.py` 23/23 均在 WSL root 的 `core.autocrlf=false` 精确 bundle clone 中通过；公开 raw 字节与上述摘要一致。Dongger Panel managed-script-contract、cluster/unit tests、最终 L3 和公开镜像提取校验均绑定同一 revision/SHA256。
+- 发布决定：脚本兼容版本先纯快进到 `kejilion/sh` main，再冻结 Dongger Panel 候选；Dongger Panel Dockerfile 和来源文档固定该提交与摘要。
+- 配对回滚：Dongger Panel 回到 v1.12.0 / OCI `sha256:229b81f9d31741f0bb75a1eea470566116951cec791eb70ea7bf2b046a23c34a`，脚本回到 `9f612efc4f861459c0a525491c7cdf5eda756cf7`。没有阻断后仍保留的依赖范围。
 
 ## 多维质量结论
 
@@ -75,7 +75,7 @@ Docker Hub `1.13.0` 与 `latest` 同指 OCI index `sha256:9dc2ce1cf57bd3f56e001c
 
 ## 生产部署安全核对
 
-用户明确授权本次完整上线。验证与正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁用全部 KPanel 操作，本轮未连接、未备份、未部署、未升级、未核对。
+用户明确授权本次完整上线。验证与正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁用全部 Dongger Panel 操作，本轮未连接、未备份、未部署、未升级、未核对。
 
 生产 preflight run `v1.13.0-production-20260910` 于 04:59:37Z 至 04:59:38Z 确认原生产 v1.12.0、revision `0ff1e32`、旧 OCI `sha256:229b81...` 健康，Panel running/healthy、restart 0、OOM false，Agent active/running/enabled，SQLite quick check 通过。基线为 63 个数据文件，磁盘可用约 24 GiB。
 
@@ -153,7 +153,7 @@ env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/ke
     "position": "before-production-write",
     "count": 1,
     "impact": "kejilion/sh 的 HTTPS fetch 超时，未取得新的远端状态。",
-    "recoveryEvidence": "使用 KPanel 已登记 SSH identity 精确查询并纯快进脚本 main 到 7369e1d。",
+    "recoveryEvidence": "使用 Dongger Panel 已登记 SSH identity 精确查询并纯快进脚本 main 到 7369e1d。",
     "permanentAction": "跨仓库发布读写统一复用已验证 SSH remote 与 identity。",
     "historicalReleases": []
   },

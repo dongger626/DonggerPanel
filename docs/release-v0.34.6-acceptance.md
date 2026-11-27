@@ -1,10 +1,10 @@
-# KPanel v0.34.6 发布验收
+# Dongger Panel v0.34.6 发布验收
 
 发布日期：2026-08-01
 
 ## 发布范围
 
-- 交互式终端继续使用固定深色工作区，光标、选区、边框、状态、输入框和按钮统一使用 KPanel 品牌与语义色。
+- 交互式终端继续使用固定深色工作区，光标、选区、边框、状态、输入框和按钮统一使用 Dongger Panel 品牌与语义色。
 - 终端保留 ANSI 红、黄、蓝、紫、青等原生输出颜色，不改变 PTY、输入、轮询、重连或 URL 跳转协议。
 - 代码编辑器继续使用固定深色工作区，统一光标、选区、活动行、查找替换和滚动条样式，同时保留多色语法高亮。
 - 本次没有数据库迁移、Agent/Panel API 变更、部署参数变更或 `kejilion.sh` 变更。
@@ -24,10 +24,10 @@ GitHub Release 已公开并包含 8 个附件，包括 Agent 的 amd64/arm64 二
 ## 验收结果
 
 - Web：28 个测试文件、182 项测试通过；类型检查和生产构建通过。
-- 主题回归：固定深色工作区、KPanel 品牌变量接入及旧紫色/蓝色强调色移除均有自动测试覆盖。
+- 主题回归：固定深色工作区、Dongger Panel 品牌变量接入及旧紫色/蓝色强调色移除均有自动测试覆盖。
 - 安全：Release 工作流中的 `govulncheck`、`npm audit --audit-level=high`、应用生命周期和镜像运行契约检查全部通过；本地 `npm audit` 同样为 0 个漏洞。
 - 154 验收机重新拉取公开不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 154 验收前后生产 `kejilion-panel` 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；临时容器和网络无残留，未替换或重启生产 KPanel。
+- 154 验收前后生产 `kejilion-panel` 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；临时容器和网络无残留，未替换或重启生产 Dongger Panel。
 
 ## Docker Hub
 

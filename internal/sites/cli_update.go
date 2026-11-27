@@ -21,7 +21,7 @@ var (
 	returnLinePattern     = regexp.MustCompile(`(?m)^([ \t]*return[ \t]+)(301|302|307|308)[ \t]+[^;\r\n]+;`)
 )
 
-// updateCLIConfig patches only the small set of directives that KPanel
+// updateCLIConfig patches only the small set of directives that Dongger Panel
 // understands in a discovered kejilion.sh site. It deliberately preserves
 // certificates, security rules, product-specific roots and every unknown
 // directive, so the CLI and Web remain on the same physical artifact.

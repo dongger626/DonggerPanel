@@ -28,7 +28,7 @@ Usage:
     [--network-subnet 172.29.255.240/28] \
     [--dry-run]
 
-The installer only creates KPanel files and services. It does not edit
+The installer only creates Dongger Panel files and services. It does not edit
 kejilion.sh, /home/web, Nginx configuration, firewall rules, or existing sites.
 EOF
 }
@@ -304,7 +304,7 @@ inspect_agent_service_absence
 WEB_ROOT_KIND=$(stat -L -c %F /home/web 2>/dev/null || true)
 if [ "$WEB_ROOT_KIND" != "directory" ]; then
 	printf '%s\n' \
-		'Kejilion Web root is unavailable; KPanel will install with website management disabled.' >&2
+		'Kejilion Web root is unavailable; Dongger Panel will install with website management disabled.' >&2
 fi
 DOCKER_SOCKET_KIND=$(stat -L -c %F /var/run/docker.sock 2>/dev/null) ||
 	fail "local Docker Unix socket is unavailable: /var/run/docker.sock"

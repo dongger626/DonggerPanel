@@ -1,4 +1,4 @@
-# KPanel v1.16.0 发布验收
+# Dongger Panel v1.16.0 发布验收
 
 日期：2026-09-13
 
@@ -33,7 +33,7 @@
 
 - `scriptLinkageState=not-required`（无需发布脚本（不适用））。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本：`kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`。
+- Dongger Panel 实际内置脚本：`kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`。
 - 脚本候选：不适用；本版未修改脚本动作、安装/更新/卸载路径、宿主机产物或镜像内脚本内容。
 - 兼容性证据：候选和公开镜像的受管脚本 revision/SHA、应用生命周期与生产 postdeploy 均精确匹配既有脚本契约。
 - 本版决定：脚本不在范围；没有阻断或移除的脚本依赖范围。
@@ -70,14 +70,14 @@ dependency freshness 在候选、main 和 tag 三层均通过。业务上下文�
 
 ## 发布产物与公开仓库复核
 
-- [v1.16.0 Release](https://github.com/kejilion/KPanel/releases/tag/v1.16.0) 于 2026-09-13T15:17:52+08:00 公开；回滚后保留为非 draft、prerelease，标题为 `KPanel 1.16.0 (withdrawn)`。GitHub Latest 已恢复为 [v1.15.0](https://github.com/kejilion/KPanel/releases/tag/v1.15.0)。
+- [v1.16.0 Release](https://github.com/kejilion/KPanel/releases/tag/v1.16.0) 于 2026-09-13T15:17:52+08:00 公开；回滚后保留为非 draft、prerelease，标题为 `Dongger Panel 1.16.0 (withdrawn)`。GitHub Latest 已恢复为 [v1.15.0](https://github.com/kejilion/KPanel/releases/tag/v1.15.0)。
 - `1.16.0` 版本标签仍指 OCI index `sha256:7d1806ac669c942724a8f6dc60fb2df33b67f3f64f9c36b380ce12817ff5d245`；Docker `latest` 已恢复为 `1.15.0` 的 `sha256:80a9013765c56c4bd0efb1b0c19fb76a73a6467f318a70496b070c39c3cd40e9`。
 - 8 个 v1.16.0 附件继续保留：两种架构 Agent、两种架构 Node、部署归档、LICENSE、SHA256SUMS、THIRD_PARTY_NOTICES.md。5 个受 `SHA256SUMS` 管理的文件下载后逐项匹配，且全部 8 个文件的本地摘要与 GitHub asset digest 一致；证据 `C:/GitHub/_release-artifacts/v1160-public-assets-r1`。
 - 公开默认通道恢复工作流 [34746414210](https://github.com/kejilion/KPanel/actions/runs/34746414210) 成功，精确核对 GitHub Latest、withdrawn 标记和 Docker `latest`；`kejilion/apps` 与 sh 仓库无需变更。
 
 ## 生产部署安全核对
 
-- 用户明确授权完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁用全部 KPanel 操作，本轮未连接、核对、备份、部署或升级。
+- 用户明确授权完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁用全部 Dongger Panel 操作，本轮未连接、核对、备份、部署或升级。
 - preflight run `v1.16.0-production-20260913` 于 15:11:32+08:00 至 15:11:33+08:00 通过：原生产 `1.15.0` / `5bbbb50db1f5e958cc27bfc6f457478c4f5b0c92` / OCI `sha256:80a9013765c56c4bd0efb1b0c19fb76a73a6467f318a70496b070c39c3cd40e9` 健康，Panel running/healthy、restart 0、OOM false，Agent active/running/enabled，SQLite 和 63 行数据清单正常。
 - 首次生产写为 15:20:53+08:00。backup 至 15:21:03+08:00 通过，创建 `/root/kpanel-backups/pre-v1.15.0-20260913T072053Z`；数据归档 SHA-256 `17b55aa1411d41565900b353ea53a9b6911648b1d4d0c1c590983a982e90dcd4`，旧镜像归档 `1501853c8997c8611dacf77938da998a1d1ea5aa56c1bb58d2f64a8d9b04017f`。6 个备份文件、旧镜像实际加载、保护文件和旧版恢复均通过。
 - 唯一更新入口为 `env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，退出 0并拉取精确新 OCI。

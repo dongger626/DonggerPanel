@@ -67,7 +67,7 @@ func generateTOTPSecret() (string, error) {
 }
 
 func buildOTPAuthURI(username, secret string) string {
-	issuer := "KPanel"
+	issuer := "Dongger Panel"
 	label := issuer + ":" + username
 	query := url.Values{}
 	query.Set("secret", secret)

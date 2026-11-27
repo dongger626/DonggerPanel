@@ -556,7 +556,7 @@ func RunJob(ctx context.Context, stateDir, id string) error {
 }
 
 func writeTerminalHeader(writer io.Writer, checkName, sourceURL string) {
-	_, _ = fmt.Fprintf(writer, "KPanel 体检：%s\r\n来源：%s\r\n\r\n", checkName, sourceURL)
+	_, _ = fmt.Fprintf(writer, "Dongger Panel 体检：%s\r\n来源：%s\r\n\r\n", checkName, sourceURL)
 }
 
 func parseCatalog(output []byte) (Catalog, error) {

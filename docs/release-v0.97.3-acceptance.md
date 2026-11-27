@@ -1,4 +1,4 @@
-# KPanel v0.97.3 发布验收记录
+# Dongger Panel v0.97.3 发布验收记录
 
 日期：2026-08-24
 
@@ -61,11 +61,11 @@
 - Docker `0.97.3` 与 `latest` OCI index：`sha256:1d1e5fe884c9580ac7ce357397d78323ca7905b8e1d13f8367c25091d2f6ad49`。
 - `linux/amd64`=`sha256:c348807621eaff42a68ce288c8446f0ca0d49cdb2cbc8c7b7f3e92e74e5d4b82`；`linux/arm64`=`sha256:fcbacfc7e28e0210f0216453df6c27bbd2709ddf24a982fb7c38ea48ca7262b7`。
 - Release 附件含双架构 Agent/Node、部署包、LICENSE、THIRD_PARTY_NOTICES 和 SHA256SUMS；公开镜像 `image_e2e=pass`。
-- `packaging/kejilion-app/kpanel.conf` 相对 `v0.97.2` 无差异，无需 apps 提交；生产 `/root/apps` 因独立 AIStudioToAPI 更新前移到 `2d8044adec98e3eb16f47cdbb297f6be9632a66f`，KPanel 配置 SHA-256 仍为 `7b5b52af0ff20cff4bebf114e747ddf1c82996500f2767ba8d3733217e83121c`。
+- `packaging/kejilion-app/kpanel.conf` 相对 `v0.97.2` 无差异，无需 apps 提交；生产 `/root/apps` 因独立 AIStudioToAPI 更新前移到 `2d8044adec98e3eb16f47cdbb297f6be9632a66f`，Dongger Panel 配置 SHA-256 仍为 `7b5b52af0ff20cff4bebf114e747ddf1c82996500f2767ba8d3733217e83121c`。
 
 ## 生产部署安全核对
 
-- 唯一目标为 `arena-154`；108 禁用全部 KPanel 操作，本次未连接、未备份、未部署、未升级、未核对。
+- 唯一目标为 `arena-154`；108 禁用全部 Dongger Panel 操作，本次未连接、未备份、未部署、未升级、未核对。
 - 部署前 Panel `0.97.2` healthy、Agent active、restart=0、OOM=false，旧 OCI=`sha256:d94605a00bdf2d4a3a73acc23549ca7851f1876b2ba581b55e5a369e7d7fd7c1`。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.97.3-20260824T144503Z`；`SHA256SUMS` SHA-256=`49727dc04abd61c1b7177c1108b79cfe6c6f7555718724b10f049ab882af0b15`。归档校验、解包逐项比较、旧镜像加载及旧版重启均通过。
 - 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。应用输出到达 Update Complete 和 100%；旁路 `tee` 证据写入失败，未重复更新，改由权威状态与固定脚本收口。

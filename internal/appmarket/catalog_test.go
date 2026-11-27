@@ -109,7 +109,7 @@ func TestEmbeddedCatalogMatchesAuditedApplicationMarket(t *testing.T) {
 		}
 	}
 	if !foundKPanel {
-		t.Fatal("KPanel local application icon is missing or has an unexpected digest")
+		t.Fatal("Dongger Panel local application icon is missing or has an unexpected digest")
 	}
 	for _, category := range catalog.Categories {
 		if category.ZHTW == "" {

@@ -1,4 +1,4 @@
-/* Everything here is yours: any layout, font stack, canvas, SVG, animation. Nothing is inherited from KPanel. */
+/* Everything here is yours: any layout, font stack, canvas, SVG, animation. Nothing is inherited from Dongger Panel. */
 :root { color-scheme: light dark; font: 16px/1.6 system-ui, sans-serif; }
 :root[data-mode=dark] { background: #111; color: #eee; }
 :root[data-mode=light] { background: #fff; color: #111; }

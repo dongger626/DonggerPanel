@@ -194,7 +194,7 @@ onBeforeUnmount(() => {
       <header v-if="!immersive" class="share-header">
         <a class="share-brand" href="https://github.com/kejilion/KPanel" target="_blank" rel="noopener noreferrer">
           <LogoMark compact class="share-brand__logo" />
-          <strong>KPanel</strong>
+          <strong>Dongger Panel</strong>
         </a>
         <div class="share-header__actions">
           <button
@@ -385,7 +385,7 @@ onBeforeUnmount(() => {
       </ClusterShareTheme>
 
       <footer v-if="!immersive" class="share-footer">
-        <span>Powered by <strong>KPanel</strong></span>
+        <span>Powered by <strong>Dongger Panel</strong></span>
         <span>公开页不包含 IP、管理入口或访问凭据</span>
       </footer>
     </div>

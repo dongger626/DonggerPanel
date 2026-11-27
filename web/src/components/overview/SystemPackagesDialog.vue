@@ -124,7 +124,7 @@ async function submit(action: 'install' | 'remove'): Promise<void> {
   if (!props.writable || !snapshot.value?.resourceVersion || !items.length || running.value || maintenanceBusy.value || submitting.value) return
   const message = action === 'install'
     ? `将使用 ${snapshot.value.manager} 按顺序安装 ${items.length} 个软件包。首个失败项会停止任务，已完成的安装会保留。确认开始吗？`
-    : `将卸载 ${items.length} 个软件包及包管理器判定的关联配置。KPanel 不会自动重装它们，确认继续吗？`
+    : `将卸载 ${items.length} 个软件包及包管理器判定的关联配置。Dongger Panel 不会自动重装它们，确认继续吗？`
   if (!window.confirm(translatePhrase(message))) return
   submitting.value = true
   try {

@@ -1,4 +1,4 @@
-# KPanel v0.98.2 发布验收记录
+# Dongger Panel v0.98.2 发布验收记录
 
 日期：2026-08-27
 
@@ -71,7 +71,7 @@
 - 唯一生产目标：`arena-154`；`108`/`prod-108` 未连接、未检查、未测试、未备份、未部署、未升级。
 - 部署前：run `diagnostics-v0982-prod-pre-20260827`，health `0.98.1/status=ok`，Agent active/enabled，Panel healthy，restart=0，OOM=false。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.98.2-20260827T133833Z`；远端备份 `SHA256SUMS` 本地证据 SHA-256=`7a46b40292f357004dee7e1f95a7e5cab2265adf56a0826537659cc9f21003bd`；归档、旧镜像加载、校验和及恢复健康均通过。
-- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，拉取官方 latest digest、输出达到 `KPANEL_PROGRESS 100` 与 `KPanel 更新完成`，exit 0。
+- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，拉取官方 latest digest、输出达到 `KPANEL_PROGRESS 100` 与 `Dongger Panel 更新完成`，exit 0。
 - 部署后：run `diagnostics-v0982-prod-post-20260827`；health `0.98.2/status=ok`，OCI revision=`ef843a08e0e8a8fb3199c1dd6f471211943ff3b7`、digest=`sha256:f894543eee6c8999824d43357a6dfa12421912c93d3fc9a66628a5673b3abeb6`；Panel healthy、Agent active、restart=0、OOM=false；配置保护摘要无差异，SQLite quick_check=ok，近 10 分钟日志无 panic/fatal/OOM。
 - 生产写操作仅包括备份阶段受控 stop/start 与标准应用市场更新；未执行体检业务写操作。
 

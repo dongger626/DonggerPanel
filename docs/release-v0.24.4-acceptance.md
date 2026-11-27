@@ -1,21 +1,21 @@
-# KPanel v0.24.4 验收记录
+# Dongger Panel v0.24.4 验收记录
 
 ## 交付范围
 
 - 对使用 `docker_app`、`docker_app_plus` 或单端口声明式适配器的应用，将安装端口输入前置到
-  KPanel 安装弹窗；专属、多端口或无法安全识别端口的安装器继续使用原生交互终端。
+  Dongger Panel 安装弹窗；专属、多端口或无法安全识别端口的安装器继续使用原生交互终端。
 - 安装前同时检查 Docker 已发布端口和宿主机 TCP/UDP 监听端口，并在任务提交和声明式容器创建
   前再次校验；冲突时不启动安装任务。
-- KPanel 通过 `KJ_APP_PORT` 把已校验端口传给 `kejilion.sh`，脚本在实际安装前继续复核端口；
+- Dongger Panel 通过 `KJ_APP_PORT` 把已校验端口传给 `kejilion.sh`，脚本在实际安装前继续复核端口；
   SSH 直接执行脚本时仍保留原端口输入顺序。
 - 应用市场中的运行中交互任务增加“结束任务”入口；只优雅停止可安全中断的交互任务，普通
   声明式安装、更新任务不开放强制终止。
-- `kejilion/apps` 的 KPanel 配置同步一次性更新回滚保护；后续常规 KPanel 发版仍使用
+- `kejilion/apps` 的 Dongger Panel 配置同步一次性更新回滚保护；后续常规 Dongger Panel 发版仍使用
   `latest` 镜像和镜像内发布契约，不需要逐版本修改应用配置。
 
 ## 发布提交
 
-- KPanel：`b7bf3f093549769b69729b8f08092edb1b16e0c9`
+- Dongger Panel：`b7bf3f093549769b69729b8f08092edb1b16e0c9`
 - 标签：`v0.24.4`
 - `kejilion.sh`：`229355b1b6e1ce405cc97019b3755e36f2b814c1`
 - `kejilion/apps`：`e20a79ccb8982346fa79debe172d56aa3e38403f`
@@ -55,6 +55,6 @@
 - 代码回滚点：标签 `v0.24.3`。
 - 镜像回滚点：
   `docker.io/kjlion/kejilion-panel@sha256:ed2d2a792c95f8e1d3d9075db138d9eaa7c6a204ea238c8bb88953f98f0e93d7`。
-- 本版本没有数据格式迁移。回滚 KPanel/Agent 不删除应用容器、网站、数据库、域名配置或环境备份。
-- 发布不会自动替用户升级生产主机；用户从 `kejilion.sh` 应用市场更新 KPanel 时执行原位升级，
+- 本版本没有数据格式迁移。回滚 Dongger Panel/Agent 不删除应用容器、网站、数据库、域名配置或环境备份。
+- 发布不会自动替用户升级生产主机；用户从 `kejilion.sh` 应用市场更新 Dongger Panel 时执行原位升级，
   保留当前访问端口，并在失败时恢复原镜像、Agent、脚本和服务配置。

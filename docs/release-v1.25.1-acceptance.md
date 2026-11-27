@@ -1,4 +1,4 @@
-# KPanel v1.25.1 稳定安全补丁发布验收
+# Dongger Panel v1.25.1 稳定安全补丁发布验收
 
 日期：2026-10-10
 
@@ -103,7 +103,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.25.1](https://github.com/kejilion/KPanel/releases/tag/v1.25.1)：draft=false、prerelease=false，GitHub Latest=v1.25.1。
+- [Dongger Panel v1.25.1](https://github.com/kejilion/KPanel/releases/tag/v1.25.1)：draft=false、prerelease=false，GitHub Latest=v1.25.1。
 - Docker 版本/latest OCI index：`sha256:1894b5e3aa76edbd75efef2de1164f44d38734cb3a27dc11aa2f75c420c1b325`；amd64：`sha256:7a1417e0fdeb68d07e593b6a81457be8d1adc7378f5eb06fc426b2d1f3e232d8`；arm64：`sha256:0a023d66aa3959e4e6016efe7d2c55b59b79aba5133fe6d27b479d644b432ef6`。
 - preview 保持 `sha256:46ee78d7e322adf15f7a9664d225d6134311ecc4f2090191da3a25f8c02f1f84`，两通道独立。两个平台 OCI labels 的 version/revision/script pin 全部吻合。
 - 附件 14 项、SHA256SUMS 11 项与 API asset digest 一致；meta VERSION、LICENSE/NOTICES 和 LICENSES 字节核对。未下载所有二进制字节，不以 API digest 代替独立全量二进制下载证明。
@@ -155,7 +155,7 @@
     "recoveryEvidence": "task-ready.log retains failure; task-ready-r2.log and corrected task-contract.json retain the successful ready qualification.",
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
     "historicalReleases": []
   },
   {
@@ -164,7 +164,7 @@
     "recoveryEvidence": "public-preflight.py and public-preflight.log retain the original target error; public-preflight-r2.py and public-preflight-r2.json verify exact target 1.25.1 absent.",
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
     "historicalReleases": []
   },
   {
@@ -173,7 +173,7 @@
     "recoveryEvidence": "Original tool result chunk 8c7261 retains exit 1; no separate raw file was captured and none is fabricated. The exact draft was moved to the external evidence root; canonical r2 prepare passed and manifest.json binds the final clean SHA.",
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
     "historicalReleases": []
   },
   {
@@ -182,7 +182,7 @@
     "recoveryEvidence": "deep-cleanup-execute-r1.log and receipt preserve the guard failure; deep-ignored-diagnostic-output.json identifies exactly ten canonical binaries in two completed source copies; r2 permits only those exact binary paths and verifies cleanup.",
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
     "historicalReleases": []
   },
   {
@@ -191,13 +191,13 @@
     "recoveryEvidence": "Original tool chunks d8056a and 59fc4e retain both failures; no separate original raw file was captured. prepare-deep-cleanup-r2.cjs carries the exact source transform in a saved Node file, then r2 cleanup completed.",
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Retain this exact external preflight/recovery implementation and diagnose recurrence before any production write; current recovery does not claim a permanent shared entry repair.",
     "historicalReleases": []
   },
   {
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Qualify external helper syntax and full raw output capture before use; this corrected release-specific helper is recovery, not a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Qualify external helper syntax and full raw output capture before use; this corrected release-specific helper is recovery, not a permanent shared entry repair.",
     "historicalReleases": [],
     "fingerprint": "release-controller/publish-ref/invalid-computed-key",
     "impact": "The first candidate push helper failed JavaScript parsing before running any Git command; no remote mutation occurred in that attempt.",
@@ -206,7 +206,7 @@
   {
     "position": "before-production-write",
     "count": 1,
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Qualify external helper syntax and full raw output capture before use; this corrected release-specific helper is recovery, not a permanent shared entry repair.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Qualify external helper syntax and full raw output capture before use; this corrected release-specific helper is recovery, not a permanent shared entry repair.",
     "historicalReleases": [],
     "fingerprint": "evidence/tool-output/truncated-json-capture",
     "impact": "A successful coverage command output was truncated by the tool output budget while being copied to a JSON artifact. The incomplete copy was not accepted as machine evidence.",
@@ -218,7 +218,7 @@
     "count": 1,
     "impact": "The first documentation L0 rejected explanatory suffixes on the machine production-completion and lead-time markers. No production deployment had occurred; the record was not accepted.",
     "recoveryEvidence": "docs-l0.log and docs-l0-result.json retain exact 7161f513 failure and SHA-256. The forward documentation correction uses exact 未验证 / 不适用 markers, preserves the explanation outside the machine block, and reruns the same canonical L0 argv.",
-    "permanentAction": "Owner: KPanel release tooling task; review by 2026-10-11 or before the next L3 production write. Require literal machine unverified markers in acceptance generation and retain this failed attempt; no shared canonical entry defect or permanent project tooling repair is claimed.",
+    "permanentAction": "Owner: Dongger Panel release tooling task; review by 2026-10-11 or before the next L3 production write. Require literal machine unverified markers in acceptance generation and retain this failed attempt; no shared canonical entry defect or permanent project tooling repair is claimed.",
     "historicalReleases": []
   }
 ]

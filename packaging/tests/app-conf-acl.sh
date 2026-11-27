@@ -7,9 +7,9 @@ trap 'rm -rf -- "$TEST_DIR"' EXIT
 
 # The app configuration is standalone on hosts. Keep its embedded helper byte
 # identical to the one used by the source installer.
-sed -n '/^# BEGIN KPanel IPC permissions/,/^# END KPanel IPC permissions/p' \
+sed -n '/^# BEGIN Dongger Panel IPC permissions/,/^# END Dongger Panel IPC permissions/p' \
   "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >"$TEST_DIR/app-helper"
-sed -n '/^# BEGIN KPanel IPC permissions/,/^# END KPanel IPC permissions/p' \
+sed -n '/^# BEGIN Dongger Panel IPC permissions/,/^# END Dongger Panel IPC permissions/p' \
   "$PROJECT_DIR/deploy/ipc-permissions.sh" >"$TEST_DIR/deploy-helper"
 test -s "$TEST_DIR/app-helper"
 cmp "$TEST_DIR/app-helper" "$TEST_DIR/deploy-helper"

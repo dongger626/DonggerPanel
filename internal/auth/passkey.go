@@ -122,7 +122,7 @@ func NewPasskeyService(service *Service, value string) (*PasskeyService, error) 
 		return nil, err
 	}
 	web, err := webauthn.New(&webauthn.Config{
-		RPID: id, RPDisplayName: "KPanel", RPOrigins: []string{origin},
+		RPID: id, RPDisplayName: "Dongger Panel", RPOrigins: []string{origin},
 		AttestationPreference:  protocol.PreferNoAttestation,
 		AuthenticatorSelection: protocol.AuthenticatorSelection{ResidentKey: protocol.ResidentKeyRequirementRequired, UserVerification: protocol.VerificationRequired},
 		Timeouts: webauthn.TimeoutsConfig{

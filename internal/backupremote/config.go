@@ -1,4 +1,4 @@
-// Package backupremote transports existing encrypted KPanel packages. It never
+// Package backupremote transports existing encrypted Dongger Panel packages. It never
 // interprets archive payloads or executes host operations.
 package backupremote
 

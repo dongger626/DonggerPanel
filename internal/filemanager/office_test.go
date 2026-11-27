@@ -91,7 +91,7 @@ func TestOfficeRoundTripAndPreservation(t *testing.T) {
 			if !item.Editable {
 				t.Fatal("ordinary text is not editable", item)
 			}
-			input := contract.FileWriteRequest{ExpectedResourceVersion: doc.Entry.ResourceVersion, ExpectedContentVersion: doc.ContentVersion, OfficeEdits: []contract.OfficeEdit{{ID: item.ID, Text: "Hello <KPanel> 世界 & friends"}}}
+			input := contract.FileWriteRequest{ExpectedResourceVersion: doc.Entry.ResourceVersion, ExpectedContentVersion: doc.ContentVersion, OfficeEdits: []contract.OfficeEdit{{ID: item.ID, Text: "Hello <Dongger Panel> 世界 & friends"}}}
 			entry, err := m.WriteOffice(context.Background(), doc.Entry.Path, input)
 			if err != nil {
 				t.Fatal(err)

@@ -24,7 +24,7 @@ export function isKPanelUpdateSettingsIntent(value: unknown): boolean {
 
 export function kpanelUpdateHint(currentVersion?: string): string {
   const normalizedVersion = currentVersion?.trim().replace(/^v/i, '')
-  if (!normalizedVersion) return '发现 KPanel 新版本，点击更新到最新版本'
+  if (!normalizedVersion) return '发现 Dongger Panel 新版本，点击更新到最新版本'
   return `当前版本 v${normalizedVersion}，发现可用更新，点击更新到最新版本`
 }
 

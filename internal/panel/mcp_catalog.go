@@ -100,7 +100,7 @@ var managedCatalog = sync.OnceValue(func() map[string]managedOperation {
 	}
 	for name := range managedReadPaths {
 		if _, ok := result[name]; !ok {
-			add(name, "Read current KPanel resources and resource versions. Results are redacted and paginated.", true, []byte(`{"type":"object","properties":{},"additionalProperties":false}`))
+			add(name, "Read current Dongger Panel resources and resource versions. Results are redacted and paginated.", true, []byte(`{"type":"object","properties":{},"additionalProperties":false}`))
 		}
 	}
 	addManagedExtensions(result, add)

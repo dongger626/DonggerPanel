@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.18 发布验收记录
+# Dongger Panel v1.26.0-rc.18 发布验收记录
 
 发布级别：L3。releaseChannel=preview，releaseTrain=1.26.0。批准 main 基线 1fc67d3e55886ad0d28ee566c48f0c4741155e66；冻结产品 53ff5667f0ee9f12924d8930ef02fc305d0b0e23。[v1.26.0-rc.18](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.18)于 2026-10-13T17:49:18Z 公开，draft=false、prerelease=true、非 GitHub Latest。注释 tag 对象 89211bc06b76ee8bc7b8f93329ff66360993ce29 指向 53ff5667f0ee9f12924d8930ef02fc305d0b0e23。产物已发布，生产未部署。
 
@@ -59,7 +59,7 @@ acceptance visual-composition Mock预览绑定精确产品，arena-154独立非r
 
 本任务Mock、浏览器和SSH隧道已停止。只回收本任务可再生克隆、node_modules、L3工作副本及新浏览器缓存；原始成功/失败、脚本/spec、截图、锁文件、固定bundle、可信Runner归档和公开附件原件保留。自有清理卷观察净释放 3916640256 字节，详见owned-scratch-cleanup.json；不清理作者工作树或无关项目。证据根 C:/GitHub/_release-evidence/v1.26.0-rc.18/，公开附件原件 /root/kpanel-release-evidence/v1.26.0-rc.18-public-assets/。
 
-prod-108/108禁用全部KPanel操作，本次未连接、未部署、未核对。生产未部署；本次没有生产写入、回滚、紧急热修复或重发已公开版本。上一预览回滚点v1.26.0-rc.17 / 5116c36f73124141183dfc4b2d4b60834eec7d1c / sha256:52104ff51d76f06eff973ddbf86f89b29c19742c50828fee803fe3b7b2cab80a；稳定默认v1.25.1保持。复用现有流程，没有新增工作流或知识文档。
+prod-108/108禁用全部Dongger Panel操作，本次未连接、未部署、未核对。生产未部署；本次没有生产写入、回滚、紧急热修复或重发已公开版本。上一预览回滚点v1.26.0-rc.17 / 5116c36f73124141183dfc4b2d4b60834eec7d1c / sha256:52104ff51d76f06eff973ddbf86f89b29c19742c50828fee803fe3b7b2cab80a；稳定默认v1.25.1保持。复用现有流程，没有新增工作流或知识文档。
 
 <!-- kpanel-release-metrics:start -->
 - 首个纳入提交时间：2026-10-13T21:42:13+08:00

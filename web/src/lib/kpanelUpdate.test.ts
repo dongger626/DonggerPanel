@@ -45,10 +45,10 @@ function inventory(installed = true, canCheck = true): AppMarketInventory {
         id: 'thirdparty-kpanel',
         source: 'thirdparty',
         token: 'kpanel',
-        name_zh: 'KPanel',
-        name_en: 'KPanel',
-        desc_zh: 'KPanel',
-        desc_en: 'KPanel',
+        name_zh: 'Dongger Panel',
+        name_en: 'Dongger Panel',
+        desc_zh: 'Dongger Panel',
+        desc_en: 'Dongger Panel',
         cat: 'ops',
         icon: '/app-icons/kpanel.webp',
         iconSha256: 'b'.repeat(64),
@@ -75,7 +75,7 @@ beforeEach(() => {
   vi.clearAllMocks()
 })
 
-describe('KPanel update detection', () => {
+describe('Dongger Panel update detection', () => {
   it('keeps the settings target and app-market fallback as canonical shared paths', () => {
     expect(kpanelUpdateSettingsSection).toBe('version-updates')
     expect(kpanelUpdateSettingsPath).toBe('/settings?section=version-updates')
@@ -89,7 +89,7 @@ describe('KPanel update detection', () => {
     mocks.checkUpdate.mockResolvedValue({ status: 'fixed', updateAvailable: false })
     await expect(detectKPanelUpdate()).resolves.toBe('unavailable')
   })
-  it('checks only the installed KPanel application through the existing image API', async () => {
+  it('checks only the installed Dongger Panel application through the existing image API', async () => {
     const current = inventory()
     mocks.inventory.mockResolvedValue(current)
     mocks.checkUpdate.mockResolvedValue({ status: 'available', updateAvailable: true })
@@ -99,14 +99,14 @@ describe('KPanel update detection', () => {
     expect(mocks.checkUpdate).toHaveBeenCalledWith('thirdparty-kpanel', 'resource-version')
   })
 
-  it('does not query the registry when KPanel is not manageable', async () => {
+  it('does not query the registry when Dongger Panel is not manageable', async () => {
     mocks.inventory.mockResolvedValue(inventory(false, false))
 
     await expect(detectKPanelUpdate()).resolves.toBe('unavailable')
     expect(mocks.checkUpdate).not.toHaveBeenCalled()
   })
 
-  it('recognizes only the KPanel update job as a self update', () => {
+  it('recognizes only the Dongger Panel update job as a self update', () => {
     expect(isKPanelSelfUpdate({ appId: 'thirdparty-kpanel', action: 'update' })).toBe(true)
     expect(isKPanelSelfUpdate({ appId: 'thirdparty-kpanel', action: 'uninstall' })).toBe(false)
     expect(isKPanelSelfUpdate({ appId: 'builtin-13', action: 'update' })).toBe(false)
@@ -119,7 +119,7 @@ describe('KPanel update detection', () => {
     expect(kpanelUpdateHint('v0.34.1')).toBe(
       '当前版本 v0.34.1，发现可用更新，点击更新到最新版本',
     )
-    expect(kpanelUpdateHint()).toBe('发现 KPanel 新版本，点击更新到最新版本')
+    expect(kpanelUpdateHint()).toBe('发现 Dongger Panel 新版本，点击更新到最新版本')
   })
 
   it('builds only canonical official release links and pins notes to the target identity', () => {

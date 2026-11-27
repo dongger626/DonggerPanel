@@ -130,8 +130,8 @@ const settingsCategories: Array<{ id: SettingsCategoryId; label: string }> = [
 ]
 
 const settingsSections: SettingsSectionDefinition[] = [
-  { id: 'branding', category: 'appearance', title: '站点名称与图标', description: '自定义面板与登录页标识', keywords: ['名称', '图标', 'Logo', 'favicon', 'KPanel'] },
-  { id: 'guides', category: 'support', title: '使用说明', description: '视频与图文教程，帮助你熟悉 KPanel', keywords: ['教程', '视频', '图文', '帮助'] },
+  { id: 'branding', category: 'appearance', title: '站点名称与图标', description: '自定义面板与登录页标识', keywords: ['名称', '图标', 'Logo', 'favicon', 'Dongger Panel'] },
+  { id: 'guides', category: 'support', title: '使用说明', description: '视频与图文教程，帮助你熟悉 Dongger Panel', keywords: ['教程', '视频', '图文', '帮助'] },
   { id: 'help', category: 'support', title: '帮助与问题报告', description: '生成问题报告并获取排查帮助', keywords: ['反馈', '诊断', '日志', '报告'] },
   { id: 'account-overview', category: 'account', title: '管理账户', description: '当前登录身份与会话信息', keywords: ['管理员', 'Session', '登录', '身份验证', '头像', '个人资料', 'avatar'] },
   { id: 'username', category: 'account', title: '修改用户名', description: '更新当前管理员账户的登录名称', keywords: ['账号', '名称'] },
@@ -823,7 +823,7 @@ async function copyText(value: string): Promise<void> {
       return
     } catch {
       // HTTP/IP deployments may not expose the Clipboard API. Fall back to
-      // the same local selection flow used elsewhere in KPanel.
+      // the same local selection flow used elsewhere in Dongger Panel.
     }
   }
   const input = document.createElement('textarea')
@@ -929,7 +929,7 @@ async function loadTOTPStatus(): Promise<void> {
 
 function downloadRecoveryCodes(): void {
   const blob = new Blob([
-    `KPanel 两步验证恢复码\n生成时间：${new Date().toLocaleString()}\n\n${recoveryCodes.value.join('\n')}\n`,
+    `Dongger Panel 两步验证恢复码\n生成时间：${new Date().toLocaleString()}\n\n${recoveryCodes.value.join('\n')}\n`,
   ], { type: 'text/plain;charset=utf-8' })
   const link = document.createElement('a')
   link.href = URL.createObjectURL(blob)
@@ -1030,7 +1030,7 @@ onBeforeUnmount(stopKPanelReleaseRequest)
         <span><BookOpen :size="19" /></span>
         <div>
           <h2>{{ phrase('使用说明') }}</h2>
-          <p>{{ phrase('视频与图文教程，帮助你熟悉 KPanel') }}</p>
+          <p>{{ phrase('视频与图文教程，帮助你熟悉 Dongger Panel') }}</p>
         </div>
       </header>
       <p class="settings-note">{{ i18n.t('tutorials.settingsHint') }}</p>
@@ -1074,7 +1074,7 @@ onBeforeUnmount(stopKPanelReleaseRequest)
           <dd>{{ session.state.user?.totpEnabled ? '已启用 TOTP' : '密码登录' }}</dd>
         </div>
       </dl>
-      <p class="settings-note">账户安全设置由 KPanel 本机保存，不依赖 Agent 或 kejilion.sh。</p>
+      <p class="settings-note">账户安全设置由 Dongger Panel 本机保存，不依赖 Agent 或 kejilion.sh。</p>
     </section>
 
     <section v-show="isSettingsSectionVisible('username')" class="settings-section panel-card">
@@ -1702,7 +1702,7 @@ onBeforeUnmount(stopKPanelReleaseRequest)
         <div><h2>开源许可</h2><p>GNU AGPL v3.0 only</p></div>
       </header>
       <p class="settings-note">
-        KPanel 源代码采用 AGPL-3.0-only；第三方组件继续使用各自的原始许可。
+        Dongger Panel 源代码采用 AGPL-3.0-only；第三方组件继续使用各自的原始许可。
       </p>
       <div class="license-actions">
         <a

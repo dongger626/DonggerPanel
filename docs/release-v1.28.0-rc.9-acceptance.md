@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.9 发布验收记录
+# Dongger Panel v1.28.0-rc.9 发布验收记录
 
 日期：2026-10-27（Asia/Shanghai）。发布级别：L3。产物已发布，生产未部署。
 
@@ -25,7 +25,7 @@
 
 ## 跨仓库联动与质量边界
 
-`scriptLinkageState=not-required`（无需发布脚本，不适用）：内置脚本保持已公开的 `614d58cee228007012a2ec602cbdc8dbaeb7950d`，SHA-256 `ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9`；浏览器为 KPanel 原生可选组件，不引入新脚本协议。未发布脚本或部署生产。
+`scriptLinkageState=not-required`（无需发布脚本，不适用）：内置脚本保持已公开的 `614d58cee228007012a2ec602cbdc8dbaeb7950d`，SHA-256 `ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9`；浏览器为 Dongger Panel 原生可选组件，不引入新脚本协议。未发布脚本或部署生产。
 
 | 维度 | 状态与证据边界 |
 | --- | --- |

@@ -462,7 +462,7 @@ function deleteBackup(backup: WebEnvironmentBackup): void {
 function uninstall(): void {
   if (
     window.confirm(
-      '将删除 LDNMP/PhpMyAdmin 容器、镜像及 /home/web 内的网站和数据库；KPanel、Docker 和现有备份归档会保留。确认继续？',
+      '将删除 LDNMP/PhpMyAdmin 容器、镜像及 /home/web 内的网站和数据库；Dongger Panel、Docker 和现有备份归档会保留。确认继续？',
     )
   ) {
     void start({ action: 'uninstall', backupBeforeChange: backupBeforeUninstall.value })
@@ -686,7 +686,7 @@ onBeforeUnmount(() => {
       </section>
 
       <section v-else-if="section === 'update'" class="environment-panel">
-        <header><RefreshCw :size="20" /><div><h2>组件更新</h2><p>版本目录由 kejilion.sh 返回，KPanel 不保存第二份版本列表。</p></div></header>
+        <header><RefreshCw :size="20" /><div><h2>组件更新</h2><p>版本目录由 kejilion.sh 返回，Dongger Panel 不保存第二份版本列表。</p></div></header>
         <LoadingState v-if="catalogLoading" />
         <div v-else-if="catalog?.updateComponents.length" class="environment-update-list">
           <article v-for="item in catalog?.updateComponents || []" :key="item.id">
@@ -737,7 +737,7 @@ onBeforeUnmount(() => {
         <header><Trash2 :size="20" /><div><h2>卸载 LDNMP 环境</h2><p>执行前请确认网站和数据库已有独立备份。</p></div></header>
         <ul>
           <li>删除 LDNMP / PhpMyAdmin 相关容器、镜像及 <code>/home/web</code></li>
-          <li>保留 KPanel、Docker、<code>/home/web_*.tar.gz</code> 备份及其他系统服务</li>
+          <li>保留 Dongger Panel、Docker、<code>/home/web_*.tar.gz</code> 备份及其他系统服务</li>
           <li>当前 {{ summary.siteCount }} 个站点、{{ summary.databaseCount }} 个数据库；最近备份 <span>{{ summary.latestBackup || '暂无' }}</span></li>
         </ul>
         <label><input v-model="backupBeforeUninstall" type="checkbox" /> 卸载前创建冷备（推荐）</label>

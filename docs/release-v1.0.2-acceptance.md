@@ -1,4 +1,4 @@
-# KPanel v1.0.2 发布验收记录
+# Dongger Panel v1.0.2 发布验收记录
 
 日期：2026-09-03
 
@@ -10,7 +10,7 @@
 
 ## 发布画像
 
-- 业务域：集群主机卡片、公开集群分享页和 KPanel 左侧导航的 Web 展示。
+- 业务域：集群主机卡片、公开集群分享页和 Dongger Panel 左侧导航的 Web 展示。
 - 变更面：展示、i18n 和回归测试；不涉及宿主机写入、协议、数据或部署逻辑。
 - 受影响用户旅程：查看集群主机/公开分享流量，以及在深色或浅色主题下滚动左侧导航。
 - 未变化契约：API、数据、端口、Compose、Agent 权限、`kejilion.sh`、应用市场和 System Center。
@@ -20,7 +20,7 @@
 
 - 用户可见更新：集群流量用箭头与数值呈现，实时/累计流量在主机卡片和公开分享页采用一致结构并降低窄布局高度；侧边导航滚动条使用侧栏主题语义色。
 - 精确提交清单：`f238ed65`（源分支 `eafc957`，主机流量展示）、`08695a0`（源分支 `e18b91a`，公开分享页高度）、`d636306`（源分支 `3a07fed`，流量结构统一）、`5d89635`（源分支 `8a99bdc`，侧栏滚动条）、`52f9f4d`（版本元数据）。
-- 明确未纳入的分支、文件或后续事项：`361ad1e` + `40e9b9b` 的集群文件页主机入口/远端跳转未纳入；它尚未实现同页跨主机文件互传协议，应在完成权限、传输、回归和 L3 后进入后续功能版本。集群 SSH 登录通知的 KPanel 与 `kejilion.sh` 工作树仍有未提交/未跟踪改动，且涉及 `System Center` 范围，未纳入。Claude 宽泛旧视觉分支、已与主线等价的重复提交和所有 System Center 改动均未纳入。
+- 明确未纳入的分支、文件或后续事项：`361ad1e` + `40e9b9b` 的集群文件页主机入口/远端跳转未纳入；它尚未实现同页跨主机文件互传协议，应在完成权限、传输、回归和 L3 后进入后续功能版本。集群 SSH 登录通知的 Dongger Panel 与 `kejilion.sh` 工作树仍有未提交/未跟踪改动，且涉及 `System Center` 范围，未纳入。Claude 宽泛旧视觉分支、已与主线等价的重复提交和所有 System Center 改动均未纳入。
 
 ## 多维质量结论
 
@@ -50,7 +50,7 @@
 - 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：未引入新的直接依赖；本地 freshness 报告列出 3 个 GitHub Actions 小版本候选及受管 `kejilion.sh` 工具链候选，未在本补丁中擅自升级，后续按依赖维护窗口处理。
 - 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go `1.26.7`、Node `24.20.0`、固定 L3 Runner `kpanel-release-gate:go1.26.7-node24`；受管脚本 revision=`6e65c0cd7028cb198efb0c88a57726713ee1b23b`，SHA-256=`48f04709eb369040b46886e12e77a862e145273a9fe97244794af692903358b9`。
 - 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：版本和锁文件统一为 `1.0.2`；正式 OCI index=`sha256:d6dec696d803632f3d791af9860e72648e24e2f957b428f63207bbc1d8017b0a`；amd64=`sha256:ca0df96fff12af629355f4bcd316b4b52f958f34b686906122d6a18e69bf1aa5`，arm64=`sha256:0ec7f6890527129a73ad1d55455518aee35aa4755c0aa2720b75072b7125f95c`。
-- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：文件管理互传与 SSH 通知候选暂缓；负责人为对应功能任务维护者，下一候选冻结前复核。退出条件分别为：文件互传形成权限明确的协议/实现并完成候选 CI、L3、`arena-154` 验收；SSH 通知形成 KPanel 与 `kejilion.sh` 的同步干净提交，移除或隔离 System Center 范围，并补真实 Telegram/SSH 登录证据。
+- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：文件管理互传与 SSH 通知候选暂缓；负责人为对应功能任务维护者，下一候选冻结前复核。退出条件分别为：文件互传形成权限明确的协议/实现并完成候选 CI、L3、`arena-154` 验收；SSH 通知形成 Dongger Panel 与 `kejilion.sh` 的同步干净提交，移除或隔离 System Center 范围，并补真实 Telegram/SSH 登录证据。
 - 升级后的兼容、安全、构建、性能资源和回滚结论：本版只改变 Web 展示与 i18n，兼容现有 API、数据和应用市场更新入口；构建、扫描、运行契约和生产健康通过；可回滚到 `v1.0.1` 并使用本次备份。
 
 ## 隔离真机与浏览器验收
@@ -76,13 +76,13 @@
 ## 生产部署安全核对
 
 - 生产目标和部署授权范围：用户授权本次完整发布；唯一目标为 `arena-154`。
-- 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：L3 固定 Runner 的 `arena-154` candidate-validation；未连接其他 KPanel 主机。
+- 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：L3 固定 Runner 的 `arena-154` candidate-validation；未连接其他 Dongger Panel 主机。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v1.0.2-52f9f4d-prod-r1`，以 `EXPECTED_VERSION=1.0.1` 通过；Panel/Agent/容器健康，随后 backup 生成 `/root/kpanel-backups/pre-v1.0.2-20260903T153421Z`，备份文件 SHA256 校验通过。
 - 部署命令/入口：`ssh arena-154 'env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel'`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy run=`v1.0.2-52f9f4d-prod-r1` passed；health `status=ok version=1.0.2`，Panel running/healthy，Agent active/running/enabled，restart=`0`，OOM=`false`，revision=`52f9f4dd8ae04049ccc4b36e252af8b43d35bf8d`，RepoDigest 含正式 OCI digest；日志与配置一致性检查通过。
-- 生产已执行写操作：仅在 `arena-154` 写入本次生产 evidence、停写备份，并通过标准应用市场事务更新 KPanel；未执行 System Center、SSH 通知、文件互传或其他主机写操作。
+- 生产已执行写操作：仅在 `arena-154` 写入本次生产 evidence、停写备份，并通过标准应用市场事务更新 Dongger Panel；未执行 System Center、SSH 通知、文件互传或其他主机写操作。
 - 仅在隔离真机执行、未在生产执行的场景：L3 竞态/安全扫描、双架构构建、局部浏览器主题检查和未完成候选功能验证均未作为生产写入。
 
 ## 回滚
@@ -139,6 +139,6 @@
 ## 遗留风险与后续准入
 
 - 未验证风险：真实浏览器完整缩放/键盘焦点/三语人工矩阵、长期 soak、生产故障注入、受控回滚和独立 `packaging/tests/image-e2e.sh` 未执行；L3 clean-clone stale-tag 指纹已重复，下一版本生产写前必须先完成唯一入口修复。
-- 已实现待实机准入：集群文件管理互传的当前提交只提供安全入口和远端 Files 跳转，真正跨主机传输待协议/权限/实机验证；集群 SSH 登录通知待 KPanel 与 `kejilion.sh` 干净同步提交、System Center 范围处理和真实 Telegram/SSH 验收。
+- 已实现待实机准入：集群文件管理互传的当前提交只提供安全入口和远端 Files 跳转，真正跨主机传输待协议/权限/实机验证；集群 SSH 登录通知待 Dongger Panel 与 `kejilion.sh` 干净同步提交、System Center 范围处理和真实 Telegram/SSH 验收。
 - 不阻断本版的理由：本版精确差异为 Web 展示/i18n/测试和版本元数据，无新宿主机协议或数据迁移；候选/main CI、Dependency freshness、固定 L3、Release/OCI、`arena-154` preflight/backup/postdeploy 均绑定精确 SHA 并通过，生产未发生退化、回滚或紧急热修复。
 - 后续应进入的自动门禁或专项工作流：修复并回归 L3 clean-clone 唯一入口；完成文件互传和 SSH 通知的 focused commit、独立审查、候选 CI/L3 与 `arena-154` 证据；补真实浏览器缩放/焦点/语言矩阵、长期 soak、受控回滚和独立 `image-e2e`。

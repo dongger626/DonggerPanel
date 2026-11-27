@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "observedAt": "2026-11-22",
   "expiresAt": "2026-12-06",
-  "owner": "KPanel release maintainers",
+  "owner": "Dongger Panel release maintainers",
   "sourceManifestSha256": "d71dfdf7706b65bcc97fde40b8c44081164bb525be11c12d01a30f500e9a6965",
   "sourceManifestEncoding": "SHA256 of UTF-8 MODULE@VERSION followed by a space and the Go h1 module content checksum; go mod verify checks the downloaded archive and extracted module.",
   "selectedGraphSha256": "e9c0b6fd8e03a8bc7b9806331f810da5c07c0469e669c21964a91c7dedb62dfc",
@@ -139,9 +139,9 @@
     "rc11SourceSummary": "RC11 release maintainer independently reviewed the original product candidates and assembled release, and observed six Go 1.27.3 actual/original closures and 1251 tracked first-party Go files. Source and closure identities rebound; selected graph, build files, existing findings, dispositions, observation and expiry unchanged. Same-provider release reviewer also assembled the merge and version metadata; no separate reviewer claim for that assembly. Canonical Linux CI, L3 and scanners remain required.",
     "rc12SourceEvidenceSha256": "d8971e6a47badda32cf9c3d41f80c88d0ec8b2807ecf24c4f605bde56e17574b",
     "rc12InventoryEvidenceSha256": "d656cb52eb11039451962114a3715ab22932cc444d10c7fcb99e8b516cbf3a2c",
-    "rc12SourceSummary": "RC12 source qualification retains the independent review of the terminal-follow recovery and VNC browser implementation. A final release-maintainer addendum verifies the browser image public multi-architecture index sha256:0660b4608e9219e8d03c4d72dc8ba3e9c64f6310df36c766933373855f918839 and its linux/amd64 and linux/arm64 manifests from successful workflow 40643636034 and public re-pull. The README records this receipt; all active runtime, Compose, example and hosted-lifecycle pins agree. Hosted probe repairs follow candidate CI failures 40647107992 (Linux awaited an obsolete JSON frame event) and 40648414554 (Linux compiled two main functions in the testdata package); Windows passed both runs. The probe now negotiates the authenticated private VNC/RFB path, validates bounded nonempty framebuffer pixels, and resides in its own testdata subdirectory. Go 1.27.3 package compilation and Windows/Linux amd64 probe builds pass locally; both remote failure records remain failures. Fixed Go 1.27.3 inventory rebound over 1253 first-party Go files; the six canonical actual/original production closures, selected graph, six production GoFiles closures, build targets, 111 production module entries including the pinned torrent identity, vendored source, 37 existing findings/dispositions and original observation/expiry remain unchanged. The browser component is separate from KPanel production Go targets and has dedicated two-architecture L3/image scanning evidence. Fresh exact candidate CI, Release L3, main CI and all source scanners remain required; this qualification is not a scanner or release result.",
+    "rc12SourceSummary": "RC12 source qualification retains the independent review of the terminal-follow recovery and VNC browser implementation. A final release-maintainer addendum verifies the browser image public multi-architecture index sha256:0660b4608e9219e8d03c4d72dc8ba3e9c64f6310df36c766933373855f918839 and its linux/amd64 and linux/arm64 manifests from successful workflow 40643636034 and public re-pull. The README records this receipt; all active runtime, Compose, example and hosted-lifecycle pins agree. Hosted probe repairs follow candidate CI failures 40647107992 (Linux awaited an obsolete JSON frame event) and 40648414554 (Linux compiled two main functions in the testdata package); Windows passed both runs. The probe now negotiates the authenticated private VNC/RFB path, validates bounded nonempty framebuffer pixels, and resides in its own testdata subdirectory. Go 1.27.3 package compilation and Windows/Linux amd64 probe builds pass locally; both remote failure records remain failures. Fixed Go 1.27.3 inventory rebound over 1253 first-party Go files; the six canonical actual/original production closures, selected graph, six production GoFiles closures, build targets, 111 production module entries including the pinned torrent identity, vendored source, 37 existing findings/dispositions and original observation/expiry remain unchanged. The browser component is separate from Dongger Panel production Go targets and has dedicated two-architecture L3/image scanning evidence. Fresh exact candidate CI, Release L3, main CI and all source scanners remain required; this qualification is not a scanner or release result.",
     "rc15SourceIdentityEvidenceSha256": "c72eacd8c2ae79c1589607814171af9e9b3236005ff75961faf0339de98891de",
-    "rc15SourceIdentitySummary": "RC15 final version-bound source identity: official firstPartySources observes 1254 files and sha256 6ed384047fa241007c0c48d3bd19f848abcc7fd6def86a2851249680a11ebef5; since the previous 35d979ce observation, only internal/version/version.go changes for the RC15 version string. Browser component 0.1.0-rc.4 is separately published at index sha256:37c0eb1c4a0e6408fe395e699687d405fe78d052669c32625e09a17a7e3165af after native amd64/arm64 build, runtime/config scan, L3 and anonymous public pull/replay in workflow 40830762338. Preserve all 37 existing findings and the 2026-10-25..2026-11-08 observation window; go.mod/go.sum, vendored torrent source, Dockerfile, release workflow, MCP build script and Makefile are unchanged. The six-target actual/original production closure and fresh scanners still require the exact final KPanel candidate L3. This derived identity and separate component workflow do not claim a KPanel scanner or release pass.",
+    "rc15SourceIdentitySummary": "RC15 final version-bound source identity: official firstPartySources observes 1254 files and sha256 6ed384047fa241007c0c48d3bd19f848abcc7fd6def86a2851249680a11ebef5; since the previous 35d979ce observation, only internal/version/version.go changes for the RC15 version string. Browser component 0.1.0-rc.4 is separately published at index sha256:37c0eb1c4a0e6408fe395e699687d405fe78d052669c32625e09a17a7e3165af after native amd64/arm64 build, runtime/config scan, L3 and anonymous public pull/replay in workflow 40830762338. Preserve all 37 existing findings and the 2026-10-25..2026-11-08 observation window; go.mod/go.sum, vendored torrent source, Dockerfile, release workflow, MCP build script and Makefile are unchanged. The six-target actual/original production closure and fresh scanners still require the exact final Dongger Panel candidate L3. This derived identity and separate component workflow do not claim a Dongger Panel scanner or release pass.",
     "stable128IdentityEvidenceSha256": "1457855f185879d9ec7ccf8cfe766f61255c21a789851d20301b0940bec3570c",
     "stable128IdentitySummary": "Stable version source identity rebind: 1254 Go files; only internal/version/version.go changes from e779e9a for version 1.28.0. Prior source hash independently reproduced by restoring base version bytes. Findings, observation window, graph and build targets are unchanged; exact candidate scanner and six-target closure remain required. This source observation is not an independent review or scanner pass.",
     "v128BlindReviewEvidenceSha256": "7a7ef63607e8dd36970bbb34bd0a78678e017c12269229aa9f8daf7882108cea",
@@ -150,7 +150,7 @@
     "wafPinReviewEvidenceSha256": "4f89d137a3f6d0bdedc68b5b9f3c6f66a1b324cad0614cda3079e57300ae6404",
     "wafPinReviewSummary": "FastAdmin allowlist/selector and version literal plus Windows-only bounded move retry and regression tests. No new production imports, GoFiles, modules or Linux production closures. Exact baseline inventory reproduced with seven prior file hashes. Managed script pin, original findings, expiry and dispositions unchanged.",
     "rc129rc2PreparationEvidenceSha256": "fba2dc8983ad1f3d094ab1a732c183560f5cf7127309d57d7f4f7079cd324a2a",
-    "rc129rc2PreparationSummary": "Local preparation only. The paired compatibility script must be published through sh main before KPanel candidate push/L3/publication. No scanner, Linux CI/L3, native host install, or publication pass is implied. Only the version Go literal and Docker managed-script pin/checksum change; the exact prior inventory was reproduced.",
+    "rc129rc2PreparationSummary": "Local preparation only. The paired compatibility script must be published through sh main before Dongger Panel candidate push/L3/publication. No scanner, Linux CI/L3, native host install, or publication pass is implied. Only the version Go literal and Docker managed-script pin/checksum change; the exact prior inventory was reproduced.",
     "rc129rc2CommandInstallEvidenceSha256": "8ab072415d16a72f4e98e96cc6b3f2ddc253900b33f66c861ae8e35cf7f99b83",
     "rc129rc2CommandInstallSummary": "User-requested command install fix included by exact upstream patch replay. Paired script is still local; full Linux CI/L2/L3, native installs and public artifacts remain pending. WAF manifest and FastAdmin functions remain unchanged.",
     "rc129rc3SQLiteEvidenceSha256": "6e084b6964132430f272cb67641cb03339696d12c79a65bc5e879f992274c6d4",
@@ -313,7 +313,7 @@
       "version": "v1.61.1-0.20260911233437-76452a2c8a2f",
       "severity": "HIGH",
       "disposition": "unused-upstream-development-recipe",
-      "reason": "The authenticated upstream Dockerfile builds possum and runs upstream tests. KPanel release builds use the separately bound root Dockerfile and never execute this development recipe; its original finding remains visible."
+      "reason": "The authenticated upstream Dockerfile builds possum and runs upstream tests. Dongger Panel release builds use the separately bound root Dockerfile and never execute this development recipe; its original finding remains visible."
     },
     {
       "scope": "standalone",
@@ -323,7 +323,7 @@
       "version": "v1.61.1-0.20260911233437-76452a2c8a2f",
       "severity": "HIGH",
       "disposition": "unused-upstream-development-recipe",
-      "reason": "The authenticated upstream Dockerfile builds possum and runs upstream tests. KPanel release builds use the separately bound root Dockerfile and never execute this development recipe; its original finding remains visible."
+      "reason": "The authenticated upstream Dockerfile builds possum and runs upstream tests. Dongger Panel release builds use the separately bound root Dockerfile and never execute this development recipe; its original finding remains visible."
     },
     {
       "scope": "standalone",
@@ -343,7 +343,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -353,7 +353,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -363,7 +363,7 @@
       "version": "v1.38.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v1.38.0; KPanel selects v1.47.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v1.38.0; Dongger Panel selects v1.47.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -383,7 +383,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -393,7 +393,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -403,7 +403,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -413,7 +413,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -423,7 +423,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -433,7 +433,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -443,7 +443,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -453,7 +453,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -473,7 +473,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -483,7 +483,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -493,7 +493,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -503,7 +503,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -513,7 +513,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The unchanged standalone upstream manifest uses v0.47.0; the official Go advisory marks golang.org/x/net/html before v0.62.0 affected. KPanel's selected and production inventories use v0.62.0, and the exact RC7 production scan reported zero HIGH/CRITICAL findings. The upstream manifest remains independently scanned."
+      "reason": "The unchanged standalone upstream manifest uses v0.47.0; the official Go advisory marks golang.org/x/net/html before v0.62.0 affected. Dongger Panel's selected and production inventories use v0.62.0, and the exact RC7 production scan reported zero HIGH/CRITICAL findings. The upstream manifest remains independently scanned."
     },
     {
       "scope": "standalone",
@@ -523,7 +523,7 @@
       "version": "v0.31.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The preserved standalone manifest is affected below v0.41.0; KPanel selected and production inventories use v0.43.0. The original module manifest remains unchanged and is scanned independently."
+      "reason": "The preserved standalone manifest is affected below v0.41.0; Dongger Panel selected and production inventories use v0.43.0. The original module manifest remains unchanged and is scanned independently."
     },
     {
       "scope": "standalone",
@@ -533,7 +533,7 @@
       "version": "v0.31.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.31.0; KPanel selects v0.43.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.31.0; Dongger Panel selects v0.43.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -543,7 +543,7 @@
       "version": "v0.44.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.44.0; KPanel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.44.0; Dongger Panel selects v0.58.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",
@@ -553,7 +553,7 @@
       "version": "v0.47.0",
       "severity": "HIGH",
       "disposition": "superseded-by-selected-version",
-      "reason": "The standalone declaration uses v0.47.0; KPanel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
+      "reason": "The standalone declaration uses v0.47.0; Dongger Panel selects v0.62.0. Selected and production inventories are scanned independently without suppressing production findings."
     },
     {
       "scope": "standalone",

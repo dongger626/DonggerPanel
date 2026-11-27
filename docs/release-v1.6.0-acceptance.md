@@ -1,4 +1,4 @@
-# KPanel v1.6.0 发布验收记录
+# Dongger Panel v1.6.0 发布验收记录
 
 日期：2026-09-07
 
@@ -77,7 +77,7 @@
 
 ## 生产部署安全核对与回滚
 
-- 仅arena-154获授权。108/prod-108禁用全部KPanel操作，本次未连接、未备份、未部署、未核对。
+- 仅arena-154获授权。108/prod-108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未核对。
 - 固定入口 `run-production-evidence.mjs`；final preflight `v1.6.0-final6dc-production-r1` 23:35:41Z→23:35:43Z已通过，旧1.5.0 running/healthy、Agentactive、protected/SQLite基线已保存。
 - 新备份 `/root/kpanel-backups/pre-v1.6.0-20260907T001148Z`，00:11:48Z→00:11:58Z，passed/exit0。停写归档、tar/zstd结构、旧镜像实际load、六项SHA256验证通过，备份后旧1.5.0健康恢复。kpanel.tar.zst `191ee87971119f4ad0479b86264ca3f5eafc3ddfdafedd123a54351ac7a4b91d`，old-image.tar.zst `29015a4e7950ae98abbd31238cc6fd1885d716ff6b1487aadc268fa572a9a2e5`；unit、apps和旧inspect一并保留。
 - 标准应用市场update exit0，实际latest digest与上文相同，安装器恢复访问策略；日志 `v160-production-standard-update.log` SHA256 `660f3204622168fbba3096ba180de0df817f3eaf3e96cedae71721801e96c9f8`。

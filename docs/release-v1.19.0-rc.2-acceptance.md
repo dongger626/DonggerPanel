@@ -1,4 +1,4 @@
-# KPanel v1.19.0-rc.2 发布验收记录
+# Dongger Panel v1.19.0-rc.2 发布验收记录
 
 日期：2026-09-15
 
@@ -24,7 +24,7 @@
 
 ## 发布范围与未纳入内容
 
-- 用户可见更新：完整 KPanel 与轻量节点连续 3 次异常后才发送失联通知；集群刷新按钮与指标反馈统一；备份中心按导出、导入和记录重整层级并适配移动端。
+- 用户可见更新：完整 Dongger Panel 与轻量节点连续 3 次异常后才发送失联通知；集群刷新按钮与指标反馈统一；备份中心按导出、导入和记录重整层级并适配移动端。
 - 精确提交清单：`de1faf8947cba7ce46d078b49f4e99c4c92392db`、`cd2ce895c122903f0c0eaebf01a9fbbcd11b3738`、`44a4741ea5c91c542e97525f577d034ba8e9605b`、`8db40516e63ecb58e479d86e449f5e1fe8f0aeeb`、`cfc74247a76d0e0cc099ec6fb4d6512a7bac83f4`。
 - 明确未纳入的分支、文件或后续事项：没有发现其他基于验收后主线的真实候选；稳定发布、应用市场配置变更、受管脚本变更和生产部署不在本轮范围。
 
@@ -32,7 +32,7 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：不适用；轻量节点更新运行时继续固定 `kejilion/sh@4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`，根脚本 `a0e6cf5193aa9bfbdc572ad91803d4b53d34549ac95259b3288d436766a229dc`。
 - 状态判定依据与兼容性证据：本轮没有修改 `cmd/kejilion-node/update_runtime/source.json` 或应用安装契约；L3 的受管脚本契约、目标烟测和应用生命周期全部通过。
 - 本版发布决定：脚本不在范围。
@@ -77,17 +77,17 @@
 - 后台作业 ID、终态、退出码、超时、证据目录、命令规格路径及 SHA-256：L3 run `v1.19.0-rc.2-cfc74247-l3-r1` passed/0；本地浏览器预览 manifest 位于 `C:/GitHub/_release-artifacts/v1.19.0-rc.2-cfc74247-local-preview`；公开 OCI E2E `r2` exit 0，run.sh `c84a2af28ed25ca0104ed2e061be87bb088535613ca4af5a61bbe4ef6e22fb67`，固定 image-e2e `1378218f9d4ac0fdd82d66ac502c5f7e0d82a13fca8d60429079936ed527edf4`，日志 `80e60c2c7af05592a1aa15768ebb719913aa55cbf1bb036fd201a1485a7d675f`；证据位于 `C:/GitHub/_release-artifacts/v1.19.0-rc.2-public-oci-e2e-r2` 与 `arena-154:/root/kpanel-release-evidence/v1.19.0-rc.2/public-oci-e2e-r2`。
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：单次验收级浏览器旅程和公开镜像冷启动；无 soak，本版风险由全量测试、race、失败注入和公开冷启动覆盖。
 - 受影响用户旅程、视口、100%/125%/200% 缩放、最小计算字号、主题、键盘/焦点、语言和失败态：模拟数据预览覆盖 1280×720 与 390×844、100%、浅/深色、中文、指标键盘焦点、异常/待恢复记录和窄屏全宽操作；最小计算字号未发现低于既有契约；125% 不适用，未涉及像素取整或历史断点缺陷；200% 因浏览器缩放控制未生效而未验证。
-- 宿主机写入、失败注入、重启恢复和回滚结果：仅写入隔离证据目录、Docker 拉取缓存及自动清理的临时容器/网络；L3 覆盖更新失败、中断、安装/卸载和 systemd/OpenRC 生命周期；没有写入生产 KPanel 数据。
+- 宿主机写入、失败注入、重启恢复和回滚结果：仅写入隔离证据目录、Docker 拉取缓存及自动清理的临时容器/网络；L3 覆盖更新失败、中断、安装/卸载和 systemd/OpenRC 生命周期；没有写入生产 Dongger Panel 数据。
 - 未执行场景及原因：生产部署、生产故障注入、真实第三方通知长期送达、原生 arm64、弱网、真实断电、长期 soak、200% 缩放和生产数据恢复未执行；预览版禁止生产部署。
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：[KPanel 1.19.0-rc.2](https://github.com/kejilion/KPanel/releases/tag/v1.19.0-rc.2) 于 2026-09-15T18:52:11+08:00 公开，为非 draft、prerelease、非 Latest；annotated tag 对象 `33d44ba485bc2f1c390b1ed01f4f8d79293c9aa0` peeled 到最终产品 SHA。GitHub Latest 仍为 v1.18.0。
+- GitHub Release 的 draft / prerelease / Latest 状态：[Dongger Panel 1.19.0-rc.2](https://github.com/kejilion/KPanel/releases/tag/v1.19.0-rc.2) 于 2026-09-15T18:52:11+08:00 公开，为非 draft、prerelease、非 Latest；annotated tag 对象 `33d44ba485bc2f1c390b1ed01f4f8d79293c9aa0` peeled 到最终产品 SHA。GitHub Latest 仍为 v1.18.0。
 - Docker 版本与通道 OCI index：`1.19.0-rc.2` 与 `preview` 同为 `sha256:042dfd5b73e49cbb96b211395cd9d00c43385d53ac36a0eb86e5bc893850f1dd`；稳定 `latest` 仍为 `sha256:cad0f7f035e3f6d63908a82b52a7b4a1fbe52fe0c10a7a55a704b759ad91ceeb`。
 - `linux/amd64`、`linux/arm64` digest：amd64 `sha256:7656ec356df853d85978c1172efeed249c558181e87778100d4b111546d3f602`；arm64 `sha256:3e468442ad15824196316976d5fb7121e3aad73a9ea7f7fe68659244f9bc823b`；对应 attestation manifest 为 `sha256:cfe54a76abeb45d98e58696dbb335155b35f128e8287f55f11d4a1c9d9b18177` 与 `sha256:5c8f054c5ec6b19fa288e3ca97425ff764edd51cc935ad368f9e3aba1c05ec08`。
 - 附件及 `SHA256SUMS`：8 个附件均为 uploaded；`SHA256SUMS` 摘要 `d2c1e5771a727954a3b154c9de110449479427723b9b1a503e77817b50e9f982`，列出的 4 个 Agent/Node 二进制和部署包与 GitHub 资产 digest 一致。
 - 公开镜像 `image_e2e=pass`：`arena-154` 从 Docker Hub 按不可变摘要重新拉取，health 返回 1.19.0-rc.2，revision、非 root 用户、静态资源、初始化、安全 Cookie、受限网络和清理断言通过；`public_oci_e2e=pass`。
-- `kejilion/apps` / `kejilion.sh` 契约结论：KPanel 与 `kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` Git blob 同为 `95ed487653184e6c056ea9d25958539a453cf9cb`，无需应用市场提交且默认仍为 `latest`；`kejilion/sh` main 保持 `4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`。
+- `kejilion/apps` / `kejilion.sh` 契约结论：Dongger Panel 与 `kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` Git blob 同为 `95ed487653184e6c056ea9d25958539a453cf9cb`，无需应用市场提交且默认仍为 `latest`；`kejilion/sh` main 保持 `4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`。
 
 ## 自更新通道验收
 
@@ -104,7 +104,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 仅以 `candidate-validation` 用途运行隔离容器；不适用（预览版禁止生产部署）。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：不适用（预览版禁止生产部署）。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对；不适用（预览版禁止生产部署）。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对；不适用（预览版禁止生产部署）。
 - 部署前版本、健康、备份位置及摘要：不适用（预览版禁止生产部署）。
 - 部署命令/入口：不适用（预览版禁止生产部署）。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用（预览版禁止生产部署）。

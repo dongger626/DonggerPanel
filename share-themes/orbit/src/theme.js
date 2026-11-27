@@ -190,7 +190,7 @@ function render() {
     `${host.name} ${host.location.text} ${host.os}`.toLowerCase().includes(needle))
   const list = $('hosts'); list.className = `hosts is-${view}`
   list.replaceChildren(...(hosts.length ? hosts.map(host => view === 'card' ? card(host, labels) : row(host, labels)) : [h('p', 'empty', labels.empty)]))
-  $('foot').textContent = `KPanel · ${labels.valueHint}`
+  $('foot').textContent = `Dongger Panel · ${labels.valueHint}`
   $('foot').hidden = !data.value.groups.length
 }
 

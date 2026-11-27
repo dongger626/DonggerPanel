@@ -1,4 +1,4 @@
-# KPanel v0.24.0 验收记录
+# Dongger Panel v0.24.0 验收记录
 
 ## 交付范围
 
@@ -39,9 +39,9 @@
 
 ## 回滚
 
-- KPanel 镜像回滚到 `v0.23.0` /
+- Dongger Panel 镜像回滚到 `v0.23.0` /
   `sha256:e26a35860c36acb662eca918d20e4c0758875f4b1d285f04c9e8413316bd6414`。
-- 本版本没有数据库格式迁移；回滚 KPanel/Agent 不删除 `/home/web`、应用容器、
+- 本版本没有数据库格式迁移；回滚 Dongger Panel/Agent 不删除 `/home/web`、应用容器、
   域名配置或环境备份。
 - 目标主机升级后仍需实际执行一次应用“允许/阻止 IP+端口访问”，确认该机器的
   nftables/iptables 内核能力与宿主机策略没有额外限制。

@@ -1,4 +1,4 @@
-# KPanel v0.44.3 发布验收
+# Dongger Panel v0.44.3 发布验收
 
 ## 发布范围
 
@@ -42,11 +42,11 @@ Release 已公开且不是 prerelease，Agent、Node、部署归档、许可证�
   `sha256:396c854af8b796924bb87db4c3dbf7adf9dc65bb5cf31bf8116a8cd5a3f3b3e8`。
 - 一致性备份：`/root/kpanel-backups/v0.44.3-preupgrade-20260805T014530Z`。目录权限 0700、文件权限 0600；
   SQLite 在线备份 122,880 B，`integrity_check=ok`，SHA-256 为
-  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 KPanel 归档 20,750,896 B，
+  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 Dongger Panel 归档 20,750,896 B，
   SHA-256 为 `856309c575004f27a2478aad12331d4bca4ed684d3e9d43846225bfadb473d2a`。
 - 使用 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update k app kpanel` 完成标准应用市场更新，实际拉取正式摘要
   `sha256:1c5a0ebdd40023d63a7ff484de7872e7589ee855d7c73521b2bb4fc76a714586`，输出
-  `KPanel 更新完成 / Update Complete`。
+  `Dongger Panel 更新完成 / Update Complete`。
 - 升级后 Panel 与 Agent 均为 `0.44.3`，本机和公网直连 `http://154.36.153.9:8080/api/v1/health` 返回
   `0.44.3/ok`；容器保持 `65532:65532`、只读根文件系统、非特权、`cap-drop ALL`、256 MiB 和 128 PID。
 - 升级后 `ai.db integrity_check=ok`，`ai.db` 与 `ai-secrets.key` 权限保持 0600。
@@ -57,6 +57,6 @@ Release 已公开且不是 prerelease，Agent、Node、部署归档、许可证�
 
 - 公共镜像回滚点为 v0.44.2，摘要
   `sha256:396c854af8b796924bb87db4c3dbf7adf9dc65bb5cf31bf8116a8cd5a3f3b3e8`；现场回滚使用上述成对备份恢复
-  KPanel 目录、SQLite、Compose、Agent 和旧镜像，不覆盖其他业务容器、网站、证书或数据库。
+  Dongger Panel 目录、SQLite、Compose、Agent 和旧镜像，不覆盖其他业务容器、网站、证书或数据库。
 - `kp.kejilion.pro` 当前经 Cloudflare 指向的公网入口仍返回 `0.44.2`，且根路径与 `/docker` 返回 404；该入口
   不是本次已授权的 154 直连目标。本次未越权修改 DNS、Cloudflare 或其他源站，需单独确认其实际源站后再处理。

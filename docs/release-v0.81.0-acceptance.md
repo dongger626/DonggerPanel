@@ -1,4 +1,4 @@
-# KPanel v0.81.0 上线验收记录
+# Dongger Panel v0.81.0 上线验收记录
 
 日期：2026-08-17（Asia/Shanghai）
 
@@ -16,10 +16,10 @@
 
 - 应用市场支持可选 `addedAt`，在新增后的 60 个 UTC 日内显示“新品”，并在不破坏刚安装应用与已安装应用优先级的前提下将新品提前。
 - 离线安全目录由 147 项同步到 153 项：新增内置 `#116` DeepSeek Harness，以及 AIradio、Arena Brawl、Bomb Party、Ice Climber Arena、Neon Arena 五项第三方应用；简体、繁体和英文元数据及本地图标齐全。
-- 动态目录同步改为只为真正新增的应用下载图标；已存在应用的本地图标、路径、哈希和审核元数据一律保留，防止官方目录刷新覆盖 KPanel 自有定制。
+- 动态目录同步改为只为真正新增的应用下载图标；已存在应用的本地图标、路径、哈希和审核元数据一律保留，防止官方目录刷新覆盖 Dongger Panel 自有定制。
 - `addedAt` 只在首次纳入时写入，后续同步、远端目录缺失日期或异常未来日期均不会刷新已有日期或改变安全回退。
 - 版本与 CHANGELOG 更新到 v0.81.0；无数据库、API、端口、Compose、Agent、应用市场安装契约或托管脚本迁移。
-- 全面盘点 KPanel、`kejilion/sh` 与 `kejilion/apps` 后，本次仅上述 KPanel 聚焦功能未上线；壁纸、集群分享、跨 KPanel 文件互传等内容已在 v0.78.0-v0.80.1 进入主线和生产，未重复混入。
+- 全面盘点 Dongger Panel、`kejilion/sh` 与 `kejilion/apps` 后，本次仅上述 Dongger Panel 聚焦功能未上线；壁纸、集群分享、跨 Dongger Panel 文件互传等内容已在 v0.78.0-v0.80.1 进入主线和生产，未重复混入。
 
 ## 定制保护与目录真源
 
@@ -59,7 +59,7 @@
 
 ## 生产部署与健康
 
-- 唯一 KPanel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
+- 唯一 Dongger Panel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
 - 部署前：v0.80.1，运行 OCI/revision 为 `sha256:54f44fce245d8f03991c7880a6c49a065f3662335375b9d4c4a6349d8083700f` / `9f515017f7a576eb4c134c116e2141b881390eb9`；Panel healthy、restart 0、OOM false，Agent active。
 - 停写备份：`/root/kpanel-backups/pre-v0.81.0-20260816T174003Z`；业务目录归档 SHA-256 `e553e470279eb3efb4f9008e35264e53ad605f70c96ca8380d35c6c4387df837`，旧镜像归档 SHA-256 `a5030b6da353c5f1a19c34846889c212bbe90035c6b2de5feb7df456e3f583b8`。
 - 备份在停写状态形成，已独立解包、逐文件 SHA-256 对比，并对原始/恢复副本执行 SQLite `integrity_check=ok`；Compose、`.env`、Agent unit、二进制、数据和旧镜像均包含在回滚材料中。

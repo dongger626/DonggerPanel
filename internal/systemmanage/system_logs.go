@@ -82,7 +82,7 @@ func (m *Manager) SystemLogCapabilities() []contract.Capability {
 		return []contract.Capability{readCapability, writeCapability}
 	}
 	if _, err := m.backgroundExecutable(); err != nil {
-		writeCapability.Reason = "Agent 后台执行程序不可用，请更新或重新安装 KPanel"
+		writeCapability.Reason = "Agent 后台执行程序不可用，请更新或重新安装 Dongger Panel"
 		return []contract.Capability{readCapability, writeCapability}
 	}
 	writeCapability.Enabled = true

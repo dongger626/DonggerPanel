@@ -1,4 +1,4 @@
-# KPanel Windows 轻量节点与远程桌面设计
+# Dongger Panel Windows 轻量节点与远程桌面设计
 
 - 归档状态：历史设计。Windows 节点仅在 `v1.25.0-rc.2` 至 `rc.6` 作为预览能力发布；从 `rc.7` 候选起已撤下接入及衍生功能。本文件与 RC2–RC6 验收记录用于历史追溯，不代表当前支持承诺。
 - 历史状态：曾形成本地实现候选；原提案 `b4e84aac`，实现基线 `52cc6436`，候选分支 `feature/windows-light-node`；真机准入未完成
@@ -23,7 +23,7 @@
   “命令行（PowerShell）”或“远程桌面（RDP）”，随后在右侧打开所选会话。
 - 集群添加弹窗在 Linux 接入入口下增加 Windows 入口；单台和批量均生成一行管理员 PowerShell 命令，
   自动下载、校验、安装与接入。执行安装脚本前先完成固定版本官方 HTTPS 来源及 SHA-256 校验。
-- 首批验证 amd64；安装器作为 KPanel Release 资产。`scriptLinkageState=not-required`（无需发布脚本），
+- 首批验证 amd64；安装器作为 Dongger Panel Release 资产。`scriptLinkageState=not-required`（无需发布脚本），
   脚本基线仍固定 `c981fb6c8b481981ac7a006e102e111e435f6d30` / SHA-256
   `0eb9a82860e6cf6cf76d4f946782a02fd90bef8e7be5a3fa724b93920d8e35cb`。
 - 允许修改节点、相关后端、Web、Windows 安装构建与本设计；不修改版本号、历史发布记录、Linux 脚本。
@@ -36,7 +36,7 @@
 
 用户要求 `rc2 加入Windows节点全部功能`，本轮从已批准主线 `4f4996da03523a7d0dd788a28e0b57e9decaf045` 在 `feature/windows-node-rc2` 重放聚合候选 `8554b904916f7c19c787a748e836f63369d79e2b` 的完整产品差异。原聚合候选中的旧审计 run-11/run-12 不覆盖当前主线同名记录；旧证据仅作为复核输入，新覆盖须绑定整合提交。
 
-范围包含 P1–P4、托管管理员/保存账户 RDP 和 Windows 多卷图库；终端冲突保留当前主线同主机多终端、编号复用、刷新回收及输入协议，RDP 每主机一个独立页签，配额独立。RC3 移除外部签名机制并以未签名 Windows 测试附件发行；第 21 节原生验收由用户后续承担，状态 owner-deferred/尚未验证，不以源码/CI 通过宣称真机已准入。RC2 签名检查失败原件和不可变 tag 保留，不宣称 RC2 已发布。安装器沿用 KPanel Release 来源，`scriptLinkageState=not-required`，不改 Linux 脚本。最终发布由独立发布责任任务完成。
+范围包含 P1–P4、托管管理员/保存账户 RDP 和 Windows 多卷图库；终端冲突保留当前主线同主机多终端、编号复用、刷新回收及输入协议，RDP 每主机一个独立页签，配额独立。RC3 移除外部签名机制并以未签名 Windows 测试附件发行；第 21 节原生验收由用户后续承担，状态 owner-deferred/尚未验证，不以源码/CI 通过宣称真机已准入。RC2 签名检查失败原件和不可变 tag 保留，不宣称 RC2 已发布。安装器沿用 Dongger Panel Release 来源，`scriptLinkageState=not-required`，不改 Linux 脚本。最终发布由独立发布责任任务完成。
 
 ## 1. 目标与原则
 
@@ -130,7 +130,7 @@
 ## 4. 总体架构
 
 ```text
-中心 KPanel（HTTPS 根地址，不变）
+中心 Dongger Panel（HTTPS 根地址，不变）
    ▲  出站 HTTPS：遥测 HMAC（light-v1）
    ▲  出站 HTTPS：v2 Noise 中继 + v3 Noise 流（终端 / 文件 / 历史 / 远程桌面）
    │
@@ -139,7 +139,7 @@ Windows 主机 ─────────────────────�
    KejilionNodeTerminal    LocalSystem：ConPTY 终端；P4 起兼任 RDP 桥
    KejilionNodeFile        LocalSystem：文件管理、历史采样、计划任务状态快照
    KejilionNodeLogin       虚拟账户 NT SERVICE\KejilionNodeLogin：登录事件
-   计划任务 \KPanel\KejilionNodeUpdate   SYSTEM：每小时检查稳定版更新
+   计划任务 \Dongger Panel\KejilionNodeUpdate   SYSTEM：每小时检查稳定版更新
 ```
 
 不监听任何 TCP/UDP 端口，不创建命名管道，不注册 COM 服务器。进程之间只通过带 ACL 的文件交换窄快照
@@ -190,8 +190,8 @@ Windows 主机 ─────────────────────�
 令牌格式、有效期、单次/批量语义、100 台上限与 Linux 相同；生成 API 新增可选 `platform`，缺省仍为 Linux。
 界面在原 Linux 接入卡下显示 Windows 卡，批量接入可选目标系统。
 
-一行命令先验证 Program Files 祖先 owner/ACL，再于封闭的 SYSTEM/Administrators 暂存目录下载固定 KPanel Release 的
-`bootstrap-windows.ps1`。KPanel 中心二进制内置该脚本的 SHA-256，命令校验固定版本来源、文件大小和摘要后才以子 PowerShell 执行。
+一行命令先验证 Program Files 祖先 owner/ACL，再于封闭的 SYSTEM/Administrators 暂存目录下载固定 Dongger Panel Release 的
+`bootstrap-windows.ps1`。Dongger Panel 中心二进制内置该脚本的 SHA-256，命令校验固定版本来源、文件大小和摘要后才以子 PowerShell 执行。
 bootstrap 再从同一固定 tag 下载 `install-windows.ps1` 和唯一 `SHA256SUMS` 条目，校验摘要后才调用安装器；不直接执行下载文本。
 令牌和名称以 UTF-8 Base64 表达式编码，避免 PowerShell Unicode 引号被解释为语法。
 无需发布者/profile 配置。未签名产物依赖官方 HTTPS、中心内置 bootstrap 摘要与同源安装器清单，仅提供完整性保证。
@@ -304,7 +304,7 @@ Windows 接入请求带 `platform=windows`；旧中心严格解析请求，因�
 
 | 项目 | 规则 |
 | --- | --- |
-| 触发 | 计划任务 `\KPanel\KejilionNodeUpdate`，SYSTEM；开机 15–30 分钟后首次运行，之后每小时；随机延迟 0–15 分钟；不允许多实例并行；单次最长 30 分钟 |
+| 触发 | 计划任务 `\Dongger Panel\KejilionNodeUpdate`，SYSTEM；开机 15–30 分钟后首次运行，之后每小时；随机延迟 0–15 分钟；不允许多实例并行；单次最长 30 分钟 |
 | 通道 | 只跟踪稳定版，与 Linux 相同；中心不推送更新，不支持远程切换版本 |
 | 检查 | 先下载 `SHA256SUMS`；本平台摘要未变化则结束 |
 | 校验 | 固定官方 HTTPS + SHA-256；再在暂存目录执行新二进制的 `version`，确认协议与运行时代数不降级 |
@@ -476,7 +476,7 @@ POST /api/v1/desktop-sessions/credentials/clear  { hostId } → { saved: false }
 
 ### 13.4 安全
 
-1. 访问要过三道认证：KPanel 登录、Noise 节点身份、Windows 网络级身份验证（NLA）。
+1. 访问要过三道认证：Dongger Panel 登录、Noise 节点身份、Windows 网络级身份验证（NLA）。
 2. **中心能看到解密后的 RDP 流。** TLS 在节点终结，与终端现状一致（中心本来就能看到终端明文）。
    如果要求中心也看不到，需要把桥放进浏览器 WASM（D5）。
 3. **托管管理员一键登录。** 默认 PowerShell 服务使用 LocalSystem；托管 RDP 使用本机 Administrators 组的专用账户，
@@ -484,7 +484,7 @@ POST /api/v1/desktop-sessions/credentials/clear  { hostId } → { saved: false }
    安装显式选择后，每次打开 RDP 自动连接，无需用户输入 Windows 密码。节点用官方 NetUser/NetLocalGroup API 建立
    随机 `kp_rdp_*` 账户，以受保护的随机 marker 和 SID 核验所有权，平时禁用并过期；不采用已有同名账户。
    连接前独占生成 256 位随机密码、设置约一分钟账户有效期并启用。中心先保留配额，在同一经过 Noise 认证的数据流接收
-   nonce 绑定的凭据，浏览器在 45 秒内认领该流才运行 RDP。凭据仅由 `no-store` 响应交给当前 KPanel 登录，不写入中心 vault。
+   nonce 绑定的凭据，浏览器在 45 秒内认领该流才运行 RDP。凭据仅由 `no-store` 响应交给当前 Dongger Panel 登录，不写入中心 vault。
    关闭、连接失败、未认领超时、注销或禁用策略时，节点尝试禁用、过期、轮换密码并注销匹配 token SID 的 Windows 会话；
    清理失败停止再次发放凭据，服务重启后先恢复再接纳。受保护记录只存名称、marker、SID，不存密码明文；Windows SAM
    保留系统自己的密码验证数据。Go/JS/WASM 不能保证所有内存副本物理擦除。
@@ -492,7 +492,7 @@ POST /api/v1/desktop-sessions/credentials/clear  { hostId } → { saved: false }
    SID/marker 前检与按名称执行的 SAM API 并非原子操作，另一位本地管理员并发改名的竞态、正在 NLA 登录但 token 未就绪的
    WTS 注销行为，以及崩溃后的恢复必须进行隔离 Windows 实机验证。
    **已有账户兼容。** 加入域、旧节点或主动更换账户时可选择“保存并连接”或“仅连接本次”；已有保存记录优先使用。
-   加密记录按 KPanel 用户、主机 ID、节点 Noise 公钥摘要与用户安全凭据版本绑定；节点身份或账户安全版本改变后需重新录入。
+   加密记录按 Dongger Panel 用户、主机 ID、节点 Noise 公钥摘要与用户安全凭据版本绑定；节点身份或账户安全版本改变后需重新录入。
    中心使用 XChaCha20-Poly1305、随机 nonce 和完整绑定信息作为 AAD，密钥与密文位于私有 `desktop-credentials/`，
    不进入普通状态、审计或 Panel 导出备份。用户可更换账户或清除并断开；删除主机清理所有用户的该主机记录。
    状态与保存接口不回传密码；只有显式 `useSavedCredentials` 的会话分配在验证会话、Origin、CSRF、实时节点能力和配额后，
@@ -669,7 +669,7 @@ spike 结论不达标就终止 P4，P1–P3 不受影响。
 - **行级评审。** 代码改动按 5.5 执行 OCR 行级评审并写 `OCR-Review:` trailer。
 - **独立复核。** Claude 实现的候选交由其他提供商复核（`docs/multi-agent-collaboration.md`）。
 - **跨仓库联动。** `scriptLinkageState` 取决于 D2：安装器放在 `kejilion/sh` 则为 `coupled`；
-  作为 KPanel Release 资产则为 `not-required`，并记录脚本基线。
+  作为 Dongger Panel Release 资产则为 `not-required`，并记录脚本基线。
 - **实机矩阵（待执行，表内 ✓ 表示必须验收，非已通过）。** 在登记的隔离环境（不得使用 `prod-108`）完成：
 
 | 系统 | 安装 | 重启恢复 | 自动更新 | 回滚 | 卸载 | 终端 | 文件 | 登录事件 | 桌面（P4） |
@@ -714,7 +714,7 @@ IronRDP WASM 加自研 Go RDCleanPath 桥，作为第 13 节方案的先例。
 | 编号 | 问题 | 影响 | 当前决定或前置事项 |
 | --- | --- | --- | --- |
 | D1 | 外部签名机制 | 用户已要求删除 | RC3 删除 Azure/Authenticode/Publisher/Profile 依赖；保留 HTTPS/摘要/ACL/回滚，不提供证书发布者身份证明 |
-| D2 | 安装器来源 | `scriptLinkageState`、下载可用性 | KPanel Release 固定官方 HTTPS 与校验和资产；当前没有镜像选项，无需 `kejilion/sh` 同步发布 |
+| D2 | 安装器来源 | `scriptLinkageState`、下载可用性 | Dongger Panel Release 固定官方 HTTPS 与校验和资产；当前没有镜像选项，无需 `kejilion/sh` 同步发布 |
 | D3 | 加入域的机器默认能力 | 默认风险 | 默认只装遥测，显式参数才装终端、文件；接入窗口勾选仅追加 `desktop`，不扩大其他能力 |
 | D4 | 首批版本与架构 | 实机矩阵规模 | amd64 原生测试、amd64/arm64 编译；arm64 未实机验收 |
 | D5 | 远程桌面中心可见性 | 前端体积与复杂度 | 中心可见 RDP 流（与终端一致），不承诺浏览器到节点端到端保密 |

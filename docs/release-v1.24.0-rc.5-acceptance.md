@@ -1,4 +1,4 @@
-# KPanel v1.24.0-rc.5 发布验收记录
+# Dongger Panel v1.24.0-rc.5 发布验收记录
 
 日期：2026-10-01
 
@@ -44,10 +44,10 @@
 - `scriptLinkageState`：`coupled`；变更集 `base-202610-all`。
 - 内置脚本基线：`779192048077c130442a64a126d7c0050776d868` / SHA-256 `33010d547355f9bde4067c189a0457f44dc00ec3a72eaa25e5b7101e1fcb9c04`。
 - 脚本候选：`8bebc2d80614e96b844c2c5f88acb0a81d4abd10` / SHA-256 `578b9e4328ba231ad08783c3f2007034f332621d48db07cffe3429da807940b4`；两版本均从公开固定 URL 回读并校验，不使用移动 main。
-- 脚本先行已公开；来源固定 clone HEAD 为 8bebc2d8、root/CN 同步及语法、隔离 AI CLI 和 KPanel noninteractive fixtures 通过（原件 `script-smoke-r2.log`）。本次无需再写/发布脚本，不把已有公开兼容版本写成“尚未发布”。
-- 七个 KPanel 应用协议函数逐字相同，`script-protocol-diff.json` 保存各函数摘要。真机生命周期核对只提取公开脚本中原样的 service_name/verified_service，只读核验自建 Docker 测试容器 running/exited/paused/restart 状态和错误 ID 拒绝；控制动作只对自建容器执行，结束后删除，现存业务容器 ID/状态保持。原件 `paired-script-lifecycle.log` 和 before/after。
+- 脚本先行已公开；来源固定 clone HEAD 为 8bebc2d8、root/CN 同步及语法、隔离 AI CLI 和 Dongger Panel noninteractive fixtures 通过（原件 `script-smoke-r2.log`）。本次无需再写/发布脚本，不把已有公开兼容版本写成“尚未发布”。
+- 七个 Dongger Panel 应用协议函数逐字相同，`script-protocol-diff.json` 保存各函数摘要。真机生命周期核对只提取公开脚本中原样的 service_name/verified_service，只读核验自建 Docker 测试容器 running/exited/paused/restart 状态和错误 ID 拒绝；控制动作只对自建容器执行，结束后删除，现存业务容器 ID/状态保持。原件 `paired-script-lifecycle.log` 和 before/after。
 - 兼容矩阵：脚本协议未变，固定候选 Panel 契约/L3、不可变镜像实际内置字节校验与上述原生 Docker 身份核对共同支持兼容；不把身份检查称为脚本原生 install/update/uninstall 或全量 Panel↔脚本双端实机测试。这些未变宿主操作依赖既有 rootfs/协议回归，本轮不在真实业务应用执行。
-- 发布决定：脚本兼容版本先可用，再发布 KPanel 预览。成对回滚：rc.4 产品 `0cbee81494991166f9b32b495494a4616463a73d` / OCI `sha256:80578043ae505d6b2f34d3a3cd1b168dab78d89824c68c648846458c5ad991f0` 与基线脚本 779192/33010；稳定回滚点独立列于首部。无阻断或移除的依赖范围。
+- 发布决定：脚本兼容版本先可用，再发布 Dongger Panel 预览。成对回滚：rc.4 产品 `0cbee81494991166f9b32b495494a4616463a73d` / OCI `sha256:80578043ae505d6b2f34d3a3cd1b168dab78d89824c68c648846458c5ad991f0` 与基线脚本 779192/33010；稳定回滚点独立列于首部。无阻断或移除的依赖范围。
 
 ## 多维质量结论
 
@@ -105,7 +105,7 @@ stable/preview 通道算法、保持选择、退出预览不降级、后台安�
 ## 生产部署安全核对
 
 - 所有生产动作：不适用（预览版禁止生产部署）；产物发布与生产部署分别记录。
-- `prod-108` / `108` 禁用全部 KPanel 操作；本轮未连接、未备份、未部署、未升级、未核对。
+- `prod-108` / `108` 禁用全部 Dongger Panel 操作；本轮未连接、未备份、未部署、未升级、未核对。
 - `arena-154` 的现存业务容器仅做脱敏只读 inventory，未重启、替换或修改。隔离测试不能替代生产证据。
 
 ## 回滚

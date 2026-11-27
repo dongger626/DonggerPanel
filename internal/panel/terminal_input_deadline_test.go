@@ -16,7 +16,7 @@ import (
 
 // An input socket is idle whenever nobody types. Reverse proxies close idle
 // upgraded connections: nginx does when the upstream sends nothing for
-// proxy_read_timeout (60 s by default, and KPanel's own site template does not
+// proxy_read_timeout (60 s by default, and Dongger Panel's own site template does not
 // raise it), Cloudflare after about 100 s. The page then reconnects and prints
 // "reconnecting" every time. The Panel must keep the connection busy itself.
 //

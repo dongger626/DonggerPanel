@@ -1,4 +1,4 @@
-# KPanel 与 kejilion.sh 生态互通基线
+# Dongger Panel 与 kejilion.sh 生态互通基线
 
 本文件把 [`PROJECT_RULES.md`](../PROJECT_RULES.md) 落实为业务核对表。状态以代码和实机证据为准，
 不使用“只读发现”冒充兼容。
@@ -6,10 +6,10 @@
 | 业务域 | 共享真源/产物 | 双端互通要求 | 当前整改重点 |
 | --- | --- | --- | --- |
 | 系统管理 | systemd、发行版包管理器、sysctl、swap、DNS、SSH 配置 | 同一配置可由脚本或 Web 修改，刷新后显示宿主机真实状态 | 扩大发行版适配；移除固定确认词和“高风险锁定” |
-| 网站 | `/home/web/conf.d`、`/home/web/html`、`/home/web/certs`、LDNMP 容器 | `k web` 与 KPanel 创建、更新、删除、反代和一键建站产物互认 | 漂移配置继续可管理；IP/端口反代不限制公网目标 |
+| 网站 | `/home/web/conf.d`、`/home/web/html`、`/home/web/certs`、LDNMP 容器 | `k web` 与 Dongger Panel 创建、更新、删除、反代和一键建站产物互认 | 漂移配置继续可管理；IP/端口反代不限制公网目标 |
 | 应用市场 | 动态 catalog、`/root/apps/*.conf`、`/home/docker/appno.txt`、Docker 容器 | 脚本安装后 Web 可继续更新/卸载/访问控制；Web 任务复用脚本原生流程 | 配置解析只用于展示，不再作为管理授权条件 |
-| Docker | Docker Engine API、Compose labels、卷、网络、镜像 | 脚本、Compose、CLI 与 Web 创建的全部资源均可管理 | 移除 managed-only、危险配置和 KPanel 自保护限制 |
-| 任务与审计 | systemd 后台任务、KPanel 任务状态与日志 | 长任务可离开页面运行、可恢复查看进度；审计不成为操作门槛 | 保留鉴权、脱敏和资源版本，不要求固定确认口令 |
+| Docker | Docker Engine API、Compose labels、卷、网络、镜像 | 脚本、Compose、CLI 与 Web 创建的全部资源均可管理 | 移除 managed-only、危险配置和 Dongger Panel 自保护限制 |
+| 任务与审计 | systemd 后台任务、Dongger Panel 任务状态与日志 | 长任务可离开页面运行、可恢复查看进度；审计不成为操作门槛 | 保留鉴权、脱敏和资源版本，不要求固定确认口令 |
 
 ## 功能设计检查清单
 
@@ -18,11 +18,11 @@
 1. 对应 `kejilion.sh` 的函数、菜单入口和输入是什么？
 2. 脚本写入哪些文件、Docker 资源、systemd 单元或状态标记？
 3. 脚本如何判断已安装、可更新、运行中和卸载完成？
-4. KPanel 是否直接读取这些真实产物，而非要求 KPanel 专属 label？
-5. KPanel 写入后，脚本是否能不经转换继续管理？
-6. 脚本侧变更、手工变更和 KPanel 侧变更是否都能刷新对账？
+4. Dongger Panel 是否直接读取这些真实产物，而非要求 Dongger Panel 专属 label？
+5. Dongger Panel 写入后，脚本是否能不经转换继续管理？
+6. 脚本侧变更、手工变更和 Dongger Panel 侧变更是否都能刷新对账？
 7. 哪些校验防攻击/注入/竞态，哪些只是阻止管理员操作？后者必须删除。
-8. 脚本是否已有对外配置、模板、远程 URL 或生成流程？若有，KPanel 采用哪一种直接复用方式？
+8. 脚本是否已有对外配置、模板、远程 URL 或生成流程？若有，Dongger Panel 采用哪一种直接复用方式？
 9. 该来源是否已登记在 `docs/external-config-sources.md`，并固定版本或摘要？
 10. 最小需要 L0、L1、L2 还是 L3 核验？
 
@@ -31,12 +31,12 @@
 - 不接受“参考脚本后在 Go/TypeScript 中重新拼一份模板”。
 - 不接受只保证路径相同、语义相似或脚本能够扫描到文件名。
 - 脚本已有实现时，必须直接调用脚本入口、消费同一权威模板，或使用双方共享的生成器。
-- KPanel 增加的校验和事务只能包裹脚本业务，不能成为另一套默认值、模板或生命周期。
-- 没有稳定脚本接口时登记为适配缺口，不得先做一套 KPanel 专属实现。
-- 验收必须包含脚本与 KPanel 在相同输入下的有效配置对比，以及两端继续管理的实机闭环。
+- Dongger Panel 增加的校验和事务只能包裹脚本业务，不能成为另一套默认值、模板或生命周期。
+- 没有稳定脚本接口时登记为适配缺口，不得先做一套 Dongger Panel 专属实现。
+- 验收必须包含脚本与 Dongger Panel 在相同输入下的有效配置对比，以及两端继续管理的实机闭环。
 
 ## 安全边界判定
 
-“允许管理员操作”和“允许请求任意执行代码”是两件事。KPanel 应通过固定动作、结构化参数、
+“允许管理员操作”和“允许请求任意执行代码”是两件事。Dongger Panel 应通过固定动作、结构化参数、
 受约束文件路径和可信的本地 `kejilion.sh` 适配器提供完整能力，而不是暴露任意宿主机 Shell。
 资源来源、运行权限和业务风险只作为提示信息；身份、输入、路径、供应链和并发完整性仍是强制边界。

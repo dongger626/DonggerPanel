@@ -90,7 +90,7 @@ function loadErrorMessage(reason: unknown): string {
   if (!(reason instanceof ApiError)) return '无法读取容器配置。'
   // An Agent older than this feature only accepts POST on unknown container sub-paths.
   if (reason.code === 'method_not_allowed' || reason.code === 'route_not_found') {
-    return '当前 Agent 版本不支持查看创建命令，请先更新 KPanel。'
+    return '当前 Agent 版本不支持查看创建命令，请先更新 Dongger Panel。'
   }
   return reason.message
 }

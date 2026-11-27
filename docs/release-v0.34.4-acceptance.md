@@ -1,4 +1,4 @@
-# KPanel v0.34.4 发布验收
+# Dongger Panel v0.34.4 发布验收
 
 发布日期：2026-08-01
 
@@ -60,7 +60,7 @@ Release 附件已确认包含：
 
 - 本次未修改 `kejilion.sh`、部署 Compose 或 `packaging/kejilion-app/kpanel.conf`；应用市场继续使用 `latest`，不需要修改 `kejilion/apps`。
 - 回收站内部新增原路径元数据；旧版无元数据项目仍可显示并彻底删除，但不能恢复。
-- 回收站和 KPanel 状态目录继续对普通文件 API 隔离，彻底删除使用固定动作、资源版本校验、路径保护和审计。
+- 回收站和 Dongger Panel 状态目录继续对普通文件 API 隔离，彻底删除使用固定动作、资源版本校验、路径保护和审计。
 
 ## 回滚
 

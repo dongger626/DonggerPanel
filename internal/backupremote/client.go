@@ -329,7 +329,7 @@ func (c *Client) List(ctx context.Context) ([]Object, error) {
 }
 func (c *Client) Test(ctx context.Context) error {
 	name := ".kpanel-test-" + backup.NewID()
-	content := []byte("KPanel remote backup connection test\n")
+	content := []byte("Dongger Panel remote backup connection test\n")
 	defer func() {
 		cleanup, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()

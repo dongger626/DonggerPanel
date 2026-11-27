@@ -29,7 +29,7 @@ func (s *Server) selfUpdateSettings(w http.ResponseWriter, r *http.Request, requ
 		return
 	}
 	if s.selfUpdate == nil {
-		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 KPanel", "")
+		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 Dongger Panel", "")
 		return
 	}
 	switch r.Method {
@@ -84,7 +84,7 @@ func (s *Server) selfUpdateCheck(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if s.selfUpdate == nil {
-		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 KPanel", "")
+		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 Dongger Panel", "")
 		return
 	}
 	status, err := s.selfUpdate.Check(r.Context(), s.version)
@@ -106,7 +106,7 @@ func (s *Server) selfUpdateInstall(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if s.selfUpdate == nil {
-		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 KPanel", "")
+		writeProblem(w, requestID, http.StatusServiceUnavailable, "self_update_unavailable", "自动更新仅支持由 kejilion.sh 应用市场管理的 Dongger Panel", "")
 		return
 	}
 	var input struct {

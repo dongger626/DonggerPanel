@@ -1,4 +1,4 @@
-# KPanel v1.14.1 发布验收
+# Dongger Panel v1.14.1 发布验收
 
 ## 发布范围
 
@@ -32,7 +32,7 @@ Docker Hub `1.14.1` 与 `latest` 同指 OCI index `sha256:893f0fe328c61017d344de
 
 ## 生产部署安全核对
 
-用户明确授权本次完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁止全部 KPanel 操作，本轮没有连接或修改。
+用户明确授权本次完整上线。验证和正式生产目标均为 `arena-154` / `154.36.153.9`；`prod-108` / `108` 禁止全部 Dongger Panel 操作，本轮没有连接或修改。
 
 生产 preflight run `v1.14.1-production-20260912` 于 02:29:40Z 至 02:29:42Z 确认原生产 v1.14.0、revision `2bf866df47bdfef79324103e20242fade8d38dea`、旧 OCI `sha256:238a1f9d855325549736032ee401791e1fa12284b953233858251140487437bd` 健康。Panel running/healthy、restart 0、OOM false；Agent active/running/enabled、NeedDaemonReload=no；SQLite quick check 通过，63 个数据文件，磁盘可用约 23 GiB。
 
@@ -155,7 +155,7 @@ env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/ke
     "position": "after-production-write",
     "count": 1,
     "impact": "公网健康通过后，本地应用配置对比把单个路径字符串按字符索引读取，证据命令失败；生产服务没有受影响。",
-    "recoveryEvidence": "把 rg 结果显式转换为单一路径字符串后，KPanel 与 kejilion/apps 的 kpanel.conf 归一全文一致，apps 仓库保持干净。",
+    "recoveryEvidence": "把 rg 结果显式转换为单一路径字符串后，Dongger Panel 与 kejilion/apps 的 kpanel.conf 归一全文一致，apps 仓库保持干净。",
     "permanentAction": "PowerShell 的单路径结果先显式转为 string，并在读取前验证非空且不含多行。",
     "historicalReleases": []
   },

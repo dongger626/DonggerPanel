@@ -13,7 +13,7 @@ import {
 } from '@/lib/desktopStartMenu'
 
 /**
- * Taskbar menu for the KPanel, XP and Win98 shells. It only presents items and
+ * Taskbar menu for the Dongger Panel, XP and Win98 shells. It only presents items and
  * reports choices; DesktopView owns every launch and command.
  */
 

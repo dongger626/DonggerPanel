@@ -1,4 +1,4 @@
-# KPanel v0.81.1 上线验收记录
+# Dongger Panel v0.81.1 上线验收记录
 
 日期：2026-08-17（Asia/Shanghai）
 
@@ -73,13 +73,13 @@
 - `linux/amd64`：`sha256:604a0e84f60a91de3935980aeb0a7fd409db446cdbb30a2783cdf9d7255b5e11`；`linux/arm64`：`sha256:5afcb5ca46043dbc5b32f49c6b59777486b4bfce0d38bfe4e33201c9665a7573`。
 - Release 附件包括双架构 Agent、双架构 lightweight node、`kejilion-panel-deploy-0.81.1.tar.gz`、`SHA256SUMS`、LICENSE 和 notices。
 - 公开镜像显式重新拉取并运行 `packaging/tests/image-e2e.sh`，输出 `image_e2e=pass`。
-- `packaging/kejilion-app/kpanel.conf` 相对 v0.81.0 无差异；KPanel blob 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` 的 `kpanel.conf` blob 同为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需制造空提交。
+- `packaging/kejilion-app/kpanel.conf` 相对 v0.81.0 无差异；Dongger Panel blob 与 `kejilion/apps main@6d86eee24a477320f4d8ffb32d9e85b785cf3c2c` 的 `kpanel.conf` blob 同为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，无需制造空提交。
 - 四个生产 HTTP 图标均为 128×128 WebP：Arena Brawl `ccba8f5c…`、Bomb Party `248767ad…`、Ice Climber Arena `aac98d7d…`、Neon Arena `31350f89…`，均与内置 catalog SHA256 完全一致。
 
 ## 生产部署安全核对
 
 - 生产目标和授权：仅 `arena-154`；用户明确授权发布、生产部署与验收。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前：v0.81.0，OCI `sha256:541f9b2d3b4b6e17c925e6c663da162e1bc42db855f7a253e95c8b5eba82100d`，revision `21261e35dd2aa8bc3fea4bed004c8b5ba896c975`；Panel healthy、restart 0、OOM false，Agent active。
 - 停写备份：`/root/kpanel-backups/pre-v0.81.1-20260817T031140Z`；完整应用目录归档 SHA256 `ef877803492753564fb476a8dab9a2c1966d022671de85b979f3f4d50dfb5ef1`，旧镜像归档 SHA256 `b95495cffce4ec046f180b338e9ae8c4b3d81af5aaf03626966e7d5b4237a0be`。
 - 备份已解包并逐文件对比；原始/恢复副本的 `data/ai.db` 与 `data/panel/ai.db` 均 `integrity_check=ok`；备份日志 SHA256 `8e95c55657367f0e91e3f9c76beaea02042b6bb067eef56ed5303c6b71c1acf2`。
@@ -87,7 +87,7 @@
 - 首次执行器在加载契约时因 Bash `local` 作用域保护 fail-closed，发生在镜像拉取、停服务或文件修改之前；生产保持 v0.81.0 healthy。把 source 放入函数作用域后，同一标准事务一次升级成功；这不是产品失败或生产回滚。
 - 部署后：v0.81.1，revision `e2416ae393e0e23323c0d3088b996bc8d89273d5`，运行 OCI 与正式摘要一致；Panel healthy、restart 0、OOM false，Agent active，`/v1/health status=ok version=0.81.1`。
 - 部署日志 SHA256：`c9a251f8d1004e132f4ad2df2869dc9368b1b159dbe8a8156a00da822ad88154`；托管脚本升级前后 SHA256 均为 `d73231f146f7398d7b50133695faf2116134fbfe33a7b94068e277cc7b82df55`。
-- 生产已执行写操作：停写备份、标准 KPanel 更新事务和服务重建；没有安装/卸载其他应用，没有修改账户、目录条目或业务配置。
+- 生产已执行写操作：停写备份、标准 Dongger Panel 更新事务和服务重建；没有安装/卸载其他应用，没有修改账户、目录条目或业务配置。
 
 ## 回滚
 

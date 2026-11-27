@@ -21,7 +21,7 @@ kpanel_node_acquire_lock() {
 	exec 8>>"$lifecycle_lock" || { umask "$previous_umask"; return 1; }
 	umask "$previous_umask"
 	if ! flock -n 8; then
-		echo "another KPanel lightweight node lifecycle operation is running; retry when it finishes" >&2
+		echo "another Dongger Panel lightweight node lifecycle operation is running; retry when it finishes" >&2
 		return 1
 	fi
 	chmod 0600 "$lifecycle_lock" || return 1
@@ -31,7 +31,7 @@ kpanel_node_acquire_lock() {
 		[ ! -L "$home" ] && [ ! -L "${home}/update.lock" ] || return 1
 		exec 9>>"${home}/update.lock" || return 1
 		if ! flock -n 9; then
-			echo "another KPanel lightweight node update is running" >&2
+			echo "another Dongger Panel lightweight node update is running" >&2
 			return 1
 		fi
 	fi
@@ -39,11 +39,11 @@ kpanel_node_acquire_lock() {
 		if [ -L "$legacy_marker" ] || [ ! -f "$legacy_marker" ] ||
 			! read -r legacy_pid legacy_start <"$legacy_marker" ||
 			! [[ "$legacy_pid" =~ ^[1-9][0-9]*$ && "$legacy_start" =~ ^[0-9]+$ ]]; then
-			echo "KPanel legacy updater identity is invalid; inspect ${legacy_marker} first" >&2
+			echo "Dongger Panel legacy updater identity is invalid; inspect ${legacy_marker} first" >&2
 			return 1
 		fi
 		if [ "$(awk '{ sub(/^.*\) /, ""); print $20 }' "/proc/${legacy_pid}/stat" 2>/dev/null || true)" = "$legacy_start" ]; then
-			echo "previous KPanel lightweight node updater is still finishing" >&2
+			echo "previous Dongger Panel lightweight node updater is still finishing" >&2
 			return 1
 		fi
 	fi
@@ -54,7 +54,7 @@ kpanel_node_acquire_lock() {
 			[ "${process##*/}" != "$BASHPID" ] || continue
 			script_file="$(readlink "${process}/fd/255" 2>/dev/null || true)"
 			if [ "${script_file% (deleted)}" = "${home}/update.sh" ]; then
-				echo "legacy KPanel update lock is still in use" >&2; return 1
+				echo "legacy Dongger Panel update lock is still in use" >&2; return 1
 			fi
 			if [ ! -r "${process}/cmdline" ]; then
 				[ ! -d "$process" ] && continue
@@ -62,17 +62,17 @@ kpanel_node_acquire_lock() {
 			fi
 			while IFS= read -r -d '' argument; do
 				if [ "$argument" = "${home}/update.sh" ]; then
-					echo "legacy KPanel update lock is still in use" >&2; return 1
+					echo "legacy Dongger Panel update lock is still in use" >&2; return 1
 				fi
 			done <"${process}/cmdline" || return 1
 		done
 		# Never recursively remove unknown contents or a competing old owner.
 		rmdir -- "$legacy_lock" && mkdir -- "$legacy_lock" || return 1
-		echo "Recovered an inactive KPanel lightweight node update lock."
+		echo "Recovered an inactive Dongger Panel lightweight node update lock."
 	fi
 	kpanel_legacy_lock_owned=true
 	trap kpanel_node_release_lock EXIT
-	trap 'echo "KPanel lightweight node update interrupted; run the command again to retry." >&2; exit 130' INT
+	trap 'echo "Dongger Panel lightweight node update interrupted; run the command again to retry." >&2; exit 130' INT
 	trap 'exit 143' HUP TERM
 	rm -f -- "$legacy_marker"
 }
@@ -192,15 +192,15 @@ cleanup() {
 	if [ "$exit_code" = 130 ] || [ "$exit_code" = 143 ]; then update_result=interrupted; update_error=interrupted; fi
 	if [ "$exit_code" = 0 ] && [ "$optional_degraded" = true ]; then update_result=degraded; update_error=optional_service; fi
 	finished="$(date +%s)"
-	write_update_status "$update_result" "$update_error" "$finished" || echo "KPanel update status could not be recorded." >&2
+	write_update_status "$update_result" "$update_error" "$finished" || echo "Dongger Panel update status could not be recorded." >&2
 	[ -z "$temporary_dir" ] || rm -rf -- "$temporary_dir"
 	kpanel_node_release_lock
 	exit "$exit_code"
 }
 trap cleanup EXIT
-trap 'echo "KPanel lightweight node update interrupted; run the command again to retry." >&2; exit 130' INT
+trap 'echo "Dongger Panel lightweight node update interrupted; run the command again to retry." >&2; exit 130' INT
 trap 'exit 143' HUP TERM
-write_update_status running '' 0 || echo "KPanel update status could not be recorded." >&2
+write_update_status running '' 0 || echo "Dongger Panel update status could not be recorded." >&2
 
 # Old release assets only migrate in kejilion-node-update.*. The new staging
 # namespace prevents their `version` probe from restoring an obsolete updater.
@@ -213,7 +213,7 @@ if [ "$quiet" != true ] && [ -t 2 ]; then
 	curl_progress=(--progress-bar --show-error)
 fi
 update_error=release_check
-[ "$quiet" = true ] || echo "Checking KPanel lightweight node release..."
+[ "$quiet" = true ] || echo "Checking Dongger Panel lightweight node release..."
 # GitHub is tried first with a short budget so an unreachable host falls back
 # to the mirror within about a minute instead of after every retry.
 manifest_source=github
@@ -227,7 +227,7 @@ if ! curl --proto '=https' --proto-redir '=https' --tlsv1.2 --fail --location "$
 		--connect-timeout 15 --max-time 60 --retry 3 --retry-delay 5 --retry-max-time 240 \
 		--max-filesize 65536 \
 		-o "${temporary_dir}/SHA256SUMS" "${mirror_prefix}${base_url}/SHA256SUMS"; then
-		echo "KPanel release check failed; check access to github.com or gh.kejilion.pro and retry." >&2
+		echo "Dongger Panel release check failed; check access to github.com or gh.kejilion.pro and retry." >&2
 		exit 1
 	fi
 fi
@@ -254,7 +254,7 @@ fi
 file_service="kejilion-node-file.service"
 update_init_system=""
 if [ "$(cat /proc/1/comm 2>/dev/null)" = procd ]; then
-	kpanel_node_procd_capable || { echo "KPanel lightweight node requires a running, trusted procd service manager with ubus/jsonfilter" >&2; exit 1; }
+	kpanel_node_procd_capable || { echo "Dongger Panel lightweight node requires a running, trusted procd service manager with ubus/jsonfilter" >&2; exit 1; }
 	update_init_system=procd
 elif [ -d /run/systemd/system ] && command -v systemctl >/dev/null 2>&1; then
 	update_init_system=systemd
@@ -262,7 +262,7 @@ elif [ -d /run/openrc ] && command -v rc-service >/dev/null 2>&1 && command -v r
 	command -v supervise-daemon >/dev/null 2>&1 && command -v logger >/dev/null 2>&1; then
 	update_init_system=openrc
 else
-	echo "KPanel lightweight node requires a running systemd, OpenRC or native procd service manager" >&2
+	echo "Dongger Panel lightweight node requires a running systemd, OpenRC or native procd service manager" >&2
 	exit 1
 fi
 if [ "$update_init_system" = systemd ]; then
@@ -324,7 +324,7 @@ ensure_file_service_unit() {
 		template="${temporary_dir}/file.procd"
 		cat >"$template" <<'KPANEL_NODE_FILE_PROCD'
 #!/bin/sh /etc/rc.common
-# KPanel managed procd service
+# Dongger Panel managed procd service
 USE_PROCD=1
 START=95
 STOP=10
@@ -345,7 +345,7 @@ start_service() {
 KPANEL_NODE_FILE_PROCD
 		if [ -f "$file_service_path" ]; then
 			cmp -s "$file_service_path" "$template" && return 0
-			echo "KPanel file service has custom settings; retaining the existing procd service" >&2
+			echo "Dongger Panel file service has custom settings; retaining the existing procd service" >&2
 			return 0
 		fi
 		unit_temporary="$(mktemp "${file_service_path}.XXXXXX")" || return 1
@@ -361,8 +361,8 @@ KPANEL_NODE_FILE_PROCD
 		cat >"$template" <<'KPANEL_NODE_FILE_OPENRC'
 #!/sbin/openrc-run
 
-name="KPanel Lightweight Node File Manager"
-description="Privileged file broker for KPanel lightweight node"
+name="Dongger Panel Lightweight Node File Manager"
+description="Privileged file broker for Dongger Panel lightweight node"
 command="/usr/local/lib/kejilion-node/kejilion-node"
 command_args="file-broker --config /etc/kejilion-node/node.json --terminal-config /etc/kejilion-node/terminal.json"
 command_user="root:root"
@@ -390,7 +390,7 @@ start_pre() {
 KPANEL_NODE_FILE_OPENRC
 		if [ -f "$file_service_path" ]; then
 			cmp -s "$file_service_path" "$template" && return 0
-			echo "KPanel file service has custom settings; retaining the existing OpenRC service" >&2
+			echo "Dongger Panel file service has custom settings; retaining the existing OpenRC service" >&2
 			return 0
 		fi
 		unit_temporary="$(mktemp "${file_service_path}.XXXXXX")" || return 1
@@ -405,7 +405,7 @@ KPANEL_NODE_FILE_OPENRC
 	legacy_template="${temporary_dir}/file.legacy.service"
 	cat >"$template" <<'KPANEL_NODE_FILE_SERVICE'
 [Unit]
-Description=KPanel Lightweight Node File Manager
+Description=Dongger Panel Lightweight Node File Manager
 After=network-online.target
 Wants=network-online.target
 ConditionPathExists=/etc/kejilion-node/node.json
@@ -445,7 +445,7 @@ KPANEL_NODE_FILE_SERVICE
 		sed -e '/^ConditionPathExists=/aConditionPathExists=/etc/kejilion-node/terminal.json' \
 			-e 's/^RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6$/RestrictAddressFamilies=AF_UNIX/' "$template" >"$legacy_template"
 		if ! cmp -s "$file_service_path" "$legacy_template" && ! sed 's/^RestrictAddressFamilies=AF_UNIX$/RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6/' "$file_service_path" | cmp -s - "$template"; then
-			echo "KPanel file service has custom settings; retaining the existing unit" >&2
+			echo "Dongger Panel file service has custom settings; retaining the existing unit" >&2
 			return 0
 		fi
 	fi
@@ -502,7 +502,7 @@ fi
 restart_optional_services() {
 	if ! ensure_file_service_unit; then
 		optional_degraded=true
-		echo "KPanel lightweight node updated; file service unit is unavailable" >&2
+		echo "Dongger Panel lightweight node updated; file service unit is unavailable" >&2
 	fi
 	updater_service_action enable "$file_service" >/dev/null 2>&1 || optional_degraded=true
 	# Telemetry is the core update contract. Optional brokers can be unavailable
@@ -513,7 +513,7 @@ restart_optional_services() {
 			if service_running_current "$service" && { [ "$service" != "$file_service" ] || [ "$file_service_definition_changed" != true ]; }; then continue; fi
 			if ! updater_service_action restart "$service" || ! wait_for_service "$service"; then
 				optional_degraded=true
-				echo "KPanel lightweight node updated; optional service unavailable: ${service}" >&2
+				echo "Dongger Panel lightweight node updated; optional service unavailable: ${service}" >&2
 			fi
 		fi
 	done
@@ -536,12 +536,12 @@ if [ -f "$binary_path" ] && [ "$(sha256sum "$binary_path" | awk '{print $1}')" =
 		restart_optional_services
 	fi
 	update_result=current; update_error=""
-	[ "$quiet" = true ] || echo "KPanel lightweight node is already up to date."
+	[ "$quiet" = true ] || echo "Dongger Panel lightweight node is already up to date."
 	exit 0
 fi
 
 update_error=download
-[ "$quiet" = true ] || echo "Downloading KPanel lightweight node..."
+[ "$quiet" = true ] || echo "Downloading Dongger Panel lightweight node..."
 download_binary() {
 	curl --proto '=https' --proto-redir '=https' --tlsv1.2 --fail --location "${curl_progress[@]}" \
 		--connect-timeout 15 --max-time 180 "$@" \
@@ -551,7 +551,7 @@ download_binary() {
 release_download="${release_base}/${binary_name}"
 if [ "$manifest_source" = mirror ]; then
 	download_binary --retry 3 --retry-delay 5 --retry-max-time 600 || {
-		echo "KPanel node download failed; check access to gh.kejilion.pro and retry." >&2
+		echo "Dongger Panel node download failed; check access to gh.kejilion.pro and retry." >&2
 		exit 1
 	}
 elif ! download_binary --retry 1 --retry-delay 2 --retry-max-time 200; then
@@ -560,7 +560,7 @@ elif ! download_binary --retry 1 --retry-delay 2 --retry-max-time 200; then
 	[ "$quiet" = true ] || echo "GitHub release download is unreachable; using the gh.kejilion.pro mirror..."
 	release_download="${mirror_prefix}${release_base}/${binary_name}"
 	download_binary --retry 3 --retry-delay 5 --retry-max-time 600 || {
-		echo "KPanel node download failed; check access to GitHub release downloads or gh.kejilion.pro and retry." >&2
+		echo "Dongger Panel node download failed; check access to GitHub release downloads or gh.kejilion.pro and retry." >&2
 		exit 1
 	}
 fi
@@ -617,16 +617,16 @@ if [ "$restart_required" = "true" ] && ! restart_services; then
 		mv -f -- "${binary_path}.previous" "$binary_path"
 		if ! restart_services; then
 			update_error=rollback
-			echo "KPanel lightweight node rollback restored the binary but service recovery failed." >&2
+			echo "Dongger Panel lightweight node rollback restored the binary but service recovery failed." >&2
 			exit 1
 		fi
 		update_result=rolled_back; update_error=restart
-		echo "KPanel lightweight node update failed and was rolled back." >&2
+		echo "Dongger Panel lightweight node update failed and was rolled back." >&2
 	else
-		echo "KPanel lightweight node update failed; no previous binary is available." >&2
+		echo "Dongger Panel lightweight node update failed; no previous binary is available." >&2
 	fi
 	exit 1
 fi
 rm -f -- "${binary_path}.previous"
 update_result=updated; update_error=""
-[ "$quiet" = true ] || echo "KPanel lightweight node update completed: ${version_output}"
+[ "$quiet" = true ] || echo "Dongger Panel lightweight node update completed: ${version_output}"

@@ -1,6 +1,6 @@
 # 管理员密码恢复
 
-KPanel 不保存明文密码，也不通过邮件、短信或公开 HTTP 接口恢复管理员凭据。忘记密码时，必须先通过 SSH 获得服务器 root 权限，再在本机使用 `/paneld reset-password` 离线重置。
+Dongger Panel 不保存明文密码，也不通过邮件、短信或公开 HTTP 接口恢复管理员凭据。忘记密码时，必须先通过 SSH 获得服务器 root 权限，再在本机使用 `/paneld reset-password` 离线重置。
 
 ## 应用市场安装
 

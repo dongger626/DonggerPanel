@@ -35,7 +35,7 @@ type managedSwapFile struct {
 
 // RunSwapTransaction is called only by the Agent's root-only swap-run
 // subcommand. It accepts a validated size and operates on the two fixed paths
-// used by kejilion.sh and older KPanel releases.
+// used by kejilion.sh and older Dongger Panel releases.
 func (m *Manager) RunSwapTransaction(ctx context.Context, sizeMiB int) SwapTransactionResult {
 	changed, backup, message, err := m.setSwap(ctx, sizeMiB)
 	if err == nil {
@@ -254,11 +254,11 @@ func (m *Manager) applySwap(
 		}
 	}
 	if sizeMiB == 0 {
-		return true, backup, "已停用 /swapfile 并清理旧版 KPanel Swap；其他 Swap 未受影响", nil
+		return true, backup, "已停用 /swapfile 并清理旧版 Dongger Panel Swap；其他 Swap 未受影响", nil
 	}
 	if legacyPresent {
 		return true, backup, fmt.Sprintf(
-			"已将 /swapfile 调整为 %d MiB，并合并旧版 KPanel Swap；其他 Swap 未受影响",
+			"已将 /swapfile 调整为 %d MiB，并合并旧版 Dongger Panel Swap；其他 Swap 未受影响",
 			sizeMiB,
 		), nil
 	}

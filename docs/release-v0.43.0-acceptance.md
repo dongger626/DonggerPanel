@@ -1,4 +1,4 @@
-# KPanel v0.43.0 发布验收
+# Dongger Panel v0.43.0 发布验收
 
 ## 发布范围
 
@@ -37,7 +37,7 @@ v0.43.0 优化 AI 助手会话体验与静默沉淀能力：新会话自动使�
 
 ## 154 上线结果
 
-- 使用公开应用市场 `docker_app_update` 完成 v0.42.1 → v0.43.0 更新，输出 `KPanel 更新完成 / Update Complete`。
+- 使用公开应用市场 `docker_app_update` 完成 v0.42.1 → v0.43.0 更新，输出 `Dongger Panel 更新完成 / Update Complete`。
 - Agent：`0.43.0 v1alpha1`，服务为 `active`、`NRestarts=0`。
 - Panel：`version=0.43.0`、`status=ok`、容器 `healthy`；镜像 ID 为正式多架构摘要。
 - `/` 与 `/ai` 返回 `200`；未登录 `/api/v1/ai/providers` 返回 `401`。
@@ -51,7 +51,7 @@ v0.43.0 优化 AI 助手会话体验与静默沉淀能力：新会话自动使�
 - 公共源码与镜像回滚点：`v0.42.1`，镜像摘要 `sha256:8269a8a25693814b50ec9ca5b38d12fb60550109e91771da9d384bea99db5eae`。
 - 154 升级前一致性备份：`/root/kpanel-backups/v0.43.0-preupgrade-20260804T054702Z/kpanel-home.tar.gz`。
 - 备份权限 `0600`，大小 `20,564,321` B，SHA-256：`da87c3e375023ab8b65179ed742e573c5f95b82543e4f62ca8d5375e17d4c6c4`。
-- 回滚时恢复旧镜像、Agent、Compose、systemd 单元与完整 KPanel 目录；`ai.db*` 必须与 `ai-secrets.key` 成对保留。
+- 回滚时恢复旧镜像、Agent、Compose、systemd 单元与完整 Dongger Panel 目录；`ai.db*` 必须与 `ai-secrets.key` 成对保留。
 
 ## 已知边界
 

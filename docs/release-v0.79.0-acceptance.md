@@ -1,4 +1,4 @@
-# KPanel v0.79.0 上线验收记录
+# Dongger Panel v0.79.0 上线验收记录
 
 日期：2026-08-16（Asia/Shanghai）
 
@@ -50,7 +50,7 @@
 
 ## 生产部署与健康
 
-- 唯一 KPanel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
+- 唯一 Dongger Panel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
 - 部署前：v0.77.0，Panel healthy、restart 0、OOM false，Agent active；运行 OCI/revision 为 `sha256:072ede148231f4233d9fe849c0882340b1fcbed4bd327a13da830cacc058f378` / `dc0082a3493e257267f896d58860613aa75571bb`。
 - 停写备份：`/root/kpanel-backups/v0.79.0-preupgrade-arena154-20260816T024731Z.tar.gz`，SHA-256 `fcf62f5fc0dc59be3a3f8ed8b4a27b27ba93268e064cf417e76350bb921b7cef`。
 - 旧镜像归档：同名 `.image.tar`，SHA-256 `2ed6332f4d3b9eba5742f6e6e7995e8e9f58c7b3fafcb323c30d0ee654439dfc`；备份已独立解包并核对数据树、`.env` 权限、Compose、SQLite 和镜像可加载性。
@@ -80,6 +80,6 @@
 
 ## 遗留风险与沉淀
 
-- 跨 KPanel 传输依赖双方网络可达和权限有效；地址变化、撤销、旧版本兼容及冲突按现有 fail-closed 机制处理。
+- 跨 Dongger Panel 传输依赖双方网络可达和权限有效；地址变化、撤销、旧版本兼容及冲突按现有 fail-closed 机制处理。
 - 桌面跨窗口仍使用浏览器原生 DnD 拖影，视觉无法与同窗口 pointer drag 像素级一致；功能和落点已验证。
 - 本轮复用 `release-kpanel` v2.4，没有新增重复工作流；新增的“备份恢复禁止依赖浮动镜像标签”经验记录在本验收文件，后续应在治理流程中单独评估后再固化。

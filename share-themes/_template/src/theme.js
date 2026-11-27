@@ -1,4 +1,4 @@
-// KPanel share theme, protocol 2 (runtime "kpanel-share-theme@2").
+// Dongger Panel share theme, protocol 2 (runtime "kpanel-share-theme@2").
 //
 // The host page owns nothing but the frame: you decide the markup, styling, layout, fonts, canvas/SVG and motion.
 // The frame is sandboxed ("allow-scripts", opaque origin): no cookies, storage, network, popups or parent DOM.

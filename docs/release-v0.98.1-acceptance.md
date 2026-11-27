@@ -1,4 +1,4 @@
-# KPanel v0.98.1 发布验收记录
+# Dongger Panel v0.98.1 发布验收记录
 
 日期：2026-08-26
 
@@ -69,7 +69,7 @@
 - 唯一目标：`arena-154`；108/`prod-108` 未连接、未检查、未测试、未备份、未部署、未升级。
 - 当前基线 preflight：`v0981-baseline-r1`，生产版本 `0.98.0`，Panel health `ok`，Agent active/enabled，NeedDaemonReload=no。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.98.1-20260826T050046Z`；备份 `SHA256SUMS` 文件 SHA-256=`90f047ed92de7375d2d5f455408597ac3781ae9cc1b25fd84cb5287d454226c`；归档、旧镜像加载、校验和和恢复健康均通过。
-- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，更新输出到达 `KPanel 更新完成` 与 `KPANEL_PROGRESS 100`，exit 0。
+- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，更新输出到达 `Dongger Panel 更新完成` 与 `KPANEL_PROGRESS 100`，exit 0。
 - 部署后证据：`v0981-postdeploy-r1`，health=`0.98.1`；Panel healthy、Agent active/enabled、NeedDaemonReload=no、restart=0、OOM=false；资源约 74.39 MiB/256 MiB、CPU 0.04%、7 PIDs；近 10 分钟 Panel/Agent 日志无 panic/fatal/OOM；SQLite quick_check=ok，受保护配置逐字节摘要无差异。
 - 生产写操作仅包括停写备份阶段的受控 stop/start 与标准应用市场更新；未执行 Docker 管理业务写操作。
 

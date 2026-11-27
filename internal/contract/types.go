@@ -269,7 +269,7 @@ type PublicNetworkSummary struct {
 }
 
 // HostTelemetry is the deliberately narrow, read-only host snapshot used by
-// KPanel federation. It excludes system configuration, site, application and
+// Dongger Panel federation. It excludes system configuration, site, application and
 // Docker details so a monitoring controller never receives management state
 // or credentials.
 type HostTelemetry struct {

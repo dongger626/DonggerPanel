@@ -355,7 +355,7 @@ onBeforeUnmount(() => {
         <section class="cluster-notifications__local" :role="snapshot.localRecording === false ? 'alert' : 'status'">
           <strong>{{ phrase(snapshot.localRecording === false ? '本地记录暂时不可用' : '本地记录已启用') }}</strong>
           <button class="button button--secondary" type="button" @click="viewHistory">{{ phrase('查看通知记录') }}</button>
-          <p v-if="snapshot.localRecording === false">{{ phrase('请检查 KPanel 数据目录，恢复前无法保存新的通知。') }}</p>
+          <p v-if="snapshot.localRecording === false">{{ phrase('请检查 Dongger Panel 数据目录，恢复前无法保存新的通知。') }}</p>
         </section>
         <NotificationChannels v-if="snapshot.channels" :snapshot="snapshot" :disabled="saving || loading" @busy="channelBusy = $event" @updated="applyChannelSnapshot" @reload="load(true)" />
         <template v-else>
@@ -417,7 +417,7 @@ onBeforeUnmount(() => {
             :aria-label="phrase(credentialLabel)"
             :placeholder="credentialPlaceholder.startsWith('https://') ? credentialPlaceholder : phrase(credentialPlaceholder)"
           />
-          <small>{{ phrase('凭据仅保存在当前 KPanel 的受保护数据目录，不会显示在页面或通知内容中。') }} {{ phrase('切换渠道并保存时会替换已存凭据。') }}</small>
+          <small>{{ phrase('凭据仅保存在当前 Dongger Panel 的受保护数据目录，不会显示在页面或通知内容中。') }} {{ phrase('切换渠道并保存时会替换已存凭据。') }}</small>
         </label>
 
         <div class="cluster-notifications__channel-actions">
@@ -443,7 +443,7 @@ onBeforeUnmount(() => {
           <div class="cluster-notifications__section-heading">
             <div>
               <h3>{{ phrase('语言与时间') }}</h3>
-              <p>{{ phrase('通知语言在保存时跟随当前 KPanel 界面；时间使用通知中心宿主机系统时区。') }}</p>
+              <p>{{ phrase('通知语言在保存时跟随当前 Dongger Panel 界面；时间使用通知中心宿主机系统时区。') }}</p>
             </div>
           </div>
           <div class="cluster-notifications__locale-grid">
@@ -523,7 +523,7 @@ onBeforeUnmount(() => {
           </div>
           <div class="cluster-notifications__event-rules">
             <label class="cluster-notifications__event-rule cluster-notifications__expiry-rule">
-              <span><strong>{{ phrase('服务器到期提醒') }}</strong><small>{{ phrase('统一提醒所有已填写到期日期的主机，按当前 KPanel 时区，在提前 7、3、1 天及到期当天各提醒一次。') }}</small></span>
+              <span><strong>{{ phrase('服务器到期提醒') }}</strong><small>{{ phrase('统一提醒所有已填写到期日期的主机，按当前 Dongger Panel 时区，在提前 7、3、1 天及到期当天各提醒一次。') }}</small></span>
               <input v-model="form.hostExpiryEnabled" type="checkbox" :aria-label="phrase('启用服务器到期提醒')" />
             </label>
             <label class="cluster-notifications__event-rule cluster-notifications__service-rule">
@@ -539,7 +539,7 @@ onBeforeUnmount(() => {
               <input v-model="form.sshLoginEnabled" type="checkbox" :aria-label="phrase('启用 SSH 登录通知')" />
             </label>
             <label class="cluster-notifications__event-rule">
-              <span><strong>{{ phrase('面板登录') }}</strong><small>{{ phrase('有人登录本 KPanel 时提醒，包含用户、来源、登录方式和时间，不传递密码或验证码。') }}</small></span>
+              <span><strong>{{ phrase('面板登录') }}</strong><small>{{ phrase('有人登录本 Dongger Panel 时提醒，包含用户、来源、登录方式和时间，不传递密码或验证码。') }}</small></span>
               <input v-model="form.panelLoginEnabled" type="checkbox" :aria-label="phrase('启用面板登录通知')" />
             </label>
             <label class="cluster-notifications__event-rule cluster-notifications__backup-rule">

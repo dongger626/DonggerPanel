@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.5 发布验收记录
+# Dongger Panel v1.28.0-rc.5 发布验收记录
 
 日期：2026-10-25；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.28.0`。
 
@@ -32,7 +32,7 @@
 
 - 候选 23 个安全组 recorded；历史无效 skip trailer 仍为告警，不作通过依据。新增交叠范围为 backup_data、backup_restore、cluster 路由和 mcp_cluster，按固定提示由与实现分离的只读快照会话审查。
 - 本轮原始线索 H2/M1/L1；三项备份相关缺陷已核实修复，三份定向回归均有失败前与通过后记录。修订源码由独立审查者复核无剩余可信发现；修订复核明确不是全新盲审。
-- 一项既有低级 MCP 元数据范围线索保留仓外，负责人 KPanel MCP file maintainers，复核期限 2026-11-04，触发为进一步修改文件授权根或稳定版质量复核。未修复细节不公开，不宣称全仓安全。
+- 一项既有低级 MCP 元数据范围线索保留仓外，负责人 Dongger Panel MCP file maintainers，复核期限 2026-11-04，触发为进一步修改文件授权根或稳定版质量复核。未修复细节不公开，不宣称全仓安全。
 - 夹具固定矩阵独立审查 PASS WITH FOLLOW-UP，阻断/重要项 0，一般项 2：Mock 仅证明设置和列表，不能证明真实拒绝/清理或资源上限；维护者在扩展对应断言前补齐。
 - OCR 1.12.11：先留自由臂，再取规则；最终 67/67 路径及 39 排除项逐项覆盖，夹具另 1/1。`blind=false`、`constrained-only=unreported`，不把独立安全发现算 OCR 收益。固定规则和阈值未变。
 - 完整 CF 审计及稳定版前全范围补漏未执行；本次为 RC，不伪装成 CF 通过。源码已进入本 RC；稳定版和生产交付均不适用。
@@ -89,7 +89,7 @@ GitHub CLI 日志下载的 HTTP2 CANCEL 亦保留，使用现有连接器取得�
 
 本轮未升级依赖、Go/Node、基础镜像、Action、扫描器或受管脚本；root package 仅同步版本。实际当轮扫描在上述 CI/L3 和 Release job，源码范围与固定构建身份重新核对，不改 37 项保守处置或观察窗口。
 
-依赖报告 40173363188 因 TypeScript 7 与 Node 26 类型声明两项既有采纳例外在 2026-10-23 到期而失败；保留原失败，不延长期限，不把它说成全部最新或一次安全扫描通过。维护责任 KPanel base maintenance，需在 Vue/TS7 与获批 Node26 LTS 路径兼容资格化后处理；不纳入本次产品范围。主线关联运行 40174133840 的 security-advisories 通过，但 report 为 skipped，仅证明当时公告审计，不能抵消上述时效报告失败。实际终态保存在同一仓外证据目录。
+依赖报告 40173363188 因 TypeScript 7 与 Node 26 类型声明两项既有采纳例外在 2026-10-23 到期而失败；保留原失败，不延长期限，不把它说成全部最新或一次安全扫描通过。维护责任 Dongger Panel base maintenance，需在 Vue/TS7 与获批 Node26 LTS 路径兼容资格化后处理；不纳入本次产品范围。主线关联运行 40174133840 的 security-advisories 通过，但 report 为 skipped，仅证明当时公告审计，不能抵消上述时效报告失败。实际终态保存在同一仓外证据目录。
 
 ## 隔离浏览器、公开产物与更新通道
 
@@ -227,7 +227,7 @@ GitHub CLI 日志下载的 HTTP2 CANCEL 亦保留，使用现有连接器取得�
     "count": 1,
     "impact": "Published-browser manual release check received GitHub preview endpoint HTTP403 after direct preview and stable metadata retrieval had succeeded. Initial48/restart26 checks passed; published journey stopped at39; upgrade journey did not run.",
     "recoveryEvidence": "Original public-40177032954-1.zip and public-initial-job-raw.log retained; report.checked.lastError explicitly identifies upstream403. No response headers retained, so quota/rate-limit cause unconfirmed. Bounded read-only recovery40179816935 uses same immutable product and original snapshot.",
-    "permanentAction": "Use existing read-only recovery workflow once on a fresh hosted runner. KPanel release-tool maintainers review by2026-10-27; exit only with complete public qualification and continued official endpoint availability, or investigate recurrence without blind outer retries. No product, fixture or assertion change.",
+    "permanentAction": "Use existing read-only recovery workflow once on a fresh hosted runner. Dongger Panel release-tool maintainers review by2026-10-27; exit only with complete public qualification and continued official endpoint availability, or investigate recurrence without blind outer retries. No product, fixture or assertion change.",
     "historicalReleases": []
   },
   {
@@ -245,7 +245,7 @@ GitHub CLI 日志下载的 HTTP2 CANCEL 亦保留，使用现有连接器取得�
     "count": 1,
     "impact": "Read-only recovery40179816935 passed initial48 checks but restart journey timed out waiting30s for desktop-window after16 checks. Persisted preference API returned expected locale and one window; screenshot shows classic shell. No pageerror reported. Distinct from first upstream403.",
     "recoveryEvidence": "Original recovery ZIP, exact job log and recovery-restart-failure.png retained. Root cause unconfirmed; source preference hydration and fixture ordering inspected. One further fresh-host replay40180170285 collects full end-to-end evidence; any success does not close this intermittent risk.",
-    "permanentAction": "OPEN: KPanel desktop/preferences and release-fixture maintainers investigate before stable1.28, review by2026-10-28. Exit requires captured preference/network ordering and a targeted failing-before/passing-after reproducer. If same fingerprint recurs, stop blind retries and repair only the identified product or fixture cause. Product and assertions unchanged.",
+    "permanentAction": "OPEN: Dongger Panel desktop/preferences and release-fixture maintainers investigate before stable1.28, review by2026-10-28. Exit requires captured preference/network ordering and a targeted failing-before/passing-after reproducer. If same fingerprint recurs, stop blind retries and repair only the identified product or fixture cause. Product and assertions unchanged.",
     "historicalReleases": []
   }
 ]

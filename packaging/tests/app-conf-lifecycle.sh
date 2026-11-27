@@ -687,11 +687,11 @@ EOF
 		"$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >/dev/null
 	if grep -F '请运行：systemctl status kejilion-agent' \
 		"$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >/dev/null; then
-		echo "KPanel installer still points users at a unit removed by cleanup" >&2
+		echo "Dongger Panel installer still points users at a unit removed by cleanup" >&2
 		exit 1
 	fi
 	if grep -q '^ReadWritePaths=' /home/docker/kpanel/kejilion-agent.service; then
-		echo "KPanel app unit relies on ineffective root write exceptions" >&2
+		echo "Dongger Panel app unit relies on ineffective root write exceptions" >&2
 		exit 1
 	fi
 	grep -Fx 'ReadOnlyPaths=/home/docker/kpanel/data/panel' \
@@ -763,7 +763,7 @@ EOF
 		test "$(readlink /usr/bin/k)" = /usr/local/bin/k
 		grep -Fx 'canshu="CN"' /usr/local/bin/k >/dev/null
 		grep -Fx 'ENABLE_STATS="false"' /usr/local/bin/k >/dev/null
-		grep -Fx '# KPanel shared script compatibility wrapper: v1' /home/docker/kpanel/bin/kejilion.sh >/dev/null
+		grep -Fx '# Dongger Panel shared script compatibility wrapper: v1' /home/docker/kpanel/bin/kejilion.sh >/dev/null
 		test "$(stat -c '%u:%a' /home/docker/kpanel/bin/kejilion.sh)" = 0:700
 		# The following ordinary update must also work and retire the wrapper.
 		docker_app_update >"$TEST_DIR/after-legacy-migration.txt"
@@ -784,7 +784,7 @@ EOF
 	systemctl_lines_before="$(wc -l <"$KPANEL_MOCK_SYSTEMCTL_LOG")"
 	if KPANEL_MOCK_PORT_PUBLISH_FAIL=1 docker_app_update \
 		>"$TEST_DIR/network-preflight-output.txt" 2>&1; then
-		echo "KPanel update ignored a failed Docker port-publish preflight" >&2
+		echo "Dongger Panel update ignored a failed Docker port-publish preflight" >&2
 		return 1
 	fi
 	grep -F 'Docker 端口映射预检失败' \
@@ -795,7 +795,7 @@ EOF
 	test "$(/home/docker/kpanel/bin/kejilion-agent version)" = "$RELEASE_VERSION v1alpha1"
 	if KPANEL_MOCK_UPDATE_FREEZE_CAPABILITY=0 docker_app_update \
 		>"$TEST_DIR/freeze-capability-output.txt" 2>&1; then
-		echo "KPanel update accepted a target without write-freeze support" >&2
+		echo "Dongger Panel update accepted a target without write-freeze support" >&2
 		return 1
 	fi
 	grep -F '目标镜像未声明更新期写入冻结能力' \
@@ -842,7 +842,7 @@ EOF
 	local refresh_failure
 	for refresh_failure in fail html truncated missing_license; do
 		KPANEL_MOCK_DOWNLOAD="$refresh_failure" docker_app_update >"$TEST_DIR/refresh-fallback-output.txt"
-		grep -Fx 'KPanel 更新完成 / Update Complete' "$TEST_DIR/refresh-fallback-output.txt" >/dev/null
+		grep -Fx 'Dongger Panel 更新完成 / Update Complete' "$TEST_DIR/refresh-fallback-output.txt" >/dev/null
 		cmp "$TEST_DIR/refresh-image-script" /usr/local/bin/k
 		cmp "$TEST_DIR/refresh-image-script" /root/kejilion.sh
 		test "$(stat -c %a /usr/local/bin/k)" = 755
@@ -862,12 +862,12 @@ EOF
 	test "$(stat -c '%a' /home/docker/kpanel/update-state/backups)" = 700
 	test "$(cat "$MOCK_STATE/image-rm")" = "$removable_image_id"
 	if grep -Ei 'image|镜像|cleanup|清理' "$TEST_DIR/image-cleanup-output.txt" >/dev/null; then
-		echo "successful KPanel update exposed old-image cleanup output" >&2
+		echo "successful Dongger Panel update exposed old-image cleanup output" >&2
 		return 1
 	fi
 	rm -f "$MOCK_STATE/rollback-tagged" "$MOCK_STATE/image-tag"
 	if KPANEL_MOCK_AGENT_VERSION=9.9.9 docker_app_update; then
-		echo "KPanel update accepted a mismatched Agent" >&2
+		echo "Dongger Panel update accepted a mismatched Agent" >&2
 		return 1
 	fi
 	grep -Fx \
@@ -905,12 +905,12 @@ EOF
 	cp -p /home/docker/kpanel/.env "$TEST_DIR/https-env"
 
 	rm -f "$MOCK_STATE/rollback-tagged" "$MOCK_STATE/image-tag" "$MOCK_STATE/image-rm"
-	sed -i 's/Description=KPanel Host Agent/Description=KPanel previous Agent/' \
+	sed -i 's/Description=Dongger Panel Host Agent/Description=Dongger Panel previous Agent/' \
 		/home/docker/kpanel/kejilion-agent.service
 	if KPANEL_MOCK_UPDATE_HEALTH_FAIL=1 \
 		KPANEL_MOCK_OLD_IMAGE_IDS='sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd' \
 		docker_app_update; then
-		echo "failed KPanel update unexpectedly succeeded" >&2
+		echo "failed Dongger Panel update unexpectedly succeeded" >&2
 		return 1
 	fi
 	grep -Fx \
@@ -923,7 +923,7 @@ EOF
 	test ! -e /home/docker/kpanel/.env.rollback
 	test ! -e "$MOCK_STATE/image-rm"
 	assert_expected_systemd_units
-	grep -Fx 'Description=KPanel previous Agent' /etc/systemd/system/kejilion-agent.service >/dev/null
+	grep -Fx 'Description=Dongger Panel previous Agent' /etc/systemd/system/kejilion-agent.service >/dev/null
 
 	rm -f "$MOCK_STATE/rollback-tagged" "$MOCK_STATE/image-tag" \
 		"$MOCK_STATE/automatic-target-started" "$MOCK_STATE/automatic-restored"
@@ -936,7 +936,7 @@ EOF
 		KPANEL_MOCK_RUNNING_VERSION=9.9.7 \
 		KPANEL_MOCK_TARGET_IMAGE_ID=sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb \
 		docker_app_update >"$TEST_DIR/automatic-image-mismatch-output.txt" 2>&1; then
-		echo "automatic KPanel update accepted the wrong running image" >&2
+		echo "automatic Dongger Panel update accepted the wrong running image" >&2
 		return 1
 	fi
 	grep -F 'image: docker.io/kjlion/kejilion-panel@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' \
@@ -968,7 +968,7 @@ EOF
 		KPANEL_MOCK_CRASH_AFTER_TARGET_UP=1 \
 			docker_app_update
 	); then
-		echo "interrupted automatic KPanel update unexpectedly completed" >&2
+		echo "interrupted automatic Dongger Panel update unexpectedly completed" >&2
 		return 1
 	fi
 	test -d /home/docker/kpanel/update-state/transaction
@@ -1004,7 +1004,7 @@ EOF
 		KPANEL_MOCK_UPDATE_HEALTH_FAIL=1 \
 		KPANEL_MOCK_MUTATE_DATA_ON_UP=1 \
 		docker_app_update >"$TEST_DIR/automatic-rollback-output.txt" 2>&1; then
-		echo "failed automatic KPanel update unexpectedly succeeded" >&2
+		echo "failed automatic Dongger Panel update unexpectedly succeeded" >&2
 		return 1
 	fi
 	grep -Fx 'original-panel-data' \
@@ -1031,13 +1031,13 @@ EOF
 		docker_app_update >"$TEST_DIR/preview-update-output.txt"
 	grep -F "image: docker.io/kjlion/kejilion-panel@${preview_digest}" \
 		/home/docker/kpanel/docker-compose.yml >/dev/null
-	grep -Fx 'KPanel 自动更新完成 / Automatic Update Complete' \
+	grep -Fx 'Dongger Panel 自动更新完成 / Automatic Update Complete' \
 		"$TEST_DIR/preview-update-output.txt" >/dev/null
 	test "$(/home/docker/kpanel/bin/kejilion-agent version)" = "10.0.0-rc.2 v1alpha1"
 
 	# A capability-negative lifecycle models releases that only recognize links.
 	local legacy_lifecycle="$TEST_DIR/legacy-kpanel.conf"
-	sed '/^# KPanel systemd unit copies: v1$/d' "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >"$legacy_lifecycle"
+	sed '/^# Dongger Panel systemd unit copies: v1$/d' "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >"$legacy_lifecycle"
 	KPANEL_MOCK_LIFECYCLE_SOURCE="$legacy_lifecycle" docker_app_update >/dev/null
 	assert_legacy_systemd_units
 	rm -f "$MOCK_STATE/rollback-tagged" "$MOCK_STATE/image-tag"
@@ -1076,7 +1076,7 @@ run_legacy_image_install() (
 	# A new fetched installer may still install an older stable image.
 	. "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf"
 	docker_port=18080
-	sed '/^# KPanel systemd unit copies: v1$/d' "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >"$legacy_lifecycle"
+	sed '/^# Dongger Panel systemd unit copies: v1$/d' "$PROJECT_DIR/packaging/kejilion-app/kpanel.conf" >"$legacy_lifecycle"
 	KPANEL_MOCK_LIFECYCLE_SOURCE="$legacy_lifecycle" docker_app_install >/dev/null
 	assert_legacy_systemd_units
 	docker_app_update >/dev/null
@@ -1097,7 +1097,7 @@ assert_expected_systemd_units() {
 		local target="/etc/systemd/system/$unit_name"
 		test -f "$target" && test ! -L "$target"
 		test "$(stat -c '%u:%g:%a' "$target")" = 0:0:644
-		grep -Fx "# KPanel managed unit: /home/docker/kpanel/$unit_name" "$target" >/dev/null
+		grep -Fx "# Dongger Panel managed unit: /home/docker/kpanel/$unit_name" "$target" >/dev/null
 		if [[ "$unit_name" = *.service ]]; then
 			grep -Fx "RequiresMountsFor=\"$(readlink -f /home/docker/kpanel)\"" "$target" >/dev/null
 			tail -n +4 "$target" | cmp -s - "/home/docker/kpanel/$unit_name"
@@ -1243,7 +1243,7 @@ run_missing_bootstrap_token() {
 		echo "install without a bootstrap token unexpectedly succeeded" >&2
 		return 1
 	fi
-	grep -Fx 'KPanel 初始化凭证读取失败，安装已停止。' \
+	grep -Fx 'Dongger Panel 初始化凭证读取失败，安装已停止。' \
 		"$TEST_DIR/missing-bootstrap-output.txt" >/dev/null
 	[ ! -e /home/docker/kpanel ]
 	[ ! -e "$MOCK_STATE/network" ]
@@ -1269,7 +1269,7 @@ run_unmanaged_guard() {
 	ln -sf "$manual_unit" /etc/systemd/system/kejilion-agent.service
 
 	if docker_app_update || docker_app_uninstall; then
-		echo "unmanaged KPanel instance was accepted" >&2
+		echo "unmanaged Dongger Panel instance was accepted" >&2
 		return 1
 	fi
 	test -f /home/docker/kpanel/docker-compose.yml
@@ -1455,12 +1455,12 @@ run_release_contract_guards() {
 
 	if grep -Eq '"[0-9]+\.[0-9]+\.[0-9]+ v1alpha1"' \
 		"$PROJECT_DIR/packaging/kejilion-app/kpanel.conf"; then
-		echo "KPanel app config still hard-codes an Agent release version" >&2
+		echo "Dongger Panel app config still hard-codes an Agent release version" >&2
 		return 1
 	fi
 	if grep -Eq 'local script_sha256="[0-9a-f]{64}"' \
 		"$PROJECT_DIR/packaging/kejilion-app/kpanel.conf"; then
-		echo "KPanel app config still hard-codes a script release digest" >&2
+		echo "Dongger Panel app config still hard-codes a script release digest" >&2
 		return 1
 	fi
 

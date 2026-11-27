@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.10 发布验收记录
+# Dongger Panel v1.28.0-rc.10 发布验收记录
 
 日期：2026-10-27（Asia/Shanghai）。发布级别：L3。预览产物已发布，未部署生产。
 
@@ -12,7 +12,7 @@
 | `fix/enrollment-platform-order` | `6542f1ef7270a0b158bfd661b1b4ba332c2f65c3` | 单节点接入先选择系统，再生成命令 |
 | `fix/windows-archive-state-root` | `2edefbf985449ff3788f582871b7a9ef947be1f8` | 修复 Windows 卷根目录下归档状态初始化 |
 
-来源 tip 均为发布候选祖先；引用及工作树保留，尚未归档。候选另含 Windows 回滚测试及恢复阶段错误上下文增强；它们没有改变回滚行为。`scriptLinkageState=not-required`，未发布外部脚本。浏览器组件使用固定镜像，KPanel 更新不会自动更新组件镜像。
+来源 tip 均为发布候选祖先；引用及工作树保留，尚未归档。候选另含 Windows 回滚测试及恢复阶段错误上下文增强；它们没有改变回滚行为。`scriptLinkageState=not-required`，未发布外部脚本。浏览器组件使用固定镜像，Dongger Panel 更新不会自动更新组件镜像。
 
 ## 验证和限制
 

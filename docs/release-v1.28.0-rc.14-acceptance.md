@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.14 发布验收记录
+# Dongger Panel v1.28.0-rc.14 发布验收记录
 
 日期：2026-10-29（Asia/Shanghai）。发布级别：L3；releaseChannel=preview，releaseTrain=1.28.0。公开预览版已发布，生产未部署。
 
@@ -12,7 +12,7 @@
 - 归档 ref 与 SHA（或历史 tag/bundle 恢复证据）/ 远端复核结果：RC14 为注释 tag，tag object `4ffd509a0d7b809d9bd156d58da538b3b35df9b2` 指向精确候选 SHA；`origin/release/v1.28.0-candidate` 保留同一 tip。验收文档随后作为独立提交追加到 main，不改写候选、tag 或镜像。
 - 本次来源任务分支：`fix/terminal-follow-recovery-20261028` tip `5761f6df`、`feature/terminal-keyword-colors` tip `91936840`、`perf/browser-pipeline` tip `0f297d51`、`codex/waf-migration-compat-20261028` tip `cc2eb7e4` 均包含于候选历史。`feature/browser-vnc-prototype` tip `29c160bb` 未作为分支祖先合入；其隐藏远端光标的 `-nocursor` 行为已由 `perf/browser-pipeline` 的 `2975eee` 进入候选源码。网站防护基础视图来自上一预览已发布的 `codex/site-defense-monitor-20261028` tip `8f40bd5ec9c820aaf9dc0c99c6644d3fdf93c2f8`。
 - 本地分支/upstream/worktree：候选 worktree `C:\GitHub\_release\kpanel-v128`，分支干净，upstream 为 `origin/release/v1.28.0-candidate`，发布 tip 与远端一致。来源 worktree 未删除或归档。
-- 未完成归档项 / 责任人 / 下次复核触发条件：候选和来源工作树均保留；由 KPanel 维护者在下一个候选列车整理时复核去留。本次未执行本地资源回收。
+- 未完成归档项 / 责任人 / 下次复核触发条件：候选和来源工作树均保留；由 Dongger Panel 维护者在下一个候选列车整理时复核去留。本次未执行本地资源回收。
 
 归档不代表生产上线；本版生产未部署。
 
@@ -45,10 +45,10 @@
 
 - `scriptLinkageState`：`coupled`。
 - 变更集编号：`waf-migration-compat-20261028`。
-- KPanel 实际内置脚本基线 commit / SHA-256：RC13 `594138a9a55ab9d75282948a27fcbcf9835650ec` / `27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：RC13 `594138a9a55ab9d75282948a27fcbcf9835650ec` / `27ce9d8c34040ed30f0ffc360d388f7d9617b83a7dc9b63061812f662639aa01`。
 - 脚本候选 commit / SHA-256：`kejilion/sh` `b408d60d7ed1c9a935bb1ff0d6e41b73469898ff` / 根脚本及 CN 同步脚本 `2f814354d0d0de113e44c788a2b79484eca0762293a168da1baebec8fdac312d`。
-- 状态判定依据与兼容性证据：脚本和共享包已先进入公开 main；KPanel Dockerfile、OCI revision/hash labels 绑定脚本提交与字节摘要。RC14 公共发布验收回读到镜像内脚本标记；候选/L3 和 `external-config-sources.md` 记录了兼容依据。
-- 本版发布决定：脚本先进入权威 main 并通过兼容门禁，再发布 KPanel 预览版。
+- 状态判定依据与兼容性证据：脚本和共享包已先进入公开 main；Dongger Panel Dockerfile、OCI revision/hash labels 绑定脚本提交与字节摘要。RC14 公共发布验收回读到镜像内脚本标记；候选/L3 和 `external-config-sources.md` 记录了兼容依据。
+- 本版发布决定：脚本先进入权威 main 并通过兼容门禁，再发布 Dongger Panel 预览版。
 - 阻断或移除的依赖范围：不适用；本版没有移除该配套范围。
 
 ## 多维质量结论
@@ -73,16 +73,16 @@
 - 发布说明门禁：最终正文通过；目标 `1.28.0-rc.14`，5 条摘要、1 条升级提示。提示旧 CF 凭据需重新录入、加入预览不自动安装、退出预览不自动降级，稳定版为 `1.27.2`。
 - 安全扫描、镜像契约、SBOM/provenance：Go call-path、npm audit、Trivy 源码及镜像扫描、runtime image contract 通过；镜像生成 SBOM/provenance，`KPANEL_MODIFIED_COMPONENTS.json` 上传且公开校验通过。
 
-非阻断报告：Dependency freshness run `40792104204` 对前一候选 SHA `bebfd66d` 失败，指出 TypeScript `6.0.3` 与 `@types/node 24.19.0` 的升级决策复核日期已过（2026-10-23），并提示 EOL review 逾期。RC14 未变更这些依赖版本；该独立报告不属于 Publish preview 阻断门，仍需 KPanel base maintenance 后续复核。
+非阻断报告：Dependency freshness run `40792104204` 对前一候选 SHA `bebfd66d` 失败，指出 TypeScript `6.0.3` 与 `@types/node 24.19.0` 的升级决策复核日期已过（2026-10-23），并提示 EOL review 逾期。RC14 未变更这些依赖版本；该独立报告不属于 Publish preview 阻断门，仍需 Dongger Panel base maintenance 后续复核。
 
 ## 依赖与技术栈变化
 
 - `make dependency-report` 生成时间及检测源完整性：未单独运行；release workflow 的依赖审计通过。
 - 最近每日安全通告审计、EOL 复核状态及证据：独立 Dependency freshness run `40792104204` 在 mock-fixture 回退前的 `bebfd66d` 报告两项逾期决策；最终候选只改变本地 mock 文件，依赖树相同。本版未解除该维护事项。
-- 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：TypeScript 和 `@types/node` 的例外由 KPanel base maintenance 维护者复核；本候选未升级。
-- 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go 1.27.3、Node 24.22.1、Docker 28.0.4；KPanel 镜像固定 `kejilion/sh@b408d60d7ed1c9a935bb1ff0d6e41b73469898ff`。
+- 直接/基座行动项、传递依赖归属信号及首次完整检测后的启动/决策/处置期限：TypeScript 和 `@types/node` 的例外由 Dongger Panel base maintenance 维护者复核；本候选未升级。
+- 本版采用的依赖、工具链、基础镜像、Action、扫描器或受管脚本候选：Go 1.27.3、Node 24.22.1、Docker 28.0.4；Dongger Panel 镜像固定 `kejilion/sh@b408d60d7ed1c9a935bb1ff0d6e41b73469898ff`。
 - 版本/锁文件/Action SHA/镜像 digest/脚本提交与摘要：应用版本字段升级到 RC14；所有 19 个 Release 资产有冻结摘要，`SHA256SUMS` 覆盖 15 个文件。镜像和脚本摘要详见下方公开复核。
-- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：未采纳自动依赖升级；待 KPanel base maintenance 复核上述两个逾期决策。
+- 暂缓或拒绝候选、证据、负责人、复核日期和退出条件：未采纳自动依赖升级；待 Dongger Panel base maintenance 复核上述两个逾期决策。
 - 升级后的兼容、安全、构建、性能资源和回滚结论：发布构建、审计及镜像契约通过；无独立性能基准。必要时回退到 RC13 固定镜像摘要。
 
 ## 隔离真机与浏览器验收

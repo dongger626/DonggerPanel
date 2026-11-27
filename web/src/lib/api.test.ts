@@ -227,7 +227,7 @@ describe('API client', () => {
 
   it('streams cross-panel file progress and returns the committed entry', async () => {
     const entry = {
-      name: 'app', path: '/home/KPanel Desktop/app', kind: 'directory' as const,
+      name: 'app', path: '/home/Dongger Panel Desktop/app', kind: 'directory' as const,
       sizeBytes: 0, mode: 'drwxr-xr-x', owner: 'root', group: 'root',
       modifiedAt: '2026-08-15T00:00:00Z', resourceVersion: `sha256:${'a'.repeat(64)}`,
       editable: false, previewable: false,
@@ -246,7 +246,7 @@ describe('API client', () => {
 
     await expect(api.files.transferFromPanel({
       sourceNodeId: 'a'.repeat(32), path: '/app', resourceVersion: 'sha256:source',
-      targetDirectory: '/home/KPanel Desktop',
+      targetDirectory: '/home/Dongger Panel Desktop',
     }, (event) => events.push(event.state))).resolves.toEqual(entry)
     expect(events).toEqual(['connecting', 'transferring', 'complete'])
     expect(fetchMock.mock.calls[0]?.[0]).toBe('/api/v1/files/transfers')
@@ -271,7 +271,7 @@ describe('API client', () => {
 
   it('routes cross-host file transfers through the selected light host', async () => {
     const entry = {
-      name: 'app', path: '/home/KPanel Desktop/app', kind: 'directory' as const,
+      name: 'app', path: '/home/Dongger Panel Desktop/app', kind: 'directory' as const,
       sizeBytes: 0, mode: 'drwxr-xr-x', owner: 'root', group: 'root',
       modifiedAt: '2026-08-15T00:00:00Z', resourceVersion: `sha256:${'c'.repeat(64)}`,
       editable: false, previewable: false,
@@ -287,7 +287,7 @@ describe('API client', () => {
 
     await expect(api.files.transferFromPanel({
       sourceNodeId: 'a'.repeat(32), path: '/app', resourceVersion: 'sha256:source',
-      targetDirectory: '/home/KPanel Desktop',
+      targetDirectory: '/home/Dongger Panel Desktop',
     }, () => undefined, undefined, 'light-node-01')).resolves.toEqual(entry)
     expect(fetchMock.mock.calls[0]?.[0]).toBe('/api/v1/files/transfers?hostId=light-node-01')
   })

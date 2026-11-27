@@ -1,4 +1,4 @@
-# KPanel v0.20.4 回归修复与发布验收
+# Dongger Panel v0.20.4 回归修复与发布验收
 
 ## 本次问题闭环
 
@@ -27,7 +27,7 @@
 
 ## 发布证据
 
-- KPanel 发布提交：`7f668f34edc6ba94b3ea4ff1e550c53dd66acc06`
+- Dongger Panel 发布提交：`7f668f34edc6ba94b3ea4ff1e550c53dd66acc06`
 - 主分支 CI：`https://github.com/kejilion/KPanel/actions/runs/30284344487`
 - Release：`https://github.com/kejilion/KPanel/actions/runs/30284493923`
 - GitHub Release：`https://github.com/kejilion/KPanel/releases/tag/v0.20.4`

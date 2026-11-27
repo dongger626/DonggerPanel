@@ -2519,8 +2519,8 @@
       "source": "thirdparty",
       "cmd": "k app kpanel",
       "token": "kpanel",
-      "name_zh": "KPanel",
-      "name_en": "KPanel",
+      "name_zh": "Dongger Panel",
+      "name_en": "Dongger Panel",
       "desc_zh": "贴合 kejilion.sh 的现代化 Linux Web 管理面板。",
       "desc_en": "Modern Linux web admin panel tailored for kejilion.sh workflows.",
       "cat": "ops",
@@ -2528,7 +2528,7 @@
       "icon": "/app-icons/kpanel.webp",
       "slug": "kpanel",
       "iconSha256": "bd067c950ecf02e78f97c8bfa3f62f57b79d72e37a67213b6bb4fabd5710e062",
-      "name_zh_tw": "KPanel",
+      "name_zh_tw": "Dongger Panel",
       "desc_zh_tw": "貼合 kejilion.sh 的現代化 Linux Web 管理面板。"
     },
     {

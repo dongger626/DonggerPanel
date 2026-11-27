@@ -1,4 +1,4 @@
-# KPanel v1.19.0 发布验收记录
+# Dongger Panel v1.19.0 发布验收记录
 
 日期：2026-09-17
 
@@ -32,10 +32,10 @@
 
 - `scriptLinkageState`：`coupled`（变更集 `light-batch-enrollment-20260914`）。
 - 变更集编号：`light-batch-enrollment-20260914`。
-- KPanel 实际内置脚本基线 commit / SHA-256：应用市场脚本 `kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`（与公开镜像 `/release/kejilion.sh` 实测一致）。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：应用市场脚本 `kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`（与公开镜像 `/release/kejilion.sh` 实测一致）。
 - 脚本候选 commit / SHA-256：`kejilion/sh@4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`（轻量节点更新运行时来源，已随 rc.1 于 2026-09-14 先行发布在 `origin/main`, 根脚本 `a0e6cf5193aa9bfbdc572ad91803d4b53d34549ac95259b3288d436766a229dc`，rc.2-rc.5 与本版未再变化）。
 - 状态判定依据与兼容性证据：`cmd/kejilion-node/update_runtime/source.json` 自 rc.1 起固定 `4d61f7ef`；本次生产更新经标准应用市场入口执行, 内嵌脚本一致性校验通过。
-- 本版发布决定：脚本已于 rc.1 时先行发布, 本版直接发布 KPanel 稳定版。
+- 本版发布决定：脚本已于 rc.1 时先行发布, 本版直接发布 Dongger Panel 稳定版。
 - 阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
@@ -82,12 +82,12 @@
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：[KPanel 1.19.0](https://github.com/kejilion/KPanel/releases/tag/v1.19.0) 为非 draft、非 prerelease、**GitHub Latest**；annotated tag 对象 `9b34879bb7f89b7bbc9c0adc2dde1e3a818e8e13` peeled 到最终产品 SHA `031e7b26`。
+- GitHub Release 的 draft / prerelease / Latest 状态：[Dongger Panel 1.19.0](https://github.com/kejilion/KPanel/releases/tag/v1.19.0) 为非 draft、非 prerelease、**GitHub Latest**；annotated tag 对象 `9b34879bb7f89b7bbc9c0adc2dde1e3a818e8e13` peeled 到最终产品 SHA `031e7b26`。
 - Docker 版本与通道 OCI index（buildx 权威口径）：`1.19.0` = `latest` = `sha256:351a236f4a246affd9d4cc045808ac1f8625de4482c74abfc5756cb89077b9ce`（本次发布提升 `latest`）；`preview` 保持 `sha256:647e5bad1a9ab5646bd7a036a05613d8e892bf09f07e0e6dd0f9b42bc36d4163`（rc.5 多架构 index），未被本次发布改变。
 - `linux/amd64`、`linux/arm64` digest：amd64 `sha256:023859e939861955eb11ebe25dec7f2475b2dd9a8bfbdf45505c8a7b232f8162`；arm64 `sha256:0fdd6b4d3372dd44864736e02a8a5be95cd62e7b853b0fee4ad76a4c3c1cf0c6`；attestation `sha256:3d2b0758...`/`sha256:2fdf6bc4...`，`unknown/unknown` 为 provenance/SBOM。
 - 附件及 `SHA256SUMS`：8 个附件均为 uploaded（agent 双架构、node 双架构、deploy tar.gz、LICENSE、SHA256SUMS、THIRD_PARTY_NOTICES）。
 - 公开镜像 `image_e2e=pass`：`arena-154` 从已验证 L3 bundle 检出源码（bundle SHA `c055fd7a` 核对一致）、以 amd64 子 manifest 摘要 `sha256:023859e9...` 拉取, `docker create`/`docker cp` 只读提取元数据（revision=`031e7b26`、VERSION=`1.19.0`、非 root `65532:65532`）后运行固定 `image-e2e.sh`；输出 `image_e2e=pass` 与 `public_oci_e2e=pass`，端口/容器/网络残留断言通过。
-- `kejilion/apps` / `kejilion.sh` 契约结论：KPanel 与 `kejilion/apps@b9be0ca` 的 `kpanel.conf` 归一化一致，无需应用市场提交；默认入口指向 `latest`（本次发布后即 v1.19.0）；`kejilion/sh` main 保持包含 `4d61f7ef`。
+- `kejilion/apps` / `kejilion.sh` 契约结论：Dongger Panel 与 `kejilion/apps@b9be0ca` 的 `kpanel.conf` 归一化一致，无需应用市场提交；默认入口指向 `latest`（本次发布后即 v1.19.0）；`kejilion/sh` main 保持包含 `4d61f7ef`。
 
 ## 自更新通道验收
 
@@ -97,12 +97,12 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：`arena-154` 生产 KPanel 实例（用户全链路授权，含生产部署）。
+- 生产目标和部署授权范围：`arena-154` 生产 Dongger Panel 实例（用户全链路授权，含生产部署）。
 - 验证环境（`environment-policy.json`）：`arena-154` / `production-deploy` + `production-safety-check` 用途门禁均 pass；`prod-108` 未连接。
 - 正式部署环境：`arena-154`（默认，非 108）。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight pass（2026-09-17T11:37Z，版本 1.18.0 健康核对一致）；backup pass（11:38:32Z-11:38:43Z，plan SHA `99738018...`→backup plan `18a85697...`），备份位于 `/root/kpanel-backups/pre-v1.19.0-20260917T113832Z`（kpanel.tar.zst、old-image.tar.zst、agent 服务、kpanel.conf、image-load-verify 全部 OK，SHA256SUMS `c57f5cfa2b79d3a33c72c32cd244914f0db4f4af8e362cc38edcb5fbd02936e3`）。
-- 部署命令/入口：`env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`（KPanel 标准应用市场入口，非直接改数据）；执行输出 `KPanel 更新完成`、`KPANEL_PROGRESS 100 应用更新完成`。
+- 部署命令/入口：`env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`（Dongger Panel 标准应用市场入口，非直接改数据）；执行输出 `Dongger Panel 更新完成`、`KPANEL_PROGRESS 100 应用更新完成`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy `v1.19.0-production-r2` pass（plan SHA `d34a2715...`，11:44:11Z-11:44:12Z），核对 version=1.19.0、revision=`031e7b26`、镜像版本标签 1.19.0、RepoDigests 含 `@sha256:351a236f`（tag 权威 index）、Agent systemd active/enabled、容器无 restart/OOM、近 10 分钟无 panic/fatal 日志、受保护配置哈希与基线 diff=0、SQLite quick_check ok、`df`/`findmnt`/数据清单快照落盘；公网入口 `https://kpanel.154.36.153.9.sslip.io/api/v1/health` 返回 `status=ok`、`version=1.19.0`（11:44:37Z 复核）。
 - 生产已执行写操作：1 次（标准应用市场更新事务，含前置备份与后置核对）。
 - 仅在隔离真机执行、未在生产执行的场景：公开镜像 E2E 与 L3（隔离容器/Runner）。

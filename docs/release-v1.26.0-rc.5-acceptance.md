@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.5 预览版发布验收
+# Dongger Panel v1.26.0-rc.5 预览版发布验收
 
 日期：2026-10-11
 
@@ -72,12 +72,12 @@
 - 来源外部复核和原始修正记录保留。BT 最终 50d60ff5 由不同代理独立复核 PASS；其他供应商非交互入口不可用，使用不同实现会话的同供应商回退，不冒充异供应商盲审。
 - CF 精确目标 `5cd7bcc747eefc952247312a7d672cd453609251`，decision=`scoped-required`，待审 75 提交/194 文件，最早 6 天，距 full 19 天。本轮 scoped/full 未执行，预览如实延期；新增容器控制台权限和 BT 边界未计为 CF 已完成覆盖。
 - run31/32/33 incomplete，critic/verifier/Phase-5 和原始 hunter 缺口保留。SSE 撤权输出、撤销轻节点回滚、私有 Magnet 元数据前 DHT、RC3 cache-cleanup 独立关闭仍需验证；终端取消与本次开发门禁不替代这些结论。
-- 稳定提升前完成补审/独立验证，或按项目规则取得明确有限期决定；本轮没有新的稳定豁免。若执行后续 KPanel CF scoped/full，按用户规定使用 gpt-6-luna/max 专用审计代理与不同发现/验证代理。
+- 稳定提升前完成补审/独立验证，或按项目规则取得明确有限期决定；本轮没有新的稳定豁免。若执行后续 Dongger Panel CF scoped/full，按用户规定使用 gpt-6-luna/max 专用审计代理与不同发现/验证代理。
 
 ## 跨仓库联动判定
 
 - `scriptLinkageState=not-required`：无需发布脚本（不适用）；跨仓库变更集、脚本候选和依赖移除均不适用。
-- 内置 revision `1800d955f216aebd2776674368a8e469a671c489` / SHA-256 `5778fdc9637c8614f5246f9eb13c1e549de51522fb91b3805067cbc0475b614c`，公开双架构标签/字节与契约一致。新增 CAP_KILL 是 KPanel Agent unit 调整，不是 kejilion.sh 协议变化。
+- 内置 revision `1800d955f216aebd2776674368a8e469a671c489` / SHA-256 `5778fdc9637c8614f5246f9eb13c1e549de51522fb91b3805067cbc0475b614c`，公开双架构标签/字节与契约一致。新增 CAP_KILL 是 Dongger Panel Agent unit 调整，不是 kejilion.sh 协议变化。
 - 无 sh/apps 外部写入。应用市场默认 latest 和正式更新入口继续选择 v1.25.1，历史回退使用对应历史脚本配对。
 
 ## 多维质量结论

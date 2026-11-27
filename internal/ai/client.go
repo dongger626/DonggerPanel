@@ -534,7 +534,7 @@ type responsesNativeContext struct {
 	Items      []json.RawMessage `json:"items"`
 }
 
-const responsesMissingToolOutput = `{"code":"tool_output_unavailable","status":"unknown","message":"KPanel has no recorded output for this tool call. Do not assume it succeeded or failed. Read the current resource state before continuing; do not blindly repeat a write."}`
+const responsesMissingToolOutput = `{"code":"tool_output_unavailable","status":"unknown","message":"Dongger Panel has no recorded output for this tool call. Do not assume it succeeded or failed. Read the current resource state before continuing; do not blindly repeat a write."}`
 
 func responsesProviderOutput(providerID, model string, calls []ToolCall) ([]any, bool) {
 	for _, call := range calls {

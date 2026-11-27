@@ -1,4 +1,4 @@
-# KPanel v0.98.3 发布验收记录
+# Dongger Panel v0.98.3 发布验收记录
 
 日期：2026-08-28
 
@@ -10,9 +10,9 @@
 
 ## 发布画像
 
-- 业务域：KPanel 依赖、工具链、发布治理与兼容性维护。
+- 业务域：Dongger Panel 依赖、工具链、发布治理与兼容性维护。
 - 变更面：构建与依赖、CI/CD 及版本元数据；正式部署仅执行受管应用更新，不新增宿主机功能写入、API 或数据协议。
-- 受影响用户旅程：通过标准应用市场更新拉取 `latest`，启动 KPanel Panel/Agent，并使用现有配置和数据继续运行。
+- 受影响用户旅程：通过标准应用市场更新拉取 `latest`，启动 Dongger Panel Panel/Agent，并使用现有配置和数据继续运行。
 - 未变化契约：API / 数据 / 端口 / Compose / Agent 权限 / `kejilion.sh` / 应用市场安装契约。
 - 风险等级及理由：中；包含 TypeScript 6、Vue Router 5、Node 24 类型和 GitHub Actions v7 兼容升级，但固定 Linux L3、公开镜像 E2E、备份恢复和生产 postdeploy 均通过。
 
@@ -74,12 +74,12 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确授权本次复核通过后上线；仅操作 `arena-154`，范围为 KPanel v0.98.3 标准应用更新、生产证据和备份。
+- 生产目标和部署授权范围：用户明确授权本次复核通过后上线；仅操作 `arena-154`，范围为 Dongger Panel v0.98.3 标准应用更新、生产证据和备份。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 的固定 L3 Runner、公开镜像 E2E 和生产安全证据入口。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight run=`v0.98.3-production-20260828`，版本 `0.98.2`、health `status=ok`；backup 同 run passed，备份 `/root/kpanel-backups/pre-v0.98.3-20260827T173808Z`，`kpanel.tar.zst`、旧镜像、`kpanel.conf`、Agent unit、inspect 文件及各自 `SHA256SUMS` 均校验 `OK`，`protected.diff=0`。
-- 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；exit 0，输出 `KPanel 更新完成 / Update Complete`、`KPANEL_PROGRESS 100`。
+- 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；exit 0，输出 `Dongger Panel 更新完成 / Update Complete`、`KPANEL_PROGRESS 100`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy run=`v0.98.3-production-20260828` passed；health=`0.98.3/status=ok`，Panel container=`running/healthy`，Agent=`active/running/enabled`，restart=0，OOM=false，SQLite=`ok`，`protected.diff=0`；Panel image label revision=`47debf1b2a98b418906a81c911280db3db05dbd7`、version=`0.98.3`、digest=`sha256:05e2b7c069827f0bd4d004b1076d1f970e1fed88eb9a9fb1bd5524ecb08d33e9`；配置中的公网入口为 `https://kpanel.154.36.153.9.sslip.io`，固定 postdeploy 探针通过，未执行独立生产登录浏览器验收。
 - 生产已执行写操作：backup 阶段受控 stop/start、创建 `/root/kpanel-backups/pre-v0.98.3-20260827T173808Z`；标准 `kejilion.sh app kpanel` 更新并重建 Panel/Agent；未执行业务数据写入。
 - 仅在隔离真机执行、未在生产执行的场景：L3 完整测试、应用生命周期失败注入、公开镜像 bootstrap E2E 和容器安全约束在固定 Runner/隔离目录执行；生产只执行备份、标准更新和固定证据采集。

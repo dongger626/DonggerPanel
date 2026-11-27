@@ -1,5 +1,5 @@
 // Vocabulary the host hands to protocol-2 themes, so a theme author never has
-// to ship or maintain translations for the facts KPanel already knows how to say.
+// to ship or maintain translations for the facts Dongger Panel already knows how to say.
 export type ShareThemeLocale = 'zh-CN' | 'zh-TW' | 'en-US'
 
 const zhCN = {

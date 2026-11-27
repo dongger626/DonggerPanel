@@ -43,7 +43,7 @@ func TestIconCacheLoadsLinkedIconAndPersistsAcrossRestart(t *testing.T) {
 			return iconResponse(
 				http.StatusOK,
 				"text/html",
-				[]byte(`<html><head><title> 科技狮 &amp; KPanel </title><link rel="icon" type="application/octet-stream" href="/assets/favicon.png?v=3"></head></html>`),
+				[]byte(`<html><head><title> 科技狮 &amp; Dongger Panel </title><link rel="icon" type="application/octet-stream" href="/assets/favicon.png?v=3"></head></html>`),
 			), nil
 		case "/assets/favicon.png":
 			if request.URL.RawQuery != "v=3" {
@@ -64,7 +64,7 @@ func TestIconCacheLoadsLinkedIconAndPersistsAcrossRestart(t *testing.T) {
 		t.Fatalf("unexpected first icon: type=%q bytes=%d", first.ContentType, len(first.Data))
 	}
 	appearance, err := cache.Appearance(context.Background(), id)
-	if err != nil || appearance.Name != "科技狮 & KPanel" {
+	if err != nil || appearance.Name != "科技狮 & Dongger Panel" {
 		t.Fatalf("site appearance = %#v, %v", appearance, err)
 	}
 	if calls.Load() != 2 {
@@ -89,7 +89,7 @@ func TestIconCacheLoadsLinkedIconAndPersistsAcrossRestart(t *testing.T) {
 		t.Fatal("persistent cache changed the validated icon")
 	}
 	persistedAppearance, err := restarted.Appearance(context.Background(), id)
-	if err != nil || persistedAppearance.Name != "科技狮 & KPanel" {
+	if err != nil || persistedAppearance.Name != "科技狮 & Dongger Panel" {
 		t.Fatalf("persistent appearance = %#v, %v", persistedAppearance, err)
 	}
 	for _, path := range []string{cache.iconPath(id), cache.metadataPath(id)} {

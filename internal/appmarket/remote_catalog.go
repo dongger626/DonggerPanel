@@ -70,7 +70,7 @@ func newOfficialCatalogFetcher() catalogFetcher {
 			return Catalog{}, err
 		}
 		request.Header.Set("Accept", "text/html")
-		request.Header.Set("User-Agent", "KPanel application catalog")
+		request.Header.Set("User-Agent", "Dongger Panel application catalog")
 		response, err := client.Do(request)
 		if err != nil {
 			return Catalog{}, fmt.Errorf("fetch application catalog: %w", err)

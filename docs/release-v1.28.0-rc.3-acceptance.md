@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.3 发布验收记录
+# Dongger Panel v1.28.0-rc.3 发布验收记录
 
 日期：2026-10-24
 
@@ -13,7 +13,7 @@
 本轮纳入已交付 WAF 消费适配 `c3e6a1322b668a7c15fa33f190c17d85ec030849`（最终代码 `45f0c6b51b192d5066d4a7504763f27cab366286`），批准主线 `1efc74ab3b78193b705300bf2a212e02a111d3cb`；组装版本、扫描身份和累计业务基线后冻结上述候选。候选 push 的实际 before 是 `37427b4cef550e9be3a45a61c67f8f89d0bdc021`，不冒充批准基线。
 
 - 用户可见更新两项：统一使用已发布 WAF 配置脚本；状态明确区分拦截、关闭、检测、按站点、旧配置和待核验。未知值不显示正常拦截，旧布尔字段保持兼容。
-- 宿主配置由既有固定 `waf-on/waf-off` 动作与同源工具负责；KPanel 仅增加可选 `wafMode` 和展示，不增加常驻 WAF 服务、权限入口、依赖或数据库迁移。
+- 宿主配置由既有固定 `waf-on/waf-off` 动作与同源工具负责；Dongger Panel 仅增加可选 `wafMode` 和展示，不增加常驻 WAF 服务、权限入口、依赖或数据库迁移。
 - 差异共15文件。组装提交 `2e21cf00`、业务基线 `fa329377`、复核检查点 `a4c812f4`；复核检查点不改变产品 tree。
 - 本轮不纳入其他候选、稳定发布、生产部署、上游重复发布及无关依赖升级。首次启用仍要求兼容 ModSecurity/CRS 镜像和 Python3.11+；检测不执行拦截，新部署不承诺累计自动封禁，旧镜像不静默替换。
 - 发布说明解析器实际核验2条更新、3条升级提示；公开正文、面板发布信息接口和更新弹窗的实际结果见下方公开报告。
@@ -24,7 +24,7 @@
 
 - 内置 `kejilion/sh@614d58cee228007012a2ec602cbdc8dbaeb7950d`，根脚本 SHA-256 `ec6d52da028ad6c6145fbb9c6796cd1548104b288f9234551c3b3d800b43eec9`。
 - 固定 `kejilion/nginx@8773850871f991b027f62841fde2795121251620` 六资源；发布接管逐文件复算6/6摘要，并核对两个来源是已发布 main 的祖先。此前 Node 防降级补丁 `24f65f9f` 是本次内置脚本祖先，generation7仍在。
-- 已发布兼容 Nginx 镜像 index `sha256:7827d4c2e19bfce579f6fb4ce94884a126b5ab8ea74943e5448fa4c2b3d7f894`；上游发布工作流39974763991成功。原生矩阵/正式服试点属于上游历史声明，不计为本轮 KPanel 生产或实机验证。
+- 已发布兼容 Nginx 镜像 index `sha256:7827d4c2e19bfce579f6fb4ce94884a126b5ab8ea74943e5448fa4c2b3d7f894`；上游发布工作流39974763991成功。原生矩阵/正式服试点属于上游历史声明，不计为本轮 Dongger Panel 生产或实机验证。
 - 源候选文档声明代码45f0c6b5本地完整L2通过；接管未找到其完整原始本地回执，未将该声明冒充独立验证。本轮以下述冻结候选的实际云端 CI/L3 与公开产物验收重新资格化。
 
 ## 审查与供应链身份
@@ -121,7 +121,7 @@ GitHub Latest ID420434596仍为v1.27.2，Docker latest `sha256:5369dc9a2b8151314
 
 - `release/v1.28.0-candidate` 保留唯一RC列车，tip `a4c812f477af204f10dd484c2fd5d00899247d06`；本次预览不归档列车。
 - 源 `codex/waf-standardization-consumer`，精确tip `c3e6a1322b668a7c15fa33f190c17d85ec030849` 已纳入本版；保存为 `archive/codex/waf-standardization-consumer` 并以双端expected-SHA lease原子移除活跃远端ref，远端回读通过。
-- 源本地工作树clean且tip未变后，分支改为归档名并解除旧upstream；保留工作树与全部证据，不删除文件。上游sh/nginx/docker任务不在本次KPanel归档范围。
+- 源本地工作树clean且tip未变后，分支改为归档名并解除旧upstream；保留工作树与全部证据，不删除文件。上游sh/nginx/docker任务不在本次Dongger Panel归档范围。
 - 工具修复 `fix/rc3-public-script-pin` 在同SHA候选/主线CI及公开恢复后归档为 `archive/fix/rc3-public-script-pin`，精确tip `59b3d8f55f0e1c1f6e2bc6468942d5e91931ad4e`；仅治理/验收工具进入可信main，原RC3产品tag不改写。
 - 同SHA资格化ref `fix/rc3-public-script-pin-qualified` 同时保存为 `archive/fix/rc3-public-script-pin-qualified`，tip相同；a4基线脚手架CI40009320352按计划被后续59b3事件取消，不冒充验证成功。
 - 本验收记录走独立 `docs/release-v128-rc3-acceptance` 候选；仅在同SHA候选CI、主线快进和主线CI成功后按既有规则归档，最终提交/CI/引用由交付记录补齐，不制造新版本或重发产物。
@@ -231,7 +231,7 @@ GitHub Latest ID420434596仍为v1.27.2，Docker latest `sha256:5369dc9a2b8151314
     "count": 1,
     "impact": "Initial acceptance metrics validation rejected explanatory suffix on production completion marker. No production operation occurred. Same cause previously recorded in v1.25.1, explicitly retained as a repeat.",
     "recoveryEvidence": "docs-metrics-first-failure.txt preserves original validator output. Task-owned acceptance generator now emits literal 不适用; explanation stays outside machine block. Same canonical validator must pass before docs commit.",
-    "permanentAction": "Owner KPanel release maintainer; corrected this task-owned generate-acceptance.py to emit exact existing template marker, without changing canonical parser or policy. This is not a shared script repair claim. Repeat requires shared tooling regression before any next L3 production write; no production write in preview. Review2026-10-25.",
+    "permanentAction": "Owner Dongger Panel release maintainer; corrected this task-owned generate-acceptance.py to emit exact existing template marker, without changing canonical parser or policy. This is not a shared script repair claim. Repeat requires shared tooling regression before any next L3 production write; no production write in preview. Review2026-10-25.",
     "historicalReleases": [
       "v1.25.1"
     ]

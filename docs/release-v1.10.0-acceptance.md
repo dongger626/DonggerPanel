@@ -1,4 +1,4 @@
-# KPanel v1.10.0 发布验收
+# Dongger Panel v1.10.0 发布验收
 
 日期：2026-09-09。发布级别 L3。最终产品提交 a21d5bfc744b2a9316578dfca83426c001e2ee6d，目标标签 v1.10.0；main 基线 973a2b75efbb717896a45a3fa2f4b67dd164827e，上一稳定 v1.9.0/9028fab55d950cedc6e59325a7a28ba6ce21bd1c，旧 OCI sha256:b6afec34cb271659d0ad937f06fa1d0e1593a606ccb0b91bdbd6da8fa3fa9db6。
 
@@ -16,9 +16,9 @@
 
 原 d689df7 在隔离真机 r2 中安装了真实官方 IT-Tools 镜像。禁外网故障注入使 update 删除旧容器后无法拉取镜像，原脚本已经打印“更新失败”，但外层 linux_panel 在 case 后用协议判断覆盖退出码，Agent 收到退出 0，错误报告 succeeded。失败任务 f740c297f54f6cbed6190d66fa200bc3 于 2026-09-09T07:51:49.535Z 完成；这是产品缺陷，不以 L3 通过或“无自动回滚”备注豁免。本轮发布前拦截，旧候选未进入 main/tag/生产；不据此断言此前所有原生脚本使用者均不受影响。
 
-scriptLinkageState=coupled，变更集 kpanel-v1100-native-app-status。脚本基线 aac8bc8710bb559ec7ae1d6988770f64564954ca/SHA256 583aff02c2f75510edc5135addad31163a7dfeeb9ac99fcf190b064fcbadedee；修复 9f612efc4f861459c0a525491c7cdf5eda756cf7/SHA256 9f3eaabaae32fd51511d2c3749cfb874bd600fb4c3b0b139b2f640b9eb877663。根/CN 都捕获原始 case 状态并将其返回 KPanel 协议；普通 SSH 菜单不变。完整分发器回归覆盖 standard/plus/custom、成功 0、失败 1/37、目录刷新失败、普通菜单继续；可拒绝原脚本。根/CN 语法、同步、应用非交互、plus 生命周期、目录刷新 smoke 全部通过。
+scriptLinkageState=coupled，变更集 kpanel-v1100-native-app-status。脚本基线 aac8bc8710bb559ec7ae1d6988770f64564954ca/SHA256 583aff02c2f75510edc5135addad31163a7dfeeb9ac99fcf190b064fcbadedee；修复 9f612efc4f861459c0a525491c7cdf5eda756cf7/SHA256 9f3eaabaae32fd51511d2c3749cfb874bd600fb4c3b0b139b2f640b9eb877663。根/CN 都捕获原始 case 状态并将其返回 Dongger Panel 协议；普通 SSH 菜单不变。完整分发器回归覆盖 standard/plus/custom、成功 0、失败 1/37、目录刷新失败、普通菜单继续；可拒绝原脚本。根/CN 语法、同步、应用非交互、plus 生命周期、目录刷新 smoke 全部通过。
 
-脚本先经 SSH 推送专用修复分支，再确认 main 仍为 aac8bc8 后快进发布 9f612ef；公开 raw 字节与本地 Git blob 摘要一致。KPanel 专用修复分支 3e96e96 固定 Dockerfile 与 node source.json，并说明失败和恢复语义；节点更新模板原样核对通过。首次来源文档漏同步被本地 L3 和候选 CI 拦截，a21d5bf 补齐 active source rows，保留历史证书验收来源。没有覆盖旧 tag 或伪装旧证据为新 SHA。成对回滚为 v1.9.0 与 aac8bc8。
+脚本先经 SSH 推送专用修复分支，再确认 main 仍为 aac8bc8 后快进发布 9f612ef；公开 raw 字节与本地 Git blob 摘要一致。Dongger Panel 专用修复分支 3e96e96 固定 Dockerfile 与 node source.json，并说明失败和恢复语义；节点更新模板原样核对通过。首次来源文档漏同步被本地 L3 和候选 CI 拦截，a21d5bf 补齐 active source rows，保留历史证书验收来源。没有覆盖旧 tag 或伪装旧证据为新 SHA。成对回滚为 v1.9.0 与 aac8bc8。
 
 ## 多维质量与证据边界
 
@@ -126,7 +126,7 @@ Manifests:
     "position": "before-production-write",
     "count": 1,
     "impact": "脚本仓库只读 ls-remote 未传仓库专用 SSH identity，被 publickey 拒绝，没有远端写入。",
-    "recoveryEvidence": "复用 KPanel core.sshCommand 后精确查询、推送修复分支和脚本主线成功；专用适配器 inspect 复验通过。",
+    "recoveryEvidence": "复用 Dongger Panel core.sshCommand 后精确查询、推送修复分支和脚本主线成功；专用适配器 inspect 复验通过。",
     "permanentAction": "本轮 script-git.ps1 固定从权威仓库加载身份、检查 exit code 与候选/main SHA，后续调用禁止裸脚本 SSH。",
     "historicalReleases": [
       "v1.9.0"

@@ -142,7 +142,7 @@ describe('DockerRunCommandDialog', () => {
     const wrapper = mountDialog()
     await flushPromises()
 
-    expect(wrapper.text()).toContain('当前 Agent 版本不支持查看创建命令，请先更新 KPanel。')
+    expect(wrapper.text()).toContain('当前 Agent 版本不支持查看创建命令，请先更新 Dongger Panel。')
     expect((wrapper.findAll('button').find((button) => button.text().includes('复制命令'))!.element as HTMLButtonElement).disabled).toBe(true)
   })
 

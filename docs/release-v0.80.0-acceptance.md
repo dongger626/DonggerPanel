@@ -1,4 +1,4 @@
-# KPanel v0.80.0 上线验收记录
+# Dongger Panel v0.80.0 上线验收记录
 
 日期：2026-08-16（Asia/Shanghai）
 
@@ -15,7 +15,7 @@
 ## 发布范围
 
 - 桌面图标连续快速拖动时，以最新一次落点为准；旧请求迟到成功或失败均不得覆盖较新的乐观位置。
-- 集群主机同步目标 KPanel 的安全入口路径；目标启用、禁用或重新启用入口后，来源端刷新会同步更新或清空入口。
+- 集群主机同步目标 Dongger Panel 的安全入口路径；目标启用、禁用或重新启用入口后，来源端刷新会同步更新或清空入口。
 - 集群“打开面板”使用目标安全入口、普通 HTTP 确认、`noopener,noreferrer` 和独立新窗口；目标端仍执行原有入口认证和限流。
 - 修复跨站打开目标入口时 `SameSite=Strict` Cookie 被浏览器沿 303 跨站重定向链拒绝、最终显示 404 的问题。目标端先返回无脚本、禁止联网、`no-store` 的同源过渡文档，再进入 `/login`，未放宽 Cookie 或入口安全边界。
 - 版本、CHANGELOG 和当前业务上下文更新到 v0.80.0；未纳入旧工作树、未提交草稿、重复补丁或不完整实验。
@@ -50,7 +50,7 @@
 
 ## 生产部署与健康
 
-- 唯一 KPanel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
+- 唯一 Dongger Panel 生产目标：`arena-154`；`108` 按用户长期约束未连接、未测试、未备份、未部署。
 - 部署前：v0.79.0，Panel healthy、restart 0、OOM false，Agent active；运行 OCI/revision 为 `sha256:a3902416e16df80c49cb94dc145b5b67f1fff9cbc37d014efa83acc406589518` / `8ad781a2a6ef4d34adfbb09ba6092518fc13c9af`。
 - 停写备份：`/root/kpanel-backups/v0.80.0-preupgrade-arena154-20260816T053021Z.tar.gz`，SHA-256 `8a4bed2cc1cd827c1fc3448ac2359805e8547e39eb379b3c1016c9df552503bd`。
 - 旧镜像归档：同名 `.image.tar`，SHA-256 `e848736bb3505c794440804be2c92631a85548dc4085562374be8d842a950da4`；备份已独立解包并核对文件清单、`.env` 权限、Compose、两个 SQLite 库和镜像可加载性。

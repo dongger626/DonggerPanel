@@ -1,6 +1,6 @@
-# KPanel Codex 适配入口
+# Dongger Panel Codex 适配入口
 
-本文件只说明 Codex 如何进入 KPanel 的共享工程规范。产品、质量、任务状态和发布规则不得在这里
+本文件只说明 Codex 如何进入 Dongger Panel 的共享工程规范。产品、质量、任务状态和发布规则不得在这里
 平行定义；权威层级如下：
 
 1. `PROJECT_RULES.md`：产品、业务真源、安全边界、质量与发布硬规则；
@@ -46,14 +46,14 @@ git worktree list
 
 ## Codex 专属协调
 
-- `KPanel · 协调中心` 是用户沟通入口；Codex 子任务只用于并行分析、开发、验证或等待，不是全局真源。
+- `Dongger Panel · 协调中心` 是用户沟通入口；Codex 子任务只用于并行分析、开发、验证或等待，不是全局真源。
 - 复用任务前核对项目路径、标题、角色、scope、worktree、分支、基线和当前状态；领域或所有权不一致时
   不复用旧任务。
 - 任务复用只适用于尚未交付的工作。候选交付后按 `docs/project-management.md` 10.1 由发布任务独立完成；
   不召回旧任务、不另设复核或监工任务，协调中心等待完成交付后再复盘。
 - 承担 L2/L3 独立复核或规范复核时，默认由与实现者不同的模型提供商执行，并写 `Independent-Review:`
   trailer；规则见 `docs/multi-agent-collaboration.md`。
-- 新任务标题使用 `KPanel · Codex · <角色> · <领域>`。任务契约必须包含绝对 worktree 路径，禁止两个
+- 新任务标题使用 `Dongger Panel · Codex · <角色> · <领域>`。任务契约必须包含绝对 worktree 路径，禁止两个
   写任务共享 worktree 或分支。
 - 会话 ID、内部计划、模型偏好和临时上下文不得写入仓库。跨工具状态以 SSH 远端分支/提交、CI、
   Release 和验收记录为准。
@@ -101,7 +101,7 @@ git worktree list
 达到 Definition of Done 后回传 `docs/project-management.md` 的标准交付包，至少包含：精确 Git 状态、
 修改文件、已验证事实、质量维度和证据层级、命令与结果、未验证风险、依赖/冲突、回滚和权限状态。
 
-- 用户要求修改、开发或修复 KPanel 即授权在专用分支形成聚焦的本地任务候选提交；不自动授权 SSH
+- 用户要求修改、开发或修复 Dongger Panel 即授权在专用分支形成聚焦的本地任务候选提交；不自动授权 SSH
   推送、更新 `main`、tag、Release 或部署。
 - 获得推送授权后通过 SSH 推送任务分支；只有唯一集成/发布任务在明确授权后
   才能更新 `main`、打 tag、公开 Release、发布镜像或操作生产。

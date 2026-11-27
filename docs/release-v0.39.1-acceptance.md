@@ -1,4 +1,4 @@
-# KPanel v0.39.1 发布验收
+# Dongger Panel v0.39.1 发布验收
 
 发布日期：2026-08-03
 
@@ -31,7 +31,7 @@
 - 轻量节点 SHA-256：amd64 `ed6bbe2c2248d711e10237f4f8f6da31bcde18f0f79e2772c2d92e20bd808d95`；arm64 `a9b359fc620059c384ee6e3393e41332ecbc948a12e624a3d649d55b63df7295`。
 - 部署包 SHA-256：`6aa9edd6bc0fbeac78539c70acee8ba4af4afe51f0e9b3ab00ce75b8a7ef9f60`。
 - `docker.io/kjlion/kejilion-panel:0.39.1` 与 `latest` 均指向 OCI 摘要 `sha256:2093416aabc2226a9b257106abfeec18c3a7720eb6f5798ea5af74f2882f5c5e`，包含 linux/amd64 与 linux/arm64。
-- 154 从 Docker Hub 重新拉取公开镜像后，隔离 `image-e2e.sh` 验收通过；未修改 154 正式 KPanel 实例及业务数据。
+- 154 从 Docker Hub 重新拉取公开镜像后，隔离 `image-e2e.sh` 验收通过；未修改 154 正式 Dongger Panel 实例及业务数据。
 - `packaging/kejilion-app/kpanel.conf` 相对 `v0.39.0` 未变化，应用市场更新契约无需同步修改。
 
 回滚点为 `v0.39.0`；回滚只替换 Panel/Agent 版本，不删除现有业务数据。

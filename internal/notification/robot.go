@@ -85,7 +85,7 @@ func (c *RobotClient) SendMessage(ctx context.Context, provider Provider, creden
 	}
 	request.Header.Set("Accept", "application/json")
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("User-Agent", "KPanel-Cluster-Notifications")
+	request.Header.Set("User-Agent", "Dongger Panel-Cluster-Notifications")
 	if c == nil || c.client == nil {
 		return &Error{Code: "unavailable", Retryable: true, Cause: ErrChannelUnavailable}
 	}

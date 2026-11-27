@@ -1,4 +1,4 @@
-# KPanel v0.48.2 发布验收
+# Dongger Panel v0.48.2 发布验收
 
 ## 发布范围
 
@@ -17,7 +17,7 @@
 - Docker OCI index：`sha256:c66a7ac27fd72433eb6514a7f9362d683068c0194b6f0a6e5321acb54460a2fa`；`0.48.2` 与 `latest` 一致。
 - linux/amd64：`sha256:459972ea33c4f96226c83e9ad85246dbbec4892af3e69dec41ac310f0ce59df0`。
 - linux/arm64：`sha256:925751de63e3b8e1517e8601ae82c73366b9b0fd3925d407605a35a0c2ea45c2`。
-- `kejilion/apps` 无契约变化；仓库仍为 `1f2740666a55ccbb3749ce83168e073c1ea08431`，`kpanel.conf` 与 KPanel 发布配置的 Git blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`。
+- `kejilion/apps` 无契约变化；仓库仍为 `1f2740666a55ccbb3749ce83168e073c1ea08431`，`kpanel.conf` 与 Dongger Panel 发布配置的 Git blob 均为 `d49383667cea8c3b7294bf40ba1e272370a2cb87`。
 
 ## 上线前验证
 
@@ -34,7 +34,7 @@
 - 升级后 Panel 与 Agent 均为 `0.48.2`，镜像 revision 为 `bd8bf8cff7a550c3738731438881acb07976c027`；Panel healthy、重启 0、OOM=false，Agent active/enabled、重启 0，且 `NeedDaemonReload=no`。
 - 生产 SQLite `integrity_check=ok`；连续 3 轮本机健康检查、`http://154.36.153.9:8080` 公网直连根页和健康接口均返回 200；Panel 与 Agent 最近 5 分钟错误日志计数均为 0。
 - Panel 继续使用 `65532:65532`、只读根文件系统、256 MiB、1 CPU、128 PID、`cap-drop ALL`、`no-new-privileges` 和内外双网络。
-- 浏览器实际进入 `http://154.36.153.9:8080/login?redirect=/overview`，页面标题为“登录 · KPanel”，用户名/密码输入框和安全登录按钮正常，浏览器控制台错误计数为 0。监控页需要登录态，本轮未读取或传输任何认证信息；其交互与布局由发布前自动化测试覆盖。
+- 浏览器实际进入 `http://154.36.153.9:8080/login?redirect=/overview`，页面标题为“登录 · Dongger Panel”，用户名/密码输入框和安全登录按钮正常，浏览器控制台错误计数为 0。监控页需要登录态，本轮未读取或传输任何认证信息；其交互与布局由发布前自动化测试覆盖。
 - `kp.kejilion.pro` 是独立源站，不属于 154 部署目标；本次未访问其认证信息，也未修改该入口。
 
 ## 回滚

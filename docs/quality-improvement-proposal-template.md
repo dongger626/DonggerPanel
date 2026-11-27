@@ -1,4 +1,4 @@
-# KPanel 质量改进提案模板
+# Dongger Panel 质量改进提案模板
 
 > 本模板用于把重复问题、指标恶化、门禁缺口或高成本人工步骤转化为可验证改进。复制为
 > `docs/quality-improvement-<YYYY-MM-DD>-<slug>.md` 后填写。没有事实证据时保持观察，不以模型偏好、

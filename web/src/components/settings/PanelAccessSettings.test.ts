@@ -146,7 +146,7 @@ describe('Panel access settings', () => {
     expect(wrapper.findAll('button').some((candidate) => candidate.text().includes('跳转到新地址'))).toBe(false)
   })
 
-  it('falls back to manual guidance when KPanel is not managed by the App Market', async () => {
+  it('falls back to manual guidance when Dongger Panel is not managed by the App Market', async () => {
     mocks.inventory.mockResolvedValueOnce({ items: [] })
     mocks.get.mockResolvedValueOnce({ ...plainStatus, allowIpHosts: false })
     await render()
@@ -203,7 +203,7 @@ describe('panel access routing helpers', () => {
     expect(panelDomainSwitchPath('panel.example.com')).toBe('/settings?section=panel-access&domain=panel.example.com')
   })
 
-  it('treats only an HTTPS domain page as safe for blocking IP access to KPanel itself', () => {
+  it('treats only an HTTPS domain page as safe for blocking IP access to Dongger Panel itself', () => {
     const at = (protocol: string, host: string) => ({ protocol, host, origin: protocol + '//' + host })
     expect(panelReachedWithoutTrustedDomain(at('http:', 'panel.example.com'))).toBe(true)
     expect(panelReachedWithoutTrustedDomain(at('https:', '203.0.113.5:8080'))).toBe(true)

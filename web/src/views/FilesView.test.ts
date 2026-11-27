@@ -2429,7 +2429,7 @@ describe('FilesView directory loading', () => {
     expect(mocks.show).not.toHaveBeenCalled()
   })
 
-  it('copies a multi-selection from another KPanel into the dropped directory', async () => {
+  it('copies a multi-selection from another Dongger Panel into the dropped directory', async () => {
     const view = setupView()
     const first = { ...testEntry('one.txt'), path: '/source/one.txt' }
     const second = { ...testEntry('two.txt'), path: '/source/two.txt' }

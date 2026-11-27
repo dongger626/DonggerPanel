@@ -1,4 +1,4 @@
-# KPanel v0.97.0 发布验收记录
+# Dongger Panel v0.97.0 发布验收记录
 
 日期：2026-08-24
 
@@ -67,7 +67,7 @@
 - 标准更新入口一次成功：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；日志 SHA-256=`151ac11870abda42410cc18983b4be7933cf532bde728c180a4a81f244ae581f`。
 - 部署后：Panel `0.97.0`、revision/OCI 精确匹配、Agent active、Panel healthy、restart=0、OOM=false；公网 health 返回 `0.97.0`，数据和配置完整，日志无 panic/fatal/OOM。
 - 宿主 `kejilion-agent` 与镜像逐字节一致；宿主 `kejilion.sh` 仅保留既有 `permission_granted=true` 本地状态，归一化后与镜像固定脚本逐字节一致，未覆盖用户配置。
-- 回滚：停写并校验备份 `SHA256SUMS`；加载旧 OCI；成套恢复 KPanel 目录、Compose、`.env`、apps 配置和 Agent 文件；`systemctl daemon-reload` 后启动 Agent/Panel；复核 `0.96.0`、旧 digest、health、restart/OOM 和数据。禁止只换镜像。
+- 回滚：停写并校验备份 `SHA256SUMS`；加载旧 OCI；成套恢复 Dongger Panel 目录、Compose、`.env`、apps 配置和 Agent 文件；`systemctl daemon-reload` 后启动 Agent/Panel；复核 `0.96.0`、旧 digest、health、restart/OOM 和数据。禁止只换镜像。
 
 ## 交付节奏数据
 

@@ -144,7 +144,7 @@ describe('FileShareDialog hash-only sharing', () => {
     mountDialog()
     await flushPromises()
 
-    expect(document.body.textContent).toContain('旧链接不会保存在 KPanel 中')
+    expect(document.body.textContent).toContain('旧链接不会保存在 Dongger Panel 中')
     expect(document.querySelector('#file-share-page-link')).toBeNull()
     expect(document.querySelector('#file-share-direct-link')).toBeNull()
 

@@ -121,7 +121,7 @@ function parseDockerRun(source: string): DockerDeploymentAnalysis {
   let name = ''
   let network = 'bridge'
   // Preserve Docker CLI semantics for pasted commands. The manual form keeps
-  // KPanel's friendlier unless-stopped default.
+  // Dongger Panel's friendlier unless-stopped default.
   let restartPolicy: DockerMaintenanceInput['restartPolicy'] = 'no'
   const ports: DockerContainerCreatePort[] = []
   const mounts: DockerContainerCreateMount[] = []

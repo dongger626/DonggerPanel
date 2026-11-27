@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.8 发布验收记录
+# Dongger Panel v1.21.0-rc.8 发布验收记录
 
 日期：2026-09-21
 
@@ -24,10 +24,10 @@
 
 ## 发布画像
 
-- 业务域：集群节点指标浏览、KPanel 应用安装与卸载恢复。
+- 业务域：集群节点指标浏览、Dongger Panel 应用安装与卸载恢复。
 - 变更面：前端展示排序，以及应用市场宿主机安装/卸载脚本的受控文件和 Docker 网络清理；没有 API、数据库、端口、Compose、Agent 权限或受管脚本协议变化。
 - 受影响用户旅程：管理员可按 CPU、内存、磁盘和流量临时排序集群节点；空安装目录可重新安装；由应用市场拥有但 Compose 文件不完整的安装可在安全条件下清理。
-- 未变化契约：排序不持久化且不修改后端数据；只删除归属明确且空闲的 KPanel 网络；公共应用市场默认镜像仍为 `latest`。
+- 未变化契约：排序不持久化且不修改后端数据；只删除归属明确且空闲的 Dongger Panel 网络；公共应用市场默认镜像仍为 `latest`。
 - 风险等级及理由：L3。排序是局部前端变化，但安装/卸载脚本涉及宿主机文件、服务和 Docker 网络，必须完整验证失败保护与公开镜像。
 
 ## 发布范围与未纳入内容
@@ -47,7 +47,7 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：本版没有修改 `kejilion.sh` 内容或调用协议；L3 managed-script-contract 与应用生命周期通过。
 - 本版发布决定：脚本不在范围。
@@ -90,7 +90,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.21.0-rc.8](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.8) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 13:58:08 +08:00，GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.8](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.8) 为非 draft、prerelease、非 Latest；发布时间 2026-09-21 13:58:08 +08:00，GitHub Latest 仍为 `v1.20.0`。
 - 14 个附件均为 uploaded 且非空；`SHA256SUMS` API/本地摘要均为 `sha256:bbbc6b4feabb7c99d16a765c80752b3290eabce0962e7922550be792a709693f`，包含 11 个二进制/部署包条目。
 - Docker `1.21.0-rc.8` 与 `preview` OCI index 均为 `sha256:47c2dbb65e05e23b503ee7cb6bd8a39ed9b61f61222f72445cc688ad9dc57d2e`。
 - `linux/amd64` / `linux/arm64` 分别为 `sha256:623fc155c0122335effe6e48dcb35488dfe9dd4e3f06fb2858cb3b31d89e8f3b` / `sha256:9f1e2323c2a2b016c5a686d41812e87bf7027b766fcc83f8be89d83a5b931eea`；另外两项为 attestations。
@@ -108,7 +108,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境：仅 `local-wsl-dr` 候选验证与公开 OCI E2E。
 - 正式部署环境：不适用；`arena-154` 本轮未执行生产写入。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用。
 - 部署命令/入口：不适用。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用。

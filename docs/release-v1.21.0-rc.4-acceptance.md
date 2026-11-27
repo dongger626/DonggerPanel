@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.4 发布验收记录
+# Dongger Panel v1.21.0-rc.4 发布验收记录
 
 日期：2026-09-20
 
@@ -16,9 +16,9 @@
 
 - 原分支 / 精确 tip / 处置分类：`feature/virus-scan-system-center` / `3319d3beec7712a357c545d4e0b0c2a0445b29be` / 已纳入并归档；`feature/system-package-manager` / `ebb217108b91aef60bb4035852fbbce4a16bf482` / 已纳入并归档；`integrate/kpanel-virus-scan-protocol-20260920` / `2b90b2d2ca56bc954c9328a51bb5571e896f713d` / 跨仓库脚本已发布并归档。
 - 归档 ref 与 SHA：`archive/feature/virus-scan-system-center-20260920` = `3319d3be...`；`archive/feature/system-package-manager-20260920` = `ebb21710...`；`archive/assemble/v1.21.0-rc.4` = `0c566418...`；脚本仓库 `archive/feature/kpanel-virus-scan-protocol` = `90829558...`、`archive/integrate/kpanel-virus-scan-protocol-20260920` = `2b90b2d2...`。远端逐 ref 复核一致。
-- 本次来源任务分支均已映射到冻结候选；KPanel 与脚本仓库对应本地活动分支已删除。两个脚本来源 worktree 已释放；KPanel 两个来源 worktree 已从 Git worktree 注册中释放。
+- 本次来源任务分支均已映射到冻结候选；Dongger Panel 与脚本仓库对应本地活动分支已删除。两个脚本来源 worktree 已释放；Dongger Panel 两个来源 worktree 已从 Git worktree 注册中释放。
 - `fix/file-host-switch-context-20260913`、`feature/visual-refinement-pass` 含未提交内容，按规范原样保留且未纳入。`docs/security-audit-run2-local-20260919` 含受限本地材料，保持未发布、未改动。
-- 未完成归档项：无。两个已释放的 KPanel worktree 路径仍有 `.vite`、`node_modules` 或可由归档提交重建的 `web` 文件残留，未构成 Git 分支或工作树；下次本地缓存维护时清理，不影响恢复证据。
+- 未完成归档项：无。两个已释放的 Dongger Panel worktree 路径仍有 `.vite`、`node_modules` 或可由归档提交重建的 `web` 文件残留，未构成 Git 分支或工作树；下次本地缓存维护时清理，不影响恢复证据。
 
 归档不代表生产上线；本版仅发布预览产物，生产未部署。
 
@@ -40,17 +40,17 @@
 
 - Alibaba open-code-review 1.12.6 trailer 覆盖病毒扫描路径 21/21、预览与失败态 22/22、软件包管理 28/28，均为 `H0/M0/L0`；它只作为辅助证据，不替代项目门禁。
 - Cloudflare `security-audit-skill` 本轮没有新增可引用的最终结构化结论；不把此前中止或不完整的专项运行改写为通过。本版安全结论来自路径失败关闭、固定操作集合、单元/契约测试、L3、Trivy、govulncheck、npm audit、真实 ClamAV 与公开镜像验收。
-- 修复交付：ClamAV 镜像初始化、权限降级、日志 tmpfs、数据库卷 copy-up 和 strict-shell 问题在脚本提交 `2b90b2d2...` 修复；脚本先发布，KPanel RC 再绑定其 revision/SHA。
+- 修复交付：ClamAV 镜像初始化、权限降级、日志 tmpfs、数据库卷 copy-up 和 strict-shell 问题在脚本提交 `2b90b2d2...` 修复；脚本先发布，Dongger Panel RC 再绑定其 revision/SHA。
 - 本稳定周期尚不足以单凭少量候选判断外部审计工具长期有效性或退出条件；继续按 `PROJECT_RULES.md` 5.4/5.5 观察。
 
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`。
 - 变更集编号：`kpanel-virus-scan-protocol-20260920`。
-- KPanel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
 - 脚本候选 commit / SHA-256：与上述基线一致；脚本仓库 `main` 已先行发布并由不可变 raw URL 复核。
-- 状态判定依据与兼容性证据：根脚本和 CN 镜像 `bash -n`、同步检查、主菜单 smoke、病毒扫描 smoke、真实 ClamAV 1.5.4 干净文件扫描、KPanel managed-script-contract、L3 与公开镜像提取均通过。
-- 本版发布决定：脚本先行后发布 KPanel；KPanel Dockerfile 固定 revision 和 SHA-256。
+- 状态判定依据与兼容性证据：根脚本和 CN 镜像 `bash -n`、同步检查、主菜单 smoke、病毒扫描 smoke、真实 ClamAV 1.5.4 干净文件扫描、Dongger Panel managed-script-contract、L3 与公开镜像提取均通过。
+- 本版发布决定：脚本先行后发布 Dongger Panel；Dongger Panel Dockerfile 固定 revision 和 SHA-256。
 - 阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
@@ -91,11 +91,11 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.21.0-rc.4](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.4) 为非 draft、prerelease、非 Latest；GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.4](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.4) 为非 draft、prerelease、非 Latest；GitHub Latest 仍为 `v1.20.0`。
 - 14 个附件均为 uploaded 且非空：MCP 六平台、Agent/Node 双架构、部署包、LICENSE、`SHA256SUMS` 和 THIRD_PARTY_NOTICES。
 - Docker `1.21.0-rc.4` 与 `preview` OCI index 均为 `sha256:07b67e3b51d01017170d5ca056854e30688c5a09189cf98b8746d2733a47a899`；`linux/amd64` / `linux/arm64` 分别为 `sha256:1a036c23fa6202685d8aad2c1173b4c8b9ba41fbd7a3affce77a7bd1d6ada7e4` / `sha256:e8c316bb38892c14c97022349d05faee7261cd46b81730ed973303254f1a55d1`；另外两项为 attestations。
 - 稳定 `latest` 与 `1.20.0` 均保持 `sha256:a991b5d27d7d6519c694b6cbc88c037bbaa0fcef418a43b0ff94cb638dee575f`。
-- `kejilion.sh` `main` 精确为 `2b90b2d2...`，公开 raw 摘要与 KPanel 镜像契约一致。
+- `kejilion.sh` `main` 精确为 `2b90b2d2...`，公开 raw 摘要与 Dongger Panel 镜像契约一致。
 
 ## 自更新通道验收
 
@@ -184,7 +184,7 @@
     "count": 1,
     "impact": "首次标签 Release 的 Verify source 在已通过 L3、候选和 main CI 的同一 SHA 上退出 1，镜像推送和公开 Release 均被跳过。",
     "recoveryEvidence": "确认无 Release、无 Docker 写入后精确删除并重推同一 annotated tag；恢复运行 35497328699 的 Verify source 及全部后续步骤成功。",
-    "permanentAction": "KPanel 维护者在下一稳定版复核；若未来两个版本再次发生，拆分 Verify source 子步骤并上传失败日志，退出条件为连续两个版本无复现。",
+    "permanentAction": "Dongger Panel 维护者在下一稳定版复核；若未来两个版本再次发生，拆分 Verify source 子步骤并上传失败日志，退出条件为连续两个版本无复现。",
     "historicalReleases": []
   },
   {
@@ -219,7 +219,7 @@
 
 ## 遗留风险与后续准入
 
-- 本地资源回收：四条来源活动分支和两个脚本 worktree 已释放；KPanel 两个来源路径只剩可再生成缓存或可由归档提交重建的残留文件，未作为 Git worktree；L3、脚本和公开 OCI 证据保留在 `C:/GitHub/_release-evidence/` 与 `arena-154:/root/kpanel-release-evidence/`。
+- 本地资源回收：四条来源活动分支和两个脚本 worktree 已释放；Dongger Panel 两个来源路径只剩可再生成缓存或可由归档提交重建的残留文件，未作为 Git worktree；L3、脚本和公开 OCI 证据保留在 `C:/GitHub/_release-evidence/` 与 `arena-154:/root/kpanel-release-evidence/`。
 - 未验证风险：ClamAV 上游镜像浮动、感染样本处置、长时间大目录扫描、所有支持发行版的真实包安装、最终人工浏览器矩阵。
 - 已实现待实机准入：软件包管理器在 APT/DNF/DNF5/YUM/APK/Pacman/Zypper 的真实安装覆盖应在稳定版前扩展；病毒扫描应补受控 EICAR 报告验证和资源预算。
 - 不阻断本版的理由：本版为预览渠道；固定源码已通过 L3、候选/main/tag freshness、Release 安全链、真实 ClamAV 干净扫描、14 个公开附件和不可变公开 OCI E2E，稳定入口与生产均未改变。

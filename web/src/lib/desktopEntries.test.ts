@@ -125,11 +125,11 @@ describe('desktop entries', () => {
     expect((await pending).apps[0]?.url).toBe('http://192.168.1.5:8080')
   })
 
-  it('keeps KPanel manageable but hides its redundant desktop self-entry', async () => {
+  it('keeps Dongger Panel manageable but hides its redundant desktop self-entry', async () => {
     const kpanel = makeApp({
       id: 'thirdparty-kpanel',
       token: 'kpanel',
-      name_zh: 'KPanel',
+      name_zh: 'Dongger Panel',
       runtime: {
         installed: true,
         state: 'running',
@@ -149,7 +149,7 @@ describe('desktop entries', () => {
     expect(entries.visible).toHaveLength(0)
   })
 
-  it('does not replace hidden KPanel with its matching proxy site', async () => {
+  it('does not replace hidden Dongger Panel with its matching proxy site', async () => {
     const kpanel = makeApp({
       id: 'thirdparty-kpanel',
       token: 'kpanel',

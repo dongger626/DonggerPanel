@@ -409,7 +409,7 @@ export function moveDesktopIconGroup(
 }
 
 /**
- * Arrange keys in KPanel's existing column-major order (top-to-bottom first).
+ * Arrange keys in Dongger Panel's existing column-major order (top-to-bottom first).
  * Each full visible grid becomes the next vertical page. The workspace API
  * persists at most 512 positions; additional keys are reported explicitly.
  */

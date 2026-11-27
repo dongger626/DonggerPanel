@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.8 发布验收记录
+# Dongger Panel v1.30.0-rc.8 发布验收记录
 
 日期：2026-11-08
 
@@ -50,7 +50,7 @@
 
 - `scriptLinkageState`：`coupled`
 - 变更集编号：不适用（沿用已发布并审定的站点访问密码配套脚本）。
-- KPanel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
 - 脚本候选 commit / SHA-256：同上；RC8 双架构镜像 label 与公开验收快照一致。
 - 状态判定依据与兼容性证据：RC8 的 amd64/arm64 镜像均绑定该脚本 revision 与摘要；访问密码功能要求配套脚本版本。
 - 本版发布决定：RC8 已发布配套脚本；本验收不发新脚本。

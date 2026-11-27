@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.10 发布验收记录
+# Dongger Panel v1.21.0-rc.10 发布验收记录
 
 日期：2026-09-22
 
@@ -37,7 +37,7 @@
 
 ## 发布产物与通道状态
 
-- GitHub Release workflow：[#242](https://github.com/kejilion/KPanel/actions/runs/35679236805) 成功；公开页面 [KPanel v1.21.0-rc.10](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.10) 已为非 draft、Pre-release、非 Latest，资产区显示 16 个附件。annotated tag object 为 `31a832cd2f9dcd5cf564bd1c90f93fdef5463985`。
+- GitHub Release workflow：[#242](https://github.com/kejilion/KPanel/actions/runs/35679236805) 成功；公开页面 [Dongger Panel v1.21.0-rc.10](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.10) 已为非 draft、Pre-release、非 Latest，资产区显示 16 个附件。annotated tag object 为 `31a832cd2f9dcd5cf564bd1c90f93fdef5463985`。
 - Docker 公开镜像：`1.21.0-rc.10` 与 `preview` OCI index 均为 `sha256:ac5b86cb69d4e8e2485e41913040bf4b17d5a208e163b7cb6eabe2fc66a16dc1`；`linux/amd64` 为 `sha256:ea03c5910d87fddd0a791c016beaaf44e9245bf1c534d5ecaea7e58dd60974c2`，`linux/arm64` 为 `sha256:cc144b23588dc74655f8f32a68a7baa3f360d4bec8636cc73830191f3d90af93`，另有两个 provenance/attestation manifests。`latest` 保持上一稳定摘要 `sha256:a991b5d27d7d6519c694b6cbc88c037bbaa0fcef418a43b0ff94cb638dee575f`。
 - Release 资产共 16 个（14 个发布文件加 source zip/tar.gz），`SHA256SUMS` 资产摘要为 `sha256:0d15d4a2fd8d627e72eff9371eb8ad89ccf6895499bdc4c9bb97a512fad8fd1d`；GitHub Latest 仍为 `v1.20.0`，应用市场默认入口与生产入口未改动。
 

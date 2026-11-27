@@ -108,7 +108,7 @@ export function supportsSideWindowSnap(viewport: ViewportSize): boolean {
   return viewport.width >= MIN_SIDE_SNAP_VIEWPORT_WIDTH
 }
 
-/** Resolve the small set of Windows-style edge targets supported by KPanel. */
+/** Resolve the small set of Windows-style edge targets supported by Dongger Panel. */
 export function detectWindowSnapTarget(point: ViewportPoint, viewport: ViewportSize): WindowSnapTarget | null {
   if (point.y <= SNAP_EDGE_THRESHOLD) return 'maximize'
   if (!supportsSideWindowSnap(viewport)) return null

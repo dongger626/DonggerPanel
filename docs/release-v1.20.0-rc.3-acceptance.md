@@ -1,4 +1,4 @@
-# KPanel v1.20.0-rc.3 发布验收记录
+# Dongger Panel v1.20.0-rc.3 发布验收记录
 
 日期：2026-09-19
 
@@ -19,7 +19,7 @@
 - 业务域：审计存储（审计历史从状态文件迁入独立 SQLite 审计库）、本地密码恢复审计顺序、发布治理（规范执行健康度试行、open-code-review pin 升级）。
 - 变更面：Go 后端存储与调用方（`internal/store/audit_log.go`、`internal/store/store.go`、`internal/panel/server.go`、`internal/panel/jobs.go`、`internal/auth/service.go` 等）；首次启动的数据迁移（`panel-state.json` 的 `audit` 迁入同目录 `panel-state-audit.db`）；治理文档、工作流与脚本（`PROJECT_RULES.md` 5.2.4/5.2.7、`scripts/report-governance-health.mjs`、`dependency-policy.json`）。无前端文件改动，无新增 Go/npm 依赖（`modernc.org/sqlite` 已在用，纯 Go、`CGO_ENABLED=0`）。
 - 受影响用户旅程：升级后首次启动的自动迁移；审计页与任务页读取审计；登录/会话等状态写入延迟；降级到旧版本及再次升级；本地密码恢复。
-- 未变化契约：审计 API 形状、端口、Compose、Agent 权限模型、`kejilion.sh` 脚本契约、应用市场稳定配置和公开稳定更新入口不变；KPanel 备份仍不导出审计，主机级备份仍排除 `/var/lib/kejilion-panel`。
+- 未变化契约：审计 API 形状、端口、Compose、Agent 权限模型、`kejilion.sh` 脚本契约、应用市场稳定配置和公开稳定更新入口不变；Dongger Panel 备份仍不导出审计，主机级备份仍排除 `/var/lib/kejilion-panel`。
 - 风险等级及理由：中等；涉及数据迁移，但迁移按事件 ID 去重导入、中断可重做，源分支 L2 通过，本候选通过完整 L3 与隔离真机升级/降级/再升级演练（约 1 万条记录）。
 
 ## 发布范围与未纳入内容
@@ -37,7 +37,7 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号（跨仓库时必填；不适用时写"不适用"）：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
 - 脚本候选 commit / SHA-256（不适用时写"不适用"）：不适用；轻量节点更新运行时继续固定 `kejilion/sh@4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`。
 - 状态判定依据与兼容性证据：候选对 `packaging/`、`Dockerfile`、`.github/`、`go.mod`/`go.sum` 与 `web/package*.json`（版本字段除外）相对 `v1.20.0-rc.2` 零差异；差异不涉及脚本协议、运行时动作、宿主机产物或安装/更新路径；L3 `app_conf_lifecycle=pass`。
 - 本版发布决定：脚本不在范围。
@@ -88,7 +88,7 @@
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：[KPanel 1.20.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.20.0-rc.3) 于 2026-09-19T06:43:50Z 公开，为非 draft、prerelease、非 Latest；GitHub Latest 仍为 v1.19.0。
+- GitHub Release 的 draft / prerelease / Latest 状态：[Dongger Panel 1.20.0-rc.3](https://github.com/kejilion/KPanel/releases/tag/v1.20.0-rc.3) 于 2026-09-19T06:43:50Z 公开，为非 draft、prerelease、非 Latest；GitHub Latest 仍为 v1.19.0。
 - Docker 版本与通道 OCI index：`1.20.0-rc.3` 与 `preview` 同为 `sha256:76b54033a5f58a614ae121700539b3891f3a8d2554939cd24fa63c501506a2ba`；稳定 `latest` 仍为 `sha256:351a236f4a246affd9d4cc045808ac1f8625de4482c74abfc5756cb89077b9ce`（v1.19.0），未被本次发布改变。
 - `linux/amd64`、`linux/arm64` digest：`linux/amd64` `sha256:27f07f56ff3748c34e9ee1102de9ebb68b0572ed882bc270513823ca5a7acd5a`、`linux/arm64` `sha256:67e293939d271f633e1672a0df96f11da0d6e29af8516677e2d8904c593d7c7b`；两个 `unknown/unknown` 条目为 provenance/SBOM attestation，不判为架构缺失。
 - 附件及 `SHA256SUMS`：8 个附件均为 uploaded（agent 双架构、node 双架构、`kejilion-panel-deploy-1.20.0-rc.3.tar.gz`、LICENSE、`SHA256SUMS`、THIRD_PARTY_NOTICES.md）。
@@ -106,7 +106,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 仅以 `candidate-validation` 用途运行隔离容器。
 - 正式部署环境：不适用（预览版禁止生产部署）。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未部署、未升级、未核对。
 - 生产已执行写操作：本次为 0。
 
 ## 回滚

@@ -1,7 +1,7 @@
 # kejilion.sh 网站业务分析与兼容契约
 
 > 历史分析说明：业务产物映射仍可参考，但文中的“漂移后只读”“未知模板只读”等限制
-> 已由 [`PROJECT_RULES.md`](../PROJECT_RULES.md) 废止。文中允许 KPanel 自行生成 HTTP
+> 已由 [`PROJECT_RULES.md`](../PROJECT_RULES.md) 废止。文中允许 Dongger Panel 自行生成 HTTP
 > 模板的方案也已被“外联配置直接复用硬规则”废止，不能作为后续实现依据。
 
 ## 验证基线
@@ -70,7 +70,7 @@ IP + 端口反代入口位于 `kejilion.sh:3499`。它使用
 - 脚本运行时下载远程 `main` 模板，业务形态可能独立于脚本版本变化。
 
 以上是历史风险分析，不再构成“自行实现另一套模板”的理由。当前规则要求先为脚本补充稳定
-非交互入口，或直接消费脚本使用的同源模板；KPanel 只能在外层增加输入校验、原子暂存、
+非交互入口，或直接消费脚本使用的同源模板；Dongger Panel 只能在外层增加输入校验、原子暂存、
 `nginx -t`、备份和失败回滚。
 
 ## 历史 v0.9 双向呈现规则（写入方案已废止）
@@ -128,7 +128,7 @@ IP + 端口反代入口位于 `kejilion.sh:3499`。它使用
 `/var/lib/kejilion-panel/site-recipe-jobs`。Agent 通过独立 systemd transient unit 或
 OpenRC `start-stop-daemon` 进程组执行
 脚本原生命令，允许脚本按自身流程安装缺失的 Docker、Certbot 或 LDNMP 环境；
-KPanel 不再为新建站点维护第二套 WordPress、静态站、PHP、反向代理、负载均衡或
+Dongger Panel 不再为新建站点维护第二套 WordPress、静态站、PHP、反向代理、负载均衡或
 重定向模板。Nginx Stream 不属于域名站点创建，继续由脚本专用入口管理。
 
 历史结构化编辑仍保留旧模板兼容，但处于冻结状态；新建链路不再调用该生成器。

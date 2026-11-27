@@ -1,4 +1,4 @@
-# KPanel v0.27.0 发布验收
+# Dongger Panel v0.27.0 发布验收
 
 - 发布日期：2026-07-29
 - 发布提交：`0b3f1e952fccc64006543acc225a2975bb0353d7`
@@ -8,9 +8,9 @@
 
 ## 发布范围
 
-本版本增加 KPanel 集群主机看板和联邦只读监控：
+本版本增加 Dongger Panel 集群主机看板和联邦只读监控：
 
-- 当前 KPanel 自动作为本机节点展示；
+- 当前 Dongger Panel 自动作为本机节点展示；
 - 每个节点均可同时作为中心端和被监控端；
 - 支持公网 HTTPS，以及 Noise 端到端加密的 `http://IP:非80端口`；
 - 展示 CPU、内存、磁盘、网络、系统、地区、延迟和在线状态；
@@ -97,13 +97,13 @@ image_e2e=pass
 - Bootstrap、Secure Cookie；
 - 只读根、无 capability 的运行约束。
 
-验收前后生产 KPanel 容器 ID 均为：
+验收前后生产 Dongger Panel 容器 ID 均为：
 
 ```text
 ebb14cb7195060a3559597b96710c2da2a47938d3da464610c5dbdc0bf389305
 ```
 
-生产 KPanel 保持 `running`，Agent 保持 `active`；临时容器、网络和脚本无残留。
+生产 Dongger Panel 保持 `running`，Agent 保持 `active`；临时容器、网络和脚本无残留。
 
 ## 应用市场契约
 
@@ -113,13 +113,13 @@ ebb14cb7195060a3559597b96710c2da2a47938d3da464610c5dbdc0bf389305
 KEJILION_PANEL_CLUSTER_PRIVATE_CIDRS
 ```
 
-`kejilion/apps` 已同步 KPanel 配置：
+`kejilion/apps` 已同步 Dongger Panel 配置：
 
 - 提交：`914e226`
 - 文件：`kpanel.conf`
-- KPanel 仓库与应用市场配置已归一化一致
+- Dongger Panel 仓库与应用市场配置已归一化一致
 
-普通后续 KPanel 版本若部署契约不变，不需要修改应用市场配置。
+普通后续 Dongger Panel 版本若部署契约不变，不需要修改应用市场配置。
 
 ## 回滚
 

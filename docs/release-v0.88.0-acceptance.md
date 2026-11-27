@@ -1,4 +1,4 @@
-# KPanel v0.88.0 发布验收记录
+# Dongger Panel v0.88.0 发布验收记录
 
 日期：2026-08-20
 
@@ -12,7 +12,7 @@
 
 - 业务域：系统体检与一键跑分、桌面服务状态卡片、AI 助手历史消息兼容、一条龙系统调优脚本运行时。
 - 变更面：展示、只读诊断、受控宿主机写入脚本、受管脚本供应链固定；没有数据库迁移或部署拓扑变化。
-- 受影响用户旅程：体检页执行并阅读五维结果、桌面读取服务状态卡片、打开包含旧推理消息的 AI 会话、从 KPanel 执行一条龙系统调优。
+- 受影响用户旅程：体检页执行并阅读五维结果、桌面读取服务状态卡片、打开包含旧推理消息的 AI 会话、从 Dongger Panel 执行一条龙系统调优。
 - 未变化契约：外部端口、Compose、Agent 权限、应用市场安装/更新协议和现有数据目录保持不变；诊断继续通过受管脚本与既有后台任务边界执行。
 - 风险等级及理由：中；诊断与脚本涉及宿主机信息读取和可选管理员写操作，但执行边界、固定 revision/hash、失败停止和回滚入口均保留。
 
@@ -76,7 +76,7 @@
 - 生产目标和部署授权范围：仅 `arena-154`；用户已授权 v0.88.0 正式升级。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 隔离容器和回环端口。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对：已确认。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对：已确认。
 - 部署前版本、健康、备份位置及摘要：v0.87.0，Panel healthy、Agent active、restart=0、OOM=false；备份 `/root/kpanel-backups/v0.88.0-preupgrade-arena154-20260820T063912Z`；状态包 SHA-256=`2ded29d5da3724d98e6b36874fea4becbe8ce7fd2dc0613e17c1ba021621c606`，旧镜像 tar SHA-256=`3a83b148e92b2ecbd4a48bc10a8dad9ba8210773599542526f6aec99e32fb977`。
 - 部署命令/入口：标准应用市场更新入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，进度到 `KPANEL_PROGRESS 100`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：Panel/Agent 0.88.0，Panel healthy、Agent active、双方 restart=0、OOM=false；三次健康与资源采样通过，SQLite integrity=ok，近 10 分钟 panic/fatal/error/OOM 为空，HTTPS 健康入口 200。

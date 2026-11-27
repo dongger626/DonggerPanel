@@ -164,7 +164,7 @@ func (s *browserSession) start(executable string, private []netip.Prefix) error 
 	go func() { _ = s.proxyServer.Serve(listener) }()
 	options := append([]chromedp.ExecAllocatorOption{}, chromedp.DefaultExecAllocatorOptions[:]...)
 	// A private kiosk window exposes only the page viewport to the framebuffer;
-	// the KPanel toolbar and the structured input channel remain authoritative.
+	// the Dongger Panel toolbar and the structured input channel remain authoritative.
 	options = append(options, chromedp.Flag("headless", false), chromedp.Flag("kiosk", true), chromedp.Flag("window-size", fmt.Sprintf("%d,%d", s.width, s.height)), chromedp.Flag("force-device-scale-factor", "1"), chromedp.Env("DISPLAY="+display.display, "XAUTHORITY="+display.auth))
 	options = append(options, chromedp.Flag("enable-automation", false), chromedp.Flag("disable-infobars", true))
 	options = append(options, chromedp.ExecPath(executable), chromedp.ProxyServer("http://"+listener.Addr().String()), chromedp.Flag("no-sandbox", false), chromedp.Flag("proxy-bypass-list", "<-loopback>"), chromedp.Flag("disable-quic", true), chromedp.Flag("force-webrtc-ip-handling-policy", "disable_non_proxied_udp"), chromedp.Flag("host-resolver-rules", "MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"), chromedp.Flag("disable-features", "Translate,BlinkGenPropertyTrees,MediaRouter"), chromedp.Flag("disable-popup-blocking", false), chromedp.Flag("disk-cache-size", "33554432"), chromedp.Flag("media-cache-size", "16777216"))

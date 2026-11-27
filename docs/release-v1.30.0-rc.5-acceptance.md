@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.5 发布验收
+# Dongger Panel v1.30.0-rc.5 发布验收
 
 日期：2026-11-06；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.30.0`。
 
@@ -46,7 +46,7 @@
 
 - `scriptLinkageState`：`coupled`（RC4 已发布的网站访问密码依赖配套脚本；RC5 镜像继续内置同一受管脚本）。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：沿用 RC4 验收记录标识 `kpanel-v1.30.0-rc.4-website-access-password`；RC5 未变更脚本。
-- KPanel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：同上；RC5 无新脚本候选。
 - 状态判定依据与兼容性证据：L3 与 Release 日志 `managed_script_contract=pass`，并核对公开镜像中的 revision/hash；完整 Panel→Agent→真实 Nginx 主机端到端链路未在本次公开验收执行。
 - 本版发布决定：复用已公开绑定脚本；RC5 本身不发布新脚本变更。
@@ -123,7 +123,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：GitHub-hosted L3 与公开产物隔离验收；未连接登记的生产主机。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：不适用；未连接 `arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用。
 - 部署命令/入口：未运行。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：未验证（无生产部署）。

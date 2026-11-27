@@ -68,7 +68,7 @@ func TestRobotClientSendsProviderSpecificTextPayload(t *testing.T) {
 				if request.Method != http.MethodPost || request.URL.String() != test.credential {
 					t.Fatalf("request = %s %s", request.Method, request.URL)
 				}
-				if request.Header.Get("Content-Type") != "application/json" || !strings.Contains(string(body), test.wantBody) || !strings.Contains(string(body), "hello KPanel") {
+				if request.Header.Get("Content-Type") != "application/json" || !strings.Contains(string(body), test.wantBody) || !strings.Contains(string(body), "hello Dongger Panel") {
 					t.Fatalf("request headers/body = %#v / %s", request.Header, body)
 				}
 				return &http.Response{
@@ -78,7 +78,7 @@ func TestRobotClientSendsProviderSpecificTextPayload(t *testing.T) {
 					Request:    request,
 				}, nil
 			})})
-			if err := client.SendMessage(context.Background(), test.provider, test.credential, "hello KPanel"); err != nil {
+			if err := client.SendMessage(context.Background(), test.provider, test.credential, "hello Dongger Panel"); err != nil {
 				t.Fatalf("SendMessage() error = %v", err)
 			}
 		})

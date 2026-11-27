@@ -22,7 +22,7 @@
 
 ## 原因假设
 
-- 待验证：逐文件强制覆盖清单能减少自由评审漏看文件，且与 KPanel 质量标准引用结合后产生自由臂之外的有效发现。
+- 待验证：逐文件强制覆盖清单能减少自由评审漏看文件，且与 Dongger Panel 质量标准引用结合后产生自由臂之外的有效发现。
 - 替代解释：自由评审本身已覆盖同等范围，约束臂只增加成本（run-0 数据支持此解释）。
 - 证伪结果：3 个稳定版周期内 `constrained-only` 累计为 0 → 按 5.5 退出条款移除。
 - 不涉及 `kejilion.sh`、真实系统资源、Panel/Agent 权限边界或兼容契约。
@@ -30,7 +30,7 @@
 ## 产品原则与核心思想对齐
 
 - 不改变业务真源、双端互通和产品运行时；工具安装在仓库外，不进入镜像与依赖图。
-- 不形成第二真源：pin 只在 `dependency-policy.json`，圈选只在 `.opencodereview/rule.json`，KPanel 尺度只引用
+- 不形成第二真源：pin 只在 `dependency-policy.json`，圈选只在 `.opencodereview/rule.json`，Dongger Panel 尺度只引用
   `docs/development-quality-standard.md`，上游规则文本不复制。
 - 安全：入口只放行 LLM-free 子命令，源码不发往 OCR 端点。
 

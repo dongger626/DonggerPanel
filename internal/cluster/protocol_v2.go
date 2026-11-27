@@ -344,7 +344,7 @@ func deriveV2PairingKey(
 		return nil, ErrPairingCode
 	}
 	info := strings.Join([]string{
-		"KPanel federation v2 pairing PSK",
+		"Dongger Panel federation v2 pairing PSK",
 		nodeID,
 		codeID,
 		base64.RawURLEncoding.EncodeToString(targetPublicKey),
@@ -507,7 +507,7 @@ func v2EnvelopePrologue(
 		protocolName = "Noise_IKpsk0_25519_ChaChaPoly_SHA256"
 	}
 	return []byte(strings.Join([]string{
-		"KPanel federation",
+		"Dongger Panel federation",
 		FederationProtocolV2,
 		protocolName,
 		strings.ToUpper(method),

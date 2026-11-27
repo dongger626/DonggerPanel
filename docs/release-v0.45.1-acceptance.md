@@ -1,4 +1,4 @@
-# KPanel v0.45.1 发布验收
+# Dongger Panel v0.45.1 发布验收
 
 ## 发布范围
 
@@ -34,7 +34,7 @@
 - 升级前 Panel 为 `0.45.0/ok`，Agent active、重启 0，回滚镜像摘要为 `sha256:6676752672d069e0c5659b31d4960b4bf11415e5d4e8d624fce6397dc0020d1c`。
 - 一致性备份：`/root/kpanel-backups/v0.45.1-preupgrade-20260805T084522Z`，目录权限 0700、文件权限 0600。
   SQLite 在线备份 122,880 B，`integrity_check=ok`，SHA-256 为
-  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 KPanel 归档 20,809,916 B，
+  `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 Dongger Panel 归档 20,809,916 B，
   SHA-256 为 `dd111a1513c66904d6a999fd4775a529cfc96f7926505c6086b5894ea7abfa18`。
 - 使用 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update k app kpanel` 完成标准应用市场更新，实际拉取摘要与 Release OCI index 完全一致。
 - 升级后本机健康接口为 `0.45.1/ok`，Agent 日志确认版本 `0.45.1`；连续 8 次稳定采样全部通过，Panel healthy、重启 0、OOM=false，Agent active、重启 0。

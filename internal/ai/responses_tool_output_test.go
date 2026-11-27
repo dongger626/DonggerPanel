@@ -20,7 +20,7 @@ func (*responsesBatchClient) Models(context.Context, Provider, string) ([]Model,
 }
 
 func (c *responsesBatchClient) Stream(ctx context.Context, provider Provider, key string, request CompletionRequest, emit func(CompletionEvent) error) error {
-	if strings.HasPrefix(request.System, "你负责 KPanel 后台学习评估") {
+	if strings.HasPrefix(request.System, "你负责 Dongger Panel 后台学习评估") {
 		return emit(CompletionEvent{Delta: `{"decision":"skip"}`, Done: true})
 	}
 	if !c.started {

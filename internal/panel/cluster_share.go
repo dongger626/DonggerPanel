@@ -26,7 +26,7 @@ const (
 	clusterShareRateWindow   = time.Minute
 	clusterShareRateLimit    = 120
 	clusterShareRateKeys     = 2048
-	defaultClusterShareTitle = "我的 KPanel 集群"
+	defaultClusterShareTitle = "我的 Dongger Panel 集群"
 )
 
 type clusterShareSettingsInput struct {

@@ -368,7 +368,7 @@ onBeforeUnmount(() => {
     <header v-if="!windowed" v-show="!selectedFilm" class="cinema-heading">
       <img class="cinema-heading__icon" :src="'/desktop-icons/cinema-kpanel-flat-v3.webp'" alt="" />
       <div>
-        <span class="cinema-wordmark">KPanel <span>CINEMA</span></span>
+        <span class="cinema-wordmark">Dongger Panel <span>CINEMA</span></span>
         <h1>{{ i18n.t('route.cinema') }}</h1>
         <p>{{ phrase('自己的片库，随时开场') }}</p>
       </div>

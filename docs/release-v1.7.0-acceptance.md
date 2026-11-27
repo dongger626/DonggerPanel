@@ -1,4 +1,4 @@
-# KPanel v1.7.0 发布验收记录
+# Dongger Panel v1.7.0 发布验收记录
 
 v1.7.0 已公开并通过 arena-154 标准升级及部署后验收。最终产品提交与正式标签保持不变；本记录是独立收尾提交。
 
@@ -59,7 +59,7 @@ v1.7.0 已公开并通过 arena-154 标准升级及部署后验收。最终产�
 - `kjlion/kejilion-panel:1.7.0` 与 `latest` index均 `sha256:913bcac5f1344930f6fb87084d32453dea32b4932ef2c400c09a8ea3a96a266f`；linux/amd64 `sha256:a205eaf1d8c65df8c404bc206032cc8ed944c23f044066a9d63311d82cba1205`，linux/arm64 `sha256:f7de95f9e82d1dd37186cb2191dd890c091c3d2ea884b2c2ea7af16a2397297c`，两份unknown平台为attestation，不是缺架构。
 - 八个公开附件实际下载，与GitHub digest/size及SHA256SUMS核对。Agent amd64 `70c0b19d48ce73c08dceae8192b0e3ce14a6e61a6bbe6a5c62ae15ff0073f6e5`、arm64 `2a6ce0fc2fdfc50f368e4270068f88c607a9e1bc0cc0ba765fcef2f670c960a1`；node amd64 `62099f2d96bcde0cab3ecf84de3610393f4a0e080579e485f580b0db074dce5e`、arm64 `037ef0aa2119c8b308cb8472c8e185b3acc34cffa1d604762d6e69b9242353db`；deploy `dd903474972c1a40786c7f812cd87ac2e1408a70e33b27896e17dc63eafad879`。LICENSE/THIRD_PARTY_NOTICES与候选源码一致。
 - 从公开index显式拉取并核对revision/version/script pin/非root65532:65532，`image_e2e=pass`，08:21:44Z完成。证据 `v1.7.0-public-d0f2489-r1` 本地及远端同名根保留；不是本地L3镜像复用。
-- 正式部署仅arena-154。108/prod-108禁用全部KPanel操作，本次未连接、未核对、未备份、未部署。
+- 正式部署仅arena-154。108/prod-108禁用全部Dongger Panel操作，本次未连接、未核对、未备份、未部署。
 
 - 固定production run `v1.7.0-production` preflight07:26:14Z→07:26:16Z passed，线上1.6.1/ok/initialized、Panelrunning/healthy/restart0/OOMfalse、Agentactive/running/enabled/NeedDaemonReloadno、panel/ai.db quick_checkok；5项顶层证据hash通过。没有把未列入的snapshot称作顶层hash覆盖。
 - 生产脚本固定SHA `129d3fbab5cd4e5ad966a59f3e174c586a26578e5fac262d7af7bc9699012eaf`；正式备份与postdeploy使用同runID和独立目录，标准应用市场update唯一入口。公开验证脚本SHA `adcef86aba977e3960b380eadb29919286ff4b2bff662b54ac314af8beb19bd1`已完成语法/hash预检。

@@ -1,4 +1,4 @@
-# KPanel v1.4.0 发布验收记录
+# Dongger Panel v1.4.0 发布验收记录
 
 日期：2026-09-05
 
@@ -82,7 +82,7 @@
 
 ## 生产部署安全核对
 
-- 用户授权本轮候选上线；唯一正式目标 `arena-154`。本次未连接、备份、部署、升级或只读核对 `108`/`prod-108`；后者所有 KPanel 用途 disabled。
+- 用户授权本轮候选上线；唯一正式目标 `arena-154`。本次未连接、备份、部署、升级或只读核对 `108`/`prod-108`；后者所有 Dongger Panel 用途 disabled。
 - 固定入口 `scripts/run-production-evidence.mjs`，共同 run ID `v1.4.0-production-20260905`；本地 `C:/GitHub/_release-artifacts/v1.4.0-production-20260905-{preflight,backup,postdeploy}/remote-evidence`，远端 `/root/kpanel-release-evidence/v1.4.0-production-20260905/production-{preflight,backup,postdeploy}`。
 - preflight 07:17:00Z→01Z 首轮 passed/exit0，实际旧版1.3.1/revision650f、running/healthy、Agentactive、restart0/OOMfalse，SQLite panel/ai.db ok，根ai.db为既有empty。
 - backup 07:56:35Z→45Z 首轮 passed/exit0；已短暂停写并恢复旧服务，protected SHA 不变。备份 `/root/kpanel-backups/pre-v1.4.0-20260905T075635Z`，tar可读、旧镜像可load、SHA256SUMS全OK。备份清单 SHA256 `e7f0b2aed2a7969cdf57c1743542a2758000d9962bbea2c17ef929af271c61c2`，应用归档 `d5962195fd701353f54630c38ae6de61df74479dd68ec4053960517b441affba`，旧镜像归档 `17e8bda4cf35d630117105db8e108c16c44069434b8d92666c4c65d827cf9d19`。

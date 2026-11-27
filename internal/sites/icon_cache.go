@@ -658,7 +658,7 @@ func (c *IconCache) fetchBytes(
 		return nil, 0, err
 	}
 	request.Header.Set("Accept", accept)
-	request.Header.Set("User-Agent", "KPanel-Site-Icon/1")
+	request.Header.Set("User-Agent", "Dongger Panel-Site-Icon/1")
 	response, err := c.client.Do(request)
 	if err != nil {
 		return nil, 0, err

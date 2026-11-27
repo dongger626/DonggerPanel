@@ -1,5 +1,5 @@
-KPanel scene pack original source and generated artwork: MIT, as declared in manifest.json.
-Copyright (c) 2026 KPanel contributors.
+Dongger Panel scene pack original source and generated artwork: MIT, as declared in manifest.json.
+Copyright (c) 2026 Dongger Panel contributors.
 
 Bundled third-party notices
 ===========================

@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
       <header class="file-share-header">
         <a class="file-share-brand" href="https://github.com/kejilion/KPanel" target="_blank" rel="noopener noreferrer">
           <LogoMark compact class="file-share-brand__logo" />
-          <strong>KPanel</strong>
+          <strong>Dongger Panel</strong>
         </a>
         <button
           class="file-share-theme"
@@ -146,7 +146,7 @@ onBeforeUnmount(() => {
             <File v-else :size="26" />
           </span>
           <div>
-            <span class="file-share-kicker">KPanel 文件分享</span>
+            <span class="file-share-kicker">Dongger Panel 文件分享</span>
             <h1>{{ snapshot.name }}</h1>
             <p>
               <span>{{ formatBytes(snapshot.sizeBytes) }}</span>
@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
       </article>
 
       <footer class="file-share-footer">
-        <span>Powered by <strong>KPanel</strong></span>
+        <span>Powered by <strong>Dongger Panel</strong></span>
         <span>公开页不会显示服务器路径或管理信息</span>
       </footer>
     </div>

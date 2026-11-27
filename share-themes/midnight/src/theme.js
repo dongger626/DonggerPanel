@@ -157,7 +157,7 @@ function render() {
   $('list').className = `out is-${view}`
   $('list').replaceChildren(!hosts.length ? h('p', 'empty', `> ${labels.empty}`) : view === 'list' ? table(hosts, labels) : h('div', 'panes', hosts.map(host => pane(host, labels))))
   const date = new Date(data.generatedAt)
-  $('foot').textContent = `# ${labels.updated} ${Number.isFinite(date.getTime()) ? date.toLocaleString(locale) : '—'} · KPanel`
+  $('foot').textContent = `# ${labels.updated} ${Number.isFinite(date.getTime()) ? date.toLocaleString(locale) : '—'} · Dongger Panel`
 }
 
 addEventListener('message', event => {

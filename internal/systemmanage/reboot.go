@@ -93,7 +93,7 @@ func (m *Manager) scheduleReboot(
 
 func rebootScheduledMessage() string {
 	return fmt.Sprintf(
-		"重启任务已排队，服务器将在约 %d 秒后离线；正常情况下 KPanel 会随系统启动恢复",
+		"重启任务已排队，服务器将在约 %d 秒后离线；正常情况下 Dongger Panel 会随系统启动恢复",
 		int(rebootDelay/time.Second),
 	)
 }

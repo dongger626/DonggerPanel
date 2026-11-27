@@ -75,9 +75,9 @@ type RemoteError struct {
 
 func (e *RemoteError) Error() string {
 	if e.StatusCode > 0 {
-		return fmt.Sprintf("remote KPanel request failed with HTTP %d", e.StatusCode)
+		return fmt.Sprintf("remote Dongger Panel request failed with HTTP %d", e.StatusCode)
 	}
-	return "remote KPanel request failed"
+	return "remote Dongger Panel request failed"
 }
 
 func NewRemoteClient(config RemoteClientConfig) (*RemoteClient, error) {
@@ -370,7 +370,7 @@ func (c *RemoteClient) newRequest(
 		return nil, fmt.Errorf("create federation request: %w", err)
 	}
 	request.Header.Set("Accept", "application/json")
-	request.Header.Set("User-Agent", "KPanel federation/"+FederationProtocol)
+	request.Header.Set("User-Agent", "Dongger Panel federation/"+FederationProtocol)
 	return request, nil
 }
 

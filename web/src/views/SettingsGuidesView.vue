@@ -160,7 +160,7 @@ const quickSteps = computed(() => [
             </span>
             <span class="guide-video__content">
               <span class="guide-video__meta">
-                {{ platform }} · KPanel
+                {{ platform }} · Dongger Panel
               </span>
               <strong>{{ video.title }}</strong>
               <span class="guide-video__description">{{ i18n.t('tutorials.video.defaultDescription') }}</span>

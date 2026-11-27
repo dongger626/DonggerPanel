@@ -1,6 +1,6 @@
 # 磁盘与分区管理
 
-KPanel 的磁盘管理以宿主机真实块设备状态为准，不在数据库中维护第二份拓扑。
+Dongger Panel 的磁盘管理以宿主机真实块设备状态为准，不在数据库中维护第二份拓扑。
 页面借鉴 `kejilion.sh` 现有的挂载、卸载、格式化和文件系统检查能力，但不复用其交互菜单，
 也不允许浏览器传入 Shell、设备路径或任意命令。
 
@@ -64,7 +64,7 @@ Browser
 
 以下状态默认保护设备及其上层设备：
 
-- 承载 `/`、`/boot`、`/boot/efi`、`/home`、`/home/docker` 或 KPanel 状态目录；
+- 承载 `/`、`/boot`、`/boot/efi`、`/home`、`/home/docker` 或 Dongger Panel 状态目录；
 - 当前作为 Swap 使用；
 - 只读设备、存在 holder、包含子设备或处于受保护设备的上层；
 - 受保护路径下的挂载点；
@@ -75,8 +75,8 @@ Browser
 
 - UTF-8 编码后不超过 4096 字节，是规范 Linux 绝对路径且不与系统保护路径重叠；
 - 全路径组件不存在 symlink；
-- 已存在目标为空目录，或由 KPanel 在 root-owned、group/world 不可写的父目录下创建；
-- KPanel 创建的目录固定为 `root:root 0700`，只在精确 marker 匹配且卸载后为空时清理；
+- 已存在目标为空目录，或由 Dongger Panel 在 root-owned、group/world 不可写的父目录下创建；
+- Dongger Panel 创建的目录固定为 `root:root 0700`，只在精确 marker 匹配且卸载后为空时清理；
 - 目标没有被其他设备占用，同一设备没有挂载在其他目标。
 
 这些规则同时在 Web、Agent 和 Shell 协议中校验。Web 校验用于即时反馈，不能替代 worker 的最终复核。
@@ -100,7 +100,7 @@ UUID=<id> <escaped-target> <fstype> defaults,nofail 0 <pass>
 6. 再次校验并回读真实挂载状态；
 7. 失败时恢复原文件和实时挂载，回滚不完整则标记 `needs_attention` 并保留恢复路径。
 
-恢复快照严格限制在 KPanel 状态目录，最多保留 16 份。普通审计只记录动作、opaque ID/版本前缀、
+恢复快照严格限制在 Dongger Panel 状态目录，最多保留 16 份。普通审计只记录动作、opaque ID/版本前缀、
 布尔选项和挂载点摘要，不记录原始 mountpoint、设备路径、serial、label 或恢复路径。
 
 ## 后台任务
@@ -157,9 +157,9 @@ SELinux/AppArmor、异常断电及 XFS/NTFS/VFAT 真写仍属于发布前扩展�
 发布必须按以下顺序：
 
 1. 先合入并发布含 `KPANEL_DISK_MANAGEMENT_PROTOCOL_VERSION="1"` 的 `kejilion.sh`；
-2. 将 KPanel 的可信脚本固定到 `kejilion/sh@9fec61b50cc6ef798dfac1edf11c2ec60ca6b0d1`，LF SHA-256 为 `54ceb0e72c4c342382500fc35da636fa436c484a12c4766fb9c7f806a23ae8fa`；
-3. 再构建 KPanel 候选并执行 Linux/WSL、浏览器和回滚验收；
+2. 将 Dongger Panel 的可信脚本固定到 `kejilion/sh@9fec61b50cc6ef798dfac1edf11c2ec60ca6b0d1`，LF SHA-256 为 `54ceb0e72c4c342382500fc35da636fa436c484a12c4766fb9c7f806a23ae8fa`；
+3. 再构建 Dongger Panel 候选并执行 Linux/WSL、浏览器和回滚验收；
 4. 最后才允许部署。
 
-在脚本 pin 更新前，新 KPanel 只能展示磁盘状态，写 capability 必须保持关闭。回滚 KPanel 不会修改
+在脚本 pin 更新前，新 Dongger Panel 只能展示磁盘状态，写 capability 必须保持关闭。回滚 Dongger Panel 不会修改
 磁盘或 `fstab`；如动作已被接受，应先等待任务进入可信终态，再按任务提供的恢复路径处理未完成事务。

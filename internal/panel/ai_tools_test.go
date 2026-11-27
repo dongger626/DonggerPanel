@@ -343,7 +343,7 @@ func TestDockerMaintenanceToolSchemaIsPortableAndMatchesAgentContract(t *testing
 		t.Fatal("legacy type discriminator remains in schema")
 	}
 	action, _ := properties["action"].(map[string]any)
-	if action["type"] != "string" || !strings.Contains(action["description"].(string), "KPanel 只固定动作入口、鉴权、审批和审计") {
+	if action["type"] != "string" || !strings.Contains(action["description"].(string), "Dongger Panel 只固定动作入口、鉴权、审批和审计") {
 		t.Fatalf("maintenance action guidance=%#v", action)
 	}
 	values, _ := action["enum"].([]any)

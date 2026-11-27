@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.17 发布验收记录
+# Dongger Panel v1.26.0-rc.17 发布验收记录
 
 发布级别：L3。releaseChannel=preview，releaseTrain=1.26.0。批准 main 基线 c347edb19e0abf8decc94bde89754a088ef8cb7b；最终冻结候选 5116c36f73124141183dfc4b2d4b60834eec7d1c。[v1.26.0-rc.17](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.17)于2026-10-13T14:28:18Z（22:28:18+08:00）公开，draft=false、prerelease=true、非GitHub Latest。注释tag对象5bfc2b06f3180f5a36b3632ff665268dda2d2069指向最终冻结SHA。产物已发布，生产未部署。
 

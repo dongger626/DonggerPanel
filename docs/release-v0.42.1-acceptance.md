@@ -1,4 +1,4 @@
-# KPanel v0.42.1 发布验收
+# Dongger Panel v0.42.1 发布验收
 
 ## 发布范围
 
@@ -12,7 +12,7 @@ v0.42.1 修复 v0.42.0 双网络迁移后，宿主机 Nginx 通过 HTTPS 域名�
 
 ## 版本与制品
 
-- KPanel 提交：`89d8ec9d0d4735beaee89df2a831c548be87eeb3`
+- Dongger Panel 提交：`89d8ec9d0d4735beaee89df2a831c548be87eeb3`
 - 标签：`v0.42.1`
 - 应用市场提交：`61f645d`
 - GitHub Release：<https://github.com/kejilion/KPanel/releases/tag/v0.42.1>

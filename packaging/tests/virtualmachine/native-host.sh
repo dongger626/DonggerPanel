@@ -60,16 +60,16 @@ sudo install -m 755 "$proof/build/native-test" "$install_dir/native-test"
 sudo install -d -m 700 "$state_dir"
 docker pull "$image"
 docker network create "$network" > "$evidence/docker-network-id.txt"
-printf 'KPanel-native-%s\n' "$key" > "$proof/http/index.html"
+printf 'Dongger Panel-native-%s\n' "$key" > "$proof/http/index.html"
 docker run -d --name "$server" --network "$network" --read-only --cap-drop ALL --security-opt no-new-privileges --memory 64m --cpus .25 --pids-limit 32 -p 127.0.0.1::8080 -v "$proof/http:/web:ro" --entrypoint node "$image" --max-old-space-size=16 -e 'require("node:http").createServer((req,res)=>res.end(require("node:fs").readFileSync("/web/index.html"))).listen(8080,"0.0.0.0")'
 port=$(docker port "$server" 8080/tcp | sed -n 's/^127\.0\.0\.1://p')
 [[ "$port" =~ ^[0-9]{1,5}$ ]]
 url="http://127.0.0.1:$port/"
 # A bounded readiness window covers container startup without weakening the
 # exact response or later post-installation coexistence assertions.
-curl -fsS --max-time 2 --retry 10 --retry-all-errors --retry-delay 1 --retry-max-time 20 "$url" | grep -Fx "KPanel-native-$key"
+curl -fsS --max-time 2 --retry 10 --retry-all-errors --retry-delay 1 --retry-max-time 20 "$url" | grep -Fx "Dongger Panel-native-$key"
 peer_probe() {
-  docker run --rm --network "$network" --read-only --cap-drop ALL --security-opt no-new-privileges --memory 64m --cpus .25 --pids-limit 32 --entrypoint node "$image" --max-old-space-size=16 -e 'require("node:http").get(process.argv[1],r=>{if(r.statusCode!==200)process.exitCode=1;r.pipe(process.stdout)}).on("error",()=>process.exit(1)).setTimeout(10000,function(){this.destroy(Error("timeout"))})' "http://$server:8080/" | grep -Fx "KPanel-native-$key"
+  docker run --rm --network "$network" --read-only --cap-drop ALL --security-opt no-new-privileges --memory 64m --cpus .25 --pids-limit 32 --entrypoint node "$image" --max-old-space-size=16 -e 'require("node:http").get(process.argv[1],r=>{if(r.statusCode!==200)process.exitCode=1;r.pipe(process.stdout)}).on("error",()=>process.exit(1)).setTimeout(10000,function(){this.destroy(Error("timeout"))})' "http://$server:8080/" | grep -Fx "Dongger Panel-native-$key"
 }
 peer_probe
 sudo iptables -S FORWARD | head -n 1 > "$evidence/forward-before.txt"
@@ -80,7 +80,7 @@ docker network inspect "$network" bridge > "$evidence/docker-networks-before.jso
 sudo env GITHUB_ACTIONS=true RUNNER_ENVIRONMENT=github-hosted GITHUB_REPOSITORY=kejilion/KPanel "KPANEL_NATIVE_KEY=$key" "KPANEL_NATIVE_NAME=$name" "KPANEL_NATIVE_STATE=$state_dir" "KPANEL_NATIVE_AGENT=$install_dir/kejilion-agent" "KPANEL_NATIVE_EVIDENCE=$evidence" "KPANEL_NATIVE_DOCKER_URL=$url" "KPANEL_NATIVE_SHA=$EXPECTED_CANDIDATE" "$install_dir/native-test" -test.v -test.run '^(TestNativeReleaseQualification|TestWorkerRunsOnceAndPersistsFailure)$' -test.timeout 45m 2>&1 | tee "$evidence/native-tests.log"
 grep -F -- '--- PASS: TestWorkerRunsOnceAndPersistsFailure' "$evidence/native-tests.log"
 grep -F -- '--- PASS: TestNativeReleaseQualification' "$evidence/native-tests.log"
-curl -fsS --max-time 10 "$url" | grep -Fx "KPanel-native-$key"
+curl -fsS --max-time 10 "$url" | grep -Fx "Dongger Panel-native-$key"
 peer_probe
 sudo iptables -S FORWARD | head -n 1 > "$evidence/forward-after.txt"
 diff -u "$evidence/forward-before.txt" "$evidence/forward-after.txt"

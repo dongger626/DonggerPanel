@@ -40,7 +40,7 @@ const (
 
 var (
 	ErrInvalidPath     = errors.New("文件路径无效")
-	ErrProtected       = errors.New("KPanel 保护目录不可访问")
+	ErrProtected       = errors.New("Dongger Panel 保护目录不可访问")
 	ErrReadOnly        = errors.New("该系统目录仅支持查看，不能通过文件管理写入")
 	ErrSymlink         = errors.New("不允许通过符号链接访问文件")
 	ErrNotRegular      = errors.New("目标不是普通文件")

@@ -213,7 +213,7 @@ describe('DiagnosticsView report values', () => {
   const nativeCheck: DiagnosticCheck = {
     id: 'native-comprehensive',
     category: 'core',
-    name: 'KPanel 核心综合体检',
+    name: 'Dongger Panel 核心综合体检',
     description: '原生综合体检',
     sourceUrl: '',
     provider: 'native',

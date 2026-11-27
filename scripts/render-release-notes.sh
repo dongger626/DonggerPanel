@@ -106,7 +106,7 @@ grep -Eq '^- ' <<<"$section" || {
 
 mkdir -p "$(dirname "$output")"
 {
-  echo "## KPanel $version"
+  echo "## Dongger Panel $version"
   echo
   if [ "$channel" = preview ]; then
     echo "> [!WARNING]"
@@ -120,9 +120,9 @@ mkdir -p "$(dirname "$output")"
   echo "### 升级说明"
   echo
   if [ "$channel" = stable ]; then
-    echo "- 已安装用户可继续通过 kejilion.sh 应用市场或 KPanel 稳定版通道原位升级。"
+    echo "- 已安装用户可继续通过 kejilion.sh 应用市场或 Dongger Panel 稳定版通道原位升级。"
   else
-    echo "- 仅建议已主动加入预览版计划的用户，通过 KPanel 设置页检查并安装此版本。"
+    echo "- 仅建议已主动加入预览版计划的用户，通过 Dongger Panel 设置页检查并安装此版本。"
     echo "- 退出预览版计划只切回稳定版来源，不会自动降级已安装的预览版。"
   fi
   echo "- 默认兼容升级并保留现有数据目录、端口与反向代理配置；如上方列有升级注意事项，以该版本的明确说明为准。"

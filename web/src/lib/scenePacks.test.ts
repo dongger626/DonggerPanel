@@ -11,8 +11,8 @@ import {
 } from '@/lib/scenePacks'
 
 describe('scene pack helpers', () => {
-  it('marks only KPanel-authored packs as official', () => {
-    expect(isOfficialScenePack({ author: { name: 'KPanel' } })).toBe(true)
+  it('marks only Dongger Panel-authored packs as official', () => {
+    expect(isOfficialScenePack({ author: { name: 'Dongger Panel' } })).toBe(true)
     expect(isOfficialScenePack({ author: { name: 'kpanel-fan' } })).toBe(false)
     expect(isOfficialScenePack({})).toBe(false)
   })

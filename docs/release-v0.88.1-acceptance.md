@@ -1,4 +1,4 @@
-# KPanel v0.88.1 发布验收记录
+# Dongger Panel v0.88.1 发布验收记录
 
 日期：2026-08-20
 
@@ -76,7 +76,7 @@
 - 生产目标和部署授权范围：仅 `arena-154`；用户已授权 v0.88.1 正式升级。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 隔离容器和回环端口。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对：已确认。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对：已确认。
 - 部署前版本、健康、备份位置及摘要：v0.88.0，Panel healthy、Agent active、restart=0、OOM=false；备份 `/root/kpanel-backups/v0.88.1-preupgrade-arena154-20260820T082653Z`；状态包 SHA-256=`840fdd9fe2da4087c4d8086805fd2e2848739d0fb7d8d3c4170f9e4dc4898d7d`，旧镜像 tar SHA-256=`a6c1391ac918058ce1d3b9d382693fbc74301e8b54cca5e4a3fde77a85354074`。
 - 部署命令/入口：标准应用市场更新入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，进度到 `KPANEL_PROGRESS 100`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：Panel/Agent 0.88.1，Panel healthy、Agent active、双方 restart=0、OOM=false；三次健康/资源采样稳定，SQLite integrity=ok，近 15 分钟 panic/fatal/OOM/协议错误 marker 为 0，HTTPS 健康入口返回 v0.88.1。

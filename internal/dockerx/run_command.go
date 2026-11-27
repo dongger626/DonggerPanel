@@ -842,7 +842,7 @@ func sortedPortKeys(ports map[string]interface{}) []string {
 }
 
 // mountOption prefers the familiar `-v` form whenever it means the same
-// thing; KPanel's own create path stores pasted `-v` options as Mounts.
+// thing; Dongger Panel's own create path stores pasted `-v` options as Mounts.
 func mountOption(mount runHostMount) (string, string) {
 	plainBind := mount.Type == "bind" && (mount.BindOptions == nil ||
 		(mount.BindOptions.Propagation == "" && !mount.BindOptions.NonRecursive)) && mount.Consistency == ""

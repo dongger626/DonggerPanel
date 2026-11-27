@@ -1,4 +1,4 @@
-# KPanel v1.28.0 稳定版发布验收记录
+# Dongger Panel v1.28.0 稳定版发布验收记录
 
 日期：2026-10-30（Asia/Shanghai）
 
@@ -30,7 +30,7 @@
 
 ## 内置安全审查与审计范围
 
-- 本次使用 KPanel 自带发布门禁：精确候选 CI 和主线 CI 的代码、Go 调用路径、Node 依赖、源码/依赖/秘密/配置扫描及 kejilion.sh 生命周期检查全部成功。CI run 40911258883 和 40912272564 均绑定 6613318a78fa19135de691372cd94fbce0e70edf。
+- 本次使用 Dongger Panel 自带发布门禁：精确候选 CI 和主线 CI 的代码、Go 调用路径、Node 依赖、源码/依赖/秘密/配置扫描及 kejilion.sh 生命周期检查全部成功。CI run 40911258883 和 40912272564 均绑定 6613318a78fa19135de691372cd94fbce0e70edf。
 - 针对文件管理器边界的内置安全盲审覆盖 internal/filemanager 的管理器、归档、接收、传输、Linux 路径、权限、暂存、共享文件及 Office 源码；报告为“未发现可信的安全缺陷”，H0/M0/L0，confirmed=0、fixed=0、deferred=0。未审范围：其余辅助文件与测试、HTTP/RPC 鉴权调用链及前端。报告 SHA-256：7A7EF63607E8DD36970BBB34BD0A78678E017C12269229AA9F8DAF7882108CEA；本地证据位于 C:\GitHub\_release-evidence\kpanel-v128-stable-quality\security-v1.28.0-candidate-e6240307\review-report.txt。
 - 按上一稳定 tag v1.27.2 运行 node scripts/security-review-scope.mjs --base v1.27.2，输出 security_review=recorded groups=68 invalid_trailer=true：68 个变更包组均为 recorded，无 missing/stale；invalid_trailer 来自该历史范围中旧式或缺少 scope 的审查 trailer，不是本次 internal/filemanager 审查 trailer。该工具明确为 advisory；保留告警，不改写历史，也不把它解释为全仓独立审计通过。
 - 本候选 OCR 记录：OCR-Review 1.12.11，范围 ac65c30..5a951b1，8/8 可评审文件，free-form=0、H0/M0/L0、constrained-only=0。它只记录本次观察，不据此宣称 OCR 工具有效或退出。
@@ -42,7 +42,7 @@
 | 维度 | 状态 | 证据与边界 |
 | --- | --- | --- |
 | 业务正确性与双端互通 | 已验证 | 精确候选、主线 CI 与 L3 通过；发布后浏览器及升级旅程通过。未覆盖全部外部部署组合。 |
-| 网络入侵与供应链安全 | 已验证 | KPanel 内置扫描、范围审查、公开附件与双架构镜像身份核对通过；CF 审计及全仓独立盲审未执行。 |
+| 网络入侵与供应链安全 | 已验证 | Dongger Panel 内置扫描、范围审查、公开附件与双架构镜像身份核对通过；CF 审计及全仓独立盲审未执行。 |
 | 稳定性、失败恢复与兼容 | 已实现未实机验证 | 隔离容器重启、受控恢复和浏览器更新旅程通过；生产宿主机升级及回滚未实演。 |
 | 性能与资源预算 | 已实现未实机验证 | 发布门禁及有界流程通过；未做真实生产负载、低配主机和长时 soak 验收。 |
 | 用户体验与可访问性 | 已验证 | 公开浏览器报告通过；读屏、实体触控和所有原生缩放档位未专项验证。 |

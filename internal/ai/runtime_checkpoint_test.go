@@ -438,7 +438,7 @@ func TestRuntimeCheckpointTwoWorkersAndSteps(t *testing.T) {
 	var mu sync.Mutex
 	steps := map[string]int{}
 	client := checkpointClient{stream: func(ctx context.Context, req CompletionRequest, emit func(CompletionEvent) error) error {
-		if strings.Contains(req.System, "你负责 KPanel 后台学习") {
+		if strings.Contains(req.System, "你负责 Dongger Panel 后台学习") {
 			return emit(CompletionEvent{Delta: `{"decision":"skip"}`, Done: true})
 		}
 		key := req.Messages[0].Content

@@ -180,7 +180,7 @@ func TestInstallRejectsMismatchedNetworkProject(t *testing.T) {
 }
 
 func TestInstallRejectsInvalidComposeProject(t *testing.T) {
-	for _, project := range []string{"", "-panel", "KPanel", "panel;echo"} {
+	for _, project := range []string{"", "-panel", "Dongger Panel", "panel;echo"} {
 		s, f := fixture(t)
 		f.project = project
 		if err := s.prepareNetwork(context.Background()); err == nil || err.Error() != "browser_panel_unsupported" {

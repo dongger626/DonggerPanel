@@ -1,4 +1,4 @@
-# KPanel v0.95.2 发布验收记录
+# Dongger Panel v0.95.2 发布验收记录
 
 日期：2026-08-24
 
@@ -81,7 +81,7 @@
 - 源码/tag：`v0.95.1` / `4d0d8721e1d5c2c69b609f11213326ed40d4ad5f`。
 - 旧镜像：`sha256:c0f969319d68f5860dcc053d87f452ebf403282da046268a42e447665ca98bcb`。
 - 备份：`/root/kpanel-backups/pre-v0.95.2-20260824T041313Z`，已完成摘要、独立解包、JSON/SQLite/Compose、关键文件 `cmp` 与旧 OCI 加载验证。
-- 回滚步骤：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复 KPanel 目录、Compose、`.env`、apps 配置和 Agent unit；daemon-reload 后启动 Agent/Panel；复核 v0.95.1、digest、health、restart/OOM、JSON/SQLite 和公网入口。禁止只换镜像。
+- 回滚步骤：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复 Dongger Panel 目录、Compose、`.env`、apps 配置和 Agent unit；daemon-reload 后启动 Agent/Panel；复核 v0.95.1、digest、health、restart/OOM、JSON/SQLite 和公网入口。禁止只换镜像。
 - 未执行实际回滚；当前 v0.95.2 healthy/active。v0.95.0 和 v0.95.1 的历史备份与证据均保留。
 
 ## 交付节奏数据

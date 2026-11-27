@@ -188,7 +188,7 @@ function availability(action: DiskManagementAction): { enabled: boolean; reason:
 
 function confirmation(action: DiskManagementAction, device: DiskDevice): string {
   const identity = `${device.path} (${formatBytes(device.sizeBytes)})`
-  if (action === 'format') return `格式化 ${identity} 为 ${filesystem.value} 会永久清除其中的数据，且无法由 KPanel 回滚。确认继续吗？`
+  if (action === 'format') return `格式化 ${identity} 为 ${filesystem.value} 会永久清除其中的数据，且无法由 Dongger Panel 回滚。确认继续吗？`
   if (action === 'repair') return `自动修复 ${identity} 会写入文件系统元数据。请先确认已有可用备份，是否继续？`
   if (action === 'unmount') return removePersistence.value
     ? `卸载 ${selectedMountPath.value} 并移除对应的开机挂载配置，会中断正在使用该目录的服务。确认继续吗？`

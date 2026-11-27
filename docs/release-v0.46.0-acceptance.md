@@ -1,4 +1,4 @@
-# KPanel v0.46.0 发布验收
+# Dongger Panel v0.46.0 发布验收
 
 ## 发布范围
 
@@ -36,7 +36,7 @@
 ## 154 生产上线
 
 - 升级前 Panel 为 `0.45.2`，镜像摘要 `sha256:440585da65ce231fea54fed9739d5bba22ad478f9d046555ad74f0ce542a65a1`；容器 healthy、重启 0、OOM=false，Agent active、重启 0。
-- 升级前备份：`/root/kpanel-backups/v0.46.0-preupgrade-20260805T133800Z`，目录权限 0700。SQLite 在线备份 122,880 B，`integrity_check=ok`，SHA-256 为 `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 KPanel 归档 20,852,768 B，SHA-256 为 `7e85a013b5e004de6a4720e25453df328d3c19b278c53f5d6ec47c2bc2b86728`。
+- 升级前备份：`/root/kpanel-backups/v0.46.0-preupgrade-20260805T133800Z`，目录权限 0700。SQLite 在线备份 122,880 B，`integrity_check=ok`，SHA-256 为 `5b05d3bfb21d628de4ab2fcba415961099faaf686358dd969705e8db014e3220`；完整 Dongger Panel 归档 20,852,768 B，SHA-256 为 `7e85a013b5e004de6a4720e25453df328d3c19b278c53f5d6ec47c2bc2b86728`。
 - 使用 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update k app kpanel` 完成标准应用市场更新，实际拉取摘要与 Release OCI index 完全一致。
 - 升级后 Panel OCI 版本为 `0.46.0`、修订为 `cc39446`；Agent 日志确认版本 `0.46.0`。Panel healthy、重启 0、OOM=false，Agent active、重启 0。
 - 容器继续使用 `65532:65532`、只读根文件系统、256 MiB 和 128 PID 限制；`ai.db integrity_check=ok`，数据库与密钥权限保持 0600。

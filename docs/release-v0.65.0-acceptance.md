@@ -1,4 +1,4 @@
-# KPanel v0.65.0 发布验收记录
+# Dongger Panel v0.65.0 发布验收记录
 
 日期：2026-08-12
 
@@ -35,7 +35,7 @@
 ## 脚本与应用市场契约
 
 - 镜像继续固定 `kejilion.sh` 提交 `28f89c1b34df4b25e6ef9b144c328fdea75dbac9`，公开 raw SHA-256 为 `0583f7cd5be1f0bb6ec48d92e2cf224bfabfafada5788658bda4414ba9561229`；L3、公开镜像 E2E 和生产安装文件均再次核对通过。
-- KPanel 与 `kejilion/apps` 的 `kpanel.conf` blob 均为 `7289637a42b8209b301772139ff4404d08e196d2`；apps 主线保持 `e7f90760b71cfe69c8b05af40131ab89739eb0f5`，本轮没有 apps 变更或空提交。
+- Dongger Panel 与 `kejilion/apps` 的 `kpanel.conf` blob 均为 `7289637a42b8209b301772139ff4404d08e196d2`；apps 主线保持 `e7f90760b71cfe69c8b05af40131ab89739eb0f5`，本轮没有 apps 变更或空提交。
 
 ## 浏览器与用户体验验收
 

@@ -16,7 +16,7 @@
 
 `internal/hostbackup` 为 Panel 和脚本共用适配器。脚本提供 `k backup-center`，以及应用市场、LDNMP 和 Docker 备份菜单中的“通用加密备份与恢复”入口。依赖匹配的本机 Agent 服务；不下载或执行备份包中的脚本。根/CN 入口同步，旧 `.tar.gz` 及旧 Docker 目录格式继续由原菜单还原；通用中心仅接受 `.kpb`。
 
-脚本相关三类支持同一格式的双向互通：脚本导出 → KPanel 导入，KPanel 导出 → 脚本导入。脚本可以选择其中部分分类；含面板数据的包在脚本端仅处理主机类别，面板身份仍通过 KPanel 恢复。所有调用共享 Agent 的任务锁和恢复日志。
+脚本相关三类支持同一格式的双向互通：脚本导出 → Dongger Panel 导入，Dongger Panel 导出 → 脚本导入。脚本可以选择其中部分分类；含面板数据的包在脚本端仅处理主机类别，面板身份仍通过 Dongger Panel 恢复。所有调用共享 Agent 的任务锁和恢复日志。
 
 ## 格式、存储与容量
 
@@ -42,7 +42,7 @@ Panel 存储于 `<DataDir>/backups/<id>`，Agent 为 `<StateDir>/backup-center/<
 
 连接支持私网 NAS/MinIO，阻止回环、链路本地、云元数据及 IPv6 转换地址，每次拨号复核 DNS，禁止重定向转发凭据，TLS 最低 1.2 且校验证书；推荐 HTTPS。列表/测试受并发数与 30 秒上限限制，传输沿用 2 小时任务上限，流式读写空闲超时 1 分钟。无需安装 rclone，不扩展系统计划任务或其他模块。
 
-协议参考：[MinIO Go SDK](https://github.com/minio/minio-go)、[AWS multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)、[R2 S3 compatibility](https://developers.cloudflare.com/r2/api/s3/api/)、[WebDAV RFC 4918](https://www.rfc-editor.org/rfc/rfc4918)。设计借鉴 1Panel 的存储连接后选择备份目标，KPanel 的配置入口仍集中在本区块。
+协议参考：[MinIO Go SDK](https://github.com/minio/minio-go)、[AWS multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)、[R2 S3 compatibility](https://developers.cloudflare.com/r2/api/s3/api/)、[WebDAV RFC 4918](https://www.rfc-editor.org/rfc/rfc4918)。设计借鉴 1Panel 的存储连接后选择备份目标，Dongger Panel 的配置入口仍集中在本区块。
 
 ## OneDrive
 
@@ -121,7 +121,7 @@ Agent Unix Socket 协议为 `/v1/backups`，格式/协议均为 1。固定动作
 
 ## 验证与发布联动
 
-变更集 `backup-center-20260912`，`scriptLinkageState=coupled`。Panel 基线 `8918a5e56483913b9d9e420cb472c6a0f59626e8`；配套脚本已先发布到 `kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 为 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`，CN 脚本 SHA-256 为 `62b01b5b1ba736fafe1a167733d64eaba64606f9c5a4b77fa1cd136adbf843cc`。KPanel 发布候选必须固定这一组合来源并完成 L3。
+变更集 `backup-center-20260912`，`scriptLinkageState=coupled`。Panel 基线 `8918a5e56483913b9d9e420cb472c6a0f59626e8`；配套脚本已先发布到 `kejilion/sh@5ef0201947dfb80062d54a0ba8f11009e871cf04`，根脚本 SHA-256 为 `4adc9e163a6db31a180e3a16489dcec3bf1f1a48a95253a140aaf11100eae048`，CN 脚本 SHA-256 为 `62b01b5b1ba736fafe1a167733d64eaba64606f9c5a4b77fa1cd136adbf843cc`。Dongger Panel 发布候选必须固定这一组合来源并完成 L3。
 
 验收包括加密包损坏/错误密码、选择依赖、原生匿名卷与 namespace/links、数据权限、离线账户事务、重启回滚与提交后清理、既有 AI 会话保留、前端失败预览阻断、根/CN 同步与 shell smoke，以及对应等级门禁和隔离 Docker 往返。测试结果以当前候选运行证据为准；本契约不宣称未运行的平台或发布验收已经完成。
 

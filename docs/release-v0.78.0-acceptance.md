@@ -1,4 +1,4 @@
-# KPanel v0.78.0 发布追溯记录
+# Dongger Panel v0.78.0 发布追溯记录
 
 日期：2026-08-16（Asia/Shanghai）
 

@@ -109,7 +109,7 @@ func run(arguments []string) error {
 	socketGroup := flags.String("socket-group", env("KEJILION_AGENT_SOCKET_GROUP", "kejilion-panel"), "Unix Socket group")
 	tokenFile := flags.String("token-file", env("KEJILION_AGENT_TOKEN_FILE", "/etc/kejilion-panel/agent.token"), "shared token file")
 	stateDir := flags.String("state-dir", env("KEJILION_AGENT_STATE_DIR", "/var/lib/kejilion-panel"), "Agent state directory")
-	selfUpdateStateDir := flags.String("self-update-state-dir", env("KEJILION_AGENT_SELF_UPDATE_STATE_DIR", ""), "managed KPanel automatic update state directory")
+	selfUpdateStateDir := flags.String("self-update-state-dir", env("KEJILION_AGENT_SELF_UPDATE_STATE_DIR", ""), "managed Dongger Panel automatic update state directory")
 	webRoot := flags.String("web-root", env("KEJILION_WEB_ROOT", "/home/web"), "Kejilion Web root")
 	dockerSocket := flags.String("docker-socket", env("KEJILION_DOCKER_SOCKET", "/var/run/docker.sock"), "Docker Engine Unix Socket")
 	dockerPIDFile := flags.String("docker-pid-file", env("KEJILION_DOCKER_PID_FILE", "/run/docker.pid"), "Docker daemon PID file")
@@ -311,7 +311,7 @@ func runSelfUpdate(arguments []string) error {
 	stateDir := flags.String("state-dir", "/home/docker/kpanel/update-state", "automatic update state directory")
 	scriptPath := flags.String("script", "/usr/local/bin/k", "shared host kejilion.sh path")
 	agentPath := flags.String("agent", "/home/docker/kpanel/bin/kejilion-agent", "installed Agent path")
-	lifecyclePath := flags.String("lifecycle", "/home/docker/kpanel/bin/kpanel.conf", "pinned KPanel lifecycle config path")
+	lifecyclePath := flags.String("lifecycle", "/home/docker/kpanel/bin/kpanel.conf", "pinned Dongger Panel lifecycle config path")
 	if err := flags.Parse(arguments); err != nil {
 		return err
 	}

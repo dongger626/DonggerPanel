@@ -1323,7 +1323,7 @@ func writeFileProblem(w http.ResponseWriter, requestID string, err error) {
 		errors.Is(err, filemanager.ErrInvalidEncoding):
 		status, code, title = http.StatusBadRequest, "file_request_invalid", "文件请求无效"
 	case errors.Is(err, filemanager.ErrProtected):
-		status, code, title = http.StatusForbidden, "file_path_protected", "KPanel 保护目录不可访问"
+		status, code, title = http.StatusForbidden, "file_path_protected", "Dongger Panel 保护目录不可访问"
 	case errors.Is(err, filemanager.ErrReadOnly):
 		status, code, title = http.StatusForbidden, "file_path_read_only", "系统虚拟目录仅支持查看"
 	case errors.Is(err, filemanager.ErrSymlink):

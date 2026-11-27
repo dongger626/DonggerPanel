@@ -1,4 +1,4 @@
-# KPanel v0.95.0 发布验收记录
+# Dongger Panel v0.95.0 发布验收记录
 
 日期：2026-08-24
 
@@ -10,7 +10,7 @@
 
 ## 发布画像
 
-- 业务域：桌面工作区、窗口标题栏和任务栏的 KPanel 原生图标体系。
+- 业务域：桌面工作区、窗口标题栏和任务栏的 Dongger Panel 原生图标体系。
 - 变更面：Web 静态资源、展示映射和降级逻辑；不改 API、数据、端口、Compose、Agent 权限、`kejilion.sh` 或应用市场契约。
 - 受影响用户旅程：经典桌面打开系统应用、切换窗口、查看任务栏，以及文件/目录快捷方式的桌面识别。
 - 未变化契约：后端协议、持久数据、安装更新、镜像运行参数和宿主机权限均未变化。
@@ -77,11 +77,11 @@
 - 生产目标和部署授权范围：仅 `arena-154`，执行停写备份、标准应用市场更新和最小健康/数据/资源核对。
 - 验证/灰度环境：`arena-154`，来源为 `environment-policy.json` 的 candidate-validation 和 production-safety-check。
 - 正式部署环境：`arena-154`，来源为 production-deploy。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：v0.94.2，Panel healthy、Agent active、restart=0、OOM=false；备份 `/root/kpanel-backups/pre-v0.95.0-20260823T172850Z`，`SHA256SUMS` SHA-256=`522487f0113d9668d89b819757a0deaddcc58914d7fb581c8da6f478e88090b2`。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`，标准入口一次成功；更新日志 SHA-256=`78918bd858b428727f5037a3adca4e18d8b786bbc730325a603e94104c8b1ec9`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：Panel/Agent 0.95.0，healthy/active、restart=0、OOM=false；日志无 panic/fatal/OOM；`.env`、`panel-state.json` 和 apps 配置逐字节不变；21 个 JSON、1 个非空 SQLite 生产检查通过；公网 health 为 0.95.0，12 个图标资产均 HTTP 200。
-- 生产已执行写操作：停写一致性备份、旧版原位恢复核验、标准 KPanel 更新和服务重建；没有修改用户文件或业务设置。
+- 生产已执行写操作：停写一致性备份、旧版原位恢复核验、标准 Dongger Panel 更新和服务重建；没有修改用户文件或业务设置。
 - 仅在隔离真机执行、未在生产执行的场景：桌面图标交互、主题、手机视口和窗口/任务栏视觉验收在精确候选执行；生产只做静态资产、版本、健康、数据、日志和资源核对。
 
 ## 回滚
@@ -89,7 +89,7 @@
 - 源码/tag：`v0.94.2` / `00ffb9fb50d055c75bc7dfc5df7f72ccf3bddde0`。
 - 镜像 digest：`sha256:548ed3c20a685298d71da62d4db8a63cf07bdf8e4f0b090d7448e280722d2149`。
 - 数据/配置备份：`/root/kpanel-backups/pre-v0.95.0-20260823T172850Z`，含完整 `/home/docker/kpanel`、Compose、`.env`、Agent unit/二进制/脚本、数据、apps 配置和旧 OCI；独立解包、SQLite/JSON/Compose、关键文件 `cmp` 和 `docker load` 均通过。
-- 回滚步骤和回滚后复核：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复完整 KPanel 目录、apps 配置和 Agent unit；`systemctl daemon-reload`；启动 Agent/Panel；复核 v0.94.2、digest、health、restart/OOM、Compose、SQLite/JSON 和公网入口。禁止只换镜像。
+- 回滚步骤和回滚后复核：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复完整 Dongger Panel 目录、apps 配置和 Agent unit；`systemctl daemon-reload`；启动 Agent/Panel；复核 v0.94.2、digest、health、restart/OOM、Compose、SQLite/JSON 和公网入口。禁止只换镜像。
 - 回滚后生产实际版本与健康状态：未执行回滚；当前 v0.95.0 healthy/active。
 - GitHub Latest、Docker `latest` 与标准更新入口实际指向：v0.95.0 / `sha256:c9f9ec7588e6760065614f9aa436273f4b2764dae1a1e465e2acb3ebcaacf0ad`。
 - 公共默认更新通道决策：不适用；本版验收通过并保持 v0.95.0。

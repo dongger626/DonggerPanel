@@ -34,7 +34,7 @@ const (
 // in transit could turn an authorized read into a write.
 func fileRelayV1Canonical(controllerID, targetID, timestamp, nonce string, input LightFileRequest, bodyDigest string) string {
 	return strings.Join([]string{
-		"KPanel federation file relay v1",
+		"Dongger Panel federation file relay v1",
 		http.MethodPost, FileRelayV1Path, controllerID, targetID, timestamp, nonce,
 		strings.ToUpper(input.Method), input.Path, input.RawQuery,
 		strconv.FormatInt(input.BodyLength, 10), bodyDigest,

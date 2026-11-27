@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.7 发布验收记录
+# Dongger Panel v1.25.0-rc.7 发布验收记录
 
 日期：2026-10-06
 
@@ -50,10 +50,10 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本）。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：`remove-windows-node-rc7-20261006`（仅供本仓库追踪；没有跨仓库发布）。
-- KPanel 实际内置脚本基线 commit / SHA-256：`c3a8bd895f8878d9e4ced7592c91a20c974472a5` / `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`c3a8bd895f8878d9e4ced7592c91a20c974472a5` / `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
 - 脚本候选 commit / SHA-256：不适用；候选与基线相同。
-- 状态判定依据与兼容性证据：Windows 节点接入由 KPanel 自身 Release 附件提供，不依赖 `kejilion/sh`；Linux 轻节点脚本协议未变，Dockerfile 与 Compose 未改。
-- 本版发布决定：脚本不在范围；沿用已发布固定基线后发布 KPanel RC7。
+- 状态判定依据与兼容性证据：Windows 节点接入由 Dongger Panel 自身 Release 附件提供，不依赖 `kejilion/sh`；Linux 轻节点脚本协议未变，Dockerfile 与 Compose 未改。
+- 本版发布决定：脚本不在范围；沿用已发布固定基线后发布 Dongger Panel RC7。
 - 阻断或移除的依赖范围（无则写“不适用”）：移除 Windows 节点构建/安装链路依赖与 IronRDP；其他范围不适用。
 
 ## 多维质量结论

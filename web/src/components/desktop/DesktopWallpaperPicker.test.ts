@@ -102,7 +102,7 @@ describe('DesktopWallpaperPicker uploaded wallpapers', () => {
     await settle()
 
     const modern = wrapper.get('.desktop-shell-style-options [role="radio"][aria-checked="true"]')
-    expect(modern.text()).toContain('KPanel 原生')
+    expect(modern.text()).toContain('Dongger Panel 原生')
 
     await wrapper.get('.desktop-shell-style-options [role="radio"][aria-checked="false"]').trigger('click')
     expect(useDesktopShellStyle().preference.value).toBe('xp')
@@ -119,7 +119,7 @@ describe('DesktopWallpaperPicker uploaded wallpapers', () => {
     await wrapper.get('.desktop-shell-style-options [role="radio"][aria-checked="false"]').trigger('click')
     expect(useDesktopShellStyle().preference.value).toBe('modern')
     expect(window.localStorage.getItem(DESKTOP_WALLPAPER_KEY)).toBe('classic')
-    expect(wrapper.find('.desktop-shell-style-options [aria-checked="true"]').text()).toContain('KPanel 原生')
+    expect(wrapper.find('.desktop-shell-style-options [aria-checked="true"]').text()).toContain('Dongger Panel 原生')
 
     wrapper.unmount()
   })

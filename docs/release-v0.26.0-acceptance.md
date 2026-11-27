@@ -1,12 +1,12 @@
-# KPanel v0.26.0 验收记录
+# Dongger Panel v0.26.0 验收记录
 
 ## 交付范围
 
-- KPanel 交互式终端自动识别 `http://` 和 `https://` URL，点击后使用隔离的新浏览器标签页打开。
+- Dongger Panel 交互式终端自动识别 `http://` 和 `https://` URL，点击后使用隔离的新浏览器标签页打开。
 - 交互式终端增加外接预输入栏：用户可先完整输入或粘贴内容，再按 `Enter` 整行发送；原实时终端输入继续保留。
 - 修复应用停止或状态刷新后详情弹窗不可见、页面滚动仍被锁定的问题。
 - 修复 Release 重跑无法复用草稿版本的问题，并为 Docker Hub 摘要读取及 `latest` 提升增加有限重试。
-- KPanel 继续固定使用
+- Dongger Panel 继续固定使用
   `kejilion/sh@f031d1206224de3743845d2fc81c4801ecda32f4`，脚本 SHA-256 为
   `278526cee183cdc826c25e113a399fcac72484f8f2af2fd17a8f75a1cd6a40c1`。
 
@@ -58,6 +58,6 @@
 - 镜像回滚点：
   `docker.io/kjlion/kejilion-panel@sha256:303ba7e5820194c9f15d7b9fcb4fc7309d7c5e46e6f425155dc0f7fc2e175e49`。
 - 本版本没有数据库格式迁移，也没有更新 `kejilion.sh`；回滚
-  KPanel/Agent 不会删除网站、数据库、应用容器、域名配置或环境备份。
+  Dongger Panel/Agent 不会删除网站、数据库、应用容器、域名配置或环境备份。
 - 发布镜像已上线到 Docker Hub，但不会主动替换用户主机。用户从
-  `kejilion.sh` 应用市场更新 KPanel 时仍执行原位升级和失败回滚。
+  `kejilion.sh` 应用市场更新 Dongger Panel 时仍执行原位升级和失败回滚。

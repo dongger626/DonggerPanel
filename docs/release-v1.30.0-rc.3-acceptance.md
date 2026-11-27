@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.3 发布验收
+# Dongger Panel v1.30.0-rc.3 发布验收
 
 日期：2026-11-05；发布级别：L3；`releaseChannel=preview`；`releaseTrain=1.30.0`。
 
@@ -43,6 +43,6 @@
 [
   {"fingerprint":"candidate-ci/business-review/stale-baseline","position":"before-production-write","count":1,"impact":"候选业务复核超出 50 提交窗口，CI 在测试前拦截。","recoveryEvidence":"41984649247 后更新复核并由 41984945033 通过。","permanentAction":"发布负责人按现有 50 提交门禁检查并更新事实基线。","historicalReleases":[]},
   {"fingerprint":"preview-dispatch/automation-check/candidate-only-mock","position":"before-production-write","count":1,"impact":"候选含尚未进入主线的 mock 脚本，发布输入检查拒绝。","recoveryEvidence":"41986032850；脚本候选 3ff84f62 的 CI 和主线 CI 通过后合入候选。","permanentAction":"发布负责人在冻结前比较受信自动化路径并先行资格化；下次发布复核，不修改现有门禁。","historicalReleases":[]},
-  {"fingerprint":"release-source/music-shuffle/test-timeout","position":"before-production-write","count":1,"impact":"220 首随机循环测试在并发源码检查中耗时 5.217 秒，超过 5 秒默认时限，rc.2 未公开。","recoveryEvidence":"41988787529 原失败；rc.3 41996328243 的源码和完整发布验证通过。","permanentAction":"该测试保留全部断言并限定 15 秒；KPanel 维护者在下一次稳定版前复核并发耗时，若再次超时定位性能原因。","historicalReleases":[]}
+  {"fingerprint":"release-source/music-shuffle/test-timeout","position":"before-production-write","count":1,"impact":"220 首随机循环测试在并发源码检查中耗时 5.217 秒，超过 5 秒默认时限，rc.2 未公开。","recoveryEvidence":"41988787529 原失败；rc.3 41996328243 的源码和完整发布验证通过。","permanentAction":"该测试保留全部断言并限定 15 秒；Dongger Panel 维护者在下一次稳定版前复核并发耗时，若再次超时定位性能原因。","historicalReleases":[]}
 ]
 <!-- kpanel-release-process-incidents:end -->

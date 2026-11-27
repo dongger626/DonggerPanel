@@ -1,4 +1,4 @@
-# KPanel v0.96.0 发布验收记录
+# Dongger Panel v0.96.0 发布验收记录
 
 日期：2026-08-24
 
@@ -33,7 +33,7 @@
 | 稳定性与兼容 | 已验证 | canonical L3、候选/main/Tag CI、公开 OCI E2E、停写备份、标准更新和生产核验全绿 | 目标依赖 systemd/journal；非 systemd 主机按能力边界返回不可用 |
 | 性能与资源 | 已验证 | 生产 3 次采样 CPU 0.02%、内存 72.61 MiB/256 MiB、7 PIDs，restart=0、OOM=false | 未做长 soak；功能按需读取且刷新显式开启 |
 | 用户体验与可访问性 | 已验证 | 真实浏览器桌面及 390×844，切换来源/级别、搜索和刷新均正常；手机 document clientWidth=scrollWidth=390，console error=0 | 125%/200% 缩放未单独截图 |
-| 数据与配置 | 已验证 | 升级前后配置摘要一致；21 个 JSON、1 个 SQLite 完整；无 schema 或应用市场契约变化 | KPanel 备份不包含宿主机完整日志归档 |
+| 数据与配置 | 已验证 | 升级前后配置摘要一致；21 个 JSON、1 个 SQLite 完整；无 schema 或应用市场契约变化 | Dongger Panel 备份不包含宿主机完整日志归档 |
 
 ## 自动门禁
 
@@ -76,8 +76,8 @@
 - 源码/tag：`v0.95.2` / `19c59eaa4a140e2c538f2b86f92c99cfad64defb`。
 - 旧镜像：`sha256:cfe375d0390d73ddac7f0bab82ba7da48dbf919a9c886c2609cbae1f3fc3b89f`。
 - 备份：`/root/kpanel-backups/pre-v0.96.0-20260824T052328Z`，已完成摘要、独立恢复、JSON/SQLite/Compose、关键文件 `cmp` 与旧 OCI 加载验证。
-- 回滚步骤：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复 KPanel 目录、Compose、`.env`、apps 配置和 Agent 文件；daemon-reload 后启动 Agent/Panel；复核 v0.95.2、digest、health、restart/OOM、数据和公网入口。禁止只换镜像。
-- 未执行生产实际回滚；发布前已恢复旧版并验证备份可执行，当前 v0.96.0 healthy/active。journal vacuum 不在生产验收中执行；历史日志若由管理员主动清理，不随 KPanel 回滚恢复。
+- 回滚步骤：停写；校验 `SHA256SUMS`；加载旧 OCI；成套恢复 Dongger Panel 目录、Compose、`.env`、apps 配置和 Agent 文件；daemon-reload 后启动 Agent/Panel；复核 v0.95.2、digest、health、restart/OOM、数据和公网入口。禁止只换镜像。
+- 未执行生产实际回滚；发布前已恢复旧版并验证备份可执行，当前 v0.96.0 healthy/active。journal vacuum 不在生产验收中执行；历史日志若由管理员主动清理，不随 Dongger Panel 回滚恢复。
 
 ## 交付节奏数据
 

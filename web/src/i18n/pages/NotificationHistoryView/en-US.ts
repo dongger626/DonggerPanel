@@ -21,8 +21,8 @@ export default [
   ['来源', 'Source'],
   ['方式', 'Method'],
   [
-    "本机与集群事件默认保存在当前 KPanel，外部推送可选。",
-    "Local and cluster events are saved on this KPanel by default. External delivery is optional."
+    "本机与集群事件默认保存在当前 Dongger Panel，外部推送可选。",
+    "Local and cluster events are saved on this Dongger Panel by default. External delivery is optional."
   ],
   [
     "搜索记录",
@@ -201,7 +201,7 @@ export default [
     "Invalid filters. Shorten the search or adjust the filters and retry."
   ],
   [
-    "通知记录暂时不可用，请重试或检查 KPanel 数据目录。",
-    "Notification history is unavailable. Retry or check the KPanel data directory."
+    "通知记录暂时不可用，请重试或检查 Dongger Panel 数据目录。",
+    "Notification history is unavailable. Retry or check the Dongger Panel data directory."
   ]
 ] as const satisfies PhraseCatalog

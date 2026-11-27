@@ -575,7 +575,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="page terminal-page" :data-locale="locale">
-    <PageHeader title="多主机终端" description="通过集群加密通道连接本机、已授权 KPanel 节点和轻量节点，无需开放额外 SSH 或公网端口。" />
+    <PageHeader title="多主机终端" description="通过集群加密通道连接本机、已授权 Dongger Panel 节点和轻量节点，无需开放额外 SSH 或公网端口。" />
 
     <div v-if="errorMessage" class="terminal-alert" role="alert">
       {{ errorMessage }}

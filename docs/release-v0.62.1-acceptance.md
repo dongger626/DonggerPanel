@@ -1,4 +1,4 @@
-# KPanel v0.62.1 发布验收记录
+# Dongger Panel v0.62.1 发布验收记录
 
 日期：2026-08-11
 
@@ -20,7 +20,7 @@
 ## 精确提交与 v0.62.0 处置
 
 - `e9c3078`：发布 `kejilion.sh` SSH 防御 manager protocol v1。
-- `563735a`：迁入最新主线的 KPanel SSH 防御业务实现。
+- `563735a`：迁入最新主线的 Dongger Panel SSH 防御业务实现。
 - `1ec2769`：准备 `0.62.0` 元数据。
 - `v0.62.0` Release 在运行时镜像契约门禁被拦截：工作流仍核对旧脚本提交和摘要。该标签保持不可变；未公开 GitHub Release、未推送 `0.62.0` 正式镜像、未进入生产。
 - `69c2253`：将 Release 镜像契约同步到新脚本提交/摘要，并准备下一可用补丁 `0.62.1`。业务代码相对 `1ec2769` 未变化。
@@ -28,7 +28,7 @@
 ## 自动门禁
 
 - `kejilion.sh`：新 manager smoke、旧 F2B smoke、根/CN 同步、双脚本 `bash -n` 通过；GitHub raw 内容 SHA-256 与固定摘要一致，marker 唯一。
-- KPanel：Go 全量测试、相关包 race、`go vet ./...`、Linux amd64/arm64 Agent/Panel 构建通过；Web 84 个测试文件、603 项测试通过；i18n 2048 条、typecheck、生产构建、ecosystem/version/diff 检查通过。
+- Dongger Panel：Go 全量测试、相关包 race、`go vet ./...`、Linux amd64/arm64 Agent/Panel 构建通过；Web 84 个测试文件、603 项测试通过；i18n 2048 条、typecheck、生产构建、ecosystem/version/diff 检查通过。
 - 精确 `69c2253` 在 154 发布环境重新执行 `VERIFY_BASE_REF=origin/main make verify-release`，覆盖全量测试、race/vet、双架构构建、源码与镜像安全扫描、受限运行时镜像契约和应用配置生命周期；Trivy 可达漏洞与密钥均为 0，输出 `L3 release verification completed` 与 `app_conf_lifecycle=pass`。
 - L3 证据：`/root/kpanel-release-evidence/v0.62.1/l3-verify-release.log`，SHA-256 `a042230364ce1a2f38ff057afcb5b6fd4779a3e56e5fa59ca9e38b96f4ae8f1d`。
 - 候选 CI：`31461477373`，成功；主线 CI：`31461782998`，成功；Release：`31461958343`，成功。
@@ -55,7 +55,7 @@
 
 - 生产升级前为 `v0.61.4`，Panel running/healthy/0 重启，Agent active，Fail2Ban inactive。
 - 停写一致性备份：`/root/kpanel-backups/v0.62.1-preupgrade-20260811T054041Z`；归档 `/root/kpanel-backups/v0.62.1-preupgrade-20260811T054041Z.tar.gz`，SHA-256 `d75716289c60affe8d36a4e5df6fab80c7cf624b54d96ade44018a04add78bc9`。原目录与独立解包副本均通过逐文件清单校验。
-- 使用标准应用市场入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel` 升级，输出 `KPanel 更新完成 / Update Complete`。
+- 使用标准应用市场入口 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel` 升级，输出 `Dongger Panel 更新完成 / Update Complete`。
 - 升级后 Panel `0.62.1` running/healthy/0 重启，Agent `0.62.1` active/ok、协议 `v1alpha1`、`NeedDaemonReload=no`；源码修订、OCI index、脚本修订和脚本 SHA-256 与正式产物一致。
 - 生产只读 SSH 防御状态为 disabled/not running；Fail2Ban 在升级前后均为 inactive，配置文件清单未变化。未执行启停/卸载、档位切换、封禁/解封或可信地址写操作。
 - JSON 可解析、SQLite `integrity_check=ok`，身份密钥未变化，Panel/Agent 近端日志 panic/fatal 为 0。
@@ -68,7 +68,7 @@
 - 镜像：`sha256:c250a50cc338333b66a5925bd5f87358040b5e3a5ac7c3c38b138dab6b62d999`。
 - 先将 Compose 镜像恢复到上述不可变摘要，并从备份恢复 v0.61.4 Agent、`kejilion.sh`、systemd 单元和配置；执行 `systemctl daemon-reload` 后启动 Agent 与 Panel，复核版本、健康、重启数和数据完整性。
 - 只有数据或配置也需要回退时，才在停写后从已验证备份恢复 `data`、密钥和配置。
-- 回滚 KPanel/Agent 不会撤销管理员曾主动执行的 Fail2Ban 主机状态；本次生产没有此类写入，因此不存在额外 SSH 防御状态回退。
+- 回滚 Dongger Panel/Agent 不会撤销管理员曾主动执行的 Fail2Ban 主机状态；本次生产没有此类写入，因此不存在额外 SSH 防御状态回退。
 
 ## 交付节奏与遗留风险
 

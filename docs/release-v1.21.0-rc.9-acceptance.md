@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.9 发布验收记录
+# Dongger Panel v1.21.0-rc.9 发布验收记录
 
 日期：2026-09-22
 
@@ -49,7 +49,7 @@
 
 - `scriptLinkageState`：`not-required`（本轮未修改 `kejilion.sh` 或 `kpanel.conf`）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：L3 `managed_script_contract=pass`，脚本 revision/hash 与镜像契约一致；候选 diff 未触及受管脚本。
 - 本版发布决定：脚本不在范围。
@@ -94,7 +94,7 @@
 
 ## 发布产物与公开仓库复核
 
-- [KPanel v1.21.0-rc.9](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.9) 为非 draft、Pre-release、非 Latest；Release workflow #241 成功，GitHub Latest 仍为 `v1.20.0`。
+- [Dongger Panel v1.21.0-rc.9](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.9) 为非 draft、Pre-release、非 Latest；Release workflow #241 成功，GitHub Latest 仍为 `v1.20.0`。
 - 16 个附件均已上传且非空，其中 `SHA256SUMS` 本地下载摘要为 `87757c510c8c11be747235afa85d22b8f53fa9d0a040d0cc6227a03dca4e921c`，包含 11 个二进制/部署包条目。
 - Docker `1.21.0-rc.9` 与 `preview` OCI index 均为 `sha256:ebfc1e3a804032c38651b132fdb5adbf44dbc450714842221dae4bdf3686f676`；`linux/amd64` 为 `sha256:36196098ca51daeb3eb9447f355a7522bac5fdf78a170ea0b26e9f69e8a949a4`，`linux/arm64` 为 `sha256:67b996a7c8401d006f935703fced2c0c4f6957a0470cce5490ca99b6fc5fcec9`，另有两个 provenance/attestation manifests。
 - 稳定 Docker `latest` 保持 `sha256:a991b5d27d7d6519c694b6cbc88c037bbaa0fcef418a43b0ff94cb638dee575f`；GitHub Latest 仍为 `v1.20.0`。
@@ -111,7 +111,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境：仅 `local-wsl-dr` candidate-validation；`arena-154` 仅记录 SSH 超时，未写入。
 - 正式部署环境：不适用；本轮没有生产写操作。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用。
 - 部署命令/入口：不适用。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用。

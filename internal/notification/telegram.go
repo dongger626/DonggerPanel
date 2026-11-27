@@ -167,7 +167,7 @@ func (c *TelegramClient) call(ctx context.Context, token, method string, payload
 	}
 	request.Header.Set("Accept", "application/json")
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("User-Agent", "KPanel-Telegram-Notifications")
+	request.Header.Set("User-Agent", "Dongger Panel-Telegram-Notifications")
 	response, err := c.client.Do(request)
 	if err != nil {
 		return &Error{Code: "unavailable", Retryable: true, Cause: ErrTelegramUnavailable}

@@ -23,7 +23,7 @@ const (
 	panelAccessDomainCheckTimeout = 10 * time.Second
 	// The probe is public but only answers for a nonce this process is
 	// waiting on, so a match proves the domain reaches this very panel
-	// through normal Host validation, not merely some KPanel.
+	// through normal Host validation, not merely some Dongger Panel.
 	panelAccessProbePrefix = "/api/v1/panel-access/probe/"
 	panelAccessProbeTTL    = 30 * time.Second
 	panelAccessProbeLimit  = 16

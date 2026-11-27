@@ -1,8 +1,8 @@
-# KPanel 多智能体会话协作
+# Dongger Panel 多智能体会话协作
 
 ## 使用方式
 
-用户只需在 `KPanel · 协调中心` 描述目标。协调中心先通过 SSH fetch 盘点远端任务分支、worktree
+用户只需在 `Dongger Panel · 协调中心` 描述目标。协调中心先通过 SSH fetch 盘点远端任务分支、worktree
 和活跃任务，形成标准任务契约并确认 Definition of Ready，再按能力和冲突面选择 Codex、Claude 或
 其他智能体；结果返回后按 Definition of Done 和标准交付包统一验收。
 
@@ -20,10 +20,10 @@
 
 | 标题 | 职责 |
 | --- | --- |
-| `KPanel · 协调中心` | 接收需求、路由、跟踪、验收、汇总 |
-| `KPanel · <AI> · 分析 · <领域>` | 只读排查、设计和风险分析 |
-| `KPanel · <AI> · 开发 · <领域>` | 在明确文件范围内实现修改 |
-| `KPanel · <AI> · 验证 · <领域>` | 独立运行测试和复核结果 |
+| `Dongger Panel · 协调中心` | 接收需求、路由、跟踪、验收、汇总 |
+| `Dongger Panel · <AI> · 分析 · <领域>` | 只读排查、设计和风险分析 |
+| `Dongger Panel · <AI> · 开发 · <领域>` | 在明确文件范围内实现修改 |
+| `Dongger Panel · <AI> · 验证 · <领域>` | 独立运行测试和复核结果 |
 
 会话 ID 不写入项目。SSH 远端分支、聚焦提交、CI 和发布记录构成跨工具索引；标题、项目路径和
 会话状态只用于各 AI 工具内部恢复。GitHub Issue、PR、API 和 `gh` 登录不作为协作前置条件。

@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.2 发布验收记录
+# Dongger Panel v1.26.0-rc.2 发布验收记录
 
 日期：2026-10-10
 发布级别：L3
@@ -17,7 +17,7 @@
 - BT 首版支持 v1 `.torrent` 文件/URL 与公开 btih magnet，只落到当前 Panel 主机。与 HTTP 共用两个任务槽，BT 暂存并发 1、任务上限 10 GiB、元数据和路径有界；验证片段后复用既有 Agent 接收和原子发布。
 - 不支持 v2/hybrid、私有 magnet、做种、跨重启自动续传、远端节点 BT 或完整 BT 管理器。导入私有 `.torrent` 在发现前关闭 DHT/PEX；公开 magnet 的私有标志在元数据返回前未知，可能已参与 DHT，不能承诺私有磁力隐私。PEX 全局关闭。
 - BT 在 Panel 暂存后再写入目标，文件路径约需两份空间，目录归档路径约需三份；重启后任务中断。实测不覆盖 10 GiB、真实公网长稳、极端磁盘或独立控制面响应。
-- Docker新批处理覆盖容器、镜像、网络、存储卷：多选、可见范围Shift选择、组选择和右键；复用既有单资源API/CSRF/resourceVersion保护，逐项执行，失败继续，可停止剩余项与仅重试失败项。已有网络、被使用卷等按适用性跳过，删除卷数据不可恢复。KPanel自身容器提示影响并排最后；离开Docker路由停止后续派发，已发请求继续。本版没有后台持久批队列或跨刷新/重启恢复。
+- Docker新批处理覆盖容器、镜像、网络、存储卷：多选、可见范围Shift选择、组选择和右键；复用既有单资源API/CSRF/resourceVersion保护，逐项执行，失败继续，可停止剩余项与仅重试失败项。已有网络、被使用卷等按适用性跳过，删除卷数据不可恢复。Dongger Panel自身容器提示影响并排最后；离开Docker路由停止后续派发，已发请求继续。本版没有后台持久批队列或跨刷新/重启恢复。
 - 继承RC.1桌面材质、Office和手动证书续签。真实CA签发、Docker Engine多项操作全旅程与完整跨平台矩阵本次未新增准入。
 
 未变化的 Agent 接收协议、权限、端口、Compose、安装更新契约与应用市场继续沿用；API 增加有界 BT 来源适配，新增网络/元数据与磁盘暂存边界，按 L3 发布验收。
@@ -113,7 +113,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
 
 ## 生产部署安全核对与回滚
 
-不适用（预览版禁止生产部署）。没有生产安装、更新、正式数据修改、备份或部署安全核对；arena-154仅隔离验证和公共产物验收。prod-108/108：禁用全部KPanel操作，本次未连接、未备份、未部署、未升级、未核对。
+不适用（预览版禁止生产部署）。没有生产安装、更新、正式数据修改、备份或部署安全核对；arena-154仅隔离验证和公共产物验收。prod-108/108：禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未升级、未核对。
 
 回滚点v1.25.0 / `sha256:a183a818ac94446e19078087cee0b7d9d7505bd8ecae8e6fdac1e5c8efc326d9`，使用该镜像内置脚本与原备份，另行获得部署或脚本回滚授权后才执行；本次未实际回滚。GitHub Latest、Docker latest和应用市场默认仍稳定，preview指向RC.2。
 
@@ -143,7 +143,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The first final feature UI controller embedded Windows backslashes into JavaScript literals and resolved a malformed helper path. It failed before SSH, browser or product assertions; that attempt supplies no UI success evidence.",
     "recoveryEvidence": "feature-browser-r1 raw state, execution-result.json and browser-test.log plus feature-browser-r1-failure-qualified.json retain the pre-SSH path failure. The fixed helper normalizes paths and serializes JavaScript data. Final Files UI r4 and Docker UI r8 both passed at 937f73ec; the exact final delta changes only the existing MCP and BT test files and qualifies identical runtime/frontend/dependency/workflow blobs, retaining the original image review time; final-ui-qualification-r4.json binds 24 actually viewed PNGs and eight traces, terminal exit 0 and cleanup receipts.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -152,7 +152,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "An external observer applied a 150-second spawnSync deadline to the foreground canonical L3 CLI and timed out. The original remote process continued until its output chain closed, then ended failed/141, consistent with SIGPIPE. Both the local timeout and remote failure remain unchanged and supply no L3 pass.",
     "recoveryEvidence": "l3-launch-receipt.json, l3-launch.log and recovered r1 status/raw twelve files retain the timeout and failed/141. r2 correctly failed on Trivy HIGH CVE-2026-29181; r3 was intentionally superseded when the user added Docker; r4 correctly failed on toolbar literal durations and r5 on the dock literal duration. After focused dependency and both motion repairs, r6 full L3 passed but candidate CI failed an existing immediate-terminal assumption. The six-line MCP polling repair was followed by r7 BT fixture timeout/2. Original and diagnostic Race repetitions passed, with original stall cause unconfirmed; existing BT test context and diagnostics changed while all correctness assertions stayed exact. Fresh r8 ran the entire canonical CLI directly in a persistent exec session. l3-execute-r8-receipt.json and l3-result.json require native exit 0, remote passed/0, exact Runner, twelve checksummed files and resource watchdog. No failed run is rewritten or partially reused.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -161,7 +161,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The first required history reviewer attempted to read the post-release v1.25.0 acceptance document from the earlier immutable product tag. git show exited 128 and Node aborted before any valid history result; a subsequent independent syntax check made the combined shell exit zero, which is not accepted as history evidence.",
     "recoveryEvidence": "review-process-history.cjs preserves the failed helper. Original stderr is retained in Codex tool output chunk d1ea84; no separate original raw log was captured and none is fabricated. review-process-history-r2.cjs reads all five historical acceptance records from approved main e4f7e19bf8e1440d262e23355263e844e9a3dd63; process-history-review-r2.json records exact file hashes and reviewed incident details.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -170,7 +170,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The focused Otel repair contract omitted the required bounded string-array argv. Canonical ready rejected it before source changes.",
     "recoveryEvidence": "repair-otel.cjs and otel-input-ready.log retained; corrected otel-task-contract-ready-r2.json and otel-input-ready-r2.log passed. Final r8 ready and full L3 separately qualified the release.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -179,7 +179,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "Qualified Windows Go get failed on a TCP timeout to the module proxy; no dependency file changes resulted.",
     "recoveryEvidence": "otel-upgrade.log/receipt retain native Go failure and fixed tool SHA. The immutable remote Runner performed the minimal explicit module upgrade; otel-remote-r3 receipt and raw go.mod/go.sum hashes retain recovery. Final r8 supply-chain gates qualify the resulting graph.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -188,7 +188,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The first integration qualifier wrongly required source-file equality for api.test.ts although the approved baseline retained certificate-renewal tests. It stopped the qualification; no evidence was accepted as a pass.",
     "recoveryEvidence": "finish-docker.cjs and its preview retained. Original stderr exists only in Codex tool output a5acca; no separate raw log is fabricated. docker-merge-review-r2.json qualifies retained baseline API/test, shared menu CSS and combined mock routes; docker-ocr-coverage-r2.json and final bt-fixture-ocr-coverage.json bind all 63 exact blobs.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -197,7 +197,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "Nested double quotes in an external node -e patch split JavaScript into PowerShell commands and produced parser errors. Subsequent commands made the combined shell exit zero, which is not accepted for that patch.",
     "recoveryEvidence": "Original stderr retained only in Codex tool output e2a584. External saved .cjs helpers and apply_patch replaced the inline command. Canonical Docker r8 passed and final L3 independently binds actual committed source.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -206,7 +206,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "Docker r1 selected mock-current/mock-available fixtures whose permitted actions were logs/stats. Waiting for disabled restart was an invalid journey, not a product restart failure.",
     "recoveryEvidence": "docker-browser-r1 raw failure retained; docker-browser-r2-fixture-qualification.json selects action-enabled nginx/mysql. r8 completes selection, confirmation, stop-after-current and partial-failure retry at the final source.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -215,7 +215,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 4,
     "impact": "Four mobile context-target controller attempts did not qualify UI: r2 used a wide row locator; r4/r5 used locator right-click and the menu disappeared; r6 rejected a point that was not exposed. r5 diagnostics prove contextmenu then a captured document scroll 41.2 ms later while the menu existed. The source closes menus on scroll. The exact cause of r2 is not established; these are grouped by the same target/scroll failure class, not asserted to have identical causes.",
     "recoveryEvidence": "docker-browser-r2/r4/r5/r6 original states, results and traces retained; r4/r5 dispositions document evidence and inference. r8 explicitly centers/focuses, waits for scroll to settle, verifies elementFromPoint at the visible checkbox, uses native page.mouse right-click with no locator auto-scroll, then passes the complete four-case matrix, twelve PNGs and four traces. No synthetic menu event, hidden-menu bypass or retry loop.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -224,7 +224,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "Docker r3 reached the final image action but its locator omitted the actual Traditional Chinese catalog spelling 映象. Earlier visual and stop-after-current assertions do not make that full run passed.",
     "recoveryEvidence": "docker-browser-r3 raw failure/disposition retained; source catalog maps 本地镜像 to 本地映象. The corrected r8 locator uses the existing spelling and completes sequential image jobs, partial failure and failed-only retry.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -233,7 +233,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The exact pre-delete inbox guard expected only three kit files, omitting the canonical uploaded manifest.json. It rejected the first inventory before the deletion loop; no path was removed.",
     "recoveryEvidence": "cleanup-completed-inboxes.cjs/.py/.log and failure-qualified.json retained. Actual SSH listing showed four files. r2 added the exact local manifest SHA without weakening ownership, process, status, inventory or hash checks; cleanup-completed-inboxes-r2-result.json records four completed upload-copy removals and actual 270,241,792 bytes freed, retaining local kits and remote bundles/raw evidence.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -242,7 +242,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "A read-only progress inspection passed a Docker --format template containing spaces through SSH command reconstruction. Docker rejected the split arguments; this inspection supplied no status or release evidence and changed no resource.",
     "recoveryEvidence": "Original command and exit-1 stderr are retained only in Codex tool output a078cc; no standalone raw log is fabricated. observe-l3-progress.cjs sends Python through SSH stdin, uses structured subprocess argv and matches the exact immutable Runner plus candidate bind. Its actual successful output in tool chunk 940a37 reported owned container 462e33e60a07, OOMKilled=false and 5,789,929,472 disk bytes free. It does not replace canonical L3 terminal evidence.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -251,7 +251,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "A read-only CLI capability inspection assumed --help was implemented. The entry rejected this mode with usage before any browser job or product execution. A subsequent file read made the combined shell exit zero; this is not accepted as evidence that the CLI inspection succeeded.",
     "recoveryEvidence": "Original exact invocation and usage stderr remain only in Codex tool output at2026-10-10T05:53:24Z; no standalone original log was captured or fabricated. The controller source was then read directly: supported commands start/status, actual fixed option schema and source/environment/spec/timeout binding were inspected before the later published-notes job. This inspection supplies no browser pass.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -260,7 +260,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "After the immutable RC.2 publication, the first documentation L0 helper passed VERIFY_BASE_REF through --env. The canonical launcher rejected this unsupported key before Bash or any L0 verification. Native exit 1 and original documentation commit remain retained; this is not a product release failure or a successful validation.",
     "recoveryEvidence": "docs-l0-attempt1-result.json and docs-l0-attempt1.log preserve exact failure at57db809c. docs-l0-attempt1-failure-qualified.json binds both hashes and the inspected canonical source. The corrected fixed argv passes only VERIFY_LEVEL through --env and the exact frozen product base as script positional argument. docs-ready-r2.log confirms ready; the subsequent committed documentation must independently pass the canonical L0 and handoff before any documentation push. Its actual terminal is recorded in docs-l0-result.json, not predeclared by this incident.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   },
   {
@@ -269,7 +269,7 @@ linux/amd64 `sha256:ad14acc277c0209a7319e9ec2a87545a6d7e06a8b3d782e20f53df74e281
     "count": 1,
     "impact": "The corrected documentation L0 invocation reached the canonical business-context checker, which rejected a prerelease value in its stable-only baselineVersion field. Native exit 1, exact documentation commit2dc86c27 and all preceding check output remain retained. Product release artifacts were already published and unchanged.",
     "recoveryEvidence": "docs-l0-attempt2-result.json, docs-l0-r2.log and docs-l0-attempt2-failure-qualified.json preserve the rejection and source hashes. The document restores the existing v1.25.0 formal baseline convention while explicitly retaining RC.2 publication/SHA. Canonical incident fields were also inspected before retry. docs-ready-r3.log passed; a fresh committed documentation L0/handoff is still required and its actual result is recorded in docs-l0-result.json before pushing.",
-    "permanentAction": "Owner: KPanel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
+    "permanentAction": "Owner: Dongger Panel release tooling task. Review by 2026-10-16 or before the next L3 production write, whichever comes first. Current external helper recovery does not claim a permanent shared entry repair. Exit condition: canonical entry/fixture preflight covers the exact failure with retained regression evidence.",
     "historicalReleases": []
   }
 ]

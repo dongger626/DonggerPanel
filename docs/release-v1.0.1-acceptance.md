@@ -1,4 +1,4 @@
-# KPanel v1.0.1 发布验收记录
+# Dongger Panel v1.0.1 发布验收记录
 
 日期：2026-09-03
 
@@ -26,7 +26,7 @@
   3. 四个最小可读字号标签从视觉债务基线移除并提升到 12px；补充 420px 窄窗口布局回归。
 - 精确提交清单（均已进入产品标签 `v1.0.1`）：
   - `a6f9ef777980b479f88cd2ba97656685d048e352`：`fix(web): reclaim vertical space in narrow desktop windows`；Claude Opus 5 共同署名的干净 UI 提交，包含 `desktop.css`、Apps/Cluster/Docker 视图与测试，以及 `NarrowWindowHeroLayout.test.ts`。
-  - `cd85d3472dee800e92a23fa857b59a531d5ac0d4`：准备 KPanel `1.0.1` 的 `VERSION` 与 `CHANGELOG.md`。
+  - `cd85d3472dee800e92a23fa857b59a531d5ac0d4`：准备 Dongger Panel `1.0.1` 的 `VERSION` 与 `CHANGELOG.md`。
   - `0e9020d39f585be8a79fb3d5238fe7599bb9dab1`：同步 `internal/version`、`web/package.json` 和 lock 文件中的嵌入版本元数据。
 - 候选基线为 `origin/main=b84710f85da8ec094c06fc938e4724b150b5f49f`；相对该基线只有上述 3 个提交、13 个文件，差异为 249 insertions / 35 deletions。主线已有的 `v1.0.0` 验收文档是基线内容，不是本补丁重新纳入的业务变更。
 - 明确未纳入的分支、文件或后续事项：
@@ -91,7 +91,7 @@
 - 生产目标和部署授权范围：用户已明确授权本次 Claude 界面优化补丁走完整上线流程；生产写入仅执行 `arena-154`。
 - 验证/灰度环境：`environment-policy.json` 中允许的 `arena-154`，用途为候选验证、`production-safety-check`、`production-deploy`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：preflight `v1.0.1-0e9020d-prod-preflight-r1` 通过，生产健康 `status=ok`、`version=1.0.0`、`protocolVersion=v1alpha1`，Agent active/running/enabled，Panel running/healthy、RestartCount=0、OOM=false；旧镜像 RepoDigest=`kjlion/kejilion-panel@sha256:b7f9413b1576f6211df649ebade39040f33ff9044997b53b3361c8a62c2e44b5`。backup `v1.0.1-0e9020d-prod-backup-r1` 通过，备份=`/root/kpanel-backups/pre-v1.0.1-20260902T181403Z`，`protected.diff=0`，六项归档摘要通过。
 - 部署命令/入口：`ssh arena-154 'env KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update /home/docker/kpanel/bin/kejilion.sh app kpanel'`；标准应用市场更新输出确认拉取 `kjlion/kejilion-panel:latest` 并重建容器。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy `v1.0.1-0e9020d-prod-postdeploy-r1` 通过，`started_at=2026-09-02T18:18:09Z`、`finished_at=2026-09-02T18:18:11Z`；health `status=ok`、`version=1.0.1`、`protocolVersion=v1alpha1`；Panel `running/healthy`、`RestartCount=0`、`OOMKilled=false`，镜像 RepoDigest=`kjlion/kejilion-panel@sha256:6a19324ffac3bd432ec564dd8e5ae094ab96c9d5dadb188e7acb7e7a058d7eea`，label revision=`0e9020d39f585be8a79fb3d5238fe7599bb9dab1`、version=`1.0.1`；Agent `LoadState=loaded`、`ActiveState=active`、`SubState=running`、`UnitFileState=enabled`、`NeedDaemonReload=no`；SQLite quick check 通过，`protected.diff=0`，日志无 `panic/fatal/OOM`。公网 `https://kpanel.154.36.153.9.sslip.io/api/v1/health` 于 `2026-09-02T18:18:34Z` 返回 HTTP 200、`initialized=true`、`status=ok`、`version=1.0.1`。

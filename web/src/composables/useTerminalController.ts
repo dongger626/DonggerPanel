@@ -140,7 +140,7 @@ export function useTerminalController(options: Options) {
         if (disposed || generation !== targetGeneration || duplexInput !== input) return
         const keys = { capacity: 'terminal.inputCapacity', retry: 'terminal.inputFailed', fatal: mode === 'task' ? 'terminal.taskInputFailed' : 'terminal.inputUncertain' } as const
         const key = keys[kind]
-        writeTerminalOutput(`\r\n\x1b[31m[KPanel] ${t(key)}\x1b[0m\r\n`)
+        writeTerminalOutput(`\r\n\x1b[31m[Dongger Panel] ${t(key)}\x1b[0m\r\n`)
         if (kind === 'fatal') {
           if (mode === 'task') dropInput()
           else inputBlocked.value = true
@@ -246,7 +246,7 @@ export function useTerminalController(options: Options) {
     reconnectAttempts = 0
     if (chunk.truncated) {
       if (commandPresentation) { writeRaw(commandPresentation.release()); finishPresentation() }
-      writeTerminalOutput(`\r\n\x1b[33m[KPanel] ${t('terminal.outputTruncated')}\x1b[0m\r\n`)
+      writeTerminalOutput(`\r\n\x1b[33m[Dongger Panel] ${t('terminal.outputTruncated')}\x1b[0m\r\n`)
     }
     if (chunk.data) {
       const data = Uint8Array.from(window.atob(chunk.data), c => c.charCodeAt(0))
@@ -263,7 +263,7 @@ export function useTerminalController(options: Options) {
       if (reconnected) resetResize()
       if (inputOpen.value && duplexInput?.byteLength) flushInput()
     }
-    if (chunk.exitError) writeTerminalOutput(`\r\n\x1b[31m[KPanel] ${chunk.exitError}\x1b[0m\r\n`)
+    if (chunk.exitError) writeTerminalOutput(`\r\n\x1b[31m[Dongger Panel] ${chunk.exitError}\x1b[0m\r\n`)
   }
   function canReceiveOutput(): boolean {
     return mounted && !disposed && activity.streaming.value && !writeFlow.blocked && state.value !== 'finished' && state.value !== 'error'
@@ -319,7 +319,7 @@ export function useTerminalController(options: Options) {
     if (failure.status === 401 || failure.status === 403 || ['unauthorized', 'forbidden', 'session_expired'].includes(failure.code ?? '')) {
       state.value = 'error'
       blockInput()
-      writeTerminalOutput(`\r\n\x1b[31m[KPanel] ${t('terminal.connectionFailed')}\x1b[0m\r\n`)
+      writeTerminalOutput(`\r\n\x1b[31m[Dongger Panel] ${t('terminal.connectionFailed')}\x1b[0m\r\n`)
       return
     }
     if (failure.status === 429 || failure.code === 'terminal_stream_limit') { schedulePoll(300); return }

@@ -1,4 +1,4 @@
-# KPanel v1.24.0 稳定版发布验收记录
+# Dongger Panel v1.24.0 稳定版发布验收记录
 
 日期：2026-10-04
 
@@ -35,7 +35,7 @@
 
 ## 跨仓库联动判定
 
-- `scriptLinkageState`：`coupled`；变更集 `light-node-procd-20261002`。兼容脚本已先行公开，再发布 KPanel 正式版；本轮不改写脚本 main 或 pin。
+- `scriptLinkageState`：`coupled`；变更集 `light-node-procd-20261002`。兼容脚本已先行公开，再发布 Dongger Panel 正式版；本轮不改写脚本 main 或 pin。
 - 内置/候选脚本 `c981fb6c8b481981ac7a006e102e111e435f6d30` / ROOT SHA `0eb9a82860e6cf6cf76d4f946782a02fd90bef8e7be5a3fa724b93920d8e35cb`，CN SHA `5be9c4462664ed12833a9dbeba64c4623f7f00deb3ddd5adb8e1539615ff617a`；公开原字节核对与归一化区域差异分开记录。
 - ROOT/CN bash-n、同步/轻量安装 fixture/31 项 updater tests 在固定隔离 fixture 通过。fixture 无 network、只读根与源码、受限 tmpfs/CPU/内存/PID，并非 PID1 systemd 或生产脚本执行。
 - 旧稳定脚本 `779192048077c130442a64a126d7c0050776d868` / `33010d547355f9bde4067c189a0457f44dc00ec3a72eaa25e5b7101e1fcb9c04`，旧 Node 模板 `4d61f7ef123fe5ecd7419cdaa1c93483bbfda403` 为配对回滚说明，不执行回滚。
@@ -82,7 +82,7 @@
 ## 生产部署安全核对与回滚
 
 - 正式产物发布已授权；生产部署、业务备份、管理员写操作、健康/数据核对未授权，均未验证、未执行，生产写0。隔离验证不代替生产。
-- `prod-108`/`108` 禁用全部KPanel操作，本轮未连接、读取、备份、部署、升级或核对。验收只使用登记 `arena-154` 隔离命名空间。
+- `prod-108`/`108` 禁用全部Dongger Panel操作，本轮未连接、读取、备份、部署、升级或核对。验收只使用登记 `arena-154` 隔离命名空间。
 - 回滚点v1.23源码/镜像见首段，对应脚本/模板见联动段。实际生产回滚与停写备份未验证；另行授权后恢复精确镜像、配对数据/配置/脚本备份，不reset脚本main、不改历史tag。
 - 公共默认更新通道决策：正式v1.24为Latest/latest；preview保留RC11；本次无失败公开版本/重复发布或生产回滚。
 

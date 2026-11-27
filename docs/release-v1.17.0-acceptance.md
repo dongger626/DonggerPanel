@@ -1,4 +1,4 @@
-# KPanel v1.17.0 发布验收
+# Dongger Panel v1.17.0 发布验收
 
 日期：2026-09-14
 
@@ -10,17 +10,17 @@
 
 ## 发布画像
 
-- 业务域：Alpine/OpenRC 主机和轻量节点、KPanel 稳定版自动更新、集群通知可读性。
+- 业务域：Alpine/OpenRC 主机和轻量节点、Dongger Panel 稳定版自动更新、集群通知可读性。
 - 变更面：Agent/Node 安装与服务管理、应用市场生命周期、自动更新事务与设置页、Telegram 集群消息排版。
-- 受影响用户旅程：Alpine 主机安装、更新和卸载 KPanel；systemd 主机自动检查并事务更新；管理员阅读集群告警、恢复、SSH 登录和通道测试消息。
-- 保持兼容的文件链路：完整 KPanel 节点继续使用 v1.15.1 的 Noise/HTTP POST 文件链路；轻量节点继续使用 v1.15.0 的 `light-control` / `light-data` WebSocket 实现。
+- 受影响用户旅程：Alpine 主机安装、更新和卸载 Dongger Panel；systemd 主机自动检查并事务更新；管理员阅读集群告警、恢复、SSH 登录和通道测试消息。
+- 保持兼容的文件链路：完整 Dongger Panel 节点继续使用 v1.15.1 的 Noise/HTTP POST 文件链路；轻量节点继续使用 v1.15.0 的 `light-control` / `light-data` WebSocket 实现。
 - 风险等级及理由：高风险。跨三个仓库并新增 root 级更新事务和跨 init system 生命周期；最终 SHA 的 L3、三层 CI、公开 OCI E2E、停写备份与生产 postdeploy 已通过。
 
 ## 发布范围与未纳入内容
 
-- OpenRC 候选：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762`、`kejilion/apps@fe8c1ae5fd8dd7814df3d59772fac88795333e30`、KPanel `4637a7344a41ae1cb07795174dd575e3326cbefe`。
-- 自动更新候选：`kejilion/apps@b5f24594d0044f348ccd33acdc0387a50d22c66b`、KPanel `f915305dfba7181719c25880d9415856f40536ff`。
-- 通知候选：KPanel `615a588ae4535e2a4a7d0983aa39590f3b15e2c4`。
+- OpenRC 候选：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762`、`kejilion/apps@fe8c1ae5fd8dd7814df3d59772fac88795333e30`、Dongger Panel `4637a7344a41ae1cb07795174dd575e3326cbefe`。
+- 自动更新候选：`kejilion/apps@b5f24594d0044f348ccd33acdc0387a50d22c66b`、Dongger Panel `f915305dfba7181719c25880d9415856f40536ff`。
+- 通知候选：Dongger Panel `615a588ae4535e2a4a7d0983aa39590f3b15e2c4`。
 - 发布准备 `e38341b00b5fc845d6213c4408b8877cffa40039` 固定版本、Changelog 与跨仓 pin；`22c3e17c209779e3d5fe36b30ac70bd8598deec6` 只让 root 所有权测试在非 root GitHub Runner 上显式跳过，在 root Linux 上仍全部执行。
 - 不包含 OpenRC 自动更新定时器；OpenRC 仅提供安装、手动更新、失败恢复和卸载。无数据库 schema、端口、Compose、节点身份或配对密钥迁移。
 
@@ -29,8 +29,8 @@
 - `scriptLinkageState=coupled`。
 - `kejilion/sh` 主线为 `6ebb945f6d5cb69fdb41e3761de23566acbaf762`；根脚本 SHA-256 `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`，CN 脚本 SHA-256 `90b5831551c609ebe9d7087b83b0e9f9fb6859e8f5ac204830a63d6139829bcf`。
 - `kejilion/apps` 主线为 `b5f24594d0044f348ccd33acdc0387a50d22c66b`；`kpanel.conf` SHA-256 `35f589f37cbdba578a457be9365190dac7d5cb8a1163bff7ca5f20314f2e6fe3`。
-- KPanel 镜像 label、Dockerfile pin、发布包和生产安装结果均绑定上述 revision；生产允许按既有偏好把镜像内脚本的 `permission_granted="false"` 继承为 `true`，逐行比较确认没有其他变化。
-- 三个已合并候选分支和 KPanel 旧重试分支已删除；三仓主线、`v1.17.0` annotated tag 和公开 Release 保留。
+- Dongger Panel 镜像 label、Dockerfile pin、发布包和生产安装结果均绑定上述 revision；生产允许按既有偏好把镜像内脚本的 `permission_granted="false"` 继承为 `true`，逐行比较确认没有其他变化。
+- 三个已合并候选分支和 Dongger Panel 旧重试分支已删除；三仓主线、`v1.17.0` annotated tag 和公开 Release 保留。
 
 ## 多维质量结论
 
@@ -168,7 +168,7 @@
 
 ## 遗留风险与后续准入
 
-- 远端三个规范候选分支和 KPanel 隔离重试分支已删除；公开 E2E 临时容器与网络已清理。L3、发布、生产证据和唯一恢复包保留。
+- 远端三个规范候选分支和 Dongger Panel 隔离重试分支已删除；公开 E2E 临时容器与网络已清理。L3、发布、生产证据和唯一恢复包保留。
 - OpenRC 自动更新定时器本版未启用；进入该范围前必须完成真实 OpenRC PID 1、重启持久化、并发更新和失败恢复验收。
 - 未验证边界包括真实 Alpine 生产长期运行、真实 Telegram 外部投递、完整浏览器缩放矩阵、跨地域弱网、原生 arm64 运行时、长期 soak、生产故障注入和实际数据恢复。
-- 当前准入结论：KPanel `1.17.0`、`kejilion/sh@6ebb945f` 和 `kejilion/apps@b5f24594` 已上线；默认更新通道和 `arena-154` 生产均为健康 `1.17.0`，上述未验证边界不阻断本版。
+- 当前准入结论：Dongger Panel `1.17.0`、`kejilion/sh@6ebb945f` 和 `kejilion/apps@b5f24594` 已上线；默认更新通道和 `arena-154` 生产均为健康 `1.17.0`，上述未验证边界不阻断本版。

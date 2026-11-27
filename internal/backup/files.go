@@ -41,7 +41,7 @@ func PrivateDir(path string) error {
 }
 
 // CanonicalRoot resolves symlinks in an operator-configured absolute state
-// directory once, so NoLinkParents only polices the tree KPanel creates below
+// directory once, so NoLinkParents only polices the tree Dongger Panel creates below
 // it. NAS layouts such as fnOS link /home/docker to a storage volume; treating
 // that trusted ancestor as an attack made the Agent refuse to start on a fresh
 // install. Components that do not exist yet are kept below the resolved prefix.

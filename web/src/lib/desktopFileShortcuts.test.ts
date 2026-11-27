@@ -179,7 +179,7 @@ describe('desktop file shortcuts', () => {
 
   it('advertises a directory ZIP alongside internal and cross-panel payloads', () => {
     const folder = { name: 'photos', path: '/photos', kind: 'directory' as const, resourceVersion: 'sha256:photos' }
-    expect(nativeArchiveDownloadName([folder], 'KPanel Desktop')).toBe('photos.zip')
+    expect(nativeArchiveDownloadName([folder], 'Dongger Panel Desktop')).toBe('photos.zip')
     const event = dragEvent()
     expect(beginDesktopFileDrag(
       event,
@@ -211,7 +211,7 @@ describe('desktop file shortcuts', () => {
     expect(nativeArchiveDownloadName([
       { name: 'a.txt', path: '/a.txt', kind: 'file' },
       { name: 'logs', path: '/logs', kind: 'directory' },
-    ], 'KPanel Desktop')).toBe('KPanel Desktop.zip')
+    ], 'Dongger Panel Desktop')).toBe('Dongger Panel Desktop.zip')
     expect(nativeArchiveDownloadDragDescriptor(
       [folder],
       'https://downloads.example/photos.zip',

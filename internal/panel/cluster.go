@@ -1190,7 +1190,7 @@ func (s *Server) writeClusterError(w http.ResponseWriter, r *http.Request, err e
 		if errors.As(err, &remote) {
 			status = http.StatusBadGateway
 			code = "cluster_remote_" + remote.Code
-			title = "Remote KPanel request failed"
+			title = "Remote Dongger Panel request failed"
 			if remote.Code == "authentication_failed" {
 				status = http.StatusUnauthorized
 			}

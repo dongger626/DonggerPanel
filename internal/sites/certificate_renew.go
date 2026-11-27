@@ -13,7 +13,7 @@ import (
 	"github.com/kejilion/kejilion-panel/internal/jobcontrol"
 )
 
-// Manual renewal calls `k ssl <domain>` with the KPanel-only force switch. The
+// Manual renewal calls `k ssl <domain>` with the Dongger Panel-only force switch. The
 // script keeps the automatic renewal job untouched; this is an extra trigger.
 var certificateRenewRequirements = []string{
 	`KPANEL_WEB_CERTIFICATE_FORCE_RENEW_PROTOCOL_VERSION="1"`,

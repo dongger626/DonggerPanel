@@ -267,7 +267,7 @@ func (m *selfSignedTLS) issue(hosts []string, reuseKey *ecdsa.PrivateKey) (tls.C
 	now := time.Now().UTC()
 	template := &x509.Certificate{
 		SerialNumber:          serial,
-		Subject:               pkix.Name{CommonName: "KPanel self-signed", Organization: []string{"KPanel"}},
+		Subject:               pkix.Name{CommonName: "Dongger Panel self-signed", Organization: []string{"Dongger Panel"}},
 		NotBefore:             now.Add(-time.Hour),
 		NotAfter:              now.Add(selfSignedTLSValidity),
 		KeyUsage:              x509.KeyUsageDigitalSignature,

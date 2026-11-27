@@ -111,7 +111,7 @@ function fileHost(id: string, isLocal: boolean, overrides: Record<string, unknow
     id,
     isLocal,
     kind: 'panel',
-    name: isLocal ? '当前 KPanel' : 'edge-01',
+    name: isLocal ? '当前 Dongger Panel' : 'edge-01',
     origin: isLocal ? 'https://center.example.com' : 'https://edge.example.com',
     transportSecurity: 'tls',
     remoteNodeId: isLocal ? 'local-node' : 'edge-node',

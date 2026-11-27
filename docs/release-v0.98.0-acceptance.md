@@ -1,4 +1,4 @@
-# KPanel v0.98.0 发布验收记录
+# Dongger Panel v0.98.0 发布验收记录
 
 日期：2026-08-25
 
@@ -71,7 +71,7 @@
 - 唯一目标：`arena-154`；108 未连接、未检查、未测试、未备份、未部署。
 - 固定证据 run ID：`v0980-production-r4`。preflight、backup、postdeploy 均 `status=passed`、exit 0。
 - 停写一致性备份：`/root/kpanel-backups/pre-v0.98.0-20260824T171753Z`；`SHA256SUMS` SHA-256=`6616f027410448b3031918fff0ac5c6bb04ea7ad66c9450bad86c154b2cb1f00`。归档、旧镜像加载、校验和、旧版恢复健康均通过。
-- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；输出到达 `KPanel 更新完成`、`KPANEL_PROGRESS 100`，exit 0。
+- 标准入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`；输出到达 `Dongger Panel 更新完成`、`KPANEL_PROGRESS 100`，exit 0。
 - 部署后 health=`0.98.0`；Panel healthy、Agent active/enabled、NeedDaemonReload=no、restart=0、OOM=false；OCI/revision 精确匹配，受保护配置无差异，SQLite quick_check=ok，近 10 分钟日志无 panic/fatal/OOM。
 - 回滚点：`v0.97.3`、旧 OCI `sha256:1d1e5fe884c9580ac7ce357397d78323ca7905b8e1d13f8367c25091d2f6ad49` 与上述停写备份。回滚须成套恢复旧镜像、Compose、`.env`、Agent unit、apps 配置和数据；未执行生产回滚，备份阶段已验证旧镜像可加载和旧版可健康重启。
 

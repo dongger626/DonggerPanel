@@ -67,7 +67,7 @@ type migrationTemplate struct {
 // its "version" command, so a verified staged binary can install this helper
 // without asking users to run a command on every existing node.
 const lightSSHLoginSystemdService = `[Unit]
-Description=KPanel SSH Login Event Collector
+Description=Dongger Panel SSH Login Event Collector
 After=systemd-journald.service
 Wants=systemd-journald.service
 

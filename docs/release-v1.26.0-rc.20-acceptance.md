@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.20 发布验收记录
+# Dongger Panel v1.26.0-rc.20 发布验收记录
 
 日期：2026-10-15。发布级别L3，releaseChannel=preview，releaseTrain=1.26.0。批准基线81a8ce0ede23e93199817960c4e85d6a33799c11；冻结产品7723da7dfe991e8cd3d1d1341e5231afc947f4be。[v1.26.0-rc.20](https://github.com/kejilion/KPanel/releases/tag/v1.26.0-rc.20)于2026-10-14T17:31:08Z公开，draft=false、prerelease=true。产物已发布，生产未部署。
 
@@ -56,7 +56,7 @@ arena-154登记candidate/browser validation。Windows原生Panel与本地预览�
 
 ## 生产部署与清理
 
-不适用（预览版禁止生产部署）。prod-108/108禁用全部KPanel操作，本次未连接、未备份、未部署、未核对；生产写入0、无生产回滚或紧急热修复，未覆盖已发布版本。仅回收自有L3 clone、临时数据/浏览器依赖和本轮缓存，保留原始失败/成功、scripts/spec/截图/锁、bundle、可信Runner及公开资产。作者工作树/预览不动；此前自动审批拒删的Windows临时目录继续保留。卷观察净释放3989270528字节，不宣称Windows C盘净释放。证据根C:/GitHub/_release-evidence/v1.26.0-rc.20；公开资产/root/kpanel-release-evidence/v1.26.0-rc.20-public-assets/。复用既有流程，没有新增知识或工作流。
+不适用（预览版禁止生产部署）。prod-108/108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未核对；生产写入0、无生产回滚或紧急热修复，未覆盖已发布版本。仅回收自有L3 clone、临时数据/浏览器依赖和本轮缓存，保留原始失败/成功、scripts/spec/截图/锁、bundle、可信Runner及公开资产。作者工作树/预览不动；此前自动审批拒删的Windows临时目录继续保留。卷观察净释放3989270528字节，不宣称Windows C盘净释放。证据根C:/GitHub/_release-evidence/v1.26.0-rc.20；公开资产/root/kpanel-release-evidence/v1.26.0-rc.20-public-assets/。复用既有流程，没有新增知识或工作流。
 
 <!-- kpanel-release-metrics:start -->
 - 首个纳入提交时间：2026-10-14T22:23:44+08:00

@@ -1,4 +1,4 @@
-# KPanel v0.98.4 发布验收记录
+# Dongger Panel v0.98.4 发布验收记录
 
 日期：2026-08-28
 
@@ -60,7 +60,7 @@
 - 后台作业 ID、终态、退出码、超时、证据目录、命令规格路径及 SHA-256：L3 run=`v0.98.4-7e1ffa8-l3-r1`，passed/0，无超时；生产 run=`v0.98.4-production-20260828`，preflight/backup/postdeploy 均 passed/0；本地证据目录为 `C:\GitHub\_release-artifacts\v0.98.4-production-20260828-{preflight,backup,postdeploy}`，固定远端生产脚本 SHA-256=`129d3fbab5cd4e5ad966a59f3e174c586a26578e5fac262d7af7bc9699012eaf`。公开镜像 E2E 无后台作业 ID，最终 `image_e2e=pass`。
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：公开镜像固定 E2E 最终一次完整运行；生产 preflight、backup、postdeploy 各一次；无 soak，因为本版没有新增常驻任务，但真实移动端 UX 仍需补验。
 - 受影响用户旅程、视口、100%/125%/200% 缩放、最小计算字号、主题、键盘/焦点、语言和失败态：体检桌面窗口的报告滚动选择器与定向断言已覆盖；未执行真实手机浏览器视口、触摸拖动、缩放、主题、键盘/焦点和多语言矩阵。
-- 宿主机写入、失败注入、重启恢复和回滚结果：backup 阶段按固定脚本受控 stop/start 并创建校验备份；标准更新入口 exit 0、输出 `KPanel 更新完成 / Update Complete` 与 `KPANEL_PROGRESS 100`；postdeploy 确认 Panel/Agent healthy/active、restart=0、OOM=false、SQLite 通过；未执行生产回滚，L3 应用生命周期负例按设计 fail-closed。
+- 宿主机写入、失败注入、重启恢复和回滚结果：backup 阶段按固定脚本受控 stop/start 并创建校验备份；标准更新入口 exit 0、输出 `Dongger Panel 更新完成 / Update Complete` 与 `KPANEL_PROGRESS 100`；postdeploy 确认 Panel/Agent healthy/active、restart=0、OOM=false、SQLite 通过；未执行生产回滚，L3 应用生命周期负例按设计 fail-closed。
 - 未执行场景及原因：未连接 `108`/`prod-108`；未执行真实手机/浏览器触摸和缩放验收、生产登录态专项和长期 soak；本版无需要生产业务写入的功能变更。
 
 ## 发布产物与公开仓库复核
@@ -74,10 +74,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确要求在本次核对后走上线流程；仅执行 KPanel `v0.98.4` 标准应用更新、生产证据和备份。
+- 生产目标和部署授权范围：用户明确要求在本次核对后走上线流程；仅执行 Dongger Panel `v0.98.4` 标准应用更新、生产证据和备份。
 - 验证/灰度环境：固定 `arena-154` L3 Runner、`arena-154` 公开镜像 E2E 和生产安全证据入口，均来自 `environment-policy.json`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight 记录 `0.98.3`、Panel `running/healthy`、Agent `active`、重启 0、OOM false；backup 证据通过，备份目录为 `/root/kpanel-backups/pre-v0.98.4-20260828T031136Z`，备份文件 SHA256 校验通过。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy 记录 health version=`0.98.4`、revision=`7e1ffa8416fcfa6fb0960a87e00f53b53220735d`、OCI digest 精确匹配；Panel `running/healthy`、Agent `active`、重启 0、OOM false；Agent/Panel 最近日志无 panic/fatal/OOM signature；protected 配置摘要无差异，SQLite quick check 通过，健康接口正常。

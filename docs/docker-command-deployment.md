@@ -2,7 +2,7 @@
 
 ## 目标
 
-KPanel 的“新建容器”使用一个粘贴入口覆盖两类常见部署资料：
+Dongger Panel 的“新建容器”使用一个粘贴入口覆盖两类常见部署资料：
 
 - 单条 `docker run` 命令；
 - 完整 Docker Compose YAML。
@@ -22,7 +22,7 @@ KPanel 的“新建容器”使用一个粘贴入口覆盖两类常见部署资�
   的标准 `.env`；再使用宿主机固定的
   `docker compose` 入口启动。该目录和文件名与 `kejilion.sh` 的 Compose 发现、备份和恢复方式兼容。
 - Compose 容器由标准 `com.docker.compose.*` 标签识别；Docker Run 容器继续写入
-  `io.kejilion.panel.managed=true`。两类资源都可被 Docker CLI、Compose、`kejilion.sh` 和 KPanel
+  `io.kejilion.panel.managed=true`。两类资源都可被 Docker CLI、Compose、`kejilion.sh` 和 Dongger Panel
   继续管理。
 - 容器页按 `com.docker.compose.project` 就地编组，独立容器保留在同一列表的“独立容器”组；不创建
   Compose 项目数据库或导入状态。
@@ -35,7 +35,7 @@ KPanel 的“新建容器”使用一个粘贴入口覆盖两类常见部署资�
   `down --remove-orphans`，只针对明确的 project name。默认保留数据卷、宿主机挂载目录、`.env`、项目目录和镜像。
 - 管理弹窗提供一次普通确认，默认勾选「移除 Compose 配置（保留备份）」。删除容器成功且确认没有该项目
   的残留容器后，将本次读取的配置文件原地重命名为 `<原文件名>.kpanel-removed-<任务ID>`，保留属主和权限。
-  标准配置文件不再参与项目发现；恢复原文件名后，脚本、Compose 和 KPanel 可继续发现及重新部署。
+  标准配置文件不再参与项目发现；恢复原文件名后，脚本、Compose 和 Dongger Panel 可继续发现及重新部署。
 - 取消配置选项即只移除部署，配置继续保留，列表保留可重新部署的 `0` 容器项目。API 未提供
   `removeComposeFiles` 时也按保留配置处理；不会归档未参与本次项目配置的其他文件。
   根目录项目同样参与发现；若项目名或多文件组合仅存在于容器 labels 中，删除前通过受保护的原子写入，
@@ -57,21 +57,21 @@ KPanel 的“新建容器”使用一个粘贴入口覆盖两类常见部署资�
   配置归档及失败配置回滚；外部卷与挂载目录保留。脚本双向互通完整闭环仍属「已实现未实机验证」，
   不得将模拟 API 当作宿主机删除成功，也不将默认 daemon 的结果外推到自定义 socket 或 context。
 
-用户粘贴的 Compose 属于用户配置，不是 KPanel 维护的外联模板，因此不在
+用户粘贴的 Compose 属于用户配置，不是 Dongger Panel 维护的外联模板，因此不在
 `docs/external-config-sources.md` 中建立第二份模板来源。
 
 ## 竞品复核（2026-08-17）
 
 - [1Panel v2 编排文档](https://1panel.cn/docs/v2/user_manual/containers/compose/)覆盖编辑、选择现有路径、
-  模板和编排内的容器详情，但其文档说明编辑和启停仅适用于 1Panel 创建的 Compose。KPanel 保留容器
+  模板和编排内的容器详情，但其文档说明编辑和启停仅适用于 1Panel 创建的 Compose。Dongger Panel 保留容器
   列表内就地编组，并以 Docker 标准 labels 与实际配置文件为准，支持继续管理 `kejilion.sh`、SSH 或
-  KPanel 创建的项目，不引入来源护栏。
+  Dongger Panel 创建的项目，不引入来源护栏。
 - [1Panel v2 版本记录](https://1panel.cn/docs/v2/changelog/)显示其已增加容器与 Compose 备份恢复。
-  KPanel 本次沿用既有 Docker 备份链路，不扩展新的 Compose 影子状态；按项目备份/恢复属于后续独立
+  Dongger Panel 本次沿用既有 Docker 备份链路，不扩展新的 Compose 影子状态；按项目备份/恢复属于后续独立
   需求，不与本次编组、配置编辑和重新部署混做。
 - [宝塔 Docker 编排文档](https://docs.bt.cn/category/%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92)
   当前公开目录重点覆盖编排备份、还原和跨服务器迁移。该复核没有发现需要改变本次核心交互的证据；
-  KPanel 仍以低层 Compose 校验、原子写入和可恢复任务作为差异化基础。
+  Dongger Panel 仍以低层 Compose 校验、原子写入和可恢复任务作为差异化基础。
 
 ## 输入与资源边界
 
@@ -90,7 +90,7 @@ Docker Run 前端解析只接受单条命令，拒绝管道、重定向、后续
 语义拉取缺失镜像后重试创建。
 
 Compose YAML 可以使用 Docker Compose 支持的管理员能力，包括 host network、privileged、设备和
-宿主机挂载；KPanel 不以风险为由削减底层能力。真实缺失的相对文件、环境文件、构建上下文或 Compose
+宿主机挂载；Dongger Panel 不以风险为由削减底层能力。真实缺失的相对文件、环境文件、构建上下文或 Compose
 插件会由固定 Compose 校验返回可纠正错误。
 
 浏览器会从 Compose 中识别 `$VAR`、`${VAR}`、`${VAR:?message}` 与 `${VAR:-default}`。没有默认值的

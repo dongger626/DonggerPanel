@@ -1,4 +1,4 @@
-# KPanel v0.59.0 发布验收记录
+# Dongger Panel v0.59.0 发布验收记录
 
 日期：2026-08-10
 
@@ -15,7 +15,7 @@
 - `2774051`：增加 Panel/Agent 的类型化宿主机资源 API；
 - `03ad7d4`：加固资源版本冲突、跨进程锁、写后回读、持久化和失败回滚；
 - `16b7ee2`：固定 `kejilion.sh` system-resource v3 协议提交与摘要；
-- `5e650d0`：统一版本字段并准备 KPanel `0.59.0`。
+- `5e650d0`：统一版本字段并准备 Dongger Panel `0.59.0`。
 
 正式源码、标签和通过 CI 的提交均为：
 
@@ -131,7 +131,7 @@ docker.io/kjlion/kejilion-panel@sha256:3c28f8930da2fa1b96b735394a333bcca4d3f3d66
 
 本版本没有数据或配置迁移。普通回滚只需把 Compose 镜像固定到上述摘要后重建 Panel，并从该镜像恢复 Agent 和受管脚本。只有数据或配置也需要回退时，才停止 Panel/Agent、校验备份 SHA-256，并恢复 `kpanel.tar.gz`。
 
-回滚 KPanel 不会撤销管理员上线后主动完成的 Hosts、Crontab、网卡或防火墙修改；这类宿主机资源变更应使用各自的审计记录和备份单独恢复。
+回滚 Dongger Panel 不会撤销管理员上线后主动完成的 Hosts、Crontab、网卡或防火墙修改；这类宿主机资源变更应使用各自的审计记录和备份单独恢复。
 
 ## 遗留风险
 

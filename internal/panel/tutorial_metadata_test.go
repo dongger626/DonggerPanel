@@ -54,7 +54,7 @@ func TestFetchTutorialVideoMetadataBilibili(t *testing.T) {
 		if request.URL.Host != "api.bilibili.com" || request.URL.Query().Get("bvid") != "BV13xpb6tEq7" {
 			t.Fatalf("unexpected Bilibili metadata request: %s", request.URL)
 		}
-		return tutorialJSONResponse(`{"code":0,"data":{"title":"KPanel 使用教程 1.25","pic":"http://i1.hdslb.com/bfs/archive/example.jpg"}}`), nil
+		return tutorialJSONResponse(`{"code":0,"data":{"title":"Dongger Panel 使用教程 1.25","pic":"http://i1.hdslb.com/bfs/archive/example.jpg"}}`), nil
 	})}
 	link, err := parseTutorialVideoURL("https://www.bilibili.com/video/BV13xpb6tEq7/")
 	if err != nil {
@@ -64,7 +64,7 @@ func TestFetchTutorialVideoMetadataBilibili(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if metadata.Title != "KPanel 使用教程 1.25" || metadata.ThumbnailURL != "https://i1.hdslb.com/bfs/archive/example.jpg" {
+	if metadata.Title != "Dongger Panel 使用教程 1.25" || metadata.ThumbnailURL != "https://i1.hdslb.com/bfs/archive/example.jpg" {
 		t.Fatalf("unexpected Bilibili metadata: %+v", metadata)
 	}
 }
@@ -73,7 +73,7 @@ func TestFetchTutorialVideoMetadataYouTubeUsesLocalizedCover(t *testing.T) {
 	client := &http.Client{Transport: tutorialRoundTripper(func(request *http.Request) (*http.Response, error) {
 		switch request.URL.Path {
 		case "/oembed":
-			return tutorialJSONResponse(`{"title":"KPanel overview","thumbnail_url":"https://i.ytimg.com/vi/3HwmSTCtozg/hqdefault.jpg"}`), nil
+			return tutorialJSONResponse(`{"title":"Dongger Panel overview","thumbnail_url":"https://i.ytimg.com/vi/3HwmSTCtozg/hqdefault.jpg"}`), nil
 		case "/watch":
 			if request.URL.Query().Get("hl") != "en" {
 				t.Fatalf("localized thumbnail request did not set hl=en: %s", request.URL)
@@ -92,14 +92,14 @@ func TestFetchTutorialVideoMetadataYouTubeUsesLocalizedCover(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if metadata.Title != "KPanel overview" || metadata.ThumbnailURL != "https://i.ytimg.com/vi_lc/3HwmSTCtozg/maxresdefault_en-US.jpg?sqp=abc&rs=signature" {
+	if metadata.Title != "Dongger Panel overview" || metadata.ThumbnailURL != "https://i.ytimg.com/vi_lc/3HwmSTCtozg/maxresdefault_en-US.jpg?sqp=abc&rs=signature" {
 		t.Fatalf("unexpected YouTube metadata: %+v", metadata)
 	}
 }
 
 func TestTutorialMetadataRejectsUntrustedThumbnailHost(t *testing.T) {
 	client := &http.Client{Transport: tutorialRoundTripper(func(*http.Request) (*http.Response, error) {
-		return tutorialJSONResponse(`{"code":0,"data":{"title":"KPanel","pic":"http://127.0.0.1/private.jpg"}}`), nil
+		return tutorialJSONResponse(`{"code":0,"data":{"title":"Dongger Panel","pic":"http://127.0.0.1/private.jpg"}}`), nil
 	})}
 	link, err := parseTutorialVideoURL("https://www.bilibili.com/video/BV13xpb6tEq7/")
 	if err != nil {

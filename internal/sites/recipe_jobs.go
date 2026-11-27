@@ -1411,7 +1411,7 @@ func recipeFailureMessage(job RecipeJob, stage string, cause error) string {
 	case stage == "terminal_unavailable":
 		return "建站交互终端启动失败，请检查 Host Agent 的 PTY、状态目录和 init 权限"
 	case stage == "reconcile_failed":
-		return "脚本已结束，但 KPanel 未发现完整站点产物，请检查 Nginx 配置、站点目录和证书"
+		return "脚本已结束，但 Dongger Panel 未发现完整站点产物，请检查 Nginx 配置、站点目录和证书"
 	case stage == "access_reconcile_failed":
 		return "站点已创建，但访问密码未能确认生效；请检查站点和访问限制后再使用"
 	case stage == "failed" && job.AccessPassword:

@@ -1,4 +1,4 @@
-# KPanel v0.38.2 发布验收
+# Dongger Panel v0.38.2 发布验收
 
 发布日期：2026-08-02
 
@@ -48,7 +48,7 @@
 ## 154 隔离实机与回滚
 
 - 154 验收机从 Docker Hub 拉取上述不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 验收后生产 KPanel 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器、网络和目录均已清理。
-- 本轮没有替换或重启 154 的生产 KPanel；生产实例继续使用原版本，用户可按应用市场更新流程选择升级。
+- 验收后生产 Dongger Panel 仍为 `running/healthy`，`kejilion-agent.service` 为 `active`；临时容器、网络和目录均已清理。
+- 本轮没有替换或重启 154 的生产 Dongger Panel；生产实例继续使用原版本，用户可按应用市场更新流程选择升级。
 - 无数据、配置、端口、脚本协议或持久化格式迁移；回滚源码和镜像为 `v0.38.1`，镜像摘要为
   `sha256:2986324461f6919806f0aabba1dacfc42ee98bba01ee114da451842ee9e6f4ed`。

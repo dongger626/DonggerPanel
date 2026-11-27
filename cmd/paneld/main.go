@@ -422,6 +422,6 @@ func runSelfSignedTLS(arguments []string, output io.Writer) error {
 	if err := panel.DisableSelfSignedTLS(config); err != nil {
 		return err
 	}
-	_, err = fmt.Fprintln(output, "self-signed HTTPS disabled; restart the KPanel container to apply")
+	_, err = fmt.Fprintln(output, "self-signed HTTPS disabled; restart the Dongger Panel container to apply")
 	return err
 }

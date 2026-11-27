@@ -1,4 +1,4 @@
-# KPanel 安全与性能加固报告（2026-07-28）
+# Dongger Panel 安全与性能加固报告（2026-07-28）
 
 ## 1. 范围与结论
 
@@ -7,7 +7,7 @@
 - 覆盖范围：Go/Node 依赖、最终容器镜像、Dockerfile、HTTP 安全边界、认证峰值内存、Panel-Agent 读取链路、Docker 容器采集、静态资源传输。
 - 不在本次范围：线上部署、业务数据写入、第三方应用自身漏洞、宿主机发行版全部软件包和内核 CVE。
 
-结论：未发现 KPanel 调用路径、生产依赖或最终镜像中的已知 High/Critical 漏洞。需要持续关注 Node.js 2026-07 安全发布，以及旧宿主机上的 Docker/containerd/runc 版本；本次改动不要求停服迁移，不改变 `kejilion.sh`、`k fd`、应用管理和交互终端业务协议。
+结论：未发现 Dongger Panel 调用路径、生产依赖或最终镜像中的已知 High/Critical 漏洞。需要持续关注 Node.js 2026-07 安全发布，以及旧宿主机上的 Docker/containerd/runc 版本；本次改动不要求停服迁移，不改变 `kejilion.sh`、`k fd`、应用管理和交互终端业务协议。
 
 ## 2. 已验证安全结果
 
@@ -22,7 +22,7 @@
 
 `gosec` 启发式提示已由基线的 101 个/22 个 High 降至 95 个/16 个 High。
 
-`govulncheck` 另报告依赖模块中存在 1 个未调用条目：`x/crypto/openpgp` 已停止维护。KPanel 不导入、不调用该包，因此不构成当前可达漏洞。
+`govulncheck` 另报告依赖模块中存在 1 个未调用条目：`x/crypto/openpgp` 已停止维护。Dongger Panel 不导入、不调用该包，因此不构成当前可达漏洞。
 
 `gosec` High 提示的复核分类：
 
@@ -36,8 +36,8 @@
 
 ### 需要持续关注
 
-1. Node.js 已预告 2026-07-27 前后为 24.x 发布最高 High 级别安全修复；截至本次验收，官方最新 LTS 页面仍为 `24.18.0`。KPanel 已将构建器升级并固定到 `24.18.0` 镜像摘要。Node 只参与前端构建，不进入 scratch 运行镜像；新安全版发布后仍应及时重新固定摘要。
-2. 2025–2026 年 containerd/runc 出现过 Critical/High 容器逃逸、宿主文件访问和 CRI 检查点恢复漏洞。KPanel 运行环境必须使用发行版已修补版本，不能只更新 KPanel 镜像。
+1. Node.js 已预告 2026-07-27 前后为 24.x 发布最高 High 级别安全修复；截至本次验收，官方最新 LTS 页面仍为 `24.18.0`。Dongger Panel 已将构建器升级并固定到 `24.18.0` 镜像摘要。Node 只参与前端构建，不进入 scratch 运行镜像；新安全版发布后仍应及时重新固定摘要。
+2. 2025–2026 年 containerd/runc 出现过 Critical/High 容器逃逸、宿主文件访问和 CRI 检查点恢复漏洞。Dongger Panel 运行环境必须使用发行版已修补版本，不能只更新 Dongger Panel 镜像。
 3. Trivy 在 2026-03 曾发生供应链事件。扫描工具必须固定安全版本/镜像摘要，不使用 `latest` 或受影响的 `0.69.4–0.69.6`。
 
 ### 本次实机验证环境

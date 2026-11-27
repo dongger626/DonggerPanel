@@ -1,4 +1,4 @@
-# KPanel v1.25.0-rc.9 发布验收记录
+# Dongger Panel v1.25.0-rc.9 发布验收记录
 
 日期：2026-10-07
 
@@ -26,7 +26,7 @@
 
 - 业务域：集群轻量 Linux 节点上报与服务端持久状态。
 - 变更面：协议或数据；没有界面、端口、Compose 或应用市场变更。
-- 受影响用户旅程：KPanel 升级后打开轻节点存储时，移除可确认为 Windows 的旧轻节点运行态、报告凭据和终端公钥；Linux 节点继续上报；未知节点报告使用独立限额。
+- 受影响用户旅程：Dongger Panel 升级后打开轻节点存储时，移除可确认为 Windows 的旧轻节点运行态、报告凭据和终端公钥；Linux 节点继续上报；未知节点报告使用独立限额。
 - 未变化契约：HTTP API 形状、端口、Compose、Agent 权限、Linux 轻节点协议、`kejilion.sh` 与应用市场契约不变。Windows 节点 Agent/bootstrap/installer 继续不提供；通用 Windows MCP 客户端不是 Windows 节点功能，仍保留。
 - 风险等级及理由：L3。启动迁移会删除限定记录和关联密钥，并调整未知报告的限额路径；涉及持久数据、凭据和可用性边界。
 
@@ -50,9 +50,9 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本（不适用））。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：`c3a8bd895f8878d9e4ced7592c91a20c974472a5` / `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`c3a8bd895f8878d9e4ced7592c91a20c974472a5` / `d76a3a267117674baf6911201723b2691f11d2964ecac08bfdf380c45485cdc0`。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：不适用；与已发布基线相同。
-- 状态判定依据与兼容性证据：RC9 只改 KPanel 轻节点持久状态；容器中受管脚本 revision 与 checksum 未变，managed-script contract 检查通过。
+- 状态判定依据与兼容性证据：RC9 只改 Dongger Panel 轻节点持久状态；容器中受管脚本 revision 与 checksum 未变，managed-script contract 检查通过。
 - 本版发布决定：脚本不在范围。
 - 阻断或移除的依赖范围（无则写“不适用”）：不适用。
 
@@ -96,11 +96,11 @@
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：单次 L3；未做长期 soak。RC 为预览版。
 - 受影响用户旅程、视口、100%/125%/200% 缩放、最小计算字号、主题、键盘/焦点、语言和失败态：不适用；本版没有 UI 变化。
 - 宿主机写入、失败注入、重启恢复和回滚结果：失败注入、启动迁移、L3 隔离应用生命周期恢复和备份 parity 自动测试通过；未向用户真实/生产主机写入数据。
-- 未执行场景及原因：真实 Windows/RDP 节点测试不适用，RC9 已移除 KPanel Windows 节点功能；真实 Linux 集群升级、重启、回滚、长时间运行和浏览器交互由后续使用者验收。
+- 未执行场景及原因：真实 Windows/RDP 节点测试不适用，RC9 已移除 Dongger Panel Windows 节点功能；真实 Linux 集群升级、重启、回滚、长时间运行和浏览器交互由后续使用者验收。
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：`KPanel 1.25.0-rc.9`，draft=false、prerelease=true，2026-10-07T00:10:40+08:00 发布；GitHub Latest 仍为稳定版 `v1.24.0`。
+- GitHub Release 的 draft / prerelease / Latest 状态：`Dongger Panel 1.25.0-rc.9`，draft=false、prerelease=true，2026-10-07T00:10:40+08:00 发布；GitHub Latest 仍为稳定版 `v1.24.0`。
 - Docker 版本与通道 OCI index：`docker.io/kjlion/kejilion-panel:1.25.0-rc.9` 与 `:preview` 均为 `sha256:a1749acafd945fed1a728bf4f8a2a4c0da35f25edb6cbbe30c42029c745eadf7`；稳定 `:latest` 仍为 `sha256:e4417146d8db9cd59e15d62656438503345f84cea9ae7aba2c42ba5926f3935b`（发布前后相同）。
 - `linux/amd64`、`linux/arm64` digest：amd64 `sha256:27679c70e8e2aa8e6a428ace2b601d7a4e916a9df808406d2acd283bbaa251e8`；arm64 `sha256:7b8750939472574bea301b5c3ba159fd6c6f2ea263700c3cba7aa2f1d70a0237`。
 - 附件及 `SHA256SUMS`：GitHub Release 共 14 项，包含 Linux Agent/轻节点 amd64/arm64、Darwin/Linux/Windows MCP 客户端、部署元数据 tarball、LICENSE、THIRD_PARTY_NOTICES 和 `SHA256SUMS`。校验文件 digest `sha256:3191d294dd7317ceb279115367e14ef7516c499bde158eb0b921bd8d04c7003d`；其 11 个程序/元数据 payload hash 均与 GitHub API asset digest 匹配。LICENSE 和 notices 不在清单范围。没有 Windows 节点 Agent/bootstrap/installer；Windows MCP 程序是通用客户端。

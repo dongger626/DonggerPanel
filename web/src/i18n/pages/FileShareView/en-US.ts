@@ -10,7 +10,7 @@ export default [
   ['正在读取分享文件…', 'Loading the shared file…'],
   ['请稍候，这通常只需要几秒。', 'Please wait. This usually takes only a few seconds.'],
   ['无法打开分享文件', 'Unable to open the shared file'],
-  ['KPanel 文件分享', 'KPanel file sharing'],
+  ['Dongger Panel 文件分享', 'Dongger Panel file sharing'],
   ['文件发生修改、移动或删除后，此链接将无法访问。', 'If the file is modified, moved, or deleted, this link becomes inaccessible.'],
   ['公开页不会显示服务器路径或管理信息', 'This public page never shows server paths or management details'],
   ['切换浅色模式', 'Switch to light mode'],

@@ -1,4 +1,4 @@
-# KPanel gosec 覆盖更新与静默会话保活复核（2026-09-17）
+# Dongger Panel gosec 覆盖更新与静默会话保活复核（2026-09-17）
 
 本报告衔接 [security-performance-hardening-2026-07-28.md](security-performance-hardening-2026-07-28.md)
 （基线 `0e4b5da`：95 条启发式提示、其时人工复核 16 条 High），完成两件事：

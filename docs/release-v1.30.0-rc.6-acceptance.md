@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.6 发布验收记录
+# Dongger Panel v1.30.0-rc.6 发布验收记录
 
 日期：2026-11-07
 
@@ -18,7 +18,7 @@
 - 归档 ref 与 SHA（或历史 tag/bundle 恢复证据）/ 远端复核结果：本次未创建 `archive/` 引用；发布时已核验 `origin/main` 与 `origin/release/v1.30.0-candidate` 均指向 `1ccf979714681273992c127618cfda495f737af0`；`git ls-remote` 未发现上述来源任务分支的远端 ref。RC5 标签及对象保持不变。
 - 本次来源任务分支：访问密码设置入口与交互改进来自 `feature/site-settings-main-20261106`；监控分组来自 `feature/monitoring-checks-mainline`，其原任务分支 `fix/monitor-checks-single-page` / `264525fa5570ace657dac5e38491944b5bfe1fdf` 被保留用于追溯。较早的 `feature/site-access-password` / `e52717b5b030d8c8d1d361d5b3420a0cb7c9e0b7` 未作为 RC6 新代码重放：访问密码基础功能已在此前主线中，RC6 纳入的是设置入口和交互完善。依据为 RC6 精确差异、两条引用任务记录及候选验收。
 - 本地分支/upstream/worktree：`release/v1.30.0-candidate` 工作树干净，路径 `C:\GitHub\_release-candidates\kpanel-v130`；来源工作树均干净并保留，`fix/monitor-checks-single-page` 跟踪 `origin/main`（ahead 5 / behind 106），其他上述来源分支无 upstream。未删除工作树或分支。
-- 未完成归档项 / 责任人 / 下次复核触发条件：KPanel Release Maintainer 在任务所有者确认释放后、下一 RC 收集或稳定版候选关闭前，核对来源分支是否仍需恢复，再保存精确 tip 并归档；在此之前保留原分支和工作树。
+- 未完成归档项 / 责任人 / 下次复核触发条件：Dongger Panel Release Maintainer 在任务所有者确认释放后、下一 RC 收集或稳定版候选关闭前，核对来源分支是否仍需恢复，再保存精确 tip 并归档；在此之前保留原分支和工作树。
 
 归档不代表生产上线；本版产物已公开，生产未部署。
 
@@ -50,7 +50,7 @@
 
 - `scriptLinkageState`：`not-required`。
 - 变更集编号：不适用（本版未变更配套脚本）。
-- KPanel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
 - 脚本候选 commit / SHA-256：不适用。
 - 状态判定依据与兼容性证据：RC6 Release/L3 的 `managed_script_contract=pass`，公开镜像中的脚本 revision/hash 与登记值匹配；RC6 未改脚本。
 - 本版发布决定：脚本不在范围；不重新发布脚本。
@@ -124,7 +124,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：GitHub-hosted 隔离验收；未连接生产或灰度主机。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：不适用；未连接 `arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：不适用（预览版禁止生产部署）。
 - 部署命令/入口：不适用（预览版禁止生产部署）。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用（预览版禁止生产部署）。
@@ -165,7 +165,7 @@
     "count": 1,
     "impact": "RC6 Release 与预览镜像已公开；首次公开浏览器验收在 terminal-first-navigation 阶段多次遇到 net::ERR_NETWORK_CHANGED，外层 Publish preview 终态为 failure 且 preview-completion skipped。没有证据表明产品本身失败，也没有生产写操作。",
     "recoveryEvidence": "原始 run 42263516340 的失败报告保存在 C:\\GitHub\\_task-evidence\\kpanel-rc6-release-20261107\\public-acceptance-failure；只读恢复 run 42273795677 / job 128084821121 对同一候选 1ccf979714681273992c127618cfda495f737af0 和 digest sha256:34a6c473854441f6c54d8cf55e9c597ec2a2fdd28d657cd0f4718cadf7aca67f 通过，真实容器 48+26、浏览器 45+31 项通过，errors=0；未重建或重发产物。",
-    "permanentAction": "负责人 KPanel Release Maintainer；2026-11-14复核下一次公开浏览器门禁是否再次发生 ERR_NETWORK_CHANGED。退出条件：随后两次公开门禁无此错误；若复发，修复验收浏览器入口的有限传输重试并保留首次失败证据。该自动重试目前尚未实施。对照此前最近五个公开验收记录 v1.30.0-rc.5、v1.30.0-rc.4、v1.30.0-rc.3、v1.30.0-rc.1、v1.29.0，未见同一指纹；v1.30.0-rc.2 未公开。",
+    "permanentAction": "负责人 Dongger Panel Release Maintainer；2026-11-14复核下一次公开浏览器门禁是否再次发生 ERR_NETWORK_CHANGED。退出条件：随后两次公开门禁无此错误；若复发，修复验收浏览器入口的有限传输重试并保留首次失败证据。该自动重试目前尚未实施。对照此前最近五个公开验收记录 v1.30.0-rc.5、v1.30.0-rc.4、v1.30.0-rc.3、v1.30.0-rc.1、v1.29.0，未见同一指纹；v1.30.0-rc.2 未公开。",
     "historicalReleases": []
   }
 ]

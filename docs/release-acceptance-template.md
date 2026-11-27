@@ -1,4 +1,4 @@
-# KPanel vX.Y.Z[-rc.N] 发布验收记录模板
+# Dongger Panel vX.Y.Z[-rc.N] 发布验收记录模板
 
 > 本文件是新版本验收记录的结构模板。复制为 `docs/release-v<version>-acceptance.md` 后删除本说明，
 > 不回填或批量改写历史记录。状态只使用“已验证”“已实现未实机验证”“未实现”“不适用”。
@@ -55,10 +55,10 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本（不适用）） / `coupled` / `script-only`：
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：
-- KPanel 实际内置脚本基线 commit / SHA-256：
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：
 - 状态判定依据与兼容性证据：
-- 本版发布决定：脚本不在范围 / 脚本先行后发布 KPanel / 仅发布脚本且不变更 KPanel：
+- 本版发布决定：脚本不在范围 / 脚本先行后发布 Dongger Panel / 仅发布脚本且不变更 Dongger Panel：
 - 阻断或移除的依赖范围（无则写“不适用”）：
 
 ## 多维质量结论
@@ -132,7 +132,7 @@
 - 生产目标和部署授权范围：
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对：
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对：
 - 部署前版本、健康、备份位置及摘要：
 - 部署命令/入口：
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：

@@ -89,7 +89,7 @@ describe('terminal and editor workspace theme', () => {
     expect(diagnosticsSource).toContain('border-radius: var(--terminal-workspace-radius)')
   })
 
-  it('keeps the file editor on the preview workbench while using KPanel semantic tokens', () => {
+  it('keeps the file editor on the preview workbench while using Dongger Panel semantic tokens', () => {
     expect(editorSource).toContain('--code-background: var(--file-preview-background, var(--terminal-shell-background, #0b1214))')
     expect(editorSource).toContain('--code-caret: color-mix(in srgb, var(--file-preview-accent, var(--brand)) 50%, var(--code-text))')
     expect(editorSource).toContain('--code-active-line: var(--file-preview-active-line, rgb(53 203 166 / 8%))')

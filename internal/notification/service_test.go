@@ -827,7 +827,7 @@ func TestServiceUsesConfiguredLocaleForResourceAlerts(t *testing.T) {
 	}
 	messages := telegram.messagesSnapshot()
 	if len(messages) != 1 || !strings.Contains(messages[0], "CPU usage") ||
-		!strings.Contains(messages[0], "[KPanel Cluster Alert]") ||
+		!strings.Contains(messages[0], "[Dongger Panel Cluster Alert]") ||
 		!strings.Contains(messages[0], "UTC+08:00") {
 		t.Fatalf("unexpected localized resource message: %#v", messages)
 	}

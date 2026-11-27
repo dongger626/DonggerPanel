@@ -243,7 +243,7 @@ func runShoutrrrWorker(input io.Reader, base http.RoundTripper) error {
 	if service, ok := service.(*gotify.Service); ok {
 		*service.GetHTTPClient() = *http.DefaultClient
 	}
-	params := types.Params{"title": "KPanel"}
+	params := types.Params{"title": "Dongger Panel"}
 	if err := service.Send(request.Message, &params); err != nil {
 		return errors.New("notification delivery failed")
 	}

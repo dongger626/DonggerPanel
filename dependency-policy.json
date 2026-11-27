@@ -93,7 +93,7 @@
     },
     "decisionRules": {
       "not-required": {
-        "when": "KPanel does not change or require a new or changed script-defined protocol, runtime action, host artifact, install/update path, external configuration, or embedded script content; an existing compatible contract is allowed",
+        "when": "Dongger Panel does not change or require a new or changed script-defined protocol, runtime action, host artifact, install/update path, external configuration, or embedded script content; an existing compatible contract is allowed",
         "requiredEvidence": [
           "candidate-diff-review",
           "baseline-script-commit-and-digest",
@@ -103,7 +103,7 @@
         "scriptRelease": "not-in-scope"
       },
       "coupled": {
-        "when": "KPanel changes or consumes a new or changed script-defined protocol, runtime action, host artifact, install/update path, external configuration, or embedded script content",
+        "when": "Dongger Panel changes or consumes a new or changed script-defined protocol, runtime action, host artifact, install/update path, external configuration, or embedded script content",
         "requiredEvidence": [
           "paired-change-set-id",
           "script-commit-and-digest",
@@ -118,7 +118,7 @@
         "ifScriptNotReady": "block-kpanel-candidate-or-remove-dependent-scope"
       },
       "script-only": {
-        "when": "Only kejilion/sh changes and the supported KPanel contract remains compatible without KPanel code, image, or configuration changes",
+        "when": "Only kejilion/sh changes and the supported Dongger Panel contract remains compatible without Dongger Panel code, image, or configuration changes",
         "requiredEvidence": [
           "script-commit-and-digest",
           "root-cn-sync-check",
@@ -361,12 +361,12 @@
       "component": "typescript",
       "currentVersion": "6.0.3",
       "candidateVersion": "7.0.2",
-      "reason": "2026-11-19 re-evaluation: TypeScript 7.0.2 and the latest stable vue-tsc 3.3.14 still fail before checking KPanel's Vue sources because TypeScript 7 does not export typescript/lib/tsc. The archived dual-compiler experiment still checks Vue with TypeScript 6.",
+      "reason": "2026-11-19 re-evaluation: TypeScript 7.0.2 and the latest stable vue-tsc 3.3.14 still fail before checking Dongger Panel's Vue sources because TypeScript 7 does not export typescript/lib/tsc. The archived dual-compiler experiment still checks Vue with TypeScript 6.",
       "securityAndProductImpact": "The locked web npm audit reports zero advisories. The direct TypeScript 7 replacement blocks the required Vue typecheck and therefore the production web build.",
       "mitigation": "Keep TypeScript 6.0.3 pinned, run the existing typecheck/build gates, and retain the TypeScript 7 signal in every freshness report.",
-      "owner": "KPanel base maintenance",
+      "owner": "Dongger Panel base maintenance",
       "reviewDate": "2026-12-18",
-      "exitCondition": "A supported Vue typecheck path for TypeScript 7 passes KPanel typecheck, tests, scene-pack checks and production build without disabling checks.",
+      "exitCondition": "A supported Vue typecheck path for TypeScript 7 passes Dongger Panel typecheck, tests, scene-pack checks and production build without disabling checks.",
       "rollbackPoint": "9c5be9c293f98ad9bce260a4562e28743951b105",
       "previousReviewDate": "2026-11-28",
       "reviewedAt": "2026-11-19T07:32:54Z",
@@ -376,7 +376,7 @@
         "platform": "win32",
         "typescript": "7.0.2",
         "vueTsc": "3.3.14",
-        "command": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit --project <KPanel web tsconfig>",
+        "command": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit --project <Dongger Panel web tsconfig>",
         "observed": "Exit 1, ERR_PACKAGE_PATH_NOT_EXPORTED for typescript/lib/tsc before typechecking.",
         "logSha256": "a136f10c271b7733c3766ed12fd83e2151689989c435bde661ad0e32712033f3",
         "lockSha256": "d941e778d4f678990815db9ce28b3027e24515bed8b6ff92db18beee4c6c8927",

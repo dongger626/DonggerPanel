@@ -663,17 +663,17 @@ async function consumeRouteIntent(): Promise<void> {
   await clearAppIntent()
   const item = inventory.value.items.find((candidate) => candidate.token === kpanelAppToken)
   if (!item) {
-    toast.danger('无法打开更新', '应用目录中没有找到 KPanel。')
+    toast.danger('无法打开更新', '应用目录中没有找到 Dongger Panel。')
     return
   }
   selectedID.value = item.id
   if (applicationTaskActive.value) {
     jobDetailsOpen.value = true
-    toast.danger('已有应用任务运行中', '请等待当前任务结束后再更新 KPanel。')
+    toast.danger('已有应用任务运行中', '请等待当前任务结束后再更新 Dongger Panel。')
     return
   }
   if (!item.runtime.installed || !capability(item, 'update')) {
-    toast.danger('当前无法更新', item.capabilities.update?.reason || 'KPanel 更新能力尚未就绪。')
+    toast.danger('当前无法更新', item.capabilities.update?.reason || 'Dongger Panel 更新能力尚未就绪。')
     return
   }
   confirmAction.value = 'update'
@@ -1072,15 +1072,15 @@ async function toggleAccess(): Promise<void> {
     !capability(item, 'direct_access')
   ) return
   const next = item.runtime.accessMode === 'domain_only' ? 'direct' : 'domain_only'
-  // Blocking KPanel's own IP+port from an IP or plain-HTTP page would lock this
+  // Blocking Dongger Panel's own IP+port from an IP or plain-HTTP page would lock this
   // session out. Hand off to Settings, which verifies a domain reaches this
   // panel, jumps there and only then submits the block.
   if (next === 'domain_only' && item.id === kpanelAppID && panelReachedWithoutTrustedDomain()) {
     const domain = selectedDomains.value.find((site) => site.enabled)?.primaryDomain
     toast.show('请先验证域名', {
       message: domain
-        ? '当前正通过 IP 访问 KPanel，直接阻止会断开本次会话。请在设置页检测域名后跳转并阻止。'
-        : '当前正通过 IP 访问 KPanel，且尚未绑定可用域名。请先在设置页绑定并检测域名。',
+        ? '当前正通过 IP 访问 Dongger Panel，直接阻止会断开本次会话。请在设置页检测域名后跳转并阻止。'
+        : '当前正通过 IP 访问 Dongger Panel，且尚未绑定可用域名。请先在设置页绑定并检测域名。',
     })
     await router.push(domain ? panelDomainSwitchPath(domain) : `/settings?section=${panelAccessSection}`)
     return
@@ -1152,12 +1152,12 @@ async function addDomain(): Promise<void> {
     return
   }
 
-  // Blocking IP+port for KPanel itself would cut off this very session before
+  // Blocking IP+port for Dongger Panel itself would cut off this very session before
   // the new address is proven. Settings verifies the domain, then jumps to it
   // and only submits the block on the way out.
   if (item.id === kpanelAppID) {
     operation.value = ''
-    toast.success('域名已绑定', `${hostname} 已反向代理到 KPanel，正在前往设置页检测并切换。`)
+    toast.success('域名已绑定', `${hostname} 已反向代理到 Dongger Panel，正在前往设置页检测并切换。`)
     await router.push(panelDomainSwitchPath(hostname))
     return
   }
@@ -1677,7 +1677,7 @@ watch(windowActive, syncJobPollingForWindow)
               {{ phrase('此应用通过 kejilion.sh 安装，请按提示完成配置。') }}
             </p>
             <p v-else-if="capability(selected, 'install')">
-              {{ phrase('此应用可由 KPanel 直接安装。') }}
+              {{ phrase('此应用可由 Dongger Panel 直接安装。') }}
             </p>
             <p v-else>{{ phrase(selected.capabilities.install?.reason || '等待专属安装适配器。') }}</p>
           </div>
@@ -1693,7 +1693,7 @@ watch(windowActive, syncJobPollingForWindow)
 
         <div v-if="selected.runtime.installed" class="app-detail-grid">
           <section class="app-detail-section app-detail-section--domain">
-            <header><Globe2 :size="18" /><div><strong>{{ phrase('域名访问') }}</strong><small>{{ phrase('复用 KPanel 网站反向代理') }}</small></div></header>
+            <header><Globe2 :size="18" /><div><strong>{{ phrase('域名访问') }}</strong><small>{{ phrase('复用 Dongger Panel 网站反向代理') }}</small></div></header>
             <div v-if="selectedDomains.length" class="domain-list">
               <div
                 v-for="site in selectedDomains"
@@ -1940,7 +1940,7 @@ watch(windowActive, syncJobPollingForWindow)
     >
       <div class="inline-alert inline-alert--warning">
         <Activity :size="17" />
-        {{ phrase('仅结束当前交互任务，不会删除应用；结束后 KPanel 会重新读取容器、域名和访问策略状态。') }}
+        {{ phrase('仅结束当前交互任务，不会删除应用；结束后 Dongger Panel 会重新读取容器、域名和访问策略状态。') }}
       </div>
       <template #footer>
         <button

@@ -1,4 +1,4 @@
-# KPanel v1.29.0-rc.5 发布验收记录
+# Dongger Panel v1.29.0-rc.5 发布验收记录
 
 日期：2026-11-02；发布级别 L3；releaseChannel=preview；releaseTrain=1.29.0。
 
@@ -8,7 +8,7 @@
 
 ## 发布画像与范围
 
-- 域名绑定在设置与应用市场显示提交、完成、最近日志及错误反馈；选中应用间不串任务。反代准备 Python/flock 依赖，后续步骤失败即停止，KPanel 绑定后保留直连。
+- 域名绑定在设置与应用市场显示提交、完成、最近日志及错误反馈；选中应用间不串任务。反代准备 Python/flock 依赖，后续步骤失败即停止，Dongger Panel 绑定后保留直连。
 - Panel 与 SSH 共用 /usr/local/bin/k；安装/更新同步校验过的配套脚本到 /root/kejilion.sh 与 /usr/local/bin/k，/usr/bin/k 指向后者。更新会替换自定义脚本，需先备份；继承许可、区域和统计偏好；首次升级按当前SSH设置双向重新继承，global入口缺失时回退可信旧专用脚本。
 - 首次从旧生命周期升级时，新 Agent 等待原锁/事务结束后迁移；业务写入暂缓，健康与更新恢复控制保持可用。旧自动更新单元暂用小型受保护转发文件，下一次正常更新移除。迁移失败恢复原内容、权限、链接或缺失状态；已提交迁移清理旧快照后才恢复写入。
 - 保留 FastAdmin PHP74、LinuxMirrors/Armbian、command install 与 AI SQLite 并发修复；采用公开脚本的 WAF 来源修正、LDNMP 卸载反馈及工具调优。未增加 API endpoint、数据 Schema、端口、Compose 格式或 Agent 权限；新增迁移期间的认证后写入就绪检查。风险 L3 来自实际发布与宿主脚本写入。
@@ -17,7 +17,7 @@
 
 ## 跨仓库联动及来源
 
-scriptLinkageState=coupled，变更集 proxy-shared-host-script-preferences-preview-20261101。镜像固定公开 `kejilion/sh@d2156444add457973d4a84634653aa10cece712f`，根SHA-256 `f60a7023ca0d6dd9ee5f3557669675b84ca7e2c0f3de9fe4b8da22e740478235`，CN `d05a3dc5eb33916ce6cd1e377d08f363cbe144ce41298e719eb0d91fd69998a3`。WAF固定1ad9ad8e57c83317d4fe1f418054195f653e79cb，七个公开文件逐一核对。脚本已先公开于main，本轮未再次写入sh/apps/nginx仓库；非KPanel仓库没有推送功能或归档分支。
+scriptLinkageState=coupled，变更集 proxy-shared-host-script-preferences-preview-20261101。镜像固定公开 `kejilion/sh@d2156444add457973d4a84634653aa10cece712f`，根SHA-256 `f60a7023ca0d6dd9ee5f3557669675b84ca7e2c0f3de9fe4b8da22e740478235`，CN `d05a3dc5eb33916ce6cd1e377d08f363cbe144ce41298e719eb0d91fd69998a3`。WAF固定1ad9ad8e57c83317d4fe1f418054195f653e79cb，七个公开文件逐一核对。脚本已先公开于main，本轮未再次写入sh/apps/nginx仓库；非Dongger Panel仓库没有推送功能或归档分支。
 - FastAdmin 与 LinuxMirrors/command install 的实际函数字节与上一兼容脚本核对相同；前序FastAdmin真实Linux PHP74/MySQL/Nginx证据复用，不重建测试数据库。应用市场公开旧kpanel.conf的首次升级行为已用不可变RC3生命周期复现并纳入canonical回归；没有靠修改公共apps模板规避已安装的旧生命周期。
 
 ## 多维质量结论
@@ -117,7 +117,7 @@ scriptLinkageState=coupled，变更集 proxy-shared-host-script-preferences-prev
     "fingerprint": "preparation/preview/missing-self-app-fixture-option",
     "count": 2,
     "position": "before-production-write",
-    "impact": "两次默认mock未启用已安装KPanel场景，预期设置表单不可用。",
+    "impact": "两次默认mock未启用已安装Dongger Panel场景，预期设置表单不可用。",
     "recoveryEvidence": "准备目录及corrected-preview保留首轮stopped manifest；带KPANEL_MOCK_SELF_APP=1的新manifest绑定精确提交并通过旅程。",
     "permanentAction": "本轮已固定场景环境并核验真实表单；发布维护者下次同场景启动先检查fixture，2026-11-03复核。",
     "historicalReleases": []
@@ -128,7 +128,7 @@ scriptLinkageState=coupled，变更集 proxy-shared-host-script-preferences-prev
     "position": "before-production-write",
     "impact": "两个已文档化截图接口失败，没有生成本轮新截图。",
     "recoveryEvidence": "旧preview/browser-result.json和工具原件；改为声明DOM/字体证据边界，只复用精确相同web/src的既有截图。",
-    "permanentAction": "上游接口例外：KPanel发布维护者2026-11-03复核，截图后端恢复前不宣称新截图；不可替代正式公开浏览器证据。",
+    "permanentAction": "上游接口例外：Dongger Panel发布维护者2026-11-03复核，截图后端恢复前不宣称新截图；不可替代正式公开浏览器证据。",
     "historicalReleases": []
   },
   {
@@ -307,6 +307,6 @@ scriptLinkageState=coupled，变更集 proxy-shared-host-script-preferences-prev
 
 ## 遗留风险与后续准入
 
-- 既有本机生命周期锁中级待办和staging清理低级待办：KPanel lifecycle maintainers，2026-11-15；既有进度脱敏/备份导出父路径线索同日核实。AI历史总量预算中级待办截至2026-11-08；旧终端首开截至11-03，Windows启动根因截至11-07。细节只在仓库外安全待办保留。
+- 既有本机生命周期锁中级待办和staging清理低级待办：Dongger Panel lifecycle maintainers，2026-11-15；既有进度脱敏/备份导出父路径线索同日核实。AI历史总量预算中级待办截至2026-11-08；旧终端首开截至11-03，Windows启动根因截至11-07。细节只在仓库外安全待办保留。
 - 自定义脚本会被同步替换；先备份。部分清理或损坏快照会保持业务写关闭，可能需人工恢复；不承诺所有异常都自动继续。全宿主/跨发行版与物理ARM64需独立后续准入，不据预览通过宣称稳定版普遍适用。
 - 本轮没有新增知识或工作流；复用release-kpanel4.3、官方OCR、普通候选盲审、版本管理和安全资源清理规则。公开Release、本验收及实际workflow/artifact/Git refs共同构成交付事实。

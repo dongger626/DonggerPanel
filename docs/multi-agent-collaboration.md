@@ -1,6 +1,6 @@
-# KPanel 跨智能体协作运行手册
+# Dongger Panel 跨智能体协作运行手册
 
-本手册说明 Codex、Claude 及其他智能体如何在同一 KPanel 项目中并行工作。强制规则以
+本手册说明 Codex、Claude 及其他智能体如何在同一 Dongger Panel 项目中并行工作。强制规则以
 [`project-management.md`](project-management.md) 为准。
 
 ## 协作架构
@@ -89,7 +89,7 @@ Windows 没有 Make 时使用 `node scripts/run-repo-bash.mjs <script>` 调用�
   发布期间由发布任务负责，不要求另设监控会话或协调中心定时询问。
 - 可见功能使用 `local-feature-preview` 交付统一回环预览卡；不同会话使用动态端口和独立证据目录，mock、
   本地集成与隔离真机结论不得混写，交接时同时交接 manifest 和停止责任。
-- 任何远程操作前使用 `environment-policy.json` 检查用途。`prod-108`/`108` 禁用全部 KPanel 操作；
+- 任何远程操作前使用 `environment-policy.json` 检查用途。`prod-108`/`108` 禁用全部 Dongger Panel 操作；
   测试、只读检查、备份、部署、升级、回滚演练、健康采样、日志读取和清理均不得连接。
 - 发布在 `github-hosted` 的 GitHub Actions 内执行完整 L3、Release、Docker Hub 与公开浏览器验收；不委派到自有服务器或 WSL。原 bundle 仅作历史证据，接手使用 run ID/attempt 与 artifact。
 

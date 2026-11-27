@@ -1,6 +1,6 @@
 # Windows 命令行轻量节点
 
-本候选让 Windows 作为 `light_node` 接入 Linux KPanel 中心，提供实时与历史监控、文件管理、
+本候选让 Windows 作为 `light_node` 接入 Linux Dongger Panel 中心，提供实时与历史监控、文件管理、
 PowerShell 命令行终端。Panel/Agent 仍只在 Linux 运行。没有 RDP、远程桌面、账户创建、
 远程端口转发或 Windows 系统管理适配器。
 
@@ -71,7 +71,7 @@ Windows 公共命名对象可被普通账户先占：保留旧版兼容时无法
 ## 参考与验收边界
 
 2026-10-26 核对 [Komari Agent](https://github.com/komari-monitor/komari-agent)：其 Windows Agent、
-PowerShell 安装和 ConPTY 命令行路径用于复核核心旅程。实现使用 KPanel 自有协议和原生 SCM、
+PowerShell 安装和 ConPTY 命令行路径用于复核核心旅程。实现使用 Dongger Panel 自有协议和原生 SCM、
 现有历史/文件/终端组件；不引入 Komari Token、NSSM、端口或依赖，不恢复历史 RDP 实现。
 源码与本机原生自动测试、Linux 回归、UI Mock、隔离安装/重启、公开附件、生产部署是不同证据层。
 候选验证回执记录实际通过情况；本文的实现说明不构成 Server/ARM64 实机、长期性能或发布承诺。

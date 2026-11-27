@@ -1,4 +1,4 @@
-# KPanel v1.28.0-rc.7 发布验收记录
+# Dongger Panel v1.28.0-rc.7 发布验收记录
 
 日期：2026-10-26（Asia/Shanghai）
 
@@ -106,7 +106,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "Writer clean/baseline checks preceded integration, but full JSON ready qualification followed initial source merges. No external product main/tag write occurred before qualification.",
     "recoveryEvidence": "ready-corrected.json and original writer checkpoints; source integrations isolated in owned release tree.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -115,7 +115,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "Initial workflow invocation used Windows python alias and returned exit1 without workflow output.",
     "recoveryEvidence": "Bundled Python executable resolved through workspace runtime; existing workflow rendered to rendered-workflow.md.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -124,7 +124,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "First PowerShell candidate inventory invocation exited1 without output; no inventory evidence was accepted. Root cause not conclusively established.",
     "recoveryEvidence": "inventory.mjs independently completed the complete279-worktree inventory; candidate-inventory.json retained.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -133,7 +133,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "First ready rejected gh in requiredTools; canonical schema permits only enumerated build tools.",
     "recoveryEvidence": "ready-first-input-failure.json preserved; removed unsupported entry and verified gh separately; ready-corrected.json passed.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -142,7 +142,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "First draft notes check could not find Go in repository Bash PATH.",
     "recoveryEvidence": "Notes check repeated with existing verified Go1.27.3 SDK on PATH; notes-check.log passed. No product source or gate weakened.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -151,7 +151,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "First rolling-metrics invocation used unsupported --limit.",
     "recoveryEvidence": "Read canonical --help, used --releases20; release-metrics-before.txt contains actual metrics.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -160,7 +160,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 2,
     "impact": "Two candidate checks reported OCR stale because separate message paragraphs were outside final trailer block. No pushed frozen product depended on those invalid trailer interpretations.",
     "recoveryEvidence": "Final source review saved both arms; contiguous footer in final-candidate-message.txt; final frozen check reports OCR recorded and L2 is parsed.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -169,7 +169,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "First local review record introduced a trailing blank and diff--check warned before local commit; commit was corrected prior to frozen candidate publication.",
     "recoveryEvidence": "finalize-candidate.mjs removes stray EOF and records meaningful review facts; amended only unpublished local commit; frozen diff check clean.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   },
   {
@@ -178,7 +178,7 @@ RC5桌面恢复偶发、Node新入网默认入口由对应维护者于2026-10-28
     "count": 1,
     "impact": "Functional assertions passed but initial screenshots captured sidebar resize and modal entry transitions; those visual images were rejected.",
     "recoveryEvidence": "Original images/results retained; stabilized driver additionally awaits finite animations and closed mobile sidebar. Replacement13 checks and manual screenshots passed without changing product.",
-    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. KPanel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
+    "permanentAction": "Release executor uses verified runtime/schema/CLI and contiguous trailer file, clean checkpoints and animation-settled screenshots for remaining phases. This is an execution correction, not a claimed permanent repository mechanism. Dongger Panel release-tool maintainer reviews by2026-10-28/next preview; exit is correctly ordered applicable preflight and stable evidence on next use.",
     "historicalReleases": []
   }
 ]

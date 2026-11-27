@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.7 发布验收记录
+# Dongger Panel v1.26.0-rc.7 发布验收记录
 
 日期：2026-10-11。发布级别：L3。发布通道：preview；发布列车：1.26.0。
 
@@ -117,7 +117,7 @@ REC5 私有 classic daemon 误删共享 docker0 的实际失败、34 原件及�
     "count": 1,
     "impact": "历史组影响（原失败仅按其实际候选成立）：Old candidate complete canonical L3 r1 failed on historical asynchronous offers TempDir cleanup; web cancelled, deploy not run.",
     "recoveryEvidence": "原4e9 r1失败与同SHA r2恢复继续保留；本候选C5也实际完成canonical L3（08:21:21至08:44:03Z，exit0），仅证明本次完整运行通过，不证明旧异步fixture隐患已永久修复。",
-    "permanentAction": "Owner: KPanel offers fixture maintainer; existing deadline 2026-10-15 or before promotion to stable, whichever earlier, is retained without extension. Exit condition: isolated reviewed fixture waits for background refresh completion and its required regression passes. Current C5 L3 recovery does not prove permanent repair of the old asynchronous fixture risk.",
+    "permanentAction": "Owner: Dongger Panel offers fixture maintainer; existing deadline 2026-10-15 or before promotion to stable, whichever earlier, is retained without extension. Exit condition: isolated reviewed fixture waits for background refresh completion and its required regression passes. Current C5 L3 recovery does not prove permanent repair of the old asynchronous fixture risk.",
     "historicalReleases": []
   },
   {
@@ -126,7 +126,7 @@ REC5 私有 classic daemon 误删共享 docker0 的实际失败、34 原件及�
     "count": 2,
     "impact": "两次已计只读inventory调用的Docker --format空格在远端shell参数重构中丢失，均在本次公开写入前发生；原失败输出未用于门禁通过。",
     "recoveryEvidence": "draft-parser-r2-inspection-incident.json + actual draft-parser-r2-qualification.json; terminal-browser-prep/image-list-incident.json binds failure e1aef7 and corrected --format=json native595449. Read-only impact does not exempt these two events.",
-    "permanentAction": "Owner: KPanel release maintainer; review by 2026-10-18 or before next L3 production write, whichever earlier. Reuses the exact v1.26.0-rc.2/rc.6 fingerprint. Exit condition: single shared remote inventory entry uses structured subprocess argv or unambiguous JSON format and passes required regression for spaced input. Existing external corrections are recovery only; no permanent shared repair is claimed. RC recurrences remain preview observations, not stable historicalReleases.",
+    "permanentAction": "Owner: Dongger Panel release maintainer; review by 2026-10-18 or before next L3 production write, whichever earlier. Reuses the exact v1.26.0-rc.2/rc.6 fingerprint. Exit condition: single shared remote inventory entry uses structured subprocess argv or unambiguous JSON format and passes required regression for spaced input. Existing external corrections are recovery only; no permanent shared repair is claimed. RC recurrences remain preview observations, not stable historicalReleases.",
     "historicalReleases": []
   },
   {
@@ -135,7 +135,7 @@ REC5 私有 classic daemon 误删共享 docker0 的实际失败、34 原件及�
     "count": 1,
     "impact": "历史组影响（原失败仅按其实际候选成立）：Actual terminal browser r1 failed before any business assertion: drop-ALL root could not read Panel UID65532/0600 bootstrap token; browser-result EACCES, cases empty. R1 cleanup passed with existing Agent PID/container set retained.",
     "recoveryEvidence": "旧EACCES、后续独立产品失败和诊断原件保留。私有权限明确的夹具在C5最终实际浏览器验收完成17项/18图，cleanup passed；最终通过只属于C5，不改写旧r1/r2/r3结论。",
-    "permanentAction": "Owner: KPanel browser-validation maintainer; review by 2026-10-18 or before next L3 production write, whichever earlier. Exit condition: shared fixture copies bootstrap material into private runtime with explicit required owner/mode and read-only mount, qualifies actual unprivileged-capability semantics, and the complete required browser suite passes. Current external fixture repair is not a permanent repository repair.",
+    "permanentAction": "Owner: Dongger Panel browser-validation maintainer; review by 2026-10-18 or before next L3 production write, whichever earlier. Exit condition: shared fixture copies bootstrap material into private runtime with explicit required owner/mode and read-only mount, qualifies actual unprivileged-capability semantics, and the complete required browser suite passes. Current external fixture repair is not a permanent repository repair.",
     "historicalReleases": []
   },
   {
@@ -358,7 +358,7 @@ REC5 私有 classic daemon 误删共享 docker0 的实际失败、34 原件及�
     "fingerprint": "owned-cleanup/preflight/integer-precision",
     "position": "before-production-write",
     "count": 1,
-    "impact": "一次真实自有清理控制器在删除前的 fresh inventory 比较处因 mtimeNs 整数经 JavaScript Number 序列化精度变化而停止；诊断记录 22,252 处差异且 deletionReached=false。它属于发布清理流程失败，不是 KPanel/BT 产品故障，也不是普通只读工具 schema 笔误。",
+    "impact": "一次真实自有清理控制器在删除前的 fresh inventory 比较处因 mtimeNs 整数经 JavaScript Number 序列化精度变化而停止；诊断记录 22,252 处差异且 deletionReached=false。它属于发布清理流程失败，不是 Dongger Panel/BT 产品故障，也不是普通只读工具 schema 笔误。",
     "recoveryEvidence": "r2 独立授权后使用十进制字符串保留纳秒身份，重新核验备份、归属、进程、挂载及目标清单。实际 cleanup-receipt 记录恰好 7 个自有目标已移除、回收 951,377,920 字节，原证据、14 个业务容器和 Agent 未变；执行结果为 passed。root 已在 native 85d958 实际复核成功。r1 原失败仍完整保留。",
     "permanentAction": "已实施且限本轮清理控制器：整数身份按精确十进制字符串跨Python/JavaScript传递，逐字段不一致即拒绝删除，不设容差。C4已清对象与两旧RC1 bundle均仅保留缺席检查；C5清理仍只允许自己的三个精确目标，完整进程/挂载namespace/ignored树校验及真实收尾证据前提不变。当前仅静态准备，不清共享cache/image/volume、不称共享工具通用修复。",
     "historicalReleases": []

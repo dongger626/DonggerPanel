@@ -1,4 +1,4 @@
-# KPanel v1.30.0-rc.10 发布验收记录
+# Dongger Panel v1.30.0-rc.10 发布验收记录
 
 日期：2026-11-10
 
@@ -49,7 +49,7 @@
 
 - `scriptLinkageState`：`not-required`（RC10 未修改或发布脚本）。
 - 变更集编号：不适用。
-- KPanel 实际内置脚本基线 commit / SHA-256：沿用 RC9 已发布脚本 `1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：沿用 RC9 已发布脚本 `1faee13f3faef164efbfa899e244fc19ad58aaff` / `5c5acccac56bba480046f28ac0d5d34af736fcfb5ab187647684b52c6689ad23`。
 - 脚本候选 commit / SHA-256：无新候选，沿用上述已发布基线；网站访问密码功能依赖的配套脚本未在 RC10 改动。
 - 状态判定依据与兼容性证据：精确 L3 记录 `managed_script_contract=pass`，revision 与摘要匹配；公开验收使用同一冻结产物。
 - 本版发布决定：脚本不在范围，面板 RC10 单独发布。

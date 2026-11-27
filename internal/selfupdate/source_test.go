@@ -65,7 +65,7 @@ func TestGitHubLatestSourceAcceptsOnePublishedStableDigest(t *testing.T) {
 		t.Fatalf("release identity = %#v", release)
 	}
 	if requestSeen == nil || requestSeen.Method != http.MethodGet || requestSeen.URL.String() != githubLatestURL ||
-		requestSeen.UserAgent() != "KPanel-Release-Update/2" ||
+		requestSeen.UserAgent() != "Dongger Panel-Release-Update/2" ||
 		requestSeen.Header.Get("X-GitHub-Api-Version") != "2022-11-28" {
 		t.Fatalf("unexpected request: %#v", requestSeen)
 	}
@@ -75,7 +75,7 @@ func TestReleaseNotesAreBoundedPlainTextAndKeepUpgradeWarningsSeparate(t *testin
 	body := `### 版本更新内容
 
 #### 新增
-- 增加 **KPanel 专用确认框**，详情见 [发布页](https://example.invalid/release)。
+- 增加 **Dongger Panel 专用确认框**，详情见 [发布页](https://example.invalid/release)。
 #### 变更
 - 设置页与应用市场复用 **同一结构**。
 #### 修复
@@ -87,7 +87,7 @@ func TestReleaseNotesAreBoundedPlainTextAndKeepUpgradeWarningsSeparate(t *testin
 ### 发布产物与完整性
 - 生产镜像：忽略`
 	notes, upgradeNotes := parseReleaseNotes(body)
-	if len(notes) != 3 || notes[0] != (ReleaseNote{Kind: "added", Text: "增加 KPanel 专用确认框，详情见 发布页。"}) ||
+	if len(notes) != 3 || notes[0] != (ReleaseNote{Kind: "added", Text: "增加 Dongger Panel 专用确认框，详情见 发布页。"}) ||
 		notes[1] != (ReleaseNote{Kind: "changed", Text: "设置页与应用市场复用 同一结构。"}) ||
 		notes[2].Kind != "fixed" {
 		t.Fatalf("notes = %#v", notes)
@@ -178,7 +178,7 @@ func TestGitHubLatestSourceRejectsUntrustedOrMutableMetadata(t *testing.T) {
 		{name: "draft", status: http.StatusOK, body: strings.Replace(valid, `"draft":false`, `"draft":true`, 1)},
 		{name: "missing stable flags", status: http.StatusOK, body: `{"tag_name":"v1.2.3"}`},
 		{name: "prerelease tag", status: http.StatusOK, body: strings.Replace(valid, "v1.2.3", "v1.2.3-rc.1", 2)},
-		{name: "wrong repository", status: http.StatusOK, body: strings.Replace(valid, "github.com/kejilion/KPanel", "github.com/other/KPanel", 1)},
+		{name: "wrong repository", status: http.StatusOK, body: strings.Replace(valid, "github.com/kejilion/KPanel", "github.com/other/Dongger Panel", 1)},
 		{name: "tag image", status: http.StatusOK, body: strings.Replace(valid, "@"+digest, ":1.2.3", 1)},
 		{name: "duplicate digest", status: http.StatusOK, body: strings.Replace(valid, `\n","draft"`, `\n- 生产镜像：\u0060docker.io/kjlion/kejilion-panel@`+digest+`\u0060\n","draft"`, 1)},
 		{name: "trailing value", status: http.StatusOK, body: valid + `{}`},

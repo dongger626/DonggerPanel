@@ -1,4 +1,4 @@
-# KPanel v1.28.1-rc.1 预览版发布验收记录
+# Dongger Panel v1.28.1-rc.1 预览版发布验收记录
 
 日期：2026-10-31（Asia/Shanghai）；发布级别：L3。
 
@@ -54,7 +54,7 @@ releaseChannel=preview；releaseTrain=1.28.1。
 - L3：run41099129500/attempt1，job124212762072。回执status=passed，精确candidate/tree及三组日志摘要匹配；GitHub-hosted Ubuntu24 image20261026.354.1，Go1.27.3、Node24.22.1、Docker28.0.4。权威入口run-release-gate.sh SHA-256为43e57f4fd321846204020d6cf27eb75961f0aefa1284a9187e786601704c2d40。
 - L3源码web/go/deploy耗时分别348031/474354/1936ms，并行总474382ms；Web 332文件、3348测试通过，6项按原规则skipped，生产构建成功。L3含镜像契约、扫描、场景与生命周期、image_e2e=pass；hosted L3不使用旧SSH/WSL执行方案或旧Runner ID。
 - 依赖报告run41097002020，生成于2026-10-30T17:15:04.816Z，必需源9/9；347个版本通道信号，其中36个直接/基座行动项、311个传递归属信号，不代表全部应升级。CF可选源not-requested不计缺失。
-- 本轮仅采用已公开受管脚本修订，其他版本/锁依赖不升级。TypeScript7及@types/node26沿用已有例外，负责人KPanel base maintenance，复核日2026-11-28；EOL最近复核2026-10-29、下次2027-01-29。其余候选按既有维护时限另行评估，检测不能重置期限。该push报告的security-advisories job按事件条件skipped，安全结论使用本次精确CI/L3扫描，不冒充每日作业已运行。
+- 本轮仅采用已公开受管脚本修订，其他版本/锁依赖不升级。TypeScript7及@types/node26沿用已有例外，负责人Dongger Panel base maintenance，复核日2026-11-28；EOL最近复核2026-10-29、下次2027-01-29。其余候选按既有维护时限另行评估，检测不能重置期限。该push报告的security-advisories job按事件条件skipped，安全结论使用本次精确CI/L3扫描，不冒充每日作业已运行。
 
 ## 公开产物与真实浏览器
 

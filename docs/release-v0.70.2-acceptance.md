@@ -1,10 +1,10 @@
-# KPanel v0.70.2 上线验收记录
+# Dongger Panel v0.70.2 上线验收记录
 
 日期：2026-08-14（Asia/Shanghai）
 
 ## 发布结论
 
-KPanel v0.70.2 已按 `release-kpanel` v2.1 完成候选冻结、L3、真实 Chrome、候选 CI、主线 CI、Tag、GitHub Release、双架构公开镜像、应用市场契约、公开镜像 E2E、停写一致性备份以及 154/108 正式升级。
+Dongger Panel v0.70.2 已按 `release-kpanel` v2.1 完成候选冻结、L3、真实 Chrome、候选 CI、主线 CI、Tag、GitHub Release、双架构公开镜像、应用市场契约、公开镜像 E2E、停写一致性备份以及 154/108 正式升级。
 
 108 未参与候选、功能、浏览器、灰度或持续观察测试；只在不可变产物与 154 门禁全部通过后执行标准升级及最小部署安全核对。
 
@@ -52,7 +52,7 @@ KPanel v0.70.2 已按 `release-kpanel` v2.1 完成候选冻结、L3、真实 Chr
 - 两个架构的 OCI version 为 `0.70.2`，revision 为 `30c4c1153e320f28a31bb4bd89428e9da1f3f8e3`。
 - 154 从 Docker Hub 按不可变摘要重新拉取，公开镜像 E2E 输出 `image_e2e=pass`；日志 SHA-256 `d6918030f72af42d7c376ceb7a1f902705a8473b11ff4ccacb39706e81322eb9`。
 - `kejilion/apps` commit：`c5cc79ce4acd7f7b373573952616dbabd2060b7d`
-- 本轮应用配置无源码差异；apps 与 KPanel 的 Git blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，Linux 文件 SHA-256 `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`，因此未产生空 apps 提交。
+- 本轮应用配置无源码差异；apps 与 Dongger Panel 的 Git blob 均为 `34316059d4e42f527819bc7d56e0ff14ec434c96`，Linux 文件 SHA-256 `82f06ca32ce827ef8d0c9c72e65eed9180841a23cbc507237072b58a0807ef04`，因此未产生空 apps 提交。
 - 上线前发现两台主机 `/root/apps/kpanel.conf` 的本地缓存不是上述最新 blob；实时 Compose 均已没有 Browser Relay，业务运行未漂移。备份旧缓存后，两台主机均先同步精确官方配置，再执行标准 `docker_app_update`，当前应用配置已一致。
 
 ## 正式部署

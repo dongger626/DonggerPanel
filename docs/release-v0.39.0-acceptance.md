@@ -1,10 +1,10 @@
-# KPanel v0.39.0 发布验收
+# Dongger Panel v0.39.0 发布验收
 
 发布日期：2026-08-03
 
 ## 发布范围
 
-- 新增轻量多主机终端：支持本机与重新授予终端权限的 v2 KPanel 主机，不新增公网监听端口。
+- 新增轻量多主机终端：支持本机与重新授予终端权限的 v2 Dongger Panel 主机，不新增公网监听端口。
 - 终端支持多主机页签、预输入整行发送、原生交互输入、窗口缩放、断线续读和安全 URL 跳转。
 - 历史监控新增中国电信、联通、移动在北京、上海、广州的九路 DNS 延迟趋势，并支持逐路显示或隐藏。
 - 本次没有数据、端口、部署配置或脚本协议迁移；远端终端权限不向旧配对自动扩展。
@@ -51,7 +51,7 @@
 ## 154 隔离实机、应用市场与回滚
 
 - 154 验收机从 Docker Hub 重新拉取上述不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 验收前后生产 KPanel 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；没有替换或重启生产 KPanel。
+- 验收前后生产 Dongger Panel 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；没有替换或重启生产 Dongger Panel。
 - `packaging/kejilion-app/kpanel.conf` 相对 `v0.38.3` 无变化，继续使用 `latest` 与镜像内版本契约，无需提交 `kejilion/apps`。
 - 代码合并前回滚点为 `0dee3cef7b98c0065776d72db9b6fad6791f8724`；公开镜像和源码回滚点为 `v0.38.3`（`4244abc2da0a54d09f59cd527c43633316f4c484`）。
 - 回滚不会删除现有网站、应用、Docker、文件、集群关系或监控历史；旧版本忽略新终端 scope，远端终端需双方重新升级和配对后恢复。

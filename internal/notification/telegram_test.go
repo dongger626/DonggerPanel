@@ -19,7 +19,7 @@ func TestTelegramClientValidatesAndDiscoversPrivateStartChat(t *testing.T) {
 		w.Header().Set("Content-Type", "application/json")
 		switch {
 		case strings.HasSuffix(r.URL.Path, "/getMe"):
-			_, _ = w.Write([]byte(`{"ok":true,"result":{"id":42,"is_bot":true,"first_name":"KPanel","username":"kpanel_bot"}}`))
+			_, _ = w.Write([]byte(`{"ok":true,"result":{"id":42,"is_bot":true,"first_name":"Dongger Panel","username":"kpanel_bot"}}`))
 		case strings.HasSuffix(r.URL.Path, "/getUpdates"):
 			_, _ = w.Write([]byte(`{"ok":true,"result":[{"update_id":10,"message":{"text":"/start proof","chat":{"id":-8,"type":"group"}}},{"update_id":13,"message":{"text":"/start proof","chat":{"id":91,"type":"private"}}},{"update_id":14,"message":{"text":"/start","chat":{"id":92,"type":"private"}}}]}`))
 		default:
@@ -59,10 +59,10 @@ func TestTelegramClientSendsPlainTextWithoutLeakingResponseDetails(t *testing.T)
 	defer server.Close()
 
 	client := newTelegramClientForTest(server.URL, server.Client())
-	if err := client.SendMessage(context.Background(), testBotToken, 91, "hello KPanel"); err != nil {
+	if err := client.SendMessage(context.Background(), testBotToken, 91, "hello Dongger Panel"); err != nil {
 		t.Fatalf("SendMessage() error = %v", err)
 	}
-	if received.ChatID != 91 || received.Text != "hello KPanel" {
+	if received.ChatID != 91 || received.Text != "hello Dongger Panel" {
 		t.Fatalf("sendMessage payload = %#v", received)
 	}
 	if err := client.SendMessage(context.Background(), "not-a-token", 91, "secret"); err == nil || !strings.Contains(err.Error(), "invalid_token") || strings.Contains(err.Error(), "not-a-token") {

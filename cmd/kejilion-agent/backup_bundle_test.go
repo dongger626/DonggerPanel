@@ -79,7 +79,7 @@ func TestBackupCLIFileInteroperability(t *testing.T) {
 
 	// Panel uses the same writer and can include panel identity alongside host data.
 	panelPath := filepath.Join(unpacked, "panel.payload")
-	if err := os.WriteFile(panelPath, []byte("panel identity stays in KPanel"), 0600); err != nil {
+	if err := os.WriteFile(panelPath, []byte("panel identity stays in Dongger Panel"), 0600); err != nil {
 		t.Fatal(err)
 	}
 	mixed := filepath.Join(dir, "panel-export.kpb")

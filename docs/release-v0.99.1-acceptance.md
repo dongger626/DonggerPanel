@@ -1,4 +1,4 @@
-# KPanel v0.99.1 发布验收记录
+# Dongger Panel v0.99.1 发布验收记录
 
 日期：2026-08-29
 
@@ -12,7 +12,7 @@
 
 - 业务域：文件管理器预览与代码编辑器主题。
 - 变更面：展示与只读交互；不涉及 API、数据、宿主机权限或部署脚本。
-- 受影响用户旅程：用户切换 KPanel 全局或自定义主题后，打开文件预览、代码编辑器和相关只读文件内容时，界面跟随当前主题的语义颜色，而不是继续使用固定终端深色调色板。
+- 受影响用户旅程：用户切换 Dongger Panel 全局或自定义主题后，打开文件预览、代码编辑器和相关只读文件内容时，界面跟随当前主题的语义颜色，而不是继续使用固定终端深色调色板。
 - 未变化契约：API、数据 schema、端口、Compose、Agent 权限、`kejilion.sh`、应用市场和系统中心均不变。
 - 风险等级及理由：低到中；变更限定在文件预览主题 token、消费者和回归测试，未改变布局尺寸、数据流或宿主机写入链路。
 
@@ -74,10 +74,10 @@
 
 ## 生产部署安全核对
 
-- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 KPanel `v0.99.1` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
+- 生产目标和部署授权范围：用户明确要求复核后走上线流程；仅执行 Dongger Panel `v0.99.1` 标准应用更新、生产证据和备份，目标仅 `arena-154`。
 - 验证/灰度环境：固定 `arena-154` L3 runner、公开 OCI 校验和生产安全证据入口，均来自 `environment-policy.json`。
 - 正式部署环境：`arena-154`。
-- `prod-108`：禁用全部 KPanel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
+- `prod-108`：禁用全部 Dongger Panel 操作；确认本次未连接、未备份、未部署、未升级、未核对；`108` 同样未连接。
 - 部署前版本、健康、备份位置及摘要：preflight `0.99.0`、health `ok`，Agent `loaded/active/running/enabled`；backup gate 通过，备份目录为 `/root/kpanel-backups/pre-v0.99.0-20260829T054826Z`，六项 `SHA256SUMS` 均记录并校验通过，受保护配置差异为空。
 - 部署命令/入口：`KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel`。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：postdeploy health `version=0.99.1`、`status=ok`；容器标签 `org.opencontainers.image.revision=fb3a0a1ad4f0b680ad3cb3a06c17c047bf68b837`、`org.opencontainers.image.version=0.99.1`，镜像 RepoDigest 精确匹配 `sha256:89703cde4a01a510d12970c1cae4bbf8574f5e5e1657e25f59dc048e89dd46e9`；Panel `running/healthy`、restart=0、OOM=false；Agent `active/running/enabled` 且 `NeedDaemonReload=no`；protected diff 0 字节，SQLite quick check 为 `panel/ai.db ok`，最近 10 分钟 Panel/Agent panic/fatal/OOM signature scan=`NONE`；公网入口为 `https://kpanel.154.36.153.9.sslip.io`。

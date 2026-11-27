@@ -558,11 +558,11 @@ func TestBackupExcludesResolvedKPanelRoots(t *testing.T) {
 	e := &Engine{Root: root, StateDir: filepath.Join(root, "home", "docker", "kpanel", "data", "agent")}
 	for _, path := range []string{"/vol1/1000/docker/kpanel/secrets", "/vol1/1000/docker/kpanel", "/vol1/1000"} {
 		if !e.excluded(path) {
-			t.Fatalf("resolved KPanel root %s is not excluded", path)
+			t.Fatalf("resolved Dongger Panel root %s is not excluded", path)
 		}
 	}
 	if e.excluded("/vol1/1000/docker/app") {
-		t.Fatal("application data next to KPanel was excluded")
+		t.Fatal("application data next to Dongger Panel was excluded")
 	}
 }
 

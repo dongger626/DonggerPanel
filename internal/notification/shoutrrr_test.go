@@ -49,7 +49,7 @@ func TestShoutrrrCredentialValidation(t *testing.T) {
 func TestShoutrrrRealAdapterPayloadAndBoundaries(t *testing.T) {
 	oldClient, oldTransport := http.DefaultClient, http.DefaultTransport
 	defer func() { http.DefaultClient = oldClient; http.DefaultTransport = oldTransport }()
-	request := shoutrrrRequest{Provider: ProviderNtfy, Credential: "ntfy://:@ntfy.example/ops", Message: "KPanel alert"}
+	request := shoutrrrRequest{Provider: ProviderNtfy, Credential: "ntfy://:@ntfy.example/ops", Message: "Dongger Panel alert"}
 	data, _ := json.Marshal(request)
 	var calls int
 	transport := robotRoundTripFunc(func(r *http.Request) (*http.Response, error) {

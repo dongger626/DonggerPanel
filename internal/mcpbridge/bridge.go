@@ -1,4 +1,4 @@
-// Package mcpbridge adapts a delegated KPanel HTTP connection to MCP stdio.
+// Package mcpbridge adapts a delegated Dongger Panel HTTP connection to MCP stdio.
 // It has no host privileges, local Agent access, database, or listening socket.
 package mcpbridge
 
@@ -20,11 +20,11 @@ import (
 func ValidateEndpoint(endpoint string) error {
 	u, err := url.Parse(endpoint)
 	if err != nil || u.Host == "" || u.User != nil || u.RawQuery != "" || u.Fragment != "" || u.Path != "/mcp" || u.RawPath != "" {
-		return errors.New("invalid KPanel MCP endpoint")
+		return errors.New("invalid Dongger Panel MCP endpoint")
 	}
 	ip := net.ParseIP(u.Hostname())
 	if u.Scheme != "https" && !(u.Scheme == "http" && (u.Hostname() == "localhost" || (ip != nil && ip.IsLoopback()))) {
-		return errors.New("KPanel MCP requires HTTPS or loopback")
+		return errors.New("Dongger Panel MCP requires HTTPS or loopback")
 	}
 	return nil
 }
@@ -61,18 +61,18 @@ func Run(ctx context.Context, endpoint, token string, transport mcp.Transport) e
 	client := mcp.NewClient(&mcp.Implementation{Name: "kpanel-mcp-bridge", Version: version.Version}, &mcp.ClientOptions{Logger: logger})
 	remote, err := client.Connect(ctx, &mcp.StreamableClientTransport{Endpoint: endpoint, HTTPClient: httpClient, MaxRetries: -1, DisableStandaloneSSE: true, MaxEventSize: 256 << 10}, nil)
 	if err != nil {
-		return errors.New("cannot connect to KPanel MCP; check endpoint, HTTPS and credential")
+		return errors.New("cannot connect to Dongger Panel MCP; check endpoint, HTTPS and credential")
 	}
 	defer remote.Close()
 	server := mcp.NewServer(&mcp.Implementation{Name: "kpanel", Version: version.Version}, &mcp.ServerOptions{Logger: logger, Instructions: remote.InitializeResult().Instructions})
 	count := 0
 	for tool, err := range remote.Tools(ctx, nil) {
 		if err != nil {
-			return errors.New("cannot discover KPanel MCP tools")
+			return errors.New("cannot discover Dongger Panel MCP tools")
 		}
 		count++
 		if count > 128 {
-			return errors.New("KPanel tool limit exceeded")
+			return errors.New("Dongger Panel tool limit exceeded")
 		}
 		name := tool.Name
 		server.AddTool(tool, func(ctx context.Context, request *mcp.CallToolRequest) (*mcp.CallToolResult, error) {

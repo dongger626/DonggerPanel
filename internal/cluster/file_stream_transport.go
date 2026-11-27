@@ -159,7 +159,7 @@ func dialFileStreamWithParent(ctx, parent context.Context, client *http.Client, 
 	defer cancel()
 	ws, response, err := websocket.Dial(handshakeCtx, origin+FileStreamV2Path, &websocket.DialOptions{
 		HTTPClient: client, Subprotocols: []string{fileStreamProtocol}, CompressionMode: websocket.CompressionDisabled,
-		HTTPHeader: http.Header{"User-Agent": []string{"KPanel federation/" + FederationProtocolV2}},
+		HTTPHeader: http.Header{"User-Agent": []string{"Dongger Panel federation/" + FederationProtocolV2}},
 	})
 	if err != nil {
 		if response != nil {

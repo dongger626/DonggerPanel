@@ -1,4 +1,4 @@
-# KPanel Browser 镜像
+# Dongger Panel Browser 镜像
 
 ## Tor Browser 可选组件（本地候选）
 
@@ -15,14 +15,14 @@ Agent 从 Tor 官方固定 URL 流式下载 16.0.1，单文件上限 256 MiB，�
 镜像在宿主机构建为 `kpanel-browser-tor:16.0.1-kpanel.2`。已有 Tor 安装可在浏览器设置中执行「修复连接」换用新镜像，旧临时会话随容器替换丢弃。
 Docker 构建上下文只允许配方、启动脚本、安装包、签名、公钥及下述助手锁定包/构建脚本，不包含 Agent 的 token/任务状态。
 
-两个网桥助手由 KPanel 重建，不再是 Tor 官方签名包内的原始助手字节：保留该版本上游使用的
+两个网桥助手由 Dongger Panel 重建，不再是 Tor 官方签名包内的原始助手字节：保留该版本上游使用的
 Conjure `14e660f0a64bcbb2b55f01f69c1aafdfd5a6dcfa` 与 Lyrebird
 `59ac7e400c384773f5584dbe366516ad04a33d9f` 应用源码，升级六项显式安全依赖及其必要传递依赖。
 `tor-helpers/manifest.json` 记录来源、归档摘要、固定 Go 工具链与版本；各自 `go.mod`/`go.sum`
 和随安装器嵌入的 `tor-helper-locks.tar` 由自动测试逐字核对。构建校验来源归档与锁文件，
 采用 `-mod=readonly`，并用固定版本 govulncheck 的普通文本模式检查实际二进制，检出漏洞即失败。
 最终镜像 `/opt/kpanel-tor-helpers` 保留来源说明、模块清单、许可证与二进制摘要。
-这增加了 KPanel 对重建助手及其依赖升级的维护责任；网桥由原生 Tor 界面配置，不能将扫描通过解释为匿名性保证。
+这增加了 Dongger Panel 对重建助手及其依赖升级的维护责任；网桥由原生 Tor 界面配置，不能将扫描通过解释为匿名性保证。
 
 `tor-compose.yml` 从 PID 1 起以 UID/GID 65532 运行，根文件系统只读，使用 `cap_drop: [ALL]` 和 `no-new-privileges`。
 TigerVNC 通过私有 Unix socket 提供画面，WebSocket 仅监听 Panel 控制网络；容器不发布宿主端口，也不挂载宿主数据或 Docker Socket。
@@ -32,10 +32,10 @@ Tor 的连接/网桥设置在原生界面内完成，容器健康和画面可用
 发行版兼容、ARM64、公开产物及生产验收仍须单独完成；本地原型证据不能替代发布门禁。
 
 可选独立组件：Alpine 3.24、官方仓库 Chromium、TigerVNC、Openbox、软件渲染组件、中文字体和 `kpanel-browser`。
-不包含桌面环境，不挂载 Docker Socket，不发布宿主机端口，不改变 KPanel 主镜像。
+不包含桌面环境，不挂载 Docker Socket，不发布宿主机端口，不改变 Dongger Panel 主镜像。
 `amd64` / `arm64` 分别原生构建、运行和扫描后，才允许发布对应版本。
 
-KPanel v1.30.0-rc.13 配套组件使用 `docker.io/kjlion/kpanel-browser:0.1.0-rc.5`，固定多架构摘要为
+Dongger Panel v1.30.0-rc.13 配套组件使用 `docker.io/kjlion/kpanel-browser:0.1.0-rc.5`，固定多架构摘要为
 `sha256:9a5cd79bef4262cf675331a8ce07e9e5df9121d26fb3721440c6256ad444ea03`。两架构原生构建、运行、扫描、完整 L3 和匿名公开拉取复测均通过，见[发布记录](https://github.com/kejilion/KPanel/actions/runs/43024744979)。`.env.example` 与托管 Compose 使用这个固定摘要；旧 RC2 截图协议与本分支 VNC 协议不兼容，Panel 会拒绝旧组件，避免错误连接。
 此前公开版本为 `docker.io/kjlion/kpanel-browser:0.1.0-rc.2`，源码提交
 `94d88f035ee5eb899896a29d25b2d2d1c71991c1`，其[发布记录](https://github.com/kejilion/KPanel/actions/runs/40382052237)保留作历史参考。`0.1.0-rc.1` 的公开复测发现静态标签恢复缺帧问题；`rc.2` 修复了旧协议中的该问题。
@@ -91,7 +91,7 @@ sudo bash packaging/browser/verify.sh kpanel-browser:check kpanel-browser:test /
 `Publish browser component` 只从 `main` 手动调度，输入已通过候选 CI 的精确源码 SHA
 和未使用的组件版本。运行工作流必须与候选内该文件完全相同；完整 L3 与两架构组件验收
 全部通过后才使用 Docker Hub 凭据发布，再拉取公开摘要复测。没有自动发布 `latest`，
-也不修改 KPanel 的 VERSION、Release 或默认更新通道。当前试验发布入口不恢复部分成功的发布：
+也不修改 Dongger Panel 的 VERSION、Release 或默认更新通道。当前试验发布入口不恢复部分成功的发布：
 任一版本或架构标签已占用便拒绝重新推送；修复后使用新的 RC 版本。
 首次稳定组件前需补齐发布附件恢复与新 Dockerfile 的统一依赖检测覆盖，由组件维护者负责。
 候选分支的相关 push 只执行双架构构建、真实浏览器测试与扫描，不运行发布 job 或读取 Docker Hub 凭据。

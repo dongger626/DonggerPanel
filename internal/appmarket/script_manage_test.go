@@ -111,7 +111,7 @@ func TestInstalledDockerAppApplicationsDoNotExposeNativeScriptManagement(t *test
 			if err != nil {
 				t.Fatal(err)
 			}
-			if item.Capabilities["manage"].Enabled || item.Capabilities["manage"].Reason != "该应用使用 KPanel 常规管理入口" {
+			if item.Capabilities["manage"].Enabled || item.Capabilities["manage"].Reason != "该应用使用 Dongger Panel 常规管理入口" {
 				t.Fatalf("docker_app application exposed native management: %#v", item.Capabilities["manage"])
 			}
 			for _, action := range []string{"stop", "restart", "update", "uninstall", "direct_access"} {
@@ -152,7 +152,7 @@ func TestMarkerOnlyDockerAppDoesNotExposeScriptRecovery(t *testing.T) {
 	if !item.Runtime.Installed || item.Runtime.ContainerID != "" {
 		t.Fatalf("marker-only docker_app state is incomplete: %#v", item.Runtime)
 	}
-	if item.Capabilities["manage"].Enabled || item.Capabilities["manage"].Reason != "该应用使用 KPanel 常规管理入口" {
+	if item.Capabilities["manage"].Enabled || item.Capabilities["manage"].Reason != "该应用使用 Dongger Panel 常规管理入口" {
 		t.Fatalf("marker-only docker_app exposed script recovery: %#v", item.Capabilities["manage"])
 	}
 }

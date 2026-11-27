@@ -76,7 +76,7 @@ func (c *Collector) readDNSConfiguration() contract.DNSConfiguration {
 		manager = "static"
 	}
 
-	// KPanel writes a native systemd-resolved drop-in instead of replacing or
+	// Dongger Panel writes a native systemd-resolved drop-in instead of replacing or
 	// locking resolv.conf. Prefer its configured upstreams over the local
 	// 127.0.0.53 stub so the UI presents the actual setting it controls.
 	if manager == "systemd-resolved" {

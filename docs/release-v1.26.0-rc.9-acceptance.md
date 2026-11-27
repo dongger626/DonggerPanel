@@ -1,4 +1,4 @@
-# KPanel v1.26.0-rc.9 发布验收记录
+# Dongger Panel v1.26.0-rc.9 发布验收记录
 
 日期：2026-10-12。发布级别：L3。
 
@@ -50,9 +50,9 @@
 
 - `scriptLinkageState`：`not-required`（无需发布脚本；本次未改变 `kejilion.sh` 脚本协议或源文件）。
 - 变更集编号：不适用。
-- KPanel 内置生命周期脚本基线：沿用 `1800d955f216aebd2776674368a8e469a671c489`；脚本提交与摘要：不适用。Release workflow 双 Shell lifecycle 检查通过。
+- Dongger Panel 内置生命周期脚本基线：沿用 `1800d955f216aebd2776674368a8e469a671c489`；脚本提交与摘要：不适用。Release workflow 双 Shell lifecycle 检查通过。
 - 状态判定依据：`kejilion.sh` lifecycle 脚本未变；`kpanel.conf` 只新增 `CAP_KILL` 配置。应用市场远端 `main=6602ac36e0c329e35b74ff621721b23583e94f5f` 的 `kpanel.conf` blob 与候选完全一致，故无需 apps 仓库提交。
-- 本版发布决定：只发布 KPanel preview；不更改应用市场默认 stable / `latest` 更新入口。
+- 本版发布决定：只发布 Dongger Panel preview；不更改应用市场默认 stable / `latest` 更新入口。
 - 阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
@@ -114,7 +114,7 @@
 - 生产动作：不适用（预览版禁止生产部署）。
 - 验证环境：L3 使用 `arena-154`；公开镜像 E2E 在本地 WSL 容器执行。
 - 正式部署环境：不适用。本次未连接、未备份、未部署、未升级或检查任何生产 Panel。
-- `prod-108`：按环境策略禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：按环境策略禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 生产已执行写操作：无。
 - 仅在隔离环境执行：L3 runner 的候选检查；本地 mock UI 和公开镜像容器 E2E。
 

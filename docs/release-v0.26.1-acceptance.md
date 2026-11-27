@@ -1,4 +1,4 @@
-# KPanel v0.26.1 验收记录
+# Dongger Panel v0.26.1 验收记录
 
 ## 交付范围
 
@@ -62,9 +62,9 @@
 - `paused`：对锁定的测试容器执行真实 `docker pause`，卡片和详情均显示
   “已暂停”，详情可打开且端口仍可见；`docker unpause` 后无需额外重启即恢复
   `running/healthy`。
-- 整个生命周期的 KPanel 页面控制台错误列表为空，没有 `null.find`、
+- 整个生命周期的 Dongger Panel 页面控制台错误列表为空，没有 `null.find`、
   `TypeError` 或未处理 Promise 错误。浏览器控制插件访问其自身
-  `ab.chatgpt.com` 辅助遥测时发生超时，只造成控制命令变慢，不属于 KPanel
+  `ab.chatgpt.com` 辅助遥测时发生超时，只造成控制命令变慢，不属于 Dongger Panel
   页面错误，也未影响 DOM 操作和 154 状态读取。
 - 清理后业务容器 `name → id → state → image` 与基线完全一致；生产 Panel
   ID 仍为

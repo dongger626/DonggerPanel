@@ -200,7 +200,7 @@ func inspectBackupFile(call backupCommand, input backupFileRequest) (backup.Reco
 	}
 	modules, err = backup.Selection(modules)
 	if err != nil {
-		return record, errors.New("所选备份不含应用、网站或 Docker 数据；面板数据请在 KPanel 中恢复")
+		return record, errors.New("所选备份不含应用、网站或 Docker 数据；面板数据请在 Dongger Panel 中恢复")
 	}
 	if err := backupRPC(call, []string{"import"}, hostbackup.Request{Action: "import", Modules: modules}, &record); err != nil {
 		return record, err
@@ -276,7 +276,7 @@ func runBackupMenu(args []string, input io.Reader, output io.Writer) error {
 		fmt.Fprintln(output)
 		return string(value), err
 	}
-	fmt.Fprintln(output, "KPanel 通用备份与恢复 (.kpb)\n1. 导出备份  2. 导入检查与恢复  3. 任务记录  0. 返回")
+	fmt.Fprintln(output, "Dongger Panel 通用备份与恢复 (.kpb)\n1. 导出备份  2. 导入检查与恢复  3. 任务记录  0. 返回")
 	choice, err := ask("选择: ")
 	if err != nil {
 		return err
@@ -337,7 +337,7 @@ func runBackupMenu(args []string, input io.Reader, output io.Writer) error {
 	if err != nil {
 		return err
 	}
-	fmt.Fprintln(output, "检查通过，所含类别：", strings.Join(record.Modules, ", "), "；确认后覆盖所选数据。面板数据请在 KPanel 中恢复。")
+	fmt.Fprintln(output, "检查通过，所含类别：", strings.Join(record.Modules, ", "), "；确认后覆盖所选数据。面板数据请在 Dongger Panel 中恢复。")
 	if len(record.Roots) > 0 {
 		fmt.Fprintln(output, "将被替换的主机目录：")
 		for _, root := range record.Roots {

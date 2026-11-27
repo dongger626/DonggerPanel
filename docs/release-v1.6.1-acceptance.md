@@ -1,4 +1,4 @@
-# KPanel v1.6.1 发布验收记录
+# Dongger Panel v1.6.1 发布验收记录
 
 日期：2026-09-07。发布级别：L3。
 
@@ -72,7 +72,7 @@
 
 ## 生产部署安全核对与回滚
 
-- 仅 arena-154，用户已授权本修复上线。108/prod-108禁用全部KPanel操作，本次未连接、未备份、未部署、未升级、未核对。
+- 仅 arena-154，用户已授权本修复上线。108/prod-108禁用全部Dongger Panel操作，本次未连接、未备份、未部署、未升级、未核对。
 - 固定 `run-production-evidence.mjs`，run `v1.6.1-2f926d6-production`，脚本SHA256 `129d3fbab5cd4e5ad966a59f3e174c586a26578e5fac262d7af7bc9699012eaf`。preflight 02:14:36Z→02:14:37Z passed，基线1.6.0健康、Agent active、数据和配置基线已保存；5项顶层evidence摘要独立核验，不把未列入的snapshot称为摘要覆盖。
 - 新备份 `/root/kpanel-backups/pre-v1.6.1-20260907T023832Z`，02:38:32Z→02:38:42Z passed；02:38:32Z为首次生产写。停写归档、结构/摘要、旧镜像实际load均通过，六份备份文件已核验。kpanel.tar.zst `53b85db695ca009422bf7d844df43b219e9ce6a8086fada5305b40773bada669`，old-image.tar.zst `a65d39683e9996407d62abf1ff8ccd1cfec478d43d5aa45c59c5d711e1597dca`；unit、应用配置、旧inspect一并保存。
 - 标准更新 `KJ_APP_NONINTERACTIVE=1 KJ_APP_ACTION=update bash /home/docker/kpanel/bin/kejilion.sh app kpanel` exit0，实际拉取上文公开latest摘要；无自制生产wrapper。短暂curl reset及TERM/daemonreload过渡提示在固定入口正常收敛，不是独立重试或遗留失败。

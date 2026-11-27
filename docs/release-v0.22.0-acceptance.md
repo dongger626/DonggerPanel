@@ -1,9 +1,9 @@
-# KPanel v0.22.0 验收记录
+# Dongger Panel v0.22.0 验收记录
 
 ## 交付范围
 
 - `kejilion.sh` LDNMP 环境兼容协议与原菜单兼容测试。
-- KPanel 网站二级导航、LDNMP 环境总览、防护、优化、更新、备份还原和卸载。
+- Dongger Panel 网站二级导航、LDNMP 环境总览、防护、优化、更新、备份还原和卸载。
 - systemd 后台任务、可交互 ANSI PTY、完成凭据、资源版本、共享锁和敏感信息隔离。
 - 冷备、传统备份发现、安全扫描、原子还原与失败回滚。
 
@@ -28,5 +28,5 @@
 
 ## 回滚
 
-KPanel 回滚到 `v0.21.0` / `4b41740`；`/home/web` 与 `/home/web_*.tar.gz` 保持不动。
-脚本和 KPanel 独立提交，回滚 KPanel 不改变现有 LDNMP 业务产物。
+Dongger Panel 回滚到 `v0.21.0` / `4b41740`；`/home/web` 与 `/home/web_*.tar.gz` 保持不动。
+脚本和 Dongger Panel 独立提交，回滚 Dongger Panel 不改变现有 LDNMP 业务产物。

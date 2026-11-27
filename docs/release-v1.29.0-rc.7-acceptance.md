@@ -1,4 +1,4 @@
-# KPanel v1.29.0-rc.7 发布验收记录
+# Dongger Panel v1.29.0-rc.7 发布验收记录
 
 日期：2026-11-03
 
@@ -29,7 +29,7 @@
 
 ## 外部审计与修复交付
 
-- 原候选安全盲审：raw H0/M7/L1，confirmed=4、fixed=3、deferred=1；剩余共享缓存容量低风险已登记负责人 KPanel 维护者和 2026-12-03 复核期限，不公开未修复细节、不宣称风险关闭。
+- 原候选安全盲审：raw H0/M7/L1，confirmed=4、fixed=3、deferred=1；剩余共享缓存容量低风险已登记负责人 Dongger Panel 维护者和 2026-12-03 复核期限，不公开未修复细节、不宣称风险关闭。
 - 发布接管独立复核：两名与实现分离的只读复核者，三项确认中级发现全部修复；最终两份结论 PASS WITH FOLLOW-UP，源码阻断 0。其他 provider CLI 不可用，采用记录明确的同 provider 干净会话 fallback。
 - 最终候选 collaboration check：clean、nonempty candidate，security_review=recorded groups=10，independent_review=recorded。原实现者与本次发布者分离。
 - OCR：原宿主脚本候选有 1/1 覆盖；审计候选因默认路径排除 Python 测试按政策停止，未冒充完整 OCR。接管修复分别完成 5/5 与 2/2 双臂覆盖，constrained-only=0；独立发现不记作 OCR 增量。未运行 CF 或稳定版补漏档，不改写历史审计。

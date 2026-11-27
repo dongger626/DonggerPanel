@@ -109,12 +109,12 @@ var nativeLatencyTargets = []nativeHTTPTarget{
 
 func nativeCatalog() Catalog {
 	return Catalog{
-		Categories: []Category{{ID: nativeCategoryID, Name: "KPanel 核心体检"}},
+		Categories: []Category{{ID: nativeCategoryID, Name: "Dongger Panel 核心体检"}},
 		Items: []Check{
 			{
 				ID: nativeComprehensiveCheckID, Category: nativeCategoryID,
-				Name:        "KPanel 核心综合体检",
-				Description: "由 KPanel Agent 在服务器本机执行性能探针，并从服务器出口完成路由、延迟、测速和 IP 基础质量检测。",
+				Name:        "Dongger Panel 核心综合体检",
+				Description: "由 Dongger Panel Agent 在服务器本机执行性能探针，并从服务器出口完成路由、延迟、测速和 IP 基础质量检测。",
 				Provider:    nativeProvider, EstimatedMinutes: 3, Impact: "network",
 			},
 			{
@@ -224,7 +224,7 @@ func (s *Service) runNativeJob(ctx context.Context, item record) error {
 		return s.fail(item, "log_unavailable", err)
 	}
 	defer writer.Close()
-	_, _ = fmt.Fprintf(writer, "KPanel 原生体检：%s\n检测引擎：KPanel Native Diagnostics v1\n\n", item.CheckName)
+	_, _ = fmt.Fprintf(writer, "Dongger Panel 原生体检：%s\n检测引擎：Dongger Panel Native Diagnostics v1\n\n", item.CheckName)
 
 	started := s.now().UTC()
 	item.Provider = nativeProvider
@@ -233,7 +233,7 @@ func (s *Service) runNativeJob(ctx context.Context, item record) error {
 	item.Status = "running"
 	item.Stage = "native_prepare"
 	item.Progress = 5
-	item.Message = "KPanel 原生体检已开始，正在准备本机探针"
+	item.Message = "Dongger Panel 原生体检已开始，正在准备本机探针"
 	item.StartedAt = &started
 	item.FinishedAt = nil
 	if err := s.persistNativeJob(item); err != nil {
@@ -666,7 +666,7 @@ func runNativeIPQuality(ctx context.Context) (nativeProbeResult, error) {
 	}
 	data, queryErr := queryIPing(ctx, publicIP)
 	if queryErr != nil {
-		lines = append(lines, "IPING：查询未完成，已保留 KPanel 原生 IP 数据 · "+safeMessage(queryErr))
+		lines = append(lines, "IPING：查询未完成，已保留 Dongger Panel 原生 IP 数据 · "+safeMessage(queryErr))
 		return nativeProbeResult{Dimension: "ip", Metrics: metrics, Lines: lines}, nil
 	}
 	metrics = append(metrics, ipingMetrics(data)...)

@@ -209,7 +209,7 @@ func (c *Client) open(ctx context.Context, raw string, resume *ResumeRequest) (*
 	}
 	request.Header.Set("Accept", "application/octet-stream, */*")
 	request.Header.Set("Accept-Encoding", "identity")
-	request.Header.Set("User-Agent", "KPanel-Remote-Download/1")
+	request.Header.Set("User-Agent", "Dongger Panel-Remote-Download/1")
 	if resume != nil {
 		request.Header.Set("Range", fmt.Sprintf("bytes=%d-", resume.Offset))
 		if resume.endOffset > 0 {
@@ -271,7 +271,7 @@ func checkRedirect(request *http.Request, via []*http.Request) error {
 	request.Header.Del("Referer")
 	request.Header.Set("Accept", "application/octet-stream, */*")
 	request.Header.Set("Accept-Encoding", "identity")
-	request.Header.Set("User-Agent", "KPanel-Remote-Download/1")
+	request.Header.Set("User-Agent", "Dongger Panel-Remote-Download/1")
 	return nil
 }
 

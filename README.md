@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://kpanel.kejilion.sh/">
-    <img src=".github/assets/kpanel-logo.png" alt="KPanel" width="520">
+    <img src=".github/assets/kpanel-logo.png" alt="Dongger Panel" width="520">
   </a>
 </h1>
 
@@ -35,12 +35,12 @@
 
 <p align="center">
   <a href=".github/assets/readme/kpanel-dual-mode-tech-hero.webp">
-    <img src=".github/assets/readme/kpanel-dual-mode-tech-hero.webp" alt="KPanel 双模式宣传主视觉（AI 合成），展示桌面工作区与经典模式；实际界面见下方截图" width="100%">
+    <img src=".github/assets/readme/kpanel-dual-mode-tech-hero.webp" alt="Dongger Panel 双模式宣传主视觉（AI 合成），展示桌面工作区与经典模式；实际界面见下方截图" width="100%">
   </a>
 </p>
 
-KPanel 面向单管理员 Linux 服务器场景：从一台主机开始，在需要时连接更多节点。它不把资源锁进面板私有数据库；
-`kejilion.sh`、SSH、Compose 与 KPanel 始终面向同一台主机的真实状态。
+Dongger Panel 面向单管理员 Linux 服务器场景：从一台主机开始，在需要时连接更多节点。它不把资源锁进面板私有数据库；
+`kejilion.sh`、SSH、Compose 与 Dongger Panel 始终面向同一台主机的真实状态。
 
 在线体验在浏览器内模拟数据与操作，不连接真实主机。下方截图包含稳定版与预览版本；
 具体功能以安装版本、节点能力和授权为准，版本区别见[稳定版与预览版](docs/release-channels.md)。
@@ -91,11 +91,11 @@ KEJILION_PANEL_BROWSER_TOKEN_FILE=/run/secrets/browser-token
   <tr>
     <td width="50%">
       <strong>AI 是工作窗口</strong><br>
-      多 Provider、多模型与结构化工具直接使用 KPanel 已掌握的状态，默认人工确认，高风险操作始终确认。
+      多 Provider、多模型与结构化工具直接使用 Dongger Panel 已掌握的状态，默认人工确认，高风险操作始终确认。
     </td>
     <td width="50%">
       <strong>从单机到多节点</strong><br>
-      连接已有 KPanel 或无需 Docker 的轻量 Linux 节点，统一监控，并按节点能力与授权使用远程文件和终端。
+      连接已有 Dongger Panel 或无需 Docker 的轻量 Linux 节点，统一监控，并按节点能力与授权使用远程文件和终端。
     </td>
   </tr>
 </table>
@@ -115,19 +115,19 @@ KEJILION_PANEL_BROWSER_TOKEN_FILE=/run/secrets/browser-token
     <td>清晰侧栏、连续配置和快速巡检，保留传统服务器面板的效率。</td>
   </tr>
   <tr>
-    <td><a href=".github/assets/readme/kpanel-desktop-workspace.webp"><img src=".github/assets/readme/kpanel-desktop-workspace.webp" alt="KPanel 桌面模式中的文件管理器、OpenCode 终端与 AI 助手"></a></td>
-    <td><a href=".github/assets/screenshots/overview.webp"><img src=".github/assets/screenshots/overview.webp" alt="KPanel 经典模式服务器概览"></a></td>
+    <td><a href=".github/assets/readme/kpanel-desktop-workspace.webp"><img src=".github/assets/readme/kpanel-desktop-workspace.webp" alt="Dongger Panel 桌面模式中的文件管理器、OpenCode 终端与 AI 助手"></a></td>
+    <td><a href=".github/assets/screenshots/overview.webp"><img src=".github/assets/screenshots/overview.webp" alt="Dongger Panel 经典模式服务器概览"></a></td>
   </tr>
 </table>
 
 ## AI 是工作窗口，不是第二套控制面
 
-KPanel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态，通过固定、结构化的 KPanel 工具完成查询、分析和建议，
+Dongger Panel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态，通过固定、结构化的 Dongger Panel 工具完成查询、分析和建议，
 不提供任意宿主机 Shell 或通用联网工具。
 
 - 支持 OpenAI-compatible、Anthropic 与 Gemini Provider，以及多模型、多会话。
 - 会话默认使用人工审批；可选安全自动审批，高风险动作始终需要确认。
-- 工具过程、关键变更与结果可审计；主机资源仍由 KPanel Agent 实时读取和统一管理。
+- 工具过程、关键变更与结果可审计；主机资源仍由 Dongger Panel Agent 实时读取和统一管理。
 - AI 数据独立保存，不会成为 Docker、Nginx、系统配置或文件的第二份事实来源。
 
 ## 集群管理：分散的主机，在一处掌握
@@ -137,15 +137,15 @@ KPanel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态
 
 <p align="center">
   <a href=".github/assets/readme/kpanel-cluster-globe-history.webp">
-    <img src=".github/assets/readme/kpanel-cluster-globe-history.webp" alt="KPanel 地球集群视图与历史监控并排显示，呈现节点分布、线路延迟和可用性" width="100%">
+    <img src=".github/assets/readme/kpanel-cluster-globe-history.webp" alt="Dongger Panel 地球集群视图与历史监控并排显示，呈现节点分布、线路延迟和可用性" width="100%">
   </a>
 </p>
 
 | 从接入到日常管理 | 可以做什么 |
 | --- | --- |
-| **接入与总览** | 使用授权码配对已有 KPanel，或为普通 Linux 主机安装轻量节点；支持轻量节点单台和批量接入。 |
+| **接入与总览** | 使用授权码配对已有 Dongger Panel，或为普通 Linux 主机安装轻量节点；支持轻量节点单台和批量接入。 |
 | **全局与历史监控** | 在列表、卡片和地球视图间切换，查看在线状态与资源使用；选择目标主机，回看历史指标、线路延迟和 Ping / TCP / HTTP 服务检测。 |
-| **文件与终端管理** | 选择目标主机浏览、编辑、上传和下载文件；管理多主机会话、快捷命令和批量执行。已授权的 KPanel 间还可复制文件与目录。 |
+| **文件与终端管理** | 选择目标主机浏览、编辑、上传和下载文件；管理多主机会话、快捷命令和批量执行。已授权的 Dongger Panel 间还可复制文件与目录。 |
 | **消息通知** | 接收资源阈值、流量、主机失联与恢复、SSH 登录等通知；支持 Telegram、飞书、钉钉和企业微信，同时启用一个通知渠道。 |
 | **公开状态分享** | 管理员主动开启公开只读页面，展示当前运行状态；不公开 IP 或管理入口，可随时关闭或重置链接。 |
 
@@ -157,7 +157,7 @@ KPanel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态
 
 <p align="center">
   <a href=".github/assets/readme/kpanel-cluster-files-terminal.webp">
-    <img src=".github/assets/readme/kpanel-cluster-files-terminal.webp" alt="KPanel 文件管理器的主机选择列表，与多主机终端和快捷命令并排显示" width="100%">
+    <img src=".github/assets/readme/kpanel-cluster-files-terminal.webp" alt="Dongger Panel 文件管理器的主机选择列表，与多主机终端和快捷命令并排显示" width="100%">
   </a>
 </p>
 
@@ -167,7 +167,7 @@ KPanel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态
 
 ## 核心能力
 
-| 场景 | KPanel 提供什么 |
+| 场景 | Dongger Panel 提供什么 |
 | --- | --- |
 | **主机与历史监控** | 查看 CPU、内存、磁盘、负载、网络、连接与容器历史；查看实时进程，并管理主机名、SSH、DNS、时区、Swap、软件源、内核预设、系统更新与清理。 |
 | **网站与 Nginx** | 发现已有站点、证书与真实 Nginx 配置；管理静态站、PHP 站、反向代理、负载均衡、域名重定向及 LDNMP 环境。 |
@@ -184,7 +184,7 @@ KPanel 的轻量 AI 助手直接理解面板已经掌握的主机与容器状态
 bash <(curl -fsSL https://kejilion.sh) app kpanel
 ```
 
-安装脚本会检查运行环境、准备所需组件并部署 KPanel。完成后，根据终端提示打开面板并初始化管理员账户。
+安装脚本会检查运行环境、准备所需组件并部署 Dongger Panel。完成后，根据终端提示打开面板并初始化管理员账户。
 
 | 项目 | 当前范围 |
 | --- | --- |
@@ -201,22 +201,22 @@ Alpine Linux 3.24 `sys` mode 的 OpenRC 路径也已实现并通过自动化契�
 干净 VPS/VM 的 PID 1 实机准入。准确状态请以[宿主机系统兼容矩阵](docs/platform-support.md)为准。
 
 > [!TIP]
-> 初次使用可阅读 [KPanel 官方图文教程](https://blog.kejilion.pro/kpanel-kejilion-web-server-panel/)；
+> 初次使用可阅读 [Dongger Panel 官方图文教程](https://blog.kejilion.pro/kpanel-kejilion-web-server-panel/)；
 > 需要审查构建产物、固定镜像 digest 或进行开发者部署时，请使用[完整部署文档](docs/deployment.md)。
 
 > [!IMPORTANT]
-> KPanel 具备宿主机管理能力。请只在可信服务器上使用官方部署入口；生产环境请先备份现有配置，
+> Dongger Panel 具备宿主机管理能力。请只在可信服务器上使用官方部署入口；生产环境请先备份现有配置，
 > 并为管理入口配置 HTTPS 与访问控制。
 
 ## 管理真实主机，边界也必须真实
 
 <p align="center">
-  <code>kejilion.sh</code> · <code>SSH</code> · <code>Compose</code> · <code>KPanel</code><br>
+  <code>kejilion.sh</code> · <code>SSH</code> · <code>Compose</code> · <code>Dongger Panel</code><br>
   <strong>共同管理同一台 Linux 主机的真实状态</strong>
 </p>
 
 - **不接管既有环境**：安装器不会修改 `kejilion.sh`、`/home/web`、Nginx、防火墙或现有站点。
-- **来源不限制管理**：脚本、KPanel、Compose 或人工创建的资源，都可以按实际状态继续管理。
+- **来源不限制管理**：脚本、Dongger Panel、Compose 或人工创建的资源，都可以按实际状态继续管理。
 - **权限分层**：Web/API 以非特权身份运行；宿主机操作由 Unix Socket 上的结构化 Agent 执行，root PTY 使用独立授权和有界生命周期。
 - **入口保护**：登录限速、服务端 Session、CSRF、可选 TOTP / Passkey、路径约束与供应链校验共同保护管理入口。
 - **变更可恢复**：关键操作保留审计记录；配置写入前执行校验，失败时回滚并报告未完成的清理项。
@@ -235,8 +235,8 @@ Alpine Linux 3.24 `sys` mode 的 OpenRC 路径也已实现并通过自动化契�
     <th width="50%">星港轨道</th>
   </tr>
   <tr>
-    <td><a href=".github/assets/readme/kpanel-theme-neon.webp"><img src=".github/assets/readme/kpanel-theme-neon.webp" alt="KPanel 霓虹都市 3D 桌面，展示夕阳城市、文件分组和服务器监控"></a></td>
-    <td><a href=".github/assets/readme/kpanel-theme-orbit.webp"><img src=".github/assets/readme/kpanel-theme-orbit.webp" alt="KPanel 星港轨道 3D 桌面，展示地球、空间站和服务器监控"></a></td>
+    <td><a href=".github/assets/readme/kpanel-theme-neon.webp"><img src=".github/assets/readme/kpanel-theme-neon.webp" alt="Dongger Panel 霓虹都市 3D 桌面，展示夕阳城市、文件分组和服务器监控"></a></td>
+    <td><a href=".github/assets/readme/kpanel-theme-orbit.webp"><img src=".github/assets/readme/kpanel-theme-orbit.webp" alt="Dongger Panel 星港轨道 3D 桌面，展示地球、空间站和服务器监控"></a></td>
   </tr>
 </table>
 
@@ -272,10 +272,10 @@ Alpine Linux 3.24 `sys` mode 的 OpenRC 路径也已实现并通过自动化契�
 
 ## 开源许可
 
-KPanel 源代码采用 [GNU Affero General Public License v3.0 only](LICENSE)（SPDX：`AGPL-3.0-only`）。
-通过网络向用户提供修改版 KPanel 服务时，应按该协议向这些用户提供对应源码。
+Dongger Panel 源代码采用 [GNU Affero General Public License v3.0 only](LICENSE)（SPDX：`AGPL-3.0-only`）。
+通过网络向用户提供修改版 Dongger Panel 服务时，应按该协议向这些用户提供对应源码。
 
-Copyright © 2026 kejilion and KPanel contributors.
+Copyright © 2026 kejilion and Dongger Panel contributors.
 
-随 KPanel 分发的 `kejilion.sh` 和其他第三方组件继续使用各自的原始许可，详见[第三方许可声明](THIRD_PARTY_NOTICES.md)。
-KPanel 名称和 Logo 的使用边界见[品牌说明](TRADEMARKS.md)。
+随 Dongger Panel 分发的 `kejilion.sh` 和其他第三方组件继续使用各自的原始许可，详见[第三方许可声明](THIRD_PARTY_NOTICES.md)。
+Dongger Panel 名称和 Logo 的使用边界见[品牌说明](TRADEMARKS.md)。

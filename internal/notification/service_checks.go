@@ -596,5 +596,5 @@ func serviceCheckMessage(item checkIncident, delivery checkDelivery, now time.Ti
 		labels = map[string]string{"down": "服務異常", "recovery": "服務恢復", "resolved": "服務曾異常，現已恢復", "repeat": "服務持續異常", "unknown": "服務檢測資料中斷", "resumed": "服務檢測資料恢復"}
 		hostLabel, checkLabel, targetLabel = "觀測主機", "檢測", "目標"
 	}
-	return fmt.Sprintf("[KPanel] %s\n%s: %s\n%s: %s\n%s: %s\n%s\nEvent: %d", labels[delivery.Kind], hostLabel, item.HostName, checkLabel, item.Name, targetLabel, item.Target, now.Format(time.RFC3339), delivery.ID)
+	return fmt.Sprintf("[Dongger Panel] %s\n%s: %s\n%s: %s\n%s: %s\n%s\nEvent: %d", labels[delivery.Kind], hostLabel, item.HostName, checkLabel, item.Name, targetLabel, item.Target, now.Format(time.RFC3339), delivery.ID)
 }

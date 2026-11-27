@@ -1,4 +1,4 @@
-# KPanel v1.21.0-rc.14 发布验收记录
+# Dongger Panel v1.21.0-rc.14 发布验收记录
 
 日期：2026-09-22
 
@@ -41,7 +41,7 @@
 
 ## 发布产物与通道状态
 
-- GitHub Release workflow [#246](https://github.com/kejilion/KPanel/actions/runs/35719581766) 全部步骤成功；公开页面 [KPanel v1.21.0-rc.14](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.14) 为非 draft、Pre-release、非 Latest，API 返回 14 个资产（含 `kejilion-agent-linux-amd64/arm64`、`kejilion-panel-deploy-1.21.0-rc.14.tar.gz`、`SHA256SUMS`）；annotated tag object 为 `10627f405b43d0d632f80fad93a62c0398e2aa5c`。
+- GitHub Release workflow [#246](https://github.com/kejilion/KPanel/actions/runs/35719581766) 全部步骤成功；公开页面 [Dongger Panel v1.21.0-rc.14](https://github.com/kejilion/KPanel/releases/tag/v1.21.0-rc.14) 为非 draft、Pre-release、非 Latest，API 返回 14 个资产（含 `kejilion-agent-linux-amd64/arm64`、`kejilion-panel-deploy-1.21.0-rc.14.tar.gz`、`SHA256SUMS`）；annotated tag object 为 `10627f405b43d0d632f80fad93a62c0398e2aa5c`。
 - Docker `kjlion/kejilion-panel:1.21.0-rc.14` 与 `:preview` OCI index 均为 `sha256:bd79e42938a319b325cdfd02d61241525428bef887d2f181636ea2f73d406308`（与 Release notes 记录一致）；`linux/amd64` 为 `sha256:e6348b68b03cc038e12d9fa98eec44111f6d4b616147c393a1262b06bb999b00`，`linux/arm64` 为 `sha256:e25cf1da7c0d361b5d7a7a88ffbb34bdc20586620f1be970c086627d3d0f2751`，另有两个 provenance/attestation manifests。
 - GitHub Latest 仍为 `v1.20.0`；Docker `latest` 保持 `sha256:a991b5d27d7d6519c694b6cbc88c037bbaa0fcef418a43b0ff94cb638dee575f`。
 - 应用市场：`packaging/kejilion-app/kpanel.conf` 自 `v1.21.0-rc.13` 无差异，无需 `kejilion/apps` 提交，默认入口仍为稳定版。
@@ -49,7 +49,7 @@
 ## 生产部署安全核对
 
 - 正式部署环境：不适用；本轮预览发布禁止生产写入。
-- `prod-108`：禁用全部 KPanel 操作，本次未连接、未部署、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作，本次未连接、未部署、未核对。
 - 生产已执行写操作：0。
 - 回滚：未执行；若预览异常，将 `preview` 来源固定回 rc.13 镜像 `sha256:fe9307f4191b439aaea0083b56ae37b5a4b23c790c43ef7748725c932c6339ea`，稳定入口和 Docker `latest` 保持不变。
 

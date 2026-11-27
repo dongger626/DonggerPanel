@@ -1,4 +1,4 @@
-# KPanel v1.19.0-rc.1 发布验收记录
+# Dongger Panel v1.19.0-rc.1 发布验收记录
 
 日期：2026-09-15
 
@@ -16,7 +16,7 @@
 
 ## 发布画像
 
-- 业务域：KPanel 手动更新、集群主机展示、集群通知、轻量节点批量接入。
+- 业务域：Dongger Panel 手动更新、集群主机展示、集群通知、轻量节点批量接入。
 - 变更面：展示、只读检查、通知出站、节点接入协议、配套脚本和预览发布。
 - 受影响用户旅程：管理员从设置页、应用页或更新提示进入同一更新确认流程；查看轻量节点公网地址；配置 Telegram、飞书、钉钉或企业微信通知；为最多 100 台轻量节点生成共用批量授权并幂等接入。
 - 未变化契约：无数据库 schema、端口、Compose、完整节点 Noise/HTTP POST 文件链路或既有轻量节点 WebSocket 链路迁移；应用市场默认入口继续使用稳定版 `latest`。
@@ -24,7 +24,7 @@
 
 ## 发布范围与未纳入内容
 
-- 用户可见更新：统一 KPanel 手动更新入口并展示版本、发布说明、镜像摘要和风险；显示轻量节点公网 IPv4/IPv6；通知新增飞书、钉钉和企业微信；新增轻量节点批量接入授权与进度管理。
+- 用户可见更新：统一 Dongger Panel 手动更新入口并展示版本、发布说明、镜像摘要和风险；显示轻量节点公网 IPv4/IPv6；通知新增飞书、钉钉和企业微信；新增轻量节点批量接入授权与进度管理。
 - 精确提交清单：`0bbcd620` 统一更新入口；`e3d2ed1f` 更新前发布详情；`b2f72b5f` 轻量节点公网 IP；`9fd8ae87` 多通道通知；`c3c04495` RC 版本准备；`5c7e8312` 批量轻量节点接入；`845816db`、`02b3fb37` 补齐联动发布记录。
 - 明确未纳入的分支、文件或后续事项：未改变稳定版 Latest/`latest`，未部署生产，未删除候选分支；真实第三方机器人长期可用性、原生 arm64 运行和长期 soak 留待后续预览反馈。
 
@@ -32,10 +32,10 @@
 
 - `scriptLinkageState`：`coupled`。
 - 变更集编号（跨仓库时必填；不适用时写“不适用”）：`light-batch-enrollment-20260914`。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@6ebb945f6d5cb69fdb41e3761de23566acbaf762` / `28cf3934c01fe79a19c51fac520f11a2bdd7656d762f37d6fc4153140a6df549`。
 - 脚本候选 commit / SHA-256（不适用时写“不适用”）：`kejilion/sh@4d61f7ef123fe5ecd7419cdaa1c93483bbfda403`；根脚本 `a0e6cf5193aa9bfbdc572ad91803d4b53d34549ac95259b3288d436766a229dc`，CN 脚本 `132b38bf1300e529ca88e365d075be599ef3466ac1aece48bce6ce7565f344d0`。
-- 状态判定依据与兼容性证据：脚本 `main` 与候选分支均精确指向 `4d61f7ef`，短入口和精确 revision 入口已回读批量接入标记；KPanel `cmd/kejilion-node/update_runtime/source.json` 固定该 revision、根脚本摘要和 5 个运行时模板摘要；同步检查、目标烟测、Go 测试、L3 和 Release 全部通过。
-- 本版发布决定：配套脚本先行发布，再发布 KPanel 预览版；KPanel 容器内置的通用应用市场脚本仍按既有契约固定 `6ebb945f`。
+- 状态判定依据与兼容性证据：脚本 `main` 与候选分支均精确指向 `4d61f7ef`，短入口和精确 revision 入口已回读批量接入标记；Dongger Panel `cmd/kejilion-node/update_runtime/source.json` 固定该 revision、根脚本摘要和 5 个运行时模板摘要；同步检查、目标烟测、Go 测试、L3 和 Release 全部通过。
+- 本版发布决定：配套脚本先行发布，再发布 Dongger Panel 预览版；Dongger Panel 容器内置的通用应用市场脚本仍按既有契约固定 `6ebb945f`。
 - 阻断或移除的依赖范围（无则写“不适用”）：不适用；联动脚本已经先行公开并完成哈希核验。
 
 ## 多维质量结论
@@ -77,17 +77,17 @@
 - 后台作业 ID、终态、退出码、超时、证据目录、命令规格路径及 SHA-256：L3 run `v1.19.0-rc.1-02b3fb37-l3-r1` passed/0；公开 OCI E2E 使用标签内 `packaging/tests/image-e2e.sh`，脚本 SHA-256 `1378218f9d4ac0fdd82d66ac502c5f7e0d82a13fca8d60429079936ed527edf4`，证据位于 `C:/GitHub/_release-artifacts/v1.19.0-rc.1-public-oci-e2e-r1` 与 `arena-154:/root/kpanel-release-evidence/v1.19.0-rc.1/public-oci-e2e-r1`。
 - 测试窗口/循环数及风险依据（无 soak 时写不适用依据）：公开镜像单次冷启动 17 秒；无 soak，本版主要风险由全量测试、race、失败注入、脚本生命周期和公开冷启动覆盖。
 - 受影响用户旅程、视口、100%/125%/200% 缩放、最小计算字号、主题、键盘/焦点、语言和失败态：组件测试覆盖更新确认、批量接入、通知通道、IP 空状态及中英文失败态；未另起真实浏览器，因此视口、缩放、主题和完整键盘/焦点专项未验证。
-- 宿主机写入、失败注入、重启恢复和回滚结果：仅写入隔离证据目录、Docker 拉取缓存和自动清理的临时容器/网络；L3 覆盖更新失败、中断、安装/卸载和 systemd/OpenRC 生命周期；未写生产 KPanel 数据。
+- 宿主机写入、失败注入、重启恢复和回滚结果：仅写入隔离证据目录、Docker 拉取缓存和自动清理的临时容器/网络；L3 覆盖更新失败、中断、安装/卸载和 systemd/OpenRC 生命周期；未写生产 Dongger Panel 数据。
 - 未执行场景及原因：生产部署、生产故障注入、真实第三方通知长期送达、原生 arm64、弱网、真实断电、长期 soak 和生产数据恢复未执行；预览版禁止生产部署。
 
 ## 发布产物与公开仓库复核
 
-- GitHub Release 的 draft / prerelease / Latest 状态：[KPanel 1.19.0-rc.1](https://github.com/kejilion/KPanel/releases/tag/v1.19.0-rc.1) 于 2026-09-15T01:36:38+08:00 公开，为非 draft、prerelease、非 Latest；annotated tag 对象 `ec111f9d42c728bba264d67530113d17bb9f0baf` peeled 到最终产品 SHA。GitHub Latest 仍为 v1.18.0。
+- GitHub Release 的 draft / prerelease / Latest 状态：[Dongger Panel 1.19.0-rc.1](https://github.com/kejilion/KPanel/releases/tag/v1.19.0-rc.1) 于 2026-09-15T01:36:38+08:00 公开，为非 draft、prerelease、非 Latest；annotated tag 对象 `ec111f9d42c728bba264d67530113d17bb9f0baf` peeled 到最终产品 SHA。GitHub Latest 仍为 v1.18.0。
 - Docker 版本与通道 OCI index：`1.19.0-rc.1` 与预览通道 `preview` 同为 `sha256:1c6e9a71a20d250f4563e9b4a0572dd7024145b99d985a7d4f6c2760cf1e7243`；稳定通道 `latest` 仍为 `sha256:cad0f7f035e3f6d63908a82b52a7b4a1fbe52fe0c10a7a55a704b759ad91ceeb`。
 - `linux/amd64`、`linux/arm64` digest：amd64 `sha256:61972a87c6f76f9244ff140aaf9650947711abb4024e05fe72df9e39478db317`；arm64 `sha256:e6140cc0821eb2a5cfeae3ccb1da5169bd27ffc790cd787ea95724a3f62a78a6`。
 - 附件及 `SHA256SUMS`：8 个附件均为 uploaded，包括双架构 Agent、双架构 Node、部署包、LICENSE、SHA256SUMS 和 THIRD_PARTY_NOTICES.md；公开 `SHA256SUMS` 与 GitHub 资产 digest 一致。
 - 公开镜像 `image_e2e=pass`：`arena-154` 从 Docker Hub 按不可变摘要重新拉取，health 返回 1.19.0-rc.1，revision 精确匹配，静态资源、初始化、安全 Cookie、受限网络和清理断言通过；E2E 日志 SHA-256 `d6918030f72af42d7c376ceb7a1f902705a8473b11ff4ccacb39706e81322eb9`。
-- `kejilion/apps` / `kejilion.sh` 契约结论：KPanel 与 `kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` Git blob 同为 `95ed487653184e6c056ea9d25958539a453cf9cb`，无需应用市场提交且默认仍为 `latest`；`kejilion/sh` 已先行推进到 `4d61f7ef`。
+- `kejilion/apps` / `kejilion.sh` 契约结论：Dongger Panel 与 `kejilion/apps@b9be0ca3b56c5f81a463dc38aba891d06a52ab95` 的 `kpanel.conf` Git blob 同为 `95ed487653184e6c056ea9d25958539a453cf9cb`，无需应用市场提交且默认仍为 `latest`；`kejilion/sh` 已先行推进到 `4d61f7ef`。
 
 ## 自更新通道验收
 
@@ -104,7 +104,7 @@
 - 生产目标和部署授权范围：不适用（预览版禁止生产部署）。
 - 验证/灰度环境（必须来自 `environment-policy.json`，不得包含 `prod-108`）：`arena-154` 仅以 `candidate-validation` 用途运行隔离容器；不适用（预览版禁止生产部署）。
 - 正式部署环境（默认 `arena-154`；不得包含 `prod-108`）：不适用（预览版禁止生产部署）。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对；不适用（预览版禁止生产部署）。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对；不适用（预览版禁止生产部署）。
 - 部署前版本、健康、备份位置及摘要：不适用（预览版禁止生产部署）。
 - 部署命令/入口：不适用（预览版禁止生产部署）。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：不适用（预览版禁止生产部署）。
@@ -147,7 +147,7 @@
     "fingerprint": "candidate-freeze/release-l3/late-dependent-candidate",
     "position": "before-production-write",
     "count": 1,
-    "impact": "首轮 L3 已基于早期冻结 SHA 启动后，等待中的 Komari/批量接入任务交付了必须联动的真实候选；旧 L3 证据随即失效并中止，未推送 KPanel 分支或触碰公共通道。",
+    "impact": "首轮 L3 已基于早期冻结 SHA 启动后，等待中的 Komari/批量接入任务交付了必须联动的真实候选；旧 L3 证据随即失效并中止，未推送 Dongger Panel 分支或触碰公共通道。",
     "recoveryEvidence": "清理旧远端 Runner 和输入目录后重新冻结 02b3fb37，权威 v1.19.0-rc.1-02b3fb37-l3-r1、候选/main/tag 门禁及公开 OCI E2E 全部通过。",
     "permanentAction": "后续候选冻结清单必须先确认所有显式等待任务已给出终态或明确移除范围；冻结后新增依赖继续强制重建唯一 L3。",
     "historicalReleases": []
@@ -156,7 +156,7 @@
     "fingerprint": "script-publish/ssh-auth/scoped-deploy-key",
     "position": "before-production-write",
     "count": 1,
-    "impact": "kejilion/sh 首次 SSH 推送被当前部署密钥作用域拒绝，脚本候选尚未发布，因而 KPanel 联动候选继续阻断。",
+    "impact": "kejilion/sh 首次 SSH 推送被当前部署密钥作用域拒绝，脚本候选尚未发布，因而 Dongger Panel 联动候选继续阻断。",
     "recoveryEvidence": "改用已验证的 HTTPS 凭据路径后，sh main 与候选分支均精确指向 4d61f7ef，GitHub API 和 raw 内容完成回读。",
     "permanentAction": "负责人 release operator 于 2026-09-30 前为 sh 配置专用可写凭据；退出条件是 SSH 预检可读取并推送临时受控 ref，未满足前统一使用受凭据管理的 HTTPS 路径。",
     "historicalReleases": []

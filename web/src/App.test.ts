@@ -52,27 +52,27 @@ describe('browser tab title', () => {
 
   it('follows the active mode, while public pages keep their route title', async () => {
     const router = await mountAt('/overview')
-    expect(document.title).toBe('概览 · KPanel')
+    expect(document.title).toBe('概览 · Dongger Panel')
 
     const desktop = useDesktopMode()
     desktop.enterDesktop()
     await nextTick()
-    expect(document.title).toBe('桌面模式 · KPanel')
+    expect(document.title).toBe('桌面模式 · Dongger Panel')
 
     await router.push('/settings')
-    expect(document.title).toBe('桌面模式 · KPanel')
+    expect(document.title).toBe('桌面模式 · Dongger Panel')
 
     await setLocale('en-US', false)
     await nextTick()
-    expect(document.title).toBe('Desktop mode · KPanel')
+    expect(document.title).toBe('Desktop mode · Dongger Panel')
 
     await router.push('/login')
-    expect(document.title).toBe(`${t('route.login')} · KPanel`)
+    expect(document.title).toBe(`${t('route.login')} · Dongger Panel`)
 
     await router.push('/overview')
     desktop.enterClassic()
     await nextTick()
-    expect(document.title).toBe(`${t('route.overview')} · KPanel`)
+    expect(document.title).toBe(`${t('route.overview')} · Dongger Panel`)
   })
 
   it('uses the desktop title after restoring the saved mode', async () => {
@@ -80,7 +80,7 @@ describe('browser tab title', () => {
     resetDesktopModeForTest()
     initializeDesktopMode()
     await mountAt('/settings')
-    expect(document.title).toBe('桌面模式 · KPanel')
+    expect(document.title).toBe('桌面模式 · Dongger Panel')
   })
   it('retains the listening session across navigation and releases it when authentication ends', async () => {
     const session = useSession(), music = useMusicPlayer()

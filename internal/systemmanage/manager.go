@@ -37,9 +37,9 @@ var (
 )
 
 const (
-	kpanelIPPreferenceMarker = "# KPanel managed IPv4 precedence"
-	kpanelKernelMarker       = "# KPanel managed kernel profile"
-	kpanelSwapMarker         = "# KPanel managed swap"
+	kpanelIPPreferenceMarker = "# Dongger Panel managed IPv4 precedence"
+	kpanelKernelMarker       = "# Dongger Panel managed kernel profile"
+	kpanelSwapMarker         = "# Dongger Panel managed swap"
 )
 
 type Runner interface {
@@ -293,7 +293,7 @@ func (m *Manager) Capabilities() []contract.Capability {
 	if jobRunnerErr != nil {
 		executorReason = "systemd-run 或 OpenRC start-stop-daemon 后台任务执行器不可用"
 	} else if helperErr != nil {
-		executorReason = "Agent 后台执行程序不可用，请更新或重新安装 KPanel"
+		executorReason = "Agent 后台执行程序不可用，请更新或重新安装 Dongger Panel"
 	}
 	updateReason := executorReason
 	if updateReason == "" {
@@ -323,7 +323,7 @@ func (m *Manager) Capabilities() []contract.Capability {
 		dnsBackendReason = "systemd-resolved 写入所需的 systemctl 不可用"
 	}
 	dnsSupported := envErr == nil && bashErr == nil && dnsScriptErr == nil && dnsBackendErr == nil
-	dnsReason := "请更新本机 kejilion.sh 以启用 KPanel DNS 非交互协议"
+	dnsReason := "请更新本机 kejilion.sh 以启用 Dongger Panel DNS 非交互协议"
 	if dnsScriptErr == nil && (envErr != nil || bashErr != nil) {
 		dnsReason = "执行 kejilion.sh DNS 协议所需的 env 或 bash 不可用"
 	} else if dnsScriptErr == nil && dnsBackendErr != nil {
@@ -331,7 +331,7 @@ func (m *Manager) Capabilities() []contract.Capability {
 	}
 	capabilities := []contract.Capability{
 		capability("system.hostname.write", hostnameWriteErr == nil, "hostnamectl 与 OpenRC hostname 后端均不可用"),
-		capability("system.ssh-port.write", envErr == nil && bashErr == nil && sshdErr == nil && ssErr == nil && sshScriptErr == nil && sshConfig, "请更新本机 kejilion.sh 并安装 OpenSSH/ss 以启用 KPanel SSH 端口协议"),
+		capability("system.ssh-port.write", envErr == nil && bashErr == nil && sshdErr == nil && ssErr == nil && sshScriptErr == nil && sshConfig, "请更新本机 kejilion.sh 并安装 OpenSSH/ss 以启用 Dongger Panel SSH 端口协议"),
 		capability("system.dns.write", dnsSupported, dnsReason),
 		capability("system.timezone.write", timezoneWriteErr == nil, "timedatectl 与 OpenRC timezone 后端均不可用"),
 		capability("system.processes.signal", processSignalSupported, "进程信号仅支持 Linux"),
@@ -518,11 +518,11 @@ func (m *Manager) addSSHPort(ctx context.Context, port uint16) (bool, string, st
 	}
 	script, err := m.dnsScript()
 	if err != nil {
-		return false, "", "", fmt.Errorf("%w: update kejilion.sh to enable the KPanel SSH port protocol", ErrUnsupported)
+		return false, "", "", fmt.Errorf("%w: update kejilion.sh to enable the Dongger Panel SSH port protocol", ErrUnsupported)
 	}
 	content, err := os.ReadFile(script)
 	if err != nil || !trustedKejilionSSHPortContent(content) {
-		return false, "", "", fmt.Errorf("%w: update kejilion.sh to enable the KPanel SSH port protocol", ErrUnsupported)
+		return false, "", "", fmt.Errorf("%w: update kejilion.sh to enable the Dongger Panel SSH port protocol", ErrUnsupported)
 	}
 	for _, command := range []string{"env", "bash"} {
 		if _, err := m.runner.LookPath(command); err != nil {
@@ -600,7 +600,7 @@ func (m *Manager) setDNS(ctx context.Context, servers []string) (bool, string, s
 	script, err := m.dnsScript()
 	if err != nil {
 		return false, "", "", fmt.Errorf(
-			"%w: update kejilion.sh to enable the KPanel DNS protocol",
+			"%w: update kejilion.sh to enable the Dongger Panel DNS protocol",
 			ErrUnsupported,
 		)
 	}
@@ -745,7 +745,7 @@ func (m *Manager) setBBR(ctx context.Context, enabled bool) (bool, string, strin
 		}
 		targetCC, targetQDisc = "bbr", "fq"
 	}
-	config := []byte("# Managed by KPanel; compatible with kejilion.sh bbr_on\n" +
+	config := []byte("# Managed by Dongger Panel; compatible with kejilion.sh bbr_on\n" +
 		"net.core.default_qdisc=" + targetQDisc + "\n" +
 		"net.ipv4.tcp_congestion_control=" + targetCC + "\n")
 	currentCC := strings.TrimSpace(m.procValue("sys/net/ipv4/tcp_congestion_control"))

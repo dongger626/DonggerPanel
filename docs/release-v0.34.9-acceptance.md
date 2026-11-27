@@ -1,4 +1,4 @@
-# KPanel v0.34.9 发布验收
+# Dongger Panel v0.34.9 发布验收
 
 发布日期：2026-08-01
 
@@ -47,7 +47,7 @@ GitHub Release 已公开并包含 6 个附件：amd64/arm64 Agent、部署归档
 ## 实机与应用市场兼容性
 
 - 154 验收机从 Docker Hub 拉取上述不可变摘要并执行隔离运行时 E2E，输出 `image_e2e=pass`。
-- 验收前后生产 `kejilion-panel` 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；候选容器、网络、Agent、测试目录和 SSH 隧道已清理，未替换或重启生产 KPanel。
+- 验收前后生产 `kejilion-panel` 均为 `running/healthy`，`kejilion-agent.service` 均为 `active`；候选容器、网络、Agent、测试目录和 SSH 隧道已清理，未替换或重启生产 Dongger Panel。
 - 本次未修改 `kejilion.sh`、Compose 或 `packaging/kejilion-app/kpanel.conf`。应用市场继续使用 `latest`，无需修改或提交 `kejilion/apps`。
 - 没有面板状态、用户文件、站点、容器或部署参数迁移；列表视图仍为原有行为。
 

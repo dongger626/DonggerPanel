@@ -1,4 +1,4 @@
-# KPanel v1.21.0 发布验收记录
+# Dongger Panel v1.21.0 发布验收记录
 
 日期：2026-09-22
 
@@ -48,11 +48,11 @@
 ## 跨仓库联动判定
 
 - `scriptLinkageState`：`coupled`。
-- 变更集编号：v1.21.0-rc.4 病毒扫描协议（KPanel `22519950` pin 脚本）。
-- KPanel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`（`Dockerfile` 标签 `io.kejilion.script.sha256`）。
+- 变更集编号：v1.21.0-rc.4 病毒扫描协议（Dongger Panel `22519950` pin 脚本）。
+- Dongger Panel 实际内置脚本基线 commit / SHA-256：`kejilion/sh@2b90b2d2ca56bc954c9328a51bb5571e896f713d` / `806b4715664fad502f7faeccbc75972f2d1a24559d46208221b98f774ef56c99`（`Dockerfile` 标签 `io.kejilion.script.sha256`）。
 - 脚本候选 commit / SHA-256：同上；rc.4 之后无新增脚本改动。
-- 状态判定依据与兼容性证据：病毒扫描路径校验在浏览器、KPanel API 与脚本统一；稳定 L3 `managed_script_contract` 与 `app_conf_lifecycle=pass`，Release 的 Verify kejilion.sh application lifecycle 成功。
-- 本版发布决定：脚本先行后发布 KPanel（脚本已于 rc.4 前发布到权威主线）。
+- 状态判定依据与兼容性证据：病毒扫描路径校验在浏览器、Dongger Panel API 与脚本统一；稳定 L3 `managed_script_contract` 与 `app_conf_lifecycle=pass`，Release 的 Verify kejilion.sh application lifecycle 成功。
+- 本版发布决定：脚本先行后发布 Dongger Panel（脚本已于 rc.4 前发布到权威主线）。
 - 阻断或移除的依赖范围：不适用。
 
 ## 多维质量结论
@@ -120,7 +120,7 @@
 - 生产目标和部署授权范围：用户决定“先发产物，暂不部署”；本次正式产物已发布，生产未部署。
 - 验证/灰度环境：`local-wsl-dr`（仅候选 L3）。
 - 正式部署环境：`arena-154`，本次 SSH 不可达，未连接。
-- `prod-108`：禁用全部 KPanel 操作；本次未连接、未备份、未部署、未升级、未核对。
+- `prod-108`：禁用全部 Dongger Panel 操作；本次未连接、未备份、未部署、未升级、未核对。
 - 部署前版本、健康、备份位置及摘要：未执行。
 - 部署命令/入口：未执行；恢复后使用 `scripts/run-production-evidence.mjs` preflight/backup → 标准应用市场更新 → postdeploy。
 - 部署后版本、Panel/Agent 状态、重启、日志、数据完整性和公网入口：未执行。

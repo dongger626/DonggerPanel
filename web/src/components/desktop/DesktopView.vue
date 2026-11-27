@@ -1972,7 +1972,7 @@ function startDesktopShortcutDrag(event: DragEvent, entry: DesktopEntry): void {
   const directFile = transferable.length === 1 && transferable[0]!.kind === 'file'
   const nativeArchiveName = directFile
     ? undefined
-    : nativeArchiveDownloadName(transferable, 'KPanel Desktop')
+    : nativeArchiveDownloadName(transferable, 'Dongger Panel Desktop')
   const nativeDownloadURL = directFile
     ? localFileContentURL(transferable[0]!.path, 'attachment')
     : nativeArchiveName
@@ -4049,7 +4049,7 @@ async function onFileMenuDownload(): Promise<void> {
   closeContextMenu()
   if (!entries.length) return
   try {
-    await downloadFileEntries(entries, 'KPanel Desktop', null)
+    await downloadFileEntries(entries, 'Dongger Panel Desktop', null)
   } catch (error) {
     toast.danger(
       i18n.t('desktop.fileDownloadErrorTitle'),

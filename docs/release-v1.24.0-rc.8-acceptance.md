@@ -1,4 +1,4 @@
-# KPanel v1.24.0-rc.8 发布验收记录
+# Dongger Panel v1.24.0-rc.8 发布验收记录
 
 日期：2026-10-02
 
@@ -65,7 +65,7 @@
 
 - Go 1.27.1、Node 24.21.0 LTS、TypeScript 6.0.3、Action/镜像/扫描器 pin 沿用 RC7；package-lock 仅根发行版本变化，无新依赖。
 - 精确候选与主线的 Dependency freshness push 作业执行官方候选检测并成功；本轮未独立下载其 step summary，不能据此称每日安全通告/EOL 全量复核已完成。L3/CI 当前安全扫描独立成立。
-- 原 TypeScript/@types-node 例外和 Trivy 0.75 qualification 由 KPanel base maintenance 在 2026-10-15 复核；既有首次检测及采用时限不重置。Node 26 不搭车采用。
+- 原 TypeScript/@types-node 例外和 Trivy 0.75 qualification 由 Dongger Panel base maintenance 在 2026-10-15 复核；既有首次检测及采用时限不重置。Node 26 不搭车采用。
 
 ## 隔离真机与浏览器验收
 
@@ -92,7 +92,7 @@
 ## 生产部署安全核对
 
 - 不适用（预览版禁止生产部署）。产物已发布，生产未部署；生产写入 0，没有生产备份、升级、重启或回滚。
-- `prod-108`/108 禁用全部 KPanel 操作；本轮未连接、备份、部署、升级或核对。
+- `prod-108`/108 禁用全部 Dongger Panel 操作；本轮未连接、备份、部署、升级或核对。
 
 ## 回滚
 
@@ -130,7 +130,7 @@
     "count": 16,
     "impact": "8 earlier invalid resource operations plus 8 continuation operations: one theme-file search, two nonexistent mock entry searches, agentd and agent guessed entry searches, premature browser-r2 log read, nonexistent packaging Dockerfile and literal Go glob. No business writes.",
     "recoveryEvidence": "Repository path inventories; final exact frozen candidate and validated helper inventory.",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -139,7 +139,7 @@
     "count": 1,
     "impact": "Unsupported OCR --help call rejected; source workflow and CLI parser used instead.",
     "recoveryEvidence": "sizing-ocr-preview.json, sizing-ocr-rules.json, sizing-ocr-coverage.json",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -148,7 +148,7 @@
     "count": 1,
     "impact": "Writer check reported stale OCR because trailer paragraphs were separated. Only unbound local review commit was corrected before final preview/L3.",
     "recoveryEvidence": "sizing-review-message.txt; final writer check ocr_line_review=recorded",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-03 复核，下一次生产写入前把发现与预检纳入唯一已审查入口并补回归。本次保留失败原件并采用已核对路径/规格，不宣称永久入口已修复。",
     "position": "before-production-write",
     "historicalReleases": []
   },
@@ -157,7 +157,7 @@
     "count": 1,
     "impact": "r1 failed during isolated clone fetch before candidate payload; temporary source removed.",
     "recoveryEvidence": "l3-orchestration.log, validation r1/source-prepare.json; r2 passed for old candidate, r3 runs final candidate",
-    "permanentAction": "负责人 KPanel 发布维护者；2026-10-03 复核 SSH upstream reliability. Same authoritative entry and fixed Runner retry; close when exact final candidate has passed and temporary source absence is verified.",
+    "permanentAction": "负责人 Dongger Panel 发布维护者；2026-10-03 复核 SSH upstream reliability. Same authoritative entry and fixed Runner retry; close when exact final candidate has passed and temporary source absence is verified.",
     "position": "before-production-write",
     "historicalReleases": []
   },

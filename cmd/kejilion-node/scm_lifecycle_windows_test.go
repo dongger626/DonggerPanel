@@ -313,7 +313,7 @@ func TestWindowsHostedSCMLifecycle(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := os.Lstat(filepath.Join(systemDirectory, "Tasks", "KPanel", "KejilionNodeUpdate")); !errors.Is(err, os.ErrNotExist) {
+	if _, err := os.Lstat(filepath.Join(systemDirectory, "Tasks", "Dongger Panel", "KejilionNodeUpdate")); !errors.Is(err, os.ErrNotExist) {
 		t.Fatal("scheduled update definition survived uninstall or could not be inspected")
 	}
 	live = "" // Checked uninstall completed; cleanup has nothing further to do.

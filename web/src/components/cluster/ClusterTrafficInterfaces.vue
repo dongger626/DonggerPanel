@@ -6,7 +6,7 @@ import { formatBytes } from '@/lib/format'
 import type { ClusterHost, TrafficInterfaceReason, TrafficInterfaceStatus, TrafficInterfacesSnapshot } from '@/types/api'
 
 // Each host keeps its own selection: this panel edits only its local host.
-// Other KPanel hosts are set in their own panel, lightweight nodes on the node.
+// Other Dongger Panel hosts are set in their own panel, lightweight nodes on the node.
 const props = defineProps<{ host: ClusterHost; disabled: boolean }>()
 const { t } = useI18n()
 const id = `cluster-traffic-interfaces-${useId()}`

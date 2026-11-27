@@ -1,7 +1,7 @@
 @import './desktopWallpaper.css';
 
 /*
- * KPanel desktop
+ * Dongger Panel desktop
  * Layer contract inside .desktop:
  * wallpaper/icons < windows (100-900) < chrome (1200) < menu (2200)
  * < in-window fullscreen (2800). Teleported modal/toast layers are raised

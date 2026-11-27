@@ -1,5 +1,5 @@
 /**
- * Messages between the KPanel desktop (parent) and a scene pack running in a
+ * Messages between the Dongger Panel desktop (parent) and a scene pack running in a
  * sandboxed, opaque-origin iframe. Commands only affect rendering, so the pack
  * accepts them from its parent window without needing the parent's origin.
  * When the scene runs in a worker (see runtime.ts), the page passes events up

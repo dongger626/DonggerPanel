@@ -1,9 +1,9 @@
-# KPanel 持久化与数据存储策略
+# Dongger Panel 持久化与数据存储策略
 
 - 版本：2026-07-31
 - 状态：长期强制策略
 
-本策略服从仓库根目录的 [`PROJECT_RULES.md`](../PROJECT_RULES.md)，用于指导 KPanel
+本策略服从仓库根目录的 [`PROJECT_RULES.md`](../PROJECT_RULES.md)，用于指导 Dongger Panel
 根据产品需求选择 JSON、JSONL、SQLite 或 PostgreSQL。存储技术服务于业务，不预设
 “全部 JSON”或“全面数据库化”路线。
 
