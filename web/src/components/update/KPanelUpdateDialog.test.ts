@@ -22,7 +22,7 @@ const release: KPanelReleaseInfo = {
   channel: 'stable',
   version: '1.18.0',
   imageDigest: digest,
-  releaseUrl: 'https://github.com/kejilion/KPanel/releases/tag/v1.18.0',
+  releaseUrl: 'https://github.com/dongger626/DonggerPanel/releases/tag/v1.18.0',
   publishedAt: '2026-09-14T00:00:00Z',
   notes: [
     { kind: 'added', text: '新增版本更新内容展示。' },
@@ -76,12 +76,12 @@ describe('KPanelUpdateDialog', () => {
     expect(content).toContain('不依赖当前浏览器直连 GitHub')
 
     const link = document.body.querySelector<HTMLAnchorElement>('.kpanel-release-link a')
-    expect(link?.href).toBe('https://github.com/kejilion/KPanel/releases/tag/v1.18.0')
+    expect(link?.href).toBe('https://github.com/dongger626/DonggerPanel/releases/tag/v1.18.0')
     expect(link?.rel).toBe('noopener noreferrer')
 
     document.body.querySelector<HTMLButtonElement>('[aria-label="复制发布说明地址"]')?.click()
     await nextTick()
-    expect(writeText).toHaveBeenCalledWith('https://github.com/kejilion/KPanel/releases/tag/v1.18.0')
+    expect(writeText).toHaveBeenCalledWith('https://github.com/dongger626/DonggerPanel/releases/tag/v1.18.0')
     expect(mocks.toastSuccess).toHaveBeenCalledWith('发布说明地址已复制')
 
     document.body.querySelector<HTMLButtonElement>('.modal-panel__footer .button--primary')?.click()
@@ -100,7 +100,7 @@ describe('KPanelUpdateDialog', () => {
     expect(content).toContain('发布说明与目标镜像暂未匹配')
     expect(content).not.toContain('新增版本更新内容展示。')
     expect(document.body.querySelector('[data-testid="kpanel-release-url"]')?.textContent).toBe(
-      'https://github.com/kejilion/KPanel/releases/tag/v1.19.0',
+      'https://github.com/dongger626/DonggerPanel/releases/tag/v1.19.0',
     )
 
     const confirm = document.body.querySelector<HTMLButtonElement>('.modal-panel__footer .button--primary')

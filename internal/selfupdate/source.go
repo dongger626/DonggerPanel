@@ -15,10 +15,10 @@ import (
 )
 
 const (
-	githubLatestURL       = "https://api.github.com/repos/kejilion/KPanel/releases/latest"
-	githubPreviewURL      = "https://api.github.com/repos/kejilion/KPanel/releases?per_page=20"
+	githubLatestURL       = "https://api.github.com/repos/dongger626/DonggerPanel/releases/latest"
+	githubPreviewURL      = "https://api.github.com/repos/dongger626/DonggerPanel/releases?per_page=20"
 	maxReleaseResponse    = 1 << 20
-	officialImageName     = "docker.io/kjlion/kejilion-panel"
+	officialImageName     = "docker.io/dongger626/dongger-panel"
 	releaseRequestTimeout = 15 * time.Second
 	maxReleaseNotes       = 8
 	maxUpgradeNotes       = 3
@@ -26,7 +26,7 @@ const (
 )
 
 var releaseImagePattern = regexp.MustCompile(
-	`(?m)^- (生产|预览)镜像：\x60docker\.io/kjlion/kejilion-panel@(sha256:[0-9a-f]{64})\x60\r?$`,
+	`(?m)^- (生产|预览)镜像：\x60docker\.io/dongger626/dongger-panel@(sha256:[0-9a-f]{64})\x60\r?$`,
 )
 
 var markdownLinkPattern = regexp.MustCompile(`\[([^\]]{1,200})\]\([^\r\n)]+\)`)
@@ -194,7 +194,7 @@ func validateReleaseIdentity(payload githubReleasePayload, version string) error
 	if version == "" || payload.TagName != "v"+version {
 		return errors.New("tag is not canonical")
 	}
-	if payload.HTMLURL != "https://github.com/kejilion/KPanel/releases/tag/v"+version {
+	if payload.HTMLURL != "https://github.com/dongger626/DonggerPanel/releases/tag/v"+version {
 		return errors.New("release URL is not official")
 	}
 	return nil

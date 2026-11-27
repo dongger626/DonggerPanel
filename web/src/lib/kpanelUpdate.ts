@@ -12,7 +12,7 @@ export const kpanelAppToken = 'kpanel'
 export const kpanelUpdateSettingsSection = 'version-updates'
 export const kpanelUpdateSettingsPath = `/settings?section=${kpanelUpdateSettingsSection}`
 export const kpanelAppUpdatePath = `/apps?app=${kpanelAppToken}&action=update`
-export const kpanelReleasesURL = 'https://github.com/kejilion/KPanel/releases'
+export const kpanelReleasesURL = 'https://github.com/dongger626/DonggerPanel/releases'
 
 const kpanelVersionPattern = /^\d+\.\d+\.\d+(?:-rc\.[1-9]\d*)?$/
 

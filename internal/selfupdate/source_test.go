@@ -40,8 +40,8 @@ func previewSourceWithResponse(handler roundTripFunc) *GitHubLatestSource {
 }
 
 func validReleaseJSON(version, digest string) string {
-	return `{"tag_name":"v` + version + `","html_url":"https://github.com/kejilion/KPanel/releases/tag/v` + version +
-		`","body":"### 发布产物与完整性\n\n- 生产镜像：\u0060docker.io/kjlion/kejilion-panel@` + digest +
+	return `{"tag_name":"v` + version + `","html_url":"https://github.com/dongger626/DonggerPanel/releases/tag/v` + version +
+		`","body":"### 发布产物与完整性\n\n- 生产镜像：\u0060docker.io/dongger626/dongger-panel@` + digest +
 		`\u0060\n","draft":false,"prerelease":false,"published_at":"2026-09-14T00:00:00Z"}`
 }
 
@@ -60,7 +60,7 @@ func TestGitHubLatestSourceAcceptsOnePublishedStableDigest(t *testing.T) {
 	if release.Version != "12.34.56" || release.ImageDigest != digest {
 		t.Fatalf("release = %#v", release)
 	}
-	if release.ReleaseURL != "https://github.com/kejilion/KPanel/releases/tag/v12.34.56" ||
+	if release.ReleaseURL != "https://github.com/dongger626/DonggerPanel/releases/tag/v12.34.56" ||
 		release.PublishedAt != "2026-09-14T00:00:00Z" {
 		t.Fatalf("release identity = %#v", release)
 	}
@@ -178,9 +178,9 @@ func TestGitHubLatestSourceRejectsUntrustedOrMutableMetadata(t *testing.T) {
 		{name: "draft", status: http.StatusOK, body: strings.Replace(valid, `"draft":false`, `"draft":true`, 1)},
 		{name: "missing stable flags", status: http.StatusOK, body: `{"tag_name":"v1.2.3"}`},
 		{name: "prerelease tag", status: http.StatusOK, body: strings.Replace(valid, "v1.2.3", "v1.2.3-rc.1", 2)},
-		{name: "wrong repository", status: http.StatusOK, body: strings.Replace(valid, "github.com/kejilion/KPanel", "github.com/other/Dongger Panel", 1)},
+		{name: "wrong repository", status: http.StatusOK, body: strings.Replace(valid, "github.com/dongger626/DonggerPanel", "github.com/other/Dongger Panel", 1)},
 		{name: "tag image", status: http.StatusOK, body: strings.Replace(valid, "@"+digest, ":1.2.3", 1)},
-		{name: "duplicate digest", status: http.StatusOK, body: strings.Replace(valid, `\n","draft"`, `\n- 生产镜像：\u0060docker.io/kjlion/kejilion-panel@`+digest+`\u0060\n","draft"`, 1)},
+		{name: "duplicate digest", status: http.StatusOK, body: strings.Replace(valid, `\n","draft"`, `\n- 生产镜像：\u0060docker.io/dongger626/dongger-panel@`+digest+`\u0060\n","draft"`, 1)},
 		{name: "trailing value", status: http.StatusOK, body: valid + `{}`},
 	}
 	for _, test := range tests {

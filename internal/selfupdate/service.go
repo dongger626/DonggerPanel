@@ -862,7 +862,7 @@ func officialReleaseURL(version string) string {
 	if normalized == "" {
 		return ""
 	}
-	return "https://github.com/kejilion/KPanel/releases/tag/v" + normalized
+	return "https://github.com/dongger626/DonggerPanel/releases/tag/v" + normalized
 }
 
 func resourceVersion(state persistedState) string {

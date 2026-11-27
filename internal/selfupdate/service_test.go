@@ -275,7 +275,7 @@ func TestCandidateReleaseSummaryPersistsWithThePinnedDigest(t *testing.T) {
 	digest := "sha256:" + strings.Repeat("b", 64)
 	source := &testReleaseSource{
 		version: "1.2.0", digest: digest,
-		releaseURL:  "https://github.com/kejilion/KPanel/releases/tag/v1.2.0",
+		releaseURL:  "https://github.com/dongger626/DonggerPanel/releases/tag/v1.2.0",
 		publishedAt: "2026-09-14T00:00:00Z",
 		notes: []ReleaseNote{
 			{Kind: "added", Text: "显示更新内容"},

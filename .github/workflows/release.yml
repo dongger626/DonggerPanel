@@ -60,8 +60,8 @@ jobs:
     permissions:
       contents: write
     env:
-      DOCKERHUB_IMAGE: ${{ vars.DOCKERHUB_IMAGE || 'kjlion/kejilion-panel' }}
-      DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME || 'kjlion' }}
+      DOCKERHUB_IMAGE: ${{ vars.DOCKERHUB_IMAGE || 'dongger626/dongger-panel' }}
+      DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME || 'dongger626' }}
       RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
       RELEASE_SHA: ${{ inputs.candidate || github.sha }}
       EXPECTED_SHA: ${{ inputs.candidate || github.sha }}
@@ -125,7 +125,7 @@ jobs:
             echo "Repository variable DOCKERHUB_USERNAME is required" >&2
             exit 1
           }
-          test "$DOCKERHUB_IMAGE" = kjlion/kejilion-panel
+          test "$DOCKERHUB_IMAGE" = dongger626/dongger-panel
           echo "PUBLIC_EVIDENCE=$RUNNER_TEMP/kpanel-public-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_ENV"
           test -n "${DOCKERHUB_TOKEN:-}" || {
             echo "Repository secret DOCKERHUB_TOKEN is required" >&2
@@ -288,7 +288,7 @@ jobs:
           test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.version"}}' kejilion-panel:release-check)" = "$VERSION"
           test "$(docker image inspect --format '{{index .Config.Labels "io.kejilion.kpanel.update-freeze"}}' kejilion-panel:release-check)" = "1"
           test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' kejilion-panel:release-check)" = "$REVISION"
-          test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.source"}}' kejilion-panel:release-check)" = "https://github.com/kejilion/KPanel"
+          test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.source"}}' kejilion-panel:release-check)" = "https://github.com/dongger626/DonggerPanel"
           test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.licenses"}}' kejilion-panel:release-check)" = "AGPL-3.0-only"
           bash scripts/check-managed-script-contract.sh kejilion-panel:release-check
           release_container="$(docker create kejilion-panel:release-check)"
@@ -441,16 +441,16 @@ jobs:
             --candidate "$RELEASE_SHA" --version "$VERSION" \
             --image "$IMAGE" --digest "$IMAGE_DIGEST" \
             --output release/KPANEL_MODIFIED_COMPONENTS.json
-          release_id="$(gh release view "$RELEASE_TAG" --repo kejilion/KPanel \
+          release_id="$(gh release view "$RELEASE_TAG" --repo dongger626/DonggerPanel \
             --json databaseId --jq '.databaseId')"
           [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
-          gh api "repos/kejilion/KPanel/releases/$release_id" \
+          gh api "repos/dongger626/DonggerPanel/releases/$release_id" \
             --jq '.draft' | grep -qx true
           gh release upload "$RELEASE_TAG" \
-            --repo kejilion/KPanel --clobber release/KPANEL_MODIFIED_COMPONENTS.json
+            --repo dongger626/DonggerPanel --clobber release/KPANEL_MODIFIED_COMPONENTS.json
           asset_digest="sha256:$(sha256sum release/KPANEL_MODIFIED_COMPONENTS.json | awk '{print $1}')"
           asset_size="$(wc -c < release/KPANEL_MODIFIED_COMPONENTS.json)"
-          gh api "repos/kejilion/KPanel/releases/$release_id" |
+          gh api "repos/dongger626/DonggerPanel/releases/$release_id" |
             jq -e --arg tag "$RELEASE_TAG" --arg digest "$asset_digest" --argjson size "$asset_size" '
               .draft == true and .tag_name == $tag and
               ([.assets[] | select(.name == "KPANEL_MODIFIED_COMPONENTS.json")] |

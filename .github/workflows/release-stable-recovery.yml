@@ -258,8 +258,8 @@ jobs:
         run: |
           set -euo pipefail
           docker buildx imagetools create \
-            --tag docker.io/kjlion/kejilion-panel:latest \
-            "docker.io/kjlion/kejilion-panel@$PREVIOUS_DIGEST"
+            --tag docker.io/dongger626/dongger-panel:latest \
+            "docker.io/dongger626/dongger-panel@$PREVIOUS_DIGEST"
       - name: Confirm latest is restored and the draft is still unpublished
         id: verify-restored
         run: node scripts/stable-release-recovery.mjs inspect
