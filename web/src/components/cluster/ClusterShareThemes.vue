@@ -69,7 +69,7 @@ const swatch = (pack: ScenePack) => pack.theme ? { '--swatch-bg': pack.theme.neu
         <h3>{{ t('cluster.themes.title') }}</h3>
         <p>{{ t('cluster.themes.hint') }}</p>
       </div>
-      <a href="https://github.com/kejilion/KPanel/tree/main/share-themes" target="_blank" rel="noopener noreferrer">{{ t('cluster.themes.create') }}</a>
+      <a href="https://github.com/dongger626/DonggerPanel/tree/main/share-themes" target="_blank" rel="noopener noreferrer">{{ t('cluster.themes.create') }}</a>
     </header>
     <p class="themes__safe">{{ t('cluster.themes.safe') }}</p>
     <div class="themes__upload">

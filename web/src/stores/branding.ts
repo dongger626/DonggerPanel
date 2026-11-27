@@ -2,7 +2,7 @@ import { computed, readonly, ref } from 'vue'
 import type { SiteBranding } from '@/types/api'
 
 export const DEFAULT_SITE_ICON = '/icons/kpanel.svg'
-export const PROJECT_SOURCE_URL = 'https://github.com/kejilion/KPanel'
+export const PROJECT_SOURCE_URL = 'https://github.com/dongger626/DonggerPanel'
 const branding = ref<SiteBranding>({ name: '', icon: '' })
 
 export function applySiteBranding(value?: SiteBranding): void {

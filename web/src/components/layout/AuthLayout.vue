@@ -31,7 +31,7 @@ const i18n = useI18n()
     </section>
     <footer class="auth-layout__source">
       <p class="auth-layout__footnote">{{ i18n.t('auth.product') }}</p>
-      <a :href="PROJECT_SOURCE_URL" target="_blank" rel="noopener noreferrer">GitHub · github.com/kejilion/KPanel</a>
+      <a :href="PROJECT_SOURCE_URL" target="_blank" rel="noopener noreferrer">GitHub · github.com/dongger626/DonggerPanel</a>
     </footer>
   </main>
 </template>

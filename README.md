@@ -18,9 +18,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/kejilion/KPanel/releases/latest"><img src="https://img.shields.io/github/v/release/kejilion/KPanel?display_name=tag" alt="Latest release"></a>
-  <a href="https://github.com/kejilion/KPanel/actions/workflows/ci.yml"><img src="https://github.com/kejilion/KPanel/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
-  <a href="https://go.dev/"><img src="https://img.shields.io/github/go-mod/go-version/kejilion/KPanel" alt="Go version"></a>
+  <a href="https://github.com/dongger626/DonggerPanel/releases/latest"><img src="https://img.shields.io/github/v/release/dongger626/DonggerPanel?display_name=tag" alt="Latest release"></a>
+  <a href="https://github.com/dongger626/DonggerPanel/actions/workflows/ci.yml"><img src="https://github.com/dongger626/DonggerPanel/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <a href="https://go.dev/"><img src="https://img.shields.io/github/go-mod/go-version/dongger626/DonggerPanel" alt="Go version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-blue.svg" alt="AGPL-3.0-only"></a>
 </p>
 
@@ -30,7 +30,7 @@
   <a href="https://kpanel.kejilion.sh/en/">English website</a> ·
   <a href="#快速开始">开始部署</a> ·
   <a href="https://blog.kejilion.pro/kpanel-kejilion-web-server-panel/">图文教程</a> ·
-  <a href="https://github.com/kejilion/KPanel/releases">版本发布</a>
+  <a href="https://github.com/dongger626/DonggerPanel/releases">版本发布</a>
 </p>
 
 <p align="center">
@@ -257,7 +257,7 @@ Alpine Linux 3.24 `sys` mode 的 OpenRC 路径也已实现并通过自动化契�
 | 核心能力 | [AI 工作区](docs/ai-workspace.md) · [集群监控](docs/cluster-monitoring.md) · [Docker 管理](docs/docker-management-v0.18.md) · [应用市场](docs/application-market.md) |
 | 多主机管理 | [多主机终端](docs/multi-host-terminal.md) · [跨面板文件传输](docs/cross-kpanel-file-transfer.md) · [集群通知](docs/cluster-notifications.md) · [公开状态分享](docs/cluster-public-share.md) |
 | 生态与质量 | [兼容基线](docs/compatibility.md) · [开发质量标准](docs/development-quality-standard.md) · [项目协作](docs/session-collaboration.md) |
-| 版本信息 | [稳定版与预览版](docs/release-channels.md) · [更新记录](CHANGELOG.md) · [最新稳定版](https://github.com/kejilion/KPanel/releases/latest) |
+| 版本信息 | [稳定版与预览版](docs/release-channels.md) · [更新记录](CHANGELOG.md) · [最新稳定版](https://github.com/dongger626/DonggerPanel/releases/latest) |
 
 <details>
 <summary>更多安全、设计与工程文档</summary>

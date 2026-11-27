@@ -192,7 +192,7 @@ onBeforeUnmount(() => {
 
     <div class="share-shell">
       <header v-if="!immersive" class="share-header">
-        <a class="share-brand" href="https://github.com/kejilion/KPanel" target="_blank" rel="noopener noreferrer">
+        <a class="share-brand" href="https://github.com/dongger626/DonggerPanel" target="_blank" rel="noopener noreferrer">
           <LogoMark compact class="share-brand__logo" />
           <strong>Dongger Panel</strong>
         </a>

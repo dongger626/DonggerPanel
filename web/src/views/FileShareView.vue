@@ -104,7 +104,7 @@ onBeforeUnmount(() => {
   <main class="file-share-page">
     <div class="file-share-shell">
       <header class="file-share-header">
-        <a class="file-share-brand" href="https://github.com/kejilion/KPanel" target="_blank" rel="noopener noreferrer">
+        <a class="file-share-brand" href="https://github.com/dongger626/DonggerPanel" target="_blank" rel="noopener noreferrer">
           <LogoMark compact class="file-share-brand__logo" />
           <strong>Dongger Panel</strong>
         </a>
